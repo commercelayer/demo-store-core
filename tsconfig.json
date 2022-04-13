@@ -16,7 +16,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "#data/*": ["data/*"],
+      "#i18n/*": ["src/i18n/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
