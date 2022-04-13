@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "serve": "npx serve out",
+    "ts:check": "tsc --noEmit",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "next": "^12.1.5",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^13.0.1",
+    "@types/node": "17.0.23",
+    "@types/react": "17.0.43",
+    "@vitejs/plugin-react": "1.3.0",
+    "jsdom": "^19.0.0",
+    "typescript": "4.6.3",
+    "vitest": "0.8.4"
+  }
+}
