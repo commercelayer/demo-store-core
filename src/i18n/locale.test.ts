@@ -1,6 +1,5 @@
 import { Country } from '#data/countries'
 import { Language } from '#data/languages'
-import { expect, test } from 'vitest'
 
 import { getLocale, Locale, makeLocaleCode, makeLocales } from './locale'
 

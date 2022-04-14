@@ -1,5 +1,3 @@
-import { test, expect } from 'vitest'
-
 import { combine } from './utils'
 
 test('"combine" should not accept empty array as input', () => {

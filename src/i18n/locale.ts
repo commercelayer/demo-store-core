@@ -29,6 +29,6 @@ export function makeLocales(countries: Country[], languages: Language[]): Locale
     })))
 }
 
-const locales = makeLocales(countries, languages)
+export const locales = makeLocales(countries, languages)
 
 export const getLocale = (localeCode: string) => locales.find(locale => locale.code === localeCode)
