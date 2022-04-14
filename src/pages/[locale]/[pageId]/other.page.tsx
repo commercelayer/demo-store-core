@@ -1,7 +1,11 @@
 import { withLocalePaths } from '#i18n/withLocalePaths'
+import { basePath } from '#next.config'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
+
 import { CountrySelector } from '../../../components/CountrySelector'
+import styles from '../../../styles/Home.module.css'
+
 
 type Query = {
   pageId: string
@@ -9,15 +13,15 @@ type Query = {
 }
 
 type Props = {
-  params: Query
+  params?: Query
 }
 
 export default function Home({ params }: Props): JSX.Element {
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={basePath + '/favicon.ico'} />
       </Head>
 
       <CountrySelector />
@@ -45,10 +49,10 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
   })
 }
 
-export const getStaticProps: GetStaticProps<Props, Query> = async (context) => {
+export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   return {
     props: {
-      params: context.params!
+      params
     }
   }
 }

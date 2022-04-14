@@ -21,7 +21,8 @@
     "paths": {
       "#data/*": ["data/*"],
       "#i18n/*": ["src/i18n/*"],
-      "#components/*": ["src/components/*"]
+      "#components/*": ["src/components/*"],
+      "#next.config": ["src/nextConfig"]
     }
   },
   "include": [

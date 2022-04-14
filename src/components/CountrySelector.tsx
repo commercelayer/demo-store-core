@@ -18,12 +18,34 @@ export const CountrySelector: FC = () => {
         </Link>
 
         {
-          router?.pathname !== '/' && <>
-            &nbsp;&nbsp;|&nbsp;&nbsp;
-            <Link href='/another'>
-              <a>Another Page</a>
-            </Link>
-          </>
+          router?.pathname !== '/' && (
+            <>
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <Link href='/another'>
+                <a>Another Page</a>
+              </Link>
+
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <Link href='/1'>
+                <a>Page 1</a>
+              </Link>
+
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <Link href='/1/other'>
+                <a>Page 1 - other</a>
+              </Link>
+
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <Link href='/2'>
+                <a>Page 2</a>
+              </Link>
+
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <Link href='/2/other'>
+                <a>Page 2 - other</a>
+              </Link>
+            </>
+          )
         }
       </p>
 
