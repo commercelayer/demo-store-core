@@ -2,7 +2,7 @@ import { resolve } from 'path'
 import { existsSync, readFileSync } from 'fs'
 
 
-export const serverSideTranslations = async (locale: string, path: string = 'public/locales/') => {
+export const serverSideTranslations = async (locale: string, path: string = 'data/locales/') => {
   const [language] = locale.split('-')
 
   const projectRoot = resolve(__dirname, '../../../')
