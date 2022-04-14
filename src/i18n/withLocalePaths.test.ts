@@ -13,7 +13,7 @@ const itUS: Locale = { "code": "it-us", "country": unitedStates, "language": ita
 const enIT: Locale = { "code": "en-it", "country": italy, "language": english }
 const en: Locale = { "code": "en", "language": english }
 
-test('"withLocalePaths" should do nothing when not locales are passed', () => {
+test('should do nothing when not locales are passed', () => {
   const getStaticPathsResult: GetStaticPathsResult = {
     fallback: 'blocking',
     paths: []
@@ -27,7 +27,7 @@ test('"withLocalePaths" should do nothing when not locales are passed', () => {
   })
 })
 
-test('"withLocalePaths" should add all given locales without any other param when "paths" is empty', () => {
+test('should add all given locales without any other param when "paths" is empty', () => {
   const getStaticPathsResult: GetStaticPathsResult = {
     fallback: 'blocking',
     paths: []
@@ -45,7 +45,7 @@ test('"withLocalePaths" should add all given locales without any other param whe
   })
 })
 
-test('"withLocalePaths" should combine all given params with all given locales', () => {
+test('should combine all given params with all given locales', () => {
   const getStaticPathsResult: GetStaticPathsResult<{ pid: string }> = {
     fallback: 'blocking',
     paths: [
@@ -69,7 +69,7 @@ test('"withLocalePaths" should combine all given params with all given locales',
   })
 })
 
-test('"withLocalePaths" should combine all given string paths with all given locales', () => {
+test('should combine all given string paths with all given locales', () => {
   const getStaticPathsResult: GetStaticPathsResult<{ name: string }> = {
     fallback: 'blocking',
     paths: [
@@ -93,7 +93,7 @@ test('"withLocalePaths" should combine all given string paths with all given loc
   })
 })
 
-test('"withLocalePaths" should combine all given string paths with all configured locales', () => {
+test('should combine all given string paths with all configured locales', () => {
   const getStaticPathsResult: GetStaticPathsResult<{ name: string }> = {
     fallback: 'blocking',
     paths: [
