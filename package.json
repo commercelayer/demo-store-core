@@ -7,7 +7,8 @@
     "export": "next export",
     "serve": "npx serve out",
     "ts:check": "tsc --noEmit",
-    "test": "jest --coverage"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "next": "^12.1.5",
