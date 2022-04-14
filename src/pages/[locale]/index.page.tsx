@@ -1,7 +1,9 @@
 import { CountrySelector } from '#components/CountrySelector'
+import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { basePath } from '#next.config'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { useI18n } from 'next-localization'
 import Head from 'next/head'
 
 import styles from '../../styles/Home.module.css'
@@ -16,6 +18,8 @@ type Props = {
 }
 
 const Home: NextPage<Props> = ({ params }) => {
+  const i18n = useI18n();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -30,7 +34,7 @@ const Home: NextPage<Props> = ({ params }) => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          {i18n.t('general.title')} <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
@@ -92,10 +96,11 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
   })
 }
 
-export const getStaticProps: GetStaticProps<Props, Query> = ({ params }) => {
+export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   return {
     props: {
-      params
+      params,
+      ...(await serverSideTranslations(params?.locale!))
     }
   }
 }

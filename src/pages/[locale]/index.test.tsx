@@ -1,4 +1,5 @@
 import { render, screen, within } from '@testing-library/react'
+import { I18nProvider } from 'next-localization'
 
 import Home from './index.page'
 
@@ -14,7 +15,11 @@ jest.mock('next/router', () => ({
 }));
 
 test('home', () => {
-  render(<Home />)
+  render(
+    <I18nProvider lngDict={{ general: { title: 'Welcome to' } }} locale="en">
+      <Home />
+    </I18nProvider>
+  )
   const main = within(screen.getByRole('main'))
   expect(
     main.getByRole('heading', { level: 1, name: /welcome to next\.js!/i })

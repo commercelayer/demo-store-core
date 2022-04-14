@@ -1,6 +1,16 @@
-import '../styles/globals.css'
+import { I18nProvider } from 'next-localization'
 import type { AppProps } from 'next/app'
+import { useRouter } from 'next/router'
+
+import '../styles/globals.css'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  const router = useRouter()
+  const { lngDict, ...rest } = pageProps
+
+  return (
+    <I18nProvider lngDict={lngDict} locale={router.query.locale as string | undefined || ''}>
+      <Component {...rest} />
+    </I18nProvider>
+  )
 }
