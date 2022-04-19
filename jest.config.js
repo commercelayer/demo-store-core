@@ -10,6 +10,7 @@ const createJestConfig = nextJest({
 })
 
 // Add any custom config to be passed to Jest
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 const customJestConfig = {
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
@@ -21,4 +22,17 @@ const customJestConfig = {
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
-module.exports = createJestConfig(customJestConfig)
+module.exports = async () => {
+  /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+  const jestConfig = {
+    ...await createJestConfig(customJestConfig)(),
+    transformIgnorePatterns: [
+      // CSS modules are mocked so they don't need to be transformed
+      '^.+\\.module\\.(css|sass|scss)$',
+      // @commercelayer/react-components is ESM
+      "node_modules/(?!@commercelayer/react-components)"
+    ]
+  }
+
+  return jestConfig
+}

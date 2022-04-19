@@ -8,22 +8,26 @@
     "serve": "npx serve out",
     "ts:check": "tsc --noEmit",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "dep:upgrade:major": "npx npm-check-updates -u",
+    "dep:upgrade:minor": "npm run dep:upgrade:major -- --target minor"
   },
   "dependencies": {
+    "@commercelayer/js-auth": "^2.3.0",
+    "@commercelayer/react-components": "^3.11.0",
     "@types/lodash": "^4.14.181",
     "lodash": "^4.17.21",
     "next": "^12.1.5",
     "next-localization": "^0.12.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^17",
+    "react-dom": "^17"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.0.1",
+    "@testing-library/react": "^12",
     "@types/mock-fs": "^4.13.1",
-    "@types/node": "17.0.23",
-    "@types/react": "17.0.43",
+    "@types/node": "17.0.24",
+    "@types/react": "17.0.44",
     "jest": "^27.5.1",
     "mock-fs": "^5.1.2",
     "ts-jest": "^27.1.4",
