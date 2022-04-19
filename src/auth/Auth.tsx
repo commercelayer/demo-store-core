@@ -18,8 +18,8 @@ const getClientCredentials = (market: number): ClientCredentials => ({
 })
 
 const getAuth = (market: number): Auth | null => {
-  const cookieKey = getCookieKey(market)
-  return JSON.parse(localStorage.getItem(cookieKey) || 'null')
+  const storeKey = getStoreKey(market)
+  return JSON.parse(localStorage.getItem(storeKey) || 'null')
 }
 
 const storeAuth = (market: number, authReturn: Awaited<AuthReturnType>): Auth | null => {
@@ -27,21 +27,21 @@ const storeAuth = (market: number, authReturn: Awaited<AuthReturnType>): Auth | 
     return null
   }
 
-  const cookieKey = getCookieKey(market)
+  const storeKey = getStoreKey(market)
 
   const auth: Auth = {
+    tokenType: authReturn.tokenType,
     accessToken: authReturn.accessToken,
-    refreshToken: authReturn.refreshToken,
     expires: authReturn.expires?.getTime(),
-    tokenType: authReturn.tokenType
+    refreshToken: authReturn.refreshToken
   }
 
-  localStorage.setItem(cookieKey, JSON.stringify(auth))
+  localStorage.setItem(storeKey, JSON.stringify(auth))
 
   return auth
 }
 
-const getCookieKey = <M extends number>(market: M): `clayer_access_token-market:${M}` => `clayer_access_token-market:${market}`
+const getStoreKey = <M extends number>(market: M): `clayer_token-market:${M}` => `clayer_token-market:${market}`
 
 const hasExpired = (time: number | undefined): boolean => time === undefined || time < Date.now()
 
@@ -85,7 +85,7 @@ export const Auth: FC = ({ children }) => {
 
   return (
     <CommerceLayer accessToken={auth.accessToken} endpoint={process.env.NEXT_PUBLIC_CL_ENDPOINT}>
-      {children}
+      <>{children}</>
     </CommerceLayer>
   )
 }
