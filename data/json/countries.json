@@ -1,218 +1,254 @@
 [
   {
+    "name": "United States",
+    "code": "US",
+    "market": 400,
+    "default_language": "en",
+    "region": "Americas"
+  },
+  {
     "name": "Austria",
     "code": "AT",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Australia",
     "code": "AU",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },
   {
     "name": "Belgium",
     "code": "BE",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Bolivia",
     "code": "BO",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },
   {
     "name": "Brazil",
     "code": "BR",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },
   {
     "name": "Canada",
     "code": "CA",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },
   {
     "name": "Chile",
     "code": "CL",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },
   {
     "name": "China",
     "code": "CN",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Asia"
   },
   {
     "name": "Denmark",
     "code": "DK",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Finland",
     "code": "FI",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "France",
     "code": "FR",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Germany",
     "code": "DE",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Hong Kong",
     "code": "HK",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Asia"
   },
   {
     "name": "India",
     "code": "IN",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },  
   {
     "name": "Indonesia",
     "code": "ID",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },
   {
     "name": "Ireland",
     "code": "IE",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Iceland",
     "code": "IS",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Italy",
     "code": "IT",
     "market": 399,
-    "default_language": "it"
+    "default_language": "it",
+    "region": "Europe"
   },
   {
     "name": "Japan",
     "code": "JP",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Asia"
   },
   {
     "name": "South Korea",
     "code": "KR",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Asia"
   },
   {
     "name": "Mexico",
     "code": "MX",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },
   {
     "name": "Netherlands",
     "code": "NL",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Nigeria",
     "code": "NG",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },
   {
     "name": "Norway",
     "code": "NO",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Poland",
     "code": "PL",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Portugal",
     "code": "PT",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Russia",
     "code": "RU",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },
   {
     "name": "Saudi Arabia",
     "code": "SA",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },
   {
     "name": "Singapore",
     "code": "SG",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Asia"
   },
   {
     "name": "South Africa",
     "code": "ZA",
     "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Americas"
   },
   {
     "name": "Spain",
     "code": "ES",
     "market": 399,
-    "default_language": "it"
+    "default_language": "it",
+    "region": "Europe"
   },
   {
     "name": "Sweden",
     "code": "SE",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Switzerland",
     "code": "CH",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "Turkey",
     "code": "TR",
     "market": 399,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   },
   {
     "name": "United Kingdom",
     "code": "GB",
     "market": 401,
-    "default_language": "en"
-  },
-  {
-    "name": "United States",
-    "code": "US",
-    "market": 400,
-    "default_language": "en"
+    "default_language": "en",
+    "region": "Europe"
   }
 ]

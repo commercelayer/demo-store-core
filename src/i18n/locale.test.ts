@@ -14,8 +14,8 @@ describe('makeLocaleCode', () => {
 
 describe('makeLocales', () => {
   it('should create locales from a list of countries and languages', () => {
-    const unitedStates: Country = { code: 'US', default_language: 'en', market: 400, name: 'United States' }
-    const italy: Country = { code: 'IT', default_language: 'it', market: 401, name: 'Italy' }
+    const unitedStates: Country = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas' }
+    const italy: Country = { code: 'IT', default_language: 'it', market: 401, name: 'Italy', region: 'Europe' }
     const italian: Language = { code: 'it', name: 'Italiano' }
     const english: Language = { code: 'en', name: 'English' }
 
@@ -36,7 +36,7 @@ describe('makeLocales', () => {
 
 describe('getLocale', () => {
   it('should be able to return a Locale gived a localeCode', () => {
-    const unitedStates: Country = { code: 'US', default_language: 'en', market: 400, name: 'United States' }
+    const unitedStates: Country = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas' }
     const italian: Language = { code: 'it', name: 'Italiano' }
 
     const locale: Locale | undefined = getLocale('it-us')

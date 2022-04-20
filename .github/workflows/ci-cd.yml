@@ -29,6 +29,9 @@ jobs:
     - name: Install 📦
       run: npm ci
 
+    - name: Lint 🔎
+      run: npm run ts:check
+
     - name: Test 🐛 + Coverage 🌈
       run: npm run coverage
 
