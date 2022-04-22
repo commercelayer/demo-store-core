@@ -1,34 +1,34 @@
 import React, { useRef, useState } from 'react'
 
+import styles from './Accordion.module.scss'
+
 interface Props {
   title: React.ReactNode
   content: React.ReactNode
 }
 
+/** @tw sm:border-t-0 md:border-t-0 lg:border-t-0 */
+/** @tw sm:max-h-full md:max-h-full lg:max-h-full */
+/** @tw sm:invisible md:invisible lg:invisible */
 export const Accordion: React.FC<Props> = ({ title, content }) => {
   const [active, setActive] = useState(false)
-  const [height, setHeight] = useState('0px')
 
   const contentSpace = useRef<HTMLDivElement>(null)
 
   function toggleAccordion() {
     setActive((prevState) => !prevState)
-    setHeight(active ? '0px' : `${contentSpace.current?.scrollHeight}px`)
   }
 
   return (
     <div className="flex flex-col">
-      <button
-        className="py-6 box-border border-t border-gray-400 appearance-none cursor-pointer focus:outline-none flex items-center justify-between"
-        onClick={toggleAccordion}
-      >
+      <button className={`title ${styles.title}`} onClick={toggleAccordion}>
         <div className="inline-block text-footnote light">{title}</div>
-        { active ? '-' : '+' }
+        <div className='icon'>{active ? '-' : '+'}</div>
       </button>
       <div
         ref={contentSpace}
-        style={{ maxHeight: `${height}` }}
-        className="overflow-hidden transition-max-height duration-700 ease-in-out"
+        style={{ maxHeight: active ? `${contentSpace.current?.scrollHeight}px` : undefined }}
+        className={`body ${styles.body}`}
       >
         <div>{content}</div>
       </div>

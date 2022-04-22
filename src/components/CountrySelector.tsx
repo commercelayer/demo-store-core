@@ -1,75 +1,56 @@
-import { countries } from "#data/countries";
-import { languages } from "#data/languages";
-import { Link } from "#i18n/Link";
-import { makeLocaleCode } from "#i18n/locale";
-import { useRouter } from "next/router";
-import { FC, Fragment } from "react";
+import { countries, groupByRegion } from '#data/countries'
+import { Link } from '#i18n/Link'
+import { makeLocaleCode } from '#i18n/locale'
+import { basePath } from '#next.config'
+import { Accordion } from './Accordion'
 
-export const CountrySelector: FC = () => {
-  const router = useRouter()
+import styles from './CountrySelector.module.scss'
+
+export const CountrySelector = () => {
+  const groupedCountry = Object.entries(groupByRegion(countries))
 
   return (
-    <div>
-      <p>Country Selector</p>
+    <div className='flex flex-col h-screen'>
+      <div className={styles.countriesContainer}>
+        <div className={styles.logo}>
+          <img className='logomark' alt='Commerce Layer logomark' src={basePath + '/commercelayer-logomark.svg'} />
+          <img className='logotype' alt='Commerce Layer logotype' src={basePath + '/commercelayer-logotype.svg'} />
+        </div>
 
-      <p>
-        <Link href='/'>
-          <a>Home</a>
-        </Link>
+        <div className={styles.title}>
+          CHOOSE YOUR COUNTRY/REGION
+        </div>
 
-        {
-          router?.pathname !== '/' && (
-            <>
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/another'>
-                <a>Another Page</a>
-              </Link>
+        <div className={styles.accordionContainer} style={{ gridTemplateColumns: groupedCountry.map(() => '1fr').join(' ') }}>
+          {
+            groupedCountry.map(([regionName, countries]) => (
+              <Accordion key={regionName} title={<div className='font-extrabold'>{regionName.toUpperCase()}</div>} content={(
+                <div>
+                  {
+                    countries.map(country => {
+                      const locale = makeLocaleCode(country.code, country.default_language)
+                      return (
+                        <Link key={locale} locale={locale}>
+                          <a className={styles.countryLink}>{country.name}</a>
+                        </Link>
+                      )
+                    })
+                  }
+                </div>
+              )} />
+            ))
+          }
+        </div>
+      </div>
 
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/1'>
-                <a>Page 1</a>
-              </Link>
-
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/1/other'>
-                <a>Page 1 - other</a>
-              </Link>
-
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/2'>
-                <a>Page 2</a>
-              </Link>
-
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/2/other'>
-                <a>Page 2 - other</a>
-              </Link>
-            </>
-          )
-        }
-      </p>
-
-      {
-        countries.map(country => (
-          <Fragment key={country.code}>
-            <Link locale={makeLocaleCode(country.code, country.default_language)}>
-              <a>{country.name}</a>
-            </Link>
-            &nbsp;&nbsp;|&nbsp;&nbsp;
-          </Fragment>
-        ))
-      }
-
-      {
-        languages.map(language => (
-          <span key={language.code}>
-            &nbsp;&nbsp;|&nbsp;&nbsp;
-            <Link locale={language.code}>
-              <a>International ({language.name})</a>
-            </Link>
-          </span>
-        ))
-      }
+      <div className='bg-gray-50 border-t border-gray-200 mt-12 pt-6 pb-6 flex flex-grow'>
+        <div className='container mx-auto px-6'>
+          Other Countries / Regions:
+          <Link locale='en'>
+            <a className='font-semibold block'>International (English)</a>
+          </Link>
+        </div>
+      </div>
 
     </div>
   )

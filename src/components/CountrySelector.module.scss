@@ -1,0 +1,62 @@
+$noAccordionBreakpoint: theme('screens.md');
+
+.logo {
+  @apply py-6 pb-6 border-b border-b-gray-100;
+
+  :global(.logomark) {
+    @apply inline;
+  }
+
+  :global(.logotype) {
+    @apply inline ml-4 invisible md:visible;
+  }
+
+  @media (min-width: $noAccordionBreakpoint) {
+    @apply border-b-0 text-center;
+  }
+}
+.title {
+  @apply py-12 pb-12 font-extrabold;
+
+  @media (min-width: $noAccordionBreakpoint) {
+    @apply text-center;
+  }
+}
+
+.countriesContainer {
+  @apply container mx-auto px-6;
+
+  @media (min-width: $noAccordionBreakpoint) {
+    @apply bg-no-repeat bg-center max-w-screen-2xl bg-contain p-24;
+
+    background-image: url('../../public/country-selector-background.png')
+  }
+}
+
+.accordionContainer {
+  @apply border-b border-gray-400;
+
+  .countryLink {
+    @apply py-6 border-t border-t-gray-100 font-semibold block;
+  }
+
+  @media (min-width: $noAccordionBreakpoint) {
+    @apply grid gap-12 border-b-0;
+
+    .countryLink {
+      @apply py-2 border-t-0;
+    }
+
+    :global(.title) {
+      @apply cursor-auto border-t-0 border-b border-gray-100 mb-6;
+    }
+
+    :global(.icon) {
+      @apply invisible
+    }
+  
+    :global(.body) {
+      @apply max-h-full;
+    }
+  }
+}

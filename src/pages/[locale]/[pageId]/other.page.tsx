@@ -3,7 +3,7 @@ import { basePath } from '#next.config'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 
-import { CountrySelector } from '../../../components/CountrySelector'
+import { Navigation } from '../../../components/Navigation'
 import styles from '../../../styles/Home.module.css'
 
 
@@ -24,7 +24,7 @@ export default function Home({ params }: Props): JSX.Element {
         <link rel="icon" href={basePath + '/favicon.ico'} />
       </Head>
 
-      <CountrySelector />
+      <Navigation />
 
       <h1>Other {JSON.stringify(params)}</h1>
     </div>

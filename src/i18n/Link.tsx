@@ -19,6 +19,10 @@ export const Link: FC<LinkProps> = ({ children, ...props }) => {
       return <NextLink {...props} href={`/${props.locale}`}>{children}</NextLink>
     }
 
+    if (props.locale === '') {
+      return <NextLink {...props} href='/'>{children}</NextLink>
+    }
+
     return <NextLink {...props} href={{
       pathname: router.pathname,
       query: { ...router.query, locale: props.locale },

@@ -18,7 +18,7 @@
     "code": "AU",
     "market": 400,
     "default_language": "en",
-    "region": "Americas"
+    "region": "Oceania"
   },
   {
     "name": "Belgium",
@@ -102,14 +102,14 @@
     "code": "IN",
     "market": 400,
     "default_language": "en",
-    "region": "Americas"
+    "region": "Asia"
   },  
   {
     "name": "Indonesia",
     "code": "ID",
     "market": 400,
     "default_language": "en",
-    "region": "Americas"
+    "region": "Asia"
   },
   {
     "name": "Ireland",
@@ -165,7 +165,7 @@
     "code": "NG",
     "market": 400,
     "default_language": "en",
-    "region": "Americas"
+    "region": "Africa"
   },
   {
     "name": "Norway",
@@ -193,14 +193,14 @@
     "code": "RU",
     "market": 400,
     "default_language": "en",
-    "region": "Americas"
+    "region": "Asia"
   },
   {
     "name": "Saudi Arabia",
     "code": "SA",
     "market": 400,
     "default_language": "en",
-    "region": "Americas"
+    "region": "Asia"
   },
   {
     "name": "Singapore",
@@ -214,7 +214,7 @@
     "code": "ZA",
     "market": 400,
     "default_language": "en",
-    "region": "Americas"
+    "region": "Africa"
   },
   {
     "name": "Spain",

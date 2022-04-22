@@ -1,4 +1,4 @@
-import { CountrySelector } from '#components/CountrySelector'
+import { Navigation } from '#components/Navigation'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { basePath } from '#next.config'
@@ -28,7 +28,7 @@ const Home: NextPage<Props> = ({ params }) => {
         <link rel="icon" href={basePath + '/favicon.ico'} />
       </Head>
 
-      <CountrySelector />
+      <Navigation />
 
       <p>params: {JSON.stringify(params)}</p>
 
@@ -81,7 +81,7 @@ const Home: NextPage<Props> = ({ params }) => {
         >
           Powered by{' '}
           <span className={styles.logo}>
-            <img src={basePath + '/commercelayer.svg'} alt="Vercel Logo" width={72} height={16} />
+            <img src={basePath + '/commercelayer-logomark.svg'} alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
