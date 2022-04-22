@@ -15,6 +15,7 @@ $noAccordionBreakpoint: theme('screens.md');
     @apply border-b-0 text-center;
   }
 }
+
 .title {
   @apply py-12 pb-12 font-extrabold;
 
@@ -27,7 +28,7 @@ $noAccordionBreakpoint: theme('screens.md');
   @apply container mx-auto px-6;
 
   @media (min-width: $noAccordionBreakpoint) {
-    @apply bg-no-repeat bg-center max-w-screen-2xl bg-contain p-24;
+    @apply bg-no-repeat bg-center max-w-screen-2xl bg-contain px-24 pt-24;
 
     background-image: url('../../public/country-selector-background.png')
   }
@@ -44,7 +45,7 @@ $noAccordionBreakpoint: theme('screens.md');
     @apply grid gap-12 border-b-0;
 
     .countryLink {
-      @apply py-2 border-t-0;
+      @apply py-1 border-t-0;
     }
 
     :global(.title) {
@@ -55,7 +56,7 @@ $noAccordionBreakpoint: theme('screens.md');
       @apply invisible
     }
   
-    :global(.body) {
+    :global(.content) {
       @apply max-h-full;
     }
   }

@@ -24,7 +24,7 @@ export const CountrySelector = () => {
         <div className={styles.accordionContainer} style={{ gridTemplateColumns: groupedCountry.map(() => '1fr').join(' ') }}>
           {
             groupedCountry.map(([regionName, countries]) => (
-              <Accordion key={regionName} title={<div className='font-extrabold'>{regionName.toUpperCase()}</div>} content={(
+              <Accordion key={regionName} title={<div className='font-extrabold'>{regionName.toUpperCase()}</div>}>
                 <div>
                   {
                     countries.map(country => {
@@ -37,7 +37,7 @@ export const CountrySelector = () => {
                     })
                   }
                 </div>
-              )} />
+              </Accordion>
             ))
           }
         </div>
