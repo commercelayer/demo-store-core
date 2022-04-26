@@ -9,7 +9,12 @@ const nextConfig = {
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
 
   // https://nextjs.org/docs/api-reference/next.config.js/basepath
-  basePath: '/demo-store'
+  basePath: '/demo-store',
+
+  eslint: {
+    // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
+    dirs: ['src']
+  }
 }
 
 module.exports = nextConfig

@@ -60,7 +60,7 @@ export const Auth: FC = ({ children }) => {
     if (locale?.country?.market !== market) {
       setMarket(locale?.country?.market)
     }
-  }, [locale])
+  }, [locale, market])
 
   useEffect(function updateAccessToken() {
     if (market === undefined) {

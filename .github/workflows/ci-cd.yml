@@ -30,7 +30,9 @@ jobs:
       run: npm ci
 
     - name: Lint 🔎
-      run: npm run ts:check
+      run: |
+        npm run ts:check
+        npm run lint
 
     - name: Test 🐛 + Coverage 🌈
       run: npm run coverage
