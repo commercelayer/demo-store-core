@@ -6,14 +6,14 @@ import { basePath } from '#next.config'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 
-import skus from '../../../../tmp/skus.json'
+import { getProductByCode, LocalizedProduct } from '#data/products'
 
 type Query = {
   locale: string
 }
 
 type Props = {
-  products: (typeof skus)[number][]
+  products: LocalizedProduct[]
 }
 
 const Home: NextPage<Props> = ({ products }) => {
@@ -30,7 +30,9 @@ const Home: NextPage<Props> = ({ products }) => {
 
       {
         products.map(product => (
-          <div key={product.code}>
+          <div key={product.code} className="flex items-center gap-4 my-6">
+            <img src={product.primaryImage} alt={product.name} width="60" />
+            {product.code.split(/^(\w{8})(\w{6})(\w{6})(\w{4})$/).join(' ')}
             <Link href={`/products/${product.code}`} >{product.name}</Link>
           </div>
         ))
@@ -47,10 +49,17 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 }
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
+  const { locale } = params!
+
   return {
     props: {
-      products: skus,
-      ...(await serverSideTranslations(params?.locale!))
+      products: [
+        getProductByCode('BOTT17OZFFFFFF000000XXXX', locale),
+        getProductByCode('BODYBSSSFFFFFF0000006MXX', locale),
+        getProductByCode('BODYBSSS000000FFFFFF12MX', locale),
+        getProductByCode('CUFFBEANFFFFFF000000XXXX', locale)
+      ],
+      ...(await serverSideTranslations(locale))
     }
   }
 }

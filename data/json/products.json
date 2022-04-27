@@ -1,0 +1,242 @@
+[
+  {
+    "baseProduct": "BODYBSSS",
+    "code": "BODYBSSS000000FFFFFF12MX",
+    "variant": [
+      {
+        "key": "color",
+        "value": "black",
+        "text": {
+          "en": "#000000",
+          "it": "#000000"
+        }
+      },
+      {
+        "key": "size",
+        "value": "12 months",
+        "text": {
+          "en": "12 months",
+          "it": "12 mesi"
+        }
+      }
+    ],
+    "name": {
+      "en": "Black Baby Short Sleeve Bodysuit with White Logo",
+      "it": "Body nero a maniche corte per bebè con logo bianco"
+    },
+    "description": {
+      "en": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.",
+      "it": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing."
+    },
+    "primaryImage": "https://data.commercelayer.app/seed/images/skus/BODYBSSS000000FFFFFF12MX_FLAT.png",
+    "images": [
+      "https://data.commercelayer.app/seed/images/skus/BODYBSSS000000FFFFFF12MX_FLAT.png"
+    ]
+  },
+  {
+    "baseProduct": "BODYBSSS",
+    "code": "BODYBSSS000000FFFFFF6MXX",
+    "variant": [
+      {
+        "key": "color",
+        "value": "black",
+        "text": {
+          "en": "#000000",
+          "it": "#000000"
+        }
+      },
+      {
+        "key": "size",
+        "value": "6 months",
+        "text": {
+          "en": "6 months",
+          "it": "6 mesi"
+        }
+      }
+    ],
+    "name": {
+      "en": "Black Baby Short Sleeve Bodysuit with White Logo",
+      "it": "Body nero a maniche corte per bebè con logo bianco"
+    },
+    "description": {
+      "en": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.",
+      "it": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing."
+    },
+    "primaryImage": "https://data.commercelayer.app/seed/images/skus/BODYBSSS000000FFFFFF6MXX_FLAT.png",
+    "images": [
+      "https://data.commercelayer.app/seed/images/skus/BODYBSSS000000FFFFFF6MXX_FLAT.png"
+    ]
+  },
+  {
+    "baseProduct": "BODYBSSS",
+    "code": "BODYBSSSFFFFFF00000012MX",
+    "variant": [
+      {
+        "key": "color",
+        "value": "white",
+        "text": {
+          "en": "#FFFFFF",
+          "it": "#FFFFFF"
+        }
+      },
+      {
+        "key": "size",
+        "value": "12 months",
+        "text": {
+          "en": "12 months",
+          "it": "12 mesi"
+        }
+      }
+    ],
+    "name": {
+      "en": "White Baby Short Sleeve Bodysuit with Black Logo",
+      "it": "White Baby Short Sleeve Bodysuit with Black Logo"
+    },
+    "description": {
+      "en": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.",
+      "it": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing."
+    },
+    "primaryImage": "https://data.commercelayer.app/seed/images/skus/BODYBSSSFFFFFF00000012MX_FLAT.png",
+    "images": [
+      "https://data.commercelayer.app/seed/images/skus/BODYBSSSFFFFFF00000012MX_FLAT.png"
+    ]
+  },
+  {
+    "baseProduct": "BODYBSSS",
+    "code": "BODYBSSSFFFFFF0000006MXX",
+    "variant": [
+      {
+        "key": "color",
+        "value": "white",
+        "text": {
+          "en": "#FFFFFF",
+          "it": "#FFFFFF"
+        }
+      },
+      {
+        "key": "size",
+        "value": "6 months",
+        "text": {
+          "en": "6 months",
+          "it": "6 mesi"
+        }
+      }
+    ],
+    "name": {
+      "en": "White Baby Short Sleeve Bodysuit with Black Logo",
+      "it": "White Baby Short Sleeve Bodysuit with Black Logo"
+    },
+    "description": {
+      "en": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.",
+      "it": "This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing."
+    },
+    "primaryImage": "https://data.commercelayer.app/seed/images/skus/BODYBSSSFFFFFF0000006MXX_FLAT.png",
+    "images": [
+      "https://data.commercelayer.app/seed/images/skus/BODYBSSSFFFFFF0000006MXX_FLAT.png"
+    ]
+  },
+  {
+    "baseProduct": "BOTT17OZ",
+    "code": "BOTT17OZFFFFFF000000XXXX",
+    "variant": [
+      {
+        "key": "color",
+        "value": "white",
+        "text": {
+          "en": "#FFFFFF",
+          "it": "#FFFFFF"
+        }
+      }
+    ],
+    "name": {
+      "en": "White Water Bottle with Black Logo (17oz)",
+      "it": "White Water Bottle with Black Logo (17oz)"
+    },
+    "description": {
+      "en": "Beautifully designed water bottle, made from high-grade stainless steel. Its double-wall construction makes it perfect for storing both hot and cold liquids.",
+      "it": "Beautifully designed water bottle, made from high-grade stainless steel. Its double-wall construction makes it perfect for storing both hot and cold liquids."
+    },
+    "primaryImage": "https://data.commercelayer.app/seed/images/skus/BOTT17OZFFFFFF000000XXXX_FLAT.png",
+    "images": [
+      "https://data.commercelayer.app/seed/images/skus/BOTT17OZFFFFFF000000XXXX_FLAT.png"
+    ]
+  },
+  {
+    "baseProduct": "CUFFBEAN",
+    "code": "CUFFBEAN000000FFFFFFXXXX",
+    "variant": [
+      {
+        "key": "color",
+        "value": "black",
+        "text": {
+          "en": "#000000",
+          "it": "#000000"
+        }
+      }
+    ],
+    "name": {
+      "en": "Black Cuffed Beanie with White Logo",
+      "it": "Black Cuffed Beanie with White Logo"
+    },
+    "description": {
+      "en": "A snug, form-fitting beanie. It's not only a great head-warming piece but a staple accessory in anyone's wardrobe.",
+      "it": "A snug, form-fitting beanie. It's not only a great head-warming piece but a staple accessory in anyone's wardrobe."
+    },
+    "primaryImage": "https://data.commercelayer.app/seed/images/skus/CUFFBEAN000000FFFFFFXXXX_FLAT.png",
+    "images": [
+      "https://data.commercelayer.app/seed/images/skus/CUFFBEAN000000FFFFFFXXXX_FLAT.png"
+    ]
+  },
+  {
+    "baseProduct": "CUFFBEAN",
+    "code": "CUFFBEANA6A5A0000000XXXX",
+    "variant": [
+      {
+        "key": "color",
+        "value": "gray",
+        "text": {
+          "en": "#A6A5A0",
+          "it": "#A6A5A0"
+        }
+      }
+    ],
+    "name": {
+      "en": "Gray Cuffed Beanie with Black Logo",
+      "it": "Gray Cuffed Beanie with Black Logo"
+    },
+    "description": {
+      "en": "A snug, form-fitting beanie. It's not only a great head-warming piece but a staple accessory in anyone's wardrobe.",
+      "it": "A snug, form-fitting beanie. It's not only a great head-warming piece but a staple accessory in anyone's wardrobe."
+    },
+    "primaryImage": "https://data.commercelayer.app/seed/images/skus/CUFFBEANA6A5A0000000XXXX_FLAT.png",
+    "images": [
+      "https://data.commercelayer.app/seed/images/skus/CUFFBEANA6A5A0000000XXXX_FLAT.png"
+    ]
+  },
+  {
+    "baseProduct": "CUFFBEAN",
+    "code": "CUFFBEANFFFFFF000000XXXX",
+    "variant": [
+      {
+        "key": "color",
+        "value": "white",
+        "text": {
+          "en": "#FFFFFF",
+          "it": "#FFFFFF"
+        }
+      }
+    ],
+    "name": {
+      "en": "White Cuffed Beanie with Black Logo",
+      "it": "White Cuffed Beanie with Black Logo"
+    },
+    "description": {
+      "en": "A snug, form-fitting beanie. It's not only a great head-warming piece but a staple accessory in anyone's wardrobe.",
+      "it": "A snug, form-fitting beanie. It's not only a great head-warming piece but a staple accessory in anyone's wardrobe."
+    },
+    "primaryImage": "https://data.commercelayer.app/seed/images/skus/CUFFBEANFFFFFF000000XXXX_FLAT.png",
+    "images": [
+      "https://data.commercelayer.app/seed/images/skus/CUFFBEANFFFFFF000000XXXX_FLAT.png"
+    ]
+  }
+]

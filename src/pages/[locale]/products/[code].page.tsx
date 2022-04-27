@@ -1,11 +1,11 @@
 import { Navigation } from '#components/Navigation'
+import { getProductByCode, getProductVariants, LocalizedProduct, LocalizedVariant, products } from '#data/products'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { basePath } from '#next.config'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 
-import skus from '../../../../tmp/skus.json'
 
 type Query = {
   locale: string
@@ -13,11 +13,19 @@ type Query = {
 }
 
 type Props = {
-  params?: Query
-  product: (typeof skus)[number]
+  product: LocalizedProduct
+  variants: LocalizedProduct[]
 }
 
-const Home: NextPage<Props> = ({ product }) => {
+const VariantsSelector: React.FC<{ variants: LocalizedProduct[], initialSelection: LocalizedVariant[] }> = ({  }) => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+const ProductDetailPage: NextPage<Props> = ({ product, variants }) => {
 
   return (
     <div>
@@ -30,18 +38,21 @@ const Home: NextPage<Props> = ({ product }) => {
       <Navigation />
 
       <p>{product.code}</p>
-      <img src={product.image_url} alt={product.name} />
+      <img width="300" src={product.primaryImage} alt={product.name} />
       <p>{product.name}</p>
       <p>{product.description}</p>
+      <pre>{JSON.stringify(product.variant, undefined, 4)}</pre>
+
+      <VariantsSelector variants={variants} initialSelection={product.variant} />
     </div>
   )
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = () => {
   return withLocalePaths({
-    paths: skus.map(sku => ({
+    paths: products.map(product => ({
       params: {
-        code: sku.code
+        code: product.code
       }
     })),
     fallback: false
@@ -49,13 +60,18 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 }
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
+  const { code, locale } = params!
+
+  const product = getProductByCode(code, locale);
+  const variants = getProductVariants(product, locale)
+
   return {
     props: {
-      params,
-      product: skus.find(sku => sku.code === params?.code)!,
-      ...(await serverSideTranslations(params?.locale!))
+      product,
+      variants,
+      ...(await serverSideTranslations(locale))
     }
   }
 }
 
-export default Home
+export default ProductDetailPage

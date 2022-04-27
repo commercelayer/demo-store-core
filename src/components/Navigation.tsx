@@ -24,6 +24,11 @@ export const Navigation: FC = () => {
           router?.pathname !== '/' && (
             <>
               &nbsp;&nbsp;|&nbsp;&nbsp;
+              <Link href='/products'>
+                <a>Products</a>
+              </Link>
+
+              &nbsp;&nbsp;|&nbsp;&nbsp;
               <Link href='/another'>
                 <a>Another Page</a>
               </Link>
