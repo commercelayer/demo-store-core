@@ -15,17 +15,18 @@ export const Link: FC<LinkProps> = ({ children, ...props }) => {
   const router = useRouter()
 
   if ('locale' in props) {
+    const { locale, ...otherProps } = props
+
     if (router.pathname === '/') {
-      return <NextLink {...props} href={`/${props.locale}`}>{children}</NextLink>
+      return <NextLink {...otherProps} href={`/${locale}`}>{children}</NextLink>
     }
 
-    if (props.locale === '') {
-      return <NextLink {...props} href='/'>{children}</NextLink>
+    if (locale === '') {
+      return <NextLink {...otherProps} href='/'>{children}</NextLink>
     }
 
-    return <NextLink {...props} href={{
-      pathname: router.pathname,
-      query: { ...router.query, locale: props.locale },
+    return <NextLink {...otherProps} href={{
+      query: { ...router.query, locale },
     }}>{children}</NextLink>
   }
 

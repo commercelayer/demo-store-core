@@ -24,6 +24,16 @@ export const Navigation: FC = () => {
           router?.pathname !== '/' && (
             <>
               &nbsp;&nbsp;|&nbsp;&nbsp;
+              <Link locale={(router?.query?.locale as string)?.replace(/[it|en]+\-/, 'en-')}>
+                <a>English</a>
+              </Link>
+
+              &nbsp;&nbsp;|&nbsp;&nbsp;
+              <Link locale={(router?.query?.locale as string)?.replace(/[it|en]+\-/, 'it-')}>
+                <a>Italiano</a>
+              </Link>
+
+              &nbsp;&nbsp;|&nbsp;&nbsp;
               <Link href='/products'>
                 <a>Products</a>
               </Link>

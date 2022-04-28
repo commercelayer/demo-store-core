@@ -16,13 +16,13 @@ export type Product = {
 }
 
 export type Variant = {
-  key: string
+  name: string
   value: string
-  text: Localized<string>
+  label: Localized<string>
 }
 
-export type LocalizedVariant = Omit<Variant, 'text'> & {
-  text: string
+export type LocalizedVariant = Omit<Variant, 'label'> & {
+  label: string
 }
 
 export type LocalizedProduct = Omit<Product, 'name' | 'description' | 'variant'> & {
@@ -49,7 +49,7 @@ function resolveProductLocale(product: Product, locale: string): LocalizedProduc
     description: product.description[locale] || product.description[language],
     variant: product.variant.map(v => ({
       ...v,
-      text: v.text[locale] || v.text[language]
+      label: v.label[locale] || v.label[language]
     }))
   }
 }

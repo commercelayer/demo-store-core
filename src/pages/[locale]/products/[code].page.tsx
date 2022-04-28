@@ -5,6 +5,10 @@ import { withLocalePaths } from '#i18n/withLocalePaths'
 import { basePath } from '#next.config'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
+import { useEffect, useMemo } from 'react'
+import { useImmer } from 'use-immer';
+import { useRouter } from 'next/router'
+import uniqBy from 'lodash/uniqBy'
 
 
 type Query = {
@@ -17,10 +21,85 @@ type Props = {
   variants: LocalizedProduct[]
 }
 
-const VariantsSelector: React.FC<{ variants: LocalizedProduct[], initialSelection: LocalizedVariant[] }> = ({  }) => {
+const filterPrevious = (current: LocalizedVariant[], variants: LocalizedVariant[], index: number, memo = true): boolean => {
+  if (index === 0) {
+    return memo
+  }
+
+  return (memo =
+    current[index - 1] &&
+    variants[index - 1].value ===
+    current[index - 1].value &&
+    filterPrevious(current, variants, index - 1))
+};
+
+const VariantsSelector: React.FC<{ variants: LocalizedProduct[], initialSelection: LocalizedVariant[] }> = ({ variants: productVariants, initialSelection }) => {
+  const router = useRouter()
+  const [currentVariant, setCurrent] = useImmer<LocalizedVariant[]>(initialSelection);
+
+  const variants = productVariants.map(v => v.variant)
+
+  const options = new Array(variants[0].length).fill(undefined).map((_, index) => {
+    return uniqBy(
+      variants
+        .filter((variants) => filterPrevious(currentVariant, variants, index))
+        .map((p) => p[index]),
+      "value"
+    )
+  });
+
+  useEffect(() => {
+    currentVariant.forEach((c, index) => {
+      const exists =
+        options[index].find((option) => {
+          return option.value === c.value
+        }) !== undefined
+
+      if (!exists) {
+        setCurrent((draft) => {
+          draft[index] = options[index][0]
+        })
+      }
+    })
+  }, [currentVariant, setCurrent, options]);
+
+  const currentProductCode = useMemo(() => productVariants.find(v => JSON.stringify(v.variant.map(v=>v.value)) === JSON.stringify(currentVariant.map(v => v.value)))?.code, [productVariants, currentVariant])
+
+  useEffect(() => {
+    if (currentProductCode && router.query.code !== currentProductCode) {
+      router.push({
+        query: {
+          ...router.query,
+          code: currentProductCode
+        }
+      })
+    }
+  }, [router, currentProductCode])
+
   return (
     <div>
-      
+      {
+        options.map((option, index) => (
+          <p key={index}>
+            {option.map((o) => (
+              <span
+                style={{
+                  borderBottom:
+                    currentVariant[index]?.value === o.value ? "1px solid" : "none"
+                }}
+                key={o.value}
+                onClick={() => {
+                  setCurrent((draft) => {
+                    draft[index] = o
+                  })
+                }}
+              >
+                &nbsp;{o.label}&nbsp;
+              </span>
+            ))}
+          </p>
+        ))
+      }
     </div>
   )
 }

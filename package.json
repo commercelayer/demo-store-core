@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "serve": "npx serve out",
+    "serve": "npm run build && next export -o out/demo-store/ && npx serve out",
     "lint": "next lint",
     "ts:check": "tsc --noEmit",
     "test": "jest",
@@ -18,11 +18,13 @@
     "@commercelayer/js-auth": "^2.3.0",
     "@commercelayer/react-components": "^3.11.0",
     "@types/lodash": "^4.14.181",
+    "immer": "^9.0.12",
     "lodash": "^4.17.21",
     "next": "^12.1.5",
     "next-localization": "^0.12.0",
     "react": "^17",
-    "react-dom": "^17"
+    "react-dom": "^17",
+    "use-immer": "^0.7.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
