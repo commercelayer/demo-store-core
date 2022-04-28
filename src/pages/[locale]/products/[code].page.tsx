@@ -1,5 +1,5 @@
 import { Navigation } from '#components/Navigation'
-import { getProductByCode, getProductVariants, LocalizedProduct, LocalizedVariant, products } from '#data/products'
+import { getProductWithVariants, LocalizedProductWithVariant, LocalizedVariant, products } from '#data/products'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { basePath } from '#next.config'
@@ -17,8 +17,7 @@ type Query = {
 }
 
 type Props = {
-  product: LocalizedProduct
-  variants: LocalizedProduct[]
+  product: LocalizedProductWithVariant
 }
 
 const filterPrevious = (current: LocalizedVariant[], variants: LocalizedVariant[], index: number, memo = true): boolean => {
@@ -33,11 +32,11 @@ const filterPrevious = (current: LocalizedVariant[], variants: LocalizedVariant[
     filterPrevious(current, variants, index - 1))
 };
 
-const VariantsSelector: React.FC<{ variants: LocalizedProduct[], initialSelection: LocalizedVariant[] }> = ({ variants: productVariants, initialSelection }) => {
+const VariantsSelector: React.FC<{ product: LocalizedProductWithVariant }> = ({ product }) => {
   const router = useRouter()
-  const [currentVariant, setCurrent] = useImmer<LocalizedVariant[]>(initialSelection);
+  const [currentVariant, setCurrent] = useImmer<LocalizedVariant[]>(product.variant);
 
-  const variants = productVariants.map(v => v.variant)
+  const variants = product.variants.map(v => v.variant)
 
   const options = new Array(variants[0].length).fill(undefined).map((_, index) => {
     return uniqBy(
@@ -63,7 +62,7 @@ const VariantsSelector: React.FC<{ variants: LocalizedProduct[], initialSelectio
     })
   }, [currentVariant, setCurrent, options]);
 
-  const currentProductCode = useMemo(() => productVariants.find(v => JSON.stringify(v.variant.map(v=>v.value)) === JSON.stringify(currentVariant.map(v => v.value)))?.code, [productVariants, currentVariant])
+  const currentProductCode = useMemo(() => product.variants.find(v => JSON.stringify(v.variant.map(v=>v.value)) === JSON.stringify(currentVariant.map(v => v.value)))?.code, [product, currentVariant])
 
   useEffect(() => {
     if (currentProductCode && router.query.code !== currentProductCode) {
@@ -104,7 +103,7 @@ const VariantsSelector: React.FC<{ variants: LocalizedProduct[], initialSelectio
   )
 }
 
-const ProductDetailPage: NextPage<Props> = ({ product, variants }) => {
+const ProductDetailPage: NextPage<Props> = ({ product }) => {
 
   return (
     <div>
@@ -122,7 +121,7 @@ const ProductDetailPage: NextPage<Props> = ({ product, variants }) => {
       <p>{product.description}</p>
       <pre>{JSON.stringify(product.variant, undefined, 4)}</pre>
 
-      <VariantsSelector variants={variants} initialSelection={product.variant} />
+      <VariantsSelector product={product} />
     </div>
   )
 }
@@ -141,13 +140,9 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { code, locale } = params!
 
-  const product = getProductByCode(code, locale);
-  const variants = getProductVariants(product, locale)
-
   return {
     props: {
-      product,
-      variants,
+      product: getProductWithVariants(code, locale),
       ...(await serverSideTranslations(locale))
     }
   }

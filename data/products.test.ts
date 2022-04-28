@@ -1,4 +1,4 @@
-import { getBaseProducts, getProductByCode, getProductVariants } from './products';
+import { getBaseProducts, getProduct, getProductVariants, getProductWithVariants } from './products';
 
 // jest.mock('./json/products.json')
 
@@ -29,8 +29,8 @@ test('"getBaseProducts" should resolves product localization', () => {
   expect(baseProducts[0].name).toStrictEqual('Body nero a maniche corte per bebè con logo bianco')
 })
 
-test('"getProductByCode" should returns the product by provided code', () => {
-  const product = getProductByCode('BODYBSSS000000FFFFFF6MXX')
+test('"getProduct" should returns the product by provided code', () => {
+  const product = getProduct('BODYBSSS000000FFFFFF6MXX')
 
   expect(product.baseProduct).toStrictEqual('BODYBSSS')
 
@@ -41,35 +41,67 @@ test('"getProductByCode" should returns the product by provided code', () => {
 })
 
 
-test('"getProductByCode" should resolves product localization', () => {
-  const product = getProductByCode('BODYBSSS000000FFFFFF6MXX', 'en')
+test('"getProduct" should resolves product localization', () => {
+  const product = getProduct('BODYBSSS000000FFFFFF6MXX', 'en')
 
   expect(product.baseProduct).toStrictEqual('BODYBSSS')
 
   expect(product.name).toStrictEqual('Black Baby Short Sleeve Bodysuit with White Logo')
 })
 
-test('"getProductByCode" should returns the variants for the provived Product', () => {
-  const product = getProductByCode('BODYBSSS000000FFFFFF6MXX')
+test('"getProductVariants" should returns the variants for the provived Product', () => {
+  const product = getProduct('BODYBSSS000000FFFFFF6MXX')
   const variants = getProductVariants(product)
 
   expect(variants).toStrictEqual([
-    getProductByCode('BODYBSSS000000FFFFFF12MX'),
-    getProductByCode('BODYBSSS000000FFFFFF6MXX'),
-    getProductByCode('BODYBSSSFFFFFF00000012MX'),
-    getProductByCode('BODYBSSSFFFFFF0000006MXX')
+    getProduct('BODYBSSS000000FFFFFF12MX'),
+    getProduct('BODYBSSS000000FFFFFF6MXX'),
+    getProduct('BODYBSSSFFFFFF00000012MX'),
+    getProduct('BODYBSSSFFFFFF0000006MXX')
   ])
 })
 
-test('"getProductByCode" should resolves variants localization', () => {
-  const product = getProductByCode('BODYBSSS000000FFFFFF6MXX')
+test('"getProductVariants" should resolves variants localization', () => {
+  const product = getProduct('BODYBSSS000000FFFFFF6MXX')
   const variants = getProductVariants(product, 'it')
 
   expect(variants).toStrictEqual([
-    getProductByCode('BODYBSSS000000FFFFFF12MX', 'it'),
-    getProductByCode('BODYBSSS000000FFFFFF6MXX', 'it'),
-    getProductByCode('BODYBSSSFFFFFF00000012MX', 'it'),
-    getProductByCode('BODYBSSSFFFFFF0000006MXX', 'it')
+    getProduct('BODYBSSS000000FFFFFF12MX', 'it'),
+    getProduct('BODYBSSS000000FFFFFF6MXX', 'it'),
+    getProduct('BODYBSSSFFFFFF00000012MX', 'it'),
+    getProduct('BODYBSSSFFFFFF0000006MXX', 'it')
   ])
 })
 
+test('"getProductWithVariants" should returns the variants for the provived Product', () => {
+  const product = getProductWithVariants('BODYBSSS000000FFFFFF6MXX')
+
+  expect(product.baseProduct).toStrictEqual('BODYBSSS')
+
+  expect(product.name).toStrictEqual({
+    en: 'Black Baby Short Sleeve Bodysuit with White Logo',
+    it: 'Body nero a maniche corte per bebè con logo bianco'
+  })
+
+  expect(product.variants).toStrictEqual([
+    getProduct('BODYBSSS000000FFFFFF12MX'),
+    getProduct('BODYBSSS000000FFFFFF6MXX'),
+    getProduct('BODYBSSSFFFFFF00000012MX'),
+    getProduct('BODYBSSSFFFFFF0000006MXX')
+  ])
+})
+
+test('"getProductWithVariants" should resolves variants localization', () => {
+  const product = getProductWithVariants('BODYBSSS000000FFFFFF6MXX', 'it')
+
+  expect(product.baseProduct).toStrictEqual('BODYBSSS')
+
+  expect(product.name).toStrictEqual('Body nero a maniche corte per bebè con logo bianco')
+
+  expect(product.variants).toStrictEqual([
+    getProduct('BODYBSSS000000FFFFFF12MX', 'it'),
+    getProduct('BODYBSSS000000FFFFFF6MXX', 'it'),
+    getProduct('BODYBSSSFFFFFF00000012MX', 'it'),
+    getProduct('BODYBSSSFFFFFF0000006MXX', 'it')
+  ])
+})

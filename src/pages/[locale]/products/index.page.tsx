@@ -6,14 +6,24 @@ import { basePath } from '#next.config'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 
-import { getProductByCode, LocalizedProduct } from '#data/products'
+import { getProductWithVariants, LocalizedProductWithVariant } from '#data/products'
 
 type Query = {
   locale: string
 }
 
 type Props = {
-  products: LocalizedProduct[]
+  products: LocalizedProductWithVariant[]
+}
+
+const ProductTile: React.FC<{ product: LocalizedProductWithVariant }> = ({ product }) => {
+  return (
+    <div className="flex items-center gap-4 my-6">
+      <img src={product.primaryImage} alt={product.name} width="60" />
+      {product.code.split(/^(\w{8})(\w{6})(\w{6})(\w{4})$/).join(' ')}
+      <Link href={`/products/${product.code}`} >{product.name}</Link>
+    </div>
+  )
 }
 
 const Home: NextPage<Props> = ({ products }) => {
@@ -30,11 +40,7 @@ const Home: NextPage<Props> = ({ products }) => {
 
       {
         products.map(product => (
-          <div key={product.code} className="flex items-center gap-4 my-6">
-            <img src={product.primaryImage} alt={product.name} width="60" />
-            {product.code.split(/^(\w{8})(\w{6})(\w{6})(\w{4})$/).join(' ')}
-            <Link href={`/products/${product.code}`} >{product.name}</Link>
-          </div>
+          <ProductTile key={product.code} product={product} />
         ))
       }
     </div>
@@ -54,10 +60,10 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   return {
     props: {
       products: [
-        getProductByCode('BOTT17OZFFFFFF000000XXXX', locale),
-        getProductByCode('BODYBSSSFFFFFF0000006MXX', locale),
-        getProductByCode('BODYBSSS000000FFFFFF12MX', locale),
-        getProductByCode('CUFFBEANFFFFFF000000XXXX', locale)
+        getProductWithVariants('BOTT17OZFFFFFF000000XXXX', locale),
+        getProductWithVariants('BODYBSSSFFFFFF0000006MXX', locale),
+        getProductWithVariants('BODYBSSS000000FFFFFF12MX', locale),
+        getProductWithVariants('CUFFBEANFFFFFF000000XXXX', locale)
       ],
       ...(await serverSideTranslations(locale))
     }

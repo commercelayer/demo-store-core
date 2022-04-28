@@ -15,6 +15,10 @@ export type Product = {
   images: string[]
 }
 
+export type ProductWithVariants = Product & {
+  variants: Product[]
+}
+
 export type Variant = {
   name: string
   value: string
@@ -29,6 +33,10 @@ export type LocalizedProduct = Omit<Product, 'name' | 'description' | 'variant'>
   name: string
   description: string
   variant: LocalizedVariant[]
+}
+
+export type LocalizedProductWithVariant = LocalizedProduct & {
+  variants: LocalizedProduct[]
 }
 
 export const products: Product[] = productsJson
@@ -66,9 +74,9 @@ export function getBaseProducts(locale?: string) {
   return baseProductValues.map(([product]) => product)
 }
 
-export function getProductByCode(code: string): Product
-export function getProductByCode(code: string, locale: string): LocalizedProduct
-export function getProductByCode(code: string, locale?: string) {
+export function getProduct(code: string): Product
+export function getProduct(code: string, locale: string): LocalizedProduct
+export function getProduct(code: string, locale?: string) {
   const product = products.find(product => product.code === code)
 
   if (!product) {
@@ -92,4 +100,16 @@ export function getProductVariants(product: Product | LocalizedProduct, locale?:
   }
 
   return variants
+}
+
+export function getProductWithVariants(code: string): ProductWithVariants
+export function getProductWithVariants(code: string, locale: string): LocalizedProductWithVariant
+export function getProductWithVariants(code: string, locale?: string) {
+  const product = locale ? getProduct(code, locale) : getProduct(code)
+  const variants = locale ? getProductVariants(product, locale) : getProductVariants(product)
+
+  return {
+    ...product,
+    variants
+  }
 }
