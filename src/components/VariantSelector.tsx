@@ -1,41 +1,27 @@
 import { LocalizedProductWithVariant, LocalizedVariant } from '#data/products'
-import uniqBy from 'lodash/uniqBy'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo } from 'react'
 import { useImmer } from 'use-immer'
+import { compareVariants, getOptions } from './VariantSelector.utils'
 
 type Props = {
   product: LocalizedProductWithVariant
 }
 
-const filterPrevious = (current: LocalizedVariant[], variants: LocalizedVariant[], index: number, memo = true): boolean => {
-  if (index === 0) {
-    return memo
-  }
-
-  return (memo =
-    current[index - 1] &&
-    variants[index - 1].value ===
-    current[index - 1].value &&
-    filterPrevious(current, variants, index - 1))
-}
-
 export const VariantSelector: React.FC<Props> = ({ product }) => {
   const router = useRouter()
-  const [currentVariant, setCurrent] = useImmer<LocalizedVariant[]>(product.variant)
+  const [currentVariant, setCurrentVariant] = useImmer<LocalizedVariant[]>(product.variant)
 
-  const variants = product.variants.map(v => v.variant)
+  const options = useMemo(() => {
+    const variants = product.variants.map(v => v.variant)
+    return getOptions(variants, currentVariant)
+  }, [product, currentVariant])
 
-  const options = new Array(variants[0].length).fill(undefined).map((_, index) => {
-    return uniqBy(
-      variants
-        .filter((variants) => filterPrevious(currentVariant, variants, index))
-        .map((p) => p[index]),
-      "value"
-    )
-  })
+  const currentProductCode = useMemo(() => {
+    return product.variants.find(({ variant }) => compareVariants(variant, currentVariant))?.code
+  }, [product, currentVariant])
 
-  useEffect(() => {
+  useEffect(function manageDefaultVariants() {
     currentVariant.forEach((c, index) => {
       const exists =
         options[index].find((option) => {
@@ -43,17 +29,15 @@ export const VariantSelector: React.FC<Props> = ({ product }) => {
         }) !== undefined
 
       if (!exists) {
-        setCurrent((draft) => {
+        setCurrentVariant((draft) => {
           draft[index] = options[index][0]
         })
       }
     })
-  }, [currentVariant, setCurrent, options])
+  }, [currentVariant, setCurrentVariant, options])
 
-  const currentProductCode = useMemo(() => product.variants.find(v => JSON.stringify(v.variant.map(v => v.value)) === JSON.stringify(currentVariant.map(v => v.value)))?.code, [product, currentVariant])
-
-  useEffect(() => {
-    if (currentProductCode && router.query.code !== currentProductCode) {
+  useEffect(function updateUrlWhenProductCodeChanges() {
+    if (currentProductCode && router.isReady && router.query.code !== currentProductCode) {
       router.push({
         query: {
           ...router.query,
@@ -66,24 +50,23 @@ export const VariantSelector: React.FC<Props> = ({ product }) => {
   return (
     <div>
       {
-        options.map((option, index) => (
-          <p key={index}>
-            {option.map((o) => (
-              <span
-                style={{
-                  borderBottom:
-                    currentVariant[index]?.value === o.value ? "1px solid" : "none"
-                }}
-                key={o.value}
-                onClick={() => {
-                  setCurrent((draft) => {
-                    draft[index] = o
-                  })
-                }}
-              >
-                &nbsp;{o.label}&nbsp;
-              </span>
-            ))}
+        options.map((variants, index) => (
+          <p key={variants[0].name}>
+            {
+              variants.map(variant => (
+                <span
+                  key={variant.value}
+                  style={{ borderBottom: currentVariant[index]?.value === variant.value ? '1px solid' : 'none' }}
+                  onClick={() => {
+                    setCurrentVariant((draft) => {
+                      draft[index] = variant
+                    })
+                  }}
+                >
+                  &nbsp;{variant.label}&nbsp;
+                </span>
+              ))
+            }
           </p>
         ))
       }
