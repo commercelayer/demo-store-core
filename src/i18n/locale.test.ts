@@ -6,9 +6,9 @@ import { getLocale, Locale, makeLocaleCode, makeLocales } from './locale'
 describe('makeLocaleCode', () => {
   it('creates a localeCode given a countryCode and a languageCode', () => {
     expect(makeLocaleCode('us', 'it')).toStrictEqual('it-us')
-    expect(makeLocaleCode('UK', 'en')).toStrictEqual('en-uk')
-    expect(makeLocaleCode('it', 'IT')).toStrictEqual('it-it')
-    expect(makeLocaleCode('BE', 'FR')).toStrictEqual('fr-be')
+    expect(makeLocaleCode('UK', 'en')).toStrictEqual('en-UK')
+    expect(makeLocaleCode('it', 'IT')).toStrictEqual('IT-it')
+    expect(makeLocaleCode('BE', 'FR')).toStrictEqual('FR-BE')
   })
 })
 
@@ -22,10 +22,10 @@ describe('makeLocales', () => {
     const actual = makeLocales([unitedStates, italy], [italian, english])
 
     const expects: Locale[] = [
-      { "code": "it-us", "country": unitedStates, "language": italian },
-      { "code": "en-us", "country": unitedStates, "language": english },
-      { "code": "it-it", "country": italy, "language": italian },
-      { "code": "en-it", "country": italy, "language": english },
+      { "code": "it-US", "country": unitedStates, "language": italian },
+      { "code": "en-US", "country": unitedStates, "language": english },
+      { "code": "it-IT", "country": italy, "language": italian },
+      { "code": "en-IT", "country": italy, "language": english },
       { "code": "it", "language": italian },
       { "code": "en", "language": english }
     ]
@@ -39,17 +39,17 @@ describe('getLocale', () => {
     const unitedStates: Country = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas' }
     const italian: Language = { code: 'it', name: 'Italiano' }
 
-    const locale: Locale | undefined = getLocale('it-us')
+    const locale: Locale | undefined = getLocale('it-US')
 
     expect(locale).toStrictEqual<Locale>({
-      code: 'it-us',
+      code: 'it-US',
       country: unitedStates,
       language: italian
     })
   })
 
   it('should return undefined when the localeCode is unknown', () => {
-    const locale: Locale | undefined = getLocale('aa-bb')
+    const locale: Locale | undefined = getLocale('aa-BB')
     expect(locale).toBe(undefined)
   })
 })

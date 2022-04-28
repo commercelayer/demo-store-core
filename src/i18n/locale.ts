@@ -10,7 +10,7 @@ export type Locale = {
 }
 
 export function makeLocaleCode(countryCode: string, languageCode: string): string {
-  return `${languageCode.toLowerCase()}-${countryCode.toLowerCase()}`
+  return `${languageCode}-${countryCode}`
 }
 
 export function makeLocales(countries: Country[], languages: Language[]): Locale[] {

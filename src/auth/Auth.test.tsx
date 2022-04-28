@@ -44,7 +44,7 @@ test('should fetch accessToken and set it properly when "locale" is set', async 
     route: '/',
     pathname: '/',
     query: {
-      locale: 'en-us'
+      locale: 'en-US'
     },
     asPath: '/'
   }))
