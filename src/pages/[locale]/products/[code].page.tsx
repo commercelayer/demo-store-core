@@ -5,7 +5,11 @@ import { withLocalePaths } from '#i18n/withLocalePaths'
 import { basePath } from '#next.config'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
-import { VariantSelector } from '#components/VariantSelector'
+import { VariantSelector as DemoStoreVariantSelector } from '#components/VariantSelector'
+import { AddToCartButton, AvailabilityContainer, AvailabilityTemplate, ItemContainer, OrderContainer, OrderStorage, Price, PricesContainer } from '@commercelayer/react-components'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { getLocale } from '#i18n/locale'
 
 
 type Query = {
@@ -18,6 +22,10 @@ type Props = {
 }
 
 const ProductDetailPage: NextPage<Props> = ({ product }) => {
+  const [skuCode, setSkuCode] = useState<string>()
+  const router = useRouter()
+
+  const locale = getLocale(router.query.locale as string)
 
   return (
     <div>
@@ -35,7 +43,31 @@ const ProductDetailPage: NextPage<Props> = ({ product }) => {
       <p>{product.description}</p>
       <pre>{JSON.stringify(product.variant, undefined, 4)}</pre>
 
-      <VariantSelector product={product} />
+      <DemoStoreVariantSelector product={product} onChange={setSkuCode} />
+
+      <OrderStorage persistKey={`country-${locale?.country?.code}`} clearWhenPlaced>
+        <OrderContainer attributes={{
+          language_code: locale?.language.code
+        }}>
+          <ItemContainer>
+            <PricesContainer skuCode={skuCode}><Price /></PricesContainer>
+            {/* <QuantitySelector skuCode={skuCode} /> */}
+
+            { /** @ts-expect-error */ }
+            <AddToCartButton skuCode={skuCode} buyNowMode={false} checkoutUrl='https://mm-demo-store-1.checkout-test.commercelayer.app/'>
+              {
+                (props) => (
+                  <button onClick={props.handleClick} disabled={props.disabled} className={`block h-10 px-6 font-semibold rounded-md ${props.disabled ? 'bg-gray-300' : 'bg-black'} text-white`}>Add to cart</button>
+                )
+              }
+            </AddToCartButton>
+
+            <AvailabilityContainer skuCode={skuCode}>
+              <AvailabilityTemplate />
+            </AvailabilityContainer>
+          </ItemContainer>
+        </OrderContainer>
+      </OrderStorage>
     </div>
   )
 }

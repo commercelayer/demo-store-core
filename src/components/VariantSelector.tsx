@@ -6,9 +6,10 @@ import { compareVariants, getOptions } from './VariantSelector.utils'
 
 type Props = {
   product: LocalizedProductWithVariant
+  onChange?: (productCode: string) => void
 }
 
-export const VariantSelector: React.FC<Props> = ({ product }) => {
+export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} }) => {
   const router = useRouter()
   const [currentVariant, setCurrentVariant] = useImmer<LocalizedVariant[]>(product.variant)
 
@@ -37,6 +38,10 @@ export const VariantSelector: React.FC<Props> = ({ product }) => {
   }, [currentVariant, setCurrentVariant, options])
 
   useEffect(function updateUrlWhenProductCodeChanges() {
+    if (currentProductCode) {
+      onChange(currentProductCode)
+    }
+
     if (currentProductCode && router.isReady && router.query.code !== currentProductCode) {
       router.push({
         query: {
@@ -45,7 +50,7 @@ export const VariantSelector: React.FC<Props> = ({ product }) => {
         }
       })
     }
-  }, [router, currentProductCode])
+  }, [router, currentProductCode, onChange])
 
   return (
     <div>
