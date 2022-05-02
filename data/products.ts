@@ -61,18 +61,6 @@ function resolveProductLocale(product: Product, locale: string): LocalizedProduc
   }
 }
 
-export function getBaseProducts(): Product[]
-export function getBaseProducts(locale: string): LocalizedProduct[]
-export function getBaseProducts(locale?: string) {
-  const baseProductValues = Object.values(groupedBaseProducts)
-
-  if (locale) {
-    return baseProductValues.map(([product]) => resolveProductLocale(product, locale))
-  }
-
-  return baseProductValues.map(([product]) => product)
-}
-
 export function getProduct(code: string): Product
 export function getProduct(code: string, locale: string): LocalizedProduct
 export function getProduct(code: string, locale?: string) {
