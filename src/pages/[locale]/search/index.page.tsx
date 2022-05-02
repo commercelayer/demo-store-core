@@ -23,7 +23,7 @@ const ProductTile: React.FC<{ product: LocalizedProductWithVariant }> = ({ produ
     <div className="flex items-center gap-4 my-6">
       <img src={product.images[0]} alt={product.name} width="60" />
       {product.code.split(/^(\w{8})(\w{6})(\w{6})(\w{4})$/).join(' ')}
-      <Link href={`/products/${product.code}`} >{product.name}</Link>
+      <Link href={`/product/${product.code}`} >{product.name}</Link>
     </div>
   )
 }

@@ -7,15 +7,8 @@ export const Navigation: FC = () => {
 
   return (
     <div>
-      <p>Navigation</p>
 
       <p>
-        <Link href='/'>
-          <a>Home</a>
-        </Link>
-
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-
         <Link locale=''>
           <a>Country Selector</a>
         </Link>
@@ -34,34 +27,8 @@ export const Navigation: FC = () => {
               </Link>
 
               &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/products'>
+              <Link href='/search'>
                 <a>Products</a>
-              </Link>
-
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/another'>
-                <a>Another Page</a>
-              </Link>
-
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/1'>
-                <a>Page 1</a>
-              </Link>
-
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/1/other'>
-                <a>Page 1 - other</a>
-              </Link>
-
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/2'>
-                <a>Page 2</a>
-              </Link>
-
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/2/other'>
-                <a>Page 2 - other</a>
               </Link>
             </>
           )

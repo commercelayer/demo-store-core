@@ -58,15 +58,6 @@ exports[`home 1`] = `
       </nav>
       <div>
         <p>
-          Navigation
-        </p>
-        <p>
-          <a
-            href="/"
-          >
-            Home
-          </a>
-            |  
           <a
             href="/"
           >
@@ -86,45 +77,12 @@ exports[`home 1`] = `
           </a>
             |  
           <a
-            href="/products"
+            href="/search"
           >
             Products
           </a>
-            |     |  
-          <a
-            href="/another"
-          >
-            Another Page
-          </a>
-            |  
-          <a
-            href="/1"
-          >
-            Page 1
-          </a>
-            |  
-          <a
-            href="/1/other"
-          >
-            Page 1 - other
-          </a>
-            |  
-          <a
-            href="/2"
-          >
-            Page 2
-          </a>
-            |  
-          <a
-            href="/2/other"
-          >
-            Page 2 - other
-          </a>
         </p>
       </div>
-      <p>
-        params: 
-      </p>
       <main
         class="main"
       >

@@ -19,7 +19,7 @@ type Props = {
   params?: Query
 }
 
-const Home: NextPage<Props> = ({ params }) => {
+const Home: NextPage<Props> = ({  }) => {
   const i18n = useI18n();
 
   return (
@@ -34,8 +34,6 @@ const Home: NextPage<Props> = ({ params }) => {
         <Header />
 
         <Navigation />
-
-        <p>params: {JSON.stringify(params)}</p>
 
         <main className={styles.main}>
           <h1 className={styles.title}>
