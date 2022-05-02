@@ -1,3 +1,5 @@
+import { Container } from '#components/Container'
+import { Header } from '#components/Header'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { basePath } from '#next.config'
 import { GetStaticPaths, GetStaticProps } from 'next'
@@ -24,9 +26,13 @@ export default function Home({ params }: Props): JSX.Element {
         <link rel="icon" href={basePath + '/favicon.ico'} />
       </Head>
 
-      <Navigation />
+      <Container>
+        <Header />
 
-      <h1>Page {JSON.stringify(params)}</h1>
+        <Navigation />
+
+        <h1>Page {JSON.stringify(params)}</h1>
+      </Container>
     </div>
   )
 }

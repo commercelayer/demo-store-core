@@ -39,11 +39,6 @@ export const Navigation: FC = () => {
               </Link>
 
               &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/cart'>
-                <a>Cart</a>
-              </Link>
-
-              &nbsp;&nbsp;|&nbsp;&nbsp;
               &nbsp;&nbsp;|&nbsp;&nbsp;
               <Link href='/another'>
                 <a>Another Page</a>

@@ -7,13 +7,13 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    container: {
-      screens: {
-        sm: "100%",
-        md: "100%",
-        lg: "100%",
-      },
-    },
+    // container: {
+    //   screens: {
+    //     sm: "100%",
+    //     md: "100%",
+    //     lg: "100%",
+    //   },
+    // },
     colors: {
       primary: {
         light: "var(--primary-light)",

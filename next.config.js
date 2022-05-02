@@ -14,6 +14,15 @@ const nextConfig = {
   eslint: {
     // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
     dirs: ['src']
+  },
+
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"]
+    })
+
+    return config;
   }
 }
 

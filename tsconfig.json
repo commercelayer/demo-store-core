@@ -19,6 +19,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "#assets/*": ["src/assets/*"],
       "#data/*": ["data/*"],
       "#i18n/*": ["src/i18n/*"],
       "#components/*": ["src/components/*"],
@@ -26,6 +27,7 @@
     }
   },
   "include": [
+    "additional.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"

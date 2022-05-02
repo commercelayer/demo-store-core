@@ -1,21 +1,5 @@
 $noAccordionBreakpoint: theme('screens.md');
 
-.logo {
-  @apply py-6 pb-6 border-b border-b-gray-100;
-
-  :global(.logomark) {
-    @apply inline;
-  }
-
-  :global(.logotype) {
-    @apply inline ml-4 invisible md:visible;
-  }
-
-  @media (min-width: $noAccordionBreakpoint) {
-    @apply border-b-0 text-center;
-  }
-}
-
 .title {
   @apply py-12 pb-12 font-extrabold;
 

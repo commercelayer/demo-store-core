@@ -10,7 +10,8 @@ import { AddToCartButton, AvailabilityContainer, AvailabilityTemplate, ItemConta
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { getLocale } from '#i18n/locale'
-
+import { Container } from '#components/Container'
+import { Header } from '#components/Header'
 
 type Query = {
   locale: string
@@ -35,39 +36,44 @@ const ProductDetailPage: NextPage<Props> = ({ product }) => {
         <link rel="icon" href={basePath + '/favicon.ico'} />
       </Head>
 
-      <Navigation />
+      <Container>
+        <Header />
 
-      <p>{product.code}</p>
-      <img width="300" src={product.primaryImage} alt={product.name} />
-      <p>{product.name}</p>
-      <p>{product.description}</p>
-      <pre>{JSON.stringify(product.variant, undefined, 4)}</pre>
+        <Navigation />
 
-      <DemoStoreVariantSelector product={product} onChange={setSkuCode} />
+        <p>{product.code}</p>
+        <img width="300" src={product.images[0]} alt={product.name} />
+        <p>{product.name}</p>
+        <p>{product.description}</p>
+        <pre>{JSON.stringify(product.variant, undefined, 4)}</pre>
 
-      <OrderStorage persistKey={`country-${locale?.country?.code}`} clearWhenPlaced>
-        <OrderContainer attributes={{
-          language_code: locale?.language.code
-        }}>
-          <ItemContainer>
-            <PricesContainer skuCode={skuCode}><Price /></PricesContainer>
-            {/* <QuantitySelector skuCode={skuCode} /> */}
+        <DemoStoreVariantSelector product={product} onChange={setSkuCode} />
 
-            { /** @ts-expect-error */ }
-            <AddToCartButton skuCode={skuCode} buyNowMode={false} checkoutUrl='https://mm-demo-store-1.checkout-test.commercelayer.app/'>
-              {
-                (props) => (
-                  <button onClick={props.handleClick} disabled={props.disabled} className={`block h-10 px-6 font-semibold rounded-md ${props.disabled ? 'bg-gray-300' : 'bg-black'} text-white`}>Add to cart</button>
-                )
-              }
-            </AddToCartButton>
+        <OrderStorage persistKey={`country-${locale?.country?.code}`} clearWhenPlaced>
+          <OrderContainer attributes={{
+            language_code: locale?.language.code
+          }}>
+            <ItemContainer>
+              <PricesContainer skuCode={skuCode}><Price /></PricesContainer>
+              {/* <QuantitySelector skuCode={skuCode} /> */}
 
-            <AvailabilityContainer skuCode={skuCode}>
-              <AvailabilityTemplate />
-            </AvailabilityContainer>
-          </ItemContainer>
-        </OrderContainer>
-      </OrderStorage>
+              { /** @ts-expect-error */ }
+              <AddToCartButton skuCode={skuCode} buyNowMode={false} checkoutUrl='https://mm-demo-store-1.checkout-test.commercelayer.app/'>
+                {
+                  (props) => (
+                    <button onClick={props.handleClick} disabled={props.disabled} className={`block h-10 px-6 font-semibold rounded-md ${props.disabled ? 'bg-gray-300' : 'bg-black'} text-white`}>Add to cart</button>
+                  )
+                }
+              </AddToCartButton>
+
+              <AvailabilityContainer skuCode={skuCode}>
+                <AvailabilityTemplate />
+              </AvailabilityContainer>
+            </ItemContainer>
+          </OrderContainer>
+        </OrderStorage>
+      </Container>
+
     </div>
   )
 }

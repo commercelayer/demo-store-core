@@ -7,6 +7,8 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 
 import { getProductWithVariants, LocalizedProductWithVariant } from '#data/products'
+import { Container } from '#components/Container'
+import { Header } from '#components/Header'
 
 type Query = {
   locale: string
@@ -19,7 +21,7 @@ type Props = {
 const ProductTile: React.FC<{ product: LocalizedProductWithVariant }> = ({ product }) => {
   return (
     <div className="flex items-center gap-4 my-6">
-      <img src={product.primaryImage} alt={product.name} width="60" />
+      <img src={product.images[0]} alt={product.name} width="60" />
       {product.code.split(/^(\w{8})(\w{6})(\w{6})(\w{4})$/).join(' ')}
       <Link href={`/products/${product.code}`} >{product.name}</Link>
     </div>
@@ -36,13 +38,17 @@ const Home: NextPage<Props> = ({ products }) => {
         <link rel="icon" href={basePath + '/favicon.ico'} />
       </Head>
 
-      <Navigation />
+      <Container>
+        <Header />
 
-      {
-        products.map(product => (
-          <ProductTile key={product.code} product={product} />
-        ))
-      }
+        <Navigation />
+
+        {
+          products.map(product => (
+            <ProductTile key={product.code} product={product} />
+          ))
+        }
+      </Container>
     </div>
   )
 }

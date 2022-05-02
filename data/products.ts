@@ -11,7 +11,6 @@ export type Product = {
   variant: Variant[]
   name: Localized<string>
   description: Localized<string>
-  primaryImage: string
   images: string[]
 }
 

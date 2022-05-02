@@ -17,6 +17,7 @@
   "dependencies": {
     "@commercelayer/js-auth": "^2.3.0",
     "@commercelayer/react-components": "^3.11.0",
+    "@svgr/webpack": "^6.2.1",
     "@types/lodash": "^4.14.181",
     "immer": "^9.0.12",
     "lodash": "^4.17.21",

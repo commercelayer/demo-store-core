@@ -15,7 +15,7 @@ jest.mock('next/router', () => ({
 }));
 
 test('home', () => {
-  render(
+  const { container } = render(
     <I18nProvider lngDict={{ general: { title: 'Welcome to' } }} locale="en">
       <Home />
     </I18nProvider>
@@ -28,4 +28,6 @@ test('home', () => {
   const footer = within(screen.getByRole('contentinfo'))
   const link = within(footer.getByRole('link'))
   expect(link.getByRole('img', { name: /vercel logo/i })).toBeDefined()
+
+  expect(container).toMatchSnapshot()
 })

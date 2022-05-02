@@ -1,10 +1,10 @@
 import { countries, groupByRegion } from '#data/countries'
 import { Link } from '#i18n/Link'
 import { makeLocaleCode } from '#i18n/locale'
-import { basePath } from '#next.config'
 import { Accordion } from './Accordion'
 
 import styles from './CountrySelector.module.scss'
+import { Logo } from './Logo'
 
 export const CountrySelector = () => {
   const groupedCountry = Object.entries(groupByRegion(countries))
@@ -12,10 +12,8 @@ export const CountrySelector = () => {
   return (
     <div className='flex flex-col h-screen'>
       <div className={styles.countriesContainer}>
-        <div className={styles.logo}>
-          <img className='logomark' alt='Commerce Layer logomark' src={basePath + '/commercelayer-logomark.svg'} />
-          <img className='logotype' alt='Commerce Layer logotype' src={basePath + '/commercelayer-logotype.svg'} />
-        </div>
+
+        <Logo className='border-b border-b-gray-100 md:border-b-0 md:text-center' />
 
         <div className={styles.title}>
           CHOOSE YOUR COUNTRY/REGION

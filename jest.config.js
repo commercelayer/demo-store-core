@@ -17,21 +17,28 @@ const customJestConfig = {
   // if using TypeScript with a baseUrl set to the root directory then you need the below for alias' to work
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js']
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 }
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
 module.exports = async () => {
   /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+  const nextConfig = await createJestConfig(customJestConfig)()
+
+  /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
   const jestConfig = {
-    ...await createJestConfig(customJestConfig)(),
+    ...nextConfig,
     transformIgnorePatterns: [
       // CSS modules are mocked so they don't need to be transformed
       '^.+\\.module\\.(css|sass|scss)$',
       // @commercelayer/react-components is ESM
-      "node_modules/(?!@commercelayer/react-components)"
-    ]
+      'node_modules/(?!@commercelayer/react-components)'
+    ],
+    moduleNameMapper: {
+      '\\.svg$': '<rootDir>/__mocks__/svg.jsx',
+      ...pathsToModuleNameMapper(compilerOptions.paths),
+      ...(nextConfig.moduleNameMapper || {})
+    }
   }
 
   return jestConfig

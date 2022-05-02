@@ -1,3 +1,5 @@
+import { Container } from '#components/Container'
+import { Header } from '#components/Header'
 import { Navigation } from '#components/Navigation'
 import { getLocale } from '#i18n/locale'
 import { withLocalePaths } from '#i18n/withLocalePaths'
@@ -28,39 +30,43 @@ const Cart: NextPage = () => {
         <link rel='icon' href={basePath + '/favicon.ico'} />
       </Head>
 
-      <Navigation />
+      <Container>
+        <Header />
 
-      <OrderStorage persistKey={`country-${locale?.country?.code}`}>
-        <OrderContainer attributes={{
-          language_code: locale?.language.code
-        }}>
-          <LineItemsContainer>
-            <p className="your-custom-class">
-              Your shopping cart contains <LineItemsCount /> items
-            </p>
-            <LineItem>
-              <LineItemImage width={50} />
-              <LineItemName />
-              <LineItemQuantity max={10} />
-              <Errors resource="line_items" field="quantity" />
-              <LineItemAmount />
-              <LineItemRemoveLink className='ml-2 p-2 inline-block font-semibold rounded-md bg-red-400 text-white' />
-            </LineItem>
-          </LineItemsContainer>
-          <br /><br />
-          <CheckoutLink>
-            {
-              ({ href, label }) => {
-                return (
-                  <a className='p-3 inline-block font-semibold rounded-md bg-black text-white' href={href.replace('.checkout.', '.checkout-test.')}>
-                    {label}
-                  </a>
-                )
+        <Navigation />
+
+        <OrderStorage persistKey={`country-${locale?.country?.code}`}>
+          <OrderContainer attributes={{
+            language_code: locale?.language.code
+          }}>
+            <LineItemsContainer>
+              <p className="your-custom-class">
+                Your shopping cart contains <LineItemsCount /> items
+              </p>
+              <LineItem>
+                <LineItemImage width={50} />
+                <LineItemName />
+                <LineItemQuantity max={10} />
+                <Errors resource="line_items" field="quantity" />
+                <LineItemAmount />
+                <LineItemRemoveLink className='ml-2 p-2 inline-block font-semibold rounded-md bg-red-400 text-white' />
+              </LineItem>
+            </LineItemsContainer>
+            <br /><br />
+            <CheckoutLink>
+              {
+                ({ href, label }) => {
+                  return (
+                    <a className='p-3 inline-block font-semibold rounded-md bg-black text-white' href={href.replace('.checkout.', '.checkout-test.')}>
+                      {label}
+                    </a>
+                  )
+                }
               }
-            }
-          </CheckoutLink>
-        </OrderContainer>
-      </OrderStorage>
+            </CheckoutLink>
+          </OrderContainer>
+        </OrderStorage>
+      </Container>
     </div>
   )
 }
