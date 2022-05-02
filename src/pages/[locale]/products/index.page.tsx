@@ -6,7 +6,7 @@ import { basePath } from '#next.config'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 
-import { getProductWithVariants, LocalizedProductWithVariant } from '#data/products'
+import { getBaseProducts, LocalizedProductWithVariant } from '#data/products'
 import { Container } from '#components/Container'
 import { Header } from '#components/Header'
 
@@ -65,12 +65,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   return {
     props: {
-      products: [
-        getProductWithVariants('BOTT17OZFFFFFF000000XXXX', locale),
-        getProductWithVariants('BODYBSSSFFFFFF0000006MXX', locale),
-        getProductWithVariants('BODYBSSS000000FFFFFF12MX', locale),
-        getProductWithVariants('CUFFBEANFFFFFF000000XXXX', locale)
-      ],
+      products: getBaseProducts(locale),
       ...(await serverSideTranslations(locale))
     }
   }
