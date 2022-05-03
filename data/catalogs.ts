@@ -35,7 +35,7 @@ export type Taxon = {
 
 const catalogs: JsonCatalog[] = catalogsJson
 const taxonomies: JsonTaxonomy[] = taxonomiesJson
-const taxons: Taxon[] = taxonsJson
+export const taxons: Taxon[] = taxonsJson
 
 const resolveCatalogs = (): Catalog[] => {
   const resolvedTaxonomies = resolveTaxonomies()

@@ -28,7 +28,7 @@ export const Navigation: FC = () => {
 
               &nbsp;&nbsp;|&nbsp;&nbsp;
               <Link href='/search'>
-                <a>Products</a>
+                <a>All Products</a>
               </Link>
             </>
           )
