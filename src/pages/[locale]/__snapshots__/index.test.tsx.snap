@@ -2,184 +2,136 @@
 
 exports[`home 1`] = `
 <div>
-  <div
-    class="container"
-  >
-    <div
-      class="container mx-auto px-4"
-    >
-      <nav
-        class="flex items-center justify-between flex-wrap"
+  <div>
+    <main>
+      <div
+        class="container mx-auto px-4"
       >
-        <div
-          class="flex items-center flex-no-shrink text-white mr-6"
+        <nav
+          class="flex items-center justify-between flex-wrap"
         >
-          <a
-            href="/"
+          <div
+            class="flex items-center flex-no-shrink text-white mr-6"
           >
-            <div
-              class="py-6 pb-6 "
+            <a
+              href="/"
+            >
+              <div
+                class="py-6 pb-6 "
+              >
+                <img
+                  alt="Commerce Layer logomark"
+                  class="inline"
+                  src="https://data.commercelayer.app/assets/logos/glyph/black/commercelayer_glyph_black.svg"
+                  width="32"
+                />
+                <img
+                  alt="Commerce Layer logotype"
+                  class="ml-4 hidden md:inline"
+                  src="https://data.commercelayer.app/assets/logos/logotype/black/commercelayer_logotype_black.svg"
+                  width="192"
+                />
+              </div>
+            </a>
+          </div>
+          <div
+            class="flex items-center w-auto flex-grow justify-end"
+          >
+            <a
+              class="block lg:inline-block mr-4"
+            >
+              <svg />
+            </a>
+            <a
+              class="block lg:inline-block mr-4"
+            >
+              <svg />
+            </a>
+            <a
+              class="block lg:inline-block"
+              href="/cart"
+            >
+              <svg />
+            </a>
+          </div>
+        </nav>
+        <div>
+          <p>
+            <a
+              href="/"
+            >
+              Country Selector
+            </a>
+              |  
+            <a
+              href="/?locale="
+            >
+              English
+            </a>
+              |  
+            <a
+              href="/?locale="
+            >
+              Italiano
+            </a>
+              |  
+            <a
+              href="/search"
+            >
+              Products
+            </a>
+          </p>
+        </div>
+        <div>
+          <h2
+            class="mt-16 block text-2xl font-semibold text-black"
+          >
+            Shop by categories
+          </h2>
+          <div
+            class="mt-6 space-y-12 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6"
+          >
+            <a
+              class="relative w-full h-80 xl:h-96 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1"
+              href="/search/accessories"
             >
               <img
-                alt="Commerce Layer logomark"
-                class="inline"
-                src="https://data.commercelayer.app/assets/logos/glyph/black/commercelayer_glyph_black.svg"
-                width="32"
+                alt="Accessories"
+                class="object-cover w-full h-full"
+                src="/demo-store/assets/images/samsung-case-samsung-galaxy-s21-plus-lifestyle-4-60f836d4aaa9d.png"
               />
-              <img
-                alt="Commerce Layer logotype"
-                class="ml-4 hidden md:inline"
-                src="https://data.commercelayer.app/assets/logos/logotype/black/commercelayer_logotype_black.svg"
-                width="192"
+              <div
+                class="absolute inset-0 bg-gradient-to-b from-black to-black/0 opacity-50"
               />
-            </div>
-          </a>
+              <div
+                class="absolute p-4 top-0 inset-x-0 text-white leading-snug"
+              >
+                <h3
+                  class="text-lg font-semibold"
+                >
+                  Accessories
+                </h3>
+                <div
+                  class="text-md font-medium text-gray-300"
+                >
+                  Accessories
+                </div>
+              </div>
+              <div
+                class="absolute p-4 bottom-0 inset-x-0 text-white leading-snug text-lg"
+              >
+                <div
+                  class="font-semibold"
+                >
+                  View all 
+                  -&gt;
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
-        <div
-          class="flex items-center w-auto flex-grow justify-end"
-        >
-          <a
-            class="block lg:inline-block mr-4"
-          >
-            <svg />
-          </a>
-          <a
-            class="block lg:inline-block mr-4"
-          >
-            <svg />
-          </a>
-          <a
-            class="block lg:inline-block"
-            href="/cart"
-          >
-            <svg />
-          </a>
-        </div>
-      </nav>
-      <div>
-        <p>
-          <a
-            href="/"
-          >
-            Country Selector
-          </a>
-            |  
-          <a
-            href="/?locale="
-          >
-            English
-          </a>
-            |  
-          <a
-            href="/?locale="
-          >
-            Italiano
-          </a>
-            |  
-          <a
-            href="/search"
-          >
-            Products
-          </a>
-        </p>
       </div>
-      <main
-        class="main"
-      >
-        <h1
-          class="title"
-        >
-          Welcome to
-           
-          <a
-            href="https://nextjs.org"
-          >
-            Next.js!
-          </a>
-        </h1>
-        <p
-          class="description"
-        >
-          Get started by editing
-           
-          <code
-            class="code"
-          >
-            pages/index.tsx
-          </code>
-        </p>
-        <div
-          class="grid"
-        >
-          <a
-            class="card"
-            href="https://nextjs.org/docs"
-          >
-            <h2>
-              Documentation →
-            </h2>
-            <p>
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-          <a
-            class="card"
-            href="https://nextjs.org/learn"
-          >
-            <h2>
-              Learn →
-            </h2>
-            <p>
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-          <a
-            class="card"
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-          >
-            <h2>
-              Examples →
-            </h2>
-            <p>
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-          <a
-            class="card"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          >
-            <h2>
-              Deploy →
-            </h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-      <footer
-        class="footer"
-      >
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Powered by
-           
-          <span
-            class="logo"
-          >
-            <img
-              alt="Vercel Logo"
-              height="16"
-              src="/demo-store/commercelayer-logomark.svg"
-              width="72"
-            />
-          </span>
-        </a>
-      </footer>
-    </div>
+    </main>
   </div>
 </div>
 `;

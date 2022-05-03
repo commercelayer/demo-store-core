@@ -1,0 +1,30 @@
+[
+  {
+    "key": "taxonomy_1",
+    "label": "Shop by categories",
+    "name": "Default Category",
+    "taxons": ["taxon_1", "taxon_3", "taxon_4", "taxon_5", "taxon_7", "taxon_8"]
+  },
+  {
+    "key": "taxonomy_2",
+    "label": "Shop by categories",
+    "name": "Category EMEA",
+    "taxons": ["taxon_5", "taxon_3", "taxon_11", "taxon_8", "taxon_4"]
+  },
+  {
+    "key": "taxonomy_3",
+    "label": "Shop by categories",
+    "name": "Category APAC",
+    "taxons": ["taxon_7", "taxon_5", "taxon_1", "taxon_3"]
+  },
+  {
+    "key": "taxonomy_4",
+    "name": "Default Gender",
+    "taxons": ["taxon_2", "taxon_6", "taxon_9", "taxon_10"]
+  },
+  {
+    "key": "taxonomy_5",
+    "name": "Gender APAC",
+    "taxons": ["taxon_9", "taxon_10"]
+  }
+]
