@@ -7,7 +7,7 @@ type Localized<T> = {
 export type Product = {
   baseProduct: string
   code: string
-  slug?: string
+  slug: string
   variant: Variant[]
   name: Localized<string>
   description: Localized<string>

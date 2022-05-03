@@ -1,5 +1,5 @@
 import { Navigation } from '#components/Navigation'
-import { getProductWithVariants, LocalizedProductWithVariant, products } from '#data/products'
+import { getProductWithVariants, LocalizedProduct, LocalizedProductWithVariant, products } from '#data/products'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { basePath } from '#next.config'
@@ -15,7 +15,7 @@ import { Header } from '#components/Header'
 
 type Query = {
   locale: string
-  code: string
+  slug: string[]
 }
 
 type Props = {
@@ -23,7 +23,7 @@ type Props = {
 }
 
 const ProductDetailPage: NextPage<Props> = ({ product }) => {
-  const [skuCode, setSkuCode] = useState<string>()
+  const [currentProduct, setCurrentProduct] = useState<LocalizedProduct>()
   const router = useRouter()
 
   const locale = getLocale(router.query.locale as string)
@@ -47,18 +47,18 @@ const ProductDetailPage: NextPage<Props> = ({ product }) => {
         <p>{product.description}</p>
         <pre>{JSON.stringify(product.variant, undefined, 4)}</pre>
 
-        <DemoStoreVariantSelector product={product} onChange={setSkuCode} />
+        <DemoStoreVariantSelector product={product} onChange={setCurrentProduct} />
 
         <OrderStorage persistKey={`country-${locale?.country?.code}`} clearWhenPlaced>
           <OrderContainer attributes={{
             language_code: locale?.language.code
           }}>
             <ItemContainer>
-              <PricesContainer skuCode={skuCode}><Price /></PricesContainer>
+              <PricesContainer skuCode={currentProduct?.code}><Price /></PricesContainer>
               {/* <QuantitySelector skuCode={skuCode} /> */}
 
               { /** @ts-expect-error */ }
-              <AddToCartButton skuCode={skuCode} buyNowMode={false} checkoutUrl='https://mm-demo-store-1.checkout-test.commercelayer.app/'>
+              <AddToCartButton skuCode={currentProduct?.code} buyNowMode={false} checkoutUrl='https://mm-demo-store-1.checkout-test.commercelayer.app/'>
                 {
                   (props) => (
                     <button onClick={props.handleClick} disabled={props.disabled} className={`block h-10 px-6 font-semibold rounded-md ${props.disabled ? 'bg-gray-300' : 'bg-black'} text-white`}>Add to cart</button>
@@ -66,7 +66,7 @@ const ProductDetailPage: NextPage<Props> = ({ product }) => {
                 }
               </AddToCartButton>
 
-              <AvailabilityContainer skuCode={skuCode}>
+              <AvailabilityContainer skuCode={currentProduct?.code}>
                 <AvailabilityTemplate />
               </AvailabilityContainer>
             </ItemContainer>
@@ -82,7 +82,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
   return withLocalePaths({
     paths: products.map(product => ({
       params: {
-        code: product.code
+        slug: product.slug.split('/')
       }
     })),
     fallback: false
@@ -90,11 +90,11 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 }
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
-  const { code, locale } = params!
+  const { slug, locale } = params!
 
   return {
     props: {
-      product: getProductWithVariants(code, locale),
+      product: getProductWithVariants(slug.pop()!, locale),
       ...(await serverSideTranslations(locale))
     }
   }

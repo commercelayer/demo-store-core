@@ -1,4 +1,4 @@
-import { LocalizedProductWithVariant, LocalizedVariant } from '#data/products'
+import { LocalizedProduct, LocalizedProductWithVariant, LocalizedVariant } from '#data/products'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo } from 'react'
 import { useImmer } from 'use-immer'
@@ -6,7 +6,7 @@ import { compareVariants, getOptions } from './VariantSelector.utils'
 
 type Props = {
   product: LocalizedProductWithVariant
-  onChange?: (productCode: string) => void
+  onChange?: (product: LocalizedProduct) => void
 }
 
 export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} }) => {
@@ -18,8 +18,8 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
     return getOptions(variants, currentVariant)
   }, [product, currentVariant])
 
-  const currentProductCode = useMemo(() => {
-    return product.variants.find(({ variant }) => compareVariants(variant, currentVariant))?.code
+  const currentProduct = useMemo(() => {
+    return product.variants.find(({ variant }) => compareVariants(variant, currentVariant))
   }, [product, currentVariant])
 
   useEffect(function manageDefaultVariants() {
@@ -38,19 +38,19 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
   }, [currentVariant, setCurrentVariant, options])
 
   useEffect(function updateUrlWhenProductCodeChanges() {
-    if (currentProductCode) {
-      onChange(currentProductCode)
+    if (currentProduct) {
+      onChange(currentProduct)
     }
 
-    if (currentProductCode && router.isReady && router.query.code !== currentProductCode) {
+    if (currentProduct && router.isReady && router.query.slug && (router.query.slug as string[]).join('/') !== currentProduct.slug) {
       router.push({
         query: {
           ...router.query,
-          code: currentProductCode
+          slug: currentProduct.slug.split('/')
         }
       })
     }
-  }, [router, currentProductCode, onChange])
+  }, [router, currentProduct, onChange])
 
   return (
     <div>

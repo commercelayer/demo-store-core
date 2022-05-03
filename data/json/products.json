@@ -2,6 +2,7 @@
   {
     "baseProduct": "5PANECAP",
     "code": "5PANECAP000000FFFFFFXXXX",
+    "slug": "black-five-panel-cap-with-white-logo/5PANECAP000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -27,6 +28,7 @@
   {
     "baseProduct": "5PANECAP",
     "code": "5PANECAP9D9CA1FFFFFFXXXX",
+    "slug": "gray-five-panel-cap-with-white-logo/5PANECAP9D9CA1FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -52,6 +54,7 @@
   {
     "baseProduct": "APRONXXX",
     "code": "APRONXXX000000FFFFFFXXXX",
+    "slug": "black-apron-with-white-logo/APRONXXX000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -77,6 +80,7 @@
   {
     "baseProduct": "APRONXXX",
     "code": "APRONXXXFFFFFF000000XXXX",
+    "slug": "white-apron-with-black-logo/APRONXXXFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -102,6 +106,7 @@
   {
     "baseProduct": "BABYBIBX",
     "code": "BABYBIBXA19D9D000000XXXX",
+    "slug": "gray-baby-bib-with-black-logo/BABYBIBXA19D9D000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -127,6 +132,7 @@
   {
     "baseProduct": "BACKPACK",
     "code": "BACKPACK000000FFFFFFXXXX",
+    "slug": "black-backpack-with-white-logo/BACKPACK000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -152,6 +158,7 @@
   {
     "baseProduct": "BACKPACK",
     "code": "BACKPACK818488000000XXXX",
+    "slug": "gray-backpack-with-black-logo/BACKPACK818488000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -177,6 +184,7 @@
   {
     "baseProduct": "BACKPACK",
     "code": "BACKPACKFFFFFF000000XXXX",
+    "slug": "white-backpack-with-black-logo/BACKPACKFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -202,6 +210,7 @@
   {
     "baseProduct": "BASEBHAT",
     "code": "BASEBHAT000000FFFFFFXXXX",
+    "slug": "black-baseball-hat-with-white-logo/BASEBHAT000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -227,6 +236,7 @@
   {
     "baseProduct": "BASEBHAT",
     "code": "BASEBHATFFFFFF000000XXXX",
+    "slug": "white-baseball-hat-with-black-logo/BASEBHATFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -252,6 +262,7 @@
   {
     "baseProduct": "BEACHAIR",
     "code": "BEACHAIR000000FFFFFFXXXX",
+    "slug": "black-bean-chair-with-white-logo/BEACHAIR000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -277,6 +288,7 @@
   {
     "baseProduct": "BEACHAIR",
     "code": "BEACHAIRFFFFFF000000XXXX",
+    "slug": "white-bean-chair-with-black-logo/BEACHAIRFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -302,6 +314,7 @@
   {
     "baseProduct": "BEACHBAG",
     "code": "BEACHBAG000000FFFFFFXXXX",
+    "slug": "black-beach-bag-with-white-logo/BEACHBAG000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -327,6 +340,7 @@
   {
     "baseProduct": "BEACHBAG",
     "code": "BEACHBAGFFFFFF000000XXXX",
+    "slug": "white-beach-bag-with-black-logo/BEACHBAGFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -352,6 +366,7 @@
   {
     "baseProduct": "BEANIEXX",
     "code": "BEANIEXX000000FFFFFFXXXX",
+    "slug": "black-beanie-with-white-logo/BEANIEXX000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -377,6 +392,7 @@
   {
     "baseProduct": "BEANIEXX",
     "code": "BEANIEXXFFFFFF000000XXXX",
+    "slug": "white-beanie-with-black-logo/BEANIEXXFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -402,6 +418,7 @@
   {
     "baseProduct": "BODYBSSS",
     "code": "BODYBSSS000000FFFFFF12MX",
+    "slug": "black-baby-short-sleeve-bodysuit-with-white-logo-12-months/BODYBSSS000000FFFFFF12MX",
     "variant": [
       {
         "name": "color",
@@ -435,6 +452,7 @@
   {
     "baseProduct": "BODYBSSS",
     "code": "BODYBSSS000000FFFFFF6MXX",
+    "slug": "black-baby-short-sleeve-bodysuit-with-white-logo-6-months/BODYBSSS000000FFFFFF6MXX",
     "variant": [
       {
         "name": "color",
@@ -468,6 +486,7 @@
   {
     "baseProduct": "BODYBSSS",
     "code": "BODYBSSSFFFFFF00000012MX",
+    "slug": "white-baby-short-sleeve-bodysuit-with-black-logo-12-months/BODYBSSSFFFFFF00000012MX",
     "variant": [
       {
         "name": "color",
@@ -501,6 +520,7 @@
   {
     "baseProduct": "BODYBSSS",
     "code": "BODYBSSSFFFFFF0000006MXX",
+    "slug": "white-baby-short-sleeve-bodysuit-with-black-logo-6-months/BODYBSSSFFFFFF0000006MXX",
     "variant": [
       {
         "name": "color",
@@ -534,6 +554,7 @@
   {
     "baseProduct": "BOTT17OZ",
     "code": "BOTT17OZFFFFFF000000XXXX",
+    "slug": "white-water-bottle-with-black-logo-17oz/BOTT17OZFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -559,6 +580,7 @@
   {
     "baseProduct": "BTOW3060",
     "code": "BTOW3060000000FFFFFFXXXX",
+    "slug": "black-beach-towel-with-white-logo-30x60/BTOW3060000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -584,6 +606,7 @@
   {
     "baseProduct": "BTOW3060",
     "code": "BTOW3060FFFFFF000000XXXX",
+    "slug": "white-beach-towel-with-black-logo-30x60/BTOW3060FFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -609,6 +632,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPW000000FFFFFFLXXX",
+    "slug": "black-women-crop-top-with-white-logo-l/CROPTOPW000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -642,6 +666,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPW000000FFFFFFMXXX",
+    "slug": "black-women-crop-top-with-white-logo-m/CROPTOPW000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -675,6 +700,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPW000000FFFFFFSXXX",
+    "slug": "black-women-crop-top-with-white-logo-s/CROPTOPW000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -708,6 +734,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPW000000FFFFFFXSXX",
+    "slug": "black-women-crop-top-with-white-logo-xs/CROPTOPW000000FFFFFFXSXX",
     "variant": [
       {
         "name": "color",
@@ -741,6 +768,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPWE8E8E8000000LXXX",
+    "slug": "gray-women-crop-top-with-black-logo-l/CROPTOPWE8E8E8000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -774,6 +802,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPWE8E8E8000000MXXX",
+    "slug": "gray-women-crop-top-with-black-logo-m/CROPTOPWE8E8E8000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -807,6 +836,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPWE8E8E8000000SXXX",
+    "slug": "gray-women-crop-top-with-black-logo-s/CROPTOPWE8E8E8000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -840,6 +870,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPWE8E8E8000000XSXX",
+    "slug": "gray-women-crop-top-with-black-logo-xs/CROPTOPWE8E8E8000000XSXX",
     "variant": [
       {
         "name": "color",
@@ -873,6 +904,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPWFFFFFF000000LXXX",
+    "slug": "white-women-crop-top-with-black-logo-l/CROPTOPWFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -906,6 +938,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPWFFFFFF000000MXXX",
+    "slug": "white-women-crop-top-with-black-logo-m/CROPTOPWFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -939,6 +972,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPWFFFFFF000000SXXX",
+    "slug": "white-women-crop-top-with-black-logo-s/CROPTOPWFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -972,6 +1006,7 @@
   {
     "baseProduct": "CROPTOPW",
     "code": "CROPTOPWFFFFFF000000XSXX",
+    "slug": "white-women-crop-top-with-black-logo-xs/CROPTOPWFFFFFF000000XSXX",
     "variant": [
       {
         "name": "color",
@@ -1005,6 +1040,7 @@
   {
     "baseProduct": "CUFFBEAN",
     "code": "CUFFBEAN000000FFFFFFXXXX",
+    "slug": "black-cuffed-beanie-with-white-logo/CUFFBEAN000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -1030,6 +1066,7 @@
   {
     "baseProduct": "CUFFBEAN",
     "code": "CUFFBEANA6A5A0000000XXXX",
+    "slug": "gray-cuffed-beanie-with-black-logo/CUFFBEANA6A5A0000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -1055,6 +1092,7 @@
   {
     "baseProduct": "CUFFBEAN",
     "code": "CUFFBEANFFFFFF000000XXXX",
+    "slug": "white-cuffed-beanie-with-black-logo/CUFFBEANFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -1080,6 +1118,7 @@
   {
     "baseProduct": "DRAWSBAG",
     "code": "DRAWSBAG000000FFFFFFXXXX",
+    "slug": "black-drawstring-bag-with-white-logo/DRAWSBAG000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -1105,6 +1144,7 @@
   {
     "baseProduct": "DRAWSBAG",
     "code": "DRAWSBAGFFFFFF000000XXXX",
+    "slug": "white-drawstring-bag-with-black-logo/DRAWSBAGFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -1130,6 +1170,7 @@
   {
     "baseProduct": "DUFFLBAG",
     "code": "DUFFLBAG000000FFFFFFXXXX",
+    "slug": "black-duffle-bag-with-white-logo/DUFFLBAG000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -1155,6 +1196,7 @@
   {
     "baseProduct": "DUFFLBAG",
     "code": "DUFFLBAGFFFFFF000000XXXX",
+    "slug": "white-duffle-bag-with-black-logo/DUFFLBAGFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -1180,6 +1222,7 @@
   {
     "baseProduct": "EMUG12OZ",
     "code": "EMUG12OZFFFFFF000000XXXX",
+    "slug": "enamel-mug-with-black-logo-12oz/EMUG12OZFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -1205,6 +1248,7 @@
   {
     "baseProduct": "FACEMASK",
     "code": "FACEMASK000000FFFFFFXXXX",
+    "slug": "black-face-mask-with-white-logo/FACEMASK000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -1230,6 +1274,7 @@
   {
     "baseProduct": "FACEMASK",
     "code": "FACEMASKFFFFFF000000XXXX",
+    "slug": "white-face-mask-with-black-logo/FACEMASKFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -1255,6 +1300,7 @@
   {
     "baseProduct": "FANNPACK",
     "code": "FANNPACK000000FFFFFFXXXX",
+    "slug": "black-fanny-pack-with-white-logo/FANNPACK000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -1280,6 +1326,7 @@
   {
     "baseProduct": "FANNPACK",
     "code": "FANNPACKFFFFFF000000XXXX",
+    "slug": "white-fanny-pack-with-black-logo/FANNPACKFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -1305,6 +1352,7 @@
   {
     "baseProduct": "FLIPFLOP",
     "code": "FLIPFLOP000000FFFFFF75XX",
+    "slug": "black-flip-flops-with-white-logo-7-5/FLIPFLOP000000FFFFFF75XX",
     "variant": [
       {
         "name": "color",
@@ -1338,6 +1386,7 @@
   {
     "baseProduct": "FLIPFLOP",
     "code": "FLIPFLOP000000FFFFFF7XXX",
+    "slug": "black-flip-flops-with-white-logo-7/FLIPFLOP000000FFFFFF7XXX",
     "variant": [
       {
         "name": "color",
@@ -1371,6 +1420,7 @@
   {
     "baseProduct": "FLIPFLOP",
     "code": "FLIPFLOP000000FFFFFF85XX",
+    "slug": "black-flip-flops-with-white-logo-8-5/FLIPFLOP000000FFFFFF85XX",
     "variant": [
       {
         "name": "color",
@@ -1404,6 +1454,7 @@
   {
     "baseProduct": "FLIPFLOP",
     "code": "FLIPFLOP000000FFFFFF8XXX",
+    "slug": "black-flip-flops-with-white-logo-8/FLIPFLOP000000FFFFFF8XXX",
     "variant": [
       {
         "name": "color",
@@ -1437,6 +1488,7 @@
   {
     "baseProduct": "FLIPFLOP",
     "code": "FLIPFLOP000000FFFFFF9XXX",
+    "slug": "black-flip-flops-with-white-logo-9/FLIPFLOP000000FFFFFF9XXX",
     "variant": [
       {
         "name": "color",
@@ -1470,6 +1522,7 @@
   {
     "baseProduct": "FLIPFLOP",
     "code": "FLIPFLOPFFFFFF00000075XX",
+    "slug": "white-flip-flops-with-black-logo-7-5/FLIPFLOPFFFFFF00000075XX",
     "variant": [
       {
         "name": "color",
@@ -1503,6 +1556,7 @@
   {
     "baseProduct": "FLIPFLOP",
     "code": "FLIPFLOPFFFFFF0000007XXX",
+    "slug": "white-flip-flops-with-black-logo-7/FLIPFLOPFFFFFF0000007XXX",
     "variant": [
       {
         "name": "color",
@@ -1536,6 +1590,7 @@
   {
     "baseProduct": "FLIPFLOP",
     "code": "FLIPFLOPFFFFFF00000085XX",
+    "slug": "white-flip-flops-with-black-logo-8-5/FLIPFLOPFFFFFF00000085XX",
     "variant": [
       {
         "name": "color",
@@ -1569,6 +1624,7 @@
   {
     "baseProduct": "FLIPFLOP",
     "code": "FLIPFLOPFFFFFF0000008XXX",
+    "slug": "white-flip-flops-with-black-logo-8/FLIPFLOPFFFFFF0000008XXX",
     "variant": [
       {
         "name": "color",
@@ -1602,6 +1658,7 @@
   {
     "baseProduct": "FLIPFLOP",
     "code": "FLIPFLOPFFFFFF0000009XXX",
+    "slug": "white-flip-flops-with-black-logo-9/FLIPFLOPFFFFFF0000009XXX",
     "variant": [
       {
         "name": "color",
@@ -1635,6 +1692,7 @@
   {
     "baseProduct": "GLCS21PX",
     "code": "GLCS21PXXXXXXXFFFFFFXXXX",
+    "slug": "samsung-galaxy-s21-plus-case-with-white-logo/GLCS21PXXXXXXXFFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -1660,6 +1718,7 @@
   {
     "baseProduct": "GLCS21UX",
     "code": "GLCS21UXXXXXXXFFFFFFXXXX",
+    "slug": "samsung-galaxy-s21-ultra-case-with-white-logo/GLCS21UXXXXXXXFFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -1685,6 +1744,7 @@
   {
     "baseProduct": "GMUG11OZ",
     "code": "GMUG11OZFFFFFF000000XXXX",
+    "slug": "white-glossy-mug-with-black-logo-11oz/GMUG11OZFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -1710,6 +1770,7 @@
   {
     "baseProduct": "GMUG15OZ",
     "code": "GMUG15OZFFFFFF000000XXXX",
+    "slug": "white-glossy-mug-with-black-logo-15oz/GMUG15OZFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -1735,6 +1796,7 @@
   {
     "baseProduct": "HDRESSWX",
     "code": "HDRESSWX000000FFFFFFLXXX",
+    "slug": "black-women-hoodie-dress-with-white-logo-l/HDRESSWX000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -1768,6 +1830,7 @@
   {
     "baseProduct": "HDRESSWX",
     "code": "HDRESSWX000000FFFFFFMXXX",
+    "slug": "black-women-hoodie-dress-with-white-logo-m/HDRESSWX000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -1801,6 +1864,7 @@
   {
     "baseProduct": "HDRESSWX",
     "code": "HDRESSWX000000FFFFFFSXXX",
+    "slug": "black-women-hoodie-dress-with-white-logo-s/HDRESSWX000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -1834,6 +1898,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMX000000FFFFFFLXXX",
+    "slug": "black-men-hoodie-with-white-logo-l/HOODIEMX000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -1867,6 +1932,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMX000000FFFFFFMXXX",
+    "slug": "black-men-hoodie-with-white-logo-m/HOODIEMX000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -1900,6 +1966,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMX000000FFFFFFSXXX",
+    "slug": "black-men-hoodie-with-white-logo-s/HOODIEMX000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -1933,6 +2000,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMX000000FFFFFFXLXX",
+    "slug": "black-men-hoodie-with-white-logo-xl/HOODIEMX000000FFFFFFXLXX",
     "variant": [
       {
         "name": "color",
@@ -1966,6 +2034,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMX7F7F7F000000LXXX",
+    "slug": "gray-men-hoodie-with-black-logo-l/HOODIEMX7F7F7F000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -1999,6 +2068,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMX7F7F7F000000MXXX",
+    "slug": "gray-men-hoodie-with-black-logo-m/HOODIEMX7F7F7F000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -2032,6 +2102,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMX7F7F7F000000SXXX",
+    "slug": "gray-men-hoodie-with-black-logo-s/HOODIEMX7F7F7F000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -2065,6 +2136,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMX7F7F7F000000XLXX",
+    "slug": "gray-men-hoodie-with-black-logo-xl/HOODIEMX7F7F7F000000XLXX",
     "variant": [
       {
         "name": "color",
@@ -2098,6 +2170,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMXFFFFFF000000LXXX",
+    "slug": "white-men-hoodie-with-black-logo-l/HOODIEMXFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -2131,6 +2204,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMXFFFFFF000000MXXX",
+    "slug": "white-men-hoodie-with-black-logo-m/HOODIEMXFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -2164,6 +2238,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMXFFFFFF000000SXXX",
+    "slug": "white-men-hoodie-with-black-logo-s/HOODIEMXFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -2197,6 +2272,7 @@
   {
     "baseProduct": "HOODIEMX",
     "code": "HOODIEMXFFFFFF000000XLXX",
+    "slug": "white-men-hoodie-with-black-logo-xl/HOODIEMXFFFFFF000000XLXX",
     "variant": [
       {
         "name": "color",
@@ -2230,6 +2306,7 @@
   {
     "baseProduct": "HOODIEUL",
     "code": "HOODIEUL000000FFFFFFLXXX",
+    "slug": "black-unisex-lightweight-hoodie-with-white-logo-l/HOODIEUL000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -2263,6 +2340,7 @@
   {
     "baseProduct": "HOODIEUL",
     "code": "HOODIEUL000000FFFFFFMXXX",
+    "slug": "black-unisex-lightweight-hoodie-with-white-logo-m/HOODIEUL000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -2296,6 +2374,7 @@
   {
     "baseProduct": "HOODIEUL",
     "code": "HOODIEUL000000FFFFFFSXXX",
+    "slug": "black-unisex-lightweight-hoodie-with-white-logo-s/HOODIEUL000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -2329,6 +2408,7 @@
   {
     "baseProduct": "HOODIEUL",
     "code": "HOODIEUL000000FFFFFFXLXX",
+    "slug": "black-unisex-lightweight-hoodie-with-white-logo-xl/HOODIEUL000000FFFFFFXLXX",
     "variant": [
       {
         "name": "color",
@@ -2362,6 +2442,7 @@
   {
     "baseProduct": "HOODIEUL",
     "code": "HOODIEUL000000FFFFFFXSXX",
+    "slug": "black-unisex-lightweight-hoodie-with-white-logo-xs/HOODIEUL000000FFFFFFXSXX",
     "variant": [
       {
         "name": "color",
@@ -2395,6 +2476,7 @@
   {
     "baseProduct": "HOODIEUZ",
     "code": "HOODIEUZ000000FFFFFFLXXX",
+    "slug": "black-unisex-zip-hoodie-with-white-logo-l/HOODIEUZ000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -2428,6 +2510,7 @@
   {
     "baseProduct": "HOODIEUZ",
     "code": "HOODIEUZ000000FFFFFFMXXX",
+    "slug": "black-unisex-zip-hoodie-with-white-logo-m/HOODIEUZ000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -2461,6 +2544,7 @@
   {
     "baseProduct": "HOODIEUZ",
     "code": "HOODIEUZ000000FFFFFFSXXX",
+    "slug": "black-unisex-zip-hoodie-with-white-logo-s/HOODIEUZ000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -2494,6 +2578,7 @@
   {
     "baseProduct": "HOODIEUZ",
     "code": "HOODIEUZ000000FFFFFFXLXX",
+    "slug": "black-unisex-zip-hoodie-with-white-logo-xl/HOODIEUZ000000FFFFFFXLXX",
     "variant": [
       {
         "name": "color",
@@ -2527,6 +2612,7 @@
   {
     "baseProduct": "HOODIEUZ",
     "code": "HOODIEUZ000000FFFFFFXSXX",
+    "slug": "black-unisex-zip-hoodie-with-white-logo-xs/HOODIEUZ000000FFFFFFXSXX",
     "variant": [
       {
         "name": "color",
@@ -2560,6 +2646,7 @@
   {
     "baseProduct": "HOODIEWC",
     "code": "HOODIEWC000000FFFFFFLXXX",
+    "slug": "black-women-cropped-hoodie-with-white-logo-l/HOODIEWC000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -2593,6 +2680,7 @@
   {
     "baseProduct": "HOODIEWC",
     "code": "HOODIEWC000000FFFFFFMXXX",
+    "slug": "black-women-cropped-hoodie-with-white-logo-m/HOODIEWC000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -2626,6 +2714,7 @@
   {
     "baseProduct": "HOODIEWC",
     "code": "HOODIEWC000000FFFFFFSXXX",
+    "slug": "black-women-cropped-hoodie-with-white-logo-s/HOODIEWC000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -2659,6 +2748,7 @@
   {
     "baseProduct": "HOODIEWC",
     "code": "HOODIEWC000000FFFFFFXSXX",
+    "slug": "black-women-cropped-hoodie-with-white-logo-xs/HOODIEWC000000FFFFFFXSXX",
     "variant": [
       {
         "name": "color",
@@ -2692,6 +2782,7 @@
   {
     "baseProduct": "HOODIEWC",
     "code": "HOODIEWC575C51000000LXXX",
+    "slug": "gray-women-cropped-hoodie-with-black-logo-l/HOODIEWC575C51000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -2725,6 +2816,7 @@
   {
     "baseProduct": "HOODIEWC",
     "code": "HOODIEWC575C51000000MXXX",
+    "slug": "gray-women-cropped-hoodie-with-black-logo-m/HOODIEWC575C51000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -2758,6 +2850,7 @@
   {
     "baseProduct": "HOODIEWC",
     "code": "HOODIEWC575C51000000SXXX",
+    "slug": "gray-women-cropped-hoodie-with-black-logo-s/HOODIEWC575C51000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -2791,6 +2884,7 @@
   {
     "baseProduct": "HOODIEWC",
     "code": "HOODIEWC575C51000000XSXX",
+    "slug": "gray-women-cropped-hoodie-with-black-logo-xs/HOODIEWC575C51000000XSXX",
     "variant": [
       {
         "name": "color",
@@ -2824,6 +2918,7 @@
   {
     "baseProduct": "IPC11PXX",
     "code": "IPC11PXX000000FFFFFFXXXX",
+    "slug": "iphone-11-pro-case-with-white-logo/IPC11PXX000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -2849,6 +2944,7 @@
   {
     "baseProduct": "IPC11XXX",
     "code": "IPC11XXX000000FFFFFFXXXX",
+    "slug": "iphone-11-case-with-white-logo/IPC11XXX000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -2874,6 +2970,7 @@
   {
     "baseProduct": "IPC12PMX",
     "code": "IPC12PMXXXXXXX000000XXXX",
+    "slug": "iphone-12-pro-max-case-with-black-logo/IPC12PMXXXXXXX000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -2899,6 +2996,7 @@
   {
     "baseProduct": "LAPTSL13",
     "code": "LAPTSL13000000FFFFFFXXXX",
+    "slug": "black-laptop-sleeve-with-white-logo-13in/LAPTSL13000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -2924,6 +3022,7 @@
   {
     "baseProduct": "LAPTSL15",
     "code": "LAPTSL15000000FFFFFFXXXX",
+    "slug": "black-laptop-sleeve-with-white-logo-15in/LAPTSL15000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -2949,6 +3048,7 @@
   {
     "baseProduct": "MESHBACK",
     "code": "MESHBACK323230FFFFFFXXXX",
+    "slug": "gray-mesh-back-snapback-with-white-logo/MESHBACK323230FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -2974,6 +3074,7 @@
   {
     "baseProduct": "NOTEBOOK",
     "code": "NOTEBOOK000000FFFFFFXXXX",
+    "slug": "black-spiral-notebook-with-white-logo/NOTEBOOK000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -2999,6 +3100,7 @@
   {
     "baseProduct": "NOTEBOOK",
     "code": "NOTEBOOKFFFFFF000000XXXX",
+    "slug": "white-spiral-notebook-with-black-logo/NOTEBOOKFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -3024,6 +3126,7 @@
   {
     "baseProduct": "PILL1818",
     "code": "PILL1818000000FFFFFFXXXX",
+    "slug": "black-pillow-with-white-logo-18x18/PILL1818000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -3049,6 +3152,7 @@
   {
     "baseProduct": "PILL1818",
     "code": "PILL1818FFFFFF000000XXXX",
+    "slug": "white-pillow-with-black-logo-18x18/PILL1818FFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -3074,6 +3178,7 @@
   {
     "baseProduct": "PILL2012",
     "code": "PILL2012000000FFFFFFXXXX",
+    "slug": "black-pillow-with-white-logo-20x12/PILL2012000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -3099,6 +3204,7 @@
   {
     "baseProduct": "PILL2012",
     "code": "PILL2012FFFFFF000000XXXX",
+    "slug": "white-pillow-with-black-logo-20x12/PILL2012FFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -3124,6 +3230,7 @@
   {
     "baseProduct": "POLOMXXX",
     "code": "POLOMXXX000000FFFFFFLXXX",
+    "slug": "black-men-polo-with-white-logo-l/POLOMXXX000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -3157,6 +3264,7 @@
   {
     "baseProduct": "POLOMXXX",
     "code": "POLOMXXX000000FFFFFFMXXX",
+    "slug": "black-men-polo-with-white-logo-m/POLOMXXX000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -3190,6 +3298,7 @@
   {
     "baseProduct": "POLOMXXX",
     "code": "POLOMXXX000000FFFFFFSXXX",
+    "slug": "black-men-polo-with-white-logo-s/POLOMXXX000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -3223,6 +3332,7 @@
   {
     "baseProduct": "POLOMXXX",
     "code": "POLOMXXXC2C2C2000000LXXX",
+    "slug": "gray-men-polo-with-black-logo-l/POLOMXXXC2C2C2000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -3256,6 +3366,7 @@
   {
     "baseProduct": "POLOMXXX",
     "code": "POLOMXXXC2C2C2000000MXXX",
+    "slug": "gray-men-polo-with-black-logo-m/POLOMXXXC2C2C2000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -3289,6 +3400,7 @@
   {
     "baseProduct": "POLOMXXX",
     "code": "POLOMXXXC2C2C2000000SXXX",
+    "slug": "gray-men-polo-with-black-logo-s/POLOMXXXC2C2C2000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -3322,6 +3434,7 @@
   {
     "baseProduct": "POLOMXXX",
     "code": "POLOMXXXFFFFFF000000LXXX",
+    "slug": "white-men-polo-with-black-logo-l/POLOMXXXFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -3355,6 +3468,7 @@
   {
     "baseProduct": "POLOMXXX",
     "code": "POLOMXXXFFFFFF000000MXXX",
+    "slug": "white-men-polo-with-black-logo-m/POLOMXXXFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -3388,6 +3502,7 @@
   {
     "baseProduct": "POLOMXXX",
     "code": "POLOMXXXFFFFFF000000SXXX",
+    "slug": "white-men-polo-with-black-logo-s/POLOMXXXFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -3421,6 +3536,7 @@
   {
     "baseProduct": "POLOWXXX",
     "code": "POLOWXXX000000FFFFFFLXXX",
+    "slug": "black-women-polo-with-white-logo-l/POLOWXXX000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -3454,6 +3570,7 @@
   {
     "baseProduct": "POLOWXXX",
     "code": "POLOWXXX000000FFFFFFMXXX",
+    "slug": "black-women-polo-with-white-logo-m/POLOWXXX000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -3487,6 +3604,7 @@
   {
     "baseProduct": "POLOWXXX",
     "code": "POLOWXXX000000FFFFFFSXXX",
+    "slug": "black-women-polo-with-white-logo-s/POLOWXXX000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -3520,6 +3638,7 @@
   {
     "baseProduct": "POLOWXXX",
     "code": "POLOWXXXFFFFFF000000LXXX",
+    "slug": "white-women-polo-with-black-logo-l/POLOWXXXFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -3553,6 +3672,7 @@
   {
     "baseProduct": "POLOWXXX",
     "code": "POLOWXXXFFFFFF000000MXXX",
+    "slug": "white-women-polo-with-black-logo-m/POLOWXXXFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -3586,6 +3706,7 @@
   {
     "baseProduct": "POLOWXXX",
     "code": "POLOWXXXFFFFFF000000SXXX",
+    "slug": "white-women-polo-with-black-logo-s/POLOWXXXFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -3619,6 +3740,7 @@
   {
     "baseProduct": "POST2130",
     "code": "POST2130000000000000XXXX",
+    "slug": "black-framed-poster-with-black-logo-21x30/POST2130000000000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -3644,6 +3766,7 @@
   {
     "baseProduct": "POST2130",
     "code": "POST2130FFFFFF000000XXXX",
+    "slug": "white-framed-poster-with-black-logo-21x30/POST2130FFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -3669,6 +3792,7 @@
   {
     "baseProduct": "POST6191",
     "code": "POST6191000000000000XXXX",
+    "slug": "black-framed-poster-with-black-logo-61x91/POST6191000000000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -3694,6 +3818,7 @@
   {
     "baseProduct": "POST6191",
     "code": "POST6191FFFFFF000000XXXX",
+    "slug": "white-framed-poster-with-black-logo-61x91/POST6191FFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -3719,6 +3844,7 @@
   {
     "baseProduct": "PPOMBEAN",
     "code": "PPOMBEAN000000FFFFFFXXXX",
+    "slug": "black-pom-pom-beanie-with-white-logo/PPOMBEAN000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -3744,6 +3870,7 @@
   {
     "baseProduct": "PPOMBEAN",
     "code": "PPOMBEAN74736EFFFFFFXXXX",
+    "slug": "gray-pom-pom-beanie-with-white-logo/PPOMBEAN74736EFFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -3769,6 +3896,7 @@
   {
     "baseProduct": "SHIRT34S",
     "code": "SHIRT34S000000FFFFFFLXXX",
+    "slug": "black-unisex-3-4-sleeve-shirt-with-white-logo-l/SHIRT34S000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -3802,6 +3930,7 @@
   {
     "baseProduct": "SHIRT34S",
     "code": "SHIRT34S000000FFFFFFMXXX",
+    "slug": "black-unisex-3-4-sleeve-shirt-with-white-logo-m/SHIRT34S000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -3835,6 +3964,7 @@
   {
     "baseProduct": "SHIRT34S",
     "code": "SHIRT34S000000FFFFFFSXXX",
+    "slug": "black-unisex-3-4-sleeve-shirt-with-white-logo-s/SHIRT34S000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -3868,6 +3998,7 @@
   {
     "baseProduct": "SHIRT34S",
     "code": "SHIRT34S000000FFFFFFXLXX",
+    "slug": "black-unisex-3-4-sleeve-shirt-with-white-logo-xl/SHIRT34S000000FFFFFFXLXX",
     "variant": [
       {
         "name": "color",
@@ -3901,6 +4032,7 @@
   {
     "baseProduct": "SHIRT34S",
     "code": "SHIRT34S000000FFFFFFXSXX",
+    "slug": "black-unisex-3-4-sleeve-shirt-with-white-logo-xs/SHIRT34S000000FFFFFFXSXX",
     "variant": [
       {
         "name": "color",
@@ -3934,6 +4066,7 @@
   {
     "baseProduct": "SHIRT34S",
     "code": "SHIRT34SFFFFFF000000LXXX",
+    "slug": "white-unisex-3-4-sleeve-shirt-with-black-logo-l/SHIRT34SFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -3967,6 +4100,7 @@
   {
     "baseProduct": "SHIRT34S",
     "code": "SHIRT34SFFFFFF000000MXXX",
+    "slug": "white-unisex-3-4-sleeve-shirt-with-black-logo-m/SHIRT34SFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -4000,6 +4134,7 @@
   {
     "baseProduct": "SHIRT34S",
     "code": "SHIRT34SFFFFFF000000SXXX",
+    "slug": "white-unisex-3-4-sleeve-shirt-with-black-logo-s/SHIRT34SFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -4033,6 +4168,7 @@
   {
     "baseProduct": "SHIRT34S",
     "code": "SHIRT34SFFFFFF000000XLXX",
+    "slug": "white-unisex-3-4-sleeve-shirt-with-black-logo-xl/SHIRT34SFFFFFF000000XLXX",
     "variant": [
       {
         "name": "color",
@@ -4066,6 +4202,7 @@
   {
     "baseProduct": "SHIRT34S",
     "code": "SHIRT34SFFFFFF000000XSXX",
+    "slug": "white-unisex-3-4-sleeve-shirt-with-black-logo-xs/SHIRT34SFFFFFF000000XSXX",
     "variant": [
       {
         "name": "color",
@@ -4099,6 +4236,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLS000000FFFFFFLXXX",
+    "slug": "black-men-long-sleeve-shirt-with-white-logo-l/SHIRTMLS000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -4132,6 +4270,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLS000000FFFFFFMXXX",
+    "slug": "black-men-long-sleeve-shirt-with-white-logo-m/SHIRTMLS000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -4165,6 +4304,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLS000000FFFFFFSXXX",
+    "slug": "black-men-long-sleeve-shirt-with-white-logo-s/SHIRTMLS000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -4198,6 +4338,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLS000000FFFFFFXLXX",
+    "slug": "black-men-long-sleeve-shirt-with-white-logo-xl/SHIRTMLS000000FFFFFFXLXX",
     "variant": [
       {
         "name": "color",
@@ -4231,6 +4372,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLS9B969C000000LXXX",
+    "slug": "gray-men-long-sleeve-shirt-with-black-logo-l/SHIRTMLS9B969C000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -4264,6 +4406,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLS9B969C000000MXXX",
+    "slug": "gray-men-long-sleeve-shirt-with-black-logo-m/SHIRTMLS9B969C000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -4297,6 +4440,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLS9B969C000000SXXX",
+    "slug": "gray-men-long-sleeve-shirt-with-black-logo-s/SHIRTMLS9B969C000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -4330,6 +4474,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLS9B969C000000XLXX",
+    "slug": "gray-men-long-sleeve-shirt-with-black-logo-xl/SHIRTMLS9B969C000000XLXX",
     "variant": [
       {
         "name": "color",
@@ -4363,6 +4508,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLSFFFFFF000000LXXX",
+    "slug": "white-men-long-sleeve-shirt-with-black-logo-l/SHIRTMLSFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -4396,6 +4542,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLSFFFFFF000000MXXX",
+    "slug": "white-men-long-sleeve-shirt-with-black-logo-m/SHIRTMLSFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -4429,6 +4576,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLSFFFFFF000000SXXX",
+    "slug": "white-men-long-sleeve-shirt-with-black-logo-s/SHIRTMLSFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -4462,6 +4610,7 @@
   {
     "baseProduct": "SHIRTMLS",
     "code": "SHIRTMLSFFFFFF000000XLXX",
+    "slug": "white-men-long-sleeve-shirt-with-black-logo-xl/SHIRTMLSFFFFFF000000XLXX",
     "variant": [
       {
         "name": "color",
@@ -4495,6 +4644,7 @@
   {
     "baseProduct": "SHIRTMMX",
     "code": "SHIRTMMX000000FFFFFFLXXX",
+    "slug": "black-men-muscle-shirt-with-white-logo-l/SHIRTMMX000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -4528,6 +4678,7 @@
   {
     "baseProduct": "SHIRTMMX",
     "code": "SHIRTMMX000000FFFFFFMXXX",
+    "slug": "black-men-muscle-shirt-with-white-logo-m/SHIRTMMX000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -4561,6 +4712,7 @@
   {
     "baseProduct": "SHIRTMMX",
     "code": "SHIRTMMX000000FFFFFFSXXX",
+    "slug": "black-men-muscle-shirt-with-white-logo-s/SHIRTMMX000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -4594,6 +4746,7 @@
   {
     "baseProduct": "SHIRTMMX",
     "code": "SHIRTMMX8E8C8D000000LXXX",
+    "slug": "gray-men-muscle-shirt-with-black-logo-l/SHIRTMMX8E8C8D000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -4627,6 +4780,7 @@
   {
     "baseProduct": "SHIRTMMX",
     "code": "SHIRTMMX8E8C8D000000MXXX",
+    "slug": "gray-men-muscle-shirt-with-black-logo-m/SHIRTMMX8E8C8D000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -4660,6 +4814,7 @@
   {
     "baseProduct": "SHIRTMMX",
     "code": "SHIRTMMX8E8C8D000000SXXX",
+    "slug": "gray-men-muscle-shirt-with-black-logo-s/SHIRTMMX8E8C8D000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -4693,6 +4848,7 @@
   {
     "baseProduct": "SHIRTMMX",
     "code": "SHIRTMMXFFFFFF000000LXXX",
+    "slug": "white-men-muscle-shirt-with-black-logo-l/SHIRTMMXFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -4726,6 +4882,7 @@
   {
     "baseProduct": "SHIRTMMX",
     "code": "SHIRTMMXFFFFFF000000MXXX",
+    "slug": "white-men-muscle-shirt-with-black-logo-m/SHIRTMMXFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -4759,6 +4916,7 @@
   {
     "baseProduct": "SHIRTMMX",
     "code": "SHIRTMMXFFFFFF000000SXXX",
+    "slug": "white-men-muscle-shirt-with-black-logo-s/SHIRTMMXFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -4792,6 +4950,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLS000000FFFFFFLXXX",
+    "slug": "black-women-long-sleeve-shirt-with-white-logo-l/SHIRTWLS000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -4825,6 +4984,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLS000000FFFFFFMXXX",
+    "slug": "black-women-long-sleeve-shirt-with-white-logo-m/SHIRTWLS000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -4858,6 +5018,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLS000000FFFFFFSXXX",
+    "slug": "black-women-long-sleeve-shirt-with-white-logo-s/SHIRTWLS000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -4891,6 +5052,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLS000000FFFFFFXSXX",
+    "slug": "black-women-long-sleeve-shirt-with-white-logo-xs/SHIRTWLS000000FFFFFFXSXX",
     "variant": [
       {
         "name": "color",
@@ -4924,6 +5086,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLS9397A0000000LXXX",
+    "slug": "gray-women-long-sleeve-shirt-with-black-logo-l/SHIRTWLS9397A0000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -4957,6 +5120,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLS9397A0000000MXXX",
+    "slug": "gray-women-long-sleeve-shirt-with-black-logo-m/SHIRTWLS9397A0000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -4990,6 +5154,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLS9397A0000000SXXX",
+    "slug": "gray-women-long-sleeve-shirt-with-black-logo-s/SHIRTWLS9397A0000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -5023,6 +5188,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLS9397A0000000XSXX",
+    "slug": "gray-women-long-sleeve-shirt-with-black-logo-xs/SHIRTWLS9397A0000000XSXX",
     "variant": [
       {
         "name": "color",
@@ -5056,6 +5222,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLSFFFFFF000000LXXX",
+    "slug": "white-women-long-sleeve-shirt-with-black-logo-l/SHIRTWLSFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -5089,6 +5256,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLSFFFFFF000000MXXX",
+    "slug": "white-women-long-sleeve-shirt-with-black-logo-m/SHIRTWLSFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -5122,6 +5290,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLSFFFFFF000000SXXX",
+    "slug": "white-women-long-sleeve-shirt-with-black-logo-s/SHIRTWLSFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -5155,6 +5324,7 @@
   {
     "baseProduct": "SHIRTWLS",
     "code": "SHIRTWLSFFFFFF000000XSXX",
+    "slug": "white-women-long-sleeve-shirt-with-black-logo-xs/SHIRTWLSFFFFFF000000XSXX",
     "variant": [
       {
         "name": "color",
@@ -5188,6 +5358,7 @@
   {
     "baseProduct": "SOCKSXXX",
     "code": "SOCKSXXX000000FFFFFFLXXX",
+    "slug": "black-socks-with-white-logo-l/SOCKSXXX000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -5221,6 +5392,7 @@
   {
     "baseProduct": "SOCKSXXX",
     "code": "SOCKSXXX000000FFFFFFMXXX",
+    "slug": "black-socks-with-white-logo-m/SOCKSXXX000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -5254,6 +5426,7 @@
   {
     "baseProduct": "SOCKSXXX",
     "code": "SOCKSXXX000000FFFFFFSXXX",
+    "slug": "black-socks-with-white-logo-s/SOCKSXXX000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -5287,6 +5460,7 @@
   {
     "baseProduct": "SOCKSXXX",
     "code": "SOCKSXXXFFFFFF000000LXXX",
+    "slug": "white-socks-with-black-logo-l/SOCKSXXXFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -5320,6 +5494,7 @@
   {
     "baseProduct": "SOCKSXXX",
     "code": "SOCKSXXXFFFFFF000000MXXX",
+    "slug": "white-socks-with-black-logo-m/SOCKSXXXFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -5353,6 +5528,7 @@
   {
     "baseProduct": "SOCKSXXX",
     "code": "SOCKSXXXFFFFFF000000SXXX",
+    "slug": "white-socks-with-black-logo-s/SOCKSXXXFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -5386,6 +5562,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXX000000FFFFFFLXXX",
+    "slug": "black-men-sweatshirt-with-white-logo-l/SWEATMXX000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -5419,6 +5596,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXX000000FFFFFFMXXX",
+    "slug": "black-men-sweatshirt-with-white-logo-m/SWEATMXX000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -5452,6 +5630,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXX000000FFFFFFSXXX",
+    "slug": "black-men-sweatshirt-with-white-logo-s/SWEATMXX000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -5485,6 +5664,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXX000000FFFFFFXLXX",
+    "slug": "black-men-sweatshirt-with-white-logo-xl/SWEATMXX000000FFFFFFXLXX",
     "variant": [
       {
         "name": "color",
@@ -5518,6 +5698,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXX9B969C000000LXXX",
+    "slug": "gray-men-sweatshirt-with-black-logo-l/SWEATMXX9B969C000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -5551,6 +5732,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXX9B969C000000MXXX",
+    "slug": "gray-men-sweatshirt-with-black-logo-m/SWEATMXX9B969C000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -5584,6 +5766,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXX9B969C000000SXXX",
+    "slug": "gray-men-sweatshirt-with-black-logo-s/SWEATMXX9B969C000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -5617,6 +5800,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXX9B969C000000XLXX",
+    "slug": "gray-men-sweatshirt-with-black-logo-xl/SWEATMXX9B969C000000XLXX",
     "variant": [
       {
         "name": "color",
@@ -5650,6 +5834,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXXFFFFFF000000LXXX",
+    "slug": "white-men-sweatshirt-with-black-logo-l/SWEATMXXFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -5683,6 +5868,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXXFFFFFF000000MXXX",
+    "slug": "white-men-sweatshirt-with-black-logo-m/SWEATMXXFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -5716,6 +5902,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXXFFFFFF000000SXXX",
+    "slug": "white-men-sweatshirt-with-black-logo-s/SWEATMXXFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -5749,6 +5936,7 @@
   {
     "baseProduct": "SWEATMXX",
     "code": "SWEATMXXFFFFFF000000XLXX",
+    "slug": "white-men-sweatshirt-with-black-logo-xl/SWEATMXXFFFFFF000000XLXX",
     "variant": [
       {
         "name": "color",
@@ -5782,6 +5970,7 @@
   {
     "baseProduct": "SWEATWCX",
     "code": "SWEATWCX000000FFFFFFLXXX",
+    "slug": "black-women-cropped-sweatshirt-with-white-logo-l/SWEATWCX000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -5815,6 +6004,7 @@
   {
     "baseProduct": "SWEATWCX",
     "code": "SWEATWCX000000FFFFFFMXXX",
+    "slug": "black-women-cropped-sweatshirt-with-white-logo-m/SWEATWCX000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -5848,6 +6038,7 @@
   {
     "baseProduct": "SWEATWCX",
     "code": "SWEATWCX000000FFFFFFSXXX",
+    "slug": "black-women-cropped-sweatshirt-with-white-logo-s/SWEATWCX000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -5881,6 +6072,7 @@
   {
     "baseProduct": "SWEATWCX",
     "code": "SWEATWCX000000FFFFFFXSXX",
+    "slug": "black-women-cropped-sweatshirt-with-white-logo-xs/SWEATWCX000000FFFFFFXSXX",
     "variant": [
       {
         "name": "color",
@@ -5914,6 +6106,7 @@
   {
     "baseProduct": "SWEATWCX",
     "code": "SWEATWCX9B9A9F000000LXXX",
+    "slug": "gray-women-cropped-sweatshirt-with-black-logo-l/SWEATWCX9B9A9F000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -5947,6 +6140,7 @@
   {
     "baseProduct": "SWEATWCX",
     "code": "SWEATWCX9B9A9F000000MXXX",
+    "slug": "gray-women-cropped-sweatshirt-with-black-logo-m/SWEATWCX9B9A9F000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -5980,6 +6174,7 @@
   {
     "baseProduct": "SWEATWCX",
     "code": "SWEATWCX9B9A9F000000SXXX",
+    "slug": "gray-women-cropped-sweatshirt-with-black-logo-s/SWEATWCX9B9A9F000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -6013,6 +6208,7 @@
   {
     "baseProduct": "SWEATWCX",
     "code": "SWEATWCX9B9A9F000000XSXX",
+    "slug": "gray-women-cropped-sweatshirt-with-black-logo-xs/SWEATWCX9B9A9F000000XSXX",
     "variant": [
       {
         "name": "color",
@@ -6046,6 +6242,7 @@
   {
     "baseProduct": "TANKTOPM",
     "code": "TANKTOPM000000FFFFFFLXXX",
+    "slug": "black-men-tank-top-with-white-logo-l/TANKTOPM000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -6079,6 +6276,7 @@
   {
     "baseProduct": "TANKTOPM",
     "code": "TANKTOPM000000FFFFFFMXXX",
+    "slug": "black-men-tank-top-with-white-logo-m/TANKTOPM000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -6112,6 +6310,7 @@
   {
     "baseProduct": "TANKTOPM",
     "code": "TANKTOPM000000FFFFFFSXXX",
+    "slug": "black-men-tank-top-with-white-logo-s/TANKTOPM000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -6145,6 +6344,7 @@
   {
     "baseProduct": "TANKTOPM",
     "code": "TANKTOPM000000FFFFFFXLXX",
+    "slug": "black-men-tank-top-with-white-logo-xl/TANKTOPM000000FFFFFFXLXX",
     "variant": [
       {
         "name": "color",
@@ -6178,6 +6378,7 @@
   {
     "baseProduct": "TANKTOPM",
     "code": "TANKTOPM7E7F84000000LXXX",
+    "slug": "gray-men-tank-top-with-black-logo-l/TANKTOPM7E7F84000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -6211,6 +6412,7 @@
   {
     "baseProduct": "TANKTOPM",
     "code": "TANKTOPM7E7F84000000MXXX",
+    "slug": "gray-men-tank-top-with-black-logo-m/TANKTOPM7E7F84000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -6244,6 +6446,7 @@
   {
     "baseProduct": "TANKTOPM",
     "code": "TANKTOPM7E7F84000000SXXX",
+    "slug": "gray-men-tank-top-with-black-logo-s/TANKTOPM7E7F84000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -6277,6 +6480,7 @@
   {
     "baseProduct": "TANKTOPM",
     "code": "TANKTOPM7E7F84000000XLXX",
+    "slug": "gray-men-tank-top-with-black-logo-xl/TANKTOPM7E7F84000000XLXX",
     "variant": [
       {
         "name": "color",
@@ -6310,6 +6514,7 @@
   {
     "baseProduct": "TANKTOPW",
     "code": "TANKTOPW000000FFFFFFMXXX",
+    "slug": "black-women-tank-top-with-white-logo-m/TANKTOPW000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -6343,6 +6548,7 @@
   {
     "baseProduct": "TANKTOPW",
     "code": "TANKTOPW000000FFFFFFSXXX",
+    "slug": "black-women-tank-top-with-white-logo-s/TANKTOPW000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -6376,6 +6582,7 @@
   {
     "baseProduct": "TANKTOPW",
     "code": "TANKTOPW000000FFFFFFXSXX",
+    "slug": "black-women-tank-top-with-white-logo-xs/TANKTOPW000000FFFFFFXSXX",
     "variant": [
       {
         "name": "color",
@@ -6409,6 +6616,7 @@
   {
     "baseProduct": "TANKTOPW",
     "code": "TANKTOPWFFFFFF000000MXXX",
+    "slug": "white-women-tank-top-with-black-logo-m/TANKTOPWFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -6442,6 +6650,7 @@
   {
     "baseProduct": "TANKTOPW",
     "code": "TANKTOPWFFFFFF000000SXXX",
+    "slug": "white-women-tank-top-with-black-logo-s/TANKTOPWFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -6475,6 +6684,7 @@
   {
     "baseProduct": "TANKTOPW",
     "code": "TANKTOPWFFFFFF000000XSXX",
+    "slug": "white-women-tank-top-with-black-logo-xs/TANKTOPWFFFFFF000000XSXX",
     "variant": [
       {
         "name": "color",
@@ -6508,6 +6718,7 @@
   {
     "baseProduct": "TOTEBAGL",
     "code": "TOTEBAGL000000FFFFFFXXXX",
+    "slug": "large-black-tote-bag-with-white-logo/TOTEBAGL000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -6533,6 +6744,7 @@
   {
     "baseProduct": "TOTEBAGL",
     "code": "TOTEBAGLE7DDC7000000XXXX",
+    "slug": "large-eco-tote-bag-with-black-logo/TOTEBAGLE7DDC7000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -6558,6 +6770,7 @@
   {
     "baseProduct": "TOTEBAGX",
     "code": "TOTEBAGX000000FFFFFFXXXX",
+    "slug": "black-tote-bag-with-white-logo/TOTEBAGX000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -6583,6 +6796,7 @@
   {
     "baseProduct": "TOTEBAGX",
     "code": "TOTEBAGXE7DDC7000000XXXX",
+    "slug": "eco-tote-bag-with-black-logo/TOTEBAGXE7DDC7000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -6608,6 +6822,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMS000000FFFFFFLXXX",
+    "slug": "black-men-t-shirt-with-white-logo-l/TSHIRTMS000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -6641,6 +6856,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMS000000FFFFFFMXXX",
+    "slug": "black-men-t-shirt-with-white-logo-m/TSHIRTMS000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -6674,6 +6890,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMS000000FFFFFFSXXX",
+    "slug": "black-men-t-shirt-with-white-logo-s/TSHIRTMS000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -6707,6 +6924,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMS000000FFFFFFXLXX",
+    "slug": "black-men-t-shirt-with-white-logo-xl/TSHIRTMS000000FFFFFFXLXX",
     "variant": [
       {
         "name": "color",
@@ -6740,6 +6958,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMSB0B0B2000000LXXX",
+    "slug": "gray-men-t-shirt-with-black-logo-l/TSHIRTMSB0B0B2000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -6773,6 +6992,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMSB0B0B2000000MXXX",
+    "slug": "gray-men-t-shirt-with-black-logo-m/TSHIRTMSB0B0B2000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -6806,6 +7026,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMSB0B0B2000000SXXX",
+    "slug": "gray-men-t-shirt-with-black-logo-s/TSHIRTMSB0B0B2000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -6839,6 +7060,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMSB0B0B2000000XLXX",
+    "slug": "gray-men-t-shirt-with-black-logo-xl/TSHIRTMSB0B0B2000000XLXX",
     "variant": [
       {
         "name": "color",
@@ -6872,6 +7094,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMSFFFFFF000000LXXX",
+    "slug": "white-men-t-shirt-with-black-logo-l/TSHIRTMSFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -6905,6 +7128,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMSFFFFFF000000MXXX",
+    "slug": "white-men-t-shirt-with-black-logo-m/TSHIRTMSFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -6938,6 +7162,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMSFFFFFF000000SXXX",
+    "slug": "white-men-t-shirt-with-black-logo-s/TSHIRTMSFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -6971,6 +7196,7 @@
   {
     "baseProduct": "TSHIRTMS",
     "code": "TSHIRTMSFFFFFF000000XLXX",
+    "slug": "white-men-t-shirt-with-black-logo-xl/TSHIRTMSFFFFFF000000XLXX",
     "variant": [
       {
         "name": "color",
@@ -7004,6 +7230,7 @@
   {
     "baseProduct": "TSHIRTWK",
     "code": "TSHIRTWK000000FFFFFFMXXX",
+    "slug": "black-women-cropped-t-shirt-with-white-logo-m/TSHIRTWK000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -7037,6 +7264,7 @@
   {
     "baseProduct": "TSHIRTWK",
     "code": "TSHIRTWK000000FFFFFFSXXX",
+    "slug": "black-women-cropped-t-shirt-with-white-logo-s/TSHIRTWK000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -7070,6 +7298,7 @@
   {
     "baseProduct": "TSHIRTWK",
     "code": "TSHIRTWK000000FFFFFFXSXX",
+    "slug": "black-women-cropped-t-shirt-with-white-logo-xs/TSHIRTWK000000FFFFFFXSXX",
     "variant": [
       {
         "name": "color",
@@ -7103,6 +7332,7 @@
   {
     "baseProduct": "TSHIRTWK",
     "code": "TSHIRTWKFFFFFF000000MXXX",
+    "slug": "white-women-cropped-t-shirt-with-black-logo-m/TSHIRTWKFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -7136,6 +7366,7 @@
   {
     "baseProduct": "TSHIRTWK",
     "code": "TSHIRTWKFFFFFF000000SXXX",
+    "slug": "white-women-cropped-t-shirt-with-black-logo-s/TSHIRTWKFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -7169,6 +7400,7 @@
   {
     "baseProduct": "TSHIRTWK",
     "code": "TSHIRTWKFFFFFF000000XSXX",
+    "slug": "white-women-cropped-t-shirt-with-black-logo-xs/TSHIRTWKFFFFFF000000XSXX",
     "variant": [
       {
         "name": "color",
@@ -7202,6 +7434,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWS000000FFFFFFLXXX",
+    "slug": "black-women-t-shirt-with-white-logo-l/TSHIRTWS000000FFFFFFLXXX",
     "variant": [
       {
         "name": "color",
@@ -7235,6 +7468,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWS000000FFFFFFMXXX",
+    "slug": "black-women-t-shirt-with-white-logo-m/TSHIRTWS000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -7268,6 +7502,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWS000000FFFFFFSXXX",
+    "slug": "black-women-t-shirt-with-white-logo-s/TSHIRTWS000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -7301,6 +7536,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWS000000FFFFFFXSXX",
+    "slug": "black-women-t-shirt-with-white-logo-xs/TSHIRTWS000000FFFFFFXSXX",
     "variant": [
       {
         "name": "color",
@@ -7334,6 +7570,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWSB5B1B2000000LXXX",
+    "slug": "gray-women-t-shirt-with-black-logo-l/TSHIRTWSB5B1B2000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -7367,6 +7604,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWSB5B1B2000000MXXX",
+    "slug": "gray-women-t-shirt-with-black-logo-m/TSHIRTWSB5B1B2000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -7400,6 +7638,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWSB5B1B2000000SXXX",
+    "slug": "gray-women-t-shirt-with-black-logo-s/TSHIRTWSB5B1B2000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -7433,6 +7672,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWSB5B1B2000000XSXX",
+    "slug": "gray-women-t-shirt-with-black-logo-xs/TSHIRTWSB5B1B2000000XSXX",
     "variant": [
       {
         "name": "color",
@@ -7466,6 +7706,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWSFFFFFF000000LXXX",
+    "slug": "white-women-t-shirt-with-black-logo-l/TSHIRTWSFFFFFF000000LXXX",
     "variant": [
       {
         "name": "color",
@@ -7499,6 +7740,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWSFFFFFF000000MXXX",
+    "slug": "white-women-t-shirt-with-black-logo-m/TSHIRTWSFFFFFF000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -7532,6 +7774,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWSFFFFFF000000SXXX",
+    "slug": "white-women-t-shirt-with-black-logo-s/TSHIRTWSFFFFFF000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -7565,6 +7808,7 @@
   {
     "baseProduct": "TSHIRTWS",
     "code": "TSHIRTWSFFFFFF000000XSXX",
+    "slug": "white-women-t-shirt-with-black-logo-xs/TSHIRTWSFFFFFF000000XSXX",
     "variant": [
       {
         "name": "color",
@@ -7598,6 +7842,7 @@
   {
     "baseProduct": "TSHIRTWV",
     "code": "TSHIRTWV000000FFFFFFMXXX",
+    "slug": "black-women-v-neck-t-shirt-with-white-logo-m/TSHIRTWV000000FFFFFFMXXX",
     "variant": [
       {
         "name": "color",
@@ -7631,6 +7876,7 @@
   {
     "baseProduct": "TSHIRTWV",
     "code": "TSHIRTWV000000FFFFFFSXXX",
+    "slug": "black-women-v-neck-t-shirt-with-white-logo-s/TSHIRTWV000000FFFFFFSXXX",
     "variant": [
       {
         "name": "color",
@@ -7664,6 +7910,7 @@
   {
     "baseProduct": "TSHIRTWV",
     "code": "TSHIRTWVCDCDCD000000MXXX",
+    "slug": "gray-women-v-neck-t-shirt-with-black-logo-m/TSHIRTWVCDCDCD000000MXXX",
     "variant": [
       {
         "name": "color",
@@ -7697,6 +7944,7 @@
   {
     "baseProduct": "TSHIRTWV",
     "code": "TSHIRTWVCDCDCD000000SXXX",
+    "slug": "gray-women-v-neck-t-shirt-with-black-logo-s/TSHIRTWVCDCDCD000000SXXX",
     "variant": [
       {
         "name": "color",
@@ -7730,6 +7978,7 @@
   {
     "baseProduct": "VFLEXFIT",
     "code": "VFLEXFIT000000FFFFFFXXXX",
+    "slug": "black-visor-flexfit-with-white-logo/VFLEXFIT000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -7755,6 +8004,7 @@
   {
     "baseProduct": "VFLEXFIT",
     "code": "VFLEXFITFFFFFF000000XXXX",
+    "slug": "white-visor-flexfit-with-black-logo/VFLEXFITFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
