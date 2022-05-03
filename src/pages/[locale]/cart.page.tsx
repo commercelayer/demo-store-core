@@ -1,12 +1,11 @@
 import { Container } from '#components/Container'
 import { Header } from '#components/Header'
 import { Navigation } from '#components/Navigation'
+import { Page } from '#components/Page'
 import { getLocale } from '#i18n/locale'
 import { withLocalePaths } from '#i18n/withLocalePaths'
-import { basePath } from '#next.config'
 import { CheckoutLink, Errors, LineItem, LineItemAmount, LineItemImage, LineItemName, LineItemQuantity, LineItemRemoveLink, LineItemsContainer, LineItemsCount, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 type Query = {
@@ -23,13 +22,7 @@ const Cart: NextPage = () => {
   const locale = getLocale(router.query.locale as string)
 
   return (
-    <div>
-      <Head>
-        <title>Commerce Layer | Demo Store</title>
-        <meta name='description' content='Commerce Layer is a transactional commerce API that lets you add multi-market ecommerce to any digital experience, with ease.' />
-        <link rel='icon' href={basePath + '/favicon.ico'} />
-      </Head>
-
+    <Page>
       <Container>
         <Header />
 
@@ -67,7 +60,7 @@ const Cart: NextPage = () => {
           </OrderContainer>
         </OrderStorage>
       </Container>
-    </div>
+    </Page>
   )
 }
 
