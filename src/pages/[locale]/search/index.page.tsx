@@ -1,5 +1,4 @@
 import { Navigation } from '#components/Navigation'
-import { Link } from '#i18n/Link'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
@@ -8,6 +7,7 @@ import { getBaseProducts, LocalizedProductWithVariant } from '#data/products'
 import { Container } from '#components/Container'
 import { Header } from '#components/Header'
 import { Page } from '#components/Page'
+import { ProductCard } from '#components/ProductCard'
 
 type Query = {
   locale: string
@@ -15,16 +15,6 @@ type Query = {
 
 type Props = {
   products: LocalizedProductWithVariant[]
-}
-
-const ProductTile: React.FC<{ product: LocalizedProductWithVariant }> = ({ product }) => {
-  return (
-    <div className="flex items-center gap-4 my-6">
-      <img src={product.images[0]} alt={product.name} width="60" />
-      {product.code.split(/^(\w{8})(\w{6})(\w{6})(\w{4})$/).join(' ')}
-      <Link href={`/product/${product.slug}`} >{product.name}</Link>
-    </div>
-  )
 }
 
 const Home: NextPage<Props> = ({ products }) => {
@@ -35,11 +25,13 @@ const Home: NextPage<Props> = ({ products }) => {
 
         <Navigation />
 
-        {
-          products.map(product => (
-            <ProductTile key={product.code} product={product} />
-          ))
-        }
+        <div className='mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-6 lg:gap-y-12'>
+          {
+            products.map(product => (
+              <ProductCard key={product.code} product={product} />
+            ))
+          }
+        </div>
       </Container>
     </Page>
   )
