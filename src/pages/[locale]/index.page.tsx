@@ -61,7 +61,11 @@ const Home: NextPage<Props> = ({ catalog }) => {
 
         <Navigation />
 
-        <Taxonomy taxonomy={catalog.taxonomies[0]} />
+        {
+          catalog.taxonomies.map(taxonomy => (
+            <Taxonomy key={taxonomy.key} taxonomy={taxonomy} />
+          ))
+        }
       </Container>
     </Page>
   )

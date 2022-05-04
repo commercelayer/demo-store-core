@@ -19,11 +19,13 @@
   },
   {
     "key": "taxonomy_4",
+    "label": "Shop by gender",
     "name": "Default Gender",
     "taxons": ["taxon_2", "taxon_6", "taxon_9", "taxon_10"]
   },
   {
     "key": "taxonomy_5",
+    "label": "Shop by gender",
     "name": "Gender APAC",
     "taxons": ["taxon_9", "taxon_10"]
   }

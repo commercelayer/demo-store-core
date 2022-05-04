@@ -7,8 +7,9 @@ import { getProductWithVariants } from '#data/products'
 import { Container } from '#components/Container'
 import { Header } from '#components/Header'
 import { Page } from '#components/Page'
-import { Taxon, taxons } from '#data/catalogs'
+import { getCatalog, Taxon } from '#data/catalogs'
 import { ProductCard } from '#components/ProductCard'
+import { getLocale } from '#i18n/locale'
 
 type Query = {
   locale: string
@@ -44,27 +45,48 @@ const Home: NextPage<Props> = ({ taxon, params }) => {
   )
 }
 
-// TODO: We should not generate all taxons for all locales, taxons are specific for each locale.
-// TODO: `withLocalePaths` should accepts a method -- withLocalePaths((locale) => ...)
 export const getStaticPaths: GetStaticPaths<Query> = () => {
-  return withLocalePaths({
-    paths: taxons.map(taxon => ({
-      params: {
-        taxon: taxon.slug.split('/')
-      }
-    })),
-    fallback: false
+  return withLocalePaths((localeCode) => {
+    const locale = getLocale(localeCode)
+
+    if (!locale) {
+      throw new Error('Locale is undefined!')
+    }
+
+    const catalog = getCatalog(locale?.country?.catalog || locale?.language.catalog)
+
+    const slugs = catalog.taxonomies.flatMap(taxonomy => taxonomy.taxons.map(taxon => taxon.slug))
+
+    return {
+      fallback: false,
+      paths: slugs.map(slug => ({
+        params: {
+          taxon: slug.split('/')
+        }
+      }))
+    }
   })
 }
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
-  const { locale } = params!
+  const { locale: localeCode, taxon } = params!
+
+  const locale = getLocale(localeCode)
+
+  if (!locale) {
+    throw new Error('Locale is undefined!')
+  }
+
+  const catalog = getCatalog(locale?.country?.catalog || locale?.language.catalog)
+
+  const taxonomy = catalog.taxonomies.find(taxonomy => taxonomy.taxons.find(({ slug }) => slug === taxon.join('/')))
+  const ttaxon = taxonomy?.taxons.find(({ slug }) => slug === taxon.join('/'))
 
   return {
     props: {
       params: params!,
-      taxon: taxons.find(taxon => taxon.slug === params!.taxon.join('/'))!,
-      ...(await serverSideTranslations(locale))
+      taxon: ttaxon!,
+      ...(await serverSideTranslations(localeCode))
     }
   }
 }
