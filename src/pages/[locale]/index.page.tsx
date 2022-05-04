@@ -9,6 +9,7 @@ import { Container } from '#components/Container'
 import { Header } from '#components/Header'
 import { Catalog, getCatalog, Taxon as TaxonType, Taxonomy as TaxonomyType } from '#data/catalogs'
 import { Page } from '#components/Page'
+import { getLocale } from '#i18n/locale'
 
 type Query = {
   locale: string
@@ -74,12 +75,17 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 }
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
-  const { locale } = params!
+  const { locale: localeCode } = params!
+  const locale = getLocale(localeCode)
+
+  if (!locale) {
+    throw new Error('Locale must be set!')
+  }
 
   return {
     props: {
-      catalog: getCatalog('AMER'),
-      ...(await serverSideTranslations(locale))
+      catalog: getCatalog(locale?.country?.catalog || locale?.language.catalog),
+      ...(await serverSideTranslations(localeCode))
     }
   }
 }

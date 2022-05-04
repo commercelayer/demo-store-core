@@ -4,6 +4,7 @@ export type Country = {
   name: string;
   code: string;
   market: number;
+  catalog: string;
   default_language: string;
   region: string;
 }
