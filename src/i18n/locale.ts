@@ -9,14 +9,32 @@ export type Locale = {
   language: Language
 }
 
-export function makeLocaleCode(countryCode: string, languageCode: string): string {
-  return `${languageCode}-${countryCode}`
+const languageCodes = languages.map(language => language.code)
+const countryCodes = countries.map(country => country.code)
+const localesRegExp = new RegExp(`^(${languageCodes.join('|')})(?:-(${countryCodes.join('|')}))?$`)
+
+export function makeLocaleCode(languageCode: string, countryCode?: string): string {
+  if (countryCode) {
+    return `${languageCode}-${countryCode}`
+  }
+
+  return languageCode
 }
 
-export function makeLocales(countries: Country[], languages: Language[]): Locale[] {
+export function parseLocaleCode(localeCode: string) {
+  const [_locale, languageCode, countryCode] = localeCode.match(localesRegExp) || [] as (string | undefined)[]
+  return { languageCode, countryCode }
+}
+
+export function changeLanguage(localeCode: string, newLanguageCode: string) {
+  const { countryCode } = parseLocaleCode(localeCode)
+  return makeLocaleCode(newLanguageCode, countryCode)
+}
+
+export function makeLocales(languages: Language[], countries: Country[]): Locale[] {
   return combine(countries, languages, (country, language) => {
     const locale: Locale = {
-      code: makeLocaleCode(country.code, language.code),
+      code: makeLocaleCode(language.code, country.code),
       country,
       language
     }
@@ -29,6 +47,6 @@ export function makeLocales(countries: Country[], languages: Language[]): Locale
     })))
 }
 
-export const locales = makeLocales(countries, languages)
+export const locales = makeLocales(languages, countries)
 
 export const getLocale = (localeCode: string) => locales.find(locale => locale.code === localeCode)

@@ -26,7 +26,7 @@ export const CountrySelector = () => {
                 <div>
                   {
                     countries.map(country => {
-                      const locale = makeLocaleCode(country.code, country.default_language)
+                      const locale = makeLocaleCode(country.default_language, country.code)
                       return (
                         <Link key={locale} locale={locale}>
                           <a className={styles.countryLink}>{country.name}</a>

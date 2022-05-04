@@ -13,7 +13,7 @@ exports[`home 1`] = `
           class="flex items-center flex-no-shrink text-white mr-6"
         >
           <a
-            href="/"
+            href="/en-US"
           >
             <div
               class="py-6 pb-6 "
@@ -48,7 +48,7 @@ exports[`home 1`] = `
           </a>
           <a
             class="block lg:inline-block"
-            href="/cart"
+            href="/en-US/cart"
           >
             <svg />
           </a>
@@ -63,19 +63,19 @@ exports[`home 1`] = `
           </a>
             |  
           <a
-            href="/?locale="
+            href="/?locale=en-US"
           >
             English
           </a>
             |  
           <a
-            href="/?locale="
+            href="/?locale=it-US"
           >
             Italiano
           </a>
             |  
           <a
-            href="/search"
+            href="/en-US/search"
           >
             All Products
           </a>
@@ -92,7 +92,7 @@ exports[`home 1`] = `
         >
           <a
             class="relative w-full h-80 xl:h-96 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1"
-            href="/search/accessories"
+            href="/en-US/search/accessories"
           >
             <img
               alt="Accessories"

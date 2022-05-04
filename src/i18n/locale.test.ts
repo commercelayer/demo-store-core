@@ -1,14 +1,15 @@
 import { Country } from '#data/countries'
 import { Language } from '#data/languages'
 
-import { getLocale, Locale, makeLocaleCode, makeLocales } from './locale'
+import { getLocale, Locale, makeLocaleCode, makeLocales, parseLocaleCode } from './locale'
 
 describe('makeLocaleCode', () => {
   it('creates a localeCode given a countryCode and a languageCode', () => {
-    expect(makeLocaleCode('us', 'it')).toStrictEqual('it-us')
-    expect(makeLocaleCode('UK', 'en')).toStrictEqual('en-UK')
-    expect(makeLocaleCode('it', 'IT')).toStrictEqual('IT-it')
-    expect(makeLocaleCode('BE', 'FR')).toStrictEqual('FR-BE')
+    expect(makeLocaleCode('it', 'us')).toStrictEqual('it-us')
+    expect(makeLocaleCode('en', 'UK')).toStrictEqual('en-UK')
+    expect(makeLocaleCode('IT', 'it')).toStrictEqual('IT-it')
+    expect(makeLocaleCode('FR', 'BE')).toStrictEqual('FR-BE')
+    expect(makeLocaleCode('en')).toStrictEqual('en')
   })
 })
 
@@ -19,7 +20,7 @@ describe('makeLocales', () => {
     const italian: Language = { code: 'it', name: 'Italiano', catalog: 'AMER' }
     const english: Language = { code: 'en', name: 'English', catalog: 'AMER' }
 
-    const actual = makeLocales([unitedStates, italy], [italian, english])
+    const actual = makeLocales([italian, english], [unitedStates, italy])
 
     const expects: Locale[] = [
       { "code": "it-US", "country": unitedStates, "language": italian },
@@ -33,6 +34,15 @@ describe('makeLocales', () => {
     expect(actual).toStrictEqual(expects)
   })
 })
+
+describe('parseLocale', () => {
+  it('should extract the "language" and "country" from a locale', () => {
+    expect(parseLocaleCode('en-US')).toEqual({ languageCode: 'en', countryCode: 'US' })
+    expect(parseLocaleCode('xx-US')).toEqual({ languageCode: undefined, countryCode: undefined })
+    expect(parseLocaleCode('en')).toEqual({ languageCode: 'en', countryCode: undefined })
+  })
+})
+
 
 describe('getLocale', () => {
   it('should be able to return a Locale gived a localeCode', () => {

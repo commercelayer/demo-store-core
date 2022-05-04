@@ -1,4 +1,5 @@
 import { Link } from "#i18n/Link";
+import { changeLanguage } from '#i18n/locale'
 import { useRouter } from "next/router";
 import { FC } from "react";
 
@@ -17,12 +18,12 @@ export const Navigation: FC = () => {
           router?.pathname !== '/' && (
             <>
               &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link locale={(router?.query?.locale as string)?.replace(/[it|en]+\-/, 'en-')}>
+              <Link locale={changeLanguage(router?.query?.locale as string, 'en')}>
                 <a>English</a>
               </Link>
 
               &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link locale={(router?.query?.locale as string)?.replace(/[it|en]+\-/, 'it-')}>
+              <Link locale={changeLanguage(router?.query?.locale as string, 'it')}>
                 <a>Italiano</a>
               </Link>
 
