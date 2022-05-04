@@ -7,9 +7,9 @@ test('"getBaseProducts" should returns only base products', () => {
 
   expect(baseProducts.length).toStrictEqual(3)
 
-  expect(baseProducts[0].baseProduct).toStrictEqual('BODYBSSS')
-  expect(baseProducts[1].baseProduct).toStrictEqual('BOTT17OZ')
-  expect(baseProducts[2].baseProduct).toStrictEqual('CUFFBEAN')
+  expect(baseProducts[0].product).toStrictEqual('BODYBSSS')
+  expect(baseProducts[1].product).toStrictEqual('BOTT17OZ')
+  expect(baseProducts[2].product).toStrictEqual('CUFFBEAN')
 
   expect(baseProducts[0].name).toStrictEqual({
     'en-US': 'en-US Black Baby Short Sleeve Bodysuit with White Logo',
@@ -23,9 +23,9 @@ test('"getBaseProducts" should resolves product localization using language', ()
 
   expect(baseProducts.length).toStrictEqual(3)
 
-  expect(baseProducts[0].baseProduct).toStrictEqual('BODYBSSS')
-  expect(baseProducts[1].baseProduct).toStrictEqual('BOTT17OZ')
-  expect(baseProducts[2].baseProduct).toStrictEqual('CUFFBEAN')
+  expect(baseProducts[0].product).toStrictEqual('BODYBSSS')
+  expect(baseProducts[1].product).toStrictEqual('BOTT17OZ')
+  expect(baseProducts[2].product).toStrictEqual('CUFFBEAN')
 
   expect(baseProducts[0].name).toStrictEqual('Body nero a maniche corte per bebè con logo bianco')
   expect(baseProducts[0].description).toStrictEqual('This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.')
@@ -36,9 +36,9 @@ test('"getBaseProducts" should resolves product localization using language-COUN
 
   expect(baseProducts.length).toStrictEqual(3)
 
-  expect(baseProducts[0].baseProduct).toStrictEqual('BODYBSSS')
-  expect(baseProducts[1].baseProduct).toStrictEqual('BOTT17OZ')
-  expect(baseProducts[2].baseProduct).toStrictEqual('CUFFBEAN')
+  expect(baseProducts[0].product).toStrictEqual('BODYBSSS')
+  expect(baseProducts[1].product).toStrictEqual('BOTT17OZ')
+  expect(baseProducts[2].product).toStrictEqual('CUFFBEAN')
 
   expect(baseProducts[0].name).toStrictEqual('en-US Black Baby Short Sleeve Bodysuit with White Logo')
   expect(baseProducts[0].description).toStrictEqual('en-US This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.')
@@ -47,7 +47,7 @@ test('"getBaseProducts" should resolves product localization using language-COUN
 test('"getProduct" should returns the product by provided code', () => {
   const product = getProduct('BODYBSSS000000FFFFFF6MXX')
 
-  expect(product.baseProduct).toStrictEqual('BODYBSSS')
+  expect(product.product).toStrictEqual('BODYBSSS')
 
   expect(product.name).toStrictEqual({
     en: 'Black Baby Short Sleeve Bodysuit with White Logo',
@@ -59,7 +59,7 @@ test('"getProduct" should returns the product by provided code', () => {
 test('"getProduct" should resolves product localization', () => {
   const product = getProduct('BODYBSSS000000FFFFFF6MXX', 'en')
 
-  expect(product.baseProduct).toStrictEqual('BODYBSSS')
+  expect(product.product).toStrictEqual('BODYBSSS')
 
   expect(product.name).toStrictEqual('Black Baby Short Sleeve Bodysuit with White Logo')
 })
@@ -95,7 +95,7 @@ test('"getProductVariants" should resolves variants localization', () => {
 test('"getProductWithVariants" should returns the variants for the provived Product', () => {
   const product = getProductWithVariants('BODYBSSS000000FFFFFF6MXX')
 
-  expect(product.baseProduct).toStrictEqual('BODYBSSS')
+  expect(product.product).toStrictEqual('BODYBSSS')
 
   expect(product.name).toStrictEqual({
     en: 'Black Baby Short Sleeve Bodysuit with White Logo',
@@ -113,7 +113,7 @@ test('"getProductWithVariants" should returns the variants for the provived Prod
 test('"getProductWithVariants" should resolves variants localization', () => {
   const product = getProductWithVariants('BODYBSSS000000FFFFFF6MXX', 'it')
 
-  expect(product.baseProduct).toStrictEqual('BODYBSSS')
+  expect(product.product).toStrictEqual('BODYBSSS')
 
   expect(product.name).toStrictEqual('Body nero a maniche corte per bebè con logo bianco')
 

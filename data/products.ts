@@ -5,7 +5,7 @@ type Localized<T> = {
 }
 
 export type Product = {
-  baseProduct: string
+  product: string
   code: string
   slug: string
   variant: Variant[]
@@ -41,8 +41,8 @@ export type LocalizedProductWithVariant = LocalizedProduct & {
 export const products: Product[] = productsJson
 
 const groupedBaseProducts: { [code: string]: Product[] } = products.reduce((acc, cv) => {
-  acc[cv.baseProduct] = acc[cv.baseProduct] || []
-  acc[cv.baseProduct].push(cv)
+  acc[cv.product] = acc[cv.product] || []
+  acc[cv.product].push(cv)
   return acc
 }, {} as { [code: string]: Product[] })
 
@@ -90,7 +90,7 @@ export function getProduct(code: string, locale?: string) {
 export function getProductVariants(product: Product | LocalizedProduct): Product[]
 export function getProductVariants(product: Product | LocalizedProduct, locale: string): LocalizedProduct[]
 export function getProductVariants(product: Product | LocalizedProduct, locale?: string) {
-  const variants = groupedBaseProducts[product.baseProduct]
+  const variants = groupedBaseProducts[product.product]
 
   if (locale) {
     return variants.map(product => resolveProductLocale(product, locale))
