@@ -3,11 +3,14 @@ import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
-import { getBaseProducts, LocalizedProductWithVariant } from '#data/products'
+import { LocalizedProductWithVariant } from '#data/products'
 import { Container } from '#components/Container'
 import { Header } from '#components/Header'
 import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
+import { getLocale } from '#i18n/locale'
+import { getCatalog } from '#data/catalogs'
+import uniqBy from 'lodash/uniqBy'
 
 type Query = {
   locale: string
@@ -45,12 +48,22 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 }
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
-  const { locale } = params!
+  const { locale: localeCode } = params!
+
+  const locale = getLocale(localeCode)
+
+  if (!locale) {
+    throw new Error('Locale is undefined!')
+  }
+
+  const catalog = getCatalog(locale?.country?.catalog || locale?.language.catalog, localeCode, true)
+
+  const products = uniqBy(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ references }) => references)), 'code')
 
   return {
     props: {
-      products: getBaseProducts(locale),
-      ...(await serverSideTranslations(locale))
+      products,
+      ...(await serverSideTranslations(localeCode))
     }
   }
 }

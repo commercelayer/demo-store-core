@@ -88,7 +88,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   return {
     props: {
-      catalog: getCatalog(locale?.country?.catalog || locale?.language.catalog),
+      catalog: getCatalog(locale?.country?.catalog || locale?.language.catalog, localeCode, false),
       ...(await serverSideTranslations(localeCode))
     }
   }
