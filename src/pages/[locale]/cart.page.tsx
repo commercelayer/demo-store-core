@@ -1,3 +1,5 @@
+// TODO: this will be replaced by the hosted cart!
+
 import { Container } from '#components/Container'
 import { Header } from '#components/Header'
 import { Navigation } from '#components/Navigation'

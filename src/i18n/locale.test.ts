@@ -49,7 +49,7 @@ describe('getLocale', () => {
     const unitedStates: Country = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas', catalog: 'AMER' }
     const italian: Language = { code: 'it', name: 'Italiano', catalog: 'AMER' }
 
-    const locale: Locale | undefined = getLocale('it-US')
+    const locale = getLocale('it-US')
 
     expect(locale).toStrictEqual<Locale>({
       code: 'it-US',
@@ -59,7 +59,11 @@ describe('getLocale', () => {
   })
 
   it('should return undefined when the localeCode is unknown', () => {
-    const locale: Locale | undefined = getLocale('aa-BB')
+    expect(() => getLocale('aa-BB')).toThrowError(new Error('Cannot find a locale with code "aa-BB"'))
+  })
+
+  it('should return undefined when the localeCode is unknown and throw option is set to false', () => {
+    const locale = getLocale('aa-BB', false)
     expect(locale).toBe(undefined)
   })
 })

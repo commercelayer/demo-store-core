@@ -38,7 +38,7 @@ export type LocalizedProductWithVariant = LocalizedProduct & {
   variants: LocalizedProduct[]
 }
 
-export const products: Product[] = productsJson
+const products: Product[] = productsJson
 
 const groupedBaseProducts: { [code: string]: Product[] } = products.reduce((acc, cv) => {
   acc[cv.product] = acc[cv.product] || []

@@ -1,15 +1,15 @@
+import { Container } from '#components/Container'
+import { Header } from '#components/Header'
 import { Navigation } from '#components/Navigation'
+import { Page } from '#components/Page'
+import { Catalog, getCatalog, Taxon as TaxonType, Taxonomy as TaxonomyType } from '#data/catalogs'
 import { Link } from '#i18n/Link'
+import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { basePath } from '#next.config'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
-import { Container } from '#components/Container'
-import { Header } from '#components/Header'
-import { Catalog, getCatalog, Taxon as TaxonType, Taxonomy as TaxonomyType } from '#data/catalogs'
-import { Page } from '#components/Page'
-import { getLocale } from '#i18n/locale'
 
 type Query = {
   locale: string
@@ -17,6 +17,24 @@ type Query = {
 
 type Props = {
   catalog: Catalog
+}
+
+const Home: NextPage<Props> = ({ catalog }) => {
+  return (
+    <Page>
+      <Container>
+        <Header />
+
+        <Navigation />
+
+        {
+          catalog.taxonomies.map(taxonomy => (
+            <Taxonomy key={taxonomy.key} taxonomy={taxonomy} />
+          ))
+        }
+      </Container>
+    </Page>
+  )
 }
 
 const Taxonomy: React.FC<{ taxonomy: TaxonomyType }> = ({ taxonomy }) => {
@@ -52,25 +70,6 @@ const Taxon: React.FC<{ taxon: TaxonType }> = ({ taxon }) => {
   )
 }
 
-const Home: NextPage<Props> = ({ catalog }) => {
-
-  return (
-    <Page>
-      <Container>
-        <Header />
-
-        <Navigation />
-
-        {
-          catalog.taxonomies.map(taxonomy => (
-            <Taxonomy key={taxonomy.key} taxonomy={taxonomy} />
-          ))
-        }
-      </Container>
-    </Page>
-  )
-}
-
 export const getStaticPaths: GetStaticPaths<Query> = () => {
   return withLocalePaths({
     paths: [],
@@ -82,13 +81,9 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const { locale: localeCode } = params!
   const locale = getLocale(localeCode)
 
-  if (!locale) {
-    throw new Error('Locale must be set!')
-  }
-
   return {
     props: {
-      catalog: getCatalog(locale?.country?.catalog || locale?.language.catalog, localeCode, false),
+      catalog: getCatalog(locale, false),
       ...(await serverSideTranslations(localeCode))
     }
   }

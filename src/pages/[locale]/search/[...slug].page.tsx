@@ -35,7 +35,6 @@ const Home: NextPage<Props> = ({ products, taxon }) => {
         <h2 className='mt-16 block text-2xl font-semibold text-black'>{taxon.result.label}</h2>
 
         <div>
-          {console.log(taxon.memo)}
           {
             taxon.memo.map(taxon => (
               <Link key={taxon.key} href={`/search/${taxon.slug}`}><a className='bg-gray-100 mx-2 rounded py-1 px-2'>{taxon.label}</a></Link>
@@ -69,11 +68,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
   return withLocalePaths((localeCode) => {
     const locale = getLocale(localeCode)
 
-    if (!locale) {
-      throw new Error('Locale is undefined!')
-    }
-
-    const catalog = getCatalog(locale?.country?.catalog || locale?.language.catalog, localeCode, false)
+    const catalog = getCatalog(locale, false)
 
     const slugs = catalog.taxonomies.flatMap(taxonomy => taxonomy.taxons.flatMap(getFlatSlug))
 
@@ -97,11 +92,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   const locale = getLocale(localeCode)
 
-  if (!locale) {
-    throw new Error('Locale is undefined!')
-  }
-
-  const catalog = getCatalog(locale?.country?.catalog || locale?.language.catalog, localeCode, true)
+  const catalog = getCatalog(locale, true)
 
   const taxon = catalog.taxonomies.reduce((acc, cv) => {
     if (acc) {

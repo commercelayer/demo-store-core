@@ -1,3 +1,4 @@
+import { Locale } from '#i18n/locale'
 import catalogsJson from './json/catalogs.json'
 import taxonomiesJson from './json/taxonomies.json'
 import taxonsJson from './json/taxons.json'
@@ -44,14 +45,15 @@ const catalogs: JsonCatalog[] = catalogsJson
 const taxonomies: JsonTaxonomy[] = taxonomiesJson
 export const taxons: JsonTaxon[] = taxonsJson
 
-export const getCatalog = (name: string, locale: string, fetchProducts = false): Catalog => {
+export const getCatalog = (locale: Locale, fetchProducts = false): Catalog => {
+  const name = locale.country?.catalog || locale.language.catalog
   const catalog = catalogs.find(catalog => catalog.name === name)
 
   if (!catalog) {
     throw new Error(`Cannot find the catalog with name "${name}"`)
   }
 
-  return resolveCatalog(catalog, locale, fetchProducts)
+  return resolveCatalog(catalog, locale.code, fetchProducts)
 }
 
 const resolveCatalog = (catalog: JsonCatalog, locale: string, fetchProducts: boolean): Catalog => {

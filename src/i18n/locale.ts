@@ -49,4 +49,16 @@ export function makeLocales(languages: Language[], countries: Country[]): Locale
 
 export const locales = makeLocales(languages, countries)
 
-export const getLocale = (localeCode: string) => locales.find(locale => locale.code === localeCode)
+export const [ defaultLocale ] = languageCodes
+
+export function getLocale(localeCode: string): Locale
+export function getLocale(localeCode: string, throwWhenUndefined: false): Locale | undefined
+export function getLocale(localeCode: string, throwWhenUndefined = true) {
+  const locale = locales.find(locale => locale.code === localeCode)
+
+  if (throwWhenUndefined && !locale) {
+    throw new Error(`Cannot find a locale with code "${localeCode}"`)
+  }
+
+  return locale
+}

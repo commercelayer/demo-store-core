@@ -1,5 +1,5 @@
 import { Navigation } from '#components/Navigation'
-import { getProductWithVariants, LocalizedProduct, LocalizedProductWithVariant, products } from '#data/products'
+import { getProductWithVariants, LocalizedProduct, LocalizedProductWithVariant } from '#data/products'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
@@ -12,6 +12,8 @@ import { getLocale } from '#i18n/locale'
 import { Container } from '#components/Container'
 import { Header } from '#components/Header'
 import { Page } from '#components/Page'
+import { getCatalog } from '#data/catalogs'
+import { uniqBy } from 'lodash'
 
 type Query = {
   locale: string
@@ -76,13 +78,21 @@ const ProductDetailPage: NextPage<Props> = ({ product }) => {
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = () => {
-  return withLocalePaths({
-    paths: products.map(product => ({
-      params: {
-        slug: product.slug.split('/')
-      }
-    })),
-    fallback: false
+  return withLocalePaths((localeCode) => {
+    const locale = getLocale(localeCode)
+
+    const catalog = getCatalog(locale, true)
+
+    const products = uniqBy(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ references }) => references)), 'code')
+
+    return {
+      paths: products.map(product => ({
+        params: {
+          slug: product.slug.split('/')
+        }
+      })),
+      fallback: false
+    }
   })
 }
 

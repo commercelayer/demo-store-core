@@ -1,4 +1,4 @@
-import { getLocale } from '#i18n/locale'
+import { defaultLocale, getLocale } from '#i18n/locale'
 import { AuthReturnType, ClientCredentials, getSalesChannelToken } from '@commercelayer/js-auth'
 import { CommerceLayer } from '@commercelayer/react-components'
 import { useRouter } from 'next/router'
@@ -51,7 +51,7 @@ export const Auth: FC = ({ children }) => {
 
   const router = useRouter()
 
-  const locale = useMemo(() => getLocale(router.query.locale as string), [router])
+  const locale = useMemo(() => getLocale(router.query.locale as string || defaultLocale), [router])
 
   const [market, setMarket] = useState<number | undefined>(locale?.country?.market)
   const [auth, setAuth] = useState<Auth | null>(null)

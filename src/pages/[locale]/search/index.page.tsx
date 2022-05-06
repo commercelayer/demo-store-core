@@ -54,11 +54,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   const locale = getLocale(localeCode)
 
-  if (!locale) {
-    throw new Error('Locale is undefined!')
-  }
-
-  const catalog = getCatalog(locale?.country?.catalog || locale?.language.catalog, localeCode, true)
+  const catalog = getCatalog(locale, true)
 
   const products = uniqBy(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ references }) => references)), 'code')
 
