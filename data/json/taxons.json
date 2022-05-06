@@ -153,15 +153,52 @@
     "image": "/assets/images/classic-polo-shirt-black-front-60f15d48dd89e.png",
     "references": [
       "BODYBSSS000000FFFFFF12MX",
-      "BODYBSSSFFFFFF00000012MX",
+      "BODYBSSSFFFFFF00000012MX"
+    ],
+    "taxons": ["taxon_7A", "taxon_7B"]
+  },
+  {
+    "key": "taxon_7A",
+    "label": "Polo",
+    "description": "Shirts",
+    "slug": "shirts/polo",
+    "name": "All Polo Shirts",
+    "references": [],
+    "taxons": ["taxon_7AA", "taxon_7AB"]
+  },
+  {
+    "key": "taxon_7AA",
+    "label": "Dark Polo",
+    "description": "Shirts",
+    "slug": "shirts/polo/dark",
+    "name": "All Polo Shirts",
+    "references": [
+      "POLOWXXX000000FFFFFFLXXX",
+      "POLOMXXX000000FFFFFFLXXX"
+    ]
+  },
+  {
+    "key": "taxon_7AB",
+    "label": "All Others",
+    "description": "Shirts",
+    "slug": "shirts/polo/others",
+    "name": "All Polo Shirts",
+    "references": [
+      "POLOMXXXC2C2C2000000LXXX",
+      "POLOMXXXFFFFFF000000LXXX",
+      "POLOWXXXFFFFFF000000LXXX"
+    ]
+  },
+  {
+    "key": "taxon_7B",
+    "label": "Other Shirts",
+    "description": "Shirts",
+    "slug": "shirts/others",
+    "name": "All Shirts",
+    "references": [
       "CROPTOPW000000FFFFFFLXXX",
       "CROPTOPWE8E8E8000000LXXX",
       "CROPTOPWFFFFFF000000LXXX",
-      "POLOMXXX000000FFFFFFLXXX",
-      "POLOMXXXC2C2C2000000LXXX",
-      "POLOMXXXFFFFFF000000LXXX",
-      "POLOWXXX000000FFFFFFLXXX",
-      "POLOWXXXFFFFFF000000LXXX",
       "SHIRT34S000000FFFFFFLXXX",
       "SHIRT34SFFFFFF000000LXXX",
       "SHIRTMLS000000FFFFFFLXXX",
