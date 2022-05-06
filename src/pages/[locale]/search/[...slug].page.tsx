@@ -6,7 +6,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { Container } from '#components/Container'
 import { Header } from '#components/Header'
 import { Page } from '#components/Page'
-import { getCatalog, Taxon } from '#data/catalogs'
+import { deepFind, getCatalog, Taxon } from '#data/catalogs'
 import { ProductCard } from '#components/ProductCard'
 import { getLocale } from '#i18n/locale'
 import { uniqBy } from 'lodash'
@@ -20,7 +20,7 @@ type Query = {
 
 type Props = {
   params: Query
-  taxon: { taxon: Taxon; memo: Taxon[] }
+  taxon: { result: Taxon; memo: Taxon[] }
   products: LocalizedProductWithVariant[]
 }
 
@@ -32,7 +32,7 @@ const Home: NextPage<Props> = ({ products, taxon }) => {
 
         <Navigation />
 
-        <h2 className='mt-16 block text-2xl font-semibold text-black'>{taxon.taxon.label}</h2>
+        <h2 className='mt-16 block text-2xl font-semibold text-black'>{taxon.result.label}</h2>
 
         <div>
           {console.log(taxon.memo)}
@@ -45,7 +45,7 @@ const Home: NextPage<Props> = ({ products, taxon }) => {
 
         <div>
           {
-            taxon.taxon.taxons?.map(taxon => {
+            taxon.result.taxons?.map(taxon => {
               return (
                 <Link key={taxon.key} href={`/search/${taxon.slug}`}><a className='bg-gray-100 mx-2 rounded py-1 px-2'>{taxon.label}</a></Link>
               )
@@ -103,41 +103,19 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   const catalog = getCatalog(locale?.country?.catalog || locale?.language.catalog, localeCode, true)
 
-  // TODO: move in helper methods as generic method to recursively search for element by key
-  function findTaxonBySlug(taxons: Taxon[] | undefined | null, slug: string, memo: Taxon[] = [], depth: number = 0): { taxon: Taxon; memo: Taxon[] } | undefined {
-    if (!taxons) {
-      return
-    }
-
-    for (const taxon of taxons) {
-
-      memo[depth] = taxon
-
-      if (taxon.slug === slug) {
-        return { taxon, memo }
-      }
-
-      const child = findTaxonBySlug(taxon.taxons, slug, memo, depth +1)
-
-      if (child) {
-        return child
-      }
-    }
-  }
-
   const taxon = catalog.taxonomies.reduce((acc, cv) => {
     if (acc) {
       return acc
     }
 
-    return findTaxonBySlug(cv.taxons, slug.join('/'))
-  }, undefined as { taxon: Taxon; memo: Taxon[] } | undefined)
+    return deepFind(cv.taxons, 'taxons', 'slug', slug.join('/'))
+  }, undefined as { result: Taxon; memo: Taxon[] } | undefined)
 
   if (!taxon) {
     throw new Error('Cannot find Taxon!')
   }
 
-  const products = uniqBy(getFlatProducts(taxon.taxon), 'code')
+  const products = uniqBy(getFlatProducts(taxon.result), 'code')
 
   function getFlatProducts(taxon: Taxon): LocalizedProductWithVariant[] {
     return taxon.references.concat(taxon.taxons?.flatMap(getFlatProducts) || [])

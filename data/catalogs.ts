@@ -26,7 +26,7 @@ export type Taxonomy = Omit<JsonTaxonomy, 'taxons'> & {
 
 export type Taxon = Omit<JsonTaxon, 'references' | 'taxons'> & {
   references: LocalizedProductWithVariant[]
-  taxons?: Taxon[] | null
+  taxons: Taxon[]
 }
 
 export type JsonTaxon = {
@@ -72,7 +72,7 @@ const resolveTaxon = (taxon: JsonTaxon, locale: string, fetchProducts: boolean):
   return {
     ...taxon,
     references: fetchProducts ? taxon.references.map(referenceCode => getProductWithVariants(referenceCode, locale)) : [],
-    taxons: taxon.taxons?.map(taxonKey => taxons.find(taxon => taxon.key === taxonKey)!).map(taxon => resolveTaxon(taxon, locale, fetchProducts)) || null
+    taxons: taxon.taxons?.map(taxonKey => taxons.find(taxon => taxon.key === taxonKey)!).map(taxon => resolveTaxon(taxon, locale, fetchProducts)) || []
   }
 }
 
@@ -83,3 +83,43 @@ const resolveTaxon = (taxon: JsonTaxon, locale: string, fetchProducts: boolean):
 // function getProductsBySlug(slug: string) {
 
 // }
+
+
+type Taxonable<IK extends string, SK extends string> = {
+  [iteratorKey in IK | SK]: iteratorKey extends SK ? string : Taxonable<IK, SK>[]
+}
+
+export function deepFind<T extends Taxonable<IK, SK>, IK extends string, SK extends string>(items: T[] | undefined | null, iteratorKey: IK, searchKey: SK, searchValue: string): { result: T; memo: T[] } | undefined {
+  function internal<T extends Taxonable<IK, SK>, IK extends string, SK extends string>(items: T[] | undefined | null, iteratorKey: IK, searchKey: SK, searchValue: string, memo: T[] = [], depth: number = 0): { result: T; memo: T[] } | undefined {
+    if (!items) {
+      return
+    }
+
+    for (const item of items) {
+
+      memo[depth] = item
+
+      if (item[searchKey] === searchValue) {
+        return {
+          result: item,
+          memo: memo // .slice(0, -1)
+        }
+      }
+
+      const children = item[iteratorKey]
+
+      if (Array.isArray(children)) {
+        const child = internal(children, iteratorKey, searchKey, searchValue, memo, depth + 1)
+
+        if (child) {
+          return {
+            result: child.result,
+            memo: child.memo
+          }
+        }
+      }
+    }
+  }
+
+  return internal(items, iteratorKey, searchKey, searchValue)
+}
