@@ -19,6 +19,7 @@
     "@commercelayer/react-components": "^3.11.0",
     "@svgr/webpack": "^6.2.1",
     "@types/lodash": "^4.14.181",
+    "fuse.js": "^6.6.1",
     "immer": "^9.0.12",
     "lodash": "^4.17.21",
     "next": "^12.1.5",

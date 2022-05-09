@@ -7,7 +7,7 @@ exports[`home 1`] = `
       class="container mx-auto px-4"
     >
       <nav
-        class="flex items-center justify-between flex-wrap"
+        class="flex items-center justify-between flex-wrap mb-4"
       >
         <div
           class="flex items-center flex-no-shrink text-white mr-6"

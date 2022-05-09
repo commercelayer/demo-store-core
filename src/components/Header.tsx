@@ -4,7 +4,7 @@ import { Link } from '#i18n/Link'
 
 export const Header: React.FC = () => {
   return (
-    <nav className="flex items-center justify-between flex-wrap">
+    <nav className="flex items-center justify-between flex-wrap mb-4">
       <div className="flex items-center flex-no-shrink text-white mr-6">
         <Link href='/'><a><Logo /></a></Link>
       </div>
