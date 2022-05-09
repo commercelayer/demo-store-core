@@ -92,36 +92,29 @@ type Taxonable<IK extends string, SK extends string> = {
 }
 
 export function deepFind<T extends Taxonable<IK, SK>, IK extends string, SK extends string>(items: T[] | undefined | null, iteratorKey: IK, searchKey: SK, searchValue: string): { result: T; memo: T[] } | undefined {
-  function internal<T extends Taxonable<IK, SK>, IK extends string, SK extends string>(items: T[] | undefined | null, iteratorKey: IK, searchKey: SK, searchValue: string, memo: T[] = [], depth: number = 0): { result: T; memo: T[] } | undefined {
-    if (!items) {
-      return
+  if (!items) {
+    return
+  }
+
+  for (const item of items) {
+    if (item[searchKey] === searchValue) {
+      return {
+        result: item,
+        memo: [item]
+      }
     }
 
-    for (const item of items) {
+    const children = item[iteratorKey]
 
-      memo[depth] = item
+    if (Array.isArray(children)) {
+      const child = deepFind(children, iteratorKey, searchKey, searchValue)
 
-      if (item[searchKey] === searchValue) {
+      if (child) {
         return {
-          result: item,
-          memo: memo // .slice(0, -1)
-        }
-      }
-
-      const children = item[iteratorKey]
-
-      if (Array.isArray(children)) {
-        const child = internal(children, iteratorKey, searchKey, searchValue, memo, depth + 1)
-
-        if (child) {
-          return {
-            result: child.result,
-            memo: child.memo
-          }
+          result: child.result,
+          memo: [item].concat(child.memo)
         }
       }
     }
   }
-
-  return internal(items, iteratorKey, searchKey, searchValue)
 }
