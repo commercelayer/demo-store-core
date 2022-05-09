@@ -1,4 +1,4 @@
-import { Navigation } from '#components/Navigation'
+import { Footer } from '#components/Footer'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
@@ -26,8 +26,6 @@ const Home: NextPage<Props> = ({ products }) => {
       <Container>
         <Header />
 
-        <Navigation />
-
         <h2 className='mt-16 block text-2xl font-semibold text-black'>All Products</h2>
 
         <div className='mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-6 lg:gap-y-12'>
@@ -38,6 +36,8 @@ const Home: NextPage<Props> = ({ products }) => {
           }
         </div>
       </Container>
+
+      <Footer />
     </Page>
   )
 }

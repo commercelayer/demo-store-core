@@ -1,4 +1,4 @@
-import { Navigation } from '#components/Navigation'
+import { Footer } from '#components/Footer'
 import { getProductWithVariants, LocalizedProduct, LocalizedProductWithVariant } from '#data/products'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
@@ -39,8 +39,6 @@ const ProductDetailPage: NextPage<Props> = ({ product }) => {
       <Container>
         <Header />
 
-        <Navigation />
-
         <p>{product.code}</p>
         <img width="300" src={product.images[0]} alt={product.name} />
         <p>{product.name}</p>
@@ -73,6 +71,7 @@ const ProductDetailPage: NextPage<Props> = ({ product }) => {
         </OrderStorage>
       </Container>
 
+      <Footer />
     </Page>
   )
 }

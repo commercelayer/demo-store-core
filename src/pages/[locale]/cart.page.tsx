@@ -2,7 +2,7 @@
 
 import { Container } from '#components/Container'
 import { Header } from '#components/Header'
-import { Navigation } from '#components/Navigation'
+import { Footer } from '#components/Footer'
 import { Page } from '#components/Page'
 import { getLocale } from '#i18n/locale'
 import { withLocalePaths } from '#i18n/withLocalePaths'
@@ -27,8 +27,6 @@ const Cart: NextPage = () => {
     <Page>
       <Container>
         <Header />
-
-        <Navigation />
 
         <OrderStorage persistKey={`country-${locale?.country?.code}`}>
           <OrderContainer attributes={{
@@ -62,6 +60,8 @@ const Cart: NextPage = () => {
           </OrderContainer>
         </OrderStorage>
       </Container>
+
+      <Footer />
     </Page>
   )
 }

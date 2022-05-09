@@ -2,25 +2,26 @@ import { Link } from "#i18n/Link";
 import { changeLanguage } from '#i18n/locale'
 import { useRouter } from "next/router";
 import { FC } from "react";
+import { Container } from './Container'
 
-export const Navigation: FC = () => {
+export const Footer: FC = () => {
   const router = useRouter()
 
   return (
-    <div>
+    <div className="p-16 mt-8 bg-gray-800 text-white">
+      <Container>
 
-      <p>
         <Link locale=''>
           <a>Country Selector</a>
         </Link>
 
         &nbsp;&nbsp;|&nbsp;&nbsp;
-        <Link locale={changeLanguage(router.query.locale, 'en')}>
+        <Link locale={changeLanguage(router.query.locale, 'en')} scroll={false}>
           <a>English</a>
         </Link>
 
         &nbsp;&nbsp;|&nbsp;&nbsp;
-        <Link locale={changeLanguage(router.query.locale, 'it')}>
+        <Link locale={changeLanguage(router.query.locale, 'it')} scroll={false}>
           <a>Italiano</a>
         </Link>
 
@@ -28,8 +29,8 @@ export const Navigation: FC = () => {
         <Link href='/search'>
           <a>All Products</a>
         </Link>
-      </p>
 
+      </Container>
     </div>
   )
 }

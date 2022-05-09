@@ -1,6 +1,6 @@
 import { Container } from '#components/Container'
 import { Header } from '#components/Header'
-import { Navigation } from '#components/Navigation'
+import { Footer } from '#components/Footer'
 import { Page } from '#components/Page'
 import { Catalog, getCatalog, Taxon as TaxonType, Taxonomy as TaxonomyType } from '#data/catalogs'
 import { Link } from '#i18n/Link'
@@ -25,14 +25,14 @@ const Home: NextPage<Props> = ({ catalog }) => {
       <Container>
         <Header />
 
-        <Navigation />
-
         {
           catalog.taxonomies.map(taxonomy => (
             <Taxonomy key={taxonomy.key} taxonomy={taxonomy} />
           ))
         }
       </Container>
+
+      <Footer />
     </Page>
   )
 }

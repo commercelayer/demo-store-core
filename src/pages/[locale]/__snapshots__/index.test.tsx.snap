@@ -55,33 +55,6 @@ exports[`home 1`] = `
         </div>
       </nav>
       <div>
-        <p>
-          <a
-            href="/"
-          >
-            Country Selector
-          </a>
-            |  
-          <a
-            href="/?locale=en-US"
-          >
-            English
-          </a>
-            |  
-          <a
-            href="/?locale=it-US"
-          >
-            Italiano
-          </a>
-            |  
-          <a
-            href="/en-US/search"
-          >
-            All Products
-          </a>
-        </p>
-      </div>
-      <div>
         <h2
           class="mt-16 block text-2xl font-semibold text-black"
         >
@@ -128,6 +101,37 @@ exports[`home 1`] = `
             </div>
           </a>
         </div>
+      </div>
+    </div>
+    <div
+      class="p-16 mt-8 bg-gray-800 text-white"
+    >
+      <div
+        class="container mx-auto px-4"
+      >
+        <a
+          href="/"
+        >
+          Country Selector
+        </a>
+          |  
+        <a
+          href="/?locale=en-US"
+        >
+          English
+        </a>
+          |  
+        <a
+          href="/?locale=it-US"
+        >
+          Italiano
+        </a>
+          |  
+        <a
+          href="/en-US/search"
+        >
+          All Products
+        </a>
       </div>
     </div>
   </main>
