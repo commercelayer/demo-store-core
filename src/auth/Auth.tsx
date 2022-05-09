@@ -51,7 +51,7 @@ export const Auth: FC = ({ children }) => {
 
   const router = useRouter()
 
-  const locale = useMemo(() => getLocale(router.query.locale as string || defaultLocale), [router])
+  const locale = useMemo(() => getLocale(router.query.locale || defaultLocale), [router])
 
   const [market, setMarket] = useState<number | undefined>(locale?.country?.market)
   const [auth, setAuth] = useState<Auth | null>(null)

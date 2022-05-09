@@ -3,11 +3,14 @@ import { ParsedUrlQuery } from 'querystring'
 import { Locale, locales as allLocales } from './locale'
 import { combine } from './utils'
 
-type WithLocalePathsResult<P> = GetStaticPathsResult<P & { locale: string }>
+// @ts-expect-error
+type WithoutLocalePathsResult<P extends Partial<ParsedUrlQuery>> = GetStaticPathsResult<P>
 
-type Props<P extends ParsedUrlQuery> = GetStaticPathsResult<P> | ((localeCode: string) => GetStaticPathsResult<P>)
+type WithLocalePathsResult<P extends Partial<ParsedUrlQuery>> = GetStaticPathsResult<P & { locale: string }>
 
-const appendLocaleToPath = <P extends ParsedUrlQuery>(locale: Locale, path: GetStaticPathsResult<P>['paths'][number]): WithLocalePathsResult<P>['paths'][number] => {
+type Props<P extends Partial<ParsedUrlQuery>> = WithoutLocalePathsResult<P> | ((localeCode: string) => WithoutLocalePathsResult<P>)
+
+const appendLocaleToPath = <P extends Partial<ParsedUrlQuery>>(locale: Locale, path: WithoutLocalePathsResult<P>['paths'][number]): WithLocalePathsResult<P>['paths'][number] => {
   if (typeof path === 'string') {
     return `/${locale.code}${path}`
   }
@@ -21,7 +24,7 @@ const appendLocaleToPath = <P extends ParsedUrlQuery>(locale: Locale, path: GetS
   }
 }
 
-export const withLocalePaths = <P extends ParsedUrlQuery>(getStaticPathsResult: Props<P>, locales: Locale[] = allLocales): WithLocalePathsResult<P> => {
+export const withLocalePaths = <P extends Partial<ParsedUrlQuery>>(getStaticPathsResult: Props<P>, locales: Locale[] = allLocales): WithLocalePathsResult<P> => {
 
   if (locales.length === 0) {
     throw new Error('At least one Locale is mandatory!')
@@ -78,7 +81,7 @@ export const withLocalePaths = <P extends ParsedUrlQuery>(getStaticPathsResult: 
 
   const newPaths: WithLocalePathsResult<P>['paths'][number][] = combine<
     Locale,
-    GetStaticPathsResult<P>['paths'][number],
+    WithoutLocalePathsResult<P>['paths'][number],
     WithLocalePathsResult<P>['paths'][number]
     >(locales, paths, appendLocaleToPath)
 

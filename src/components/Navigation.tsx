@@ -14,26 +14,20 @@ export const Navigation: FC = () => {
           <a>Country Selector</a>
         </Link>
 
-        {
-          router?.pathname !== '/' && (
-            <>
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link locale={changeLanguage(router?.query?.locale as string, 'en')}>
-                <a>English</a>
-              </Link>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <Link locale={changeLanguage(router.query.locale, 'en')}>
+          <a>English</a>
+        </Link>
 
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link locale={changeLanguage(router?.query?.locale as string, 'it')}>
-                <a>Italiano</a>
-              </Link>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <Link locale={changeLanguage(router.query.locale, 'it')}>
+          <a>Italiano</a>
+        </Link>
 
-              &nbsp;&nbsp;|&nbsp;&nbsp;
-              <Link href='/search'>
-                <a>All Products</a>
-              </Link>
-            </>
-          )
-        }
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <Link href='/search'>
+          <a>All Products</a>
+        </Link>
       </p>
 
     </div>

@@ -8,3 +8,9 @@ declare namespace NodeJS {
     NEXT_PUBLIC_CL_ENDPOINT: string
   }
 }
+
+declare module 'querystring' {
+  interface ParsedUrlQuery extends NodeJS.Dict<string | string[]> {
+    locale: string
+  }
+}

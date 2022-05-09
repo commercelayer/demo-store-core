@@ -28,7 +28,7 @@ const ProductDetailPage: NextPage<Props> = ({ product }) => {
   const [currentProduct, setCurrentProduct] = useState<LocalizedProduct>()
   const router = useRouter()
 
-  const locale = getLocale(router.query.locale as string)
+  const locale = getLocale(router.query.locale)
 
   return (
     <Page title={product.name}>

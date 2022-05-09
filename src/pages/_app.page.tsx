@@ -8,7 +8,7 @@ import '../styles/globals.css'
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const { lngDict, ...rest } = pageProps
-  const locale = router.query.locale
+  const locale = router.query.locale as unknown as string | string[] | undefined
 
   if (Array.isArray(locale)) {
     throw new Error('The query "locale" cannot be an array!')

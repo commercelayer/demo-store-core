@@ -14,15 +14,13 @@ const enIT: Locale = { "code": "en-it", "country": italy, "language": english }
 const en: Locale = { "code": "en", "language": english }
 
 test('should throw an error when not locales are passed', () => {
-  const getStaticPathsResult: GetStaticPathsResult = {
+  expect(() => withLocalePaths<{ pid: string }>({
     fallback: 'blocking',
     paths: [
       { params: { pid: '1' } },
       { params: { pid: '2' } }
     ]
-  }
-
-  expect(() => withLocalePaths(getStaticPathsResult, [])).toThrowError(new Error('At least one Locale is mandatory!'))
+  }, [])).toThrowError(new Error('At least one Locale is mandatory!'))
 })
 
 test('should add all given locales without any other param when "paths" is empty', () => {
@@ -62,15 +60,13 @@ test('should add all given locales without any other param when "paths" is empty
 })
 
 test('should combine all given params with all given locales', () => {
-  const getStaticPathsResult: GetStaticPathsResult<{ pid: string }> = {
+  const withLocales = withLocalePaths<{ pid: string }>({
     fallback: 'blocking',
     paths: [
       { params: { pid: '1' } },
       { params: { pid: '2' } }
     ]
-  }
-
-  const withLocales = withLocalePaths(getStaticPathsResult, [itUS, enIT, en])
+  }, [itUS, enIT, en])
 
   expect(withLocales).toStrictEqual<typeof withLocales>({
     fallback: 'blocking',
@@ -86,15 +82,13 @@ test('should combine all given params with all given locales', () => {
 })
 
 test('should combine all given params with all given locales using a callback method', () => {
-  const getStaticPathsResult = (locale: string): GetStaticPathsResult<{ pid: string }> => ({
+  const withLocales = withLocalePaths<{ pid: string }>((locale) => ({
     fallback: 'blocking',
     paths: [
       { params: { pid: `${locale}-1` } },
       { params: { pid: `${locale}-2` } }
     ]
-  })
-
-  const withLocales = withLocalePaths(getStaticPathsResult, [itUS, enIT, en])
+  }), [itUS, enIT, en])
 
   expect(withLocales).toStrictEqual<typeof withLocales>({
     fallback: 'blocking',
@@ -110,15 +104,13 @@ test('should combine all given params with all given locales using a callback me
 })
 
 test('should combine all given string paths with all given locales', () => {
-  const getStaticPathsResult: GetStaticPathsResult<{ name: string }> = {
+  const withLocales = withLocalePaths<{ name: string }>({
     fallback: 'blocking',
     paths: [
       '/products/1',
       '/products/2',
     ]
-  }
-
-  const withLocales = withLocalePaths(getStaticPathsResult, [itUS, enIT, en])
+  }, [itUS, enIT, en])
 
   expect(withLocales).toStrictEqual<typeof withLocales>({
     fallback: 'blocking',
@@ -134,15 +126,13 @@ test('should combine all given string paths with all given locales', () => {
 })
 
 test('should combine all given string paths with all given locales using a callback method', () => {
-  const getStaticPathsResult = (locale: string): GetStaticPathsResult<{ pid: string }> => ({
+  const withLocales = withLocalePaths<{ pid: string }>((locale) => ({
     fallback: 'blocking',
     paths: [
       `/products/${locale}-1`,
       `/products/${locale}-2`,
     ]
-  })
-
-  const withLocales = withLocalePaths(getStaticPathsResult, [itUS, enIT, en])
+  }), [itUS, enIT, en])
 
   expect(withLocales).toStrictEqual<typeof withLocales>({
     fallback: 'blocking',
@@ -158,15 +148,13 @@ test('should combine all given string paths with all given locales using a callb
 })
 
 test('should combine all given string paths with all configured locales', () => {
-  const getStaticPathsResult: GetStaticPathsResult<{ name: string }> = {
+  const withLocales = withLocalePaths<{ name: string }>({
     fallback: 'blocking',
     paths: [
       '/products/1',
       '/products/2',
     ]
-  }
-
-  const withLocales = withLocalePaths(getStaticPathsResult)
+  })
 
   expect(withLocales.paths.length).toEqual(locales.length * 2)
 })

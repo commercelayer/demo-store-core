@@ -21,7 +21,7 @@ type Props = {
 const Cart: NextPage = () => {
   const router = useRouter()
 
-  const locale = getLocale(router.query.locale as string)
+  const locale = getLocale(router.query.locale)
 
   return (
     <Page>
