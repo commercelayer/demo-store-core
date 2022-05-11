@@ -5,16 +5,7 @@ type Localized<T> = {
   [locale: string]: T
 }
 
-export type Facet2 = {
-  // TODO: add coerchion library
-  // type: 'taxonomy' | 'commercelayer' | 'variant'
-  type: string
-  props: {
-    [key: string]: string[] | undefined
-  }
-}
-
-export type Facet = {
+export type Facets = {
   [name: string]: string[] | undefined
 }
 
@@ -24,7 +15,6 @@ export type Product = {
   code: string
   slug: string
   variant: Variant[]
-  facet: Facet
   name: Localized<string>
   description: Localized<string>
   images: string[]
@@ -127,4 +117,18 @@ export function flattenProductVariants(products: LocalizedProductWithVariant[]):
     }),
     'code'
   )
+}
+
+export const getVariantFacets = (products: LocalizedProductWithVariant[]): Facets => {
+  return products.reduce((acc, product) => {
+    product.variant.forEach((variant) => {
+      acc[variant.name] = acc[variant.name] || []
+
+      if (!acc[variant.name]?.includes(variant.value)) {
+        acc[variant.name]?.push(variant.value)
+      }
+    })
+
+    return acc
+  }, {} as Facets)
 }

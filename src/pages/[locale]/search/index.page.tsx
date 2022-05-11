@@ -5,12 +5,11 @@ import { Header } from '#components/Header'
 import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
 import { getCatalog } from '#data/catalogs'
-import { Facet, flattenProductVariants, LocalizedProductWithVariant } from '#data/products'
+import { Facets, flattenProductVariants, getVariantFacets, LocalizedProductWithVariant } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import Fuse from 'fuse.js'
-import uniq from 'lodash/uniq'
 import uniqBy from 'lodash/uniqBy'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useEffect, useState } from 'react'
@@ -24,8 +23,9 @@ const options: Fuse.IFuseOptions<LocalizedProductWithVariant> = {
     "name",
     "description",
 
-    "facet.color",
-    "facet.size",
+    // TODO: dynamically generate them
+    { name: '_facet.color', getFn: (obj) => obj.variant.find(v => v.name === 'color')?.value!  },
+    { name: '_facet.size', getFn: (obj) => obj.variant.find(v => v.name === 'size')?.value!  },
   ]
 };
 
@@ -35,10 +35,10 @@ type Query = {
 
 type Props = {
   products: LocalizedProductWithVariant[]
-  facet: Facet
+  facets: Facets
 }
 
-const Home: NextPage<Props> = ({ products, facet }) => {
+const Home: NextPage<Props> = ({ products, facets }) => {
   const [result, setResult] = useState<LocalizedProductWithVariant[]>(products)
   const [searchText, setSearchText] = useState<string>()
   const [colorFacet, setColorFacet] = useState<string[]>([])
@@ -52,13 +52,13 @@ const Home: NextPage<Props> = ({ products, facet }) => {
 
     if (colorFacet.length > 0) {
       andExpression.push({
-        $or: colorFacet.map(value => ({ $path: 'facet.color', $val: `="${value}"` }))
+        $or: colorFacet.map(value => ({ $path: '_facet.color', $val: `="${value}"` }))
       })
     }
 
     if (sizeFacet.length > 0) {
       andExpression.push({
-        $or: sizeFacet.map(value => ({ $path: 'facet.size', $val: `="${value}"` }))
+        $or: sizeFacet.map(value => ({ $path: '_facet.size', $val: `="${value}"` }))
       })
     }
 
@@ -89,7 +89,7 @@ const Home: NextPage<Props> = ({ products, facet }) => {
         </label>
 
         {
-          Object.entries(facet).map(([facetName, facetValues]) => {
+          Object.entries(facets).map(([facetName, facetValues]) => {
             return (
               <div key={facetName}>
                 <div className='font-bold mt-4'>{facetName}</div>
@@ -139,23 +139,12 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   const products = uniqBy(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ references }) => references)), 'code')
 
-  const flattenProduct = flattenProductVariants(products)
-
-  const facet = flattenProduct.reduce((acc, product) => {
-    Object.entries(product.facet).forEach(([facetName, facetValue]) => {
-      acc[facetName] = acc[facetName] || []
-      if (facetValue && Array.isArray(facetValue)) {
-        acc[facetName] = uniq(acc[facetName]?.concat(facetValue))
-      }
-    })
-
-    return acc
-  }, {} as Facet)
+  const flattenProducts = flattenProductVariants(products)
 
   return {
     props: {
       products,
-      facet,
+      facets: getVariantFacets(flattenProducts),
       ...(await serverSideTranslations(localeCode))
     }
   }

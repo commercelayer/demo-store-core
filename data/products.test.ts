@@ -1,4 +1,4 @@
-import { flattenProductVariants, getProduct, getProductVariants, getProductWithVariants } from './products';
+import { flattenProductVariants, getProduct, getProductVariants, getProductWithVariants, getVariantFacets } from './products';
 
 jest.mock('./json/products.json')
 
@@ -83,8 +83,7 @@ test('"getProductWithVariants" should resolves variants localization', () => {
   ])
 })
 
-
-test('"asd" should resolves variants localization', () => {
+test('"flattenProductVariants" should flatten product variants', () => {
   const product = getProductWithVariants('BODYBSSS000000FFFFFF6MXX', 'it')
 
   const products = flattenProductVariants([product, product])
@@ -97,3 +96,16 @@ test('"asd" should resolves variants localization', () => {
   ])
 })
 
+test('"getVariantFacets" should return all variants as facets', () => {
+  const products = getVariantFacets([
+    getProductWithVariants('BODYBSSS000000FFFFFF12MX', 'it'),
+    getProductWithVariants('BODYBSSS000000FFFFFF6MXX', 'it'),
+    getProductWithVariants('BODYBSSSFFFFFF00000012MX', 'it'),
+    getProductWithVariants('BODYBSSSFFFFFF0000006MXX', 'it')
+  ])
+
+  expect(products).toStrictEqual({
+    color: ['000000', 'FFFFFF'],
+    size: ['12 months', '6 months']
+  })
+})
