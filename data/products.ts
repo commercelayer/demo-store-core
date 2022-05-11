@@ -104,15 +104,15 @@ export function flattenProductVariants(products: LocalizedProductWithVariant[]):
 }
 
 export const getVariantFacets = (products: LocalizedProductWithVariant[]): Facets => {
-  return products.reduce((acc, product) => {
+  return products.reduce((facets, product) => {
     product.variant.forEach((variant) => {
-      acc[variant.name] = acc[variant.name] || []
+      facets[variant.name] = facets[variant.name] || []
 
-      if (!acc[variant.name]?.includes(variant.value)) {
-        acc[variant.name]?.push(variant.value)
+      if (!facets[variant.name]?.includes(variant.value)) {
+        facets[variant.name]?.push(variant.value)
       }
     })
 
-    return acc
+    return facets
   }, {} as Facets)
 }
