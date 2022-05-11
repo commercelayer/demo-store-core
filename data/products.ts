@@ -1,14 +1,30 @@
+import uniqBy from 'lodash/uniqBy'
 import productsJson from './json/products.json'
 
 type Localized<T> = {
   [locale: string]: T
 }
 
+export type Facet2 = {
+  // TODO: add coerchion library
+  // type: 'taxonomy' | 'commercelayer' | 'variant'
+  type: string
+  props: {
+    [key: string]: string[] | undefined
+  }
+}
+
+export type Facet = {
+  [name: string]: string[] | undefined
+}
+
 export type Product = {
-  product: string
+  productCode: string
+  variantCode: string
   code: string
   slug: string
   variant: Variant[]
+  facet: Facet
   name: Localized<string>
   description: Localized<string>
   images: string[]
@@ -29,6 +45,7 @@ export type LocalizedVariant = Omit<Variant, 'label'> & {
 }
 
 export type LocalizedProduct = Omit<Product, 'name' | 'description' | 'variant'> & {
+  _locale: string
   name: string
   description: string
   variant: LocalizedVariant[]
@@ -41,8 +58,8 @@ export type LocalizedProductWithVariant = LocalizedProduct & {
 const products: Product[] = productsJson
 
 const groupedBaseProducts: { [code: string]: Product[] } = products.reduce((acc, cv) => {
-  acc[cv.product] = acc[cv.product] || []
-  acc[cv.product].push(cv)
+  acc[cv.productCode] = acc[cv.productCode] || []
+  acc[cv.productCode].push(cv)
   return acc
 }, {} as { [code: string]: Product[] })
 
@@ -52,6 +69,7 @@ function resolveProductLocale(product: Product, locale: string): LocalizedProduc
 
   return {
     ...product,
+    _locale: locale,
     name: product.name[locale] || product.name[language],
     description: product.description[locale] || product.description[language],
     variant: product.variant.map(v => ({
@@ -80,7 +98,7 @@ export function getProduct(code: string, locale?: string) {
 export function getProductVariants(product: Product | LocalizedProduct): Product[]
 export function getProductVariants(product: Product | LocalizedProduct, locale: string): LocalizedProduct[]
 export function getProductVariants(product: Product | LocalizedProduct, locale?: string) {
-  const variants = groupedBaseProducts[product.product]
+  const variants = groupedBaseProducts[product.productCode]
 
   if (locale) {
     return variants.map(product => resolveProductLocale(product, locale))
@@ -89,6 +107,7 @@ export function getProductVariants(product: Product | LocalizedProduct, locale?:
   return variants
 }
 
+// TODO: remove methods without locale ?!
 export function getProductWithVariants(code: string): ProductWithVariants
 export function getProductWithVariants(code: string, locale: string): LocalizedProductWithVariant
 export function getProductWithVariants(code: string, locale?: string) {
@@ -99,4 +118,13 @@ export function getProductWithVariants(code: string, locale?: string) {
     ...product,
     variants
   }
+}
+
+export function flattenProductVariants(products: LocalizedProductWithVariant[]): LocalizedProductWithVariant[] {
+  return uniqBy(
+    products.flatMap(product => {
+      return product.variants.map(variant => getProductWithVariants(variant.code, variant._locale))
+    }),
+    'code'
+  )
 }

@@ -1,26 +1,31 @@
-import { Footer } from '#components/Footer'
-import { serverSideTranslations } from '#i18n/serverSideTranslations'
-import { withLocalePaths } from '#i18n/withLocalePaths'
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-
-import { LocalizedProductWithVariant } from '#data/products'
+import { MagnifyingGlass } from '#assets/icons'
 import { Container } from '#components/Container'
+import { Footer } from '#components/Footer'
 import { Header } from '#components/Header'
 import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
-import { getLocale } from '#i18n/locale'
 import { getCatalog } from '#data/catalogs'
-import uniqBy from 'lodash/uniqBy'
-
+import { Facet, flattenProductVariants, LocalizedProductWithVariant } from '#data/products'
+import { getLocale } from '#i18n/locale'
+import { serverSideTranslations } from '#i18n/serverSideTranslations'
+import { withLocalePaths } from '#i18n/withLocalePaths'
 import Fuse from 'fuse.js'
+import uniq from 'lodash/uniq'
+import uniqBy from 'lodash/uniqBy'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useEffect, useState } from 'react'
-import { MagnifyingGlass } from '#assets/icons'
+
+
 
 const options: Fuse.IFuseOptions<LocalizedProductWithVariant> = {
-  threshold: .4,
+  useExtendedSearch: true,
+  threshold: .3,
   keys: [
     "name",
-    "description"
+    "description",
+
+    "facet.color",
+    "facet.size",
   ]
 };
 
@@ -30,17 +35,48 @@ type Query = {
 
 type Props = {
   products: LocalizedProductWithVariant[]
+  facet: Facet
 }
 
-const Home: NextPage<Props> = ({ products }) => {
-  const [result, setResult] = useState<Fuse.FuseResult<LocalizedProductWithVariant>[]>()
+const Home: NextPage<Props> = ({ products, facet }) => {
+  const [result, setResult] = useState<LocalizedProductWithVariant[]>(products)
   const [searchText, setSearchText] = useState<string>()
+  const [colorFacet, setColorFacet] = useState<string[]>([])
+  const [sizeFacet, setSizeFacet] = useState<string[]>([])
 
   useEffect(function () {
-    const fuse = new Fuse(products, options)
+    const fuse = new Fuse(flattenProductVariants(products), options)
     const pattern = searchText
-    setResult(pattern ? fuse.search(pattern) : products.map((item, refIndex) => ({ item, refIndex })))
-  }, [products, searchText])
+
+    const andExpression: Fuse.Expression[] = []
+
+    if (colorFacet.length > 0) {
+      andExpression.push({
+        $or: colorFacet.map(value => ({ $path: 'facet.color', $val: `="${value}"` }))
+      })
+    }
+
+    if (sizeFacet.length > 0) {
+      andExpression.push({
+        $or: sizeFacet.map(value => ({ $path: 'facet.size', $val: `="${value}"` }))
+      })
+    }
+
+    if (pattern) {
+      andExpression.push({
+        $or: [
+          { $path: 'name', $val: pattern },
+          { $path: 'description', $val: pattern },
+        ]
+      })
+    }
+
+    if (andExpression.length > 0) {
+      setResult(
+        uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
+      )
+    }
+  }, [products, searchText, colorFacet, sizeFacet])
 
   return (
     <Page>
@@ -52,12 +88,31 @@ const Home: NextPage<Props> = ({ products }) => {
           <input onChange={(event) => setSearchText(event.currentTarget.value)} value={searchText} placeholder="search" className="form-input appearance-none bg-transparent w-full pl-14 focus:outline-none focus:shadow-outline" />
         </label>
 
+        {
+          Object.entries(facet).map(([facetName, facetValues]) => {
+            return (
+              <div key={facetName}>
+                <div className='font-bold mt-4'>{facetName}</div>
+                {
+                  facetValues && facetValues.map(currentValue => (
+                    <button
+                      key={currentValue}
+                      className='m-2 bg-gray-100 rounded px-2'
+                      onClick={() => (facetName === 'color' ? setColorFacet : setSizeFacet)((prevState) => ([ ...prevState, currentValue ]))}
+                    >{currentValue}</button>
+                  ))
+                }
+              </div>
+            )
+          })
+        }
+
         <h2 className='mt-16 block text-2xl font-semibold text-black'>All Products</h2>
 
         <div className='mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-6 lg:gap-y-12'>
           {
             (result || []).map(product => (
-              <ProductCard key={product.item.code} product={product.item} />
+              <ProductCard key={product.code} product={product} />
             ))
           }
         </div>
@@ -84,9 +139,23 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   const products = uniqBy(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ references }) => references)), 'code')
 
+  const flattenProduct = flattenProductVariants(products)
+
+  const facet = flattenProduct.reduce((acc, product) => {
+    Object.entries(product.facet).forEach(([facetName, facetValue]) => {
+      acc[facetName] = acc[facetName] || []
+      if (facetValue && Array.isArray(facetValue)) {
+        acc[facetName] = uniq(acc[facetName]?.concat(facetValue))
+      }
+    })
+
+    return acc
+  }, {} as Facet)
+
   return {
     props: {
       products,
+      facet,
       ...(await serverSideTranslations(localeCode))
     }
   }

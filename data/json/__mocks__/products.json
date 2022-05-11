@@ -1,6 +1,7 @@
 [
   {
-    "product": "BODYBSSS",
+    "productCode": "BODYBSSS",
+    "variantCode": "BODYBSSS000000",
     "code": "BODYBSSS000000FFFFFF12MX",
     "variant": [
       {
@@ -35,7 +36,8 @@
     ]
   },
   {
-    "product": "BODYBSSS",
+    "productCode": "BODYBSSS",
+    "variantCode": "BODYBSSS000000",
     "code": "BODYBSSS000000FFFFFF6MXX",
     "variant": [
       {
@@ -68,7 +70,8 @@
     ]
   },
   {
-    "product": "BODYBSSS",
+    "productCode": "BODYBSSS",
+    "variantCode": "BODYBSSSFFFFFF",
     "code": "BODYBSSSFFFFFF00000012MX",
     "variant": [
       {
@@ -101,7 +104,8 @@
     ]
   },
   {
-    "product": "BODYBSSS",
+    "productCode": "BODYBSSS",
+    "variantCode": "BODYBSSSFFFFFF",
     "code": "BODYBSSSFFFFFF0000006MXX",
     "variant": [
       {
@@ -134,7 +138,8 @@
     ]
   },
   {
-    "product": "BOTT17OZ",
+    "productCode": "BOTT17OZ",
+    "variantCode": "BOTT17OZFFFFFF",
     "code": "BOTT17OZFFFFFF000000XXXX",
     "variant": [
       {
@@ -159,7 +164,8 @@
     ]
   },
   {
-    "product": "CUFFBEAN",
+    "productCode": "CUFFBEAN",
+    "variantCode": "CUFFBEAN000000",
     "code": "CUFFBEAN000000FFFFFFXXXX",
     "variant": [
       {
@@ -184,7 +190,8 @@
     ]
   },
   {
-    "product": "CUFFBEAN",
+    "productCode": "CUFFBEAN",
+    "variantCode": "CUFFBEANA6A5A0",
     "code": "CUFFBEANA6A5A0000000XXXX",
     "variant": [
       {
@@ -209,7 +216,8 @@
     ]
   },
   {
-    "product": "CUFFBEAN",
+    "productCode": "CUFFBEAN",
+    "variantCode": "CUFFBEANFFFFFF",
     "code": "CUFFBEANFFFFFF000000XXXX",
     "variant": [
       {

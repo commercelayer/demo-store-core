@@ -1,5 +1,5 @@
 import { Footer } from '#components/Footer'
-import { getProductWithVariants, LocalizedProduct, LocalizedProductWithVariant } from '#data/products'
+import { flattenProductVariants, getProductWithVariants, LocalizedProduct, LocalizedProductWithVariant } from '#data/products'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
@@ -13,7 +13,6 @@ import { Container } from '#components/Container'
 import { Header } from '#components/Header'
 import { Page } from '#components/Page'
 import { getCatalog } from '#data/catalogs'
-import { uniqBy } from 'lodash'
 
 type Query = {
   locale: string
@@ -82,7 +81,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 
     const catalog = getCatalog(locale, true)
 
-    const products = uniqBy(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ references }) => references)), 'code')
+    const products = flattenProductVariants(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ references }) => references)))
 
     return {
       paths: products.map(product => ({

@@ -1,6 +1,7 @@
 [
   {
-    "product": "5PANECAP",
+    "productCode": "5PANECAP",
+    "variantCode": "5PANECAP000000",
     "code": "5PANECAP000000FFFFFFXXXX",
     "slug": "black-five-panel-cap-with-white-logo/5PANECAP000000FFFFFFXXXX",
     "variant": [
@@ -13,6 +14,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Five-Panel Cap with White Logo",
       "it": "Black Five-Panel Cap with White Logo"
@@ -26,7 +32,8 @@
     ]
   },
   {
-    "product": "5PANECAP",
+    "productCode": "5PANECAP",
+    "variantCode": "5PANECAP9D9CA1",
     "code": "5PANECAP9D9CA1FFFFFFXXXX",
     "slug": "gray-five-panel-cap-with-white-logo/5PANECAP9D9CA1FFFFFFXXXX",
     "variant": [
@@ -39,6 +46,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9D9CA1"
+      ]
+    },
     "name": {
       "en": "Gray Five-Panel Cap with White Logo",
       "it": "Gray Five-Panel Cap with White Logo"
@@ -52,7 +64,8 @@
     ]
   },
   {
-    "product": "APRONXXX",
+    "productCode": "APRONXXX",
+    "variantCode": "APRONXXX000000",
     "code": "APRONXXX000000FFFFFFXXXX",
     "slug": "black-apron-with-white-logo/APRONXXX000000FFFFFFXXXX",
     "variant": [
@@ -65,6 +78,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Apron with White Logo",
       "it": "Black Apron with White Logo"
@@ -78,7 +96,8 @@
     ]
   },
   {
-    "product": "APRONXXX",
+    "productCode": "APRONXXX",
+    "variantCode": "APRONXXXFFFFFF",
     "code": "APRONXXXFFFFFF000000XXXX",
     "slug": "white-apron-with-black-logo/APRONXXXFFFFFF000000XXXX",
     "variant": [
@@ -91,6 +110,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Apron with Black Logo",
       "it": "White Apron with Black Logo"
@@ -104,7 +128,8 @@
     ]
   },
   {
-    "product": "BABYBIBX",
+    "productCode": "BABYBIBX",
+    "variantCode": "BABYBIBXA19D9D",
     "code": "BABYBIBXA19D9D000000XXXX",
     "slug": "gray-baby-bib-with-black-logo/BABYBIBXA19D9D000000XXXX",
     "variant": [
@@ -117,6 +142,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "A19D9D"
+      ]
+    },
     "name": {
       "en": "Gray Baby Bib with Black Logo",
       "it": "Gray Baby Bib with Black Logo"
@@ -130,7 +160,8 @@
     ]
   },
   {
-    "product": "BACKPACK",
+    "productCode": "BACKPACK",
+    "variantCode": "BACKPACK000000",
     "code": "BACKPACK000000FFFFFFXXXX",
     "slug": "black-backpack-with-white-logo/BACKPACK000000FFFFFFXXXX",
     "variant": [
@@ -143,6 +174,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Backpack with White Logo",
       "it": "Black Backpack with White Logo"
@@ -156,7 +192,8 @@
     ]
   },
   {
-    "product": "BACKPACK",
+    "productCode": "BACKPACK",
+    "variantCode": "BACKPACK818488",
     "code": "BACKPACK818488000000XXXX",
     "slug": "gray-backpack-with-black-logo/BACKPACK818488000000XXXX",
     "variant": [
@@ -169,6 +206,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "818488"
+      ]
+    },
     "name": {
       "en": "Gray Backpack with Black Logo",
       "it": "Gray Backpack with Black Logo"
@@ -182,7 +224,8 @@
     ]
   },
   {
-    "product": "BACKPACK",
+    "productCode": "BACKPACK",
+    "variantCode": "BACKPACKFFFFFF",
     "code": "BACKPACKFFFFFF000000XXXX",
     "slug": "white-backpack-with-black-logo/BACKPACKFFFFFF000000XXXX",
     "variant": [
@@ -195,6 +238,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Backpack with Black Logo",
       "it": "White Backpack with Black Logo"
@@ -208,7 +256,8 @@
     ]
   },
   {
-    "product": "BASEBHAT",
+    "productCode": "BASEBHAT",
+    "variantCode": "BASEBHAT000000",
     "code": "BASEBHAT000000FFFFFFXXXX",
     "slug": "black-baseball-hat-with-white-logo/BASEBHAT000000FFFFFFXXXX",
     "variant": [
@@ -221,6 +270,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Baseball Hat with White Logo",
       "it": "Black Baseball Hat with White Logo"
@@ -234,7 +288,8 @@
     ]
   },
   {
-    "product": "BASEBHAT",
+    "productCode": "BASEBHAT",
+    "variantCode": "BASEBHATFFFFFF",
     "code": "BASEBHATFFFFFF000000XXXX",
     "slug": "white-baseball-hat-with-black-logo/BASEBHATFFFFFF000000XXXX",
     "variant": [
@@ -247,6 +302,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Baseball Hat with Black Logo",
       "it": "White Baseball Hat with Black Logo"
@@ -260,7 +320,8 @@
     ]
   },
   {
-    "product": "BEACHAIR",
+    "productCode": "BEACHAIR",
+    "variantCode": "BEACHAIR000000",
     "code": "BEACHAIR000000FFFFFFXXXX",
     "slug": "black-bean-chair-with-white-logo/BEACHAIR000000FFFFFFXXXX",
     "variant": [
@@ -273,6 +334,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Bean Chair with White Logo",
       "it": "Black Bean Chair with White Logo"
@@ -286,7 +352,8 @@
     ]
   },
   {
-    "product": "BEACHAIR",
+    "productCode": "BEACHAIR",
+    "variantCode": "BEACHAIRFFFFFF",
     "code": "BEACHAIRFFFFFF000000XXXX",
     "slug": "white-bean-chair-with-black-logo/BEACHAIRFFFFFF000000XXXX",
     "variant": [
@@ -299,6 +366,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Bean Chair with Black Logo",
       "it": "White Bean Chair with Black Logo"
@@ -312,7 +384,8 @@
     ]
   },
   {
-    "product": "BEACHBAG",
+    "productCode": "BEACHBAG",
+    "variantCode": "BEACHBAG000000",
     "code": "BEACHBAG000000FFFFFFXXXX",
     "slug": "black-beach-bag-with-white-logo/BEACHBAG000000FFFFFFXXXX",
     "variant": [
@@ -325,6 +398,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Beach Bag with White Logo",
       "it": "Black Beach Bag with White Logo"
@@ -338,7 +416,8 @@
     ]
   },
   {
-    "product": "BEACHBAG",
+    "productCode": "BEACHBAG",
+    "variantCode": "BEACHBAGFFFFFF",
     "code": "BEACHBAGFFFFFF000000XXXX",
     "slug": "white-beach-bag-with-black-logo/BEACHBAGFFFFFF000000XXXX",
     "variant": [
@@ -351,6 +430,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Beach Bag with Black Logo",
       "it": "White Beach Bag with Black Logo"
@@ -364,7 +448,8 @@
     ]
   },
   {
-    "product": "BEANIEXX",
+    "productCode": "BEANIEXX",
+    "variantCode": "BEANIEXX000000",
     "code": "BEANIEXX000000FFFFFFXXXX",
     "slug": "black-beanie-with-white-logo/BEANIEXX000000FFFFFFXXXX",
     "variant": [
@@ -377,6 +462,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Beanie with White Logo",
       "it": "Black Beanie with White Logo"
@@ -390,7 +480,8 @@
     ]
   },
   {
-    "product": "BEANIEXX",
+    "productCode": "BEANIEXX",
+    "variantCode": "BEANIEXXFFFFFF",
     "code": "BEANIEXXFFFFFF000000XXXX",
     "slug": "white-beanie-with-black-logo/BEANIEXXFFFFFF000000XXXX",
     "variant": [
@@ -403,6 +494,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Beanie with Black Logo",
       "it": "White Beanie with Black Logo"
@@ -416,7 +512,8 @@
     ]
   },
   {
-    "product": "BODYBSSS",
+    "productCode": "BODYBSSS",
+    "variantCode": "BODYBSSS000000",
     "code": "BODYBSSS000000FFFFFF12MX",
     "slug": "black-baby-short-sleeve-bodysuit-with-white-logo-12-months/BODYBSSS000000FFFFFF12MX",
     "variant": [
@@ -437,6 +534,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "12 months"
+      ]
+    },
     "name": {
       "en": "Black Baby Short Sleeve Bodysuit with White Logo",
       "it": "Black Baby Short Sleeve Bodysuit with White Logo"
@@ -450,7 +555,8 @@
     ]
   },
   {
-    "product": "BODYBSSS",
+    "productCode": "BODYBSSS",
+    "variantCode": "BODYBSSS000000",
     "code": "BODYBSSS000000FFFFFF6MXX",
     "slug": "black-baby-short-sleeve-bodysuit-with-white-logo-6-months/BODYBSSS000000FFFFFF6MXX",
     "variant": [
@@ -471,6 +577,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "6 months"
+      ]
+    },
     "name": {
       "en": "Black Baby Short Sleeve Bodysuit with White Logo",
       "it": "Black Baby Short Sleeve Bodysuit with White Logo"
@@ -484,7 +598,8 @@
     ]
   },
   {
-    "product": "BODYBSSS",
+    "productCode": "BODYBSSS",
+    "variantCode": "BODYBSSSFFFFFF",
     "code": "BODYBSSSFFFFFF00000012MX",
     "slug": "white-baby-short-sleeve-bodysuit-with-black-logo-12-months/BODYBSSSFFFFFF00000012MX",
     "variant": [
@@ -505,6 +620,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "12 months"
+      ]
+    },
     "name": {
       "en": "White Baby Short Sleeve Bodysuit with Black Logo",
       "it": "White Baby Short Sleeve Bodysuit with Black Logo"
@@ -518,7 +641,8 @@
     ]
   },
   {
-    "product": "BODYBSSS",
+    "productCode": "BODYBSSS",
+    "variantCode": "BODYBSSSFFFFFF",
     "code": "BODYBSSSFFFFFF0000006MXX",
     "slug": "white-baby-short-sleeve-bodysuit-with-black-logo-6-months/BODYBSSSFFFFFF0000006MXX",
     "variant": [
@@ -539,6 +663,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "6 months"
+      ]
+    },
     "name": {
       "en": "White Baby Short Sleeve Bodysuit with Black Logo",
       "it": "White Baby Short Sleeve Bodysuit with Black Logo"
@@ -552,7 +684,8 @@
     ]
   },
   {
-    "product": "BOTT17OZ",
+    "productCode": "BOTT17OZ",
+    "variantCode": "BOTT17OZFFFFFF",
     "code": "BOTT17OZFFFFFF000000XXXX",
     "slug": "white-water-bottle-with-black-logo-17oz/BOTT17OZFFFFFF000000XXXX",
     "variant": [
@@ -565,6 +698,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Water Bottle with Black Logo",
       "it": "White Water Bottle with Black Logo"
@@ -578,7 +716,8 @@
     ]
   },
   {
-    "product": "BTOW3060",
+    "productCode": "BTOW3060",
+    "variantCode": "BTOW3060000000",
     "code": "BTOW3060000000FFFFFFXXXX",
     "slug": "black-beach-towel-with-white-logo-30x60/BTOW3060000000FFFFFFXXXX",
     "variant": [
@@ -591,6 +730,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Beach Towel with White Logo",
       "it": "Black Beach Towel with White Logo"
@@ -604,7 +748,8 @@
     ]
   },
   {
-    "product": "BTOW3060",
+    "productCode": "BTOW3060",
+    "variantCode": "BTOW3060FFFFFF",
     "code": "BTOW3060FFFFFF000000XXXX",
     "slug": "white-beach-towel-with-black-logo-30x60/BTOW3060FFFFFF000000XXXX",
     "variant": [
@@ -617,6 +762,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Beach Towel with Black Logo",
       "it": "White Beach Towel with Black Logo"
@@ -630,7 +780,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPW000000",
     "code": "CROPTOPW000000FFFFFFLXXX",
     "slug": "black-women-crop-top-with-white-logo-l/CROPTOPW000000FFFFFFLXXX",
     "variant": [
@@ -651,6 +802,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Women Crop Top with White Logo",
       "it": "Black Women Crop Top with White Logo"
@@ -664,7 +823,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPW000000",
     "code": "CROPTOPW000000FFFFFFMXXX",
     "slug": "black-women-crop-top-with-white-logo-m/CROPTOPW000000FFFFFFMXXX",
     "variant": [
@@ -685,6 +845,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Women Crop Top with White Logo",
       "it": "Black Women Crop Top with White Logo"
@@ -698,7 +866,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPW000000",
     "code": "CROPTOPW000000FFFFFFSXXX",
     "slug": "black-women-crop-top-with-white-logo-s/CROPTOPW000000FFFFFFSXXX",
     "variant": [
@@ -719,6 +888,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Women Crop Top with White Logo",
       "it": "Black Women Crop Top with White Logo"
@@ -732,7 +909,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPW000000",
     "code": "CROPTOPW000000FFFFFFXSXX",
     "slug": "black-women-crop-top-with-white-logo-xs/CROPTOPW000000FFFFFFXSXX",
     "variant": [
@@ -753,6 +931,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Black Women Crop Top with White Logo",
       "it": "Black Women Crop Top with White Logo"
@@ -766,7 +952,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPWE8E8E8",
     "code": "CROPTOPWE8E8E8000000LXXX",
     "slug": "gray-women-crop-top-with-black-logo-l/CROPTOPWE8E8E8000000LXXX",
     "variant": [
@@ -787,6 +974,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "E8E8E8"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Women Crop Top with Black Logo",
       "it": "Gray Women Crop Top with Black Logo"
@@ -800,7 +995,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPWE8E8E8",
     "code": "CROPTOPWE8E8E8000000MXXX",
     "slug": "gray-women-crop-top-with-black-logo-m/CROPTOPWE8E8E8000000MXXX",
     "variant": [
@@ -821,6 +1017,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "E8E8E8"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Women Crop Top with Black Logo",
       "it": "Gray Women Crop Top with Black Logo"
@@ -834,7 +1038,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPWE8E8E8",
     "code": "CROPTOPWE8E8E8000000SXXX",
     "slug": "gray-women-crop-top-with-black-logo-s/CROPTOPWE8E8E8000000SXXX",
     "variant": [
@@ -855,6 +1060,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "E8E8E8"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Women Crop Top with Black Logo",
       "it": "Gray Women Crop Top with Black Logo"
@@ -868,7 +1081,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPWE8E8E8",
     "code": "CROPTOPWE8E8E8000000XSXX",
     "slug": "gray-women-crop-top-with-black-logo-xs/CROPTOPWE8E8E8000000XSXX",
     "variant": [
@@ -889,6 +1103,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "E8E8E8"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Gray Women Crop Top with Black Logo",
       "it": "Gray Women Crop Top with Black Logo"
@@ -902,7 +1124,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPWFFFFFF",
     "code": "CROPTOPWFFFFFF000000LXXX",
     "slug": "white-women-crop-top-with-black-logo-l/CROPTOPWFFFFFF000000LXXX",
     "variant": [
@@ -923,6 +1146,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Women Crop Top with Black Logo",
       "it": "White Women Crop Top with Black Logo"
@@ -936,7 +1167,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPWFFFFFF",
     "code": "CROPTOPWFFFFFF000000MXXX",
     "slug": "white-women-crop-top-with-black-logo-m/CROPTOPWFFFFFF000000MXXX",
     "variant": [
@@ -957,6 +1189,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Women Crop Top with Black Logo",
       "it": "White Women Crop Top with Black Logo"
@@ -970,7 +1210,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPWFFFFFF",
     "code": "CROPTOPWFFFFFF000000SXXX",
     "slug": "white-women-crop-top-with-black-logo-s/CROPTOPWFFFFFF000000SXXX",
     "variant": [
@@ -991,6 +1232,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Women Crop Top with Black Logo",
       "it": "White Women Crop Top with Black Logo"
@@ -1004,7 +1253,8 @@
     ]
   },
   {
-    "product": "CROPTOPW",
+    "productCode": "CROPTOPW",
+    "variantCode": "CROPTOPWFFFFFF",
     "code": "CROPTOPWFFFFFF000000XSXX",
     "slug": "white-women-crop-top-with-black-logo-xs/CROPTOPWFFFFFF000000XSXX",
     "variant": [
@@ -1025,6 +1275,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "White Women Crop Top with Black Logo",
       "it": "White Women Crop Top with Black Logo"
@@ -1038,7 +1296,8 @@
     ]
   },
   {
-    "product": "CUFFBEAN",
+    "productCode": "CUFFBEAN",
+    "variantCode": "CUFFBEAN000000",
     "code": "CUFFBEAN000000FFFFFFXXXX",
     "slug": "black-cuffed-beanie-with-white-logo/CUFFBEAN000000FFFFFFXXXX",
     "variant": [
@@ -1051,6 +1310,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Cuffed Beanie with White Logo",
       "it": "Black Cuffed Beanie with White Logo"
@@ -1064,7 +1328,8 @@
     ]
   },
   {
-    "product": "CUFFBEAN",
+    "productCode": "CUFFBEAN",
+    "variantCode": "CUFFBEANA6A5A0",
     "code": "CUFFBEANA6A5A0000000XXXX",
     "slug": "gray-cuffed-beanie-with-black-logo/CUFFBEANA6A5A0000000XXXX",
     "variant": [
@@ -1077,6 +1342,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "A6A5A0"
+      ]
+    },
     "name": {
       "en": "Gray Cuffed Beanie with Black Logo",
       "it": "Gray Cuffed Beanie with Black Logo"
@@ -1090,7 +1360,8 @@
     ]
   },
   {
-    "product": "CUFFBEAN",
+    "productCode": "CUFFBEAN",
+    "variantCode": "CUFFBEANFFFFFF",
     "code": "CUFFBEANFFFFFF000000XXXX",
     "slug": "white-cuffed-beanie-with-black-logo/CUFFBEANFFFFFF000000XXXX",
     "variant": [
@@ -1103,6 +1374,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Cuffed Beanie with Black Logo",
       "it": "White Cuffed Beanie with Black Logo"
@@ -1116,7 +1392,8 @@
     ]
   },
   {
-    "product": "DRAWSBAG",
+    "productCode": "DRAWSBAG",
+    "variantCode": "DRAWSBAG000000",
     "code": "DRAWSBAG000000FFFFFFXXXX",
     "slug": "black-drawstring-bag-with-white-logo/DRAWSBAG000000FFFFFFXXXX",
     "variant": [
@@ -1129,6 +1406,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Drawstring Bag with White Logo",
       "it": "Black Drawstring Bag with White Logo"
@@ -1142,7 +1424,8 @@
     ]
   },
   {
-    "product": "DRAWSBAG",
+    "productCode": "DRAWSBAG",
+    "variantCode": "DRAWSBAGFFFFFF",
     "code": "DRAWSBAGFFFFFF000000XXXX",
     "slug": "white-drawstring-bag-with-black-logo/DRAWSBAGFFFFFF000000XXXX",
     "variant": [
@@ -1155,6 +1438,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Drawstring Bag with Black Logo",
       "it": "White Drawstring Bag with Black Logo"
@@ -1168,7 +1456,8 @@
     ]
   },
   {
-    "product": "DUFFLBAG",
+    "productCode": "DUFFLBAG",
+    "variantCode": "DUFFLBAG000000",
     "code": "DUFFLBAG000000FFFFFFXXXX",
     "slug": "black-duffle-bag-with-white-logo/DUFFLBAG000000FFFFFFXXXX",
     "variant": [
@@ -1181,6 +1470,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Duffle Bag with White Logo",
       "it": "Black Duffle Bag with White Logo"
@@ -1194,7 +1488,8 @@
     ]
   },
   {
-    "product": "DUFFLBAG",
+    "productCode": "DUFFLBAG",
+    "variantCode": "DUFFLBAGFFFFFF",
     "code": "DUFFLBAGFFFFFF000000XXXX",
     "slug": "white-duffle-bag-with-black-logo/DUFFLBAGFFFFFF000000XXXX",
     "variant": [
@@ -1207,6 +1502,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Duffle Bag with Black Logo",
       "it": "White Duffle Bag with Black Logo"
@@ -1220,7 +1520,8 @@
     ]
   },
   {
-    "product": "EMUG12OZ",
+    "productCode": "EMUG12OZ",
+    "variantCode": "EMUG12OZFFFFFF",
     "code": "EMUG12OZFFFFFF000000XXXX",
     "slug": "enamel-mug-with-black-logo-12oz/EMUG12OZFFFFFF000000XXXX",
     "variant": [
@@ -1233,6 +1534,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "Enamel Mug with Black Logo",
       "it": "Enamel Mug with Black Logo"
@@ -1246,7 +1552,8 @@
     ]
   },
   {
-    "product": "FACEMASK",
+    "productCode": "FACEMASK",
+    "variantCode": "FACEMASK000000",
     "code": "FACEMASK000000FFFFFFXXXX",
     "slug": "black-face-mask-with-white-logo/FACEMASK000000FFFFFFXXXX",
     "variant": [
@@ -1259,6 +1566,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Face Mask with White Logo",
       "it": "Black Face Mask with White Logo"
@@ -1272,7 +1584,8 @@
     ]
   },
   {
-    "product": "FACEMASK",
+    "productCode": "FACEMASK",
+    "variantCode": "FACEMASKFFFFFF",
     "code": "FACEMASKFFFFFF000000XXXX",
     "slug": "white-face-mask-with-black-logo/FACEMASKFFFFFF000000XXXX",
     "variant": [
@@ -1285,6 +1598,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Face Mask with Black Logo",
       "it": "White Face Mask with Black Logo"
@@ -1298,7 +1616,8 @@
     ]
   },
   {
-    "product": "FANNPACK",
+    "productCode": "FANNPACK",
+    "variantCode": "FANNPACK000000",
     "code": "FANNPACK000000FFFFFFXXXX",
     "slug": "black-fanny-pack-with-white-logo/FANNPACK000000FFFFFFXXXX",
     "variant": [
@@ -1311,6 +1630,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Fanny Pack with White Logo",
       "it": "Black Fanny Pack with White Logo"
@@ -1324,7 +1648,8 @@
     ]
   },
   {
-    "product": "FANNPACK",
+    "productCode": "FANNPACK",
+    "variantCode": "FANNPACKFFFFFF",
     "code": "FANNPACKFFFFFF000000XXXX",
     "slug": "white-fanny-pack-with-black-logo/FANNPACKFFFFFF000000XXXX",
     "variant": [
@@ -1337,6 +1662,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Fanny Pack with Black Logo",
       "it": "White Fanny Pack with Black Logo"
@@ -1350,7 +1680,8 @@
     ]
   },
   {
-    "product": "FLIPFLOP",
+    "productCode": "FLIPFLOP",
+    "variantCode": "FLIPFLOP000000",
     "code": "FLIPFLOP000000FFFFFF75XX",
     "slug": "black-flip-flops-with-white-logo-7-5/FLIPFLOP000000FFFFFF75XX",
     "variant": [
@@ -1371,6 +1702,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "7.5"
+      ]
+    },
     "name": {
       "en": "Black Flip Flops with White Logo",
       "it": "Black Flip Flops with White Logo"
@@ -1384,7 +1723,8 @@
     ]
   },
   {
-    "product": "FLIPFLOP",
+    "productCode": "FLIPFLOP",
+    "variantCode": "FLIPFLOP000000",
     "code": "FLIPFLOP000000FFFFFF7XXX",
     "slug": "black-flip-flops-with-white-logo-7/FLIPFLOP000000FFFFFF7XXX",
     "variant": [
@@ -1405,6 +1745,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "7"
+      ]
+    },
     "name": {
       "en": "Black Flip Flops with White Logo",
       "it": "Black Flip Flops with White Logo"
@@ -1418,7 +1766,8 @@
     ]
   },
   {
-    "product": "FLIPFLOP",
+    "productCode": "FLIPFLOP",
+    "variantCode": "FLIPFLOP000000",
     "code": "FLIPFLOP000000FFFFFF85XX",
     "slug": "black-flip-flops-with-white-logo-8-5/FLIPFLOP000000FFFFFF85XX",
     "variant": [
@@ -1439,6 +1788,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "8.5"
+      ]
+    },
     "name": {
       "en": "Black Flip Flops with White Logo",
       "it": "Black Flip Flops with White Logo"
@@ -1452,7 +1809,8 @@
     ]
   },
   {
-    "product": "FLIPFLOP",
+    "productCode": "FLIPFLOP",
+    "variantCode": "FLIPFLOP000000",
     "code": "FLIPFLOP000000FFFFFF8XXX",
     "slug": "black-flip-flops-with-white-logo-8/FLIPFLOP000000FFFFFF8XXX",
     "variant": [
@@ -1473,6 +1831,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "8"
+      ]
+    },
     "name": {
       "en": "Black Flip Flops with White Logo",
       "it": "Black Flip Flops with White Logo"
@@ -1486,7 +1852,8 @@
     ]
   },
   {
-    "product": "FLIPFLOP",
+    "productCode": "FLIPFLOP",
+    "variantCode": "FLIPFLOP000000",
     "code": "FLIPFLOP000000FFFFFF9XXX",
     "slug": "black-flip-flops-with-white-logo-9/FLIPFLOP000000FFFFFF9XXX",
     "variant": [
@@ -1507,6 +1874,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "9"
+      ]
+    },
     "name": {
       "en": "Black Flip Flops with White Logo",
       "it": "Black Flip Flops with White Logo"
@@ -1520,7 +1895,8 @@
     ]
   },
   {
-    "product": "FLIPFLOP",
+    "productCode": "FLIPFLOP",
+    "variantCode": "FLIPFLOPFFFFFF",
     "code": "FLIPFLOPFFFFFF00000075XX",
     "slug": "white-flip-flops-with-black-logo-7-5/FLIPFLOPFFFFFF00000075XX",
     "variant": [
@@ -1541,6 +1917,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "7.5"
+      ]
+    },
     "name": {
       "en": "White Flip Flops with Black Logo",
       "it": "White Flip Flops with Black Logo"
@@ -1554,7 +1938,8 @@
     ]
   },
   {
-    "product": "FLIPFLOP",
+    "productCode": "FLIPFLOP",
+    "variantCode": "FLIPFLOPFFFFFF",
     "code": "FLIPFLOPFFFFFF0000007XXX",
     "slug": "white-flip-flops-with-black-logo-7/FLIPFLOPFFFFFF0000007XXX",
     "variant": [
@@ -1575,6 +1960,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "7"
+      ]
+    },
     "name": {
       "en": "White Flip Flops with Black Logo",
       "it": "White Flip Flops with Black Logo"
@@ -1588,7 +1981,8 @@
     ]
   },
   {
-    "product": "FLIPFLOP",
+    "productCode": "FLIPFLOP",
+    "variantCode": "FLIPFLOPFFFFFF",
     "code": "FLIPFLOPFFFFFF00000085XX",
     "slug": "white-flip-flops-with-black-logo-8-5/FLIPFLOPFFFFFF00000085XX",
     "variant": [
@@ -1609,6 +2003,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "8.5"
+      ]
+    },
     "name": {
       "en": "White Flip Flops with Black Logo",
       "it": "White Flip Flops with Black Logo"
@@ -1622,7 +2024,8 @@
     ]
   },
   {
-    "product": "FLIPFLOP",
+    "productCode": "FLIPFLOP",
+    "variantCode": "FLIPFLOPFFFFFF",
     "code": "FLIPFLOPFFFFFF0000008XXX",
     "slug": "white-flip-flops-with-black-logo-8/FLIPFLOPFFFFFF0000008XXX",
     "variant": [
@@ -1643,6 +2046,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "8"
+      ]
+    },
     "name": {
       "en": "White Flip Flops with Black Logo",
       "it": "White Flip Flops with Black Logo"
@@ -1656,7 +2067,8 @@
     ]
   },
   {
-    "product": "FLIPFLOP",
+    "productCode": "FLIPFLOP",
+    "variantCode": "FLIPFLOPFFFFFF",
     "code": "FLIPFLOPFFFFFF0000009XXX",
     "slug": "white-flip-flops-with-black-logo-9/FLIPFLOPFFFFFF0000009XXX",
     "variant": [
@@ -1677,6 +2089,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "9"
+      ]
+    },
     "name": {
       "en": "White Flip Flops with Black Logo",
       "it": "White Flip Flops with Black Logo"
@@ -1690,7 +2110,8 @@
     ]
   },
   {
-    "product": "GLCS21PX",
+    "productCode": "GLCS21PX",
+    "variantCode": "GLCS21PXXXXXXX",
     "code": "GLCS21PXXXXXXXFFFFFFXXXX",
     "slug": "samsung-galaxy-s21-plus-case-with-white-logo/GLCS21PXXXXXXXFFFFFFXXXX",
     "variant": [
@@ -1703,6 +2124,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "XXXXXX"
+      ]
+    },
     "name": {
       "en": "Samsung Galaxy S21 Plus Case with White Logo",
       "it": "Samsung Galaxy S21 Plus Case with White Logo"
@@ -1716,7 +2142,8 @@
     ]
   },
   {
-    "product": "GLCS21UX",
+    "productCode": "GLCS21UX",
+    "variantCode": "GLCS21UXXXXXXX",
     "code": "GLCS21UXXXXXXXFFFFFFXXXX",
     "slug": "samsung-galaxy-s21-ultra-case-with-white-logo/GLCS21UXXXXXXXFFFFFFXXXX",
     "variant": [
@@ -1729,6 +2156,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "XXXXXX"
+      ]
+    },
     "name": {
       "en": "Samsung Galaxy S21 Ultra Case with White Logo",
       "it": "Samsung Galaxy S21 Ultra Case with White Logo"
@@ -1742,7 +2174,8 @@
     ]
   },
   {
-    "product": "GMUG11OZ",
+    "productCode": "GMUG11OZ",
+    "variantCode": "GMUG11OZFFFFFF",
     "code": "GMUG11OZFFFFFF000000XXXX",
     "slug": "white-glossy-mug-with-black-logo-11oz/GMUG11OZFFFFFF000000XXXX",
     "variant": [
@@ -1755,6 +2188,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Glossy Mug with Black Logo",
       "it": "White Glossy Mug with Black Logo"
@@ -1768,7 +2206,8 @@
     ]
   },
   {
-    "product": "GMUG15OZ",
+    "productCode": "GMUG15OZ",
+    "variantCode": "GMUG15OZFFFFFF",
     "code": "GMUG15OZFFFFFF000000XXXX",
     "slug": "white-glossy-mug-with-black-logo-15oz/GMUG15OZFFFFFF000000XXXX",
     "variant": [
@@ -1781,6 +2220,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Glossy Mug with Black Logo",
       "it": "White Glossy Mug with Black Logo"
@@ -1794,7 +2238,8 @@
     ]
   },
   {
-    "product": "HDRESSWX",
+    "productCode": "HDRESSWX",
+    "variantCode": "HDRESSWX000000",
     "code": "HDRESSWX000000FFFFFFLXXX",
     "slug": "black-women-hoodie-dress-with-white-logo-l/HDRESSWX000000FFFFFFLXXX",
     "variant": [
@@ -1815,6 +2260,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Women Hoodie Dress with White Logo",
       "it": "Black Women Hoodie Dress with White Logo"
@@ -1828,7 +2281,8 @@
     ]
   },
   {
-    "product": "HDRESSWX",
+    "productCode": "HDRESSWX",
+    "variantCode": "HDRESSWX000000",
     "code": "HDRESSWX000000FFFFFFMXXX",
     "slug": "black-women-hoodie-dress-with-white-logo-m/HDRESSWX000000FFFFFFMXXX",
     "variant": [
@@ -1849,6 +2303,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Women Hoodie Dress with White Logo",
       "it": "Black Women Hoodie Dress with White Logo"
@@ -1862,7 +2324,8 @@
     ]
   },
   {
-    "product": "HDRESSWX",
+    "productCode": "HDRESSWX",
+    "variantCode": "HDRESSWX000000",
     "code": "HDRESSWX000000FFFFFFSXXX",
     "slug": "black-women-hoodie-dress-with-white-logo-s/HDRESSWX000000FFFFFFSXXX",
     "variant": [
@@ -1883,6 +2346,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Women Hoodie Dress with White Logo",
       "it": "Black Women Hoodie Dress with White Logo"
@@ -1896,7 +2367,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMX000000",
     "code": "HOODIEMX000000FFFFFFLXXX",
     "slug": "black-men-hoodie-with-white-logo-l/HOODIEMX000000FFFFFFLXXX",
     "variant": [
@@ -1917,6 +2389,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Men Hoodie with White Logo",
       "it": "Black Men Hoodie with White Logo"
@@ -1930,7 +2410,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMX000000",
     "code": "HOODIEMX000000FFFFFFMXXX",
     "slug": "black-men-hoodie-with-white-logo-m/HOODIEMX000000FFFFFFMXXX",
     "variant": [
@@ -1951,6 +2432,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Men Hoodie with White Logo",
       "it": "Black Men Hoodie with White Logo"
@@ -1964,7 +2453,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMX000000",
     "code": "HOODIEMX000000FFFFFFSXXX",
     "slug": "black-men-hoodie-with-white-logo-s/HOODIEMX000000FFFFFFSXXX",
     "variant": [
@@ -1985,6 +2475,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Men Hoodie with White Logo",
       "it": "Black Men Hoodie with White Logo"
@@ -1998,7 +2496,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMX000000",
     "code": "HOODIEMX000000FFFFFFXLXX",
     "slug": "black-men-hoodie-with-white-logo-xl/HOODIEMX000000FFFFFFXLXX",
     "variant": [
@@ -2019,6 +2518,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Black Men Hoodie with White Logo",
       "it": "Black Men Hoodie with White Logo"
@@ -2032,7 +2539,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMX7F7F7F",
     "code": "HOODIEMX7F7F7F000000LXXX",
     "slug": "gray-men-hoodie-with-black-logo-l/HOODIEMX7F7F7F000000LXXX",
     "variant": [
@@ -2053,6 +2561,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "7F7F7F"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Men Hoodie with Black Logo",
       "it": "Gray Men Hoodie with Black Logo"
@@ -2066,7 +2582,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMX7F7F7F",
     "code": "HOODIEMX7F7F7F000000MXXX",
     "slug": "gray-men-hoodie-with-black-logo-m/HOODIEMX7F7F7F000000MXXX",
     "variant": [
@@ -2087,6 +2604,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "7F7F7F"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Men Hoodie with Black Logo",
       "it": "Gray Men Hoodie with Black Logo"
@@ -2100,7 +2625,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMX7F7F7F",
     "code": "HOODIEMX7F7F7F000000SXXX",
     "slug": "gray-men-hoodie-with-black-logo-s/HOODIEMX7F7F7F000000SXXX",
     "variant": [
@@ -2121,6 +2647,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "7F7F7F"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Men Hoodie with Black Logo",
       "it": "Gray Men Hoodie with Black Logo"
@@ -2134,7 +2668,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMX7F7F7F",
     "code": "HOODIEMX7F7F7F000000XLXX",
     "slug": "gray-men-hoodie-with-black-logo-xl/HOODIEMX7F7F7F000000XLXX",
     "variant": [
@@ -2155,6 +2690,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "7F7F7F"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Gray Men Hoodie with Black Logo",
       "it": "Gray Men Hoodie with Black Logo"
@@ -2168,7 +2711,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMXFFFFFF",
     "code": "HOODIEMXFFFFFF000000LXXX",
     "slug": "white-men-hoodie-with-black-logo-l/HOODIEMXFFFFFF000000LXXX",
     "variant": [
@@ -2189,6 +2733,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Men Hoodie with Black Logo",
       "it": "White Men Hoodie with Black Logo"
@@ -2202,7 +2754,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMXFFFFFF",
     "code": "HOODIEMXFFFFFF000000MXXX",
     "slug": "white-men-hoodie-with-black-logo-m/HOODIEMXFFFFFF000000MXXX",
     "variant": [
@@ -2223,6 +2776,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Men Hoodie with Black Logo",
       "it": "White Men Hoodie with Black Logo"
@@ -2236,7 +2797,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMXFFFFFF",
     "code": "HOODIEMXFFFFFF000000SXXX",
     "slug": "white-men-hoodie-with-black-logo-s/HOODIEMXFFFFFF000000SXXX",
     "variant": [
@@ -2257,6 +2819,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Men Hoodie with Black Logo",
       "it": "White Men Hoodie with Black Logo"
@@ -2270,7 +2840,8 @@
     ]
   },
   {
-    "product": "HOODIEMX",
+    "productCode": "HOODIEMX",
+    "variantCode": "HOODIEMXFFFFFF",
     "code": "HOODIEMXFFFFFF000000XLXX",
     "slug": "white-men-hoodie-with-black-logo-xl/HOODIEMXFFFFFF000000XLXX",
     "variant": [
@@ -2291,6 +2862,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "White Men Hoodie with Black Logo",
       "it": "White Men Hoodie with Black Logo"
@@ -2304,7 +2883,8 @@
     ]
   },
   {
-    "product": "HOODIEUL",
+    "productCode": "HOODIEUL",
+    "variantCode": "HOODIEUL000000",
     "code": "HOODIEUL000000FFFFFFLXXX",
     "slug": "black-unisex-lightweight-hoodie-with-white-logo-l/HOODIEUL000000FFFFFFLXXX",
     "variant": [
@@ -2325,6 +2905,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Unisex Lightweight Hoodie with White Logo",
       "it": "Black Unisex Lightweight Hoodie with White Logo"
@@ -2338,7 +2926,8 @@
     ]
   },
   {
-    "product": "HOODIEUL",
+    "productCode": "HOODIEUL",
+    "variantCode": "HOODIEUL000000",
     "code": "HOODIEUL000000FFFFFFMXXX",
     "slug": "black-unisex-lightweight-hoodie-with-white-logo-m/HOODIEUL000000FFFFFFMXXX",
     "variant": [
@@ -2359,6 +2948,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Unisex Lightweight Hoodie with White Logo",
       "it": "Black Unisex Lightweight Hoodie with White Logo"
@@ -2372,7 +2969,8 @@
     ]
   },
   {
-    "product": "HOODIEUL",
+    "productCode": "HOODIEUL",
+    "variantCode": "HOODIEUL000000",
     "code": "HOODIEUL000000FFFFFFSXXX",
     "slug": "black-unisex-lightweight-hoodie-with-white-logo-s/HOODIEUL000000FFFFFFSXXX",
     "variant": [
@@ -2393,6 +2991,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Unisex Lightweight Hoodie with White Logo",
       "it": "Black Unisex Lightweight Hoodie with White Logo"
@@ -2406,7 +3012,8 @@
     ]
   },
   {
-    "product": "HOODIEUL",
+    "productCode": "HOODIEUL",
+    "variantCode": "HOODIEUL000000",
     "code": "HOODIEUL000000FFFFFFXLXX",
     "slug": "black-unisex-lightweight-hoodie-with-white-logo-xl/HOODIEUL000000FFFFFFXLXX",
     "variant": [
@@ -2427,6 +3034,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Black Unisex Lightweight Hoodie with White Logo",
       "it": "Black Unisex Lightweight Hoodie with White Logo"
@@ -2440,7 +3055,8 @@
     ]
   },
   {
-    "product": "HOODIEUL",
+    "productCode": "HOODIEUL",
+    "variantCode": "HOODIEUL000000",
     "code": "HOODIEUL000000FFFFFFXSXX",
     "slug": "black-unisex-lightweight-hoodie-with-white-logo-xs/HOODIEUL000000FFFFFFXSXX",
     "variant": [
@@ -2461,6 +3077,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Black Unisex Lightweight Hoodie with White Logo",
       "it": "Black Unisex Lightweight Hoodie with White Logo"
@@ -2474,7 +3098,8 @@
     ]
   },
   {
-    "product": "HOODIEUZ",
+    "productCode": "HOODIEUZ",
+    "variantCode": "HOODIEUZ000000",
     "code": "HOODIEUZ000000FFFFFFLXXX",
     "slug": "black-unisex-zip-hoodie-with-white-logo-l/HOODIEUZ000000FFFFFFLXXX",
     "variant": [
@@ -2495,6 +3120,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Unisex Zip Hoodie with White Logo",
       "it": "Black Unisex Zip Hoodie with White Logo"
@@ -2508,7 +3141,8 @@
     ]
   },
   {
-    "product": "HOODIEUZ",
+    "productCode": "HOODIEUZ",
+    "variantCode": "HOODIEUZ000000",
     "code": "HOODIEUZ000000FFFFFFMXXX",
     "slug": "black-unisex-zip-hoodie-with-white-logo-m/HOODIEUZ000000FFFFFFMXXX",
     "variant": [
@@ -2529,6 +3163,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Unisex Zip Hoodie with White Logo",
       "it": "Black Unisex Zip Hoodie with White Logo"
@@ -2542,7 +3184,8 @@
     ]
   },
   {
-    "product": "HOODIEUZ",
+    "productCode": "HOODIEUZ",
+    "variantCode": "HOODIEUZ000000",
     "code": "HOODIEUZ000000FFFFFFSXXX",
     "slug": "black-unisex-zip-hoodie-with-white-logo-s/HOODIEUZ000000FFFFFFSXXX",
     "variant": [
@@ -2563,6 +3206,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Unisex Zip Hoodie with White Logo",
       "it": "Black Unisex Zip Hoodie with White Logo"
@@ -2576,7 +3227,8 @@
     ]
   },
   {
-    "product": "HOODIEUZ",
+    "productCode": "HOODIEUZ",
+    "variantCode": "HOODIEUZ000000",
     "code": "HOODIEUZ000000FFFFFFXLXX",
     "slug": "black-unisex-zip-hoodie-with-white-logo-xl/HOODIEUZ000000FFFFFFXLXX",
     "variant": [
@@ -2597,6 +3249,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Black Unisex Zip Hoodie with White Logo",
       "it": "Black Unisex Zip Hoodie with White Logo"
@@ -2610,7 +3270,8 @@
     ]
   },
   {
-    "product": "HOODIEUZ",
+    "productCode": "HOODIEUZ",
+    "variantCode": "HOODIEUZ000000",
     "code": "HOODIEUZ000000FFFFFFXSXX",
     "slug": "black-unisex-zip-hoodie-with-white-logo-xs/HOODIEUZ000000FFFFFFXSXX",
     "variant": [
@@ -2631,6 +3292,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Black Unisex Zip Hoodie with White Logo",
       "it": "Black Unisex Zip Hoodie with White Logo"
@@ -2644,7 +3313,8 @@
     ]
   },
   {
-    "product": "HOODIEWC",
+    "productCode": "HOODIEWC",
+    "variantCode": "HOODIEWC000000",
     "code": "HOODIEWC000000FFFFFFLXXX",
     "slug": "black-women-cropped-hoodie-with-white-logo-l/HOODIEWC000000FFFFFFLXXX",
     "variant": [
@@ -2665,6 +3335,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Women Cropped Hoodie with White Logo",
       "it": "Black Women Cropped Hoodie with White Logo"
@@ -2678,7 +3356,8 @@
     ]
   },
   {
-    "product": "HOODIEWC",
+    "productCode": "HOODIEWC",
+    "variantCode": "HOODIEWC000000",
     "code": "HOODIEWC000000FFFFFFMXXX",
     "slug": "black-women-cropped-hoodie-with-white-logo-m/HOODIEWC000000FFFFFFMXXX",
     "variant": [
@@ -2699,6 +3378,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Women Cropped Hoodie with White Logo",
       "it": "Black Women Cropped Hoodie with White Logo"
@@ -2712,7 +3399,8 @@
     ]
   },
   {
-    "product": "HOODIEWC",
+    "productCode": "HOODIEWC",
+    "variantCode": "HOODIEWC000000",
     "code": "HOODIEWC000000FFFFFFSXXX",
     "slug": "black-women-cropped-hoodie-with-white-logo-s/HOODIEWC000000FFFFFFSXXX",
     "variant": [
@@ -2733,6 +3421,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Women Cropped Hoodie with White Logo",
       "it": "Black Women Cropped Hoodie with White Logo"
@@ -2746,7 +3442,8 @@
     ]
   },
   {
-    "product": "HOODIEWC",
+    "productCode": "HOODIEWC",
+    "variantCode": "HOODIEWC000000",
     "code": "HOODIEWC000000FFFFFFXSXX",
     "slug": "black-women-cropped-hoodie-with-white-logo-xs/HOODIEWC000000FFFFFFXSXX",
     "variant": [
@@ -2767,6 +3464,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Black Women Cropped Hoodie with White Logo",
       "it": "Black Women Cropped Hoodie with White Logo"
@@ -2780,7 +3485,8 @@
     ]
   },
   {
-    "product": "HOODIEWC",
+    "productCode": "HOODIEWC",
+    "variantCode": "HOODIEWC575C51",
     "code": "HOODIEWC575C51000000LXXX",
     "slug": "gray-women-cropped-hoodie-with-black-logo-l/HOODIEWC575C51000000LXXX",
     "variant": [
@@ -2801,6 +3507,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "575C51"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Women Cropped Hoodie with Black Logo",
       "it": "Gray Women Cropped Hoodie with Black Logo"
@@ -2814,7 +3528,8 @@
     ]
   },
   {
-    "product": "HOODIEWC",
+    "productCode": "HOODIEWC",
+    "variantCode": "HOODIEWC575C51",
     "code": "HOODIEWC575C51000000MXXX",
     "slug": "gray-women-cropped-hoodie-with-black-logo-m/HOODIEWC575C51000000MXXX",
     "variant": [
@@ -2835,6 +3550,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "575C51"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Women Cropped Hoodie with Black Logo",
       "it": "Gray Women Cropped Hoodie with Black Logo"
@@ -2848,7 +3571,8 @@
     ]
   },
   {
-    "product": "HOODIEWC",
+    "productCode": "HOODIEWC",
+    "variantCode": "HOODIEWC575C51",
     "code": "HOODIEWC575C51000000SXXX",
     "slug": "gray-women-cropped-hoodie-with-black-logo-s/HOODIEWC575C51000000SXXX",
     "variant": [
@@ -2869,6 +3593,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "575C51"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Women Cropped Hoodie with Black Logo",
       "it": "Gray Women Cropped Hoodie with Black Logo"
@@ -2882,7 +3614,8 @@
     ]
   },
   {
-    "product": "HOODIEWC",
+    "productCode": "HOODIEWC",
+    "variantCode": "HOODIEWC575C51",
     "code": "HOODIEWC575C51000000XSXX",
     "slug": "gray-women-cropped-hoodie-with-black-logo-xs/HOODIEWC575C51000000XSXX",
     "variant": [
@@ -2903,6 +3636,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "575C51"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Gray Women Cropped Hoodie with Black Logo",
       "it": "Gray Women Cropped Hoodie with Black Logo"
@@ -2916,7 +3657,8 @@
     ]
   },
   {
-    "product": "IPC11PXX",
+    "productCode": "IPC11PXX",
+    "variantCode": "IPC11PXX000000",
     "code": "IPC11PXX000000FFFFFFXXXX",
     "slug": "iphone-11-pro-case-with-white-logo/IPC11PXX000000FFFFFFXXXX",
     "variant": [
@@ -2929,6 +3671,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "iPhone 11 Pro Case with White Logo",
       "it": "iPhone 11 Pro Case with White Logo"
@@ -2942,7 +3689,8 @@
     ]
   },
   {
-    "product": "IPC11XXX",
+    "productCode": "IPC11XXX",
+    "variantCode": "IPC11XXX000000",
     "code": "IPC11XXX000000FFFFFFXXXX",
     "slug": "iphone-11-case-with-white-logo/IPC11XXX000000FFFFFFXXXX",
     "variant": [
@@ -2955,6 +3703,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "iPhone 11 Case with White Logo",
       "it": "iPhone 11 Case with White Logo"
@@ -2968,7 +3721,8 @@
     ]
   },
   {
-    "product": "IPC12PMX",
+    "productCode": "IPC12PMX",
+    "variantCode": "IPC12PMXXXXXXX",
     "code": "IPC12PMXXXXXXX000000XXXX",
     "slug": "iphone-12-pro-max-case-with-black-logo/IPC12PMXXXXXXX000000XXXX",
     "variant": [
@@ -2981,6 +3735,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "XXXXXX"
+      ]
+    },
     "name": {
       "en": "iPhone 12 Pro Max Case with Black Logo",
       "it": "iPhone 12 Pro Max Case with Black Logo"
@@ -2994,7 +3753,8 @@
     ]
   },
   {
-    "product": "LAPTSL13",
+    "productCode": "LAPTSL13",
+    "variantCode": "LAPTSL13000000",
     "code": "LAPTSL13000000FFFFFFXXXX",
     "slug": "black-laptop-sleeve-with-white-logo-13in/LAPTSL13000000FFFFFFXXXX",
     "variant": [
@@ -3007,6 +3767,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Laptop Sleeve with White Logo",
       "it": "Black Laptop Sleeve with White Logo"
@@ -3020,7 +3785,8 @@
     ]
   },
   {
-    "product": "LAPTSL15",
+    "productCode": "LAPTSL15",
+    "variantCode": "LAPTSL15000000",
     "code": "LAPTSL15000000FFFFFFXXXX",
     "slug": "black-laptop-sleeve-with-white-logo-15in/LAPTSL15000000FFFFFFXXXX",
     "variant": [
@@ -3033,6 +3799,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Laptop Sleeve with White Logo",
       "it": "Black Laptop Sleeve with White Logo"
@@ -3046,7 +3817,8 @@
     ]
   },
   {
-    "product": "MESHBACK",
+    "productCode": "MESHBACK",
+    "variantCode": "MESHBACK323230",
     "code": "MESHBACK323230FFFFFFXXXX",
     "slug": "gray-mesh-back-snapback-with-white-logo/MESHBACK323230FFFFFFXXXX",
     "variant": [
@@ -3059,6 +3831,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "323230"
+      ]
+    },
     "name": {
       "en": "Gray Mesh Back Snapback with White Logo",
       "it": "Gray Mesh Back Snapback with White Logo"
@@ -3072,7 +3849,8 @@
     ]
   },
   {
-    "product": "NOTEBOOK",
+    "productCode": "NOTEBOOK",
+    "variantCode": "NOTEBOOK000000",
     "code": "NOTEBOOK000000FFFFFFXXXX",
     "slug": "black-spiral-notebook-with-white-logo/NOTEBOOK000000FFFFFFXXXX",
     "variant": [
@@ -3085,6 +3863,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Spiral Notebook with White Logo",
       "it": "Black Spiral Notebook with White Logo"
@@ -3098,7 +3881,8 @@
     ]
   },
   {
-    "product": "NOTEBOOK",
+    "productCode": "NOTEBOOK",
+    "variantCode": "NOTEBOOKFFFFFF",
     "code": "NOTEBOOKFFFFFF000000XXXX",
     "slug": "white-spiral-notebook-with-black-logo/NOTEBOOKFFFFFF000000XXXX",
     "variant": [
@@ -3111,6 +3895,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Spiral Notebook with Black Logo",
       "it": "White Spiral Notebook with Black Logo"
@@ -3124,7 +3913,8 @@
     ]
   },
   {
-    "product": "PILL1818",
+    "productCode": "PILL1818",
+    "variantCode": "PILL1818000000",
     "code": "PILL1818000000FFFFFFXXXX",
     "slug": "black-pillow-with-white-logo-18x18/PILL1818000000FFFFFFXXXX",
     "variant": [
@@ -3137,6 +3927,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Pillow with White Logo",
       "it": "Black Pillow with White Logo"
@@ -3150,7 +3945,8 @@
     ]
   },
   {
-    "product": "PILL1818",
+    "productCode": "PILL1818",
+    "variantCode": "PILL1818FFFFFF",
     "code": "PILL1818FFFFFF000000XXXX",
     "slug": "white-pillow-with-black-logo-18x18/PILL1818FFFFFF000000XXXX",
     "variant": [
@@ -3163,6 +3959,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Pillow with Black Logo",
       "it": "White Pillow with Black Logo"
@@ -3176,7 +3977,8 @@
     ]
   },
   {
-    "product": "PILL2012",
+    "productCode": "PILL2012",
+    "variantCode": "PILL2012000000",
     "code": "PILL2012000000FFFFFFXXXX",
     "slug": "black-pillow-with-white-logo-20x12/PILL2012000000FFFFFFXXXX",
     "variant": [
@@ -3189,6 +3991,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Pillow with White Logo",
       "it": "Black Pillow with White Logo"
@@ -3202,7 +4009,8 @@
     ]
   },
   {
-    "product": "PILL2012",
+    "productCode": "PILL2012",
+    "variantCode": "PILL2012FFFFFF",
     "code": "PILL2012FFFFFF000000XXXX",
     "slug": "white-pillow-with-black-logo-20x12/PILL2012FFFFFF000000XXXX",
     "variant": [
@@ -3215,6 +4023,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Pillow with Black Logo",
       "it": "White Pillow with Black Logo"
@@ -3228,7 +4041,8 @@
     ]
   },
   {
-    "product": "POLOMXXX",
+    "productCode": "POLOMXXX",
+    "variantCode": "POLOMXXX000000",
     "code": "POLOMXXX000000FFFFFFLXXX",
     "slug": "black-men-polo-with-white-logo-l/POLOMXXX000000FFFFFFLXXX",
     "variant": [
@@ -3249,6 +4063,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Men Polo with White Logo",
       "it": "Black Men Polo with White Logo"
@@ -3262,7 +4084,8 @@
     ]
   },
   {
-    "product": "POLOMXXX",
+    "productCode": "POLOMXXX",
+    "variantCode": "POLOMXXX000000",
     "code": "POLOMXXX000000FFFFFFMXXX",
     "slug": "black-men-polo-with-white-logo-m/POLOMXXX000000FFFFFFMXXX",
     "variant": [
@@ -3283,6 +4106,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Men Polo with White Logo",
       "it": "Black Men Polo with White Logo"
@@ -3296,7 +4127,8 @@
     ]
   },
   {
-    "product": "POLOMXXX",
+    "productCode": "POLOMXXX",
+    "variantCode": "POLOMXXX000000",
     "code": "POLOMXXX000000FFFFFFSXXX",
     "slug": "black-men-polo-with-white-logo-s/POLOMXXX000000FFFFFFSXXX",
     "variant": [
@@ -3317,6 +4149,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Men Polo with White Logo",
       "it": "Black Men Polo with White Logo"
@@ -3330,7 +4170,8 @@
     ]
   },
   {
-    "product": "POLOMXXX",
+    "productCode": "POLOMXXX",
+    "variantCode": "POLOMXXXC2C2C2",
     "code": "POLOMXXXC2C2C2000000LXXX",
     "slug": "gray-men-polo-with-black-logo-l/POLOMXXXC2C2C2000000LXXX",
     "variant": [
@@ -3351,6 +4192,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "C2C2C2"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Men Polo with Black Logo",
       "it": "Gray Men Polo with Black Logo"
@@ -3364,7 +4213,8 @@
     ]
   },
   {
-    "product": "POLOMXXX",
+    "productCode": "POLOMXXX",
+    "variantCode": "POLOMXXXC2C2C2",
     "code": "POLOMXXXC2C2C2000000MXXX",
     "slug": "gray-men-polo-with-black-logo-m/POLOMXXXC2C2C2000000MXXX",
     "variant": [
@@ -3385,6 +4235,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "C2C2C2"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Men Polo with Black Logo",
       "it": "Gray Men Polo with Black Logo"
@@ -3398,7 +4256,8 @@
     ]
   },
   {
-    "product": "POLOMXXX",
+    "productCode": "POLOMXXX",
+    "variantCode": "POLOMXXXC2C2C2",
     "code": "POLOMXXXC2C2C2000000SXXX",
     "slug": "gray-men-polo-with-black-logo-s/POLOMXXXC2C2C2000000SXXX",
     "variant": [
@@ -3419,6 +4278,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "C2C2C2"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Men Polo with Black Logo",
       "it": "Gray Men Polo with Black Logo"
@@ -3432,7 +4299,8 @@
     ]
   },
   {
-    "product": "POLOMXXX",
+    "productCode": "POLOMXXX",
+    "variantCode": "POLOMXXXFFFFFF",
     "code": "POLOMXXXFFFFFF000000LXXX",
     "slug": "white-men-polo-with-black-logo-l/POLOMXXXFFFFFF000000LXXX",
     "variant": [
@@ -3453,6 +4321,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Men Polo with Black Logo",
       "it": "White Men Polo with Black Logo"
@@ -3466,7 +4342,8 @@
     ]
   },
   {
-    "product": "POLOMXXX",
+    "productCode": "POLOMXXX",
+    "variantCode": "POLOMXXXFFFFFF",
     "code": "POLOMXXXFFFFFF000000MXXX",
     "slug": "white-men-polo-with-black-logo-m/POLOMXXXFFFFFF000000MXXX",
     "variant": [
@@ -3487,6 +4364,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Men Polo with Black Logo",
       "it": "White Men Polo with Black Logo"
@@ -3500,7 +4385,8 @@
     ]
   },
   {
-    "product": "POLOMXXX",
+    "productCode": "POLOMXXX",
+    "variantCode": "POLOMXXXFFFFFF",
     "code": "POLOMXXXFFFFFF000000SXXX",
     "slug": "white-men-polo-with-black-logo-s/POLOMXXXFFFFFF000000SXXX",
     "variant": [
@@ -3521,6 +4407,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Men Polo with Black Logo",
       "it": "White Men Polo with Black Logo"
@@ -3534,7 +4428,8 @@
     ]
   },
   {
-    "product": "POLOWXXX",
+    "productCode": "POLOWXXX",
+    "variantCode": "POLOWXXX000000",
     "code": "POLOWXXX000000FFFFFFLXXX",
     "slug": "black-women-polo-with-white-logo-l/POLOWXXX000000FFFFFFLXXX",
     "variant": [
@@ -3555,6 +4450,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Women Polo with White Logo",
       "it": "Black Women Polo with White Logo"
@@ -3568,7 +4471,8 @@
     ]
   },
   {
-    "product": "POLOWXXX",
+    "productCode": "POLOWXXX",
+    "variantCode": "POLOWXXX000000",
     "code": "POLOWXXX000000FFFFFFMXXX",
     "slug": "black-women-polo-with-white-logo-m/POLOWXXX000000FFFFFFMXXX",
     "variant": [
@@ -3589,6 +4493,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Women Polo with White Logo",
       "it": "Black Women Polo with White Logo"
@@ -3602,7 +4514,8 @@
     ]
   },
   {
-    "product": "POLOWXXX",
+    "productCode": "POLOWXXX",
+    "variantCode": "POLOWXXX000000",
     "code": "POLOWXXX000000FFFFFFSXXX",
     "slug": "black-women-polo-with-white-logo-s/POLOWXXX000000FFFFFFSXXX",
     "variant": [
@@ -3623,6 +4536,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Women Polo with White Logo",
       "it": "Black Women Polo with White Logo"
@@ -3636,7 +4557,8 @@
     ]
   },
   {
-    "product": "POLOWXXX",
+    "productCode": "POLOWXXX",
+    "variantCode": "POLOWXXXFFFFFF",
     "code": "POLOWXXXFFFFFF000000LXXX",
     "slug": "white-women-polo-with-black-logo-l/POLOWXXXFFFFFF000000LXXX",
     "variant": [
@@ -3657,6 +4579,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Women Polo with Black Logo",
       "it": "White Women Polo with Black Logo"
@@ -3670,7 +4600,8 @@
     ]
   },
   {
-    "product": "POLOWXXX",
+    "productCode": "POLOWXXX",
+    "variantCode": "POLOWXXXFFFFFF",
     "code": "POLOWXXXFFFFFF000000MXXX",
     "slug": "white-women-polo-with-black-logo-m/POLOWXXXFFFFFF000000MXXX",
     "variant": [
@@ -3691,6 +4622,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Women Polo with Black Logo",
       "it": "White Women Polo with Black Logo"
@@ -3704,7 +4643,8 @@
     ]
   },
   {
-    "product": "POLOWXXX",
+    "productCode": "POLOWXXX",
+    "variantCode": "POLOWXXXFFFFFF",
     "code": "POLOWXXXFFFFFF000000SXXX",
     "slug": "white-women-polo-with-black-logo-s/POLOWXXXFFFFFF000000SXXX",
     "variant": [
@@ -3725,6 +4665,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Women Polo with Black Logo",
       "it": "White Women Polo with Black Logo"
@@ -3738,7 +4686,8 @@
     ]
   },
   {
-    "product": "POST2130",
+    "productCode": "POST2130",
+    "variantCode": "POST2130000000",
     "code": "POST2130000000000000XXXX",
     "slug": "black-framed-poster-with-black-logo-21x30/POST2130000000000000XXXX",
     "variant": [
@@ -3751,6 +4700,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Framed Poster with Black Logo",
       "it": "Black Framed Poster with Black Logo"
@@ -3764,7 +4718,8 @@
     ]
   },
   {
-    "product": "POST2130",
+    "productCode": "POST2130",
+    "variantCode": "POST2130FFFFFF",
     "code": "POST2130FFFFFF000000XXXX",
     "slug": "white-framed-poster-with-black-logo-21x30/POST2130FFFFFF000000XXXX",
     "variant": [
@@ -3777,6 +4732,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Framed Poster with Black Logo",
       "it": "White Framed Poster with Black Logo"
@@ -3790,7 +4750,8 @@
     ]
   },
   {
-    "product": "POST6191",
+    "productCode": "POST6191",
+    "variantCode": "POST6191000000",
     "code": "POST6191000000000000XXXX",
     "slug": "black-framed-poster-with-black-logo-61x91/POST6191000000000000XXXX",
     "variant": [
@@ -3803,6 +4764,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Framed Poster with Black Logo",
       "it": "Black Framed Poster with Black Logo"
@@ -3816,7 +4782,8 @@
     ]
   },
   {
-    "product": "POST6191",
+    "productCode": "POST6191",
+    "variantCode": "POST6191FFFFFF",
     "code": "POST6191FFFFFF000000XXXX",
     "slug": "white-framed-poster-with-black-logo-61x91/POST6191FFFFFF000000XXXX",
     "variant": [
@@ -3829,6 +4796,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Framed Poster with Black Logo",
       "it": "White Framed Poster with Black Logo"
@@ -3842,7 +4814,8 @@
     ]
   },
   {
-    "product": "PPOMBEAN",
+    "productCode": "PPOMBEAN",
+    "variantCode": "PPOMBEAN000000",
     "code": "PPOMBEAN000000FFFFFFXXXX",
     "slug": "black-pom-pom-beanie-with-white-logo/PPOMBEAN000000FFFFFFXXXX",
     "variant": [
@@ -3855,6 +4828,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Pom-Pom Beanie with White Logo",
       "it": "Black Pom-Pom Beanie with White Logo"
@@ -3868,7 +4846,8 @@
     ]
   },
   {
-    "product": "PPOMBEAN",
+    "productCode": "PPOMBEAN",
+    "variantCode": "PPOMBEAN74736E",
     "code": "PPOMBEAN74736EFFFFFFXXXX",
     "slug": "gray-pom-pom-beanie-with-white-logo/PPOMBEAN74736EFFFFFFXXXX",
     "variant": [
@@ -3881,6 +4860,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "74736E"
+      ]
+    },
     "name": {
       "en": "Gray Pom-Pom Beanie with White Logo",
       "it": "Gray Pom-Pom Beanie with White Logo"
@@ -3894,7 +4878,8 @@
     ]
   },
   {
-    "product": "SHIRT34S",
+    "productCode": "SHIRT34S",
+    "variantCode": "SHIRT34S000000",
     "code": "SHIRT34S000000FFFFFFLXXX",
     "slug": "black-unisex-3-4-sleeve-shirt-with-white-logo-l/SHIRT34S000000FFFFFFLXXX",
     "variant": [
@@ -3915,6 +4900,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Unisex 3/4 Sleeve Shirt with White Logo",
       "it": "Black Unisex 3/4 Sleeve Shirt with White Logo"
@@ -3928,7 +4921,8 @@
     ]
   },
   {
-    "product": "SHIRT34S",
+    "productCode": "SHIRT34S",
+    "variantCode": "SHIRT34S000000",
     "code": "SHIRT34S000000FFFFFFMXXX",
     "slug": "black-unisex-3-4-sleeve-shirt-with-white-logo-m/SHIRT34S000000FFFFFFMXXX",
     "variant": [
@@ -3949,6 +4943,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Unisex 3/4 Sleeve Shirt with White Logo",
       "it": "Black Unisex 3/4 Sleeve Shirt with White Logo"
@@ -3962,7 +4964,8 @@
     ]
   },
   {
-    "product": "SHIRT34S",
+    "productCode": "SHIRT34S",
+    "variantCode": "SHIRT34S000000",
     "code": "SHIRT34S000000FFFFFFSXXX",
     "slug": "black-unisex-3-4-sleeve-shirt-with-white-logo-s/SHIRT34S000000FFFFFFSXXX",
     "variant": [
@@ -3983,6 +4986,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Unisex 3/4 Sleeve Shirt with White Logo",
       "it": "Black Unisex 3/4 Sleeve Shirt with White Logo"
@@ -3996,7 +5007,8 @@
     ]
   },
   {
-    "product": "SHIRT34S",
+    "productCode": "SHIRT34S",
+    "variantCode": "SHIRT34S000000",
     "code": "SHIRT34S000000FFFFFFXLXX",
     "slug": "black-unisex-3-4-sleeve-shirt-with-white-logo-xl/SHIRT34S000000FFFFFFXLXX",
     "variant": [
@@ -4017,6 +5029,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Black Unisex 3/4 Sleeve Shirt with White Logo",
       "it": "Black Unisex 3/4 Sleeve Shirt with White Logo"
@@ -4030,7 +5050,8 @@
     ]
   },
   {
-    "product": "SHIRT34S",
+    "productCode": "SHIRT34S",
+    "variantCode": "SHIRT34S000000",
     "code": "SHIRT34S000000FFFFFFXSXX",
     "slug": "black-unisex-3-4-sleeve-shirt-with-white-logo-xs/SHIRT34S000000FFFFFFXSXX",
     "variant": [
@@ -4051,6 +5072,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Black Unisex 3/4 Sleeve Shirt with White Logo",
       "it": "Black Unisex 3/4 Sleeve Shirt with White Logo"
@@ -4064,7 +5093,8 @@
     ]
   },
   {
-    "product": "SHIRT34S",
+    "productCode": "SHIRT34S",
+    "variantCode": "SHIRT34SFFFFFF",
     "code": "SHIRT34SFFFFFF000000LXXX",
     "slug": "white-unisex-3-4-sleeve-shirt-with-black-logo-l/SHIRT34SFFFFFF000000LXXX",
     "variant": [
@@ -4085,6 +5115,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Unisex 3/4 Sleeve Shirt with Black Logo",
       "it": "White Unisex 3/4 Sleeve Shirt with Black Logo"
@@ -4098,7 +5136,8 @@
     ]
   },
   {
-    "product": "SHIRT34S",
+    "productCode": "SHIRT34S",
+    "variantCode": "SHIRT34SFFFFFF",
     "code": "SHIRT34SFFFFFF000000MXXX",
     "slug": "white-unisex-3-4-sleeve-shirt-with-black-logo-m/SHIRT34SFFFFFF000000MXXX",
     "variant": [
@@ -4119,6 +5158,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Unisex 3/4 Sleeve Shirt with Black Logo",
       "it": "White Unisex 3/4 Sleeve Shirt with Black Logo"
@@ -4132,7 +5179,8 @@
     ]
   },
   {
-    "product": "SHIRT34S",
+    "productCode": "SHIRT34S",
+    "variantCode": "SHIRT34SFFFFFF",
     "code": "SHIRT34SFFFFFF000000SXXX",
     "slug": "white-unisex-3-4-sleeve-shirt-with-black-logo-s/SHIRT34SFFFFFF000000SXXX",
     "variant": [
@@ -4153,6 +5201,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Unisex 3/4 Sleeve Shirt with Black Logo",
       "it": "White Unisex 3/4 Sleeve Shirt with Black Logo"
@@ -4166,7 +5222,8 @@
     ]
   },
   {
-    "product": "SHIRT34S",
+    "productCode": "SHIRT34S",
+    "variantCode": "SHIRT34SFFFFFF",
     "code": "SHIRT34SFFFFFF000000XLXX",
     "slug": "white-unisex-3-4-sleeve-shirt-with-black-logo-xl/SHIRT34SFFFFFF000000XLXX",
     "variant": [
@@ -4187,6 +5244,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "White Unisex 3/4 Sleeve Shirt with Black Logo",
       "it": "White Unisex 3/4 Sleeve Shirt with Black Logo"
@@ -4200,7 +5265,8 @@
     ]
   },
   {
-    "product": "SHIRT34S",
+    "productCode": "SHIRT34S",
+    "variantCode": "SHIRT34SFFFFFF",
     "code": "SHIRT34SFFFFFF000000XSXX",
     "slug": "white-unisex-3-4-sleeve-shirt-with-black-logo-xs/SHIRT34SFFFFFF000000XSXX",
     "variant": [
@@ -4221,6 +5287,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "White Unisex 3/4 Sleeve Shirt with Black Logo",
       "it": "White Unisex 3/4 Sleeve Shirt with Black Logo"
@@ -4234,7 +5308,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLS000000",
     "code": "SHIRTMLS000000FFFFFFLXXX",
     "slug": "black-men-long-sleeve-shirt-with-white-logo-l/SHIRTMLS000000FFFFFFLXXX",
     "variant": [
@@ -4255,6 +5330,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Men Long Sleeve Shirt with White Logo",
       "it": "Black Men Long Sleeve Shirt with White Logo"
@@ -4268,7 +5351,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLS000000",
     "code": "SHIRTMLS000000FFFFFFMXXX",
     "slug": "black-men-long-sleeve-shirt-with-white-logo-m/SHIRTMLS000000FFFFFFMXXX",
     "variant": [
@@ -4289,6 +5373,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Men Long Sleeve Shirt with White Logo",
       "it": "Black Men Long Sleeve Shirt with White Logo"
@@ -4302,7 +5394,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLS000000",
     "code": "SHIRTMLS000000FFFFFFSXXX",
     "slug": "black-men-long-sleeve-shirt-with-white-logo-s/SHIRTMLS000000FFFFFFSXXX",
     "variant": [
@@ -4323,6 +5416,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Men Long Sleeve Shirt with White Logo",
       "it": "Black Men Long Sleeve Shirt with White Logo"
@@ -4336,7 +5437,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLS000000",
     "code": "SHIRTMLS000000FFFFFFXLXX",
     "slug": "black-men-long-sleeve-shirt-with-white-logo-xl/SHIRTMLS000000FFFFFFXLXX",
     "variant": [
@@ -4357,6 +5459,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Black Men Long Sleeve Shirt with White Logo",
       "it": "Black Men Long Sleeve Shirt with White Logo"
@@ -4370,7 +5480,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLS9B969C",
     "code": "SHIRTMLS9B969C000000LXXX",
     "slug": "gray-men-long-sleeve-shirt-with-black-logo-l/SHIRTMLS9B969C000000LXXX",
     "variant": [
@@ -4391,6 +5502,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B969C"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Men Long Sleeve Shirt with Black Logo",
       "it": "Gray Men Long Sleeve Shirt with Black Logo"
@@ -4404,7 +5523,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLS9B969C",
     "code": "SHIRTMLS9B969C000000MXXX",
     "slug": "gray-men-long-sleeve-shirt-with-black-logo-m/SHIRTMLS9B969C000000MXXX",
     "variant": [
@@ -4425,6 +5545,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B969C"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Men Long Sleeve Shirt with Black Logo",
       "it": "Gray Men Long Sleeve Shirt with Black Logo"
@@ -4438,7 +5566,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLS9B969C",
     "code": "SHIRTMLS9B969C000000SXXX",
     "slug": "gray-men-long-sleeve-shirt-with-black-logo-s/SHIRTMLS9B969C000000SXXX",
     "variant": [
@@ -4459,6 +5588,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B969C"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Men Long Sleeve Shirt with Black Logo",
       "it": "Gray Men Long Sleeve Shirt with Black Logo"
@@ -4472,7 +5609,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLS9B969C",
     "code": "SHIRTMLS9B969C000000XLXX",
     "slug": "gray-men-long-sleeve-shirt-with-black-logo-xl/SHIRTMLS9B969C000000XLXX",
     "variant": [
@@ -4493,6 +5631,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B969C"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Gray Men Long Sleeve Shirt with Black Logo",
       "it": "Gray Men Long Sleeve Shirt with Black Logo"
@@ -4506,7 +5652,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLSFFFFFF",
     "code": "SHIRTMLSFFFFFF000000LXXX",
     "slug": "white-men-long-sleeve-shirt-with-black-logo-l/SHIRTMLSFFFFFF000000LXXX",
     "variant": [
@@ -4527,6 +5674,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Men Long Sleeve Shirt with Black Logo",
       "it": "White Men Long Sleeve Shirt with Black Logo"
@@ -4540,7 +5695,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLSFFFFFF",
     "code": "SHIRTMLSFFFFFF000000MXXX",
     "slug": "white-men-long-sleeve-shirt-with-black-logo-m/SHIRTMLSFFFFFF000000MXXX",
     "variant": [
@@ -4561,6 +5717,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Men Long Sleeve Shirt with Black Logo",
       "it": "White Men Long Sleeve Shirt with Black Logo"
@@ -4574,7 +5738,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLSFFFFFF",
     "code": "SHIRTMLSFFFFFF000000SXXX",
     "slug": "white-men-long-sleeve-shirt-with-black-logo-s/SHIRTMLSFFFFFF000000SXXX",
     "variant": [
@@ -4595,6 +5760,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Men Long Sleeve Shirt with Black Logo",
       "it": "White Men Long Sleeve Shirt with Black Logo"
@@ -4608,7 +5781,8 @@
     ]
   },
   {
-    "product": "SHIRTMLS",
+    "productCode": "SHIRTMLS",
+    "variantCode": "SHIRTMLSFFFFFF",
     "code": "SHIRTMLSFFFFFF000000XLXX",
     "slug": "white-men-long-sleeve-shirt-with-black-logo-xl/SHIRTMLSFFFFFF000000XLXX",
     "variant": [
@@ -4629,6 +5803,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "White Men Long Sleeve Shirt with Black Logo",
       "it": "White Men Long Sleeve Shirt with Black Logo"
@@ -4642,7 +5824,8 @@
     ]
   },
   {
-    "product": "SHIRTMMX",
+    "productCode": "SHIRTMMX",
+    "variantCode": "SHIRTMMX000000",
     "code": "SHIRTMMX000000FFFFFFLXXX",
     "slug": "black-men-muscle-shirt-with-white-logo-l/SHIRTMMX000000FFFFFFLXXX",
     "variant": [
@@ -4663,6 +5846,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Men Muscle Shirt with White Logo",
       "it": "Black Men Muscle Shirt with White Logo"
@@ -4676,7 +5867,8 @@
     ]
   },
   {
-    "product": "SHIRTMMX",
+    "productCode": "SHIRTMMX",
+    "variantCode": "SHIRTMMX000000",
     "code": "SHIRTMMX000000FFFFFFMXXX",
     "slug": "black-men-muscle-shirt-with-white-logo-m/SHIRTMMX000000FFFFFFMXXX",
     "variant": [
@@ -4697,6 +5889,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Men Muscle Shirt with White Logo",
       "it": "Black Men Muscle Shirt with White Logo"
@@ -4710,7 +5910,8 @@
     ]
   },
   {
-    "product": "SHIRTMMX",
+    "productCode": "SHIRTMMX",
+    "variantCode": "SHIRTMMX000000",
     "code": "SHIRTMMX000000FFFFFFSXXX",
     "slug": "black-men-muscle-shirt-with-white-logo-s/SHIRTMMX000000FFFFFFSXXX",
     "variant": [
@@ -4731,6 +5932,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Men Muscle Shirt with White Logo",
       "it": "Black Men Muscle Shirt with White Logo"
@@ -4744,7 +5953,8 @@
     ]
   },
   {
-    "product": "SHIRTMMX",
+    "productCode": "SHIRTMMX",
+    "variantCode": "SHIRTMMX8E8C8D",
     "code": "SHIRTMMX8E8C8D000000LXXX",
     "slug": "gray-men-muscle-shirt-with-black-logo-l/SHIRTMMX8E8C8D000000LXXX",
     "variant": [
@@ -4765,6 +5975,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "8E8C8D"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Men Muscle Shirt with Black Logo",
       "it": "Gray Men Muscle Shirt with Black Logo"
@@ -4778,7 +5996,8 @@
     ]
   },
   {
-    "product": "SHIRTMMX",
+    "productCode": "SHIRTMMX",
+    "variantCode": "SHIRTMMX8E8C8D",
     "code": "SHIRTMMX8E8C8D000000MXXX",
     "slug": "gray-men-muscle-shirt-with-black-logo-m/SHIRTMMX8E8C8D000000MXXX",
     "variant": [
@@ -4799,6 +6018,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "8E8C8D"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Men Muscle Shirt with Black Logo",
       "it": "Gray Men Muscle Shirt with Black Logo"
@@ -4812,7 +6039,8 @@
     ]
   },
   {
-    "product": "SHIRTMMX",
+    "productCode": "SHIRTMMX",
+    "variantCode": "SHIRTMMX8E8C8D",
     "code": "SHIRTMMX8E8C8D000000SXXX",
     "slug": "gray-men-muscle-shirt-with-black-logo-s/SHIRTMMX8E8C8D000000SXXX",
     "variant": [
@@ -4833,6 +6061,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "8E8C8D"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Men Muscle Shirt with Black Logo",
       "it": "Gray Men Muscle Shirt with Black Logo"
@@ -4846,7 +6082,8 @@
     ]
   },
   {
-    "product": "SHIRTMMX",
+    "productCode": "SHIRTMMX",
+    "variantCode": "SHIRTMMXFFFFFF",
     "code": "SHIRTMMXFFFFFF000000LXXX",
     "slug": "white-men-muscle-shirt-with-black-logo-l/SHIRTMMXFFFFFF000000LXXX",
     "variant": [
@@ -4867,6 +6104,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Men Muscle Shirt with Black Logo",
       "it": "White Men Muscle Shirt with Black Logo"
@@ -4880,7 +6125,8 @@
     ]
   },
   {
-    "product": "SHIRTMMX",
+    "productCode": "SHIRTMMX",
+    "variantCode": "SHIRTMMXFFFFFF",
     "code": "SHIRTMMXFFFFFF000000MXXX",
     "slug": "white-men-muscle-shirt-with-black-logo-m/SHIRTMMXFFFFFF000000MXXX",
     "variant": [
@@ -4901,6 +6147,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Men Muscle Shirt with Black Logo",
       "it": "White Men Muscle Shirt with Black Logo"
@@ -4914,7 +6168,8 @@
     ]
   },
   {
-    "product": "SHIRTMMX",
+    "productCode": "SHIRTMMX",
+    "variantCode": "SHIRTMMXFFFFFF",
     "code": "SHIRTMMXFFFFFF000000SXXX",
     "slug": "white-men-muscle-shirt-with-black-logo-s/SHIRTMMXFFFFFF000000SXXX",
     "variant": [
@@ -4935,6 +6190,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Men Muscle Shirt with Black Logo",
       "it": "White Men Muscle Shirt with Black Logo"
@@ -4948,7 +6211,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLS000000",
     "code": "SHIRTWLS000000FFFFFFLXXX",
     "slug": "black-women-long-sleeve-shirt-with-white-logo-l/SHIRTWLS000000FFFFFFLXXX",
     "variant": [
@@ -4969,6 +6233,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Women Long Sleeve Shirt with White Logo",
       "it": "Black Women Long Sleeve Shirt with White Logo"
@@ -4982,7 +6254,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLS000000",
     "code": "SHIRTWLS000000FFFFFFMXXX",
     "slug": "black-women-long-sleeve-shirt-with-white-logo-m/SHIRTWLS000000FFFFFFMXXX",
     "variant": [
@@ -5003,6 +6276,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Women Long Sleeve Shirt with White Logo",
       "it": "Black Women Long Sleeve Shirt with White Logo"
@@ -5016,7 +6297,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLS000000",
     "code": "SHIRTWLS000000FFFFFFSXXX",
     "slug": "black-women-long-sleeve-shirt-with-white-logo-s/SHIRTWLS000000FFFFFFSXXX",
     "variant": [
@@ -5037,6 +6319,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Women Long Sleeve Shirt with White Logo",
       "it": "Black Women Long Sleeve Shirt with White Logo"
@@ -5050,7 +6340,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLS000000",
     "code": "SHIRTWLS000000FFFFFFXSXX",
     "slug": "black-women-long-sleeve-shirt-with-white-logo-xs/SHIRTWLS000000FFFFFFXSXX",
     "variant": [
@@ -5071,6 +6362,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Black Women Long Sleeve Shirt with White Logo",
       "it": "Black Women Long Sleeve Shirt with White Logo"
@@ -5084,7 +6383,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLS9397A0",
     "code": "SHIRTWLS9397A0000000LXXX",
     "slug": "gray-women-long-sleeve-shirt-with-black-logo-l/SHIRTWLS9397A0000000LXXX",
     "variant": [
@@ -5105,6 +6405,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9397A0"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Women Long Sleeve Shirt with Black Logo",
       "it": "Gray Women Long Sleeve Shirt with Black Logo"
@@ -5118,7 +6426,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLS9397A0",
     "code": "SHIRTWLS9397A0000000MXXX",
     "slug": "gray-women-long-sleeve-shirt-with-black-logo-m/SHIRTWLS9397A0000000MXXX",
     "variant": [
@@ -5139,6 +6448,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9397A0"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Women Long Sleeve Shirt with Black Logo",
       "it": "Gray Women Long Sleeve Shirt with Black Logo"
@@ -5152,7 +6469,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLS9397A0",
     "code": "SHIRTWLS9397A0000000SXXX",
     "slug": "gray-women-long-sleeve-shirt-with-black-logo-s/SHIRTWLS9397A0000000SXXX",
     "variant": [
@@ -5173,6 +6491,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9397A0"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Women Long Sleeve Shirt with Black Logo",
       "it": "Gray Women Long Sleeve Shirt with Black Logo"
@@ -5186,7 +6512,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLS9397A0",
     "code": "SHIRTWLS9397A0000000XSXX",
     "slug": "gray-women-long-sleeve-shirt-with-black-logo-xs/SHIRTWLS9397A0000000XSXX",
     "variant": [
@@ -5207,6 +6534,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9397A0"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Gray Women Long Sleeve Shirt with Black Logo",
       "it": "Gray Women Long Sleeve Shirt with Black Logo"
@@ -5220,7 +6555,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLSFFFFFF",
     "code": "SHIRTWLSFFFFFF000000LXXX",
     "slug": "white-women-long-sleeve-shirt-with-black-logo-l/SHIRTWLSFFFFFF000000LXXX",
     "variant": [
@@ -5241,6 +6577,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Women Long Sleeve Shirt with Black Logo",
       "it": "White Women Long Sleeve Shirt with Black Logo"
@@ -5254,7 +6598,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLSFFFFFF",
     "code": "SHIRTWLSFFFFFF000000MXXX",
     "slug": "white-women-long-sleeve-shirt-with-black-logo-m/SHIRTWLSFFFFFF000000MXXX",
     "variant": [
@@ -5275,6 +6620,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Women Long Sleeve Shirt with Black Logo",
       "it": "White Women Long Sleeve Shirt with Black Logo"
@@ -5288,7 +6641,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLSFFFFFF",
     "code": "SHIRTWLSFFFFFF000000SXXX",
     "slug": "white-women-long-sleeve-shirt-with-black-logo-s/SHIRTWLSFFFFFF000000SXXX",
     "variant": [
@@ -5309,6 +6663,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Women Long Sleeve Shirt with Black Logo",
       "it": "White Women Long Sleeve Shirt with Black Logo"
@@ -5322,7 +6684,8 @@
     ]
   },
   {
-    "product": "SHIRTWLS",
+    "productCode": "SHIRTWLS",
+    "variantCode": "SHIRTWLSFFFFFF",
     "code": "SHIRTWLSFFFFFF000000XSXX",
     "slug": "white-women-long-sleeve-shirt-with-black-logo-xs/SHIRTWLSFFFFFF000000XSXX",
     "variant": [
@@ -5343,6 +6706,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "White Women Long Sleeve Shirt with Black Logo",
       "it": "White Women Long Sleeve Shirt with Black Logo"
@@ -5356,7 +6727,8 @@
     ]
   },
   {
-    "product": "SOCKSXXX",
+    "productCode": "SOCKSXXX",
+    "variantCode": "SOCKSXXX000000",
     "code": "SOCKSXXX000000FFFFFFLXXX",
     "slug": "black-socks-with-white-logo-l/SOCKSXXX000000FFFFFFLXXX",
     "variant": [
@@ -5377,6 +6749,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Socks with White Logo",
       "it": "Black Socks with White Logo"
@@ -5390,7 +6770,8 @@
     ]
   },
   {
-    "product": "SOCKSXXX",
+    "productCode": "SOCKSXXX",
+    "variantCode": "SOCKSXXX000000",
     "code": "SOCKSXXX000000FFFFFFMXXX",
     "slug": "black-socks-with-white-logo-m/SOCKSXXX000000FFFFFFMXXX",
     "variant": [
@@ -5411,6 +6792,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Socks with White Logo",
       "it": "Black Socks with White Logo"
@@ -5424,7 +6813,8 @@
     ]
   },
   {
-    "product": "SOCKSXXX",
+    "productCode": "SOCKSXXX",
+    "variantCode": "SOCKSXXX000000",
     "code": "SOCKSXXX000000FFFFFFSXXX",
     "slug": "black-socks-with-white-logo-s/SOCKSXXX000000FFFFFFSXXX",
     "variant": [
@@ -5445,6 +6835,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Socks with White Logo",
       "it": "Black Socks with White Logo"
@@ -5458,7 +6856,8 @@
     ]
   },
   {
-    "product": "SOCKSXXX",
+    "productCode": "SOCKSXXX",
+    "variantCode": "SOCKSXXXFFFFFF",
     "code": "SOCKSXXXFFFFFF000000LXXX",
     "slug": "white-socks-with-black-logo-l/SOCKSXXXFFFFFF000000LXXX",
     "variant": [
@@ -5479,6 +6878,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Socks with Black Logo",
       "it": "White Socks with Black Logo"
@@ -5492,7 +6899,8 @@
     ]
   },
   {
-    "product": "SOCKSXXX",
+    "productCode": "SOCKSXXX",
+    "variantCode": "SOCKSXXXFFFFFF",
     "code": "SOCKSXXXFFFFFF000000MXXX",
     "slug": "white-socks-with-black-logo-m/SOCKSXXXFFFFFF000000MXXX",
     "variant": [
@@ -5513,6 +6921,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Socks with Black Logo",
       "it": "White Socks with Black Logo"
@@ -5526,7 +6942,8 @@
     ]
   },
   {
-    "product": "SOCKSXXX",
+    "productCode": "SOCKSXXX",
+    "variantCode": "SOCKSXXXFFFFFF",
     "code": "SOCKSXXXFFFFFF000000SXXX",
     "slug": "white-socks-with-black-logo-s/SOCKSXXXFFFFFF000000SXXX",
     "variant": [
@@ -5547,6 +6964,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Socks with Black Logo",
       "it": "White Socks with Black Logo"
@@ -5560,7 +6985,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXX000000",
     "code": "SWEATMXX000000FFFFFFLXXX",
     "slug": "black-men-sweatshirt-with-white-logo-l/SWEATMXX000000FFFFFFLXXX",
     "variant": [
@@ -5581,6 +7007,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Men Sweatshirt with White Logo",
       "it": "Black Men Sweatshirt with White Logo"
@@ -5594,7 +7028,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXX000000",
     "code": "SWEATMXX000000FFFFFFMXXX",
     "slug": "black-men-sweatshirt-with-white-logo-m/SWEATMXX000000FFFFFFMXXX",
     "variant": [
@@ -5615,6 +7050,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Men Sweatshirt with White Logo",
       "it": "Black Men Sweatshirt with White Logo"
@@ -5628,7 +7071,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXX000000",
     "code": "SWEATMXX000000FFFFFFSXXX",
     "slug": "black-men-sweatshirt-with-white-logo-s/SWEATMXX000000FFFFFFSXXX",
     "variant": [
@@ -5649,6 +7093,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Men Sweatshirt with White Logo",
       "it": "Black Men Sweatshirt with White Logo"
@@ -5662,7 +7114,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXX000000",
     "code": "SWEATMXX000000FFFFFFXLXX",
     "slug": "black-men-sweatshirt-with-white-logo-xl/SWEATMXX000000FFFFFFXLXX",
     "variant": [
@@ -5683,6 +7136,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Black Men Sweatshirt with White Logo",
       "it": "Black Men Sweatshirt with White Logo"
@@ -5696,7 +7157,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXX9B969C",
     "code": "SWEATMXX9B969C000000LXXX",
     "slug": "gray-men-sweatshirt-with-black-logo-l/SWEATMXX9B969C000000LXXX",
     "variant": [
@@ -5717,6 +7179,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B969C"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Men Sweatshirt with Black Logo",
       "it": "Gray Men Sweatshirt with Black Logo"
@@ -5730,7 +7200,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXX9B969C",
     "code": "SWEATMXX9B969C000000MXXX",
     "slug": "gray-men-sweatshirt-with-black-logo-m/SWEATMXX9B969C000000MXXX",
     "variant": [
@@ -5751,6 +7222,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B969C"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Men Sweatshirt with Black Logo",
       "it": "Gray Men Sweatshirt with Black Logo"
@@ -5764,7 +7243,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXX9B969C",
     "code": "SWEATMXX9B969C000000SXXX",
     "slug": "gray-men-sweatshirt-with-black-logo-s/SWEATMXX9B969C000000SXXX",
     "variant": [
@@ -5785,6 +7265,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B969C"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Men Sweatshirt with Black Logo",
       "it": "Gray Men Sweatshirt with Black Logo"
@@ -5798,7 +7286,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXX9B969C",
     "code": "SWEATMXX9B969C000000XLXX",
     "slug": "gray-men-sweatshirt-with-black-logo-xl/SWEATMXX9B969C000000XLXX",
     "variant": [
@@ -5819,6 +7308,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B969C"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Gray Men Sweatshirt with Black Logo",
       "it": "Gray Men Sweatshirt with Black Logo"
@@ -5832,7 +7329,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXXFFFFFF",
     "code": "SWEATMXXFFFFFF000000LXXX",
     "slug": "white-men-sweatshirt-with-black-logo-l/SWEATMXXFFFFFF000000LXXX",
     "variant": [
@@ -5853,6 +7351,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Men Sweatshirt with Black Logo",
       "it": "White Men Sweatshirt with Black Logo"
@@ -5866,7 +7372,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXXFFFFFF",
     "code": "SWEATMXXFFFFFF000000MXXX",
     "slug": "white-men-sweatshirt-with-black-logo-m/SWEATMXXFFFFFF000000MXXX",
     "variant": [
@@ -5887,6 +7394,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Men Sweatshirt with Black Logo",
       "it": "White Men Sweatshirt with Black Logo"
@@ -5900,7 +7415,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXXFFFFFF",
     "code": "SWEATMXXFFFFFF000000SXXX",
     "slug": "white-men-sweatshirt-with-black-logo-s/SWEATMXXFFFFFF000000SXXX",
     "variant": [
@@ -5921,6 +7437,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Men Sweatshirt with Black Logo",
       "it": "White Men Sweatshirt with Black Logo"
@@ -5934,7 +7458,8 @@
     ]
   },
   {
-    "product": "SWEATMXX",
+    "productCode": "SWEATMXX",
+    "variantCode": "SWEATMXXFFFFFF",
     "code": "SWEATMXXFFFFFF000000XLXX",
     "slug": "white-men-sweatshirt-with-black-logo-xl/SWEATMXXFFFFFF000000XLXX",
     "variant": [
@@ -5955,6 +7480,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "White Men Sweatshirt with Black Logo",
       "it": "White Men Sweatshirt with Black Logo"
@@ -5968,7 +7501,8 @@
     ]
   },
   {
-    "product": "SWEATWCX",
+    "productCode": "SWEATWCX",
+    "variantCode": "SWEATWCX000000",
     "code": "SWEATWCX000000FFFFFFLXXX",
     "slug": "black-women-cropped-sweatshirt-with-white-logo-l/SWEATWCX000000FFFFFFLXXX",
     "variant": [
@@ -5989,6 +7523,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Women Cropped Sweatshirt with White Logo",
       "it": "Black Women Cropped Sweatshirt with White Logo"
@@ -6002,7 +7544,8 @@
     ]
   },
   {
-    "product": "SWEATWCX",
+    "productCode": "SWEATWCX",
+    "variantCode": "SWEATWCX000000",
     "code": "SWEATWCX000000FFFFFFMXXX",
     "slug": "black-women-cropped-sweatshirt-with-white-logo-m/SWEATWCX000000FFFFFFMXXX",
     "variant": [
@@ -6023,6 +7566,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Women Cropped Sweatshirt with White Logo",
       "it": "Black Women Cropped Sweatshirt with White Logo"
@@ -6036,7 +7587,8 @@
     ]
   },
   {
-    "product": "SWEATWCX",
+    "productCode": "SWEATWCX",
+    "variantCode": "SWEATWCX000000",
     "code": "SWEATWCX000000FFFFFFSXXX",
     "slug": "black-women-cropped-sweatshirt-with-white-logo-s/SWEATWCX000000FFFFFFSXXX",
     "variant": [
@@ -6057,6 +7609,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Women Cropped Sweatshirt with White Logo",
       "it": "Black Women Cropped Sweatshirt with White Logo"
@@ -6070,7 +7630,8 @@
     ]
   },
   {
-    "product": "SWEATWCX",
+    "productCode": "SWEATWCX",
+    "variantCode": "SWEATWCX000000",
     "code": "SWEATWCX000000FFFFFFXSXX",
     "slug": "black-women-cropped-sweatshirt-with-white-logo-xs/SWEATWCX000000FFFFFFXSXX",
     "variant": [
@@ -6091,6 +7652,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Black Women Cropped Sweatshirt with White Logo",
       "it": "Black Women Cropped Sweatshirt with White Logo"
@@ -6104,7 +7673,8 @@
     ]
   },
   {
-    "product": "SWEATWCX",
+    "productCode": "SWEATWCX",
+    "variantCode": "SWEATWCX9B9A9F",
     "code": "SWEATWCX9B9A9F000000LXXX",
     "slug": "gray-women-cropped-sweatshirt-with-black-logo-l/SWEATWCX9B9A9F000000LXXX",
     "variant": [
@@ -6125,6 +7695,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B9A9F"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Women Cropped Sweatshirt with Black Logo",
       "it": "Gray Women Cropped Sweatshirt with Black Logo"
@@ -6138,7 +7716,8 @@
     ]
   },
   {
-    "product": "SWEATWCX",
+    "productCode": "SWEATWCX",
+    "variantCode": "SWEATWCX9B9A9F",
     "code": "SWEATWCX9B9A9F000000MXXX",
     "slug": "gray-women-cropped-sweatshirt-with-black-logo-m/SWEATWCX9B9A9F000000MXXX",
     "variant": [
@@ -6159,6 +7738,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B9A9F"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Women Cropped Sweatshirt with Black Logo",
       "it": "Gray Women Cropped Sweatshirt with Black Logo"
@@ -6172,7 +7759,8 @@
     ]
   },
   {
-    "product": "SWEATWCX",
+    "productCode": "SWEATWCX",
+    "variantCode": "SWEATWCX9B9A9F",
     "code": "SWEATWCX9B9A9F000000SXXX",
     "slug": "gray-women-cropped-sweatshirt-with-black-logo-s/SWEATWCX9B9A9F000000SXXX",
     "variant": [
@@ -6193,6 +7781,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B9A9F"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Women Cropped Sweatshirt with Black Logo",
       "it": "Gray Women Cropped Sweatshirt with Black Logo"
@@ -6206,7 +7802,8 @@
     ]
   },
   {
-    "product": "SWEATWCX",
+    "productCode": "SWEATWCX",
+    "variantCode": "SWEATWCX9B9A9F",
     "code": "SWEATWCX9B9A9F000000XSXX",
     "slug": "gray-women-cropped-sweatshirt-with-black-logo-xs/SWEATWCX9B9A9F000000XSXX",
     "variant": [
@@ -6227,6 +7824,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "9B9A9F"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Gray Women Cropped Sweatshirt with Black Logo",
       "it": "Gray Women Cropped Sweatshirt with Black Logo"
@@ -6240,7 +7845,8 @@
     ]
   },
   {
-    "product": "TANKTOPM",
+    "productCode": "TANKTOPM",
+    "variantCode": "TANKTOPM000000",
     "code": "TANKTOPM000000FFFFFFLXXX",
     "slug": "black-men-tank-top-with-white-logo-l/TANKTOPM000000FFFFFFLXXX",
     "variant": [
@@ -6261,6 +7867,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Men Tank Top with White Logo",
       "it": "Black Men Tank Top with White Logo"
@@ -6274,7 +7888,8 @@
     ]
   },
   {
-    "product": "TANKTOPM",
+    "productCode": "TANKTOPM",
+    "variantCode": "TANKTOPM000000",
     "code": "TANKTOPM000000FFFFFFMXXX",
     "slug": "black-men-tank-top-with-white-logo-m/TANKTOPM000000FFFFFFMXXX",
     "variant": [
@@ -6295,6 +7910,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Men Tank Top with White Logo",
       "it": "Black Men Tank Top with White Logo"
@@ -6308,7 +7931,8 @@
     ]
   },
   {
-    "product": "TANKTOPM",
+    "productCode": "TANKTOPM",
+    "variantCode": "TANKTOPM000000",
     "code": "TANKTOPM000000FFFFFFSXXX",
     "slug": "black-men-tank-top-with-white-logo-s/TANKTOPM000000FFFFFFSXXX",
     "variant": [
@@ -6329,6 +7953,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Men Tank Top with White Logo",
       "it": "Black Men Tank Top with White Logo"
@@ -6342,7 +7974,8 @@
     ]
   },
   {
-    "product": "TANKTOPM",
+    "productCode": "TANKTOPM",
+    "variantCode": "TANKTOPM000000",
     "code": "TANKTOPM000000FFFFFFXLXX",
     "slug": "black-men-tank-top-with-white-logo-xl/TANKTOPM000000FFFFFFXLXX",
     "variant": [
@@ -6363,6 +7996,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Black Men Tank Top with White Logo",
       "it": "Black Men Tank Top with White Logo"
@@ -6376,7 +8017,8 @@
     ]
   },
   {
-    "product": "TANKTOPM",
+    "productCode": "TANKTOPM",
+    "variantCode": "TANKTOPM7E7F84",
     "code": "TANKTOPM7E7F84000000LXXX",
     "slug": "gray-men-tank-top-with-black-logo-l/TANKTOPM7E7F84000000LXXX",
     "variant": [
@@ -6397,6 +8039,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "7E7F84"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Men Tank Top with Black Logo",
       "it": "Gray Men Tank Top with Black Logo"
@@ -6410,7 +8060,8 @@
     ]
   },
   {
-    "product": "TANKTOPM",
+    "productCode": "TANKTOPM",
+    "variantCode": "TANKTOPM7E7F84",
     "code": "TANKTOPM7E7F84000000MXXX",
     "slug": "gray-men-tank-top-with-black-logo-m/TANKTOPM7E7F84000000MXXX",
     "variant": [
@@ -6431,6 +8082,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "7E7F84"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Men Tank Top with Black Logo",
       "it": "Gray Men Tank Top with Black Logo"
@@ -6444,7 +8103,8 @@
     ]
   },
   {
-    "product": "TANKTOPM",
+    "productCode": "TANKTOPM",
+    "variantCode": "TANKTOPM7E7F84",
     "code": "TANKTOPM7E7F84000000SXXX",
     "slug": "gray-men-tank-top-with-black-logo-s/TANKTOPM7E7F84000000SXXX",
     "variant": [
@@ -6465,6 +8125,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "7E7F84"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Men Tank Top with Black Logo",
       "it": "Gray Men Tank Top with Black Logo"
@@ -6478,7 +8146,8 @@
     ]
   },
   {
-    "product": "TANKTOPM",
+    "productCode": "TANKTOPM",
+    "variantCode": "TANKTOPM7E7F84",
     "code": "TANKTOPM7E7F84000000XLXX",
     "slug": "gray-men-tank-top-with-black-logo-xl/TANKTOPM7E7F84000000XLXX",
     "variant": [
@@ -6499,6 +8168,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "7E7F84"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Gray Men Tank Top with Black Logo",
       "it": "Gray Men Tank Top with Black Logo"
@@ -6512,7 +8189,8 @@
     ]
   },
   {
-    "product": "TANKTOPW",
+    "productCode": "TANKTOPW",
+    "variantCode": "TANKTOPW000000",
     "code": "TANKTOPW000000FFFFFFMXXX",
     "slug": "black-women-tank-top-with-white-logo-m/TANKTOPW000000FFFFFFMXXX",
     "variant": [
@@ -6533,6 +8211,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Women Tank Top with White Logo",
       "it": "Black Women Tank Top with White Logo"
@@ -6546,7 +8232,8 @@
     ]
   },
   {
-    "product": "TANKTOPW",
+    "productCode": "TANKTOPW",
+    "variantCode": "TANKTOPW000000",
     "code": "TANKTOPW000000FFFFFFSXXX",
     "slug": "black-women-tank-top-with-white-logo-s/TANKTOPW000000FFFFFFSXXX",
     "variant": [
@@ -6567,6 +8254,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Women Tank Top with White Logo",
       "it": "Black Women Tank Top with White Logo"
@@ -6580,7 +8275,8 @@
     ]
   },
   {
-    "product": "TANKTOPW",
+    "productCode": "TANKTOPW",
+    "variantCode": "TANKTOPW000000",
     "code": "TANKTOPW000000FFFFFFXSXX",
     "slug": "black-women-tank-top-with-white-logo-xs/TANKTOPW000000FFFFFFXSXX",
     "variant": [
@@ -6601,6 +8297,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Black Women Tank Top with White Logo",
       "it": "Black Women Tank Top with White Logo"
@@ -6614,7 +8318,8 @@
     ]
   },
   {
-    "product": "TANKTOPW",
+    "productCode": "TANKTOPW",
+    "variantCode": "TANKTOPWFFFFFF",
     "code": "TANKTOPWFFFFFF000000MXXX",
     "slug": "white-women-tank-top-with-black-logo-m/TANKTOPWFFFFFF000000MXXX",
     "variant": [
@@ -6635,6 +8340,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Women Tank Top with Black Logo",
       "it": "White Women Tank Top with Black Logo"
@@ -6648,7 +8361,8 @@
     ]
   },
   {
-    "product": "TANKTOPW",
+    "productCode": "TANKTOPW",
+    "variantCode": "TANKTOPWFFFFFF",
     "code": "TANKTOPWFFFFFF000000SXXX",
     "slug": "white-women-tank-top-with-black-logo-s/TANKTOPWFFFFFF000000SXXX",
     "variant": [
@@ -6669,6 +8383,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Women Tank Top with Black Logo",
       "it": "White Women Tank Top with Black Logo"
@@ -6682,7 +8404,8 @@
     ]
   },
   {
-    "product": "TANKTOPW",
+    "productCode": "TANKTOPW",
+    "variantCode": "TANKTOPWFFFFFF",
     "code": "TANKTOPWFFFFFF000000XSXX",
     "slug": "white-women-tank-top-with-black-logo-xs/TANKTOPWFFFFFF000000XSXX",
     "variant": [
@@ -6703,6 +8426,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "White Women Tank Top with Black Logo",
       "it": "White Women Tank Top with Black Logo"
@@ -6716,7 +8447,8 @@
     ]
   },
   {
-    "product": "TOTEBAGL",
+    "productCode": "TOTEBAGL",
+    "variantCode": "TOTEBAGL000000",
     "code": "TOTEBAGL000000FFFFFFXXXX",
     "slug": "large-black-tote-bag-with-white-logo/TOTEBAGL000000FFFFFFXXXX",
     "variant": [
@@ -6729,6 +8461,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Large Black Tote Bag with White Logo",
       "it": "Large Black Tote Bag with White Logo"
@@ -6742,7 +8479,8 @@
     ]
   },
   {
-    "product": "TOTEBAGL",
+    "productCode": "TOTEBAGL",
+    "variantCode": "TOTEBAGLE7DDC7",
     "code": "TOTEBAGLE7DDC7000000XXXX",
     "slug": "large-eco-tote-bag-with-black-logo/TOTEBAGLE7DDC7000000XXXX",
     "variant": [
@@ -6755,6 +8493,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "E7DDC7"
+      ]
+    },
     "name": {
       "en": "Large Eco Tote Bag with Black Logo",
       "it": "Large Eco Tote Bag with Black Logo"
@@ -6768,7 +8511,8 @@
     ]
   },
   {
-    "product": "TOTEBAGX",
+    "productCode": "TOTEBAGX",
+    "variantCode": "TOTEBAGX000000",
     "code": "TOTEBAGX000000FFFFFFXXXX",
     "slug": "black-tote-bag-with-white-logo/TOTEBAGX000000FFFFFFXXXX",
     "variant": [
@@ -6781,6 +8525,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Tote Bag with White Logo",
       "it": "Black Tote Bag with White Logo"
@@ -6794,7 +8543,8 @@
     ]
   },
   {
-    "product": "TOTEBAGX",
+    "productCode": "TOTEBAGX",
+    "variantCode": "TOTEBAGXE7DDC7",
     "code": "TOTEBAGXE7DDC7000000XXXX",
     "slug": "eco-tote-bag-with-black-logo/TOTEBAGXE7DDC7000000XXXX",
     "variant": [
@@ -6807,6 +8557,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "E7DDC7"
+      ]
+    },
     "name": {
       "en": "Eco Tote Bag with Black Logo",
       "it": "Eco Tote Bag with Black Logo"
@@ -6820,7 +8575,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMS000000",
     "code": "TSHIRTMS000000FFFFFFLXXX",
     "slug": "black-men-t-shirt-with-white-logo-l/TSHIRTMS000000FFFFFFLXXX",
     "variant": [
@@ -6841,6 +8597,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Men T-Shirt with White Logo",
       "it": "Black Men T-Shirt with White Logo"
@@ -6854,7 +8618,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMS000000",
     "code": "TSHIRTMS000000FFFFFFMXXX",
     "slug": "black-men-t-shirt-with-white-logo-m/TSHIRTMS000000FFFFFFMXXX",
     "variant": [
@@ -6875,6 +8640,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Men T-Shirt with White Logo",
       "it": "Black Men T-Shirt with White Logo"
@@ -6888,7 +8661,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMS000000",
     "code": "TSHIRTMS000000FFFFFFSXXX",
     "slug": "black-men-t-shirt-with-white-logo-s/TSHIRTMS000000FFFFFFSXXX",
     "variant": [
@@ -6909,6 +8683,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Men T-Shirt with White Logo",
       "it": "Black Men T-Shirt with White Logo"
@@ -6922,7 +8704,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMS000000",
     "code": "TSHIRTMS000000FFFFFFXLXX",
     "slug": "black-men-t-shirt-with-white-logo-xl/TSHIRTMS000000FFFFFFXLXX",
     "variant": [
@@ -6943,6 +8726,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Black Men T-Shirt with White Logo",
       "it": "Black Men T-Shirt with White Logo"
@@ -6956,7 +8747,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMSB0B0B2",
     "code": "TSHIRTMSB0B0B2000000LXXX",
     "slug": "gray-men-t-shirt-with-black-logo-l/TSHIRTMSB0B0B2000000LXXX",
     "variant": [
@@ -6977,6 +8769,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "B0B0B2"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Men T-Shirt with Black Logo",
       "it": "Gray Men T-Shirt with Black Logo"
@@ -6990,7 +8790,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMSB0B0B2",
     "code": "TSHIRTMSB0B0B2000000MXXX",
     "slug": "gray-men-t-shirt-with-black-logo-m/TSHIRTMSB0B0B2000000MXXX",
     "variant": [
@@ -7011,6 +8812,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "B0B0B2"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Men T-Shirt with Black Logo",
       "it": "Gray Men T-Shirt with Black Logo"
@@ -7024,7 +8833,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMSB0B0B2",
     "code": "TSHIRTMSB0B0B2000000SXXX",
     "slug": "gray-men-t-shirt-with-black-logo-s/TSHIRTMSB0B0B2000000SXXX",
     "variant": [
@@ -7045,6 +8855,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "B0B0B2"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Men T-Shirt with Black Logo",
       "it": "Gray Men T-Shirt with Black Logo"
@@ -7058,7 +8876,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMSB0B0B2",
     "code": "TSHIRTMSB0B0B2000000XLXX",
     "slug": "gray-men-t-shirt-with-black-logo-xl/TSHIRTMSB0B0B2000000XLXX",
     "variant": [
@@ -7079,6 +8898,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "B0B0B2"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "Gray Men T-Shirt with Black Logo",
       "it": "Gray Men T-Shirt with Black Logo"
@@ -7092,7 +8919,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMSFFFFFF",
     "code": "TSHIRTMSFFFFFF000000LXXX",
     "slug": "white-men-t-shirt-with-black-logo-l/TSHIRTMSFFFFFF000000LXXX",
     "variant": [
@@ -7113,6 +8941,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Men T-Shirt with Black Logo",
       "it": "White Men T-Shirt with Black Logo"
@@ -7126,7 +8962,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMSFFFFFF",
     "code": "TSHIRTMSFFFFFF000000MXXX",
     "slug": "white-men-t-shirt-with-black-logo-m/TSHIRTMSFFFFFF000000MXXX",
     "variant": [
@@ -7147,6 +8984,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Men T-Shirt with Black Logo",
       "it": "White Men T-Shirt with Black Logo"
@@ -7160,7 +9005,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMSFFFFFF",
     "code": "TSHIRTMSFFFFFF000000SXXX",
     "slug": "white-men-t-shirt-with-black-logo-s/TSHIRTMSFFFFFF000000SXXX",
     "variant": [
@@ -7181,6 +9027,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Men T-Shirt with Black Logo",
       "it": "White Men T-Shirt with Black Logo"
@@ -7194,7 +9048,8 @@
     ]
   },
   {
-    "product": "TSHIRTMS",
+    "productCode": "TSHIRTMS",
+    "variantCode": "TSHIRTMSFFFFFF",
     "code": "TSHIRTMSFFFFFF000000XLXX",
     "slug": "white-men-t-shirt-with-black-logo-xl/TSHIRTMSFFFFFF000000XLXX",
     "variant": [
@@ -7215,6 +9070,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "XL"
+      ]
+    },
     "name": {
       "en": "White Men T-Shirt with Black Logo",
       "it": "White Men T-Shirt with Black Logo"
@@ -7228,7 +9091,8 @@
     ]
   },
   {
-    "product": "TSHIRTWK",
+    "productCode": "TSHIRTWK",
+    "variantCode": "TSHIRTWK000000",
     "code": "TSHIRTWK000000FFFFFFMXXX",
     "slug": "black-women-cropped-t-shirt-with-white-logo-m/TSHIRTWK000000FFFFFFMXXX",
     "variant": [
@@ -7249,6 +9113,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Women Cropped T-Shirt with White Logo",
       "it": "Black Women Cropped T-Shirt with White Logo"
@@ -7262,7 +9134,8 @@
     ]
   },
   {
-    "product": "TSHIRTWK",
+    "productCode": "TSHIRTWK",
+    "variantCode": "TSHIRTWK000000",
     "code": "TSHIRTWK000000FFFFFFSXXX",
     "slug": "black-women-cropped-t-shirt-with-white-logo-s/TSHIRTWK000000FFFFFFSXXX",
     "variant": [
@@ -7283,6 +9156,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Women Cropped T-Shirt with White Logo",
       "it": "Black Women Cropped T-Shirt with White Logo"
@@ -7296,7 +9177,8 @@
     ]
   },
   {
-    "product": "TSHIRTWK",
+    "productCode": "TSHIRTWK",
+    "variantCode": "TSHIRTWK000000",
     "code": "TSHIRTWK000000FFFFFFXSXX",
     "slug": "black-women-cropped-t-shirt-with-white-logo-xs/TSHIRTWK000000FFFFFFXSXX",
     "variant": [
@@ -7317,6 +9199,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Black Women Cropped T-Shirt with White Logo",
       "it": "Black Women Cropped T-Shirt with White Logo"
@@ -7330,7 +9220,8 @@
     ]
   },
   {
-    "product": "TSHIRTWK",
+    "productCode": "TSHIRTWK",
+    "variantCode": "TSHIRTWKFFFFFF",
     "code": "TSHIRTWKFFFFFF000000MXXX",
     "slug": "white-women-cropped-t-shirt-with-black-logo-m/TSHIRTWKFFFFFF000000MXXX",
     "variant": [
@@ -7351,6 +9242,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Women Cropped T-Shirt with Black Logo",
       "it": "White Women Cropped T-Shirt with Black Logo"
@@ -7364,7 +9263,8 @@
     ]
   },
   {
-    "product": "TSHIRTWK",
+    "productCode": "TSHIRTWK",
+    "variantCode": "TSHIRTWKFFFFFF",
     "code": "TSHIRTWKFFFFFF000000SXXX",
     "slug": "white-women-cropped-t-shirt-with-black-logo-s/TSHIRTWKFFFFFF000000SXXX",
     "variant": [
@@ -7385,6 +9285,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Women Cropped T-Shirt with Black Logo",
       "it": "White Women Cropped T-Shirt with Black Logo"
@@ -7398,7 +9306,8 @@
     ]
   },
   {
-    "product": "TSHIRTWK",
+    "productCode": "TSHIRTWK",
+    "variantCode": "TSHIRTWKFFFFFF",
     "code": "TSHIRTWKFFFFFF000000XSXX",
     "slug": "white-women-cropped-t-shirt-with-black-logo-xs/TSHIRTWKFFFFFF000000XSXX",
     "variant": [
@@ -7419,6 +9328,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "White Women Cropped T-Shirt with Black Logo",
       "it": "White Women Cropped T-Shirt with Black Logo"
@@ -7432,7 +9349,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWS000000",
     "code": "TSHIRTWS000000FFFFFFLXXX",
     "slug": "black-women-t-shirt-with-white-logo-l/TSHIRTWS000000FFFFFFLXXX",
     "variant": [
@@ -7453,6 +9371,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Black Women T-Shirt with White Logo",
       "it": "Black Women T-Shirt with White Logo"
@@ -7466,7 +9392,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWS000000",
     "code": "TSHIRTWS000000FFFFFFMXXX",
     "slug": "black-women-t-shirt-with-white-logo-m/TSHIRTWS000000FFFFFFMXXX",
     "variant": [
@@ -7487,6 +9414,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Women T-Shirt with White Logo",
       "it": "Black Women T-Shirt with White Logo"
@@ -7500,7 +9435,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWS000000",
     "code": "TSHIRTWS000000FFFFFFSXXX",
     "slug": "black-women-t-shirt-with-white-logo-s/TSHIRTWS000000FFFFFFSXXX",
     "variant": [
@@ -7521,6 +9457,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Women T-Shirt with White Logo",
       "it": "Black Women T-Shirt with White Logo"
@@ -7534,7 +9478,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWS000000",
     "code": "TSHIRTWS000000FFFFFFXSXX",
     "slug": "black-women-t-shirt-with-white-logo-xs/TSHIRTWS000000FFFFFFXSXX",
     "variant": [
@@ -7555,6 +9500,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Black Women T-Shirt with White Logo",
       "it": "Black Women T-Shirt with White Logo"
@@ -7568,7 +9521,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWSB5B1B2",
     "code": "TSHIRTWSB5B1B2000000LXXX",
     "slug": "gray-women-t-shirt-with-black-logo-l/TSHIRTWSB5B1B2000000LXXX",
     "variant": [
@@ -7589,6 +9543,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "B5B1B2"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "Gray Women T-Shirt with Black Logo",
       "it": "Gray Women T-Shirt with Black Logo"
@@ -7602,7 +9564,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWSB5B1B2",
     "code": "TSHIRTWSB5B1B2000000MXXX",
     "slug": "gray-women-t-shirt-with-black-logo-m/TSHIRTWSB5B1B2000000MXXX",
     "variant": [
@@ -7623,6 +9586,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "B5B1B2"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Women T-Shirt with Black Logo",
       "it": "Gray Women T-Shirt with Black Logo"
@@ -7636,7 +9607,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWSB5B1B2",
     "code": "TSHIRTWSB5B1B2000000SXXX",
     "slug": "gray-women-t-shirt-with-black-logo-s/TSHIRTWSB5B1B2000000SXXX",
     "variant": [
@@ -7657,6 +9629,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "B5B1B2"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Women T-Shirt with Black Logo",
       "it": "Gray Women T-Shirt with Black Logo"
@@ -7670,7 +9650,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWSB5B1B2",
     "code": "TSHIRTWSB5B1B2000000XSXX",
     "slug": "gray-women-t-shirt-with-black-logo-xs/TSHIRTWSB5B1B2000000XSXX",
     "variant": [
@@ -7691,6 +9672,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "B5B1B2"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "Gray Women T-Shirt with Black Logo",
       "it": "Gray Women T-Shirt with Black Logo"
@@ -7704,7 +9693,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWSFFFFFF",
     "code": "TSHIRTWSFFFFFF000000LXXX",
     "slug": "white-women-t-shirt-with-black-logo-l/TSHIRTWSFFFFFF000000LXXX",
     "variant": [
@@ -7725,6 +9715,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "L"
+      ]
+    },
     "name": {
       "en": "White Women T-Shirt with Black Logo",
       "it": "White Women T-Shirt with Black Logo"
@@ -7738,7 +9736,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWSFFFFFF",
     "code": "TSHIRTWSFFFFFF000000MXXX",
     "slug": "white-women-t-shirt-with-black-logo-m/TSHIRTWSFFFFFF000000MXXX",
     "variant": [
@@ -7759,6 +9758,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "White Women T-Shirt with Black Logo",
       "it": "White Women T-Shirt with Black Logo"
@@ -7772,7 +9779,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWSFFFFFF",
     "code": "TSHIRTWSFFFFFF000000SXXX",
     "slug": "white-women-t-shirt-with-black-logo-s/TSHIRTWSFFFFFF000000SXXX",
     "variant": [
@@ -7793,6 +9801,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "White Women T-Shirt with Black Logo",
       "it": "White Women T-Shirt with Black Logo"
@@ -7806,7 +9822,8 @@
     ]
   },
   {
-    "product": "TSHIRTWS",
+    "productCode": "TSHIRTWS",
+    "variantCode": "TSHIRTWSFFFFFF",
     "code": "TSHIRTWSFFFFFF000000XSXX",
     "slug": "white-women-t-shirt-with-black-logo-xs/TSHIRTWSFFFFFF000000XSXX",
     "variant": [
@@ -7827,6 +9844,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ],
+      "size": [
+        "XS"
+      ]
+    },
     "name": {
       "en": "White Women T-Shirt with Black Logo",
       "it": "White Women T-Shirt with Black Logo"
@@ -7840,7 +9865,8 @@
     ]
   },
   {
-    "product": "TSHIRTWV",
+    "productCode": "TSHIRTWV",
+    "variantCode": "TSHIRTWV000000",
     "code": "TSHIRTWV000000FFFFFFMXXX",
     "slug": "black-women-v-neck-t-shirt-with-white-logo-m/TSHIRTWV000000FFFFFFMXXX",
     "variant": [
@@ -7861,6 +9887,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Black Women V-Neck T-Shirt with White Logo",
       "it": "Black Women V-Neck T-Shirt with White Logo"
@@ -7874,7 +9908,8 @@
     ]
   },
   {
-    "product": "TSHIRTWV",
+    "productCode": "TSHIRTWV",
+    "variantCode": "TSHIRTWV000000",
     "code": "TSHIRTWV000000FFFFFFSXXX",
     "slug": "black-women-v-neck-t-shirt-with-white-logo-s/TSHIRTWV000000FFFFFFSXXX",
     "variant": [
@@ -7895,6 +9930,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Black Women V-Neck T-Shirt with White Logo",
       "it": "Black Women V-Neck T-Shirt with White Logo"
@@ -7908,7 +9951,8 @@
     ]
   },
   {
-    "product": "TSHIRTWV",
+    "productCode": "TSHIRTWV",
+    "variantCode": "TSHIRTWVCDCDCD",
     "code": "TSHIRTWVCDCDCD000000MXXX",
     "slug": "gray-women-v-neck-t-shirt-with-black-logo-m/TSHIRTWVCDCDCD000000MXXX",
     "variant": [
@@ -7929,6 +9973,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "CDCDCD"
+      ],
+      "size": [
+        "M"
+      ]
+    },
     "name": {
       "en": "Gray Women V-Neck T-Shirt with Black Logo",
       "it": "Gray Women V-Neck T-Shirt with Black Logo"
@@ -7942,7 +9994,8 @@
     ]
   },
   {
-    "product": "TSHIRTWV",
+    "productCode": "TSHIRTWV",
+    "variantCode": "TSHIRTWVCDCDCD",
     "code": "TSHIRTWVCDCDCD000000SXXX",
     "slug": "gray-women-v-neck-t-shirt-with-black-logo-s/TSHIRTWVCDCDCD000000SXXX",
     "variant": [
@@ -7963,6 +10016,14 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "CDCDCD"
+      ],
+      "size": [
+        "S"
+      ]
+    },
     "name": {
       "en": "Gray Women V-Neck T-Shirt with Black Logo",
       "it": "Gray Women V-Neck T-Shirt with Black Logo"
@@ -7976,7 +10037,8 @@
     ]
   },
   {
-    "product": "VFLEXFIT",
+    "productCode": "VFLEXFIT",
+    "variantCode": "VFLEXFIT000000",
     "code": "VFLEXFIT000000FFFFFFXXXX",
     "slug": "black-visor-flexfit-with-white-logo/VFLEXFIT000000FFFFFFXXXX",
     "variant": [
@@ -7989,6 +10051,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "000000"
+      ]
+    },
     "name": {
       "en": "Black Visor Flexfit with White Logo",
       "it": "Black Visor Flexfit with White Logo"
@@ -8002,7 +10069,8 @@
     ]
   },
   {
-    "product": "VFLEXFIT",
+    "productCode": "VFLEXFIT",
+    "variantCode": "VFLEXFITFFFFFF",
     "code": "VFLEXFITFFFFFF000000XXXX",
     "slug": "white-visor-flexfit-with-black-logo/VFLEXFITFFFFFF000000XXXX",
     "variant": [
@@ -8015,6 +10083,11 @@
         }
       }
     ],
+    "facet": {
+      "color": [
+        "FFFFFF"
+      ]
+    },
     "name": {
       "en": "White Visor Flexfit with Black Logo",
       "it": "White Visor Flexfit with Black Logo"

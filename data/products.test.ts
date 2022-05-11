@@ -1,11 +1,11 @@
-import { getProduct, getProductVariants, getProductWithVariants } from './products';
+import { flattenProductVariants, getProduct, getProductVariants, getProductWithVariants } from './products';
 
 jest.mock('./json/products.json')
 
 test('"getProduct" should returns the product by provided code', () => {
   const product = getProduct('BODYBSSS000000FFFFFF6MXX')
 
-  expect(product.product).toStrictEqual('BODYBSSS')
+  expect(product.productCode).toStrictEqual('BODYBSSS')
 
   expect(product.name).toStrictEqual({
     en: 'Black Baby Short Sleeve Bodysuit with White Logo',
@@ -17,7 +17,7 @@ test('"getProduct" should returns the product by provided code', () => {
 test('"getProduct" should resolves product localization', () => {
   const product = getProduct('BODYBSSS000000FFFFFF6MXX', 'en')
 
-  expect(product.product).toStrictEqual('BODYBSSS')
+  expect(product.productCode).toStrictEqual('BODYBSSS')
 
   expect(product.name).toStrictEqual('Black Baby Short Sleeve Bodysuit with White Logo')
 })
@@ -53,7 +53,7 @@ test('"getProductVariants" should resolves variants localization', () => {
 test('"getProductWithVariants" should returns the variants for the provived Product', () => {
   const product = getProductWithVariants('BODYBSSS000000FFFFFF6MXX')
 
-  expect(product.product).toStrictEqual('BODYBSSS')
+  expect(product.productCode).toStrictEqual('BODYBSSS')
 
   expect(product.name).toStrictEqual({
     en: 'Black Baby Short Sleeve Bodysuit with White Logo',
@@ -71,7 +71,7 @@ test('"getProductWithVariants" should returns the variants for the provived Prod
 test('"getProductWithVariants" should resolves variants localization', () => {
   const product = getProductWithVariants('BODYBSSS000000FFFFFF6MXX', 'it')
 
-  expect(product.product).toStrictEqual('BODYBSSS')
+  expect(product.productCode).toStrictEqual('BODYBSSS')
 
   expect(product.name).toStrictEqual('Body nero a maniche corte per bebè con logo bianco')
 
@@ -82,3 +82,18 @@ test('"getProductWithVariants" should resolves variants localization', () => {
     getProduct('BODYBSSSFFFFFF0000006MXX', 'it')
   ])
 })
+
+
+test('"asd" should resolves variants localization', () => {
+  const product = getProductWithVariants('BODYBSSS000000FFFFFF6MXX', 'it')
+
+  const products = flattenProductVariants([product, product])
+
+  expect(products).toStrictEqual([
+    getProductWithVariants('BODYBSSS000000FFFFFF12MX', 'it'),
+    getProductWithVariants('BODYBSSS000000FFFFFF6MXX', 'it'),
+    getProductWithVariants('BODYBSSSFFFFFF00000012MX', 'it'),
+    getProductWithVariants('BODYBSSSFFFFFF0000006MXX', 'it')
+  ])
+})
+
