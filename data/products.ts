@@ -69,40 +69,24 @@ function resolveProductLocale(product: Product, locale: string): LocalizedProduc
   }
 }
 
-export function getProduct(code: string): Product
-export function getProduct(code: string, locale: string): LocalizedProduct
-export function getProduct(code: string, locale?: string) {
+export function getProduct(code: string, locale: string): LocalizedProduct {
   const product = products.find(product => product.code === code)
 
   if (!product) {
     throw new Error(`Cannot find a Product with code equal to ${code}`)
   }
 
-  if (locale) {
-    return resolveProductLocale(product, locale)
-  }
-
-  return product
+  return resolveProductLocale(product, locale)
 }
 
-export function getProductVariants(product: Product | LocalizedProduct): Product[]
-export function getProductVariants(product: Product | LocalizedProduct, locale: string): LocalizedProduct[]
-export function getProductVariants(product: Product | LocalizedProduct, locale?: string) {
+export function getProductVariants(product: LocalizedProduct): LocalizedProduct[] {
   const variants = groupedBaseProducts[product.productCode]
-
-  if (locale) {
-    return variants.map(product => resolveProductLocale(product, locale))
-  }
-
-  return variants
+  return variants.map(p => resolveProductLocale(p, product._locale))
 }
 
-// TODO: remove methods without locale ?!
-export function getProductWithVariants(code: string): ProductWithVariants
-export function getProductWithVariants(code: string, locale: string): LocalizedProductWithVariant
-export function getProductWithVariants(code: string, locale?: string) {
-  const product = locale ? getProduct(code, locale) : getProduct(code)
-  const variants = locale ? getProductVariants(product, locale) : getProductVariants(product)
+export function getProductWithVariants(code: string, locale: string): LocalizedProductWithVariant {
+  const product = getProduct(code, locale)
+  const variants = getProductVariants(product)
 
   return {
     ...product,

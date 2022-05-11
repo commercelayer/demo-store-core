@@ -3,23 +3,27 @@ import { flattenProductVariants, getProduct, getProductVariants, getProductWithV
 jest.mock('./json/products.json')
 
 test('"getProduct" should returns the product by provided code', () => {
-  const product = getProduct('BODYBSSS000000FFFFFF6MXX')
+  const product = getProduct('BODYBSSS000000FFFFFF12MX', 'en')
 
   expect(product.productCode).toStrictEqual('BODYBSSS')
-
-  expect(product.name).toStrictEqual({
-    en: 'Black Baby Short Sleeve Bodysuit with White Logo',
-    it: 'Body nero a maniche corte per bebè con logo bianco'
-  })
+  expect(product.name).toStrictEqual('Translation for en - Black Baby Short Sleeve Bodysuit with White Logo')
+  expect(product.description).toStrictEqual('Translation for en - This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.')
 })
 
-
-test('"getProduct" should resolves product localization', () => {
-  const product = getProduct('BODYBSSS000000FFFFFF6MXX', 'en')
+test('"getProduct" should returns the localized product by provided code and locale', () => {
+  const product = getProduct('BODYBSSS000000FFFFFF12MX', 'en-US')
 
   expect(product.productCode).toStrictEqual('BODYBSSS')
+  expect(product.name).toStrictEqual('Translation for en-US - Black Baby Short Sleeve Bodysuit with White Logo')
+  expect(product.description).toStrictEqual('Translation for en-US - This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.')
+})
 
-  expect(product.name).toStrictEqual('Black Baby Short Sleeve Bodysuit with White Logo')
+test('"getProduct" should fallback to locale language when locale is not found', () => {
+  const product = getProduct('BODYBSSS000000FFFFFF12MX', 'it-CN')
+
+  expect(product.productCode).toStrictEqual('BODYBSSS')
+  expect(product.name).toStrictEqual('Translation for it - Body nero a maniche corte per bebè con logo bianco')
+  expect(product.description).toStrictEqual('Translation for it - This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.')
 })
 
 test('"getProduct" should throws an error when the "code" is not found', () => {
@@ -27,20 +31,8 @@ test('"getProduct" should throws an error when the "code" is not found', () => {
 })
 
 test('"getProductVariants" should returns the variants for the provived Product', () => {
-  const product = getProduct('BODYBSSS000000FFFFFF6MXX')
+  const product = getProduct('BODYBSSS000000FFFFFF6MXX', 'it')
   const variants = getProductVariants(product)
-
-  expect(variants).toStrictEqual([
-    getProduct('BODYBSSS000000FFFFFF12MX'),
-    getProduct('BODYBSSS000000FFFFFF6MXX'),
-    getProduct('BODYBSSSFFFFFF00000012MX'),
-    getProduct('BODYBSSSFFFFFF0000006MXX')
-  ])
-})
-
-test('"getProductVariants" should resolves variants localization', () => {
-  const product = getProduct('BODYBSSS000000FFFFFF6MXX')
-  const variants = getProductVariants(product, 'it')
 
   expect(variants).toStrictEqual([
     getProduct('BODYBSSS000000FFFFFF12MX', 'it'),
@@ -51,24 +43,6 @@ test('"getProductVariants" should resolves variants localization', () => {
 })
 
 test('"getProductWithVariants" should returns the variants for the provived Product', () => {
-  const product = getProductWithVariants('BODYBSSS000000FFFFFF6MXX')
-
-  expect(product.productCode).toStrictEqual('BODYBSSS')
-
-  expect(product.name).toStrictEqual({
-    en: 'Black Baby Short Sleeve Bodysuit with White Logo',
-    it: 'Body nero a maniche corte per bebè con logo bianco'
-  })
-
-  expect(product.variants).toStrictEqual([
-    getProduct('BODYBSSS000000FFFFFF12MX'),
-    getProduct('BODYBSSS000000FFFFFF6MXX'),
-    getProduct('BODYBSSSFFFFFF00000012MX'),
-    getProduct('BODYBSSSFFFFFF0000006MXX')
-  ])
-})
-
-test('"getProductWithVariants" should resolves variants localization', () => {
   const product = getProductWithVariants('BODYBSSS000000FFFFFF6MXX', 'it')
 
   expect(product.productCode).toStrictEqual('BODYBSSS')
