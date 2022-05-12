@@ -2,8 +2,8 @@ import { Facets, flattenProductVariants, LocalizedProductWithVariant } from '#da
 import { useEffect, useMemo, useState } from 'react'
 import Fuse from 'fuse.js'
 import uniqBy from 'lodash/uniqBy'
-import { useImmer } from 'use-immer'
 import { MagnifyingGlass } from '#assets/icons'
+import { useRouter } from 'next/router'
 
 type Props = {
   products: LocalizedProductWithVariant[]
@@ -11,11 +11,10 @@ type Props = {
   onChange: (result: LocalizedProductWithVariant[]) => void
 }
 
-
 export const Search: React.FC<Props> = ({ products, facets, onChange }) => {
-  const [searchText, setSearchText] = useState<string>()
-  const [selectedFacets, setSelectedFacets] = useImmer<{ [name: string]: Facets[string] }>({})
-
+  const [searchText, setSearchText] = useState<string>('')
+  const [selectedFacets, setSelectedFacets] = useState<{ [name: string]: Facets[string] }>({})
+  const router = useRouter()
 
   const fuseOptions: Fuse.IFuseOptions<LocalizedProductWithVariant> = useMemo(() => ({
     useExtendedSearch: true,
@@ -31,8 +30,15 @@ export const Search: React.FC<Props> = ({ products, facets, onChange }) => {
     ].flat()
   }), [facets])
 
-  useEffect(function manageSearch() {
+  useEffect(function manageOnRouterChange() {
+    setSelectedFacets(typeof router.query.facets === 'string' ? JSON.parse(router.query.facets) : {})
 
+    if (typeof router.query.q === 'string') {
+      setSearchText(router.query.q)
+    }
+  }, [router])
+
+  useEffect(function manageSearch() {
     const fuse = new Fuse(flattenProductVariants(products), fuseOptions)
     const pattern = searchText
 
@@ -61,13 +67,48 @@ export const Search: React.FC<Props> = ({ products, facets, onChange }) => {
         : products
     )
 
-  }, [products, searchText, selectedFacets, fuseOptions, onChange])
+  }, [products, fuseOptions, onChange, searchText, selectedFacets])
+
+  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    setSearchText(event.currentTarget.value)
+
+    router.push({
+      query: {
+        ...router.query,
+        q: event.currentTarget.value
+      }
+    })
+  }
+
+  const handleFacetChange = (facetName: string, currentValue: string) => {
+    const facets = (typeof router.query.facets === 'string' ? JSON.parse(router.query.facets) : {}) as Facets
+
+    facets[facetName] = facets[facetName] || []
+    const facet = facets[facetName] || []
+    if (Array.isArray(facet)) {
+      const index = facet.indexOf(currentValue)
+      index > -1 ? facet.splice(index, 1) : facet.push(currentValue)
+
+      if (facet.length === 0) {
+        delete facets[facetName]
+      }
+    }
+
+    setSelectedFacets(facets)
+
+    router.push({
+      query: {
+        ...router.query,
+        facets: JSON.stringify(facets)
+      }
+    })
+  }
 
   return (
     <div>
       <label htmlFor='email' className='relative py-3 rounded bg-gray-100 text-gray-400 focus-within:text-gray-600 block'>
         <MagnifyingGlass className='pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3' />
-        <input onChange={(event) => setSearchText(event.currentTarget.value)} value={searchText} placeholder='search' className='form-input appearance-none bg-transparent w-full pl-14 focus:outline-none focus:shadow-outline' />
+        <input onChange={handleInputChange} value={searchText} placeholder='search' className='form-input appearance-none bg-transparent w-full pl-14 focus:outline-none focus:shadow-outline' />
       </label>
 
       {
@@ -80,18 +121,7 @@ export const Search: React.FC<Props> = ({ products, facets, onChange }) => {
                   <button
                     key={currentValue}
                     className={`m-2 ${selectedFacets[facetName]?.includes(currentValue) ? 'bg-gray-400' : 'bg-gray-100'} rounded px-2`}
-                    onClick={() => setSelectedFacets((draft) => {
-                      draft[facetName] = draft[facetName] || []
-                      const facet = draft[facetName] || []
-                      if (Array.isArray(facet)) {
-                        const index = facet.indexOf(currentValue)
-                        index > -1 ? facet.splice(index, 1) : facet.push(currentValue)
-
-                        if (facet.length === 0) {
-                          delete draft[facetName]
-                        }
-                      }
-                    })}
+                    onClick={() => handleFacetChange(facetName, currentValue)}
                   >{currentValue}</button>
                 ))
               }
