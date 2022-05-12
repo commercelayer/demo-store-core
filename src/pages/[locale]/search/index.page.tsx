@@ -12,21 +12,8 @@ import { withLocalePaths } from '#i18n/withLocalePaths'
 import Fuse from 'fuse.js'
 import uniqBy from 'lodash/uniqBy'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useImmer } from 'use-immer'
-
-const options: Fuse.IFuseOptions<LocalizedProductWithVariant> = {
-  useExtendedSearch: true,
-  threshold: .3,
-  keys: [
-    "name",
-    "description",
-
-    // TODO: dynamically generate them from variant object
-    { name: '_facet.color', getFn: (obj) => obj.variant.find(v => v.name === 'color')?.value!  },
-    { name: '_facet.size', getFn: (obj) => obj.variant.find(v => v.name === 'size')?.value!  },
-  ]
-};
 
 type Query = {
   locale: string
@@ -42,8 +29,23 @@ const Home: NextPage<Props> = ({ products, facets }) => {
   const [searchText, setSearchText] = useState<string>()
   const [selectedFacets, setSelectedFacets] = useImmer<{ [name: string]: Facets[string] }>({})
 
-  useEffect(function () {
-    const fuse = new Fuse(flattenProductVariants(products), options)
+  const fuseOptions: Fuse.IFuseOptions<LocalizedProductWithVariant> = useMemo(() => ({
+    useExtendedSearch: true,
+    threshold: .3,
+    keys: [
+      "name",
+      "description",
+
+      Object.keys(facets).map(facetName => ({
+        name: `_facet.${facetName}`,
+        getFn: (obj: LocalizedProductWithVariant) => obj.variant.find(v => v.name === facetName)?.value!
+      })),
+    ].flat()
+  }), [facets])
+
+  useEffect(function manageSearch() {
+
+    const fuse = new Fuse(flattenProductVariants(products), fuseOptions)
     const pattern = searchText
 
     const andExpression: Fuse.Expression[] = []
@@ -65,15 +67,13 @@ const Home: NextPage<Props> = ({ products, facets }) => {
       })
     }
 
-    console.log(andExpression)
-
     setResult(
       andExpression.length > 0
         ? uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
         : products
     )
 
-  }, [products, searchText, selectedFacets])
+  }, [products, searchText, selectedFacets, fuseOptions])
 
   return (
     <Page>
