@@ -13,8 +13,7 @@ import Fuse from 'fuse.js'
 import uniqBy from 'lodash/uniqBy'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useEffect, useState } from 'react'
-
-
+import { useImmer } from 'use-immer'
 
 const options: Fuse.IFuseOptions<LocalizedProductWithVariant> = {
   useExtendedSearch: true,
@@ -23,7 +22,7 @@ const options: Fuse.IFuseOptions<LocalizedProductWithVariant> = {
     "name",
     "description",
 
-    // TODO: dynamically generate them
+    // TODO: dynamically generate them from variant object
     { name: '_facet.color', getFn: (obj) => obj.variant.find(v => v.name === 'color')?.value!  },
     { name: '_facet.size', getFn: (obj) => obj.variant.find(v => v.name === 'size')?.value!  },
   ]
@@ -41,8 +40,7 @@ type Props = {
 const Home: NextPage<Props> = ({ products, facets }) => {
   const [result, setResult] = useState<LocalizedProductWithVariant[]>(products)
   const [searchText, setSearchText] = useState<string>()
-  const [colorFacet, setColorFacet] = useState<string[]>([])
-  const [sizeFacet, setSizeFacet] = useState<string[]>([])
+  const [selectedFacets, setSelectedFacets] = useImmer<{ [name: string]: Facets[string] }>({})
 
   useEffect(function () {
     const fuse = new Fuse(flattenProductVariants(products), options)
@@ -50,17 +48,13 @@ const Home: NextPage<Props> = ({ products, facets }) => {
 
     const andExpression: Fuse.Expression[] = []
 
-    if (colorFacet.length > 0) {
-      andExpression.push({
-        $or: colorFacet.map(value => ({ $path: '_facet.color', $val: `="${value}"` }))
-      })
-    }
-
-    if (sizeFacet.length > 0) {
-      andExpression.push({
-        $or: sizeFacet.map(value => ({ $path: '_facet.size', $val: `="${value}"` }))
-      })
-    }
+    Object.entries(selectedFacets).forEach(([facetName, facetValue]) => {
+      if (facetValue) {
+        andExpression.push({
+          $or: facetValue.map(value => ({ $path: `_facet.${facetName}`, $val: `="${value}"` }))
+        })
+      }
+    })
 
     if (pattern) {
       andExpression.push({
@@ -71,12 +65,15 @@ const Home: NextPage<Props> = ({ products, facets }) => {
       })
     }
 
-    if (andExpression.length > 0) {
-      setResult(
-        uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
-      )
-    }
-  }, [products, searchText, colorFacet, sizeFacet])
+    console.log(andExpression)
+
+    setResult(
+      andExpression.length > 0
+        ? uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
+        : products
+    )
+
+  }, [products, searchText, selectedFacets])
 
   return (
     <Page>
@@ -97,8 +94,19 @@ const Home: NextPage<Props> = ({ products, facets }) => {
                   facetValues && facetValues.map(currentValue => (
                     <button
                       key={currentValue}
-                      className='m-2 bg-gray-100 rounded px-2'
-                      onClick={() => (facetName === 'color' ? setColorFacet : setSizeFacet)((prevState) => ([ ...prevState, currentValue ]))}
+                      className={`m-2 ${selectedFacets[facetName]?.includes(currentValue) ? 'bg-gray-400' : 'bg-gray-100'} rounded px-2`}
+                      onClick={() => setSelectedFacets((draft) => {
+                        draft[facetName] = draft[facetName] || []
+                        const facet = draft[facetName] || []
+                        if (Array.isArray(facet)) {
+                          const index = facet.indexOf(currentValue)
+                          index > -1 ? facet.splice(index, 1) : facet.push(currentValue)
+  
+                          if (facet.length === 0) {
+                            delete draft[facetName]
+                          }
+                        }
+                      })}
                     >{currentValue}</button>
                   ))
                 }
