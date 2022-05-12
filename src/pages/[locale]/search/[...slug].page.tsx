@@ -5,7 +5,7 @@ import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
 import { Search } from '#components/Search'
 import { deepFind, getCatalog, Taxon } from '#data/catalogs'
-import { Facets, flattenProductVariants, getVariantFacets, LocalizedProductWithVariant } from '#data/products'
+import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant } from '#data/products'
 import { Link } from '#i18n/Link'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
@@ -124,7 +124,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
     props: {
       taxon: taxon!,
       products,
-      facets: getVariantFacets(flattenProducts),
+      facets: getFacets(flattenProducts),
       ...(await serverSideTranslations(localeCode))
     }
   }

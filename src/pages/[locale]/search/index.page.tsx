@@ -5,7 +5,7 @@ import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
 import { Search } from '#components/Search'
 import { getCatalog } from '#data/catalogs'
-import { Facets, flattenProductVariants, getVariantFacets, LocalizedProductWithVariant } from '#data/products'
+import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
@@ -69,7 +69,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   return {
     props: {
       products,
-      facets: getVariantFacets(flattenProducts),
+      facets: getFacets(flattenProducts),
       ...(await serverSideTranslations(localeCode))
     }
   }

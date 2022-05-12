@@ -15,6 +15,7 @@ export type Product = {
   code: string
   slug: string
   variant: Variant[]
+  facets: Facets
   name: Localized<string>
   description: Localized<string>
   images: string[]
@@ -103,6 +104,23 @@ export function flattenProductVariants(products: LocalizedProductWithVariant[]):
   )
 }
 
+export const getFacets = (products: LocalizedProductWithVariant[]): Facets => {
+  return products.reduce((facets, product) => {
+    Object.entries(product.facets).map(([facetName, facetValues]) => {
+      facets[facetName] = facets[facetName] || []
+
+      facetValues?.forEach(facetValue => {
+        if (!facets[facetName]?.includes(facetValue)) {
+          facets[facetName]?.push(facetValue)
+        }
+      })
+    })
+
+    return facets
+  }, {} as Facets)
+}
+
+/** @deprecated */
 export const getVariantFacets = (products: LocalizedProductWithVariant[]): Facets => {
   return products.reduce((facets, product) => {
     product.variant.forEach((variant) => {

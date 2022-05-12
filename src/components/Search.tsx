@@ -22,12 +22,9 @@ export const Search: React.FC<Props> = ({ products, facets, onChange }) => {
     keys: [
       'name',
       'description',
-
-      Object.keys(facets).map(facetName => ({
-        name: `_facet.${facetName}`,
-        getFn: (obj: LocalizedProductWithVariant) => obj.variant.find(v => v.name === facetName)?.value!
-      })),
-    ].flat()
+    ].concat(
+      Object.keys(facets).map(facetName => `facets.${facetName}`)
+    )
   }), [facets])
 
   useEffect(function manageOnRouterChange() {
@@ -47,7 +44,7 @@ export const Search: React.FC<Props> = ({ products, facets, onChange }) => {
     Object.entries(selectedFacets).forEach(([facetName, facetValue]) => {
       if (facetValue) {
         andExpression.push({
-          $or: facetValue.map(value => ({ $path: `_facet.${facetName}`, $val: `="${value}"` }))
+          $or: facetValue.map(value => ({ $path: `facets.${facetName}`, $val: `="${value}"` }))
         })
       }
     })
@@ -77,7 +74,7 @@ export const Search: React.FC<Props> = ({ products, facets, onChange }) => {
         ...router.query,
         q: event.currentTarget.value
       }
-    })
+    }, undefined, { scroll: false })
   }
 
   const handleFacetChange = (facetName: string, currentValue: string) => {
@@ -101,7 +98,7 @@ export const Search: React.FC<Props> = ({ products, facets, onChange }) => {
         ...router.query,
         facets: JSON.stringify(facets)
       }
-    })
+    }, undefined, { scroll: false })
   }
 
   return (

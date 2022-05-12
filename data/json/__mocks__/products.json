@@ -21,6 +21,10 @@
         }
       }
     ],
+    "facets": {
+      "color": ["000000"],
+      "size": ["12 months"]
+    },
     "name": {
       "en-US": "Translation for en-US - Black Baby Short Sleeve Bodysuit with White Logo",
       "en": "Translation for en - Black Baby Short Sleeve Bodysuit with White Logo",
@@ -57,6 +61,10 @@
         }
       }
     ],
+    "facets": {
+      "color": ["000000"],
+      "size": ["6 months"]
+    },
     "name": {
       "en": "Black Baby Short Sleeve Bodysuit with White Logo",
       "it": "Body nero a maniche corte per bebè con logo bianco"
@@ -91,6 +99,10 @@
         }
       }
     ],
+    "facets": {
+      "color": ["FFFFFF"],
+      "size": ["12 months"]
+    },
     "name": {
       "en": "White Baby Short Sleeve Bodysuit with Black Logo",
       "it": "Body bianco a maniche corte per bebè con logo nero"
@@ -125,6 +137,10 @@
         }
       }
     ],
+    "facets": {
+      "color": ["FFFFFF"],
+      "size": ["6 months"]
+    },
     "name": {
       "en": "White Baby Short Sleeve Bodysuit with Black Logo",
       "it": "Body bianco a maniche corte per bebè con logo nero"
@@ -151,6 +167,10 @@
         }
       }
     ],
+    "facets": {
+      "color": ["FFFFFF"],
+      "size": []
+    },
     "name": {
       "en": "White Water Bottle with Black Logo",
       "it": "Bottiglia d'acqua bianca con logo nero"
@@ -177,6 +197,10 @@
         }
       }
     ],
+    "facets": {
+      "color": ["000000"],
+      "size": []
+    },
     "name": {
       "en": "Black Cuffed Beanie with White Logo",
       "it": "Berretto con risvolto nero con logo bianco"
@@ -203,6 +227,10 @@
         }
       }
     ],
+    "facets": {
+      "color": ["A6A5A0"],
+      "size": []
+    },
     "name": {
       "en": "Gray Cuffed Beanie with Black Logo",
       "it": "Berretto con risvolto grigio con logo nero"
@@ -229,6 +257,10 @@
         }
       }
     ],
+    "facets": {
+      "color": ["FFFFFF"],
+      "size": []
+    },
     "name": {
       "en": "White Cuffed Beanie with Black Logo",
       "it": "Berretto con risvolto bianco con logo nero"
