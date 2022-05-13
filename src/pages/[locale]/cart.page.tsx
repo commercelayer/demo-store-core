@@ -1,7 +1,7 @@
 // TODO: this will be replaced by the hosted cart!
 
 import { Container } from '#components/Container'
-import { Header } from '#components/Header'
+import { Header, HeaderProps } from '#components/Header'
 import { Footer } from '#components/Footer'
 import { Page } from '#components/Page'
 import { getLocale } from '#i18n/locale'
@@ -9,16 +9,17 @@ import { withLocalePaths } from '#i18n/withLocalePaths'
 import { CheckoutLink, Errors, LineItem, LineItemAmount, LineItemImage, LineItemName, LineItemQuantity, LineItemRemoveLink, LineItemsContainer, LineItemsCount, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
+import { getCatalog } from '#data/catalogs'
 
 type Query = {
   locale: string
 }
 
-type Props = {
-  params: Query
+type Props = HeaderProps & {
+
 }
 
-const Cart: NextPage = () => {
+const Cart: NextPage<Props> = ({ navigation }) => {
   const router = useRouter()
 
   const locale = getLocale(router.query.locale)
@@ -26,7 +27,7 @@ const Cart: NextPage = () => {
   return (
     <Page>
       <Container>
-        <Header />
+        <Header navigation={navigation} />
 
         <OrderStorage persistKey={`country-${locale?.country?.code}`}>
           <OrderContainer attributes={{
@@ -74,9 +75,13 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 }
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
+  const { locale: localeCode } = params!
+  const locale = getLocale(localeCode)
+  const catalog = getCatalog(locale, false)
+
   return {
     props: {
-      params: params!
+      navigation: catalog.taxonomies[0].taxons
     }
   }
 }

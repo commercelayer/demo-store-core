@@ -1,6 +1,6 @@
 import { Container } from '#components/Container'
 import { Footer } from '#components/Footer'
-import { Header } from '#components/Header'
+import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
 import { Search } from '#components/Search'
@@ -17,18 +17,18 @@ type Query = {
   locale: string
 }
 
-type Props = {
+type Props = HeaderProps & {
   products: LocalizedProductWithVariant[]
   facets: Facets
 }
 
-const SearchIndex: NextPage<Props> = ({ products, facets }) => {
+const SearchIndex: NextPage<Props> = ({ navigation, products, facets }) => {
   const [result, setResult] = useState<LocalizedProductWithVariant[]>(products)
 
   return (
     <Page>
       <Container>
-        <Header />
+        <Header navigation={navigation} />
 
         <Search products={products} facets={facets} onChange={setResult} />
 
@@ -70,6 +70,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
     props: {
       products,
       facets: getFacets(flattenProducts),
+      navigation: catalog.taxonomies[0].taxons,
       ...(await serverSideTranslations(localeCode))
     }
   }

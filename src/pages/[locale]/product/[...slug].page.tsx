@@ -10,7 +10,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { getLocale } from '#i18n/locale'
 import { Container } from '#components/Container'
-import { Header } from '#components/Header'
+import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { getCatalog } from '#data/catalogs'
 
@@ -19,11 +19,11 @@ type Query = {
   slug: string[]
 }
 
-type Props = {
+type Props = HeaderProps & {
   product: LocalizedProductWithVariant
 }
 
-const ProductDetailPage: NextPage<Props> = ({ product }) => {
+const ProductDetailPage: NextPage<Props> = ({ navigation, product }) => {
   const [currentProduct, setCurrentProduct] = useState<LocalizedProduct>()
   const router = useRouter()
 
@@ -36,7 +36,7 @@ const ProductDetailPage: NextPage<Props> = ({ product }) => {
       </Head>
 
       <Container>
-        <Header />
+        <Header navigation={navigation} />
 
         <p>{product.code}</p>
         <img width="300" src={product.images[0]} alt={product.name} />
@@ -95,12 +95,17 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 }
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
-  const { slug, locale } = params!
+  const { slug, locale: localeCode } = params!
+
+  const locale = getLocale(localeCode)
+
+  const catalog = getCatalog(locale, true)
 
   return {
     props: {
-      product: getProductWithVariants(slug.pop()!, locale),
-      ...(await serverSideTranslations(locale))
+      product: getProductWithVariants(slug.pop()!, localeCode),
+      navigation: catalog.taxonomies[0].taxons,
+      ...(await serverSideTranslations(localeCode))
     }
   }
 }

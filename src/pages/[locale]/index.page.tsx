@@ -1,6 +1,6 @@
 import { Container } from '#components/Container'
 import { Footer } from '#components/Footer'
-import { Header } from '#components/Header'
+import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { Catalog, getCatalog, Taxon as TaxonType, Taxonomy as TaxonomyType } from '#data/catalogs'
 import { Link } from '#i18n/Link'
@@ -15,15 +15,15 @@ type Query = {
   locale: string
 }
 
-type Props = {
+type Props = HeaderProps & {
   catalog: Catalog
 }
 
-const Home: NextPage<Props> = ({ catalog }) => {
+const Home: NextPage<Props> = ({ navigation, catalog }) => {
   return (
     <Page>
       <Container>
-        <Header />
+        <Header navigation={navigation} />
 
         {
           catalog.taxonomies.map(taxonomy => (
@@ -82,10 +82,12 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode } = params!
   const locale = getLocale(localeCode)
+  const catalog = getCatalog(locale, false)
 
   return {
     props: {
       catalog: getCatalog(locale, false),
+      navigation: catalog.taxonomies[0].taxons,
       ...(await serverSideTranslations(localeCode))
     }
   }

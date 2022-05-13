@@ -44,7 +44,7 @@ test('home', () => {
 
   const { container } = render(
     <I18nProvider lngDict={{ general: { viewAll: 'View all' } }} locale='en'>
-      <Home catalog={catalog} />
+      <Home catalog={catalog} navigation={[taxon]} />
     </I18nProvider>
   )
 
