@@ -5,6 +5,30 @@ type Localized<T> = {
   [locale: string]: T
 }
 
+
+type Primitives = number | string | undefined
+
+type NestedFacet = {
+  [nested: string]: Primitives
+}
+
+
+type HierarchyFacet = {
+  [child: string]: Primitives | Primitives[]
+}
+
+export type AlgoliaFacets = {
+  [name: string]: Primitives | Primitives[] | HierarchyFacet | NestedFacet[]
+}
+
+type FacetsResult = {
+  [name: string]: {
+    [value: string]: number
+  } | {
+    [value: string]: number
+  }[]
+}
+
 export type Facets = {
   [name: string]: string[] | undefined
 }
@@ -118,6 +142,59 @@ export const getFacets = (products: LocalizedProductWithVariant[]): Facets => {
 
     return facets
   }, {} as Facets)
+}
+
+// @ts-ignore
+export const getAlgoliaFacets = (products: LocalizedProductWithVariant[]): FacetsResult => {
+  return products.reduce((facets, product) => {
+    Object.entries(product.facets).map(([facetName, facetValues]) => {
+      if (Array.isArray(facetValues)) {
+        facetValues.forEach(facetValue => {
+          if (facetValue) {
+            facets[facetName] = facets[facetName] || {}
+            let facet = facets[facetName]
+            // @ts-ignore
+            facet[facetValue] = facet[facetValue] || 0
+            // @ts-ignore
+            facet[facetValue]++
+          }
+        })
+      } else {
+        if (facetValues) {
+          if (typeof facetValues === 'number' || typeof facetValues === 'string') {
+            facets[facetName] = facets[facetName] || {}
+            let facet = facets[facetName]
+            facet[facetValues] = facet[facetValues] || 0
+            facet[facetValues]++
+          } else {
+            // @ts-ignore
+            Object.entries(facetValues).forEach(([level, values], index) => {
+              facets[facetName] = facets[facetName] || []
+              if (Array.isArray(facets[facetName])) {
+                // @ts-ignore
+                facets[facetName][index] = facets[facetName][index] || {}
+                if (Array.isArray(values)) {
+                  values.forEach((v) => {
+                    // @ts-ignore
+                    facets[facetName][index][v] = facets[facetName][index][v] || 0
+                    // @ts-ignore
+                    facets[facetName][index][v]++
+                  })
+                } else {
+                  // @ts-ignore
+                  facets[facetName][index][values] = facets[facetName][index][values] || 0
+                  // @ts-ignore
+                  facets[facetName][index][values]++
+                }
+              }
+            })
+          }
+        }
+      }
+    })
+
+    return facets
+  }, {} as FacetsResult)
 }
 
 /** @deprecated */

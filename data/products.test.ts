@@ -1,4 +1,4 @@
-import { flattenProductVariants, getFacets, getProduct, getProductVariants, getProductWithVariants, getVariantFacets } from './products';
+import { flattenProductVariants, getAlgoliaFacets, getFacets, getProduct, getProductVariants, getProductWithVariants, getVariantFacets } from './products';
 
 jest.mock('./json/products.json')
 
@@ -95,5 +95,38 @@ test('"getFacets" should return combined facets for provided product list', () =
   expect(products).toStrictEqual({
     color: ['000000', 'FFFFFF'],
     size: ['12 months', '6 months']
+  })
+})
+
+test.skip('"getAlgoliaFacets" should return combined facets for provided product list', () => {
+  const products = getAlgoliaFacets([
+    getProductWithVariants('BODYBSSS000000FFFFFF12MX', 'it'),
+    getProductWithVariants('BODYBSSS000000FFFFFF6MXX', 'it'),
+    getProductWithVariants('BODYBSSSFFFFFF00000012MX', 'it'),
+    getProductWithVariants('BODYBSSSFFFFFF0000006MXX', 'it')
+  ])
+
+  expect(products).toStrictEqual({
+    categories: [
+      {
+        Baby: 4,
+      },
+      {
+        'Baby > Body': 4,
+        'Baby > Short Body': 4
+      },
+      {
+        'Baby > Body > 12 months': 2,
+        'Baby > Short Body > 12 months': 2
+      }
+    ],
+    color: {
+      '000000': 2,
+      'FFFFFF': 2
+    },
+    size: {
+      '12 months': 2,
+      '6 months': 2
+    }
   })
 })

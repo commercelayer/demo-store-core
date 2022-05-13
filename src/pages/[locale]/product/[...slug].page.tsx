@@ -81,7 +81,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 
     const catalog = getCatalog(locale, true)
 
-    const products = flattenProductVariants(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ references }) => references)))
+    const products = flattenProductVariants(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ products }) => products)))
 
     return {
       paths: products.map(product => ({

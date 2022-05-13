@@ -62,7 +62,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   const catalog = getCatalog(locale, true)
 
-  const products = uniqBy(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ references }) => references)), 'code')
+  const products = uniqBy(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ products }) => products)), 'code')
 
   const flattenProducts = flattenProductVariants(products)
 

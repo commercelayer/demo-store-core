@@ -26,7 +26,7 @@ export type Taxonomy = Omit<JsonTaxonomy, 'taxons'> & {
 }
 
 export type Taxon = Omit<JsonTaxon, 'references' | 'taxons'> & {
-  references: LocalizedProductWithVariant[]
+  products: LocalizedProductWithVariant[]
   taxons: Taxon[]
 }
 
@@ -73,7 +73,7 @@ const resolveTaxonomy = (taxonomy: JsonTaxonomy, locale: string, fetchProducts: 
 const resolveTaxon = (taxon: JsonTaxon, locale: string, fetchProducts: boolean): Taxon => {
   return {
     ...taxon,
-    references: fetchProducts ? taxon.references.map(referenceCode => getProductWithVariants(referenceCode, locale)) : [],
+    products: fetchProducts ? taxon.references.map(referenceCode => getProductWithVariants(referenceCode, locale)) : [],
     taxons: taxon.taxons?.map(taxonKey => taxons.find(taxon => taxon.key === taxonKey)!).map(taxon => resolveTaxon(taxon, locale, fetchProducts)) || []
   }
 }

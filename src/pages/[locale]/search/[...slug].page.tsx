@@ -115,7 +115,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const products = uniqBy(getFlatProducts(taxon.result), 'code')
 
   function getFlatProducts(taxon: Taxon): LocalizedProductWithVariant[] {
-    return taxon.references.concat(taxon.taxons?.flatMap(getFlatProducts) || [])
+    return taxon.products.concat(taxon.taxons?.flatMap(getFlatProducts) || [])
   }
 
   const flattenProducts = flattenProductVariants(products)
