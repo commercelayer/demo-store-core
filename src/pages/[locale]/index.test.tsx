@@ -1,8 +1,8 @@
 import { Catalog, Taxon, Taxonomy } from '#data/catalogs'
 import { render, screen, within } from '@testing-library/react'
 import { I18nProvider } from 'next-localization'
-
 import Home from './index.page'
+
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -43,7 +43,7 @@ test('home', () => {
   }
 
   const { container } = render(
-    <I18nProvider lngDict={{ general: { title: 'Welcome to' } }} locale='en'>
+    <I18nProvider lngDict={{ general: { viewAll: 'View all' } }} locale='en'>
       <Home catalog={catalog} />
     </I18nProvider>
   )

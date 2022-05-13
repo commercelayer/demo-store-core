@@ -95,8 +95,7 @@ exports[`home 1`] = `
               <div
                 class="font-semibold"
               >
-                View all 
-                -&gt;
+                View all -&gt;
               </div>
             </div>
           </a>

@@ -1,6 +1,6 @@
 import { Container } from '#components/Container'
-import { Header } from '#components/Header'
 import { Footer } from '#components/Footer'
+import { Header } from '#components/Header'
 import { Page } from '#components/Page'
 import { Catalog, getCatalog, Taxon as TaxonType, Taxonomy as TaxonomyType } from '#data/catalogs'
 import { Link } from '#i18n/Link'
@@ -9,7 +9,7 @@ import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { basePath } from '#next.config'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-
+import { useI18n } from 'next-localization'
 
 type Query = {
   locale: string
@@ -53,6 +53,8 @@ const Taxonomy: React.FC<{ taxonomy: TaxonomyType }> = ({ taxonomy }) => {
 }
 
 const Taxon: React.FC<{ taxon: TaxonType }> = ({ taxon }) => {
+  const i18n = useI18n();
+
   return (
     <Link href={`/search/${taxon.slug}`}>
       <a className='relative w-full h-80 xl:h-96 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1'>
@@ -63,7 +65,7 @@ const Taxon: React.FC<{ taxon: TaxonType }> = ({ taxon }) => {
           <div className='text-md font-medium text-gray-300'>{taxon.description}</div>
         </div>
         <div className="absolute p-4 bottom-0 inset-x-0 text-white leading-snug text-lg">
-          <div className='font-semibold'>View all {`->`}</div>
+          <div className='font-semibold'>{`${i18n.t('general.viewAll')} ->`}</div>
         </div>
       </a>
     </Link>
