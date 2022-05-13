@@ -3,7 +3,7 @@ import { Footer } from '#components/Footer'
 import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
-import { Search } from '#components/Search'
+import { Facet } from '#components/Facet'
 import { getCatalog } from '#data/catalogs'
 import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant } from '#data/products'
 import { getLocale } from '#i18n/locale'
@@ -30,7 +30,7 @@ const SearchIndex: NextPage<Props> = ({ navigation, products, facets }) => {
       <Container>
         <Header navigation={navigation} />
 
-        <Search products={products} facets={facets} onChange={setResult} />
+        <Facet products={products} facets={facets} onChange={setResult} />
 
         <h2 className='mt-16 block text-2xl font-semibold text-black'>All Products</h2>
 

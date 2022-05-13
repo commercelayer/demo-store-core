@@ -3,7 +3,7 @@ import { Footer } from '#components/Footer'
 import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
-import { Search } from '#components/Search'
+import { Facet } from '#components/Facet'
 import { deepFind, getCatalog, Taxon } from '#data/catalogs'
 import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant } from '#data/products'
 import { Link } from '#i18n/Link'
@@ -34,7 +34,7 @@ const SearchSlug: NextPage<Props> = ({ navigation, products, taxon, facets }) =>
       <Container>
         <Header navigation={navigation} />
 
-        <Search products={products} facets={facets} onChange={setResult} />
+        <Facet products={products} facets={facets} onChange={setResult} />
 
         <h2 className='mt-16 block text-2xl font-semibold text-black'>{taxon.result.label}</h2>
 

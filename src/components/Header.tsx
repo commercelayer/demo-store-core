@@ -3,6 +3,7 @@ import { Logo } from '#components/Logo'
 import { Taxon } from '#data/catalogs'
 import { Link } from '#i18n/Link'
 import { Navigation } from './Navigation'
+import { Search } from './Search'
 
 export type HeaderProps = {
   navigation: Taxon[]
@@ -25,7 +26,10 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
           </Link>
         </div>
       </nav>
-      <Navigation taxons={navigation} />
+      <div className='flex items-center justify-between flex-wrap mb-4'>
+        <Navigation taxons={navigation} />
+        <Search />
+      </div>
     </header>
   )
 }
