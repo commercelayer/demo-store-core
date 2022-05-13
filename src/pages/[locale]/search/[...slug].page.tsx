@@ -125,7 +125,10 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
       taxon: taxon!,
       products,
       facets: getFacets(flattenProducts),
-      navigation: catalog.taxonomies[0].taxons,
+      navigation: catalog.taxonomies[0].taxons.map(taxon => ({
+        ...taxon,
+        products: []
+      })),
       ...(await serverSideTranslations(localeCode))
     }
   }

@@ -1,4 +1,4 @@
-import { Facets, flattenProductVariants, LocalizedProductWithVariant } from '#data/products'
+import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant } from '#data/products'
 import { useEffect, useMemo, useState } from 'react'
 import Fuse from 'fuse.js'
 import uniqBy from 'lodash/uniqBy'
@@ -11,8 +11,10 @@ type Props = {
   onChange: (result: LocalizedProductWithVariant[]) => void
 }
 
-export const Facet: React.FC<Props> = ({ products, facets, onChange }) => {
-  // const [searchText, setSearchText] = useState<string>('')
+export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChange }) => {
+  const [facets, setFacets] = useState(initialFacets)
+  const [searchText, setSearchText] = useState<string>('')
+  const [prevSearchText, setPrevSearchText] = useState<string>('')
   const [selectedFacets, setSelectedFacets] = useState<{ [name: string]: Facets[string] }>({})
   const router = useRouter()
 
@@ -30,14 +32,14 @@ export const Facet: React.FC<Props> = ({ products, facets, onChange }) => {
   useEffect(function manageOnRouterChange() {
     setSelectedFacets(typeof router.query.facets === 'string' ? JSON.parse(router.query.facets) : {})
 
-    // if (typeof router.query.q === 'string') {
-    //   setSearchText(router.query.q)
-    // }
+    if (typeof router.query.q === 'string') {
+      setSearchText(router.query.q)
+    }
   }, [router])
 
   useEffect(function manageSearch() {
     const fuse = new Fuse(flattenProductVariants(products), fuseOptions)
-    // const pattern = searchText
+    const pattern = searchText
 
     const andExpression: Fuse.Expression[] = []
 
@@ -49,22 +51,28 @@ export const Facet: React.FC<Props> = ({ products, facets, onChange }) => {
       }
     })
 
-    // if (pattern) {
-    //   andExpression.push({
-    //     $or: [
-    //       { $path: 'name', $val: pattern },
-    //       { $path: 'description', $val: pattern },
-    //     ]
-    //   })
-    // }
+    if (pattern) {
+      andExpression.push({
+        $or: [
+          { $path: 'name', $val: pattern },
+          { $path: 'description', $val: pattern },
+        ]
+      })
+    }
 
-    onChange(
-      andExpression.length > 0
-        ? uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
-        : products
-    )
+    const result = andExpression.length > 0
+      ? uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
+      : products
 
-  }, [products, fuseOptions, onChange, selectedFacets])
+    onChange(result)
+
+    if (prevSearchText !== searchText || searchText === '') {
+      setFacets(getFacets(flattenProductVariants(result)))
+      setPrevSearchText(searchText)
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [products, onChange, prevSearchText, searchText, selectedFacets])
 
   // const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
   //   setSearchText(event.currentTarget.value)
