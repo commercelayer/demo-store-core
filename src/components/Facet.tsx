@@ -12,6 +12,7 @@ type Props = {
 }
 
 export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChange }) => {
+  const [originalFacets, setOriginalFacets] = useState(initialFacets)
   const [facets, setFacets] = useState(initialFacets)
   const [searchText, setSearchText] = useState<string>('')
   const [prevSearchText, setPrevSearchText] = useState<string>('')
@@ -66,9 +67,10 @@ export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChan
 
     onChange(result)
 
-    if (prevSearchText !== searchText || searchText === '') {
+    if (prevSearchText !== searchText || JSON.stringify(originalFacets) !== JSON.stringify(initialFacets)) {
       setFacets(getFacets(flattenProductVariants(result)))
       setPrevSearchText(searchText)
+      setOriginalFacets(initialFacets)
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

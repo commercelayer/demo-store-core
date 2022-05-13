@@ -70,6 +70,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
     props: {
       products,
       facets: getFacets(flattenProducts),
+      // TODO: implement view model
       navigation: catalog.taxonomies[0].taxons.map(taxon => ({
         ...taxon,
         products: []

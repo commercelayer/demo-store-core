@@ -122,9 +122,23 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   return {
     props: {
-      taxon: taxon!,
+      taxon: {
+        // TODO: implement view model
+        memo: taxon.memo.map(t => ({
+          ...t,
+          products: [],
+          references: []
+        })),
+        // TODO: implement view model
+        result: {
+          ...taxon.result,
+          products: [],
+          references: []
+        }
+      },
       products,
       facets: getFacets(flattenProducts),
+      // TODO: implement view model
       navigation: catalog.taxonomies[0].taxons.map(taxon => ({
         ...taxon,
         products: []
