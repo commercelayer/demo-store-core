@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
@@ -40,7 +40,7 @@ jobs:
 
   deploy:
     needs: [test]
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     if: github.ref == 'refs/heads/master'
 
@@ -63,7 +63,7 @@ jobs:
     - name: Node 🧰
       uses: actions/setup-node@v3
       with:
-        node-version: 16.x
+        node-version: 18.x
         cache: 'npm'
 
     - name: Install 📦
