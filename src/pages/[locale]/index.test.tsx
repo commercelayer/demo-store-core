@@ -1,5 +1,5 @@
 import { Catalog, Taxon, Taxonomy } from '#data/catalogs'
-import { getNavigationLinks } from '#models/catalog'
+import { getRootNavigationLinks } from '#models/catalog'
 import { render, screen, within } from '@testing-library/react'
 import { I18nProvider } from 'next-localization'
 import Home from './index.page'
@@ -45,7 +45,7 @@ test('home', () => {
 
   const { container } = render(
     <I18nProvider lngDict={{ general: { viewAll: 'View all' } }} locale='en'>
-      <Home catalog={catalog} links={getNavigationLinks(catalog)} />
+      <Home navigation={getRootNavigationLinks(catalog)} taxonomies={catalog.taxonomies} />
     </I18nProvider>
   )
 

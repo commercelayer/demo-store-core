@@ -2,12 +2,12 @@ import { Container } from '#components/Container'
 import { Footer } from '#components/Footer'
 import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
-import { Catalog, getCatalog, Taxon as TaxonType, Taxonomy as TaxonomyType } from '#data/catalogs'
+import { getCatalog, Taxon as TaxonType, Taxonomy as TaxonomyType } from '#data/catalogs'
 import { Link } from '#i18n/Link'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
-import { getNavigationLinks } from '#models/catalog'
+import { getRootNavigationLinks } from '#models/catalog'
 import { getSearchUrl } from '#models/url'
 import { basePath } from '#next.config'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
@@ -18,17 +18,17 @@ type Query = {
 }
 
 type Props = HeaderProps & {
-  catalog: Catalog
+  taxonomies: TaxonomyType[]
 }
 
-const Home: NextPage<Props> = ({ links, catalog }) => {
+const Home: NextPage<Props> = ({ navigation, taxonomies }) => {
   return (
     <Page>
       <Container>
-        <Header links={links} />
+        <Header navigation={navigation} />
 
         {
-          catalog.taxonomies.map(taxonomy => (
+          taxonomies.map(taxonomy => (
             <Taxonomy key={taxonomy.key} taxonomy={taxonomy} />
           ))
         }
@@ -89,8 +89,8 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   return {
     props: {
-      catalog,
-      links: getNavigationLinks(catalog),
+      taxonomies: catalog.taxonomies,
+      navigation: getRootNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
     }
   }

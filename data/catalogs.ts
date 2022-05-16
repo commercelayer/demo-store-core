@@ -58,24 +58,57 @@ export const getCatalog = (locale: Locale, fetchProducts = false): Catalog => {
 
 const resolveCatalog = (catalog: JsonCatalog, locale: string, fetchProducts: boolean): Catalog => {
   return {
-    ...catalog,
+    key: catalog.key,
+    name: catalog.name,
     taxonomies: catalog.taxonomies.map(taxonomyKey => taxonomies.find(taxonomy => taxonomy.key === taxonomyKey)!).map(taxonomy => resolveTaxonomy(taxonomy, locale, fetchProducts))
   }
 }
 
 const resolveTaxonomy = (taxonomy: JsonTaxonomy, locale: string, fetchProducts: boolean): Taxonomy => {
   return {
-    ...taxonomy,
+    key: taxonomy.key,
+    label: taxonomy.label,
+    name: taxonomy.name,
     taxons: taxonomy.taxons.map(taxonKey => taxons.find(taxon => taxon.key === taxonKey)!).map(taxon => resolveTaxon(taxon, locale, fetchProducts))
   }
 }
 
 const resolveTaxon = (taxon: JsonTaxon, locale: string, fetchProducts: boolean): Taxon => {
   return {
-    ...taxon,
-    products: fetchProducts ? taxon.references.map(referenceCode => getProductWithVariants(referenceCode, locale)) : [],
-    taxons: taxon.taxons?.map(taxonKey => taxons.find(taxon => taxon.key === taxonKey)!).map(taxon => resolveTaxon(taxon, locale, fetchProducts)) || []
+    key: taxon.key,
+    label: taxon.label,
+    description: taxon.description,
+    name: taxon.name,
+    slug: taxon.slug,
+    ...(taxon.image ? { image: taxon.image } : {}),
+    taxons: taxon.taxons?.map(taxonKey => taxons.find(taxon => taxon.key === taxonKey)!).map(taxon => resolveTaxon(taxon, locale, fetchProducts)) || [],
+    products: fetchProducts ? taxon.references.map(referenceCode => {
+      const product = getProductWithVariants(referenceCode, locale)
+      return {
+        ...product,
+        facets: {
+          category: [],
+          ...product.facets
+        }
+      }
+    }) : []
   }
+}
+
+export function findTaxonBySlug(catalog: Catalog, slug: string): DeepFindResult<Taxon> {
+  const taxon = catalog.taxonomies.reduce((acc, cv) => {
+    if (acc) {
+      return acc
+    }
+
+    return deepFind(cv.taxons, 'taxons', 'slug', slug)
+  }, undefined as DeepFindResult<Taxon> | undefined)
+
+  if (!taxon) {
+    throw new Error('Cannot find Taxon!')
+  }
+
+  return taxon
 }
 
 // function getCatalogSlugs() {
@@ -91,7 +124,12 @@ type Taxonable<IK extends string, SK extends string> = {
   [iteratorKey in IK | SK]: iteratorKey extends SK ? string : Taxonable<IK, SK>[]
 }
 
-export function deepFind<T extends Taxonable<IK, SK>, IK extends string, SK extends string>(items: T[] | undefined | null, iteratorKey: IK, searchKey: SK, searchValue: string): { result: T; memo: T[] } | undefined {
+export type DeepFindResult<T> = {
+  result: T
+  memo: T[]
+}
+
+export function deepFind<T extends Taxonable<IK, SK>, IK extends string, SK extends string>(items: T[] | undefined | null, iteratorKey: IK, searchKey: SK, searchValue: string): DeepFindResult<T> | undefined {
   if (!items) {
     return
   }

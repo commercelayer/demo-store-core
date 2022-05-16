@@ -4,6 +4,8 @@ export type NavigationLink = {
   text: string
 }
 
-export type Props = {
-  links: NavigationLink[]
+export type NavigationPath = {
+  parent: NavigationLink[]
+  current: NavigationLink
+  children: NavigationLink[]
 }

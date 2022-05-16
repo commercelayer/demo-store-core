@@ -13,7 +13,7 @@ import { Container } from '#components/Container'
 import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { getCatalog } from '#data/catalogs'
-import { getNavigationLinks } from '#models/catalog'
+import { getRootNavigationLinks } from '#models/catalog'
 import { getProductUrl } from '#models/url'
 
 type Query = {
@@ -25,7 +25,7 @@ type Props = HeaderProps & {
   product: LocalizedProductWithVariant
 }
 
-const ProductDetailPage: NextPage<Props> = ({ links, product }) => {
+const ProductDetailPage: NextPage<Props> = ({ navigation: links, product }) => {
   const [currentProduct, setCurrentProduct] = useState<LocalizedProduct>()
   const router = useRouter()
 
@@ -38,7 +38,7 @@ const ProductDetailPage: NextPage<Props> = ({ links, product }) => {
       </Head>
 
       <Container>
-        <Header links={links} />
+        <Header navigation={links} />
 
         <p>{product.code}</p>
         <img width="300" src={product.images[0]} alt={product.name} />
@@ -104,7 +104,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   return {
     props: {
       product: getProductWithVariants(slug.pop()!, localeCode),
-      links: getNavigationLinks(catalog),
+      navigation: getRootNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
     }
   }

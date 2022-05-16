@@ -3,12 +3,12 @@ import { Logo } from '#components/Logo'
 import { Link } from '#i18n/Link'
 import { getCartUrl } from '#models/url'
 import { Navigation } from './Navigation'
-import type { Props as NavigationProps } from './Navigation.d'
+import type { Props as NavigationProps } from './Navigation'
 import { Search } from './Search'
 
 export type HeaderProps = NavigationProps
 
-export const Header: React.FC<HeaderProps> = ({ links }) => {
+export const Header: React.FC<HeaderProps> = ({ navigation }) => {
   return (
     <header className='border-b-gray-200 border-b pb-6 mb-6'>
       <nav className='flex items-center justify-between flex-wrap mb-4'>
@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({ links }) => {
         </div>
       </nav>
       <div className='flex items-center justify-between flex-wrap'>
-        <Navigation links={links} />
+        <Navigation navigation={navigation} />
         <Search />
       </div>
     </header>
