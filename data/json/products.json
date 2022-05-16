@@ -39,16 +39,16 @@
     "variant": [
       {
         "name": "color",
-        "value": "9D9CA1",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9D9CA1",
-          "it": "#9D9CA1"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       }
     ],
     "facets": {
       "color": [
-        "9D9CA1"
+        "C2C2C2"
       ]
     },
     "name": {
@@ -135,16 +135,16 @@
     "variant": [
       {
         "name": "color",
-        "value": "A19D9D",
+        "value": "C2C2C2",
         "label": {
-          "en": "#A19D9D",
-          "it": "#A19D9D"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       }
     ],
     "facets": {
       "color": [
-        "A19D9D"
+        "C2C2C2"
       ]
     },
     "name": {
@@ -199,16 +199,16 @@
     "variant": [
       {
         "name": "color",
-        "value": "818488",
+        "value": "C2C2C2",
         "label": {
-          "en": "#818488",
-          "it": "#818488"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       }
     ],
     "facets": {
       "color": [
-        "818488"
+        "C2C2C2"
       ]
     },
     "name": {
@@ -959,10 +959,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "E8E8E8",
+        "value": "C2C2C2",
         "label": {
-          "en": "#E8E8E8",
-          "it": "#E8E8E8"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -976,7 +976,7 @@
     ],
     "facets": {
       "color": [
-        "E8E8E8"
+        "C2C2C2"
       ],
       "size": [
         "L"
@@ -1002,10 +1002,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "E8E8E8",
+        "value": "C2C2C2",
         "label": {
-          "en": "#E8E8E8",
-          "it": "#E8E8E8"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -1019,7 +1019,7 @@
     ],
     "facets": {
       "color": [
-        "E8E8E8"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -1045,10 +1045,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "E8E8E8",
+        "value": "C2C2C2",
         "label": {
-          "en": "#E8E8E8",
-          "it": "#E8E8E8"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -1062,7 +1062,7 @@
     ],
     "facets": {
       "color": [
-        "E8E8E8"
+        "C2C2C2"
       ],
       "size": [
         "S"
@@ -1088,10 +1088,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "E8E8E8",
+        "value": "C2C2C2",
         "label": {
-          "en": "#E8E8E8",
-          "it": "#E8E8E8"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -1105,7 +1105,7 @@
     ],
     "facets": {
       "color": [
-        "E8E8E8"
+        "C2C2C2"
       ],
       "size": [
         "XS"
@@ -1335,16 +1335,16 @@
     "variant": [
       {
         "name": "color",
-        "value": "A6A5A0",
+        "value": "C2C2C2",
         "label": {
-          "en": "#A6A5A0",
-          "it": "#A6A5A0"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       }
     ],
     "facets": {
       "color": [
-        "A6A5A0"
+        "C2C2C2"
       ]
     },
     "name": {
@@ -2117,16 +2117,16 @@
     "variant": [
       {
         "name": "color",
-        "value": "XXXXXX",
+        "value": "000000",
         "label": {
-          "en": "#XXXXXX",
-          "it": "#XXXXXX"
+          "en": "#000000",
+          "it": "#000000"
         }
       }
     ],
     "facets": {
       "color": [
-        "XXXXXX"
+        "000000"
       ]
     },
     "name": {
@@ -2149,16 +2149,16 @@
     "variant": [
       {
         "name": "color",
-        "value": "XXXXXX",
+        "value": "000000",
         "label": {
-          "en": "#XXXXXX",
-          "it": "#XXXXXX"
+          "en": "#000000",
+          "it": "#000000"
         }
       }
     ],
     "facets": {
       "color": [
-        "XXXXXX"
+        "000000"
       ]
     },
     "name": {
@@ -2546,10 +2546,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "7F7F7F",
+        "value": "C2C2C2",
         "label": {
-          "en": "#7F7F7F",
-          "it": "#7F7F7F"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -2563,7 +2563,7 @@
     ],
     "facets": {
       "color": [
-        "7F7F7F"
+        "C2C2C2"
       ],
       "size": [
         "L"
@@ -2589,10 +2589,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "7F7F7F",
+        "value": "C2C2C2",
         "label": {
-          "en": "#7F7F7F",
-          "it": "#7F7F7F"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -2606,7 +2606,7 @@
     ],
     "facets": {
       "color": [
-        "7F7F7F"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -2632,10 +2632,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "7F7F7F",
+        "value": "C2C2C2",
         "label": {
-          "en": "#7F7F7F",
-          "it": "#7F7F7F"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -2649,7 +2649,7 @@
     ],
     "facets": {
       "color": [
-        "7F7F7F"
+        "C2C2C2"
       ],
       "size": [
         "S"
@@ -2675,10 +2675,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "7F7F7F",
+        "value": "C2C2C2",
         "label": {
-          "en": "#7F7F7F",
-          "it": "#7F7F7F"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -2692,7 +2692,7 @@
     ],
     "facets": {
       "color": [
-        "7F7F7F"
+        "C2C2C2"
       ],
       "size": [
         "XL"
@@ -3492,10 +3492,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "575C51",
+        "value": "C2C2C2",
         "label": {
-          "en": "#575C51",
-          "it": "#575C51"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -3509,7 +3509,7 @@
     ],
     "facets": {
       "color": [
-        "575C51"
+        "C2C2C2"
       ],
       "size": [
         "L"
@@ -3535,10 +3535,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "575C51",
+        "value": "C2C2C2",
         "label": {
-          "en": "#575C51",
-          "it": "#575C51"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -3552,7 +3552,7 @@
     ],
     "facets": {
       "color": [
-        "575C51"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -3578,10 +3578,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "575C51",
+        "value": "C2C2C2",
         "label": {
-          "en": "#575C51",
-          "it": "#575C51"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -3595,7 +3595,7 @@
     ],
     "facets": {
       "color": [
-        "575C51"
+        "C2C2C2"
       ],
       "size": [
         "S"
@@ -3621,10 +3621,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "575C51",
+        "value": "C2C2C2",
         "label": {
-          "en": "#575C51",
-          "it": "#575C51"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -3638,7 +3638,7 @@
     ],
     "facets": {
       "color": [
-        "575C51"
+        "C2C2C2"
       ],
       "size": [
         "XS"
@@ -3728,16 +3728,16 @@
     "variant": [
       {
         "name": "color",
-        "value": "XXXXXX",
+        "value": "FFFFFF",
         "label": {
-          "en": "#XXXXXX",
-          "it": "#XXXXXX"
+          "en": "#FFFFFF",
+          "it": "#FFFFFF"
         }
       }
     ],
     "facets": {
       "color": [
-        "XXXXXX"
+        "FFFFFF"
       ]
     },
     "name": {
@@ -3824,16 +3824,16 @@
     "variant": [
       {
         "name": "color",
-        "value": "323230",
+        "value": "C2C2C2",
         "label": {
-          "en": "#323230",
-          "it": "#323230"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       }
     ],
     "facets": {
       "color": [
-        "323230"
+        "C2C2C2"
       ]
     },
     "name": {
@@ -4853,16 +4853,16 @@
     "variant": [
       {
         "name": "color",
-        "value": "74736E",
+        "value": "C2C2C2",
         "label": {
-          "en": "#74736E",
-          "it": "#74736E"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       }
     ],
     "facets": {
       "color": [
-        "74736E"
+        "C2C2C2"
       ]
     },
     "name": {
@@ -5487,10 +5487,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B969C",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B969C",
-          "it": "#9B969C"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -5504,7 +5504,7 @@
     ],
     "facets": {
       "color": [
-        "9B969C"
+        "C2C2C2"
       ],
       "size": [
         "L"
@@ -5530,10 +5530,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B969C",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B969C",
-          "it": "#9B969C"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -5547,7 +5547,7 @@
     ],
     "facets": {
       "color": [
-        "9B969C"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -5573,10 +5573,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B969C",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B969C",
-          "it": "#9B969C"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -5590,7 +5590,7 @@
     ],
     "facets": {
       "color": [
-        "9B969C"
+        "C2C2C2"
       ],
       "size": [
         "S"
@@ -5616,10 +5616,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B969C",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B969C",
-          "it": "#9B969C"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -5633,7 +5633,7 @@
     ],
     "facets": {
       "color": [
-        "9B969C"
+        "C2C2C2"
       ],
       "size": [
         "XL"
@@ -5960,10 +5960,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "8E8C8D",
+        "value": "C2C2C2",
         "label": {
-          "en": "#8E8C8D",
-          "it": "#8E8C8D"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -5977,7 +5977,7 @@
     ],
     "facets": {
       "color": [
-        "8E8C8D"
+        "C2C2C2"
       ],
       "size": [
         "L"
@@ -6003,10 +6003,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "8E8C8D",
+        "value": "C2C2C2",
         "label": {
-          "en": "#8E8C8D",
-          "it": "#8E8C8D"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -6020,7 +6020,7 @@
     ],
     "facets": {
       "color": [
-        "8E8C8D"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -6046,10 +6046,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "8E8C8D",
+        "value": "C2C2C2",
         "label": {
-          "en": "#8E8C8D",
-          "it": "#8E8C8D"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -6063,7 +6063,7 @@
     ],
     "facets": {
       "color": [
-        "8E8C8D"
+        "C2C2C2"
       ],
       "size": [
         "S"
@@ -6390,10 +6390,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9397A0",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9397A0",
-          "it": "#9397A0"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -6407,7 +6407,7 @@
     ],
     "facets": {
       "color": [
-        "9397A0"
+        "C2C2C2"
       ],
       "size": [
         "L"
@@ -6433,10 +6433,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9397A0",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9397A0",
-          "it": "#9397A0"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -6450,7 +6450,7 @@
     ],
     "facets": {
       "color": [
-        "9397A0"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -6476,10 +6476,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9397A0",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9397A0",
-          "it": "#9397A0"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -6493,7 +6493,7 @@
     ],
     "facets": {
       "color": [
-        "9397A0"
+        "C2C2C2"
       ],
       "size": [
         "S"
@@ -6519,10 +6519,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9397A0",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9397A0",
-          "it": "#9397A0"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -6536,7 +6536,7 @@
     ],
     "facets": {
       "color": [
-        "9397A0"
+        "C2C2C2"
       ],
       "size": [
         "XS"
@@ -7164,10 +7164,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B969C",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B969C",
-          "it": "#9B969C"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -7181,7 +7181,7 @@
     ],
     "facets": {
       "color": [
-        "9B969C"
+        "C2C2C2"
       ],
       "size": [
         "L"
@@ -7207,10 +7207,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B969C",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B969C",
-          "it": "#9B969C"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -7224,7 +7224,7 @@
     ],
     "facets": {
       "color": [
-        "9B969C"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -7250,10 +7250,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B969C",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B969C",
-          "it": "#9B969C"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -7267,7 +7267,7 @@
     ],
     "facets": {
       "color": [
-        "9B969C"
+        "C2C2C2"
       ],
       "size": [
         "S"
@@ -7293,10 +7293,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B969C",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B969C",
-          "it": "#9B969C"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -7310,7 +7310,7 @@
     ],
     "facets": {
       "color": [
-        "9B969C"
+        "C2C2C2"
       ],
       "size": [
         "XL"
@@ -7680,10 +7680,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B9A9F",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B9A9F",
-          "it": "#9B9A9F"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -7697,7 +7697,7 @@
     ],
     "facets": {
       "color": [
-        "9B9A9F"
+        "C2C2C2"
       ],
       "size": [
         "L"
@@ -7723,10 +7723,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B9A9F",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B9A9F",
-          "it": "#9B9A9F"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -7740,7 +7740,7 @@
     ],
     "facets": {
       "color": [
-        "9B9A9F"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -7766,10 +7766,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B9A9F",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B9A9F",
-          "it": "#9B9A9F"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -7783,7 +7783,7 @@
     ],
     "facets": {
       "color": [
-        "9B9A9F"
+        "C2C2C2"
       ],
       "size": [
         "S"
@@ -7809,10 +7809,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "9B9A9F",
+        "value": "C2C2C2",
         "label": {
-          "en": "#9B9A9F",
-          "it": "#9B9A9F"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -7826,7 +7826,7 @@
     ],
     "facets": {
       "color": [
-        "9B9A9F"
+        "C2C2C2"
       ],
       "size": [
         "XS"
@@ -8024,10 +8024,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "7E7F84",
+        "value": "C2C2C2",
         "label": {
-          "en": "#7E7F84",
-          "it": "#7E7F84"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -8041,7 +8041,7 @@
     ],
     "facets": {
       "color": [
-        "7E7F84"
+        "C2C2C2"
       ],
       "size": [
         "L"
@@ -8067,10 +8067,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "7E7F84",
+        "value": "C2C2C2",
         "label": {
-          "en": "#7E7F84",
-          "it": "#7E7F84"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -8084,7 +8084,7 @@
     ],
     "facets": {
       "color": [
-        "7E7F84"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -8110,10 +8110,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "7E7F84",
+        "value": "C2C2C2",
         "label": {
-          "en": "#7E7F84",
-          "it": "#7E7F84"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -8127,7 +8127,7 @@
     ],
     "facets": {
       "color": [
-        "7E7F84"
+        "C2C2C2"
       ],
       "size": [
         "S"
@@ -8153,10 +8153,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "7E7F84",
+        "value": "C2C2C2",
         "label": {
-          "en": "#7E7F84",
-          "it": "#7E7F84"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -8170,7 +8170,7 @@
     ],
     "facets": {
       "color": [
-        "7E7F84"
+        "C2C2C2"
       ],
       "size": [
         "XL"
@@ -8754,10 +8754,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "B0B0B2",
+        "value": "C2C2C2",
         "label": {
-          "en": "#B0B0B2",
-          "it": "#B0B0B2"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -8771,7 +8771,7 @@
     ],
     "facets": {
       "color": [
-        "B0B0B2"
+        "C2C2C2"
       ],
       "size": [
         "L"
@@ -8797,10 +8797,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "B0B0B2",
+        "value": "C2C2C2",
         "label": {
-          "en": "#B0B0B2",
-          "it": "#B0B0B2"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -8814,7 +8814,7 @@
     ],
     "facets": {
       "color": [
-        "B0B0B2"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -8840,10 +8840,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "B0B0B2",
+        "value": "C2C2C2",
         "label": {
-          "en": "#B0B0B2",
-          "it": "#B0B0B2"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -8857,7 +8857,7 @@
     ],
     "facets": {
       "color": [
-        "B0B0B2"
+        "C2C2C2"
       ],
       "size": [
         "S"
@@ -8883,10 +8883,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "B0B0B2",
+        "value": "C2C2C2",
         "label": {
-          "en": "#B0B0B2",
-          "it": "#B0B0B2"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -8900,7 +8900,7 @@
     ],
     "facets": {
       "color": [
-        "B0B0B2"
+        "C2C2C2"
       ],
       "size": [
         "XL"
@@ -9528,10 +9528,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "B5B1B2",
+        "value": "C2C2C2",
         "label": {
-          "en": "#B5B1B2",
-          "it": "#B5B1B2"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -9545,7 +9545,7 @@
     ],
     "facets": {
       "color": [
-        "B5B1B2"
+        "C2C2C2"
       ],
       "size": [
         "L"
@@ -9571,10 +9571,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "B5B1B2",
+        "value": "C2C2C2",
         "label": {
-          "en": "#B5B1B2",
-          "it": "#B5B1B2"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -9588,7 +9588,7 @@
     ],
     "facets": {
       "color": [
-        "B5B1B2"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -9614,10 +9614,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "B5B1B2",
+        "value": "C2C2C2",
         "label": {
-          "en": "#B5B1B2",
-          "it": "#B5B1B2"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -9631,7 +9631,7 @@
     ],
     "facets": {
       "color": [
-        "B5B1B2"
+        "C2C2C2"
       ],
       "size": [
         "S"
@@ -9657,10 +9657,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "B5B1B2",
+        "value": "C2C2C2",
         "label": {
-          "en": "#B5B1B2",
-          "it": "#B5B1B2"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -9674,7 +9674,7 @@
     ],
     "facets": {
       "color": [
-        "B5B1B2"
+        "C2C2C2"
       ],
       "size": [
         "XS"
@@ -9958,10 +9958,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "CDCDCD",
+        "value": "C2C2C2",
         "label": {
-          "en": "#CDCDCD",
-          "it": "#CDCDCD"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -9975,7 +9975,7 @@
     ],
     "facets": {
       "color": [
-        "CDCDCD"
+        "C2C2C2"
       ],
       "size": [
         "M"
@@ -10001,10 +10001,10 @@
     "variant": [
       {
         "name": "color",
-        "value": "CDCDCD",
+        "value": "C2C2C2",
         "label": {
-          "en": "#CDCDCD",
-          "it": "#CDCDCD"
+          "en": "#C2C2C2",
+          "it": "#C2C2C2"
         }
       },
       {
@@ -10018,7 +10018,7 @@
     ],
     "facets": {
       "color": [
-        "CDCDCD"
+        "C2C2C2"
       ],
       "size": [
         "S"
