@@ -78,8 +78,9 @@ jobs:
         NEXT_PUBLIC_CL_ENDPOINT: ${{ secrets.NEXT_PUBLIC_CL_ENDPOINT }}
 
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4.3.0
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        branch: gh-pages
-        folder: out
-        single-commit: false
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./out
+        force_orphan: true
