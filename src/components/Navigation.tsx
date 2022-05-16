@@ -1,16 +1,12 @@
-import { Taxon } from '#data/catalogs'
 import { Link } from '#i18n/Link'
+import type { Props } from './Navigation.d'
 
-type Props = {
-  taxons: Taxon[]
-}
-
-export const Navigation: React.FC<Props> = ({ taxons }) => {
+export const Navigation: React.FC<Props> = ({ links }) => {
   return (
     <nav>
       {
-        taxons.map(taxon => (
-          <Link key={taxon.key} href={`/search/${taxon.slug}`}><a className='text-back font-bold p-2 m-2'>{taxon.label}</a></Link>
+        links.map(link => (
+          <Link key={link.key} href={link.href}><a className='text-back font-bold p-2 m-2'>{link.text}</a></Link>
         ))
       }
     </nav>

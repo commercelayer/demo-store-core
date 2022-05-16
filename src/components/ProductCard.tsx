@@ -1,5 +1,6 @@
 import { LocalizedProductWithVariant } from '#data/products'
 import { Link } from '#i18n/Link'
+import { getProductUrl } from '#models/url'
 
 export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = ({ product }) => {
   return (
@@ -8,7 +9,7 @@ export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = (
         <img src={product.images[0]} alt={product.name} className='w-full h-full object-center object-contain' />
       </div>
       <h3 className='mt-6 text-md text-black font-medium'>
-        <Link href={`/product/${product.slug}`}>
+        <Link href={getProductUrl(product.slug)}>
           <a>
             <span className='absolute inset-0'></span>
             {product.name}

@@ -10,6 +10,7 @@ import { CheckoutLink, Errors, LineItem, LineItemAmount, LineItemImage, LineItem
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { getCatalog } from '#data/catalogs'
+import { getNavigationLinks } from '#models/catalog'
 
 type Query = {
   locale: string
@@ -19,7 +20,7 @@ type Props = HeaderProps & {
 
 }
 
-const Cart: NextPage<Props> = ({ navigation }) => {
+const Cart: NextPage<Props> = ({ links }) => {
   const router = useRouter()
 
   const locale = getLocale(router.query.locale)
@@ -27,7 +28,7 @@ const Cart: NextPage<Props> = ({ navigation }) => {
   return (
     <Page>
       <Container>
-        <Header navigation={navigation} />
+        <Header links={links} />
 
         <OrderStorage persistKey={`country-${locale?.country?.code}`}>
           <OrderContainer attributes={{
@@ -81,7 +82,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   return {
     props: {
-      navigation: catalog.taxonomies[0].taxons
+      links: getNavigationLinks(catalog),
     }
   }
 }

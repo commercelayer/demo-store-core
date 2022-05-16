@@ -13,6 +13,8 @@ import { withLocalePaths } from '#i18n/withLocalePaths'
 import { uniqBy } from 'lodash'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useState } from 'react'
+import { getNavigationLinks } from '#models/catalog'
+import { getSearchUrl } from '#models/url'
 
 
 type Query = {
@@ -26,13 +28,13 @@ type Props = HeaderProps & {
   facets: Facets
 }
 
-const SearchSlug: NextPage<Props> = ({ navigation, products, taxon, facets }) => {
+const SearchSlug: NextPage<Props> = ({ links, products, taxon, facets }) => {
   const [result, setResult] = useState<LocalizedProductWithVariant[]>(products)
 
   return (
     <Page>
       <Container>
-        <Header navigation={navigation} />
+        <Header links={links} />
 
         <Facet products={products} facets={facets} onChange={setResult} />
 
@@ -41,7 +43,7 @@ const SearchSlug: NextPage<Props> = ({ navigation, products, taxon, facets }) =>
         <div>
           {
             taxon.memo.map(taxon => (
-              <Link key={taxon.key} href={`/search/${taxon.slug}`}><a className='bg-gray-100 mx-2 rounded py-1 px-2'>{taxon.label}</a></Link>
+              <Link key={taxon.key} href={getSearchUrl(taxon.slug)}><a className='bg-gray-100 mx-2 rounded py-1 px-2'>{taxon.label}</a></Link>
             ))
           }
         </div>
@@ -50,7 +52,7 @@ const SearchSlug: NextPage<Props> = ({ navigation, products, taxon, facets }) =>
           {
             taxon.result.taxons?.map(taxon => {
               return (
-                <Link key={taxon.key} href={`/search/${taxon.slug}`}><a className='bg-gray-100 mx-2 rounded py-1 px-2'>{taxon.label}</a></Link>
+                <Link key={taxon.key} href={getSearchUrl(taxon.slug)}><a className='bg-gray-100 mx-2 rounded py-1 px-2'>{taxon.label}</a></Link>
               )
             })
           }
@@ -138,11 +140,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
       },
       products,
       facets: getFacets(flattenProducts),
-      // TODO: implement view model
-      navigation: catalog.taxonomies[0].taxons.map(taxon => ({
-        ...taxon,
-        products: []
-      })),
+      links: getNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
     }
   }

@@ -12,6 +12,7 @@ import { withLocalePaths } from '#i18n/withLocalePaths'
 import uniqBy from 'lodash/uniqBy'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useState } from 'react'
+import { getNavigationLinks } from '#models/catalog'
 
 type Query = {
   locale: string
@@ -22,13 +23,13 @@ type Props = HeaderProps & {
   facets: Facets
 }
 
-const SearchIndex: NextPage<Props> = ({ navigation, products, facets }) => {
+const SearchIndex: NextPage<Props> = ({ links, products, facets }) => {
   const [result, setResult] = useState<LocalizedProductWithVariant[]>(products)
 
   return (
     <Page>
       <Container>
-        <Header navigation={navigation} />
+        <Header links={links} />
 
         <Facet products={products} facets={facets} onChange={setResult} />
 
@@ -70,11 +71,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
     props: {
       products,
       facets: getFacets(flattenProducts),
-      // TODO: implement view model
-      navigation: catalog.taxonomies[0].taxons.map(taxon => ({
-        ...taxon,
-        products: []
-      })),
+      links: getNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
     }
   }

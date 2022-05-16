@@ -58,7 +58,7 @@ exports[`home 1`] = `
           </div>
         </nav>
         <div
-          class="flex items-center justify-between flex-wrap mb-4"
+          class="flex items-center justify-between flex-wrap"
         >
           <nav>
             <a

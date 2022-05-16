@@ -7,6 +7,8 @@ import { Link } from '#i18n/Link'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
+import { getNavigationLinks } from '#models/catalog'
+import { getSearchUrl } from '#models/url'
 import { basePath } from '#next.config'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useI18n } from 'next-localization'
@@ -19,17 +21,18 @@ type Props = HeaderProps & {
   catalog: Catalog
 }
 
-const Home: NextPage<Props> = ({ navigation, catalog }) => {
+const Home: NextPage<Props> = ({ links, catalog }) => {
   return (
     <Page>
       <Container>
-        <Header navigation={navigation} />
+        <Header links={links} />
 
         {
           catalog.taxonomies.map(taxonomy => (
             <Taxonomy key={taxonomy.key} taxonomy={taxonomy} />
           ))
         }
+
       </Container>
 
       <Footer />
@@ -56,7 +59,7 @@ const Taxon: React.FC<{ taxon: TaxonType }> = ({ taxon }) => {
   const i18n = useI18n();
 
   return (
-    <Link href={`/search/${taxon.slug}`}>
+    <Link href={getSearchUrl(taxon.slug)}>
       <a className='relative w-full h-80 xl:h-96 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1'>
         <img className="object-cover w-full h-full" src={`${basePath}${taxon.image}`} alt={taxon.description} />
         <div className='absolute inset-0 bg-gradient-to-b from-black to-black/0 opacity-50'></div>
@@ -87,7 +90,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   return {
     props: {
       catalog,
-      navigation: catalog.taxonomies[0].taxons,
+      links: getNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
     }
   }

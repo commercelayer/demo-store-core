@@ -20,9 +20,10 @@
     "baseUrl": ".",
     "paths": {
       "#assets/*": ["src/assets/*"],
+      "#components/*": ["src/components/*"],
       "#data/*": ["data/*"],
       "#i18n/*": ["src/i18n/*"],
-      "#components/*": ["src/components/*"],
+      "#models/*": ["src/models/*"],
       "#next.config": ["src/nextConfig"]
     }
   },
