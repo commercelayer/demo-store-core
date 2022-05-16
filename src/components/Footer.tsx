@@ -25,11 +25,6 @@ export const Footer: FC = () => {
           <a>Italiano</a>
         </Link>
 
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <Link href='/search'>
-          <a>All Products</a>
-        </Link>
-
       </Container>
     </div>
   )

@@ -160,12 +160,6 @@ exports[`home 1`] = `
         >
           Italiano
         </a>
-          |  
-        <a
-          href="/en-US/search"
-        >
-          All Products
-        </a>
       </div>
     </div>
   </main>
