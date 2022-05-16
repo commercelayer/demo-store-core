@@ -2,7 +2,6 @@ import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant 
 import { useEffect, useMemo, useState } from 'react'
 import Fuse from 'fuse.js'
 import uniqBy from 'lodash/uniqBy'
-// import { MagnifyingGlass } from '#assets/icons'
 import { useRouter } from 'next/router'
 
 type Props = {
@@ -12,8 +11,8 @@ type Props = {
 }
 
 export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChange }) => {
-  const [originalFacets, setOriginalFacets] = useState(initialFacets)
-  const [facets, setFacets] = useState(initialFacets)
+  const [facetsFromParent, setFacetsFromParent] = useState(initialFacets)
+  const [availableFacets, setAvailableFacets] = useState(initialFacets)
   const [searchText, setSearchText] = useState<string>('')
   const [prevSearchText, setPrevSearchText] = useState<string>('')
   const [selectedFacets, setSelectedFacets] = useState<{ [name: string]: Facets[string] }>({})
@@ -26,9 +25,9 @@ export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChan
       'name',
       'description',
     ].concat(
-      Object.keys(facets).map(facetName => `facets.${facetName}`)
+      Object.keys(availableFacets).map(facetName => `facets.${facetName}`)
     )
-  }), [facets])
+  }), [availableFacets])
 
   useEffect(function manageOnRouterChange() {
     setSelectedFacets(typeof router.query.facets === 'string' ? JSON.parse(router.query.facets) : {})
@@ -40,8 +39,6 @@ export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChan
 
   useEffect(function manageSearch() {
     const fuse = new Fuse(flattenProductVariants(products), fuseOptions)
-    const pattern = searchText
-
     const andExpression: Fuse.Expression[] = []
 
     Object.entries(selectedFacets).forEach(([facetName, facetValue]) => {
@@ -52,11 +49,11 @@ export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChan
       }
     })
 
-    if (pattern) {
+    if (searchText) {
       andExpression.push({
         $or: [
-          { $path: 'name', $val: pattern },
-          { $path: 'description', $val: pattern },
+          { $path: 'name', $val: searchText },
+          { $path: 'description', $val: searchText },
         ]
       })
     }
@@ -67,25 +64,13 @@ export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChan
 
     onChange(result)
 
-    if (prevSearchText !== searchText || JSON.stringify(originalFacets) !== JSON.stringify(initialFacets)) {
-      setFacets(getFacets(flattenProductVariants(result)))
+    if (prevSearchText !== searchText || JSON.stringify(facetsFromParent) !== JSON.stringify(initialFacets)) {
+      setAvailableFacets(getFacets(flattenProductVariants(result)))
       setPrevSearchText(searchText)
-      setOriginalFacets(initialFacets)
+      setFacetsFromParent(initialFacets)
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [products, onChange, prevSearchText, searchText, selectedFacets])
-
-  // const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-  //   setSearchText(event.currentTarget.value)
-
-  //   router.push({
-  //     query: {
-  //       ...router.query,
-  //       q: event.currentTarget.value
-  //     }
-  //   }, undefined, { scroll: false })
-  // }
+  }, [products, onChange, prevSearchText, searchText, selectedFacets, facetsFromParent, fuseOptions, initialFacets])
 
   const handleFacetChange = (facetName: string, currentValue: string) => {
     const facets = (typeof router.query.facets === 'string' ? JSON.parse(router.query.facets) : {}) as Facets
@@ -113,13 +98,8 @@ export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChan
 
   return (
     <div>
-      {/* <label htmlFor='email' className='relative py-3 rounded bg-gray-100 text-gray-400 focus-within:text-gray-600 block'>
-        <MagnifyingGlass className='pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3' />
-        <input onChange={handleInputChange} value={searchText} placeholder='search' className='form-input appearance-none bg-transparent w-full pl-14 focus:outline-none focus:shadow-outline' />
-      </label> */}
-
       {
-        Object.entries(facets).map(([facetName, facetValues]) => {
+        Object.entries(availableFacets).map(([facetName, facetValues]) => {
           return (
             <div key={facetName}>
               <div className='font-bold mt-4'>{facetName}</div>
