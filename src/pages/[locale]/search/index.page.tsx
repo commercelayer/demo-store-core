@@ -1,18 +1,17 @@
 import { Container } from '#components/Container'
+import { Facet } from '#components/Facet'
 import { Footer } from '#components/Footer'
 import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
-import { Facet } from '#components/Facet'
-import { getCatalog } from '#data/catalogs'
+import { flattenProductsFromCatalog, getCatalog } from '#data/catalogs'
 import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
-import uniqBy from 'lodash/uniqBy'
+import { getRootNavigationLinks } from '#models/catalog'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useState } from 'react'
-import { getRootNavigationLinks } from '#models/catalog'
 
 type Query = {
   locale: string
@@ -23,7 +22,7 @@ type Props = HeaderProps & {
   facets: Facets
 }
 
-const SearchIndex: NextPage<Props> = ({ navigation, products, facets }) => {
+const SearchIndexPage: NextPage<Props> = ({ navigation, products, facets }) => {
   const [result, setResult] = useState<LocalizedProductWithVariant[]>(products)
 
   return (
@@ -58,17 +57,18 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode } = params!
-
   const locale = getLocale(localeCode)
-
   const catalog = getCatalog(locale, true)
 
-  const products = uniqBy(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ products }) => products)), 'code')
+
+
+  const products = flattenProductsFromCatalog(catalog)
 
   const flattenProducts = flattenProductVariants(products)
 
   return {
     props: {
+
       products,
       facets: getFacets(flattenProducts),
       navigation: getRootNavigationLinks(catalog),
@@ -77,4 +77,4 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   }
 }
 
-export default SearchIndex
+export default SearchIndexPage

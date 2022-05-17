@@ -1,20 +1,20 @@
-import { Footer } from '#components/Footer'
-import { flattenProductVariants, getProductWithVariants, LocalizedProduct, LocalizedProductWithVariant } from '#data/products'
-import { serverSideTranslations } from '#i18n/serverSideTranslations'
-import { withLocalePaths } from '#i18n/withLocalePaths'
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
-import { VariantSelector as DemoStoreVariantSelector } from '#components/VariantSelector'
-import { AddToCartButton, AvailabilityContainer, AvailabilityTemplate, ItemContainer, OrderContainer, OrderStorage, Price, PricesContainer } from '@commercelayer/react-components'
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import { getLocale } from '#i18n/locale'
 import { Container } from '#components/Container'
+import { Footer } from '#components/Footer'
 import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
-import { getCatalog } from '#data/catalogs'
+import { VariantSelector as DemoStoreVariantSelector } from '#components/VariantSelector'
+import { flattenProductsFromCatalog, getCatalog } from '#data/catalogs'
+import { flattenProductVariants, getProductWithVariants, LocalizedProduct, LocalizedProductWithVariant } from '#data/products'
+import { getLocale } from '#i18n/locale'
+import { serverSideTranslations } from '#i18n/serverSideTranslations'
+import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#models/catalog'
 import { getProductUrl } from '#models/url'
+import { AddToCartButton, AvailabilityContainer, AvailabilityTemplate, ItemContainer, OrderContainer, OrderStorage, Price, PricesContainer } from '@commercelayer/react-components'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 type Query = {
   locale: string
@@ -83,10 +83,12 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 
     const catalog = getCatalog(locale, true)
 
-    const products = flattenProductVariants(catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(({ products }) => products)))
+    const products = flattenProductsFromCatalog(catalog)
+
+    const flattenProducts = flattenProductVariants(products)
 
     return {
-      paths: products.map(product => ({
+      paths: flattenProducts.map(product => ({
         params: {
           slug: product.slug.split('/')
         }
@@ -103,6 +105,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   return {
     props: {
+      // TODO: slug.pop() look like a requirement. show it in the readme or change the way.
       product: getProductWithVariants(slug.pop()!, localeCode),
       navigation: getRootNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))

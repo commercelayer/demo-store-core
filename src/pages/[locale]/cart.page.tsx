@@ -20,7 +20,7 @@ type Props = HeaderProps & {
 
 }
 
-const Cart: NextPage<Props> = ({ navigation: links }) => {
+const CartPage: NextPage<Props> = ({ navigation: links }) => {
   const router = useRouter()
 
   const locale = getLocale(router.query.locale)
@@ -87,4 +87,4 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   }
 }
 
-export default Cart
+export default CartPage

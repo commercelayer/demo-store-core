@@ -21,7 +21,7 @@ type Props = HeaderProps & {
   taxonomies: TaxonomyType[]
 }
 
-const Home: NextPage<Props> = ({ navigation, taxonomies }) => {
+const HomePage: NextPage<Props> = ({ navigation, taxonomies }) => {
   return (
     <Page>
       <Container>
@@ -89,6 +89,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   return {
     props: {
+      // TODO: remove from homepage
       taxonomies: catalog.taxonomies,
       navigation: getRootNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
@@ -96,4 +97,4 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   }
 }
 
-export default Home
+export default HomePage

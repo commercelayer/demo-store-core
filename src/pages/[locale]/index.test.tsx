@@ -2,7 +2,7 @@ import { Catalog, Taxon, Taxonomy } from '#data/catalogs'
 import { getRootNavigationLinks } from '#models/catalog'
 import { render, screen, within } from '@testing-library/react'
 import { I18nProvider } from 'next-localization'
-import Home from './index.page'
+import HomePage from './index.page'
 
 
 jest.mock('next/router', () => ({
@@ -45,7 +45,7 @@ test('home', () => {
 
   const { container } = render(
     <I18nProvider lngDict={{ general: { viewAll: 'View all' } }} locale='en'>
-      <Home navigation={getRootNavigationLinks(catalog)} taxonomies={catalog.taxonomies} />
+      <HomePage navigation={getRootNavigationLinks(catalog)} taxonomies={catalog.taxonomies} />
     </I18nProvider>
   )
 

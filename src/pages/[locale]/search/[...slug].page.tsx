@@ -6,13 +6,12 @@ import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
 import type { Props as SubNavigationProps } from '#components/SubNavigation'
 import { SubNavigation } from '#components/SubNavigation'
-import { findTaxonBySlug, getCatalog, Taxon } from '#data/catalogs'
+import { findTaxonBySlug, flattenProductsFromTaxon, getCatalog, Taxon } from '#data/catalogs'
 import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getNavigationLinks, getRootNavigationLinks } from '#models/catalog'
-import { uniqBy } from 'lodash'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useState } from 'react'
 
@@ -27,7 +26,7 @@ type Props = HeaderProps & SubNavigationProps & {
   facets: Facets
 }
 
-const SearchSlug: NextPage<Props> = ({ navigation, products, subNavigation, facets }) => {
+const SearchSlugPage: NextPage<Props> = ({ navigation, products, subNavigation, facets }) => {
   const [result, setResult] = useState<LocalizedProductWithVariant[]>(products)
 
   return (
@@ -80,18 +79,12 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode, slug } = params!
-
   const locale = getLocale(localeCode)
-
   const catalog = getCatalog(locale, true)
 
   const taxon = findTaxonBySlug(catalog, slug.join('/'))
 
-  const products = uniqBy(getFlatProducts(taxon.result), 'code')
-
-  function getFlatProducts(taxon: Taxon): LocalizedProductWithVariant[] {
-    return taxon.products.concat(taxon.taxons?.flatMap(getFlatProducts) || [])
-  }
+  const products = flattenProductsFromTaxon(taxon.result)
 
   const flattenProducts = flattenProductVariants(products)
 
@@ -106,4 +99,4 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   }
 }
 
-export default SearchSlug
+export default SearchSlugPage

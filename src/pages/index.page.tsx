@@ -2,7 +2,7 @@ import { CountrySelector } from '#components/CountrySelector'
 import { Page } from '#components/Page'
 import { NextPage } from 'next'
 
-const Home: NextPage = () => {
+const CountrySelectorPage: NextPage = () => {
   return (
     <Page>
       <CountrySelector />
@@ -10,4 +10,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default CountrySelectorPage

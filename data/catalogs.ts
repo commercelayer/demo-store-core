@@ -1,4 +1,5 @@
 import { Locale } from '#i18n/locale'
+import uniqBy from 'lodash/uniqBy'
 import catalogsJson from './json/catalogs.json'
 import taxonomiesJson from './json/taxonomies.json'
 import taxonsJson from './json/taxons.json'
@@ -93,6 +94,20 @@ const resolveTaxon = (taxon: JsonTaxon, locale: string, fetchProducts: boolean):
       }
     }) : []
   }
+}
+
+export function flattenProductsFromTaxon(taxon: Taxon): LocalizedProductWithVariant[] {
+  return uniqBy(
+    taxon.products.concat(taxon.taxons?.flatMap(flattenProductsFromTaxon) || []),
+    'code'
+  )
+}
+
+export function flattenProductsFromCatalog(catalog: Catalog): LocalizedProductWithVariant[] {
+  return uniqBy(
+    catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(flattenProductsFromTaxon)),
+    'code'
+  )
 }
 
 export function findTaxonBySlug(catalog: Catalog, slug: string): DeepFindResult<Taxon> {
