@@ -1,4 +1,4 @@
-import { LocalizedProductWithVariant } from '#data/products'
+import type { LocalizedProductWithVariant } from '#data/products'
 import { Link } from '#i18n/Link'
 import { getProductUrl } from '#models/url'
 

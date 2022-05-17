@@ -1,4 +1,4 @@
-import { LocalizedVariant } from '#data/products'
+import type { LocalizedVariant } from '#data/products'
 import { compareVariants, getOptions, previousSelectionMatches } from './VariantSelector.utils'
 
 describe('previousSelectionMatches', () => {

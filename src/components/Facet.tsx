@@ -1,8 +1,8 @@
-import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant } from '#data/products'
-import { useEffect, useMemo, useState } from 'react'
-import Fuse from 'fuse.js'
+import type { Facets, LocalizedProductWithVariant } from '#data/products'
+import type Fuse from 'fuse.js'
 import uniqBy from 'lodash/uniqBy'
 import { useRouter } from 'next/router'
+import { useEffect, useMemo, useState } from 'react'
 
 type Props = {
   products: LocalizedProductWithVariant[]
@@ -38,38 +38,42 @@ export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChan
   }, [router])
 
   useEffect(function manageSearch() {
-    const fuse = new Fuse(flattenProductVariants(products), fuseOptions)
-    const andExpression: Fuse.Expression[] = []
+    (async () => {
+      const Fuse = (await import('fuse.js')).default
+      const { flattenProductVariants, getFacets } = await import('#data/products')
 
-    Object.entries(selectedFacets).forEach(([facetName, facetValue]) => {
-      if (facetValue) {
+      const fuse = new Fuse(flattenProductVariants(products), fuseOptions)
+      const andExpression: Fuse.Expression[] = []
+
+      Object.entries(selectedFacets).forEach(([facetName, facetValue]) => {
+        if (facetValue) {
+          andExpression.push({
+            $or: facetValue.map(value => ({ $path: `facets.${facetName}`, $val: `="${value}"` }))
+          })
+        }
+      })
+
+      if (searchText) {
         andExpression.push({
-          $or: facetValue.map(value => ({ $path: `facets.${facetName}`, $val: `="${value}"` }))
+          $or: [
+            { $path: 'name', $val: searchText },
+            { $path: 'description', $val: searchText },
+          ]
         })
       }
-    })
 
-    if (searchText) {
-      andExpression.push({
-        $or: [
-          { $path: 'name', $val: searchText },
-          { $path: 'description', $val: searchText },
-        ]
-      })
-    }
+      const result = andExpression.length > 0
+        ? uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
+        : products
 
-    const result = andExpression.length > 0
-      ? uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
-      : products
+      onChange(result)
 
-    onChange(result)
-
-    if (prevSearchText !== searchText || JSON.stringify(facetsFromParent) !== JSON.stringify(initialFacets)) {
-      setAvailableFacets(getFacets(flattenProductVariants(result)))
-      setPrevSearchText(searchText)
-      setFacetsFromParent(initialFacets)
-    }
-
+      if (prevSearchText !== searchText || JSON.stringify(facetsFromParent) !== JSON.stringify(initialFacets)) {
+        setAvailableFacets(getFacets(flattenProductVariants(result)))
+        setPrevSearchText(searchText)
+        setFacetsFromParent(initialFacets)
+      }
+    })()
   }, [products, onChange, prevSearchText, searchText, selectedFacets, facetsFromParent, fuseOptions, initialFacets])
 
   const handleFacetChange = (facetName: string, currentValue: string) => {

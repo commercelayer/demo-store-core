@@ -1,4 +1,4 @@
-import { LocalizedProduct, LocalizedProductWithVariant, LocalizedVariant } from '#data/products'
+import type { LocalizedProduct, LocalizedProductWithVariant, LocalizedVariant } from '#data/products'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo } from 'react'
 import { useImmer } from 'use-immer'
