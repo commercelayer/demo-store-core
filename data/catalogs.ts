@@ -47,7 +47,7 @@ const catalogs: JsonCatalog[] = catalogsJson
 const taxonomies: JsonTaxonomy[] = taxonomiesJson
 export const taxons: JsonTaxon[] = taxonsJson
 
-export const getCatalog = (locale: Locale, fetchProducts = false): Catalog => {
+export const getCatalog = (locale: Locale, fetchProducts: boolean = false): Catalog => {
   const name = locale.country?.catalog || locale.language.catalog
   const catalog = catalogs.find(catalog => catalog.name === name)
 
@@ -55,7 +55,9 @@ export const getCatalog = (locale: Locale, fetchProducts = false): Catalog => {
     throw new Error(`Cannot find the catalog with name "${name}"`)
   }
 
-  buildProductList(catalog, locale.code)
+  if (fetchProducts) {
+    buildProductList(catalog, locale.code)
+  }
 
   return resolveCatalog(catalog, locale.code, fetchProducts)
 }

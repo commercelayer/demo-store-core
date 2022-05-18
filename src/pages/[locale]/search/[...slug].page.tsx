@@ -58,7 +58,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
   return withLocalePaths((localeCode) => {
     const locale = getLocale(localeCode)
 
-    const catalog = getCatalog(locale, false)
+    const catalog = getCatalog(locale)
 
     const slugs = catalog.taxonomies.flatMap(taxonomy => taxonomy.taxons.flatMap(getFlatSlug))
 

@@ -85,12 +85,19 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode } = params!
   const locale = getLocale(localeCode)
-  const catalog = getCatalog(locale, false)
+  const catalog = getCatalog(locale)
 
   return {
     props: {
       // TODO: remove from homepage
-      taxonomies: catalog.taxonomies,
+      taxonomies: catalog.taxonomies.map(taxonomy => ({
+        ...taxonomy,
+        taxons: taxonomy.taxons.map(taxon => ({
+          ...taxon,
+          taxons: [],
+          products: []
+        }))
+      })),
       navigation: getRootNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
     }
