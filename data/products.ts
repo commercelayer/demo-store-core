@@ -21,13 +21,13 @@ export type AlgoliaFacets = {
   [name: string]: Primitives | Primitives[] | HierarchyFacet | NestedFacet[]
 }
 
-type FacetsResult = {
-  [name: string]: {
-    [value: string]: number
-  } | {
-    [value: string]: number
-  }[]
-}
+// type FacetsResult = {
+//   [name: string]: {
+//     [value: string]: number
+//   } | {
+//     [value: string]: number
+//   }[]
+// }
 
 export type Facets = {
   [name: string]: string[] | undefined
@@ -72,15 +72,13 @@ export type LocalizedProductWithVariant = LocalizedProduct & {
 
 const products: Product[] = productsJson
 
-const groupedBaseProducts: { [code: string]: Product[] } = products.reduce((acc, cv) => {
-  acc[cv.productCode] = acc[cv.productCode] || []
-  acc[cv.productCode].push(cv)
-  return acc
-}, {} as { [code: string]: Product[] })
 
-
-function resolveProductLocale(product: Product, locale: string): LocalizedProduct {
+function resolveProductLocale(product: Product | LocalizedProduct, locale: string): LocalizedProduct {
   const [language] = locale.split('-')
+
+  if ('_locale' in product) {
+    return product
+  }
 
   return {
     ...product,
@@ -94,8 +92,8 @@ function resolveProductLocale(product: Product, locale: string): LocalizedProduc
   }
 }
 
-export function getProduct(code: string, locale: string): LocalizedProduct {
-  const product = products.find(product => product.code === code)
+function getProduct(code: string, locale: string, productList: (LocalizedProduct | Product)[]): LocalizedProduct {
+  const product = productList.find(product => product.code === code)
 
   if (!product) {
     throw new Error(`Cannot find a Product with code equal to ${code}`)
@@ -104,14 +102,15 @@ export function getProduct(code: string, locale: string): LocalizedProduct {
   return resolveProductLocale(product, locale)
 }
 
-export function getProductVariants(product: LocalizedProduct): LocalizedProduct[] {
-  const variants = groupedBaseProducts[product.productCode]
-  return variants.map(p => resolveProductLocale(p, product._locale))
+function getProductVariants(product: LocalizedProduct, productList: (LocalizedProduct | Product)[]): LocalizedProduct[] {
+  return productList
+    .filter(p => p.productCode === product.productCode)
+    .map(p => resolveProductLocale(p, product._locale))
 }
 
-export function getProductWithVariants(code: string, locale: string): LocalizedProductWithVariant {
-  const product = getProduct(code, locale)
-  const variants = getProductVariants(product)
+export function getProductWithVariants(code: string, locale: string, productList: (LocalizedProduct | Product)[] = products): LocalizedProductWithVariant {
+  const product = getProduct(code, locale, productList)
+  const variants = getProductVariants(product, productList)
 
   return {
     ...product,
@@ -120,9 +119,14 @@ export function getProductWithVariants(code: string, locale: string): LocalizedP
 }
 
 export function flattenProductVariants(products: LocalizedProductWithVariant[]): LocalizedProductWithVariant[] {
+  const flattenProducts = uniqBy(
+    products.flatMap(product => product.variants).concat(products),
+    'code'
+  )
+
   return uniqBy(
     products.flatMap(product => {
-      return product.variants.map(variant => getProductWithVariants(variant.code, variant._locale))
+      return product.variants.map(variant => getProductWithVariants(variant.code, variant._locale, flattenProducts))
     }),
     'code'
   )
@@ -144,6 +148,7 @@ export const getFacets = (products: LocalizedProductWithVariant[]): Facets => {
   }, {} as Facets)
 }
 
+/*
 // @ts-ignore
 export const getAlgoliaFacets = (products: LocalizedProductWithVariant[]): FacetsResult => {
   return products.reduce((facets, product) => {
@@ -196,18 +201,4 @@ export const getAlgoliaFacets = (products: LocalizedProductWithVariant[]): Facet
     return facets
   }, {} as FacetsResult)
 }
-
-/** @deprecated */
-export const getVariantFacets = (products: LocalizedProductWithVariant[]): Facets => {
-  return products.reduce((facets, product) => {
-    product.variant.forEach((variant) => {
-      facets[variant.name] = facets[variant.name] || []
-
-      if (!facets[variant.name]?.includes(variant.value)) {
-        facets[variant.name]?.push(variant.value)
-      }
-    })
-
-    return facets
-  }, {} as Facets)
-}
+*/
