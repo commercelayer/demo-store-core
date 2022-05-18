@@ -3,6 +3,7 @@ import { AuthReturnType, ClientCredentials, getSalesChannelToken } from '@commer
 import { CommerceLayer } from '@commercelayer/react-components'
 import { useRouter } from 'next/router'
 import { FC, useEffect, useMemo, useState } from 'react'
+import AuthContext from 'src/contexts/AuthContext'
 
 type Auth = {
   accessToken: string
@@ -56,6 +57,10 @@ export const Auth: FC = ({ children }) => {
   const [market, setMarket] = useState<number | undefined>(locale?.country?.market)
   const [auth, setAuth] = useState<Auth | null>(null)
 
+  const endpoint = process.env.NEXT_PUBLIC_CL_ENDPOINT
+  const { hostname } = new URL(endpoint)
+  const [ , organization, domain] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
+
   useEffect(function updateMarket() {
     if (locale?.country?.market !== market) {
       setMarket(locale?.country?.market)
@@ -84,8 +89,10 @@ export const Auth: FC = ({ children }) => {
   }
 
   return (
-    <CommerceLayer accessToken={auth.accessToken} endpoint={process.env.NEXT_PUBLIC_CL_ENDPOINT}>
-      <>{children}</>
-    </CommerceLayer>
+    <AuthContext.Provider value={{ accessToken: auth.accessToken, endpoint, organization, domain }}>
+      <CommerceLayer accessToken={auth.accessToken} endpoint={endpoint}>
+        <>{children}</>
+      </CommerceLayer>
+    </AuthContext.Provider>
   )
 }

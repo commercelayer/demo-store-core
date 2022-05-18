@@ -3,6 +3,7 @@ import type Fuse from 'fuse.js'
 import uniqBy from 'lodash/uniqBy'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
+import { useCatalogContext } from 'src/useCatalog'
 
 type Props = {
   products: LocalizedProductWithVariant[]
@@ -10,7 +11,7 @@ type Props = {
   onChange: (result: LocalizedProductWithVariant[]) => void
 }
 
-export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChange }) => {
+export const Facet: React.FC<Props> = ({ products: productSelection, facets: initialFacets, onChange }) => {
   const [facetsFromParent, setFacetsFromParent] = useState(initialFacets)
   const [availableFacets, setAvailableFacets] = useState(initialFacets)
   const [searchText, setSearchText] = useState<string>('')
@@ -18,16 +19,28 @@ export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChan
   const [selectedFacets, setSelectedFacets] = useState<{ [name: string]: Facets[string] }>({})
   const router = useRouter()
 
-  const fuseOptions: Fuse.IFuseOptions<LocalizedProductWithVariant> = useMemo(() => ({
-    useExtendedSearch: true,
-    threshold: .3,
-    keys: [
-      'name',
-      'description',
-    ].concat(
-      Object.keys(availableFacets).map(facetName => `facets.${facetName}`)
-    )
-  }), [availableFacets])
+  const isFiltering = Object.entries(selectedFacets).length > 0
+
+  const { products: contextProducts } = useCatalogContext()
+
+  const products = useMemo(
+    () => isFiltering ? contextProducts : productSelection,
+    [isFiltering, contextProducts, productSelection]
+  )
+
+  const fuseOptions = useMemo<Fuse.IFuseOptions<LocalizedProductWithVariant>>(
+    () => ({
+      useExtendedSearch: true,
+      threshold: .3,
+      keys: [
+        'name',
+        'description',
+      ].concat(
+        Object.keys(availableFacets).map(facetName => `facets.${facetName}`)
+      )
+    }),
+    [availableFacets]
+  )
 
   useEffect(function manageOnRouterChange() {
     setSelectedFacets(typeof router.query.facets === 'string' ? JSON.parse(router.query.facets) : {})
@@ -41,8 +54,9 @@ export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChan
     (async () => {
       const Fuse = (await import('fuse.js')).default
       const { flattenProductVariants, getFacets } = await import('#data/products')
-
-      const fuse = new Fuse(flattenProductVariants(products), fuseOptions)
+      // console.log('products', products)
+      // console.log('flattenProductVariants(products)', flattenProductVariants(products))
+      const fuse = new Fuse(products, fuseOptions)
       const andExpression: Fuse.Expression[] = []
 
       Object.entries(selectedFacets).forEach(([facetName, facetValue]) => {
@@ -62,9 +76,13 @@ export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChan
         })
       }
 
+      // console.log('andExpression.length > 0', andExpression.length > 0)
+
       const result = andExpression.length > 0
         ? uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
         : products
+
+      // console.log('result', result)
 
       onChange(result)
 
@@ -74,7 +92,14 @@ export const Facet: React.FC<Props> = ({ products, facets: initialFacets, onChan
         setFacetsFromParent(initialFacets)
       }
     })()
-  }, [products, onChange, prevSearchText, searchText, selectedFacets, facetsFromParent, fuseOptions, initialFacets])
+  }, [products, onChange, prevSearchText, searchText, selectedFacets, facetsFromParent, fuseOptions, initialFacets, contextProducts])
+
+  useEffect(function a() {
+    (async () => {
+      const { getFacets } = await import('#data/products')
+      setAvailableFacets(getFacets(contextProducts))
+    })()
+  }, [contextProducts])
 
   const handleFacetChange = (facetName: string, currentValue: string) => {
     const facets = (typeof router.query.facets === 'string' ? JSON.parse(router.query.facets) : {}) as Facets

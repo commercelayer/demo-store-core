@@ -13,7 +13,8 @@ import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getNavigationLinks, getRootNavigationLinks } from '#models/catalog'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { CatalogContext } from 'src/useCatalog'
 
 
 type Query = {
@@ -29,24 +30,28 @@ type Props = HeaderProps & SubNavigationProps & {
 const SearchSlugPage: NextPage<Props> = ({ navigation, products, subNavigation, facets }) => {
   const [result, setResult] = useState<LocalizedProductWithVariant[]>(products)
 
+  const value = useMemo(() => ({ products }), [products])
+
   return (
     <Page>
       <Container>
         <Header navigation={navigation} />
 
-        <Facet products={products} facets={facets} onChange={setResult} />
+        <CatalogContext.Provider value={value}>
+          <Facet products={products} facets={facets} onChange={setResult} />
 
-        <h2 className='mt-16 block text-2xl font-semibold text-black'>{subNavigation.current.text}</h2>
+          <h2 className='mt-16 block text-2xl font-semibold text-black'>{subNavigation.current.text}</h2>
 
-        <SubNavigation subNavigation={subNavigation} />
+          <SubNavigation subNavigation={subNavigation} />
 
-        <div className='mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-6 lg:gap-y-12'>
-          {
-            result.map(product => (
-              <ProductCard key={product.code} product={product} />
-            ))
-          }
-        </div>
+          <div className='mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-6 lg:gap-y-12'>
+            {
+              result.map(product => (
+                <ProductCard key={product.code} product={product} />
+              ))
+            }
+          </div>
+        </CatalogContext.Provider>
       </Container>
 
       <Footer />

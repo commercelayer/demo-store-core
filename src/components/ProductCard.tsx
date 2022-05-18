@@ -1,6 +1,7 @@
 import type { LocalizedProductWithVariant } from '#data/products'
 import { Link } from '#i18n/Link'
 import { getProductUrl } from '#models/url'
+import { Price, PricesContainer } from '@commercelayer/react-components'
 
 export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = ({ product }) => {
   return (
@@ -12,7 +13,10 @@ export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = (
         <Link href={getProductUrl(product.slug)}>
           <a>
             <span className='absolute inset-0'></span>
-            {product.name}
+            <p>{product.name}</p>
+            <PricesContainer skuCode={product.code}>
+              <Price />
+            </PricesContainer>
           </a>
         </Link>
       </h3>

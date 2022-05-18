@@ -17,6 +17,7 @@
   "dependencies": {
     "@commercelayer/js-auth": "^2.3.0",
     "@commercelayer/react-components": "^3.11.0",
+    "@commercelayer/sdk": "^4.13.2",
     "@svgr/webpack": "^6.2.1",
     "@types/lodash": "^4.14.181",
     "fuse.js": "^6.6.1",
