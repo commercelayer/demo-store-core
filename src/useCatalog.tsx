@@ -2,6 +2,7 @@ import { flattenProductVariants, LocalizedProduct, LocalizedProductWithVariant }
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import { createContext, Provider, useContext, useEffect, useState } from 'react'
 import AuthContext from './contexts/AuthContext'
+import chunk from 'lodash/chunk'
 
 type ProductList = {
   [code: LocalizedProduct['code']]: LocalizedProductWithVariant
@@ -17,10 +18,29 @@ type Context = {
 
 const OriginalCatalogContext = createContext<Context>({ products: [] })
 
-const fetchPrice = async (client: CommerceLayerClient, sku: string) => {
-  const [ price ] = await client.prices.list({ filters: { sku_code_in: sku } })
+const mapWithPrice = async (client: CommerceLayerClient, products: LocalizedProductWithVariant[]) => {
+  const pageSize = 25
+  const chunkedSkus = chunk(products, pageSize)
 
-  return price
+  await Promise.all(
+    chunkedSkus.map(async (skus, chunkIndex) => {
+      const prices = await client.prices.list({
+        pageSize,
+        filters: { sku_code_in: skus.map(p => p.code).join(',') }
+      })
+
+      prices.map((price) => {
+        const productIndex = chunkedSkus[chunkIndex].findIndex(p => p.code === price.sku_code)
+
+        chunkedSkus[chunkIndex][productIndex].facets ={
+          ...chunkedSkus[chunkIndex][productIndex].facets,
+          price: [price.formatted_amount!]
+        }
+      })
+    })
+  )
+
+  return chunkedSkus.flat()
 }
 
 // @ts-expect-error
@@ -28,6 +48,7 @@ const CatalogProvider: Provider<Context> = ({ children, value: initialValue }) =
   const [value, setValue] = useState({
     products: flattenProductVariants(initialValue.products)
   })
+
   const { accessToken, domain, organization } = useContext(AuthContext)
 
   useEffect(() => {
@@ -37,23 +58,13 @@ const CatalogProvider: Provider<Context> = ({ children, value: initialValue }) =
       return
     }
 
-    const products = [...flattenProductVariants(initialValue.products)]
+    const products = [ ...flattenProductVariants(initialValue.products) ]
 
     const client = CommerceLayer({ accessToken, organization, domain })
 
-    Promise.all(products.map(async (product, index) => {
-      const price = await fetchPrice(client, product.code)
-      products[index] = {
-        ...products[index],
-        facets: {
-          ...products[index].facets,
-          price: [price.formatted_amount!]
-        }
-      }
-    })).then(() => {
+    mapWithPrice(client, products).then((products) => {
       if (isMounted) {
         setValue({ products })
-        // console.log('value', value)
       }
     })
 
