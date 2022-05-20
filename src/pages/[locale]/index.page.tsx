@@ -2,7 +2,7 @@ import { Container } from '#components/Container'
 import { Footer } from '#components/Footer'
 import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
-import { getCatalog, Taxon as TaxonType, Taxonomy as TaxonomyType } from '#data/catalogs'
+import { getCatalog, Taxonomy } from '#data/catalogs'
 import { Link } from '#i18n/Link'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
@@ -18,20 +18,16 @@ type Query = {
 }
 
 type Props = HeaderProps & {
-  taxonomies: TaxonomyType[]
+  primaryTaxonomy: Taxonomy
 }
 
-const HomePage: NextPage<Props> = ({ navigation, taxonomies }) => {
+const HomePage: NextPage<Props> = ({ navigation, primaryTaxonomy }) => {
   return (
     <Page>
       <Container>
         <Header navigation={navigation} />
 
-        {
-          taxonomies.map(taxonomy => (
-            <Taxonomy key={taxonomy.key} taxonomy={taxonomy} />
-          ))
-        }
+        <LegacyTaxonomyComponent key={primaryTaxonomy.key} taxonomy={primaryTaxonomy} />
 
       </Container>
 
@@ -40,38 +36,31 @@ const HomePage: NextPage<Props> = ({ navigation, taxonomies }) => {
   )
 }
 
-const Taxonomy: React.FC<{ taxonomy: TaxonomyType }> = ({ taxonomy }) => {
+const LegacyTaxonomyComponent: React.FC<{ taxonomy: Taxonomy }> = ({ taxonomy }) => {
+  const i18n = useI18n();
+
   return (
     <div>
-      <h2 className='mt-16 block text-2xl font-semibold text-black'>{taxonomy.label}</h2>
       <div className="mt-6 space-y-12 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6">
         {
           taxonomy.taxons.map(taxon => (
-            <Taxon key={taxon.key} taxon={taxon} />
+            <Link key={taxon.key} href={getSearchUrl(taxon.slug)}>
+              <a className='relative w-full h-80 xl:h-96 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1'>
+                <img className="object-cover w-full h-full" src={`${basePath}${taxon.image}`} alt={taxon.description} />
+                <div className='absolute inset-0 bg-gradient-to-b from-black to-black/0 opacity-50'></div>
+                <div className="absolute p-4 top-0 inset-x-0 text-white leading-snug">
+                  <h3 className='text-lg font-semibold'>{taxon.label}</h3>
+                  <div className='text-md font-medium text-gray-300'>{taxon.description}</div>
+                </div>
+                <div className="absolute p-4 bottom-0 inset-x-0 text-white leading-snug text-lg">
+                  <div className='font-semibold'>{`${i18n.t('general.viewAll')} ->`}</div>
+                </div>
+              </a>
+            </Link>
           ))
         }
       </div>
     </div>
-  )
-}
-
-const Taxon: React.FC<{ taxon: TaxonType }> = ({ taxon }) => {
-  const i18n = useI18n();
-
-  return (
-    <Link href={getSearchUrl(taxon.slug)}>
-      <a className='relative w-full h-80 xl:h-96 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1'>
-        <img className="object-cover w-full h-full" src={`${basePath}${taxon.image}`} alt={taxon.description} />
-        <div className='absolute inset-0 bg-gradient-to-b from-black to-black/0 opacity-50'></div>
-        <div className="absolute p-4 top-0 inset-x-0 text-white leading-snug">
-          <h3 className='text-lg font-semibold'>{taxon.label}</h3>
-          <div className='text-md font-medium text-gray-300'>{taxon.description}</div>
-        </div>
-        <div className="absolute p-4 bottom-0 inset-x-0 text-white leading-snug text-lg">
-          <div className='font-semibold'>{`${i18n.t('general.viewAll')} ->`}</div>
-        </div>
-      </a>
-    </Link>
   )
 }
 
@@ -89,15 +78,16 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   return {
     props: {
-      // TODO: remove from homepage
-      taxonomies: catalog.taxonomies.map(taxonomy => ({
-        ...taxonomy,
-        taxons: taxonomy.taxons.map(taxon => ({
+
+      primaryTaxonomy: { // TODO: remove from homepage
+        ...catalog.taxonomies[0],
+        taxons: catalog.taxonomies[0].taxons.map(taxon => ({
           ...taxon,
           taxons: [],
           products: []
         }))
-      })),
+      },
+
       navigation: getRootNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
     }

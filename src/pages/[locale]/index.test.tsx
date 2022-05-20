@@ -45,14 +45,14 @@ test('home', () => {
 
   const { container } = render(
     <I18nProvider lngDict={{ general: { viewAll: 'View all' } }} locale='en'>
-      <HomePage navigation={getRootNavigationLinks(catalog)} taxonomies={catalog.taxonomies} />
+      <HomePage navigation={getRootNavigationLinks(catalog)} primaryTaxonomy={catalog.taxonomies[0]} />
     </I18nProvider>
   )
 
   const main = within(screen.getByRole('main'))
 
   expect(
-    main.getByRole('heading', { level: 2, name: /Shop by categories/i })
+    main.getByRole('heading', { level: 3, name: /Accessories/i })
   ).toBeDefined()
 
   expect(container).toMatchSnapshot()

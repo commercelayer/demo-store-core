@@ -90,11 +90,6 @@ exports[`home 1`] = `
         </div>
       </header>
       <div>
-        <h2
-          class="mt-16 block text-2xl font-semibold text-black"
-        >
-          Shop by categories
-        </h2>
         <div
           class="mt-6 space-y-12 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6"
         >

@@ -6,12 +6,12 @@ import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
 import type { Props as SubNavigationProps } from '#components/SubNavigation'
 import { SubNavigation } from '#components/SubNavigation'
-import { findTaxonBySlug, flattenProductsFromTaxon, getCatalog, Taxon } from '#data/catalogs'
+import { findTaxonBySlug, flattenProductsFromTaxon, getCatalog } from '#data/catalogs'
 import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
-import { getNavigationLinks, getRootNavigationLinks } from '#models/catalog'
+import { getNavigationLinks, getRootNavigationLinks, getSlugs } from '#models/catalog'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useMemo, useState } from 'react'
 import { CatalogContext } from 'src/useCatalog'
@@ -62,14 +62,8 @@ const SearchSlugPage: NextPage<Props> = ({ navigation, products, subNavigation, 
 export const getStaticPaths: GetStaticPaths<Query> = () => {
   return withLocalePaths((localeCode) => {
     const locale = getLocale(localeCode)
-
     const catalog = getCatalog(locale)
-
-    const slugs = catalog.taxonomies.flatMap(taxonomy => taxonomy.taxons.flatMap(getFlatSlug))
-
-    function getFlatSlug(taxon: Taxon): string[] {
-      return [taxon.slug].concat(taxon.taxons?.flatMap(getFlatSlug) || [])
-    }
+    const slugs = getSlugs(catalog)
 
     return {
       fallback: false,
