@@ -52,6 +52,9 @@ module.exports = {
       orange: {
         400: "#FFAB2E",
       },
+      violet: {
+        400: '#666EFF',
+      }
     },
     fontFamily: {
       sans: ["Manrope", "ui-sans-serif", "sans-serif"],

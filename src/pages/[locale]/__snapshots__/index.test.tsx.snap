@@ -133,28 +133,46 @@ exports[`home 1`] = `
       </div>
     </div>
     <div
-      class="p-16 mt-8 bg-gray-800 text-white"
+      class="p-16 mt-24 bg-gray-50"
     >
       <div
         class="container mx-auto px-4"
       >
-        <a
-          href="/"
+        <div
+          class="flex items-center justify-between flex-wrap"
         >
-          Country Selector
-        </a>
-          |  
-        <a
-          href="/?locale=en-US"
-        >
-          English
-        </a>
-          |  
-        <a
-          href="/?locale=it-US"
-        >
-          Italiano
-        </a>
+          <div>
+            <div
+              class="flex items-center"
+            >
+              <svg
+                class="mr-1.5"
+              />
+               
+              United States
+              <a
+                class="uppercase text-violet-400 text-xs border-b border-gray-200 ml-3 mt-1"
+                href="/"
+              >
+                Choose Country
+              </a>
+            </div>
+          </div>
+          <div>
+            <a
+              class="p-1 mx-1 text-black"
+              href="/?locale=en-US"
+            >
+              ENG
+            </a>
+            <a
+              class="p-1 mx-1 text-gray-400"
+              href="/?locale=it-US"
+            >
+              ITA
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </main>
