@@ -1,6 +1,6 @@
-import { flattenProductVariants, LocalizedProduct, LocalizedProductWithVariant } from '#data/products'
+import { flattenProductVariants, getProductWithVariants, LocalizedProduct, LocalizedProductWithVariant } from '#data/products'
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
-import { createContext, Provider, useContext, useEffect, useState } from 'react'
+import { createContext, Provider, useContext, useEffect, useMemo, useState } from 'react'
 import AuthContext from './contexts/AuthContext'
 import chunk from 'lodash/chunk'
 
@@ -24,19 +24,23 @@ const mapWithPrice = async (client: CommerceLayerClient, products: LocalizedProd
 
   await Promise.all(
     chunkedSkus.map(async (skus, chunkIndex) => {
-      const prices = await client.prices.list({
-        pageSize,
-        filters: { sku_code_in: skus.map(p => p.code).join(',') }
-      })
-
-      prices.map((price) => {
-        const productIndex = chunkedSkus[chunkIndex].findIndex(p => p.code === price.sku_code)
-
-        chunkedSkus[chunkIndex][productIndex].facets ={
-          ...chunkedSkus[chunkIndex][productIndex].facets,
-          price: [price.formatted_amount!]
-        }
-      })
+      try {
+        const prices = await client.prices.list({
+          pageSize,
+          filters: { sku_code_in: skus.map(p => p.code).join(',') }
+        })
+  
+        prices.map((price) => {
+          const productIndex = chunkedSkus[chunkIndex].findIndex(p => p.code === price.sku_code)
+  
+          chunkedSkus[chunkIndex][productIndex].facets ={
+            ...chunkedSkus[chunkIndex][productIndex].facets,
+            price: [price.formatted_amount!]
+          }
+        })
+      } catch (e) {
+        console.error('Cannot fetch prices!')
+      }
     })
   )
 
@@ -45,11 +49,17 @@ const mapWithPrice = async (client: CommerceLayerClient, products: LocalizedProd
 
 // @ts-expect-error
 const CatalogProvider: Provider<Context> = ({ children, value: initialValue }) => {
+  const [latestInitialValue, setLatestInitialValue] = useState(initialValue)
   const [value, setValue] = useState({
     products: flattenProductVariants(initialValue.products)
   })
 
   const { accessToken, domain, organization } = useContext(AuthContext)
+
+  const hasChanged = useMemo(
+    () => JSON.stringify(latestInitialValue) !== JSON.stringify(initialValue),
+    [initialValue, latestInitialValue]
+  )
 
   useEffect(() => {
     let isMounted = true
@@ -64,7 +74,8 @@ const CatalogProvider: Provider<Context> = ({ children, value: initialValue }) =
 
     mapWithPrice(client, products).then((products) => {
       if (isMounted) {
-        setValue({ products })
+        setValue({ products: products.map(p => getProductWithVariants(p.code, p._locale, products)) })
+        setLatestInitialValue(initialValue)
       }
     })
 
@@ -74,7 +85,7 @@ const CatalogProvider: Provider<Context> = ({ children, value: initialValue }) =
   }, [accessToken, domain, organization, initialValue])
 
   return (
-    <OriginalCatalogContext.Provider value={value}>
+    <OriginalCatalogContext.Provider value={hasChanged ? initialValue : value}>
       {children}
     </OriginalCatalogContext.Provider>
   )

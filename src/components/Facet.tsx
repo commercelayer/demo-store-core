@@ -122,7 +122,7 @@ export const Facet: React.FC<Props> = ({ products: productSelection, facets: ini
         ...router.query,
         facets: JSON.stringify(facets)
       }
-    }, undefined, { scroll: false })
+    }, undefined, { scroll: false, shallow: true })
   }
 
   return (
