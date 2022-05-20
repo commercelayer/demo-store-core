@@ -12,6 +12,8 @@ type Props = {
 }
 
 export const Facet: React.FC<Props> = ({ products: productSelection, facets: initialFacets, onChange }) => {
+  const { products: contextProducts } = useCatalogContext()
+
   const [facetsFromParent, setFacetsFromParent] = useState(initialFacets)
   const [availableFacets, setAvailableFacets] = useState(initialFacets)
   const [searchText, setSearchText] = useState<string>('')
@@ -21,10 +23,8 @@ export const Facet: React.FC<Props> = ({ products: productSelection, facets: ini
 
   const isFiltering = Object.entries(selectedFacets).length > 0
 
-  const { products: contextProducts } = useCatalogContext()
-
   const products = useMemo(
-    () => isFiltering ? contextProducts : productSelection,
+    () => isFiltering ? contextProducts : productSelection.map(ps => contextProducts.find(cp => cp.code === ps.code)!),
     [isFiltering, contextProducts, productSelection]
   )
 
@@ -54,9 +54,24 @@ export const Facet: React.FC<Props> = ({ products: productSelection, facets: ini
     (async () => {
       const Fuse = (await import('fuse.js')).default
       const { flattenProductVariants, getFacets } = await import('#data/products')
-      // console.log('products', products)
-      // console.log('flattenProductVariants(products)', flattenProductVariants(products))
-      const fuse = new Fuse(products, fuseOptions)
+
+      let result = products
+
+      // search by Text
+      if (searchText) {
+        const fuse = new Fuse(products, fuseOptions)
+
+        result = fuse.search({
+          $or: [
+            { $path: 'name', $val: searchText },
+            { $path: 'description', $val: searchText },
+          ]
+        }).map(r => r.item)
+      }
+
+      const newFacets = getFacets(flattenProductVariants(result))
+
+      // search by Facets
       const andExpression: Fuse.Expression[] = []
 
       Object.entries(selectedFacets).forEach(([facetName, facetValue]) => {
@@ -67,39 +82,28 @@ export const Facet: React.FC<Props> = ({ products: productSelection, facets: ini
         }
       })
 
-      if (searchText) {
-        andExpression.push({
-          $or: [
-            { $path: 'name', $val: searchText },
-            { $path: 'description', $val: searchText },
-          ]
-        })
+      if (andExpression.length > 0) {
+        const fuse = new Fuse(result, fuseOptions)
+        result = uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
       }
-
-      // console.log('andExpression.length > 0', andExpression.length > 0)
-
-      const result = andExpression.length > 0
-        ? uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
-        : products
-
-      // console.log('result', result)
 
       onChange(result)
 
-      if (prevSearchText !== searchText || JSON.stringify(facetsFromParent) !== JSON.stringify(initialFacets)) {
-        setAvailableFacets(getFacets(flattenProductVariants(result)))
+      // console.log('result', result)
+      // console.log('outside', newFacets)
+
+      if (false
+        || prevSearchText !== searchText
+        || JSON.stringify(facetsFromParent) !== JSON.stringify(initialFacets)
+        || JSON.stringify(availableFacets) !== JSON.stringify(newFacets)
+      ) {
+        // console.log('inside', newFacets)
+        setAvailableFacets(newFacets)
         setPrevSearchText(searchText)
         setFacetsFromParent(initialFacets)
       }
     })()
-  }, [products, onChange, prevSearchText, searchText, selectedFacets, facetsFromParent, fuseOptions, initialFacets, contextProducts])
-
-  useEffect(function a() {
-    (async () => {
-      const { getFacets } = await import('#data/products')
-      setAvailableFacets(getFacets(contextProducts))
-    })()
-  }, [contextProducts])
+  }, [products, onChange, prevSearchText, searchText, selectedFacets, facetsFromParent, fuseOptions, initialFacets, contextProducts, availableFacets])
 
   const handleFacetChange = (facetName: string, currentValue: string) => {
     const facets = (typeof router.query.facets === 'string' ? JSON.parse(router.query.facets) : {}) as Facets

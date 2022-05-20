@@ -24,7 +24,7 @@ type Props = HeaderProps & {
 }
 
 const SearchIndexPage: NextPage<Props> = ({ navigation, products, facets }) => {
-  const [result, setResult] = useState<LocalizedProductWithVariant[]>(products)
+  const [result, setResult] = useState<LocalizedProductWithVariant[]>([])
 
   const value = useMemo(() => ({ products }), [products])
 
