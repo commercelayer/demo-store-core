@@ -3,7 +3,7 @@ import type Fuse from 'fuse.js'
 import uniqBy from 'lodash/uniqBy'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
-import { useCatalogContext } from 'src/useCatalog'
+import { useCatalog } from 'src/useCatalog'
 
 type Props = {
   products: LocalizedProductWithVariant[]
@@ -12,7 +12,7 @@ type Props = {
 }
 
 export const Facet: React.FC<Props> = ({ products: productSelection, facets: initialFacets, onChange }) => {
-  const { products: contextProducts } = useCatalogContext()
+  const { products: contextProducts } = useCatalog()
 
   const [facetsFromParent, setFacetsFromParent] = useState(initialFacets)
   const [availableFacets, setAvailableFacets] = useState(initialFacets)

@@ -11,8 +11,8 @@ import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#models/catalog'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { useMemo, useState } from 'react'
-import { CatalogContext } from 'src/useCatalog'
+import { useState } from 'react'
+import { CatalogProvider } from 'src/useCatalog'
 
 type Query = {
   locale: string
@@ -26,14 +26,12 @@ type Props = HeaderProps & {
 const SearchIndexPage: NextPage<Props> = ({ navigation, products, facets }) => {
   const [result, setResult] = useState<LocalizedProductWithVariant[]>([])
 
-  const value = useMemo(() => ({ products }), [products])
-
   return (
     <Page>
       <Container>
         <Header navigation={navigation} />
 
-        <CatalogContext.Provider value={value}>
+        <CatalogProvider products={products}>
           <Facet products={products} facets={facets} onChange={setResult} />
 
           <h2 className='mt-16 block text-2xl font-semibold text-black'>All Products</h2>
@@ -45,7 +43,7 @@ const SearchIndexPage: NextPage<Props> = ({ navigation, products, facets }) => {
               ))
             }
           </div>
-        </CatalogContext.Provider>
+        </CatalogProvider>
 
       </Container>
 
