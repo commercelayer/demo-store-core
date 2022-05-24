@@ -1,34 +1,83 @@
 import { Facets, flattenProductVariants, getProductWithVariants, LocalizedProductWithVariant } from '#data/products'
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
+import type Fuse from 'fuse.js'
+import chunk from 'lodash/chunk'
+import uniqBy from 'lodash/uniqBy'
+import { useRouter } from 'next/router'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import AuthContext from './contexts/AuthContext'
-import chunk from 'lodash/chunk'
-import { useRouter } from 'next/router'
 
 type Context = {
   products: LocalizedProductWithVariant[]
+  availableFacets: Facets
+  selectedFacets: { [name: string]: Facets[string] }
+  selectFacet: (name: string, value: string) => void
 }
 
-const CatalogContext = createContext<Context>({ products: [] })
+type Props = Omit<Context, 'selectFacet' | 'selectedFacets'>
+
+const CatalogContext = createContext<Context>({
+  products: [],
+  availableFacets: {},
+  selectedFacets: {},
+  selectFacet: () => {}
+})
 
 export const useCatalog = () => useContext(CatalogContext)
 
-export const CatalogProvider: React.FC<Context> = ({ children, products: initialProducts }) => {
-  const { products } = useCommerceLayerPrice(initialProducts)
+export const CatalogProvider: React.FC<Props> = ({ children, products: initialProducts, availableFacets: initialFacets }) => {
+  const { products: productsWithPrices } = useCommerceLayerPrice(initialProducts)
 
   const [searchText, setSearchText] = useState<string>('')
-  const [selectedFacets, setSelectedFacets] = useState<{ [name: string]: Facets[string] }>({})
+  
+  const [products, setProducts] = useState<Context['products']>(initialProducts)
+  const [availableFacets, setAvailableFacets] = useState<Context['availableFacets']>(initialFacets)
+  const [selectedFacets, setSelectedFacets] = useState<Context['selectedFacets']>({})
+
+  const isFiltering = Object.entries(selectedFacets).length > 0
 
   const router = useRouter()
+
+  const selectFacet = useMemo<Context['selectFacet']>(() => (name: string, value: string) => {
+    const facets = { ...selectedFacets }
+
+    facets[name] = facets[name] || []
+    const facet = facets[name] || []
+
+    if (Array.isArray(facet)) {
+      const index = facet.indexOf(value)
+      index > -1 ? facet.splice(index, 1) : facet.push(value)
+
+      if (facet.length === 0) {
+        delete facets[name]
+      }
+    }
+
+    router.push({
+      query: {
+        ...router.query,
+        facets: JSON.stringify(facets)
+      }
+    }, undefined, { scroll: false, shallow: true })
+  }, [selectedFacets, router])
+
+  const productss = useMemo(
+    () => isFiltering ? productsWithPrices : initialProducts.map(ps => productsWithPrices.find(cp => cp.code === ps.code)!),
+    [isFiltering, productsWithPrices, initialProducts]
+  )
 
   useEffect(function manageOnRouterChange() {
     if (typeof router.query.facets === 'string') {
       try {
         setSelectedFacets(JSON.parse(router.query.facets))
       } catch (e) {
+        setSelectedFacets({})
+
         // TODO: add isValidJson method and remove facets from url if it is not.
         console.error('The query param "facets" is not a stringified JSON.', e)
       }
+    } else {
+      setSelectedFacets({})
     }
 
     if (typeof router.query.q === 'string') {
@@ -36,15 +85,27 @@ export const CatalogProvider: React.FC<Context> = ({ children, products: initial
     }
   }, [router])
 
-  useEffect(() => {
-    console.log(searchText)
-    console.log(selectedFacets)
-  }, [searchText, selectedFacets])
+  useEffect(function manageSearch() {
+
+    (async () => {
+      const { flattenProductVariants, getFacets } = await import('#data/products')
+
+      const resultFromFreeTextSearch = await freeTextSearch(productss, searchText)
+
+      setAvailableFacets(
+        getFacets(flattenProductVariants(resultFromFreeTextSearch))
+      )
+
+      const result = await facetSearch(resultFromFreeTextSearch, selectedFacets)
+
+      setProducts(result)
+    })()
+  }, [searchText, selectedFacets, productss])
 
 
 
   return (
-    <CatalogContext.Provider value={{ products }}>
+    <CatalogContext.Provider value={{ products, availableFacets, selectedFacets, selectFacet }}>
       {children}
     </CatalogContext.Provider>
   )
@@ -118,4 +179,54 @@ const mapWithPrice = async (client: CommerceLayerClient, products: LocalizedProd
   )
 
   return chunkedSkus.flat()
+}
+
+async function freeTextSearch(products: LocalizedProductWithVariant[], query: string): Promise<LocalizedProductWithVariant[]> {
+  const Fuse = (await import('fuse.js')).default
+
+  if (query === '') {
+    return products
+  }
+
+  const fuse = new Fuse(products, {
+    useExtendedSearch: false,
+    threshold: .3,
+    keys: [
+      'name',
+      'description',
+    ]
+  })
+
+  return fuse.search({
+    $or: [
+      { $path: 'name', $val: query },
+      { $path: 'description', $val: query },
+    ]
+  }).map(r => r.item)
+}
+
+async function facetSearch(products: LocalizedProductWithVariant[], facets: { [name: string]: Facets[string] }): Promise<LocalizedProductWithVariant[]> {
+  const Fuse = (await import('fuse.js')).default
+
+  const andExpression: Fuse.Expression[] = []
+
+  Object.entries(facets).forEach(([facetName, facetValue]) => {
+    if (facetValue) {
+      andExpression.push({
+        $or: facetValue.map(value => ({ $path: `facets.${facetName}`, $val: `="${value}"` }))
+      })
+    }
+  })
+
+  if (andExpression.length <= 0) {
+    return products
+  }
+
+  const fuse = new Fuse(products, {
+    useExtendedSearch: true,
+    threshold: .3,
+    keys: Object.keys(facets).map(facetName => `facets.${facetName}`)
+  })
+
+  return uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
 }
