@@ -2,7 +2,7 @@ import { defaultLocale, getLocale } from '#i18n/locale'
 import { AuthReturnType, ClientCredentials, getSalesChannelToken } from '@commercelayer/js-auth'
 import { CommerceLayer } from '@commercelayer/react-components'
 import { useRouter } from 'next/router'
-import { FC, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import AuthContext from 'src/contexts/AuthContext'
 
 type Auth = {
@@ -48,7 +48,7 @@ const hasExpired = (time: number | undefined): boolean => time === undefined || 
 
 const isValid = (auth: Auth | null): auth is Auth => !hasExpired(auth?.expires)
 
-export const Auth: FC = ({ children }) => {
+export const Auth: React.FC<{}> = ({ children }) => {
 
   const router = useRouter()
 
