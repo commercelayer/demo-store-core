@@ -1,8 +1,9 @@
-import { flattenProductVariants, getProductWithVariants, LocalizedProductWithVariant } from '#data/products'
+import { Facets, flattenProductVariants, getProductWithVariants, LocalizedProductWithVariant } from '#data/products'
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import AuthContext from './contexts/AuthContext'
 import chunk from 'lodash/chunk'
+import { useRouter } from 'next/router'
 
 type Context = {
   products: LocalizedProductWithVariant[]
@@ -14,6 +15,33 @@ export const useCatalog = () => useContext(CatalogContext)
 
 export const CatalogProvider: React.FC<Context> = ({ children, products: initialProducts }) => {
   const { products } = useCommerceLayerPrice(initialProducts)
+
+  const [searchText, setSearchText] = useState<string>('')
+  const [selectedFacets, setSelectedFacets] = useState<{ [name: string]: Facets[string] }>({})
+
+  const router = useRouter()
+
+  useEffect(function manageOnRouterChange() {
+    if (typeof router.query.facets === 'string') {
+      try {
+        setSelectedFacets(JSON.parse(router.query.facets))
+      } catch (e) {
+        // TODO: add isValidJson method and remove facets from url if it is not.
+        console.error('The query param "facets" is not a stringified JSON.', e)
+      }
+    }
+
+    if (typeof router.query.q === 'string') {
+      setSearchText(router.query.q)
+    }
+  }, [router])
+
+  useEffect(() => {
+    console.log(searchText)
+    console.log(selectedFacets)
+  }, [searchText, selectedFacets])
+
+
 
   return (
     <CatalogContext.Provider value={{ products }}>
@@ -41,13 +69,14 @@ function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
       return
     }
 
-    const products = flattenProductVariants(initialProducts)
-
     const client = CommerceLayer({ accessToken, organization, domain })
 
-    mapWithPrice(client, products).then((products) => {
+    mapWithPrice(
+      client,
+      flattenProductVariants(initialProducts)
+    ).then((productsWithPrices) => {
       if (isMounted) {
-        setProducts(products.map(product => getProductWithVariants(product.code, product._locale, products)))
+        setProducts(productsWithPrices.map(product => getProductWithVariants(product.code, product._locale, productsWithPrices)))
         setLatestInitialProducts(initialProducts)
       }
     })

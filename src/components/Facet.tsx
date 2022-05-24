@@ -28,22 +28,14 @@ export const Facet: React.FC<Props> = ({ products: productSelection, facets: ini
     [isFiltering, contextProducts, productSelection]
   )
 
-  const fuseOptions = useMemo<Fuse.IFuseOptions<LocalizedProductWithVariant>>(
-    () => ({
-      useExtendedSearch: true,
-      threshold: .3,
-      keys: [
-        'name',
-        'description',
-      ].concat(
-        Object.keys(availableFacets).map(facetName => `facets.${facetName}`)
-      )
-    }),
-    [availableFacets]
-  )
-
   useEffect(function manageOnRouterChange() {
-    setSelectedFacets(typeof router.query.facets === 'string' ? JSON.parse(router.query.facets) : {})
+    if (typeof router.query.facets === 'string') {
+      try {
+        setSelectedFacets(JSON.parse(router.query.facets))
+      } catch (e) {
+        console.error('The query param "facets" is not a stringified JSON.', e)
+      }
+    }
 
     if (typeof router.query.q === 'string') {
       setSearchText(router.query.q)
@@ -52,67 +44,37 @@ export const Facet: React.FC<Props> = ({ products: productSelection, facets: ini
 
   useEffect(function manageSearch() {
     (async () => {
-      const Fuse = (await import('fuse.js')).default
       const { flattenProductVariants, getFacets } = await import('#data/products')
 
-      let result = products
+      const resultFromFreeTextSearch = await freeTextSearch(products, searchText)
 
-      // search by Text
-      if (searchText) {
-        const fuse = new Fuse(products, fuseOptions)
+      const newFacets = getFacets(flattenProductVariants(resultFromFreeTextSearch))
 
-        result = fuse.search({
-          $or: [
-            { $path: 'name', $val: searchText },
-            { $path: 'description', $val: searchText },
-          ]
-        }).map(r => r.item)
-      }
-
-      const newFacets = getFacets(flattenProductVariants(result))
-
-      // search by Facets
-      const andExpression: Fuse.Expression[] = []
-
-      Object.entries(selectedFacets).forEach(([facetName, facetValue]) => {
-        if (facetValue) {
-          andExpression.push({
-            $or: facetValue.map(value => ({ $path: `facets.${facetName}`, $val: `="${value}"` }))
-          })
-        }
-      })
-
-      if (andExpression.length > 0) {
-        const fuse = new Fuse(result, fuseOptions)
-        result = uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
-      }
+      const result = await facetSearch(resultFromFreeTextSearch, selectedFacets)
 
       onChange(result)
-
-      // console.log('result', result)
-      // console.log('outside', newFacets)
 
       if (false
         || prevSearchText !== searchText
         || JSON.stringify(facetsFromParent) !== JSON.stringify(initialFacets)
         || JSON.stringify(availableFacets) !== JSON.stringify(newFacets)
       ) {
-        // console.log('inside', newFacets)
         setAvailableFacets(newFacets)
         setPrevSearchText(searchText)
         setFacetsFromParent(initialFacets)
       }
     })()
-  }, [products, onChange, prevSearchText, searchText, selectedFacets, facetsFromParent, fuseOptions, initialFacets, contextProducts, availableFacets])
+  }, [products, onChange, prevSearchText, searchText, selectedFacets, facetsFromParent, initialFacets, contextProducts, availableFacets])
 
-  const handleFacetChange = (facetName: string, currentValue: string) => {
-    const facets = (typeof router.query.facets === 'string' ? JSON.parse(router.query.facets) : {}) as Facets
+  const handleFacetChange = (facetName: string, value: string) => {
+    const facets = { ...selectedFacets }
 
     facets[facetName] = facets[facetName] || []
     const facet = facets[facetName] || []
+
     if (Array.isArray(facet)) {
-      const index = facet.indexOf(currentValue)
-      index > -1 ? facet.splice(index, 1) : facet.push(currentValue)
+      const index = facet.indexOf(value)
+      index > -1 ? facet.splice(index, 1) : facet.push(value)
 
       if (facet.length === 0) {
         delete facets[facetName]
@@ -151,4 +113,54 @@ export const Facet: React.FC<Props> = ({ products: productSelection, facets: ini
       }
     </div>
   )
+}
+
+async function freeTextSearch(products: LocalizedProductWithVariant[], query: string): Promise<LocalizedProductWithVariant[]> {
+  const Fuse = (await import('fuse.js')).default
+
+  if (query === '') {
+    return products
+  }
+
+  const fuse = new Fuse(products, {
+    useExtendedSearch: false,
+    threshold: .3,
+    keys: [
+      'name',
+      'description',
+    ]
+  })
+
+  return fuse.search({
+    $or: [
+      { $path: 'name', $val: query },
+      { $path: 'description', $val: query },
+    ]
+  }).map(r => r.item)
+}
+
+async function facetSearch(products: LocalizedProductWithVariant[], facets: { [name: string]: Facets[string] }): Promise<LocalizedProductWithVariant[]> {
+  const Fuse = (await import('fuse.js')).default
+
+  const andExpression: Fuse.Expression[] = []
+
+  Object.entries(facets).forEach(([facetName, facetValue]) => {
+    if (facetValue) {
+      andExpression.push({
+        $or: facetValue.map(value => ({ $path: `facets.${facetName}`, $val: `="${value}"` }))
+      })
+    }
+  })
+
+  if (andExpression.length <= 0) {
+    return products
+  }
+
+  const fuse = new Fuse(products, {
+    useExtendedSearch: true,
+    threshold: .3,
+    keys: Object.keys(facets).map(facetName => `facets.${facetName}`)
+  })
+
+  return uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
 }

@@ -12,7 +12,7 @@ import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#models/catalog'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useState } from 'react'
-import { CatalogProvider } from 'src/useCatalog'
+import { CatalogProvider, useCatalog } from 'src/useCatalog'
 
 type Query = {
   locale: string
@@ -21,6 +21,20 @@ type Query = {
 type Props = HeaderProps & {
   products: LocalizedProductWithVariant[]
   facets: Facets
+}
+
+const ProductList: React.FC = () => {
+  const { products } = useCatalog()
+
+  return (
+    <div className='mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-6 lg:gap-y-12'>
+      {
+        products.map(product => (
+          <ProductCard key={product.code} product={product} />
+        ))
+      }
+    </div>
+  )
 }
 
 const SearchIndexPage: NextPage<Props> = ({ navigation, products, facets }) => {
@@ -43,6 +57,8 @@ const SearchIndexPage: NextPage<Props> = ({ navigation, products, facets }) => {
               ))
             }
           </div>
+
+          {/* <ProductList /> */}
         </CatalogProvider>
 
       </Container>
