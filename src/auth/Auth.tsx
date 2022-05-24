@@ -59,7 +59,7 @@ export const Auth: React.FC<{}> = ({ children }) => {
 
   const endpoint = process.env.NEXT_PUBLIC_CL_ENDPOINT
   const { hostname } = new URL(endpoint)
-  const [ , organization, domain] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
+  const [, organization, domain] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
 
   useEffect(function updateMarket() {
     if (locale?.country?.market !== market) {
@@ -68,6 +68,8 @@ export const Auth: React.FC<{}> = ({ children }) => {
   }, [locale, market])
 
   useEffect(function updateAccessToken() {
+    let isMounted = true
+
     if (market === undefined) {
       setAuth(null)
       return
@@ -79,10 +81,18 @@ export const Auth: React.FC<{}> = ({ children }) => {
     if (authIsValid) {
       setAuth(storedAuth)
     } else {
-      getSalesChannelToken( getClientCredentials(market) )
-        .then( authReturn => setAuth( storeAuth(market, authReturn) ) )
+      getSalesChannelToken(getClientCredentials(market))
+        .then(authReturn => {
+          if (isMounted) {
+            setAuth(storeAuth(market, authReturn))
+          }
+        })
     }
-  }, [market])
+
+    return () => {
+      isMounted = false
+    }
+  }, [market, router.asPath])
 
   if (!auth) {
     return <>{children}</>
