@@ -1,8 +1,8 @@
 import { MagnifyingGlass } from '#assets/icons'
-import { useCallback, useState } from 'react'
-import { useRouter } from 'next/router'
 import { basePath } from '#next.config'
 import { useI18n } from 'next-localization'
+import { useRouter } from 'next/router'
+import { useCallback, useState } from 'react'
 
 export const Search: React.FC = () => {
   const i18n = useI18n();

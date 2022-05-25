@@ -1,5 +1,5 @@
 import { Catalog, Taxon, Taxonomy } from '#data/catalogs'
-import { getRootNavigationLinks } from '#models/catalog'
+import { getRootNavigationLinks } from '#utils/catalog'
 import { render, screen, within } from '@testing-library/react'
 import { I18nProvider } from 'next-localization'
 import HomePage from './index.page'

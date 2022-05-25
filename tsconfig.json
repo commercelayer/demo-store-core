@@ -23,7 +23,8 @@
       "#components/*": ["src/components/*"],
       "#data/*": ["data/*"],
       "#i18n/*": ["src/i18n/*"],
-      "#models/*": ["src/models/*"],
+      "#utils/*": ["src/utils/*"],
+      "#contexts/*": ["src/contexts/*"],
       "#next.config": ["src/nextConfig"]
     }
   },

@@ -2,7 +2,7 @@ import { defaultLocale } from '#i18n/locale'
 import { I18nProvider } from 'next-localization'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
-import { Auth } from 'src/auth/Auth'
+import { Auth } from '#components/Auth'
 import '../styles/globals.css'
 
 export default function MyApp({ Component, pageProps }: AppProps) {

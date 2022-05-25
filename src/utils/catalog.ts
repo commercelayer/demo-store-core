@@ -1,4 +1,4 @@
-import { NavigationPath } from '#components/Navigation.d'
+import { NavigationPath } from '@typings/navigation.d'
 import { Catalog, DeepFindResult, Taxon, Taxonomy } from '#data/catalogs'
 import { getSearchUrl } from './url'
 

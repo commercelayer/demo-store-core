@@ -1,16 +1,16 @@
 // TODO: this will be replaced by the hosted cart!
 
 import { Container } from '#components/Container'
-import { Header, HeaderProps } from '#components/Header'
 import { Footer } from '#components/Footer'
+import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
+import { getCatalog } from '#data/catalogs'
 import { getLocale } from '#i18n/locale'
 import { withLocalePaths } from '#i18n/withLocalePaths'
+import { getRootNavigationLinks } from '#utils/catalog'
 import { CheckoutLink, Errors, LineItem, LineItemAmount, LineItemImage, LineItemName, LineItemQuantity, LineItemRemoveLink, LineItemsContainer, LineItemsCount, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { getCatalog } from '#data/catalogs'
-import { getRootNavigationLinks } from '#models/catalog'
 
 type Query = {
   locale: string

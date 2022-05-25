@@ -3,7 +3,7 @@ import { render, act, screen } from '@testing-library/react'
 import { Auth } from './Auth'
 import CommerceLayerContext from '@commercelayer/react-components/lib/context/CommerceLayerContext'
 import { useContext } from 'react'
-import AuthContext from 'src/contexts/AuthContext'
+import { useAuthContext } from '#contexts/AuthContext'
 
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
 const getSalesChannelToken = jest.spyOn(require('@commercelayer/js-auth'), 'getSalesChannelToken')
@@ -16,7 +16,7 @@ beforeEach(() => {
 
 const ContextTester = () => {
   const { accessToken: clAccessToken, endpoint: clEndpoint } = useContext(CommerceLayerContext)
-  const { accessToken, endpoint, organization, domain } = useContext(AuthContext)
+  const { accessToken, endpoint, organization, domain } = useAuthContext()
 
   return (
     <>

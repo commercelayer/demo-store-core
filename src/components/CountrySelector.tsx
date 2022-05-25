@@ -1,10 +1,10 @@
+import { Accordion } from '#components/Accordion'
+import { Logo } from '#components/Logo'
 import { countries, groupByRegion } from '#data/countries'
 import { Link } from '#i18n/Link'
 import { makeLocaleCode } from '#i18n/locale'
-import { Accordion } from './Accordion'
-
 import styles from './CountrySelector.module.scss'
-import { Logo } from './Logo'
+
 
 export const CountrySelector = () => {
   const groupedCountry = Object.entries(groupByRegion(countries))

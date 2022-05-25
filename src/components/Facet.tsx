@@ -1,7 +1,7 @@
-import { useCatalog } from 'src/useCatalog'
+import { useCatalogContext } from '#contexts/CatalogContext'
 
 export const Facet: React.FC = () => {
-  const { availableFacets, selectedFacets, selectFacet } = useCatalog()
+  const { availableFacets, selectedFacets, selectFacet } = useCatalogContext()
 
   return (
     <div>

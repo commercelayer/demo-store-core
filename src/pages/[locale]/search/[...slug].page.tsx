@@ -11,9 +11,9 @@ import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant 
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
-import { getNavigationLinks, getRootNavigationLinks, getSlugs } from '#models/catalog'
+import { getNavigationLinks, getRootNavigationLinks, getSlugs } from '#utils/catalog'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { CatalogProvider, useCatalog } from 'src/useCatalog'
+import { CatalogProvider, useCatalogContext } from '../../../contexts/CatalogContext'
 
 
 type Query = {
@@ -27,7 +27,7 @@ type Props = HeaderProps & SubNavigationProps & {
 }
 
 const ProductList: React.FC = () => {
-  const { products } = useCatalog()
+  const { products } = useCatalogContext()
 
   return (
     <div className='mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-6 lg:gap-y-12'>

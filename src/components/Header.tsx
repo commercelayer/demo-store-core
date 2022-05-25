@@ -1,10 +1,10 @@
 import { HeartStraight, ShoppingBagOpen, User } from '#assets/icons'
 import { Logo } from '#components/Logo'
+import type { Props as NavigationProps } from '#components/Navigation'
+import { Navigation } from '#components/Navigation'
+import { Search } from '#components/Search'
 import { Link } from '#i18n/Link'
-import { getCartUrl } from '#models/url'
-import { Navigation } from './Navigation'
-import type { Props as NavigationProps } from './Navigation'
-import { Search } from './Search'
+import { getCartUrl } from '#utils/url'
 
 export type HeaderProps = NavigationProps
 

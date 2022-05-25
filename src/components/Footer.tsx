@@ -1,17 +1,17 @@
 import { Globe } from '#assets/icons'
 import { languages } from '#data/languages'
-import { Link } from "#i18n/Link";
+import { Link } from '#i18n/Link';
 import { changeLanguage, getLocale, parseLocaleCode } from '#i18n/locale'
-import { useRouter } from "next/router";
-import { FC } from "react";
-import { Container } from './Container'
+import { useRouter } from 'next/router';
+import { FC } from 'react';
+import { Container } from '#components/Container'
 
 export const Footer: FC = () => {
   const router = useRouter()
   const locale = getLocale(router.query.locale)
 
   return (
-    <div className="p-16 mt-24 bg-gray-50">
+    <div className='p-16 mt-24 bg-gray-50'>
       <Container>
 
         <div className='flex items-center justify-between flex-wrap'>

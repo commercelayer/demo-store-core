@@ -5,7 +5,7 @@ import chunk from 'lodash/chunk'
 import uniqBy from 'lodash/uniqBy'
 import { useRouter } from 'next/router'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
-import AuthContext from './contexts/AuthContext'
+import { useAuthContext } from './AuthContext'
 
 type SelectedFacets = {
   [name: string]: Facets[string]
@@ -27,7 +27,7 @@ const CatalogContext = createContext<Context>({
   selectFacet: () => { }
 })
 
-export const useCatalog = () => useContext(CatalogContext)
+export const useCatalogContext = () => useContext(CatalogContext)
 
 export const CatalogProvider: React.FC<Props> = ({ children, products: initialProducts, availableFacets: initialFacets }) => {
   const router = useRouter()
@@ -126,7 +126,7 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
 
 
 function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
-  const { accessToken, domain, organization } = useContext(AuthContext)
+  const { accessToken, domain, organization } = useAuthContext()
 
   const [latestInitialProducts, setLatestInitialProducts] = useState(initialProducts)
   const [products, setProducts] = useState(flattenProductVariants(initialProducts))

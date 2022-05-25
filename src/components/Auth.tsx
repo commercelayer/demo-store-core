@@ -3,7 +3,7 @@ import { AuthReturnType, ClientCredentials, getSalesChannelToken } from '@commer
 import { CommerceLayer } from '@commercelayer/react-components'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
-import AuthContext from 'src/contexts/AuthContext'
+import { AuthProvider } from '#contexts/AuthContext'
 
 type Auth = {
   accessToken: string
@@ -99,10 +99,10 @@ export const Auth: React.FC<{}> = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ accessToken: auth.accessToken, endpoint, organization, domain }}>
+    <AuthProvider accessToken={auth.accessToken} endpoint={endpoint} organization={organization} domain={domain}>
       <CommerceLayer accessToken={auth.accessToken} endpoint={endpoint}>
         <>{children}</>
       </CommerceLayer>
-    </AuthContext.Provider>
+    </AuthProvider>
   )
 }

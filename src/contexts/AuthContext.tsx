@@ -1,12 +1,18 @@
-import { createContext } from 'react'
+import { createContext, useContext } from 'react'
 
-export type Context = {
+type Context = {
   accessToken: string
+  domain: string
   endpoint: string
   organization: string
-  domain: string
 }
 
 const AuthContext = createContext<Partial<Context>>({})
 
-export default AuthContext
+export const AuthProvider: React.FC<Context> = ({ children, ...props }) => (
+  <AuthContext.Provider value={{ ...props }}>
+    {children}
+  </AuthContext.Provider>
+)
+
+export const useAuthContext = () => useContext(AuthContext)
