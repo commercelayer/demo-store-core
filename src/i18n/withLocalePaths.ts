@@ -1,7 +1,7 @@
+import { combine } from '#utils/collection'
 import { GetStaticPathsResult } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { Locale, locales as allLocales } from './locale'
-import { combine } from './utils'
 
 // @ts-expect-error
 type WithoutLocalePathsResult<P extends Partial<ParsedUrlQuery>> = GetStaticPathsResult<P>

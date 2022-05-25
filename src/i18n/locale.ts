@@ -1,7 +1,6 @@
 import { countries, Country } from '#data/countries'
-import { languages, Language } from '#data/languages'
-
-import { combine } from './utils'
+import { Language, languages } from '#data/languages'
+import { combine } from '#utils/collection'
 
 export type Locale = {
   code: string

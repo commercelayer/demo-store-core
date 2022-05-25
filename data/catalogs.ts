@@ -1,4 +1,5 @@
 import { Locale } from '#i18n/locale'
+import { deepFind, DeepFindResult } from '#utils/collection'
 import uniq from 'lodash/uniq'
 import uniqBy from 'lodash/uniqBy'
 import catalogsJson from './json/catalogs.json'
@@ -177,41 +178,3 @@ export function findTaxonBySlug(catalog: Catalog, slug: string): DeepFindResult<
 // function getProductsBySlug(slug: string) {
 
 // }
-
-
-type Taxonable<IK extends string, SK extends string> = {
-  [iteratorKey in IK | SK]: iteratorKey extends SK ? string : Taxonable<IK, SK>[]
-}
-
-export type DeepFindResult<T> = {
-  result: T
-  memo: T[]
-}
-
-export function deepFind<T extends Taxonable<IK, SK>, IK extends string, SK extends string>(items: T[] | undefined | null, iteratorKey: IK, searchKey: SK, searchValue: string): DeepFindResult<T> | undefined {
-  if (!items) {
-    return
-  }
-
-  for (const item of items) {
-    if (item[searchKey] === searchValue) {
-      return {
-        result: item,
-        memo: [item]
-      }
-    }
-
-    const children = item[iteratorKey]
-
-    if (Array.isArray(children)) {
-      const child = deepFind(children, iteratorKey, searchKey, searchValue)
-
-      if (child) {
-        return {
-          result: child.result,
-          memo: [item].concat(child.memo)
-        }
-      }
-    }
-  }
-}

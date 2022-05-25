@@ -1,6 +1,7 @@
+import { Catalog, Taxon, Taxonomy } from '#data/catalogs'
+import { DeepFindResult } from '#utils/collection'
+import { getSearchUrl } from '#utils/url'
 import { NavigationPath } from '@typings/navigation.d'
-import { Catalog, DeepFindResult, Taxon, Taxonomy } from '#data/catalogs'
-import { getSearchUrl } from './url'
 
 const getPrimaryTaxonomy = (catalog: Catalog): Taxonomy => {
   // TODO: taxonomies[0] is a requirement. First taxonomy is considered the navigation one. Should it be configurable?
