@@ -4,11 +4,13 @@ import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { VariantSelector as DemoStoreVariantSelector } from '#components/VariantSelector'
 import { flattenProductsFromCatalog, getCatalog } from '#data/catalogs'
-import { flattenProductVariants, getProductWithVariants, LocalizedProduct, LocalizedProductWithVariant } from '#data/products'
+import type { LocalizedProduct, LocalizedProductWithVariant } from '#data/products'
+import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
+import { flattenProductVariants, getProductWithVariants } from '#utils/products'
 import { getProductUrl } from '#utils/url'
 import { AddToCartButton, AvailabilityContainer, AvailabilityTemplate, ItemContainer, OrderContainer, OrderStorage, Price, PricesContainer } from '@commercelayer/react-components'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
@@ -81,7 +83,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
   return withLocalePaths((localeCode) => {
     const locale = getLocale(localeCode)
 
-    const catalog = getCatalog(locale, true)
+    const catalog = getCatalog(locale, rawDataProducts)
 
     const products = flattenProductsFromCatalog(catalog)
 
@@ -106,7 +108,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   return {
     props: {
       // TODO: slug.pop() look like a requirement. show it in the readme or change the way.
-      product: getProductWithVariants(slug.pop()!, localeCode),
+      product: getProductWithVariants(slug.pop()!, localeCode, rawDataProducts),
       navigation: getRootNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
     }

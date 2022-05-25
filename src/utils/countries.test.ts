@@ -1,6 +1,7 @@
-import { CountriesByRegion, Country, groupByRegion } from '#data/countries'
+import type { Country } from '#data/countries'
+import { CountriesByRegion, groupByRegion } from './countries'
 
-it('should be able to group locales by their region', () => {
+test('should be able to group locales by their region', () => {
   const italy: Country = { code: 'IT', default_language: 'it', market: 401, name: 'Italy', region: 'Europe', catalog: 'AMER' }
   const unitedStates: Country = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas', catalog: 'AMER' }
   const singapore: Country = { code: 'SG', default_language: 'en', market: 400, name: 'Singapore', region: 'Asia', catalog: 'AMER' }

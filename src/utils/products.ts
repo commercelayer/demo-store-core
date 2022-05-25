@@ -1,0 +1,76 @@
+import type { Facets, LocalizedProduct, LocalizedProductWithVariant, Product } from '#data/products'
+import { translateField } from '#i18n/locale'
+import uniqBy from 'lodash/uniqBy'
+
+function resolveProductLocale(product: Product | LocalizedProduct, locale: string): LocalizedProduct {
+  if ('_locale' in product) {
+    return product
+  }
+
+  return {
+    ...product,
+    _locale: locale,
+    name: translateField(product.name, locale),
+    description: translateField(product.description, locale),
+    variant: product.variant.map(v => ({
+      ...v,
+      label: translateField(v.label, locale)
+    }))
+  }
+}
+
+function getProduct(code: string, locale: string, productList: (LocalizedProduct | Product)[]): LocalizedProduct {
+  const product = productList.find(product => product.code === code)
+
+  if (!product) {
+    throw new Error(`Cannot find a Product with code equal to ${code}`)
+  }
+
+  return resolveProductLocale(product, locale)
+}
+
+function getProductVariants(product: LocalizedProduct, productList: (LocalizedProduct | Product)[]): LocalizedProduct[] {
+  return productList
+    .filter(p => p.productCode === product.productCode)
+    .map(p => resolveProductLocale(p, product._locale))
+}
+
+export function getProductWithVariants(code: string, locale: string, productList: (LocalizedProduct | Product)[]): LocalizedProductWithVariant {
+  const product = getProduct(code, locale, productList)
+  const variants = getProductVariants(product, productList)
+
+  return {
+    ...product,
+    variants
+  }
+}
+
+export function flattenProductVariants(products: LocalizedProductWithVariant[]): LocalizedProductWithVariant[] {
+  const flattenProducts = uniqBy(
+    products.flatMap(product => product.variants).concat(products),
+    'code'
+  )
+
+  return uniqBy(
+    products.flatMap(product => {
+      return product.variants.map(variant => getProductWithVariants(variant.code, variant._locale, flattenProducts))
+    }),
+    'code'
+  )
+}
+
+export const getFacets = (products: LocalizedProductWithVariant[]): Facets => {
+  return products.reduce((facets, product) => {
+    Object.entries(product.facets).map(([facetName, facetValues]) => {
+      facets[facetName] = facets[facetName] || []
+
+      facetValues?.forEach(facetValue => {
+        if (!facets[facetName]?.includes(facetValue)) {
+          facets[facetName]?.push(facetValue)
+        }
+      })
+    })
+
+    return facets
+  }, {} as Facets)
+}

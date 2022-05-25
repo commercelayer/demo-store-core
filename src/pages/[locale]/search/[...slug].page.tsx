@@ -7,11 +7,13 @@ import { ProductCard } from '#components/ProductCard'
 import type { Props as SubNavigationProps } from '#components/SubNavigation'
 import { SubNavigation } from '#components/SubNavigation'
 import { findTaxonBySlug, flattenProductsFromTaxon, getCatalog } from '#data/catalogs'
-import { Facets, flattenProductVariants, getFacets, LocalizedProductWithVariant } from '#data/products'
+import type { Facets, LocalizedProductWithVariant } from '#data/products'
+import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getNavigationLinks, getRootNavigationLinks, getSlugs } from '#utils/catalog'
+import { flattenProductVariants, getFacets } from '#utils/products'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { CatalogProvider, useCatalogContext } from '../../../contexts/CatalogContext'
 
@@ -82,7 +84,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode, slug } = params!
   const locale = getLocale(localeCode)
-  const catalog = getCatalog(locale, true)
+  const catalog = getCatalog(locale, rawDataProducts)
 
   const taxon = findTaxonBySlug(catalog, slug.join('/'))
 

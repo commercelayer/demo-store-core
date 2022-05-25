@@ -1,4 +1,5 @@
-import { Facets, flattenProductVariants, getProductWithVariants, LocalizedProductWithVariant } from '#data/products'
+import { Facets, LocalizedProductWithVariant } from '#data/products'
+import { flattenProductVariants, getProductWithVariants } from '#utils/products'
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import type Fuse from 'fuse.js'
 import chunk from 'lodash/chunk'
@@ -96,7 +97,7 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
     let isMounted = true
 
     async function runSearch() {
-      const { flattenProductVariants, getFacets } = await import('#data/products')
+      const { flattenProductVariants, getFacets } = await import('#utils/products')
 
       const resultFromFreeTextSearch = await freeTextSearch(productList, query)
       const result = await facetSearch(resultFromFreeTextSearch, selectedFacets)

@@ -3,6 +3,7 @@
     "productCode": "BODYBSSS",
     "variantCode": "BODYBSSS000000",
     "code": "BODYBSSS000000FFFFFF12MX",
+    "slug": "black-baby-short-sleeve-bodysuit-with-white-logo-12-months/BODYBSSS000000FFFFFF12MX",
     "variant": [
       {
         "name": "color",
@@ -43,6 +44,7 @@
     "productCode": "BODYBSSS",
     "variantCode": "BODYBSSS000000",
     "code": "BODYBSSS000000FFFFFF6MXX",
+    "slug": "black-baby-short-sleeve-bodysuit-with-white-logo-6-months/BODYBSSS000000FFFFFF6MXX",
     "variant": [
       {
         "name": "color",
@@ -81,6 +83,7 @@
     "productCode": "BODYBSSS",
     "variantCode": "BODYBSSSFFFFFF",
     "code": "BODYBSSSFFFFFF00000012MX",
+    "slug": "white-baby-short-sleeve-bodysuit-with-black-logo-12-months/BODYBSSSFFFFFF00000012MX",
     "variant": [
       {
         "name": "color",
@@ -119,6 +122,7 @@
     "productCode": "BODYBSSS",
     "variantCode": "BODYBSSSFFFFFF",
     "code": "BODYBSSSFFFFFF0000006MXX",
+    "slug": "white-baby-short-sleeve-bodysuit-with-black-logo-6-months/BODYBSSSFFFFFF0000006MXX",
     "variant": [
       {
         "name": "color",
@@ -157,6 +161,7 @@
     "productCode": "BOTT17OZ",
     "variantCode": "BOTT17OZFFFFFF",
     "code": "BOTT17OZFFFFFF000000XXXX",
+    "slug": "white-water-bottle-with-black-logo-17oz/BOTT17OZFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -187,6 +192,7 @@
     "productCode": "CUFFBEAN",
     "variantCode": "CUFFBEAN000000",
     "code": "CUFFBEAN000000FFFFFFXXXX",
+    "slug": "black-cuffed-beanie-with-white-logo/CUFFBEAN000000FFFFFFXXXX",
     "variant": [
       {
         "name": "color",
@@ -217,6 +223,7 @@
     "productCode": "CUFFBEAN",
     "variantCode": "CUFFBEANA6A5A0",
     "code": "CUFFBEANA6A5A0000000XXXX",
+    "slug": "gray-cuffed-beanie-with-black-logo/CUFFBEANA6A5A0000000XXXX",
     "variant": [
       {
         "name": "color",
@@ -247,6 +254,7 @@
     "productCode": "CUFFBEAN",
     "variantCode": "CUFFBEANFFFFFF",
     "code": "CUFFBEANFFFFFF000000XXXX",
+    "slug": "white-cuffed-beanie-with-black-logo/CUFFBEANFFFFFF000000XXXX",
     "variant": [
       {
         "name": "color",

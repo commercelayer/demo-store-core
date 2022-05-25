@@ -1,5 +1,5 @@
 import { Globe } from '#assets/icons'
-import { languages } from '#data/languages'
+import { rawDataLanguages } from '#data/languages'
 import { Link } from '#i18n/Link';
 import { changeLanguage, getLocale, parseLocaleCode } from '#i18n/locale'
 import { useRouter } from 'next/router';
@@ -27,7 +27,7 @@ export const Footer: FC = () => {
 
           <div>
             {
-              languages.map(language => {
+              rawDataLanguages.map(language => {
                 const isSelected = parseLocaleCode(router.query.locale).languageCode === language.code
                 return (
                   <Link

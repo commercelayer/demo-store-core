@@ -1,7 +1,7 @@
 import { Country } from '#data/countries'
 import { Language } from '#data/languages'
 
-import { getLocale, Locale, makeLocaleCode, makeLocales, parseLocaleCode } from './locale'
+import { getLocale, Locale, makeLocaleCode, makeLocales, parseLocaleCode, translateField } from './locale'
 
 describe('makeLocaleCode', () => {
   it('creates a localeCode given a countryCode and a languageCode', () => {
@@ -65,5 +65,44 @@ describe('getLocale', () => {
   it('should return undefined when the localeCode is unknown and throw option is set to false', () => {
     const locale = getLocale('aa-BB', false)
     expect(locale).toBe(undefined)
+  })
+})
+
+describe('translateField', () => {
+  it('should returns the localized field by provided locale (language)', () => {
+    const value = translateField({
+      en: 'English title',
+      it: 'Titolo italiano',
+      'en-US': 'American title'
+    }, 'en')
+    expect(value).toStrictEqual('English title')
+  })
+
+  it('should returns the localized field by provided locale (language + country)', () => {
+    const value = translateField({
+      en: 'English title',
+      it: 'Titolo italiano',
+      'en-US': 'American title'
+    }, 'en-US')
+    expect(value).toStrictEqual('American title')
+  })
+
+  it('should fallback to language when provided language-COUNTRY is not found', () => {
+    const value = translateField({
+      en: 'English title',
+      it: 'Titolo italiano',
+      'en-US': 'American title'
+    }, 'it-CN')
+    expect(value).toStrictEqual('Titolo italiano')
+  })
+
+  it('should fallback to empty string when locale and language are not found', () => {
+    const value = translateField({
+      fr: 'titre français',
+      en: 'English title',
+      it: 'Titolo italiano',
+      'en-US': 'American title'
+    }, 'fr-CN')
+    expect(value).toStrictEqual('')
   })
 })

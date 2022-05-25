@@ -1,13 +1,14 @@
 import { Accordion } from '#components/Accordion'
 import { Logo } from '#components/Logo'
-import { countries, groupByRegion } from '#data/countries'
+import { rawDataCountries } from '#data/countries'
 import { Link } from '#i18n/Link'
 import { makeLocaleCode } from '#i18n/locale'
+import { groupByRegion } from '#utils/countries'
 import styles from './CountrySelector.module.scss'
 
 
 export const CountrySelector = () => {
-  const groupedCountry = Object.entries(groupByRegion(countries))
+  const groupedCountry = Object.entries(groupByRegion(rawDataCountries))
 
   return (
     <div className='flex flex-col h-screen'>

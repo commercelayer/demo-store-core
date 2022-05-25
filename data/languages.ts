@@ -6,4 +6,4 @@ export type Language = {
   catalog: string;
 }
 
-export const languages: Language[] = languagesJson
+export const rawDataLanguages: Language[] = languagesJson

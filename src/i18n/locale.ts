@@ -1,5 +1,5 @@
-import { countries, Country } from '#data/countries'
-import { Language, languages } from '#data/languages'
+import { rawDataCountries, Country } from '#data/countries'
+import { Language, rawDataLanguages } from '#data/languages'
 import { combine } from '#utils/collection'
 
 export type Locale = {
@@ -8,8 +8,8 @@ export type Locale = {
   language: Language
 }
 
-const languageCodes = languages.map(language => language.code)
-const countryCodes = countries.map(country => country.code)
+const languageCodes = rawDataLanguages.map(language => language.code)
+const countryCodes = rawDataCountries.map(country => country.code)
 const localesRegExp = new RegExp(`^(${languageCodes.join('|')})(?:-(${countryCodes.join('|')}))?$`)
 
 export function makeLocaleCode(languageCode: string, countryCode?: string): string {
@@ -46,7 +46,7 @@ export function makeLocales(languages: Language[], countries: Country[]): Locale
     })))
 }
 
-export const locales = makeLocales(languages, countries)
+export const locales = makeLocales(rawDataLanguages, rawDataCountries)
 
 export const [ defaultLocale ] = languageCodes
 
@@ -60,4 +60,16 @@ export function getLocale(localeCode: string, throwWhenUndefined = true) {
   }
 
   return locale
+}
+
+
+export type LocalizedField<T> = {
+  [locale: string]: T | undefined
+}
+
+export function translateField(field: LocalizedField<string>, locale: string): string {
+  const { languageCode = locale } = parseLocaleCode(locale)
+  const missingTranslation = ''
+
+  return field[locale] || field[languageCode] || missingTranslation
 }

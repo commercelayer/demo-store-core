@@ -9,20 +9,4 @@ export type Country = {
   region: string;
 }
 
-export type CountriesByRegion = {
-  [region: Country['region']]: Country[]
-}
-
-export const countries: Country[] = countriesJson
-
-export const groupByRegion = (countries: Country[]): CountriesByRegion => {
-  return countries.reduce((countriesByRegion, country) => {
-    return {
-      ...countriesByRegion,
-      [country.region]: [
-        ...(countriesByRegion[country.region] || []),
-        country
-      ]
-    }
-  }, {} as CountriesByRegion)
-}
+export const rawDataCountries: Country[] = countriesJson
