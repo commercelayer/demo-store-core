@@ -7,13 +7,12 @@ import { ProductCard } from '#components/ProductCard'
 import type { Props as SubNavigationProps } from '#components/SubNavigation'
 import { SubNavigation } from '#components/SubNavigation'
 import { findTaxonBySlug, flattenProductsFromTaxon, getCatalog } from '#data/catalogs'
-import type { Facets, LocalizedProductWithVariant } from '#data/products'
+import type { LocalizedProductWithVariant } from '#data/products'
 import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getNavigationLinks, getRootNavigationLinks, getSlugs } from '#utils/catalog'
-import { flattenProductVariants, getFacets } from '#utils/products'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { CatalogProvider, useCatalogContext } from '../../../contexts/CatalogContext'
 
@@ -25,7 +24,6 @@ type Query = {
 
 type Props = HeaderProps & SubNavigationProps & {
   products: LocalizedProductWithVariant[]
-  facets: Facets
 }
 
 const ProductList: React.FC = () => {
@@ -42,13 +40,13 @@ const ProductList: React.FC = () => {
   )
 }
 
-const SearchSlugPage: NextPage<Props> = ({ navigation, products, subNavigation, facets }) => {
+const SearchSlugPage: NextPage<Props> = ({ navigation, products, subNavigation }) => {
   return (
     <Page>
       <Container>
         <Header navigation={navigation} />
 
-        <CatalogProvider products={products} availableFacets={facets}>
+        <CatalogProvider products={products}>
           <Facet />
 
           <h2 className='mt-16 block text-2xl font-semibold text-black'>{subNavigation.current.text}</h2>
@@ -90,13 +88,10 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   const products = flattenProductsFromTaxon(taxon.result)
 
-  const flattenProducts = flattenProductVariants(products)
-
   return {
     props: {
       subNavigation: getNavigationLinks(taxon),
       products,
-      facets: getFacets(flattenProducts),
       navigation: getRootNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
     }

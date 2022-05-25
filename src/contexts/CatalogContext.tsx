@@ -19,7 +19,7 @@ type Context = {
   selectFacet: (name: string, value: string) => void
 }
 
-type Props = Omit<Context, 'selectFacet' | 'selectedFacets'>
+type Props = Omit<Context, 'availableFacets' | 'selectedFacets' | 'selectFacet'>
 
 const CatalogContext = createContext<Context>({
   products: [],
@@ -30,7 +30,7 @@ const CatalogContext = createContext<Context>({
 
 export const useCatalogContext = () => useContext(CatalogContext)
 
-export const CatalogProvider: React.FC<Props> = ({ children, products: initialProducts, availableFacets: initialFacets }) => {
+export const CatalogProvider: React.FC<Props> = ({ children, products: initialProducts }) => {
   const router = useRouter()
 
   const { products: productsWithPrices } = useCommerceLayerPrice(initialProducts)
@@ -38,7 +38,7 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
   const [query, setQuery] = useState<string>('')
 
   const [products, setProducts] = useState<Context['products']>(initialProducts)
-  const [availableFacets, setAvailableFacets] = useState<Context['availableFacets']>(initialFacets)
+  const [availableFacets, setAvailableFacets] = useState<Context['availableFacets']>({})
   const [selectedFacets, setSelectedFacets] = useState<Context['selectedFacets']>({})
 
   const isFiltering = Object.entries(selectedFacets).length > 0

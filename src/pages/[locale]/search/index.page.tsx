@@ -6,13 +6,12 @@ import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
 import { CatalogProvider, useCatalogContext } from '#contexts/CatalogContext'
 import { flattenProductsFromCatalog, getCatalog } from '#data/catalogs'
-import type { Facets, LocalizedProductWithVariant } from '#data/products'
+import type { LocalizedProductWithVariant } from '#data/products'
 import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
-import { flattenProductVariants, getFacets } from '#utils/products'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 type Query = {
@@ -21,7 +20,6 @@ type Query = {
 
 type Props = HeaderProps & {
   products: LocalizedProductWithVariant[]
-  facets: Facets
 }
 
 const ProductList: React.FC = () => {
@@ -38,13 +36,13 @@ const ProductList: React.FC = () => {
   )
 }
 
-const SearchIndexPage: NextPage<Props> = ({ navigation, products, facets }) => {
+const SearchIndexPage: NextPage<Props> = ({ navigation, products }) => {
   return (
     <Page>
       <Container>
         <Header navigation={navigation} />
 
-        <CatalogProvider products={products} availableFacets={facets}>
+        <CatalogProvider products={products}>
           <Facet />
 
           <h2 className='mt-16 block text-2xl font-semibold text-black'>All Products</h2>
@@ -71,17 +69,11 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const locale = getLocale(localeCode)
   const catalog = getCatalog(locale, rawDataProducts)
 
-
-
   const products = flattenProductsFromCatalog(catalog)
-
-  const flattenProducts = flattenProductVariants(products)
 
   return {
     props: {
-
       products,
-      facets: getFacets(flattenProducts),
       navigation: getRootNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
     }
