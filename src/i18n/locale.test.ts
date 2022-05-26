@@ -1,5 +1,5 @@
-import type { Country } from '#data/countries'
-import type { Language } from '#data/languages'
+import type { RawDataCountry } from '#data/countries'
+import type { RawDataLanguage } from '#data/languages'
 import { getLocale, Locale, makeLocaleCode, makeLocales, parseLocaleCode, translateField } from './locale'
 
 
@@ -15,10 +15,10 @@ describe('makeLocaleCode', () => {
 
 describe('makeLocales', () => {
   it('should create locales from a list of countries and languages', () => {
-    const unitedStates: Country = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas', catalog: 'AMER' }
-    const italy: Country = { code: 'IT', default_language: 'it', market: 401, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
-    const italian: Language = { code: 'it', name: 'ITA', catalog: 'AMER' }
-    const english: Language = { code: 'en', name: 'ENG', catalog: 'AMER' }
+    const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const italy: RawDataCountry = { code: 'IT', default_language: 'it', market: 401, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
+    const italian: RawDataLanguage = { code: 'it', name: 'ITA', catalog: 'AMER' }
+    const english: RawDataLanguage = { code: 'en', name: 'ENG', catalog: 'AMER' }
 
     const actual = makeLocales([italian, english], [unitedStates, italy])
 
@@ -46,8 +46,8 @@ describe('parseLocale', () => {
 
 describe('getLocale', () => {
   it('should be able to return a Locale gived a localeCode', () => {
-    const unitedStates: Country = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas', catalog: 'AMER' }
-    const italian: Language = { code: 'it', name: 'ITA', catalog: 'AMER' }
+    const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const italian: RawDataLanguage = { code: 'it', name: 'ITA', catalog: 'AMER' }
 
     const locale = getLocale('it-US')
 

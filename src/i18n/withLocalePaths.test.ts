@@ -1,13 +1,13 @@
-import type { Country } from '#data/countries'
-import type { Language } from '#data/languages'
+import type { RawDataCountry } from '#data/countries'
+import type { RawDataLanguage } from '#data/languages'
 import type { GetStaticPathsResult } from 'next'
 import { Locale, locales } from './locale'
 import { withLocalePaths } from './withLocalePaths'
 
-const unitedStates: Country = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas', catalog: 'AMER' }
-const italy: Country = { code: 'IT', default_language: 'it', market: 401, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
-const italian: Language = { code: 'it', name: 'Italiano', catalog: 'AMER' }
-const english: Language = { code: 'en', name: 'English', catalog: 'AMER' }
+const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas', catalog: 'AMER' }
+const italy: RawDataCountry = { code: 'IT', default_language: 'it', market: 401, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
+const italian: RawDataLanguage = { code: 'it', name: 'Italiano', catalog: 'AMER' }
+const english: RawDataLanguage = { code: 'en', name: 'English', catalog: 'AMER' }
 
 const itUS: Locale = { "code": "it-us", "country": unitedStates, "language": italian }
 const enIT: Locale = { "code": "en-it", "country": italy, "language": english }

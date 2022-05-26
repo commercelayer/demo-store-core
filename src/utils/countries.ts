@@ -1,10 +1,10 @@
-import type { Country } from '#data/countries'
+import type { RawDataCountry } from '#data/countries'
 
 export type CountriesByRegion = {
-  [region: Country['region']]: Country[]
+  [region: RawDataCountry['region']]: RawDataCountry[]
 }
 
-export const groupByRegion = (countries: Country[]): CountriesByRegion => {
+export const groupByRegion = (countries: RawDataCountry[]): CountriesByRegion => {
   return countries.reduce((countriesByRegion, country) => {
     return {
       ...countriesByRegion,

@@ -1,7 +1,7 @@
 import type { LocalizedField } from '#i18n/locale'
 import productsJson from './json/products.json'
 
-export type Product = {
+export type RawDataProduct = {
   productCode: string
   variantCode: string
   code: string
@@ -23,4 +23,4 @@ export type Product = {
   }
 }
 
-export const rawDataProducts: Product[] = productsJson
+export const rawDataProducts: RawDataProduct[] = productsJson

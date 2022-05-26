@@ -34,6 +34,7 @@ test('home', () => {
   const taxonomy: Taxonomy = {
     _unserializable: Symbol.for('unserializable'),
     key: 'taxonomy_1',
+    facetKey: 'categories',
     label: 'Shop by categories',
     name: 'Default Category',
     taxons: [taxon]
@@ -44,7 +45,7 @@ test('home', () => {
     key: 'catalog_1',
     name: 'AMER',
     taxonomies: [taxonomy],
-    flattenProducts: []
+    productDataset: {}
   }
 
   const { container } = render(

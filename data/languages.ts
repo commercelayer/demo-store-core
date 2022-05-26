@@ -1,9 +1,9 @@
 import languagesJson from './json/languages.json'
 
-export type Language = {
+export type RawDataLanguage = {
   name: string;
   code: string;
   catalog: string;
 }
 
-export const rawDataLanguages: Language[] = languagesJson
+export const rawDataLanguages: RawDataLanguage[] = languagesJson

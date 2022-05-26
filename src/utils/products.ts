@@ -1,13 +1,13 @@
-import type { Product } from '#data/products'
+import type { RawDataProduct } from '#data/products'
 import { translateField } from '#i18n/locale'
 import uniqBy from 'lodash/uniqBy'
 
-export type LocalizedVariant = Omit<Product['variant'][number], 'label'> & {
+export type LocalizedVariant = Omit<RawDataProduct['variant'][number], 'label'> & {
   label: string
 }
 
 
-export type LocalizedProduct = Omit<Product, 'name' | 'description' | 'variant'> & {
+export type LocalizedProduct = Omit<RawDataProduct, 'name' | 'description' | 'variant'> & {
   _locale: string
   name: string
   description: string
@@ -102,7 +102,7 @@ export const getAlgoliaFacets = (products: LocalizedProductWithVariant[]): Facet
 */
 
 
-function resolveProductLocale(product: Product | LocalizedProduct, locale: string): LocalizedProduct {
+function resolveProductLocale(product: RawDataProduct | LocalizedProduct, locale: string): LocalizedProduct {
   if ('_locale' in product) {
     return product
   }
@@ -119,7 +119,7 @@ function resolveProductLocale(product: Product | LocalizedProduct, locale: strin
   }
 }
 
-function getProduct(code: string, locale: string, productList: (LocalizedProduct | Product)[]): LocalizedProduct {
+function getProduct(code: string, locale: string, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProduct {
   const product = productList.find(product => product.code === code)
 
   if (!product) {
@@ -129,13 +129,13 @@ function getProduct(code: string, locale: string, productList: (LocalizedProduct
   return resolveProductLocale(product, locale)
 }
 
-function getProductVariants(product: LocalizedProduct, productList: (LocalizedProduct | Product)[]): LocalizedProduct[] {
+function getProductVariants(product: LocalizedProduct, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProduct[] {
   return productList
     .filter(p => p.productCode === product.productCode)
     .map(p => resolveProductLocale(p, product._locale))
 }
 
-export function getProductWithVariants(code: string, locale: string, productList: (LocalizedProduct | Product)[]): LocalizedProductWithVariant {
+export function getProductWithVariants(code: string, locale: string, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProductWithVariant {
   const product = getProduct(code, locale, productList)
   const variants = getProductVariants(product, productList)
 

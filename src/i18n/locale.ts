@@ -1,11 +1,11 @@
-import { rawDataCountries, Country } from '#data/countries'
-import { Language, rawDataLanguages } from '#data/languages'
+import { rawDataCountries, RawDataCountry } from '#data/countries'
+import { RawDataLanguage, rawDataLanguages } from '#data/languages'
 import { combine } from '#utils/collection'
 
 export type Locale = {
   code: string
-  country?: Country
-  language: Language
+  country?: RawDataCountry
+  language: RawDataLanguage
 }
 
 const languageCodes = rawDataLanguages.map(language => language.code)
@@ -30,7 +30,7 @@ export function changeLanguage(localeCode: string, newLanguageCode: string) {
   return makeLocaleCode(newLanguageCode, countryCode)
 }
 
-export function makeLocales(languages: Language[], countries: Country[]): Locale[] {
+export function makeLocales(languages: RawDataLanguage[], countries: RawDataCountry[]): Locale[] {
   return combine(countries, languages, (country, language) => {
     const locale: Locale = {
       code: makeLocaleCode(language.code, country.code),

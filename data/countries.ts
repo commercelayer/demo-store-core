@@ -1,6 +1,6 @@
 import countriesJson from './json/countries.json'
 
-export type Country = {
+export type RawDataCountry = {
   name: string;
   code: string;
   market: number;
@@ -9,4 +9,4 @@ export type Country = {
   region: string;
 }
 
-export const rawDataCountries: Country[] = countriesJson
+export const rawDataCountries: RawDataCountry[] = countriesJson
