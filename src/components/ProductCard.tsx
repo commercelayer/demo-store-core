@@ -1,5 +1,5 @@
-import type { LocalizedProductWithVariant } from '#data/products'
 import { Link } from '#i18n/Link'
+import type { LocalizedProductWithVariant } from '#utils/products'
 import { getProductUrl } from '#utils/url'
 
 export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = ({ product }) => {

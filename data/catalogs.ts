@@ -1,4 +1,5 @@
-import type { LocalizedProduct, LocalizedProductWithVariant, Product } from '#data/products'
+import type { Product } from '#data/products'
+import type { LocalizedProduct, LocalizedProductWithVariant } from '#utils/products'
 import { Locale } from '#i18n/locale'
 import { deepFind, DeepFindResult } from '#utils/collection'
 import { getProductWithVariants } from '#utils/products'

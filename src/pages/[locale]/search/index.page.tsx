@@ -6,12 +6,12 @@ import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
 import { CatalogProvider, useCatalogContext } from '#contexts/CatalogContext'
 import { flattenProductsFromCatalog, getCatalog } from '#data/catalogs'
-import type { LocalizedProductWithVariant } from '#data/products'
 import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
+import type { LocalizedProductWithVariant } from '#utils/products'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 type Query = {

@@ -1,4 +1,4 @@
-import { Facets, LocalizedProductWithVariant } from '#data/products'
+import type { LocalizedProductWithVariant } from '#utils/products'
 import { flattenProductVariants, getProductWithVariants } from '#utils/products'
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import type Fuse from 'fuse.js'
@@ -9,12 +9,12 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { useAuthContext } from './AuthContext'
 
 type SelectedFacets = {
-  [name: string]: Facets[string]
+  [name: string]: LocalizedProductWithVariant['facets'][string]
 }
 
 type Context = {
   products: LocalizedProductWithVariant[]
-  availableFacets: Facets
+  availableFacets: LocalizedProductWithVariant['facets']
   selectedFacets: SelectedFacets
   selectFacet: (name: string, value: string) => void
 }

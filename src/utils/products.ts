@@ -1,6 +1,106 @@
-import type { Facets, LocalizedProduct, LocalizedProductWithVariant, Product } from '#data/products'
+import type { Product } from '#data/products'
 import { translateField } from '#i18n/locale'
 import uniqBy from 'lodash/uniqBy'
+
+export type LocalizedVariant = Omit<Product['variant'][number], 'label'> & {
+  label: string
+}
+
+
+export type LocalizedProduct = Omit<Product, 'name' | 'description' | 'variant'> & {
+  _locale: string
+  name: string
+  description: string
+  variant: LocalizedVariant[]
+}
+
+export type LocalizedProductWithVariant = LocalizedProduct & {
+  variants: LocalizedProduct[]
+}
+
+
+
+
+
+
+// type Primitives = number | string | undefined
+
+// type NestedFacet = {
+//   [nested: string]: Primitives
+// }
+
+
+// type HierarchyFacet = {
+//   [child: string]: Primitives | Primitives[]
+// }
+
+// export type AlgoliaFacets = {
+//   [name: string]: Primitives | Primitives[] | HierarchyFacet | NestedFacet[]
+// }
+
+// type FacetsResult = {
+//   [name: string]: {
+//     [value: string]: number
+//   } | {
+//     [value: string]: number
+//   }[]
+// }
+
+/*
+// @ts-ignore
+export const getAlgoliaFacets = (products: LocalizedProductWithVariant[]): FacetsResult => {
+  return products.reduce((facets, product) => {
+    Object.entries(product.facets).map(([facetName, facetValues]) => {
+      if (Array.isArray(facetValues)) {
+        facetValues.forEach(facetValue => {
+          if (facetValue) {
+            facets[facetName] = facets[facetName] || {}
+            let facet = facets[facetName]
+            // @ts-ignore
+            facet[facetValue] = facet[facetValue] || 0
+            // @ts-ignore
+            facet[facetValue]++
+          }
+        })
+      } else {
+        if (facetValues) {
+          if (typeof facetValues === 'number' || typeof facetValues === 'string') {
+            facets[facetName] = facets[facetName] || {}
+            let facet = facets[facetName]
+            facet[facetValues] = facet[facetValues] || 0
+            facet[facetValues]++
+          } else {
+            // @ts-ignore
+            Object.entries(facetValues).forEach(([level, values], index) => {
+              facets[facetName] = facets[facetName] || []
+              if (Array.isArray(facets[facetName])) {
+                // @ts-ignore
+                facets[facetName][index] = facets[facetName][index] || {}
+                if (Array.isArray(values)) {
+                  values.forEach((v) => {
+                    // @ts-ignore
+                    facets[facetName][index][v] = facets[facetName][index][v] || 0
+                    // @ts-ignore
+                    facets[facetName][index][v]++
+                  })
+                } else {
+                  // @ts-ignore
+                  facets[facetName][index][values] = facets[facetName][index][values] || 0
+                  // @ts-ignore
+                  facets[facetName][index][values]++
+                }
+              }
+            })
+          }
+        }
+      }
+    })
+
+    return facets
+  }, {} as FacetsResult)
+}
+*/
+
 
 function resolveProductLocale(product: Product | LocalizedProduct, locale: string): LocalizedProduct {
   if ('_locale' in product) {
@@ -59,7 +159,7 @@ export function flattenProductVariants(products: LocalizedProductWithVariant[]):
   )
 }
 
-export const getFacets = (products: LocalizedProductWithVariant[]): Facets => {
+export const getFacets = (products: LocalizedProductWithVariant[]): LocalizedProductWithVariant['facets'] => {
   return products.reduce((facets, product) => {
     Object.entries(product.facets).map(([facetName, facetValues]) => {
       facets[facetName] = facets[facetName] || []
@@ -72,5 +172,5 @@ export const getFacets = (products: LocalizedProductWithVariant[]): Facets => {
     })
 
     return facets
-  }, {} as Facets)
+  }, {} as LocalizedProductWithVariant['facets'])
 }

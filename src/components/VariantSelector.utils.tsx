@@ -1,4 +1,4 @@
-import type { LocalizedVariant } from '#data/products'
+import type { LocalizedVariant } from '#utils/products'
 import uniqBy from 'lodash/uniqBy'
 
 export const previousSelectionMatches = (current: LocalizedVariant[], variant: LocalizedVariant[], index: number): boolean => {
