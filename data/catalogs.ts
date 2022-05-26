@@ -1,8 +1,8 @@
 import type { Product } from '#data/products'
-import type { LocalizedProduct, LocalizedProductWithVariant } from '#utils/products'
-import { Locale } from '#i18n/locale'
+import type { Locale } from '#i18n/locale'
 import { deepFind, DeepFindResult } from '#utils/collection'
-import { getProductWithVariants } from '#utils/products'
+import type { LocalizedProduct, LocalizedProductWithVariant } from '#utils/products'
+import { flattenProductVariants, getProductWithVariants } from '#utils/products'
 import uniq from 'lodash/uniq'
 import uniqBy from 'lodash/uniqBy'
 import catalogsJson from './json/catalogs.json'
@@ -22,20 +22,7 @@ type JsonTaxonomy = {
   taxons: string[]
 }
 
-export type Catalog = Omit<JsonCatalog, 'taxonomies'> & {
-  taxonomies: Taxonomy[]
-}
-
-export type Taxonomy = Omit<JsonTaxonomy, 'taxons'> & {
-  taxons: Taxon[]
-}
-
-export type Taxon = Omit<JsonTaxon, 'references' | 'taxons'> & {
-  products: LocalizedProductWithVariant[]
-  taxons: Taxon[]
-}
-
-export type JsonTaxon = {
+type JsonTaxon = {
   key: string
   label: string
   description: string
@@ -50,6 +37,24 @@ const rawDataCatalogs: JsonCatalog[] = catalogsJson
 const rawDataTaxonomies: JsonTaxonomy[] = taxonomiesJson
 const rawDataTaxons: JsonTaxon[] = taxonsJson
 
+
+export type Catalog = Omit<JsonCatalog, 'taxonomies'> & {
+  _unserializable: Symbol
+  taxonomies: Taxonomy[]
+  flattenProducts: LocalizedProductWithVariant[]
+}
+
+export type Taxonomy = Omit<JsonTaxonomy, 'taxons'> & {
+  _unserializable: Symbol
+  taxons: Taxon[]
+}
+
+export type Taxon = Omit<JsonTaxon, 'references' | 'taxons'> & {
+  _unserializable: Symbol
+  products: LocalizedProductWithVariant[]
+  taxons: Taxon[]
+}
+
 export const getCatalog = (locale: Locale, productDataSet: Product[] = []): Catalog => {
   const name = locale.country?.catalog || locale.language.catalog
   const catalog = rawDataCatalogs.find(catalog => catalog.name === name)
@@ -58,15 +63,10 @@ export const getCatalog = (locale: Locale, productDataSet: Product[] = []): Cata
     throw new Error(`Cannot find the catalog with name "${name}"`)
   }
 
-  if (productDataSet.length > 0) {
-    // TODO: this should return the productList for 'resolveCatalog'
-    buildProductList(catalog, locale.code, productDataSet)
-  }
+  const productList = buildProductList(catalog, locale.code, productDataSet)
 
-  return resolveCatalog(catalog, locale.code, Object.values(builtProductList))
+  return resolveCatalog(catalog, locale.code, productList)
 }
-
-const builtProductList: { [code: LocalizedProduct['code']]: LocalizedProduct } = {}
 
 function flattenReferences(taxon: JsonTaxon): string[] {
   return taxon.references.concat(
@@ -74,7 +74,39 @@ function flattenReferences(taxon: JsonTaxon): string[] {
   )
 }
 
-function buildProductList(catalog: JsonCatalog, locale: string, productDataSet: Product[] = []): void {
+function buildProductList(catalog: JsonCatalog, locale: string, productDataSet: Product[] = []): LocalizedProductWithVariant[] {
+  if (productDataSet.length <= 0) {
+    return []
+  }
+
+  const builtProductList: { [code: LocalizedProductWithVariant['code']]: LocalizedProductWithVariant } = {}
+
+  function buildProductList_taxon(taxonKey: string, prevTaxons: JsonTaxon[], taxonomy: JsonTaxonomy, locale: string, productDataSet: Product[]): void {
+    const taxon = rawDataTaxons.find(taxon => taxon.key === taxonKey)
+
+    if (!taxon) {
+      throw new Error(`Taxon ${taxonKey} not found!`)
+    }
+
+    const products = flattenReferences(taxon).map(ref => getProductWithVariants(ref, locale, productDataSet))
+
+    flattenProductVariants(products).forEach(product => {
+      builtProductList[product.code] = builtProductList[product.code] || product
+      builtProductList[product.code] = {
+        ...builtProductList[product.code],
+        facets: {
+          ...builtProductList[product.code].facets,
+          [taxonomy.label!]: uniq([
+            ...builtProductList[product.code].facets[taxonomy.label!] || [],
+            `${prevTaxons.length > 0 ? prevTaxons.map(t => `${t.label} > `).join('') : ''}${taxon.label}`
+          ])
+        }
+      }
+    })
+
+    taxon.taxons?.forEach(taxonKey => buildProductList_taxon(taxonKey, prevTaxons.concat(taxon), taxonomy, locale, productDataSet))
+  }
+
   catalog.taxonomies.forEach(taxonomyKey => {
     const taxonomy = rawDataTaxonomies.find(taxonomy => taxonomy.key === taxonomyKey)
 
@@ -84,44 +116,23 @@ function buildProductList(catalog: JsonCatalog, locale: string, productDataSet: 
 
     taxonomy.taxons.forEach(taxonKey => buildProductList_taxon(taxonKey, [], taxonomy, locale, productDataSet))
   })
+
+  return Object.values(builtProductList)
 }
 
-function buildProductList_taxon(taxonKey: string, prevTaxons: JsonTaxon[], taxonomy: JsonTaxonomy, locale: string, productDataSet: Product[]): void {
-  const taxon = rawDataTaxons.find(taxon => taxon.key === taxonKey)
-
-  if (!taxon) {
-    throw new Error(`Taxon ${taxonKey} not found!`)
-  }
-
-  const products = flattenReferences(taxon).map(ref => getProductWithVariants(ref, locale, productDataSet))
-
-  products.flatMap(p => p.variants).concat(products).forEach(product => {
-    builtProductList[product.code] = builtProductList[product.code] || product
-    builtProductList[product.code] = {
-      ...builtProductList[product.code],
-      facets: {
-        ...builtProductList[product.code].facets,
-        [taxonomy.label!]: uniq([
-          ...builtProductList[product.code].facets[taxonomy.label!] || [],
-          `${prevTaxons.length > 0 ? prevTaxons.map(t => `${t.label} > `).join('') : ''}${taxon.label}`
-        ])
-      }
-    }
-  })
-
-  taxon.taxons?.forEach(taxonKey => buildProductList_taxon(taxonKey, prevTaxons.concat(taxon), taxonomy, locale, productDataSet))
-}
-
-const resolveCatalog = (catalog: JsonCatalog, locale: string, productList: LocalizedProduct[]): Catalog => {
+const resolveCatalog = (catalog: JsonCatalog, locale: string, productList: LocalizedProductWithVariant[]): Catalog => {
   return {
+    _unserializable: Symbol.for('unserializable'),
     key: catalog.key,
     name: catalog.name,
-    taxonomies: catalog.taxonomies.map(taxonomyKey => rawDataTaxonomies.find(taxonomy => taxonomy.key === taxonomyKey)!).map(taxonomy => resolveTaxonomy(taxonomy, locale, productList))
+    taxonomies: catalog.taxonomies.map(taxonomyKey => rawDataTaxonomies.find(taxonomy => taxonomy.key === taxonomyKey)!).map(taxonomy => resolveTaxonomy(taxonomy, locale, productList)),
+    flattenProducts: productList
   }
 }
 
 const resolveTaxonomy = (taxonomy: JsonTaxonomy, locale: string, productList: LocalizedProduct[]): Taxonomy => {
   return {
+    _unserializable: Symbol.for('unserializable'),
     key: taxonomy.key,
     label: taxonomy.label,
     name: taxonomy.name,
@@ -131,6 +142,7 @@ const resolveTaxonomy = (taxonomy: JsonTaxonomy, locale: string, productList: Lo
 
 const resolveTaxon = (taxon: JsonTaxon, locale: string, productList: LocalizedProduct[]): Taxon => {
   return {
+    _unserializable: Symbol.for('unserializable'),
     key: taxon.key,
     label: taxon.label,
     description: taxon.description,

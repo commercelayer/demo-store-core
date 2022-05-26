@@ -1,6 +1,6 @@
-import { Country } from '#data/countries'
-import { Language } from '#data/languages'
-import { GetStaticPathsResult } from 'next'
+import type { Country } from '#data/countries'
+import type { Language } from '#data/languages'
+import type { GetStaticPathsResult } from 'next'
 import { Locale, locales } from './locale'
 import { withLocalePaths } from './withLocalePaths'
 

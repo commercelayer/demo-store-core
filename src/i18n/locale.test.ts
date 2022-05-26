@@ -1,7 +1,7 @@
-import { Country } from '#data/countries'
-import { Language } from '#data/languages'
-
+import type { Country } from '#data/countries'
+import type { Language } from '#data/languages'
 import { getLocale, Locale, makeLocaleCode, makeLocales, parseLocaleCode, translateField } from './locale'
+
 
 describe('makeLocaleCode', () => {
   it('creates a localeCode given a countryCode and a languageCode', () => {

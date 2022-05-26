@@ -1,4 +1,4 @@
-import { LocalizedField } from '#i18n/locale'
+import type { LocalizedField } from '#i18n/locale'
 import productsJson from './json/products.json'
 
 export type Product = {

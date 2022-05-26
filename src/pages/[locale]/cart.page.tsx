@@ -9,7 +9,7 @@ import { getLocale } from '#i18n/locale'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
 import { CheckoutLink, Errors, LineItem, LineItemAmount, LineItemImage, LineItemName, LineItemQuantity, LineItemRemoveLink, LineItemsContainer, LineItemsCount, OrderContainer, OrderStorage } from '@commercelayer/react-components'
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 
 type Query = {

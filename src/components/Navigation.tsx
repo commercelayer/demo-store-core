@@ -1,5 +1,5 @@
 import { Link } from '#i18n/Link'
-import { NavigationPath } from '@typings/navigation.d'
+import type { NavigationPath } from '@typings/navigation.d'
 
 export type Props = {
   navigation: NavigationPath

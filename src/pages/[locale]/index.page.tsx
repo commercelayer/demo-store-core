@@ -2,7 +2,7 @@ import { Container } from '#components/Container'
 import { Footer } from '#components/Footer'
 import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
-import { getCatalog, Taxonomy } from '#data/catalogs'
+import { getCatalog } from '#data/catalogs'
 import { Link } from '#i18n/Link'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
@@ -18,7 +18,16 @@ type Query = {
 }
 
 type Props = HeaderProps & {
-  primaryTaxonomy: Taxonomy
+  primaryTaxonomy: {
+    key: string
+    taxons: {
+      key: string
+      slug: string
+      image?: string
+      description: string
+      label: string
+    }[]
+  }
 }
 
 const HomePage: NextPage<Props> = ({ navigation, primaryTaxonomy }) => {
@@ -36,7 +45,7 @@ const HomePage: NextPage<Props> = ({ navigation, primaryTaxonomy }) => {
   )
 }
 
-const LegacyTaxonomyComponent: React.FC<{ taxonomy: Taxonomy }> = ({ taxonomy }) => {
+const LegacyTaxonomyComponent: React.FC<{ taxonomy: Props['primaryTaxonomy'] }> = ({ taxonomy }) => {
   const i18n = useI18n();
 
   return (
@@ -80,11 +89,13 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
     props: {
 
       primaryTaxonomy: { // TODO: remove from homepage
-        ...catalog.taxonomies[0],
+        key: catalog.taxonomies[0].key,
         taxons: catalog.taxonomies[0].taxons.map(taxon => ({
-          ...taxon,
-          taxons: [],
-          products: []
+          description: taxon.description,
+          image: taxon.image,
+          key: taxon.key,
+          label: taxon.label,
+          slug: taxon.slug
         }))
       },
 

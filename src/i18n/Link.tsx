@@ -1,7 +1,6 @@
 import NextLink, { LinkProps as NextLinkProps } from 'next/link'
 import { useRouter } from 'next/router'
-import { FC } from 'react'
-import { UrlObject } from 'url'
+import type { UrlObject } from 'url'
 
 declare type Url = string | UrlObject;
 
@@ -11,7 +10,7 @@ type LinkProps = Omit<NextLinkProps, 'locale' | 'href'>
     | { locale: string }
   )
 
-export const Link: FC<LinkProps> = ({ children, ...props }) => {
+export const Link: React.FC<LinkProps> = ({ children, ...props }) => {
   const router = useRouter()
 
   if ('locale' in props) {

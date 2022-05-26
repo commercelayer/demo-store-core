@@ -1,12 +1,11 @@
 import { Globe } from '#assets/icons'
-import { rawDataLanguages } from '#data/languages'
-import { Link } from '#i18n/Link';
-import { changeLanguage, getLocale, parseLocaleCode } from '#i18n/locale'
-import { useRouter } from 'next/router';
-import { FC } from 'react';
 import { Container } from '#components/Container'
+import { rawDataLanguages } from '#data/languages'
+import { Link } from '#i18n/Link'
+import { changeLanguage, getLocale, parseLocaleCode } from '#i18n/locale'
+import { useRouter } from 'next/router'
 
-export const Footer: FC = () => {
+export const Footer: React.FC = () => {
   const router = useRouter()
   const locale = getLocale(router.query.locale)
 

@@ -1,6 +1,6 @@
 import { combine } from '#utils/collection'
-import { GetStaticPathsResult } from 'next'
-import { ParsedUrlQuery } from 'querystring'
+import type { GetStaticPathsResult } from 'next'
+import type { ParsedUrlQuery } from 'querystring'
 import { Locale, locales as allLocales } from './locale'
 
 // @ts-expect-error

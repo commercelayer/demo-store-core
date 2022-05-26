@@ -1,9 +1,9 @@
-import { AuthReturnType as OriginalAuthReturnType } from '@commercelayer/js-auth'
-import { render, act, screen } from '@testing-library/react'
-import { Auth } from './Auth'
-import CommerceLayerContext from '@commercelayer/react-components/lib/context/CommerceLayerContext'
-import { useContext } from 'react'
 import { useAuthContext } from '#contexts/AuthContext'
+import type { AuthReturnType as OriginalAuthReturnType } from '@commercelayer/js-auth'
+import CommerceLayerContext from '@commercelayer/react-components/lib/context/CommerceLayerContext'
+import { act, render, screen } from '@testing-library/react'
+import { useContext } from 'react'
+import { Auth } from './Auth'
 
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
 const getSalesChannelToken = jest.spyOn(require('@commercelayer/js-auth'), 'getSalesChannelToken')

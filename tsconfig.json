@@ -18,6 +18,7 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "importsNotUsedAsValues": "error",
     "paths": {
       "#assets/*": ["src/assets/*"],
       "#components/*": ["src/components/*"],

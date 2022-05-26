@@ -1,4 +1,4 @@
-import { Catalog, Taxon, Taxonomy } from '#data/catalogs'
+import type { Catalog, Taxon, Taxonomy } from '#data/catalogs'
 import { getRootNavigationLinks } from '#utils/catalog'
 import { render, screen, within } from '@testing-library/react'
 import { I18nProvider } from 'next-localization'
@@ -20,6 +20,7 @@ jest.mock('next/router', () => ({
 
 test('home', () => {
   const taxon: Taxon = {
+    _unserializable: Symbol.for('unserializable'),
     key: 'taxon_1',
     label: 'Accessories',
     description: 'Accessories',
@@ -31,6 +32,7 @@ test('home', () => {
   }
 
   const taxonomy: Taxonomy = {
+    _unserializable: Symbol.for('unserializable'),
     key: 'taxonomy_1',
     label: 'Shop by categories',
     name: 'Default Category',
@@ -38,9 +40,11 @@ test('home', () => {
   }
 
   const catalog: Catalog = {
+    _unserializable: Symbol.for('unserializable'),
     key: 'catalog_1',
     name: 'AMER',
-    taxonomies: [taxonomy]
+    taxonomies: [taxonomy],
+    flattenProducts: []
   }
 
   const { container } = render(
