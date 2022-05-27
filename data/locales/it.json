@@ -6,6 +6,9 @@
   "facets": {
     "gender": "Genere",
     "category": "Categoria",
+    "price": {
+      "formatted_amount": "Prezzo"
+    },
     "color": "Colore",
     "size": "Taglia"
   },
