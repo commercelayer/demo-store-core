@@ -20,7 +20,7 @@ export type LocalizedProductWithVariant = LocalizedProduct & {
 
 
 
-function resolveProductLocale(product: RawDataProduct | LocalizedProduct, locale: string): LocalizedProduct {
+function resolveProductLocale(product: RawDataProduct | LocalizedProduct | LocalizedProductWithVariant, locale: string): LocalizedProduct | LocalizedProductWithVariant {
   if ('_locale' in product) {
     return product
   }
@@ -47,10 +47,20 @@ function getProduct(code: string, locale: string, productList: (LocalizedProduct
   return resolveProductLocale(product, locale)
 }
 
-function getProductVariants(product: LocalizedProduct, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProduct[] {
+function getProductVariants(product: LocalizedProduct, productList: (RawDataProduct | LocalizedProduct | LocalizedProductWithVariant)[]): LocalizedProduct[] {
   return productList
     .filter(p => p.productCode === product.productCode)
-    .map(p => resolveProductLocale(p, product._locale))
+    .map(p => {
+      const localizedProduct = resolveProductLocale(p, product._locale)
+
+      if ('variants' in localizedProduct) {
+        // @ts-expect-error
+        delete localizedProduct['variants']
+        return localizedProduct as LocalizedProduct
+      }
+
+      return localizedProduct
+    })
 }
 
 export function getProductWithVariants(code: string, locale: string, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProductWithVariant {

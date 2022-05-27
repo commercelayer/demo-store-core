@@ -1,0 +1,96 @@
+$primaryColor: theme('colors.gray.800');
+$backgroundColor: theme('colors.gray.100');
+$height: 3px;
+
+.numberInput {
+  width: 100%;
+  display: flex;
+  margin: 30px 0 35px;
+
+  display: none;
+
+  :global(.separator) {
+    width: 130px;
+    display: flex;
+    font-size: 19px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.field) {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+
+    input {
+      width: 100%;
+      height: 100%;
+      outline: none;
+      font-size: 19px;
+      margin-left: 12px;
+      border-radius: $height;
+      text-align: center;
+      border: 1px solid #999;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+  }
+}
+
+.slider {
+  height: $height;
+  position: relative;
+  background: $backgroundColor;
+  border-radius: $height;
+
+  :global(.progress) {
+    height: 100%;
+    left: 0%;
+    right: 0%;
+    position: absolute;
+    border-radius: $height;
+    background: $primaryColor;
+  }
+}
+
+.rangeInput {
+  position: relative;
+
+  input {
+    position: absolute;
+    width: 100%;
+    height: $height;
+    top: -$height;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &::-webkit-slider-thumb {
+      height: 16px;
+      width: 16px;
+      border: 2px solid white;
+      border-radius: 50%;
+      background: $primaryColor;
+      pointer-events: auto;
+      -webkit-appearance: none;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    }
+
+    &::-moz-range-thumb {
+      height: 16px;
+      width: 16px;
+      border: 2px solid white;
+      border-radius: 50%;
+      background: $primaryColor;
+      pointer-events: auto;
+      -moz-appearance: none;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    }
+  }
+}
