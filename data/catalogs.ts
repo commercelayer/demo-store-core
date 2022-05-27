@@ -11,15 +11,14 @@ type RawDataCatalog = {
 type RawDataTaxonomy = {
   key: string
   facetKey: string
-  label?: string
   name: string
   taxons: string[]
 }
 
 type RawDataTaxon = {
   key: string
-  label: string
-  description: string
+  label: LocalizedField<string>
+  description: LocalizedField<string>
   name: string
   slug: string
   image?: string
@@ -30,6 +29,9 @@ type RawDataTaxon = {
 const rawDataCatalogs: RawDataCatalog[] = catalogsJson
 const rawDataTaxonomies: RawDataTaxonomy[] = taxonomiesJson
 const rawDataTaxons: RawDataTaxon[] = taxonsJson
+
+
+
 
 
 // -------------------------------
@@ -50,26 +52,28 @@ type ProductDataset = {
 
 
 import type { RawDataProduct } from '#data/products'
-import type { Locale } from '#i18n/locale'
+import { Locale, LocalizedField, translateField } from '#i18n/locale'
 import { deepFind, DeepFindResult } from '#utils/collection'
 import type { LocalizedProductWithVariant } from '#utils/products'
 import { flattenProductVariants, getProductWithVariants } from '#utils/products'
 import uniq from 'lodash/uniq'
 import uniqBy from 'lodash/uniqBy'
+import type { Unserializable } from '#utils/unserializable'
 
-export type Catalog = Omit<RawDataCatalog, 'taxonomies'> & {
-  _unserializable: Symbol
+export type Catalog = Unserializable<Omit<RawDataCatalog, 'taxonomies'> & {
   taxonomies: Taxonomy[]
   productDataset: ProductDataset
-}
+}>
 
 export type Taxonomy = Omit<RawDataTaxonomy, 'taxons'> & {
   _unserializable: Symbol
   taxons: Taxon[]
 }
 
-export type Taxon = Omit<RawDataTaxon, 'references' | 'taxons'> & {
+export type Taxon = Omit<RawDataTaxon, 'label' | 'description' | 'references' | 'taxons'> & {
   _unserializable: Symbol
+  label: string
+  description: string
   products: LocalizedProductWithVariant[]
   taxons: Taxon[]
 }
@@ -117,9 +121,9 @@ function buildProductDataset(catalog: RawDataCatalog, locale: string, rawDataPro
         ...productDataset[product.code],
         facets: {
           ...productDataset[product.code].facets,
-          [taxonomy.label!]: uniq([
-            ...productDataset[product.code].facets[taxonomy.label!] || [],
-            `${prevTaxons.length > 0 ? prevTaxons.map(t => `${t.label} > `).join('') : ''}${taxon.label}`
+          [taxonomy.facetKey!]: uniq([
+            ...productDataset[product.code].facets[taxonomy.facetKey!] || [],
+            `${prevTaxons.length > 0 ? prevTaxons.map(t => `${translateField(t.label, locale)} > `).join('') : ''}${translateField(taxon.label, locale)}`
           ])
         }
       }
@@ -168,7 +172,6 @@ const resolveTaxonomy = (taxonomy: RawDataTaxonomy, locale: string, productList:
     _unserializable: Symbol.for('unserializable'),
     key: taxonomy.key,
     facetKey: taxonomy.facetKey,
-    label: taxonomy.label,
     name: taxonomy.name,
     taxons: taxonomy.taxons
       .map(getTaxon)
@@ -180,8 +183,8 @@ const resolveTaxon = (taxon: RawDataTaxon, locale: string, productList: Localize
   return {
     _unserializable: Symbol.for('unserializable'),
     key: taxon.key,
-    label: taxon.label,
-    description: taxon.description,
+    label: translateField(taxon.label, locale),
+    description: translateField(taxon.description, locale),
     name: taxon.name,
     slug: taxon.slug,
     ...(taxon.image ? { image: taxon.image } : {}),

@@ -2,35 +2,30 @@
   {
     "key": "taxonomy_1",
     "facetKey": "category",
-    "label": "Shop by categories",
     "name": "Category AMER - default",
     "taxons": ["taxon_1", "taxon_3", "taxon_4", "taxon_5", "taxon_7", "taxon_8"]
   },
   {
     "key": "taxonomy_2",
     "facetKey": "category",
-    "label": "Shop by categories",
     "name": "Category EMEA",
     "taxons": ["taxon_5", "taxon_3", "taxon_11", "taxon_8", "taxon_4"]
   },
   {
     "key": "taxonomy_3",
     "facetKey": "category",
-    "label": "Shop by categories",
     "name": "Category APAC",
     "taxons": ["taxon_7", "taxon_5", "taxon_1", "taxon_3"]
   },
   {
     "key": "taxonomy_4",
     "facetKey": "gender",
-    "label": "Shop by gender",
     "name": "Default Gender",
     "taxons": ["taxon_2", "taxon_6", "taxon_9", "taxon_10"]
   },
   {
     "key": "taxonomy_5",
     "facetKey": "gender",
-    "label": "Shop by gender",
     "name": "Gender APAC",
     "taxons": ["taxon_9", "taxon_10"]
   }

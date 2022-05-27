@@ -1,8 +1,14 @@
 [
   {
     "key": "taxon_1",
-    "label": "Accessories",
-    "description": "Accessories",
+    "label": {
+      "en": "Accessories",
+      "it": "Accessori"
+    },
+    "description": {
+      "en": "Accessories",
+      "it": "Accessori"
+    },
     "slug": "accessories",
     "name": "All Accessories",
     "image": "/assets/images/samsung-case-samsung-galaxy-s21-plus-lifestyle-4-60f836d4aaa9d.png",
@@ -29,8 +35,14 @@
   },
   {
     "key": "taxon_2",
-    "label": "Baby",
-    "description": "Baby",
+    "label": {
+      "en": "Baby",
+      "it": "Baby"
+    },
+    "description": {
+      "en": "Baby",
+      "it": "Baby"
+    },
     "slug": "baby",
     "name": "All Products for Babies",
     "image": "/assets/images/",
@@ -42,8 +54,14 @@
   },
   {
     "key": "taxon_3",
-    "label": "Bags",
-    "description": "Bags",
+    "label": {
+      "en": "Bags",
+      "it": "Borse"
+    },
+    "description": {
+      "en": "Bags",
+      "it": "Borse"
+    },
     "slug": "bags",
     "name": "All Bags",
     "image": "/assets/images/all-over-print-backpack-white-left-60ef0ff63444a.png",
@@ -67,8 +85,14 @@
   },
   {
     "key": "taxon_4",
-    "label": "Hats",
-    "description": "Hats",
+    "label": {
+      "en": "Hats",
+      "it": "Cappelli"
+    },
+    "description": {
+      "en": "Hats",
+      "it": "Cappelli"
+    },
     "slug": "hats",
     "name": "All Hats",
     "image": "/assets/images/5-panel-cap-black-front-60f04fcaa5177.png",
@@ -91,8 +115,14 @@
   },
   {
     "key": "taxon_5",
-    "label": "Home & Living",
-    "description": "Home & Living",
+    "label": {
+      "en": "Home & Living",
+      "it": "Casa"
+    },
+    "description": {
+      "en": "Home & Living",
+      "it": "Casa"
+    },
     "slug": "home-and-living",
     "name": "All Products for Home & Living",
     "image": "/assets/images/enamel-mug-white-12oz-right-60f0600681cd1.png",
@@ -116,8 +146,14 @@
   },
   {
     "key": "taxon_6",
-    "label": "Men",
-    "description": "Men",
+    "label": {
+      "en": "Men",
+      "it": "Uomo"
+    },
+    "description": {
+      "en": "Men",
+      "it": "Uomo"
+    },
     "slug": "men",
     "name": "All Products for Men",
     "image": "/assets/images/",
@@ -146,8 +182,14 @@
   },
   {
     "key": "taxon_7",
-    "label": "Shirts",
-    "description": "Shirts",
+    "label": {
+      "en": "Shirts",
+      "it": "Magliette"
+    },
+    "description": {
+      "en": "Shirts",
+      "it": "Magliette"
+    },
     "slug": "shirts",
     "name": "All Shirts",
     "image": "/assets/images/classic-polo-shirt-black-front-60f15d48dd89e.png",
@@ -159,8 +201,14 @@
   },
   {
     "key": "taxon_7A",
-    "label": "Polo",
-    "description": "Shirts",
+    "label": {
+      "en": "Polo",
+      "it": "Polo"
+    },
+    "description": {
+      "en": "Polo",
+      "it": "Polo"
+    },
     "slug": "shirts/polo",
     "name": "All Polo Shirts",
     "references": [],
@@ -168,8 +216,14 @@
   },
   {
     "key": "taxon_7AA",
-    "label": "Dark Polo",
-    "description": "Shirts",
+    "label": {
+      "en": "Dark Polo",
+      "it": "Polo Scure"
+    },
+    "description": {
+      "en": "Dark Polo",
+      "it": "Polo Scure"
+    },
     "slug": "shirts/polo/dark",
     "name": "All Polo Shirts",
     "references": [
@@ -179,8 +233,14 @@
   },
   {
     "key": "taxon_7AB",
-    "label": "All Others",
-    "description": "Shirts",
+    "label": {
+      "en": "All Others",
+      "it": "Tutte le altre"
+    },
+    "description": {
+      "en": "All Others",
+      "it": "Tutte le altre"
+    },
     "slug": "shirts/polo/others",
     "name": "All Polo Shirts",
     "references": [
@@ -191,8 +251,14 @@
   },
   {
     "key": "taxon_7B",
-    "label": "Other Shirts",
-    "description": "Shirts",
+    "label": {
+      "en": "Other Shirts",
+      "it": "Tutte le altre magliette"
+    },
+    "description": {
+      "en": "Other Shirts",
+      "it": "Tutte le altre magliette"
+    },
     "slug": "shirts/others",
     "name": "All Shirts",
     "references": [
@@ -228,8 +294,14 @@
   },
   {
     "key": "taxon_8",
-    "label": "Sweatshirts",
-    "description": "Sweatshirts",
+    "label": {
+      "en": "Sweatshirts",
+      "it": "Felpe"
+    },
+    "description": {
+      "en": "Sweatshirts",
+      "it": "Felpe"
+    },
     "slug": "sweatshirts",
     "name": "All Sweatshirts",
     "image": "/assets/images/unisex-34-sleeve-raglan-shirt-white-black-front-60f160767c5df.png",
@@ -251,8 +323,14 @@
   },
   {
     "key": "taxon_9",
-    "label": "Unisex",
-    "description": "Unisex",
+    "label": {
+      "en": "Unisex",
+      "it": "Unisex"
+    },
+    "description": {
+      "en": "Unisex",
+      "it": "Unisex"
+    },
     "slug": "unisex",
     "name": "All Unisex Products",
     "image": "/assets/images/",
@@ -327,8 +405,14 @@
   },
   {
     "key": "taxon_10",
-    "label": "Women",
-    "description": "Women",
+    "label": {
+      "en": "Women",
+      "it": "Donna"
+    },
+    "description": {
+      "en": "Women",
+      "it": "Donna"
+    },
     "slug": "women",
     "name": "All Products for Women",
     "image": "/assets/images/",
@@ -354,8 +438,14 @@
   },
   {
     "key": "taxon_11",
-    "label": "Shirts",
-    "description": "Shirts",
+    "label": {
+      "en": "Shirts",
+      "it": "Magliette"
+    },
+    "description": {
+      "en": "Shirts",
+      "it": "Magliette"
+    },
     "slug": "shirts",
     "name": "All Shirts Except Womens",
     "image": "/assets/images/classic-polo-shirt-black-front-60f15d48dd89e.png",
