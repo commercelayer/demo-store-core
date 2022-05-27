@@ -2,5 +2,17 @@
   "general": {
     "viewAll": "Mostra tutti",
     "search": "cerca"
+  },
+  "facets": {
+    "gender": "Genere",
+    "category": "Categoria",
+    "color": "Colore",
+    "size": "Taglia"
+  },
+  "facetValues": {
+    "000000": "Nero",
+    "FFFFFF": "Bianco",
+    "C2C2C2": "Grigio",
+    "E7DDC7": "Beige"
   }
 }

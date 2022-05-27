@@ -119,13 +119,11 @@ function buildProductDataset(catalog: RawDataCatalog, locale: string, rawDataPro
       productDataset[product.code] = productDataset[product.code] || product
       productDataset[product.code] = {
         ...productDataset[product.code],
-        facets: {
-          ...productDataset[product.code].facets,
-          [taxonomy.facetKey!]: uniq([
-            ...productDataset[product.code].facets[taxonomy.facetKey!] || [],
-            `${prevTaxons.length > 0 ? prevTaxons.map(t => `${translateField(t.label, locale)} > `).join('') : ''}${translateField(taxon.label, locale)}`
-          ])
-        }
+        [taxonomy.facetKey]: uniq([
+          // @ts-expect-error
+          ...(productDataset[product.code][taxonomy.facetKey] || []),
+          `${prevTaxons.length > 0 ? prevTaxons.map(t => `${translateField(t.label, locale)} > `).join('') : ''}${translateField(taxon.label, locale)}`
+        ])
       }
     })
 

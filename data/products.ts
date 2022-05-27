@@ -10,17 +10,23 @@ export type RawDataProduct = {
   description: LocalizedField<string>
   images: string[]
 
+  price?: {
+    id: string
+    amount_cents?: number
+    amount_float?: number
+    compare_at_amount_cents?: number
+    compare_at_amount_float?: number
+    currency_code?: string
+    formatted_amount?: string
+    formatted_compare_at_amount?: string
+  }
+
   // TODO: replace with flat model + config file
   variant: {
     name: string
     value: string
     label: LocalizedField<string>
   }[]
-  
-  // TODO: replace with flat model + config file
-  facets: {
-    [name: string]: string[] | undefined
-  }
 }
 
 export const rawDataProducts: RawDataProduct[] = productsJson

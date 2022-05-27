@@ -35,7 +35,6 @@ test('home', () => {
     _unserializable: Symbol.for('unserializable'),
     key: 'taxonomy_1',
     facetKey: 'categories',
-    label: 'Shop by categories',
     name: 'Default Category',
     taxons: [taxon]
   }

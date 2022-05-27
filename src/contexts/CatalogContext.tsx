@@ -1,3 +1,4 @@
+import type { FacetResult, Primitives } from '#utils/facets'
 import type { LocalizedProductWithVariant } from '#utils/products'
 import { flattenProductVariants, getProductWithVariants } from '#utils/products'
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
@@ -8,15 +9,13 @@ import { useRouter } from 'next/router'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { useAuthContext } from './AuthContext'
 
-type SelectedFacets = {
-  [name: string]: LocalizedProductWithVariant['facets'][string]
-}
+type SelectedFacets = FacetResult
 
 type Context = {
   products: LocalizedProductWithVariant[]
-  availableFacets: LocalizedProductWithVariant['facets']
+  availableFacets: FacetResult
   selectedFacets: SelectedFacets
-  selectFacet: (name: string, value: string) => void
+  selectFacet: (name: string, value: Primitives) => void
 }
 
 type Props = Omit<Context, 'availableFacets' | 'selectedFacets' | 'selectFacet'>
@@ -49,7 +48,7 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
   )
 
   const selectFacet = useMemo<Context['selectFacet']>(
-    () => (name: string, value: string) => {
+    () => (name: string, value: Primitives) => {
       const facets = { ...selectedFacets }
 
       facets[name] = facets[name] || []
@@ -97,7 +96,8 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
     let isMounted = true
 
     async function runSearch() {
-      const { flattenProductVariants, getFacets } = await import('#utils/products')
+      const { flattenProductVariants } = await import('#utils/products')
+      const { getFacets } = await import('#utils/facets')
 
       const resultFromFreeTextSearch = await freeTextSearch(productList, query)
       const result = await facetSearch(resultFromFreeTextSearch, selectedFacets)
@@ -181,9 +181,15 @@ const mapWithPrice = async (client: CommerceLayerClient, products: LocalizedProd
         prices.map((price) => {
           const productIndex = chunkedSkus[chunkIndex].findIndex(p => p.code === price.sku_code)
 
-          chunkedSkus[chunkIndex][productIndex].facets = {
-            ...chunkedSkus[chunkIndex][productIndex].facets,
-            price: [price.formatted_amount!]
+          chunkedSkus[chunkIndex][productIndex].price = {
+            id: price.id,
+            amount_cents: price.amount_cents,
+            amount_float: price.amount_float,
+            compare_at_amount_cents: price.compare_at_amount_cents,
+            compare_at_amount_float: price.compare_at_amount_float,
+            currency_code: price.currency_code,
+            formatted_amount: price.formatted_amount,
+            formatted_compare_at_amount: price.formatted_compare_at_amount
           }
         })
       } catch (e) {
@@ -208,7 +214,7 @@ async function freeTextSearch(products: LocalizedProductWithVariant[], query: st
     threshold: .3,
     keys: [
       'name',
-      'description',
+      'description'
     ]
   })
 
@@ -224,7 +230,7 @@ async function facetSearch(products: LocalizedProductWithVariant[], facets: Sele
   Object.entries(facets).forEach(([facetName, facetValue]) => {
     if (facetValue) {
       andExpression.push({
-        $or: facetValue.map(value => ({ $path: `facets.${facetName}`, $val: `="${value}"` }))
+        $or: facetValue.map(value => ({ $path: `${facetName}`, $val: `${value}` }))
       })
     }
   })
@@ -236,8 +242,11 @@ async function facetSearch(products: LocalizedProductWithVariant[], facets: Sele
   const fuse = new Fuse(products, {
     useExtendedSearch: true,
     threshold: .3,
-    keys: Object.keys(facets).map(facetName => `facets.${facetName}`)
+    keys: Object.keys(facets).map(facetName => `${facetName}`)
   })
+
+  console.log('keys', Object.keys(facets).map(facetName => `${facetName}`))
+  console.log('andExpression', andExpression)
 
   return uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
 }

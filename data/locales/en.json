@@ -2,5 +2,20 @@
   "general": {
     "viewAll": "View all",
     "search": "search"
+  },
+  "facets": {
+    "gender": "Gender",
+    "category": "Category",
+    "price": {
+      "formatted_amount": "Price"
+    },
+    "color": "Color",
+    "size": "Size"
+  },
+  "facetValues": {
+    "000000": "Black",
+    "FFFFFF": "White",
+    "C2C2C2": "Grey",
+    "E7DDC7": "Beige"
   }
 }
