@@ -17,10 +17,10 @@ export const InputRange: React.FC<Props> = ({ min = 0, max = 100, defaultValue =
 
   useEffect(() => {
     if (progressRef.current) {
-      progressRef.current.style.left = ((minValue / max) * 100) + "%"
-      progressRef.current.style.right = 100 - (maxValue / max) * 100 + "%"
+      progressRef.current.style.left = (((minValue - min) / (max - min)) * 100) + "%"
+      progressRef.current.style.right = 100 - ((maxValue - min) / (max - min)) * 100 + "%"
     }
-  }, [minValue, maxValue, max])
+  }, [minValue, maxValue, min, max])
 
   const handleMinValueChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const minVal = event.currentTarget.valueAsNumber

@@ -16,7 +16,6 @@ export const Facet: React.FC = () => {
 
   return (
     <div>
-
       {
         Object.entries(availableFacets).map(([facetName, facetValues]) => {
           if (facetValues.length > 0) {

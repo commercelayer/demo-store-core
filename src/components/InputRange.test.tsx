@@ -43,7 +43,7 @@ test('should change the lower defaultValue when "min" is set', () => {
   expect(getByTestId('range-input-1')).toHaveValue('-10')
   expect(getByTestId('range-input-2')).toHaveValue('100')
   expect(getByTestId('progress')).toHaveStyle({
-    left: '-10%',
+    left: '0%',
     right: '0%'
   })
 })
@@ -69,8 +69,8 @@ test('should change the provided value if lower than "min"', () => {
   expect(getByTestId('range-input-1')).toHaveValue('50')
   expect(getByTestId('range-input-2')).toHaveValue('90')
   expect(getByTestId('progress')).toHaveStyle({
-    left: '50%',
-    right: '10%'
+    left: '0%',
+    right: '20%'
   })
 })
 
@@ -145,4 +145,19 @@ test('lower value cannot be greater than upper value', () => {
 
   expect(rangeInput1).toHaveValue('20')
   expect(rangeInput2).toHaveValue('20')
+})
+
+test('should render the progress bar correctly', () => {
+  const { getByTestId } = render(<InputRange min={9} max={205} />)
+
+  const rangeInput1 = getByTestId('range-input-1')
+  const rangeInput2 = getByTestId('range-input-2')
+  const progress = getByTestId('progress')
+
+  expect(rangeInput1).toHaveValue('9')
+  expect(rangeInput2).toHaveValue('205')
+  expect(progress).toHaveStyle({
+    left: '0%',
+    right: '0%'
+  })
 })
