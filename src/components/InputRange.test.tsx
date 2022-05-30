@@ -17,8 +17,8 @@ test('should render with default properties', () => {
   expect(getByTestId('range-input-1')).toHaveValue('0')
   expect(getByTestId('range-input-2')).toHaveValue('100')
   expect(getByTestId('progress')).toHaveStyle({
-    left: '0%',
-    right: '0%'
+    left: 'calc(0% - 0px)',
+    right: 'calc(0% - 0px)'
   })
 })
 
@@ -30,8 +30,8 @@ test('should render changing the default values', () => {
   expect(getByTestId('range-input-1')).toHaveValue('10')
   expect(getByTestId('range-input-2')).toHaveValue('90')
   expect(getByTestId('progress')).toHaveStyle({
-    left: '10%',
-    right: '10%'
+    left: 'calc(10% - 1.6px)',
+    right: 'calc(10% - 1.6px)'
   })
 })
 
@@ -43,8 +43,8 @@ test('should change the lower defaultValue when "min" is set', () => {
   expect(getByTestId('range-input-1')).toHaveValue('-10')
   expect(getByTestId('range-input-2')).toHaveValue('100')
   expect(getByTestId('progress')).toHaveStyle({
-    left: '0%',
-    right: '0%'
+    left: 'calc(0% - 0px)',
+    right: 'calc(0% - 0px)'
   })
 })
 
@@ -56,8 +56,8 @@ test('should change the upper defaultValue when "max" is set', () => {
   expect(getByTestId('range-input-1')).toHaveValue('0')
   expect(getByTestId('range-input-2')).toHaveValue('250')
   expect(getByTestId('progress')).toHaveStyle({
-    left: '0%',
-    right: '0%'
+    left: 'calc(0% - 0px)',
+    right: 'calc(0% - 0px)'
   })
 })
 
@@ -69,8 +69,8 @@ test('should change the provided value if lower than "min"', () => {
   expect(getByTestId('range-input-1')).toHaveValue('50')
   expect(getByTestId('range-input-2')).toHaveValue('90')
   expect(getByTestId('progress')).toHaveStyle({
-    left: '0%',
-    right: '20%'
+    left: 'calc(0% - 0px)',
+    right: 'calc(20% - 3.2px)'
   })
 })
 
@@ -82,8 +82,8 @@ test('should change the provided value if greater than "max"', () => {
   expect(getByTestId('range-input-1')).toHaveValue('10')
   expect(getByTestId('range-input-2')).toHaveValue('50')
   expect(getByTestId('progress')).toHaveStyle({
-    left: '20%',
-    right: '0%'
+    left: 'calc(20% - 3.2px)',
+    right: 'calc(0% - 0px)'
   })
 })
 
@@ -157,7 +157,7 @@ test('should render the progress bar correctly', () => {
   expect(rangeInput1).toHaveValue('9')
   expect(rangeInput2).toHaveValue('205')
   expect(progress).toHaveStyle({
-    left: '0%',
-    right: '0%'
+    left: 'calc(0% - 0px)',
+    right: 'calc(0% - 0px)'
   })
 })

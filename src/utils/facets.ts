@@ -1,4 +1,4 @@
-import facetConfig from 'config/facets.config'
+import facetsConfig from 'config/facets.config'
 import get from 'lodash/get'
 import type { LocalizedProductWithVariant } from './products'
 
@@ -70,23 +70,23 @@ export type FacetResult = {
 
 export const getFacets = (products: LocalizedProductWithVariant[]): FacetResult => {
   return products.reduce((facets, product) => {
-    facetConfig.forEach(facetName => {
-      facets[facetName] = facets[facetName] || []
+    facetsConfig.forEach(facetConfig => {
+      facets[facetConfig.field] = facets[facetConfig.field] || []
     })
 
-    facetConfig.forEach(facetName => {
-      const facetValues = get(product, facetName) as Facet[string]
+    facetsConfig.forEach(facetConfig => {
+      const facetValues = get(product, facetConfig.field) as Facet[string]
 
       if (typeof facetValues === 'string' || typeof facetValues === 'number' || typeof facetValues === 'boolean' || Array.isArray(facetValues)) {
         if (Array.isArray(facetValues)) {
           facetValues.forEach(facetValue => {
-            if (!facets[facetName]?.includes(facetValue)) {
-              facets[facetName]?.push(facetValue)
+            if (!facets[facetConfig.field]?.includes(facetValue)) {
+              facets[facetConfig.field]?.push(facetValue)
             }
           })
         } else {
-          if (!facets[facetName]?.includes(facetValues)) {
-            facets[facetName]?.push(facetValues)
+          if (!facets[facetConfig.field]?.includes(facetValues)) {
+            facets[facetConfig.field]?.push(facetValues)
           }
         }
       }

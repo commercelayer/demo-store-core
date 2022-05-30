@@ -7,7 +7,7 @@
     "gender": "Genere",
     "category": "Categoria",
     "price": {
-      "formatted_amount": "Prezzo"
+      "amount_float": "Prezzo"
     },
     "color": "Colore",
     "size": "Taglia"

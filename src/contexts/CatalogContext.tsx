@@ -2,7 +2,9 @@ import type { FacetResult, Primitives } from '#utils/facets'
 import type { LocalizedProductWithVariant } from '#utils/products'
 import { flattenProductVariants, getProductWithVariants } from '#utils/products'
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
+import facetsConfig from 'config/facets.config'
 import type Fuse from 'fuse.js'
+import { uniq } from 'lodash'
 import chunk from 'lodash/chunk'
 import uniqBy from 'lodash/uniqBy'
 import { useRouter } from 'next/router'
@@ -15,7 +17,8 @@ type Context = {
   products: LocalizedProductWithVariant[]
   availableFacets: FacetResult
   selectedFacets: SelectedFacets
-  selectFacet: (name: string, value: Primitives) => void
+  selectFacet: (name: string, value: Primitives | Primitives[]) => void
+  currencyCode?: string
 }
 
 type Props = Omit<Context, 'availableFacets' | 'selectedFacets' | 'selectFacet'>
@@ -32,7 +35,7 @@ export const useCatalogContext = () => useContext(CatalogContext)
 export const CatalogProvider: React.FC<Props> = ({ children, products: initialProducts }) => {
   const router = useRouter()
 
-  const { products: productsWithPrices } = useCommerceLayerPrice(initialProducts)
+  const { products: productsWithPrices, currencyCode } = useCommerceLayerPrice(initialProducts)
 
   const [query, setQuery] = useState<string>('')
 
@@ -48,18 +51,22 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
   )
 
   const selectFacet = useMemo<Context['selectFacet']>(
-    () => (name: string, value: Primitives) => {
+    () => (name, value) => {
       const facets = { ...selectedFacets }
 
       facets[name] = facets[name] || []
       const facet = facets[name] || []
 
       if (Array.isArray(facet)) {
-        const index = facet.indexOf(value)
-        index > -1 ? facet.splice(index, 1) : facet.push(value)
-
-        if (facet.length === 0) {
-          delete facets[name]
+        if (Array.isArray(value)) {
+          facets[name] = value
+        } else {
+          const index = facet.indexOf(value)
+          index > -1 ? facet.splice(index, 1) : facet.push(value)
+  
+          if (facet.length === 0) {
+            delete facets[name]
+          }
         }
       }
 
@@ -119,7 +126,7 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
   }, [query, selectedFacets, productList])
 
   return (
-    <CatalogContext.Provider value={{ products, availableFacets, selectedFacets, selectFacet }}>
+    <CatalogContext.Provider value={{ products, availableFacets, selectedFacets, selectFacet, currencyCode }}>
       {children}
     </CatalogContext.Provider>
   )
@@ -162,7 +169,8 @@ function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
   }, [accessToken, domain, organization, initialProducts])
 
   return {
-    products: hasChanged ? initialProducts : products
+    products: hasChanged ? initialProducts : products,
+    currencyCode: products[0].price?.currency_code
   }
 }
 
@@ -225,28 +233,48 @@ async function freeTextSearch(products: LocalizedProductWithVariant[], query: st
 async function facetSearch(products: LocalizedProductWithVariant[], facets: SelectedFacets): Promise<LocalizedProductWithVariant[]> {
   const Fuse = (await import('fuse.js')).default
 
+  const facetsWithRangeType = facetsConfig.filter(c => c.type === 'priceRange').map(c => c.field)
+  const isRangeType = (facetName: string) => facetsWithRangeType.includes(facetName)
+
   const andExpression: Fuse.Expression[] = []
+
+  const availableFacets: FacetResult = {}
+
+  const fuse = new Fuse(products, {
+    useExtendedSearch: true,
+    threshold: .3,
+    getFn: (obj, path) => {
+      const value = Fuse.config.getFn(obj, path)
+
+      const pathWithDots = Array.isArray(path) ? path.join('.') : path
+
+      availableFacets[pathWithDots] = availableFacets[pathWithDots] || []
+      availableFacets[pathWithDots] = uniq(availableFacets[pathWithDots].concat(value))
+
+      return value
+    },
+    keys: Object.keys(facets)
+  })
 
   Object.entries(facets).forEach(([facetName, facetValue]) => {
     if (facetValue) {
-      andExpression.push({
-        $or: facetValue.map(value => ({ $path: `${facetName}`, $val: `${value}` }))
-      })
+      if (isRangeType(facetName)) {
+        andExpression.push({
+          $or: availableFacets[facetName]
+            .filter(v => v >= facetValue[0] && v <= facetValue[1])
+            .map(value => ({ $path: `${facetName}`, $val: `${value}` }))
+        })
+      } else {
+        andExpression.push({
+          $or: facetValue.map(value => ({ $path: `${facetName}`, $val: `${value}` }))
+        })
+      }
     }
   })
 
   if (andExpression.length <= 0) {
     return products
   }
-
-  const fuse = new Fuse(products, {
-    useExtendedSearch: true,
-    threshold: .3,
-    keys: Object.keys(facets).map(facetName => `${facetName}`)
-  })
-
-  console.log('keys', Object.keys(facets).map(facetName => `${facetName}`))
-  console.log('andExpression', andExpression)
 
   return uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
 }
