@@ -9,15 +9,19 @@ export const FacetTag = ({ facetName, facetValues }: { facetName: string, facetV
   return (
     <>
       {
-        facetValues.map(currentValue => (
-          <button
-            key={currentValue.toString()}
-            className={`m-2 ml-0 ${selectedFacets[facetName]?.includes(currentValue) ? 'bg-gray-400' : 'bg-gray-100'} rounded px-2`}
-            onClick={() => selectFacet(facetName, currentValue)}
-          >{
-              i18n.t(`facetValues.${currentValue.toString()}`) || currentValue.toString()
-            }</button>
-        ))
+        facetValues.map(currentValue => {
+          const isSelected = selectedFacets[facetName]?.includes(currentValue)
+
+          return (
+            <button
+              key={currentValue.toString()}
+              className={`my-2 mr-2 ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-gray-500'} rounded py-2 px-4`}
+              onClick={() => selectFacet(facetName, currentValue)}
+            >
+              {i18n.t(`facetValues.${currentValue.toString()}`) || currentValue.toString()}
+            </button>
+          )
+        })
       }
     </>
   )
