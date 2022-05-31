@@ -19,10 +19,7 @@ export const Navigation: React.FC<Props> = ({ navigation, className }) => {
           ))
         }
       </nav>
-      <Hamburger className='block lg:hidden' onClick={() => {
-        console.log('clicked')
-        setMenuOpen(v => !v)
-      }} />
+      <Hamburger className='block lg:hidden' onClick={() => setMenuOpen(v => !v)} />
     </div>
   )
 }
