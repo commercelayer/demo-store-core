@@ -2,7 +2,7 @@ import { useCatalogContext } from '#contexts/CatalogContext'
 import type { Primitives } from '#utils/facets'
 import facetsConfig from 'config/facets.config'
 import { useI18n } from 'next-localization'
-import { FacetPriceRange, FacetTag } from './FacetsAppearance'
+import { FacetColor, FacetPriceRange, FacetTag } from './FacetsAppearance'
 
 const FacetAppearance: React.FC<{ facetName: string, facetValues: Primitives[] }> = ({ facetName, facetValues }) => {
   const config = facetsConfig.find(facetConfig => facetConfig.field === facetName)
@@ -15,6 +15,8 @@ const FacetAppearance: React.FC<{ facetName: string, facetValues: Primitives[] }
   switch (config.type) {
     case 'priceRange':
       return <FacetPriceRange facetName={facetName} facetValues={facetValues} />
+    case 'color':
+      return <FacetColor facetName={facetName} facetValues={facetValues} />
     case 'tag':
       return <FacetTag facetName={facetName} facetValues={facetValues} />
   }

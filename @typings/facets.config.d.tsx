@@ -10,6 +10,10 @@ type PriceRangeType = {
   type: 'priceRange'
 }
 
+type ColorType = {
+  type: 'color'
+}
+
 export type FacetConfig = Config & (
-  TagType | PriceRangeType
+  TagType | PriceRangeType | ColorType
 )
