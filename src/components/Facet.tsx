@@ -12,6 +12,8 @@ const FacetAppearance: React.FC<{ facetName: string, facetValues: Primitives[] }
     return null
   }
 
+  // TODO: implement sorting for `facetValues` reading the algorithm name from Config file
+
   switch (config.type) {
     case 'priceRange':
       return <FacetPriceRange facetName={facetName} facetValues={facetValues} />
