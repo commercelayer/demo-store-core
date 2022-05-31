@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
   const locale = getLocale(router.query.locale)
 
   return (
-    <div className='p-16 mt-24 bg-gray-50'>
+    <div className='py-8 lg:p-16 mt-24 bg-gray-50'>
       <Container>
 
         <div className='flex items-center justify-between flex-wrap'>

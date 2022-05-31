@@ -25,9 +25,9 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
           </Link>
         </div>
       </nav>
-      <div className='flex items-center justify-between flex-wrap'>
-        <Navigation navigation={navigation} />
-        <Search />
+      <div className='flex items-center justify-between flex-wrap gap-4 relative'>
+        <Navigation navigation={navigation} className='order-2 lg:order-1' />
+        <Search className='order-1 grow lg:grow-0' />
       </div>
     </header>
   )

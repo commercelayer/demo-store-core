@@ -50,7 +50,7 @@ const LegacyTaxonomyComponent: React.FC<{ taxonomy: Props['primaryTaxonomy'] }> 
 
   return (
     <div>
-      <div className="mt-6 space-y-12 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6">
+      <div className="mt-6 space-y-6 md:space-y-0 grid md:grid-cols-2 lg:grid-cols-3 md:gap-6">
         {
           taxonomy.taxons.map(taxon => (
             <Link key={taxon.key} href={getSearchUrl(taxon.slug)}>

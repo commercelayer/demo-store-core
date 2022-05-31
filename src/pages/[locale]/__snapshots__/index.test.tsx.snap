@@ -58,19 +58,43 @@ exports[`home 1`] = `
           </div>
         </nav>
         <div
-          class="flex items-center justify-between flex-wrap"
+          class="flex items-center justify-between flex-wrap gap-4 relative"
         >
-          <nav>
-            <a
-              class="text-back font-bold p-2 m-2"
-              href="/en-US/search/accessories"
+          <div
+            class="order-2 lg:order-1"
+          >
+            <nav
+              class="hidden lg:block lg:relative absolute right-0 top-full w-full z-10 flex-col bg-white py-4 lg:py-0"
             >
-              Accessories
-            </a>
-          </nav>
-          <div>
+              <a
+                class="text-back font-bold p-2 m-2"
+                href="/en-US/search/accessories"
+              >
+                Accessories
+              </a>
+            </nav>
+            <button
+              aria-controls="menu"
+              aria-label="Open menu"
+              class="w-11 h-11 flex flex-col items-center justify-center space-y-1 bg-black rounded block lg:hidden"
+              type="button"
+            >
+              <span
+                class="w-4 h-0.5 bg-white"
+              />
+              <span
+                class="w-4 h-0.5 bg-white"
+              />
+              <span
+                class="w-4 h-0.5 bg-white"
+              />
+            </button>
+          </div>
+          <div
+            class="order-1 grow lg:grow-0"
+          >
             <label
-              class="relative py-3 rounded bg-gray-100 text-gray-400 focus-within:text-gray-600 block"
+              class="relative py-2.5 rounded bg-gray-100 text-gray-400 focus-within:text-gray-600 block"
               for="email"
             >
               <svg
@@ -91,7 +115,7 @@ exports[`home 1`] = `
       </header>
       <div>
         <div
-          class="mt-6 space-y-12 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6"
+          class="mt-6 space-y-6 md:space-y-0 grid md:grid-cols-2 lg:grid-cols-3 md:gap-6"
         >
           <a
             class="relative w-full h-80 xl:h-96 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1"
@@ -133,7 +157,7 @@ exports[`home 1`] = `
       </div>
     </div>
     <div
-      class="p-16 mt-24 bg-gray-50"
+      class="py-8 lg:p-16 mt-24 bg-gray-50"
     >
       <div
         class="container mx-auto px-4"
