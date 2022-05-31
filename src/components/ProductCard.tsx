@@ -12,7 +12,11 @@ export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = (
         <Link href={getProductUrl(product.slug)}>
           <a>
             <span className='absolute inset-0'></span>
-            <p>{product.name}</p>
+            <p className='text-base'>{product.name}</p>
+            <div className='flex items-center gap-3 mt-2'>
+              <div className='line-through text-gray-400 font-light text-sm'>{product.price?.formatted_compare_at_amount}</div>
+              <div className='text-black font-semibold text-base'>{product.price?.formatted_amount}</div>
+            </div>
           </a>
         </Link>
       </h3>
