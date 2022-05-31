@@ -10,6 +10,8 @@ export type RawDataProduct = {
   description: LocalizedField<string>
   images: string[]
 
+  available?: boolean
+
   price?: {
     id: string
     amount_cents?: number

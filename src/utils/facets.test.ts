@@ -15,6 +15,7 @@ test('"getFacets" should return combined facets for provided product list', () =
   expect(products).toStrictEqual({
     category: [],
     gender: [],
+    "available": [],
     "price.amount_float": [],
     color: ['000000', 'FFFFFF'],
     size: ['12 months', '6 months']

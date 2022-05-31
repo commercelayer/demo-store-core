@@ -9,6 +9,7 @@
     "price": {
       "amount_float": "Price"
     },
+    "available": "Show only available",
     "color": "Color",
     "size": "Size"
   },

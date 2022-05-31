@@ -35,7 +35,8 @@ export const useCatalogContext = () => useContext(CatalogContext)
 export const CatalogProvider: React.FC<Props> = ({ children, products: initialProducts }) => {
   const router = useRouter()
 
-  const { products: productsWithPrices, currencyCode } = useCommerceLayerPrice(initialProducts)
+  const { products: productsWithAvailabilities } = useCommerceLayerAvailability(initialProducts)
+  const { products: productsWithPrices, currencyCode } = useCommerceLayerPrice(productsWithAvailabilities)
 
   const [query, setQuery] = useState<string>('')
 
@@ -133,6 +134,47 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
 }
 
 
+function useCommerceLayerAvailability(initialProducts: LocalizedProductWithVariant[]) {
+  const { accessToken, domain, organization } = useAuthContext()
+
+  const [latestInitialProducts, setLatestInitialProducts] = useState(initialProducts)
+  const [products, setProducts] = useState(flattenProductVariants(initialProducts))
+
+  const hasChanged = useMemo(
+    () => JSON.stringify(latestInitialProducts) !== JSON.stringify(initialProducts),
+    [initialProducts, latestInitialProducts]
+  )
+
+  useEffect(() => {
+    let isMounted = true
+
+    if (!accessToken || !domain || !organization) {
+      return
+    }
+
+    const client = CommerceLayer({ accessToken, organization, domain })
+
+    mapWithAvailability(
+      client,
+      flattenProductVariants(initialProducts)
+    ).then((productsWithAvailabilities) => {
+      if (isMounted) {
+        setProducts(productsWithAvailabilities.map(product => getProductWithVariants(product.code, product._locale, productsWithAvailabilities)))
+        setLatestInitialProducts(initialProducts)
+      }
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [accessToken, domain, organization, initialProducts])
+
+  return {
+    products: hasChanged ? initialProducts : products
+  }
+}
+
+
 function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
   const { accessToken, domain, organization } = useAuthContext()
 
@@ -202,6 +244,34 @@ const mapWithPrice = async (client: CommerceLayerClient, products: LocalizedProd
         })
       } catch (e) {
         console.error('Cannot fetch prices!')
+      }
+    })
+  )
+
+  return chunkedSkus.flat()
+}
+
+const mapWithAvailability = async (client: CommerceLayerClient, products: LocalizedProductWithVariant[]) => {
+  const pageSize = 25
+  const chunkedSkus = chunk(products, pageSize)
+
+  await Promise.all(
+    chunkedSkus.map(async (skus, chunkIndex) => {
+      try {
+        const availableProducts = await client.skus.list({
+          pageSize,
+          filters: {
+            stock_items_quantity_gt: 0,
+            code_in: skus.map(p => p.code).join(',')
+          }
+        })
+
+        availableProducts.map((product) => {
+          const productIndex = chunkedSkus[chunkIndex].findIndex(p => p.code === product.code)
+          chunkedSkus[chunkIndex][productIndex].available = true
+        })
+      } catch (e) {
+        console.error('Cannot fetch availabilities!')
       }
     })
   )
