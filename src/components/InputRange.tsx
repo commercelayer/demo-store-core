@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import styles from './InputRange.module.scss'
 
 type Props = {
@@ -6,39 +6,55 @@ type Props = {
   min?: number
   max?: number
   step?: number
-  onChange?: (value: number[]) => void
+  onRelease?: (value: number[]) => void
   format?: (value: number) => string
 }
 
-export const InputRange: React.FC<Props> = ({ min = 0, max = 100, defaultValue = [min, max], step = 1, onChange = () => {}, format = value => value.toString() }) => {
+export const InputRange: React.FC<Props> = ({ min = 0, max = 100, defaultValue = [min, max], step = 1, onRelease = () => {}, format = value => value.toString() }) => {
   const progressRef = useRef<HTMLDivElement>(null)
   const minLabelRef = useRef<HTMLDivElement>(null)
+  const minInputRef = useRef<HTMLInputElement>(null)
   const maxLabelRef = useRef<HTMLDivElement>(null)
 
-  const [minValue, setMinValue] = useState<number>(defaultValue[0] < min ? min : defaultValue[0])
-  const [maxValue, setMaxValue] = useState<number>(defaultValue[1] > max ? max : defaultValue[1])
+  const [defaultMinValue, defaultMaxValue] = defaultValue
+
+  const [minValue, setMinValue] = useState<number>(defaultMinValue < min ? min : defaultMinValue)
+  const [maxValue, setMaxValue] = useState<number>(defaultMaxValue > max ? max : defaultMaxValue)
 
   const gap = 0
 
-  useEffect(() => {
-    const leftPercentage = parseFloat((((minValue - min) / (max - min)) * 100).toFixed(2))
-    const rightPercentage = parseFloat((100 -((maxValue - min) / (max - min)) * 100).toFixed(2))
+  useLayoutEffect(function handleUI() {
+    const leftPercentage = (((minValue - min) / (max - min)) * 100)
+    const rightPercentage = (100 -((maxValue - min) / (max - min)) * 100)
+    const styleLeft = `calc(${leftPercentage}% - ${16 / 100 * leftPercentage}px)`
+    const styleRight = `calc(${rightPercentage}% - ${16 / 100 * rightPercentage}px)`
 
     if (progressRef.current) {
-      progressRef.current.style.left = `calc(${leftPercentage}% - ${16 / 100 * leftPercentage}px)`
-      progressRef.current.style.right = `calc(${rightPercentage}% - ${16 / 100 * rightPercentage}px)`
+      progressRef.current.style.left = styleLeft
+      progressRef.current.style.right = styleRight
     }
 
     if (minLabelRef.current) {
-      minLabelRef.current.style.left = `calc(${leftPercentage}% - ${16 / 100 * leftPercentage}px)`
+      minLabelRef.current.style.left = styleLeft
     }
 
     if (maxLabelRef.current) {
-      maxLabelRef.current.style.right = `calc(${rightPercentage}% - ${16 / 100 * rightPercentage}px)`
+      maxLabelRef.current.style.right = styleRight
+    } 
+
+    if (minInputRef.current) {
+      if (minValue === max) {
+        minInputRef.current.style.zIndex = '1'
+      } else {
+        minInputRef.current.style.zIndex = ''
+      }
     }
-
-
   }, [minValue, maxValue, min, max])
+
+  useEffect(function handleDefaultValueChange() {
+    setMinValue(defaultMinValue < min ? min : defaultMinValue)
+    setMaxValue(defaultMaxValue > max ? max : defaultMaxValue)
+  }, [defaultMinValue, defaultMaxValue, min, max])
 
   const handleMinValueChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const minVal = event.currentTarget.valueAsNumber
@@ -62,8 +78,8 @@ export const InputRange: React.FC<Props> = ({ min = 0, max = 100, defaultValue =
     }
   }
 
-  const handleOnRelease = () => {
-    onChange([minValue, maxValue])
+  const handleRelease = () => {
+    onRelease([minValue, maxValue])
   }
 
   return (
@@ -84,9 +100,9 @@ export const InputRange: React.FC<Props> = ({ min = 0, max = 100, defaultValue =
       </div>
       <div data-testid='range-input' className={styles.rangeInput}>
         <div aria-hidden={true} ref={minLabelRef} className='text-gray-400 text-xs top-3 absolute left-0'>{format(minValue)}</div>
-        <input data-testid='range-input-1' onChange={handleMinValueChange} onMouseUp={handleOnRelease} onTouchEnd={handleOnRelease} onKeyUp={handleOnRelease} type='range' min={min} max={max} value={minValue} step={step} />
+        <input className='cursor-grab' ref={minInputRef} data-testid='range-input-1' onChange={handleMinValueChange} onMouseUp={handleRelease} onTouchEnd={handleRelease} onKeyUp={handleRelease} type='range' min={min} max={max} value={minValue} step={step} />
         <div aria-hidden={true} ref={maxLabelRef} className='text-gray-400 text-xs top-3 absolute right-0'>{format(maxValue)}</div>
-        <input data-testid='range-input-2' onChange={handleMaxValueChange} onMouseUp={handleOnRelease} onTouchEnd={handleOnRelease} onKeyUp={handleOnRelease} type='range' min={min} max={max} value={maxValue} step={step} />
+        <input className='cursor-grab' data-testid='range-input-2' onChange={handleMaxValueChange} onMouseUp={handleRelease} onTouchEnd={handleRelease} onKeyUp={handleRelease} type='range' min={min} max={max} value={maxValue} step={step} />
       </div>
     </div>
   )

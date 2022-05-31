@@ -161,3 +161,125 @@ test('should render the progress bar correctly', () => {
     right: 'calc(0% - 0px)'
   })
 })
+
+test('should set zIndex to 1 when minValue match the max value', () => {
+  const { getByTestId } = render(<InputRange min={10} max={90} />)
+
+  const rangeInput1 = getByTestId('range-input-1')
+
+  expect(rangeInput1).not.toHaveStyle({
+    zIndex: '1'
+  })
+
+  act(() => {
+    fireEvent.change(rangeInput1, { target: { value: '90' } })
+  })
+
+  expect(rangeInput1).toHaveStyle({
+    zIndex: '1'
+  })
+
+  act(() => {
+    fireEvent.change(rangeInput1, { target: { value: '89' } })
+  })
+
+  expect(rangeInput1).not.toHaveStyle({
+    zIndex: '1'
+  })
+})
+
+test('should trigger onRelease when range changes and mouseUp event is triggered', () => {
+  const onRelease = jest.fn()
+  const { getByTestId } = render(<InputRange min={10} max={90} onRelease={onRelease} />)
+
+  const rangeInput1 = getByTestId('range-input-1')
+  const rangeInput2 = getByTestId('range-input-2')
+
+  act(() => {
+    fireEvent.mouseDown(rangeInput1)
+    fireEvent.change(rangeInput1, { target: { value: '50' } })
+  })
+
+  expect(onRelease).not.toBeCalled()
+
+  act(() => {
+    fireEvent.mouseUp(rangeInput1)
+  })
+
+  act(() => {
+    fireEvent.mouseDown(rangeInput2)
+    fireEvent.change(rangeInput2, { target: { value: '80' } })
+  })
+
+  act(() => {
+    fireEvent.mouseUp(rangeInput2)
+  })
+
+  expect(onRelease).toBeCalledTimes(2)
+  expect(onRelease.mock.calls[0][0]).toStrictEqual([50, 90])
+  expect(onRelease.mock.calls[1][0]).toStrictEqual([50, 80])
+})
+
+test('should trigger onRelease when range changes and keyUp event is triggered', () => {
+  const onRelease = jest.fn()
+  const { getByTestId } = render(<InputRange min={10} max={90} onRelease={onRelease} />)
+
+  const rangeInput1 = getByTestId('range-input-1')
+  const rangeInput2 = getByTestId('range-input-2')
+
+  act(() => {
+    fireEvent.keyDown(rangeInput1)
+    fireEvent.change(rangeInput1, { target: { value: '20' } })
+  })
+
+  expect(onRelease).not.toBeCalled()
+
+  act(() => {
+    fireEvent.keyUp(rangeInput1)
+  })
+
+  act(() => {
+    fireEvent.keyDown(rangeInput2)
+    fireEvent.change(rangeInput2, { target: { value: '76' } })
+  })
+
+  act(() => {
+    fireEvent.keyUp(rangeInput2)
+  })
+
+  expect(onRelease).toBeCalledTimes(2)
+  expect(onRelease.mock.calls[0][0]).toStrictEqual([20, 90])
+  expect(onRelease.mock.calls[1][0]).toStrictEqual([20, 76])
+})
+
+test('should trigger onRelease when range changes and touchEnd event is triggered', () => {
+  const onRelease = jest.fn()
+  const { getByTestId } = render(<InputRange min={10} max={90} onRelease={onRelease} />)
+
+  const rangeInput1 = getByTestId('range-input-1')
+  const rangeInput2 = getByTestId('range-input-2')
+
+  act(() => {
+    fireEvent.touchStart(rangeInput1)
+    fireEvent.change(rangeInput1, { target: { value: '34' } })
+  })
+
+  expect(onRelease).not.toBeCalled()
+
+  act(() => {
+    fireEvent.touchEnd(rangeInput1)
+  })
+
+  act(() => {
+    fireEvent.touchStart(rangeInput2)
+    fireEvent.change(rangeInput2, { target: { value: '71' } })
+  })
+
+  act(() => {
+    fireEvent.touchEnd(rangeInput2)
+  })
+
+  expect(onRelease).toBeCalledTimes(2)
+  expect(onRelease.mock.calls[0][0]).toStrictEqual([34, 90])
+  expect(onRelease.mock.calls[1][0]).toStrictEqual([34, 71])
+})
