@@ -7,6 +7,7 @@ export type LocalizedVariant = Omit<RawDataProduct['variant'][number], 'label'> 
 }
 
 
+
 export type LocalizedProduct = Omit<RawDataProduct, 'name' | 'description' | 'variant'> & {
   _locale: string
   name: string

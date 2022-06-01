@@ -46,7 +46,7 @@ export const getNavigationLinks = (taxon: DeepFindResult<Taxon>): NavigationPath
 
 export const getSlugs = (catalog: Catalog): string[] => {
   function getFlatSlug(taxon: Taxon): string[] {
-    return [taxon.slug].concat(taxon.taxons?.flatMap(getFlatSlug) || [])
+    return [taxon.slug].concat(taxon.taxons.flatMap(getFlatSlug))
   }
 
   return getPrimaryTaxonomy(catalog).taxons.flatMap(getFlatSlug)

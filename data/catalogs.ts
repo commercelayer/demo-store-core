@@ -62,7 +62,6 @@ import type { Unserializable } from '#utils/unserializable'
 
 export type Catalog = Unserializable<Omit<RawDataCatalog, 'taxonomies'> & {
   taxonomies: Taxonomy[]
-  productDataset: ProductDataset
 }>
 
 export type Taxonomy = Omit<RawDataTaxonomy, 'taxons'> & {
@@ -160,8 +159,7 @@ const resolveCatalog = (catalog: RawDataCatalog, locale: string, productDataset:
     name: catalog.name,
     taxonomies: catalog.taxonomies
       .map(getTaxonomy)
-      .map(taxonomy => resolveTaxonomy(taxonomy, locale, Object.values(productDataset))),
-    productDataset
+      .map(taxonomy => resolveTaxonomy(taxonomy, locale, Object.values(productDataset)))
   }
 }
 

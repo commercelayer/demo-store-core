@@ -5,6 +5,9 @@ describe('combine', () => {
     expect(() => combine([], [], (a, b) => `${a}-${b}`)).toThrow()
     expect(() => combine([], ['1', '2'], (a, b) => `${a}-${b}`)).toThrow()
     expect(() => combine(['it', 'en'], [], (a, b) => `${a}-${b}`)).toThrow()
+
+    // @ts-expect-error
+    expect(() => combine(undefined, undefined, (a, b) => `${a}-${b}`)).toThrow()
   })
 
   it('should combines two arrays into one, using a callback method', () => {

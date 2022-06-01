@@ -80,13 +80,13 @@ export const getFacets = (products: LocalizedProductWithVariant[]): FacetResult 
       if (typeof facetValues === 'string' || typeof facetValues === 'number' || typeof facetValues === 'boolean' || Array.isArray(facetValues)) {
         if (Array.isArray(facetValues)) {
           facetValues.forEach(facetValue => {
-            if (!facets[facetConfig.field]?.includes(facetValue)) {
-              facets[facetConfig.field]?.push(facetValue)
+            if (!facets[facetConfig.field].includes(facetValue)) {
+              facets[facetConfig.field].push(facetValue)
             }
           })
         } else {
-          if (!facets[facetConfig.field]?.includes(facetValues)) {
-            facets[facetConfig.field]?.push(facetValues)
+          if (!facets[facetConfig.field].includes(facetValues)) {
+            facets[facetConfig.field].push(facetValues)
           }
         }
       }

@@ -43,8 +43,7 @@ test('home', () => {
     _unserializable: Symbol.for('unserializable'),
     key: 'catalog_1',
     name: 'AMER',
-    taxonomies: [taxonomy],
-    productDataset: {}
+    taxonomies: [taxonomy]
   }
 
   const { container } = render(
