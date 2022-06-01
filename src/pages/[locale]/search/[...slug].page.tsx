@@ -1,69 +1,19 @@
-import { Container } from '#components/Container'
-import { Facet } from '#components/Facet'
-import { Footer } from '#components/Footer'
-import { Header, HeaderProps } from '#components/Header'
-import { Page } from '#components/Page'
-import { ProductCard } from '#components/ProductCard'
-import type { Props as SubNavigationProps } from '#components/SubNavigation'
-import { SubNavigation } from '#components/SubNavigation'
 import { findTaxonBySlug, flattenProductsFromTaxon, getCatalog } from '#data/catalogs'
 import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getNavigationLinks, getRootNavigationLinks, getSlugs } from '#utils/catalog'
-import type { LocalizedProductWithVariant } from '#utils/products'
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { CatalogProvider, useCatalogContext } from '../../../contexts/CatalogContext'
-
+import type { GetStaticPaths, GetStaticProps } from 'next'
+import { Props, SearchPageComponent } from './SearchPageComponent'
 
 type Query = {
   locale: string
   slug: string[]
 }
 
-type Props = HeaderProps & SubNavigationProps & {
-  products: LocalizedProductWithVariant[]
-}
-
-const ProductList: React.FC = () => {
-  const { products } = useCatalogContext()
-
-  return (
-    <div className='mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-6 lg:gap-y-12'>
-      {
-        products.map(product => (
-          <ProductCard key={product.code} product={product} />
-        ))
-      }
-    </div>
-  )
-}
-
-const SearchSlugPage: NextPage<Props> = ({ navigation, products, subNavigation }) => {
-  return (
-    <Page>
-      <Container>
-        <Header navigation={navigation} />
-
-        <CatalogProvider products={products}>
-          <Facet />
-
-          <h2 className='mt-16 block text-2xl font-semibold text-black'>{subNavigation.current.text}</h2>
-
-          <SubNavigation subNavigation={subNavigation} />
-
-          <ProductList />
-        </CatalogProvider>
-      </Container>
-
-      <Footer />
-    </Page>
-  )
-}
-
 export const getStaticPaths: GetStaticPaths<Query> = () => {
-  return withLocalePaths((localeCode) => {
+  return withLocalePaths(localeCode => {
     const locale = getLocale(localeCode)
     const catalog = getCatalog(locale)
     const slugs = getSlugs(catalog)
@@ -90,12 +40,12 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   return {
     props: {
+      navigation: getRootNavigationLinks(catalog),
       subNavigation: getNavigationLinks(taxon),
       products,
-      navigation: getRootNavigationLinks(catalog),
       ...(await serverSideTranslations(localeCode))
     }
   }
 }
 
-export default SearchSlugPage
+export default SearchPageComponent
