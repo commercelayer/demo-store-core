@@ -3,6 +3,10 @@
     "viewAll": "Mostra tutti",
     "search": "cerca"
   },
+  "variants": {
+    "color": "Colori",
+    "size": "Seleziona la taglia"
+  },
   "facets": {
     "gender": "Genere",
     "category": "Categoria",

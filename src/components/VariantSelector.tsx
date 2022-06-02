@@ -1,7 +1,11 @@
 import type { LocalizedProduct, LocalizedProductWithVariant, Variant } from '#utils/products'
+import variantsConfig from 'config/variants.config'
+import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo } from 'react'
 import { useImmer } from 'use-immer'
+import { Swatch } from './Swatch'
+import { Tag } from './Tag'
 import { compareVariants, getOptions } from './VariantSelector.utils'
 
 type Props = {
@@ -11,6 +15,7 @@ type Props = {
 
 export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} }) => {
   const router = useRouter()
+  const i18n = useI18n();
   const [currentVariant, setCurrentVariant] = useImmer<Variant[]>(product.variant)
 
   const options = useMemo(() => {
@@ -48,32 +53,63 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
           ...router.query,
           slug: currentProduct.slug.split('/')
         }
-      })
+      }, undefined, { scroll: false })
     }
   }, [router, currentProduct, onChange])
 
   return (
     <div>
       {
-        options.map((variants, index) => (
-          <p key={variants[0].name}>
-            {
-              variants.map(variant => (
-                <span
-                  key={variant.value}
-                  style={{ borderBottom: currentVariant[index]?.value === variant.value ? '1px solid' : 'none' }}
-                  onClick={() => {
-                    setCurrentVariant((draft) => {
-                      draft[index] = variant
-                    })
-                  }}
-                >
-                  &nbsp;{variant.value}&nbsp;
-                </span>
-              ))
-            }
-          </p>
-        ))
+        options.map((variants, index) => {
+          const variantName = variants[0].name
+          const config = variantsConfig.find(variantConfig => variantConfig.field === variantName)
+
+          if (!config) {
+            console.error(`Variant configuration for ${variantName} is missing!`)
+            return null
+          }
+
+          return (
+            <div key={variantName} className='my-6'>
+              <p className='text-gray-800 text-lg font-semibold'>{i18n.t(`variants.${variantName}`) || variantName}</p>
+              {
+                variants.map(variant => {
+                  const selected = currentVariant[index]?.value === variant.value
+                  switch (config.type) {
+                    case 'color':
+                      return (
+                        <Swatch
+                          key={`${variantName}-${variant.value}`}
+                          swatchLabel={variant.value}
+                          swatchStyle={{ backgroundColor: `#${variant.value}` }}
+                          selected={selected}
+                          onClick={() => {
+                            setCurrentVariant((draft) => {
+                              draft[index] = variant
+                            })
+                          }}
+                        />
+                      )
+                    case 'tag':
+                      return (
+                        <Tag
+                          key={`${variantName}-${variant.value}`}
+                          selected={selected}
+                          onClick={() => {
+                            setCurrentVariant((draft) => {
+                              draft[index] = variant
+                            })
+                          }}
+                        >
+                          {variant.value}
+                        </Tag>
+                      )
+                  }
+                })
+              }
+            </div>
+          )
+        })
       }
     </div>
   )

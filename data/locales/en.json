@@ -3,6 +3,10 @@
     "viewAll": "View all",
     "search": "search"
   },
+  "variants": {
+    "color": "Colors",
+    "size": "Choose size"
+  },
   "facets": {
     "gender": "Gender",
     "category": "Category",

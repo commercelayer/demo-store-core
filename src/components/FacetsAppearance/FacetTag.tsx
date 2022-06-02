@@ -1,3 +1,4 @@
+import { Tag } from '#components/Tag'
 import { useCatalogContext } from '#contexts/CatalogContext'
 import type { Primitives } from '#utils/facets'
 import { useI18n } from 'next-localization'
@@ -9,19 +10,15 @@ export const FacetTag = ({ facetName, facetValues }: { facetName: string, facetV
   return (
     <>
       {
-        facetValues.map(currentValue => {
-          const isSelected = selectedFacets[facetName]?.includes(currentValue)
-
-          return (
-            <button
-              key={currentValue.toString()}
-              className={`my-2 mr-2 ${isSelected ? 'bg-black text-white' : 'bg-gray-100 text-gray-500'} rounded py-2 px-4`}
-              onClick={() => selectFacet(facetName, currentValue)}
-            >
-              {i18n.t(`facetValues.${currentValue.toString()}`) || currentValue.toString()}
-            </button>
-          )
-        })
+        facetValues.map(currentValue => (
+          <Tag
+            key={currentValue.toString()}
+            onClick={() => selectFacet(facetName, currentValue)}
+            selected={selectedFacets[facetName]?.includes(currentValue) }
+          >
+            {i18n.t(`facetValues.${currentValue.toString()}`) || currentValue.toString()}
+          </Tag>
+        ))
       }
     </>
   )
