@@ -70,6 +70,11 @@ describe('getProductWithVariants', () => {
     // @ts-expect-error
     expect(product.variants[1].variants).not.toBeDefined()
   })
+
+  it('should throw an error when generating variant object of a product that have an invalid field (not a string)', () => {
+    expect(() => getProductWithVariants('ABCD-INVALID-VARIANT-TYPE', 'it', productsJson))
+      .toThrowError('The variant property "color" for the product ABCD-INVALID-VARIANT-TYPE must be a string. Found ["000000"].')
+  })
 })
 
 test('"flattenProductVariants" should flatten product variants', () => {

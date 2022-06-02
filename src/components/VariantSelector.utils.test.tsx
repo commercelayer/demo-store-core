@@ -1,4 +1,4 @@
-import type { LocalizedVariant } from '#utils/products'
+import type { Variant } from '#utils/products'
 import { compareVariants, getOptions, previousSelectionMatches } from './VariantSelector.utils'
 
 describe('previousSelectionMatches', () => {
@@ -6,14 +6,14 @@ describe('previousSelectionMatches', () => {
     expect(
       previousSelectionMatches(
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         0
       )
@@ -24,14 +24,14 @@ describe('previousSelectionMatches', () => {
     expect(
       previousSelectionMatches(
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         1
       )
@@ -40,14 +40,14 @@ describe('previousSelectionMatches', () => {
     expect(
       previousSelectionMatches(
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         2
       )
@@ -56,14 +56,14 @@ describe('previousSelectionMatches', () => {
     expect(
       previousSelectionMatches(
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         3
       )
@@ -74,14 +74,14 @@ describe('previousSelectionMatches', () => {
     expect(
       previousSelectionMatches(
         [
-          { name: 'material', value: 'plastic', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'plastic' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         1
       )
@@ -90,14 +90,14 @@ describe('previousSelectionMatches', () => {
     expect(
       previousSelectionMatches(
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'yellow', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'yellow' },
+          { name: 'size', value: 'small' }
         ],
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         2
       )
@@ -106,14 +106,14 @@ describe('previousSelectionMatches', () => {
     expect(
       previousSelectionMatches(
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'large', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'large' }
         ],
         [
-          { name: 'material', value: 'metal', label: '' },
-          { name: 'color', value: 'red', label: '' },
-          { name: 'size', value: 'small', label: '' }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'red' },
+          { name: 'size', value: 'small' }
         ],
         3
       )
@@ -122,106 +122,106 @@ describe('previousSelectionMatches', () => {
 })
 
 describe('getOptions', () => {
-  const variants: LocalizedVariant[][] = [
+  const variants: Variant[][] = [
     [
-      { name: 'material', value: 'metal', label: '' },
-      { name: 'color', value: 'red', label: '' },
+      { name: 'material', value: 'metal' },
+      { name: 'color', value: 'red' },
     ],
     [
-      { name: 'material', value: 'wood', label: '' },
-      { name: 'color', value: 'red', label: '' },
-      { name: 'size', value: 'small', label: '' }
+      { name: 'material', value: 'wood' },
+      { name: 'color', value: 'red' },
+      { name: 'size', value: 'small' }
     ],
     [
-      { name: 'material', value: 'plastic', label: '' },
-      { name: 'color', value: 'blue', label: '' },
-      { name: 'size', value: 'medium', label: '' }
+      { name: 'material', value: 'plastic' },
+      { name: 'color', value: 'blue' },
+      { name: 'size', value: 'medium' }
     ],
     [
-      { name: 'material', value: 'metal', label: '' },
-      { name: 'color', value: 'blue', label: '' },
-      { name: 'size', value: 'large', label: '' }
+      { name: 'material', value: 'metal' },
+      { name: 'color', value: 'blue' },
+      { name: 'size', value: 'large' }
     ],
     [
-      { name: 'material', value: 'wood', label: '' },
-      { name: 'color', value: 'yellow', label: '' },
-      { name: 'size', value: 'large', label: '' }
+      { name: 'material', value: 'wood' },
+      { name: 'color', value: 'yellow' },
+      { name: 'size', value: 'large' }
     ],
     [
-      { name: 'material', value: 'wood', label: '' },
-      { name: 'color', value: 'yellow', label: '' },
-      { name: 'size', value: 'small', label: '' }
+      { name: 'material', value: 'wood' },
+      { name: 'color', value: 'yellow' },
+      { name: 'size', value: 'small' }
     ],
     [
-      { name: 'material', value: 'wood', label: '' },
-      { name: 'color', value: 'yellow', label: '' },
-      { name: 'size', value: 'huge', label: '' }
+      { name: 'material', value: 'wood' },
+      { name: 'color', value: 'yellow' },
+      { name: 'size', value: 'huge' }
     ],
     [
-      { name: 'material', value: 'wood', label: '' },
-      { name: 'color', value: 'green', label: '' }
+      { name: 'material', value: 'wood' },
+      { name: 'color', value: 'green' }
     ]
   ]
 
   it('should returns a list of available variants based on the provided current selection', () => {
     expect(getOptions(variants, [])).toStrictEqual([
       [
-        { name: 'material', value: 'metal', label: '' },
-        { name: 'material', value: 'wood', label: '' },
-        { name: 'material', value: 'plastic', label: '' }
+        { name: 'material', value: 'metal' },
+        { name: 'material', value: 'wood' },
+        { name: 'material', value: 'plastic' }
       ],
       [],
       []
     ])
 
-    expect(getOptions(variants, [{ name: 'material', value: 'metal', label: '' }])).toStrictEqual([
+    expect(getOptions(variants, [{ name: 'material', value: 'metal' }])).toStrictEqual([
       [
-        { name: 'material', value: 'metal', label: '' },
-        { name: 'material', value: 'wood', label: '' },
-        { name: 'material', value: 'plastic', label: '' }
+        { name: 'material', value: 'metal' },
+        { name: 'material', value: 'wood' },
+        { name: 'material', value: 'plastic' }
       ],
       [
-        { name: 'color', value: 'red', label: '' },
-        { name: 'color', value: 'blue', label: '' },
+        { name: 'color', value: 'red' },
+        { name: 'color', value: 'blue' },
       ],
       []
     ])
 
     expect(
       getOptions(variants, [
-        { name: 'material', value: 'metal', label: '' },
-        { name: 'color', value: 'blue', label: '' }
+        { name: 'material', value: 'metal' },
+        { name: 'color', value: 'blue' }
       ])
     ).toStrictEqual([
       [
-        { name: 'material', value: 'metal', label: '' },
-        { name: 'material', value: 'wood', label: '' },
-        { name: 'material', value: 'plastic', label: '' }
+        { name: 'material', value: 'metal' },
+        { name: 'material', value: 'wood' },
+        { name: 'material', value: 'plastic' }
       ],
       [
-        { name: 'color', value: 'red', label: '' },
-        { name: 'color', value: 'blue', label: '' }
+        { name: 'color', value: 'red' },
+        { name: 'color', value: 'blue' }
       ],
-      [{ name: 'size', value: 'large', label: '' }]
+      [{ name: 'size', value: 'large' }]
     ])
 
     expect(
       getOptions(variants, [
-        { name: 'material', value: 'metal', label: '' },
-        { name: 'color', value: 'blue', label: '' },
-        { name: 'size', value: 'large', label: '' }
+        { name: 'material', value: 'metal' },
+        { name: 'color', value: 'blue' },
+        { name: 'size', value: 'large' }
       ])
     ).toStrictEqual([
       [
-        { name: 'material', value: 'metal', label: '' },
-        { name: 'material', value: 'wood', label: '' },
-        { name: 'material', value: 'plastic', label: '' }
+        { name: 'material', value: 'metal' },
+        { name: 'material', value: 'wood' },
+        { name: 'material', value: 'plastic' }
       ],
       [
-        { name: 'color', value: 'red', label: '' },
-        { name: 'color', value: 'blue', label: '' }
+        { name: 'color', value: 'red' },
+        { name: 'color', value: 'blue' }
       ],
-      [{ name: 'size', value: 'large', label: '' }]
+      [{ name: 'size', value: 'large' }]
     ])
   })
 })
@@ -232,20 +232,20 @@ describe('compareVariants', () => {
 
     expect(
       compareVariants(
-        [{ name: "material", value: "metal", label: "" }],
-        [{ name: "material", value: "metal", label: "" }]
+        [{ name: 'material', value: 'metal' }],
+        [{ name: 'material', value: 'metal' }]
       )
     ).toBe(true)
 
     expect(
       compareVariants(
         [
-          { name: "material", value: "metal", label: "" },
-          { name: "color", value: "blue", label: "" }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'blue' }
         ],
         [
-          { name: "material", value: "metal", label: "" },
-          { name: "color", value: "blue", label: "" }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'blue' }
         ]
       )
     ).toBe(true)
@@ -254,20 +254,20 @@ describe('compareVariants', () => {
   it('should returns FALSE when provided variants are NOT equivalent', () => {
     expect(
       compareVariants(
-        [{ name: "material", value: "metal", label: "" }],
-        [{ name: "material", value: "plastic", label: "" }]
+        [{ name: 'material', value: 'metal' }],
+        [{ name: 'material', value: 'plastic' }]
       )
     ).toBe(false)
 
     expect(
       compareVariants(
         [
-          { name: "material", value: "metal", label: "" },
-          { name: "color", value: "blue", label: "" }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'blue' }
         ],
         [
-          { name: "material", value: "metal", label: "" },
-          { name: "color", value: "green", label: "" }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'green' }
         ]
       )
     ).toBe(false)
@@ -275,11 +275,11 @@ describe('compareVariants', () => {
     expect(
       compareVariants(
         [
-          { name: "material", value: "metal", label: "" },
-          { name: "color", value: "blue", label: "" }
+          { name: 'material', value: 'metal' },
+          { name: 'color', value: 'blue' }
         ],
         [
-          { name: "material", value: "metal", label: "" }
+          { name: 'material', value: 'metal' }
         ]
       )
     ).toBe(false)

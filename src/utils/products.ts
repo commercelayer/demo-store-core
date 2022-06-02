@@ -1,18 +1,19 @@
 import type { RawDataProduct } from '#data/products'
 import { translateField } from '#i18n/locale'
+import variantsConfig from 'config/variants.config'
+import get from 'lodash/get'
 import uniqBy from 'lodash/uniqBy'
 
-export type LocalizedVariant = Omit<RawDataProduct['variant'][number], 'label'> & {
-  label: string
+export type Variant = {
+  name: string
+  value: string
 }
-
-
 
 export type LocalizedProduct = Omit<RawDataProduct, 'name' | 'description' | 'variant'> & {
   _locale: string
   name: string
   description: string
-  variant: LocalizedVariant[]
+  variant: Variant[]
 }
 
 export type LocalizedProductWithVariant = LocalizedProduct & {
@@ -26,15 +27,29 @@ function resolveProductLocale(product: RawDataProduct | LocalizedProduct | Local
     return product
   }
 
+  const variant: Variant[] = []
+
+  variantsConfig.forEach(config => {
+    if (config.field in product) {
+      const value = get(product, config.field)
+
+      if (typeof value !== 'string') {
+        throw new Error(`The variant property "${config.field}" for the product ${product.code} must be a string. Found ${JSON.stringify(value)}.`)
+      }
+
+      variant.push({
+        name: config.field,
+        value
+      })
+    }
+  })
+
   return {
     ...product,
     _locale: locale,
     name: translateField(product.name, locale),
     description: translateField(product.description, locale),
-    variant: product.variant.map(v => ({
-      ...v,
-      label: translateField(v.label, locale)
-    }))
+    variant
   }
 }
 

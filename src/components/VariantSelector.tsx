@@ -1,4 +1,4 @@
-import type { LocalizedProduct, LocalizedProductWithVariant, LocalizedVariant } from '#utils/products'
+import type { LocalizedProduct, LocalizedProductWithVariant, Variant } from '#utils/products'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo } from 'react'
 import { useImmer } from 'use-immer'
@@ -11,7 +11,7 @@ type Props = {
 
 export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} }) => {
   const router = useRouter()
-  const [currentVariant, setCurrentVariant] = useImmer<LocalizedVariant[]>(product.variant)
+  const [currentVariant, setCurrentVariant] = useImmer<Variant[]>(product.variant)
 
   const options = useMemo(() => {
     const variants = product.variants.map(v => v.variant)
@@ -68,7 +68,7 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
                     })
                   }}
                 >
-                  &nbsp;{variant.label}&nbsp;
+                  &nbsp;{variant.value}&nbsp;
                 </span>
               ))
             }

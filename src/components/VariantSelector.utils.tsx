@@ -1,7 +1,7 @@
-import type { LocalizedVariant } from '#utils/products'
+import type { Variant } from '#utils/products'
 import uniqBy from 'lodash/uniqBy'
 
-export const previousSelectionMatches = (current: LocalizedVariant[], variant: LocalizedVariant[], index: number): boolean => {
+export const previousSelectionMatches = (current: Variant[], variant: Variant[], index: number): boolean => {
   if (index === 0) {
     return true
   }
@@ -13,7 +13,7 @@ export const previousSelectionMatches = (current: LocalizedVariant[], variant: L
   )
 }
 
-export const getOptions = (variants: LocalizedVariant[][], current: LocalizedVariant[]) => {
+export const getOptions = (variants: Variant[][], current: Variant[]) => {
   const maxLength = variants.reduce((a, b) => Math.max(a, b.length), -Infinity)
   return new Array(maxLength).fill(undefined).map((_, index) => {
     return uniqBy(
@@ -25,7 +25,7 @@ export const getOptions = (variants: LocalizedVariant[][], current: LocalizedVar
   })
 }
 
-export const compareVariants = (variantA: LocalizedVariant[], variantB: LocalizedVariant[]): boolean => {
-  const nameValueObject = (variant: LocalizedVariant) => ({ name: variant.name, value: variant.value })
+export const compareVariants = (variantA: Variant[], variantB: Variant[]): boolean => {
+  const nameValueObject = (variant: Variant) => ({ name: variant.name, value: variant.value })
   return JSON.stringify(variantA.map(nameValueObject)) === JSON.stringify(variantB.map(nameValueObject))
 }

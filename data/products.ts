@@ -22,13 +22,6 @@ export type RawDataProduct = {
     formatted_amount?: string
     formatted_compare_at_amount?: string
   }
-
-  // TODO: replace with flat model + config file
-  variant: {
-    name: string
-    value: string
-    label: LocalizedField<string>
-  }[]
 }
 
 export const rawDataProducts: RawDataProduct[] = productsJson

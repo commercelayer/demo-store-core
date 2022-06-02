@@ -1,29 +1,30 @@
 [
   {
+    "productCode": "ABC",
+    "variantCode": "ABCD",
+    "code": "ABCD-INVALID-VARIANT-TYPE",
+    "slug": "black-five-panel-cap-with-white-logo/5PANECAP000000FFFFFFXXXX",
+    "name": {
+      "en": "Black Five-Panel Cap with White Logo",
+      "it": "Black Five-Panel Cap with White Logo"
+    },
+    "description": {
+      "en": "Soft-structured, five-panel, low-profile cap. 100% cotton, metal eyelets, nylon strap clip closure.",
+      "it": "Soft-structured, five-panel, low-profile cap. 100% cotton, metal eyelets, nylon strap clip closure."
+    },
+    "images": [
+      "https://data.commercelayer.app/seed/images/skus/5PANECAP000000FFFFFFXXXX_FLAT.png"
+    ],
+    "color": ["000000"]
+  },
+  {
     "productCode": "BODYBSSS",
     "variantCode": "BODYBSSS000000",
     "code": "BODYBSSS000000FFFFFF12MX",
     "slug": "black-baby-short-sleeve-bodysuit-with-white-logo-12-months/BODYBSSS000000FFFFFF12MX",
-    "variant": [
-      {
-        "name": "color",
-        "value": "000000",
-        "label": {
-          "en": "#000000",
-          "it": "#000000"
-        }
-      },
-      {
-        "name": "size",
-        "value": "12 months",
-        "label": {
-          "en": "12 months",
-          "it": "12 mesi"
-        }
-      }
-    ],
+    "facetA": "000000",
     "color": "000000",
-    "size": ["12 months"],
+    "size": "12 months",
     "name": {
       "en-US": "Translation for en-US - Black Baby Short Sleeve Bodysuit with White Logo",
       "en": "Translation for en - Black Baby Short Sleeve Bodysuit with White Logo",
@@ -43,26 +44,9 @@
     "variantCode": "BODYBSSS000000",
     "code": "BODYBSSS000000FFFFFF6MXX",
     "slug": "black-baby-short-sleeve-bodysuit-with-white-logo-6-months/BODYBSSS000000FFFFFF6MXX",
-    "variant": [
-      {
-        "name": "color",
-        "value": "000000",
-        "label": {
-          "en": "#000000",
-          "it": "#000000"
-        }
-      },
-      {
-        "name": "size",
-        "value": "6 months",
-        "label": {
-          "en": "6 months",
-          "it": "6 mesi"
-        }
-      }
-    ],
-    "color": ["000000"],
-    "size": ["6 months"],
+    "facetA": [],
+    "color": "000000",
+    "size": "6 months",
     "name": {
       "en": "Black Baby Short Sleeve Bodysuit with White Logo",
       "it": "Body nero a maniche corte per bebè con logo bianco"
@@ -80,26 +64,9 @@
     "variantCode": "BODYBSSSFFFFFF",
     "code": "BODYBSSSFFFFFF00000012MX",
     "slug": "white-baby-short-sleeve-bodysuit-with-black-logo-12-months/BODYBSSSFFFFFF00000012MX",
-    "variant": [
-      {
-        "name": "color",
-        "value": "FFFFFF",
-        "label": {
-          "en": "#FFFFFF",
-          "it": "#FFFFFF"
-        }
-      },
-      {
-        "name": "size",
-        "value": "12 months",
-        "label": {
-          "en": "12 months",
-          "it": "12 mesi"
-        }
-      }
-    ],
-    "color": ["FFFFFF"],
-    "size": ["12 months"],
+    "facetA": ["FFFFFF"],
+    "color": "FFFFFF",
+    "size": "12 months",
     "name": {
       "en": "White Baby Short Sleeve Bodysuit with Black Logo",
       "it": "Body bianco a maniche corte per bebè con logo nero"
@@ -117,26 +84,9 @@
     "variantCode": "BODYBSSSFFFFFF",
     "code": "BODYBSSSFFFFFF0000006MXX",
     "slug": "white-baby-short-sleeve-bodysuit-with-black-logo-6-months/BODYBSSSFFFFFF0000006MXX",
-    "variant": [
-      {
-        "name": "color",
-        "value": "FFFFFF",
-        "label": {
-          "en": "#FFFFFF",
-          "it": "#FFFFFF"
-        }
-      },
-      {
-        "name": "size",
-        "value": "6 months",
-        "label": {
-          "en": "6 months",
-          "it": "6 mesi"
-        }
-      }
-    ],
-    "color": ["FFFFFF"],
-    "size": ["6 months"],
+    "facetA": ["FFFFFF"],
+    "color": "FFFFFF",
+    "size": "6 months",
     "name": {
       "en": "White Baby Short Sleeve Bodysuit with Black Logo",
       "it": "Body bianco a maniche corte per bebè con logo nero"
@@ -154,18 +104,8 @@
     "variantCode": "BOTT17OZFFFFFF",
     "code": "BOTT17OZFFFFFF000000XXXX",
     "slug": "white-water-bottle-with-black-logo-17oz/BOTT17OZFFFFFF000000XXXX",
-    "variant": [
-      {
-        "name": "color",
-        "value": "FFFFFF",
-        "label": {
-          "en": "#FFFFFF",
-          "it": "#FFFFFF"
-        }
-      }
-    ],
-    "color": ["FFFFFF"],
-    "size": [],
+    "facetA": ["FFFFFF"],
+    "color": "FFFFFF",
     "name": {
       "en": "White Water Bottle with Black Logo",
       "it": "Bottiglia d'acqua bianca con logo nero"
@@ -183,18 +123,8 @@
     "variantCode": "CUFFBEAN000000",
     "code": "CUFFBEAN000000FFFFFFXXXX",
     "slug": "black-cuffed-beanie-with-white-logo/CUFFBEAN000000FFFFFFXXXX",
-    "variant": [
-      {
-        "name": "color",
-        "value": "000000",
-        "label": {
-          "en": "#000000",
-          "it": "#000000"
-        }
-      }
-    ],
-    "color": ["000000"],
-    "size": [],
+    "facetA": ["000000"],
+    "color": "000000",
     "name": {
       "en": "Black Cuffed Beanie with White Logo",
       "it": "Berretto con risvolto nero con logo bianco"
@@ -212,18 +142,8 @@
     "variantCode": "CUFFBEANA6A5A0",
     "code": "CUFFBEANA6A5A0000000XXXX",
     "slug": "gray-cuffed-beanie-with-black-logo/CUFFBEANA6A5A0000000XXXX",
-    "variant": [
-      {
-        "name": "color",
-        "value": "A6A5A0",
-        "label": {
-          "en": "#A6A5A0",
-          "it": "#A6A5A0"
-        }
-      }
-    ],
-    "color": ["A6A5A0"],
-    "size": [],
+    "facetA": ["A6A5A0"],
+    "color": "A6A5A0",
     "name": {
       "en": "Gray Cuffed Beanie with Black Logo",
       "it": "Berretto con risvolto grigio con logo nero"
@@ -241,18 +161,8 @@
     "variantCode": "CUFFBEANFFFFFF",
     "code": "CUFFBEANFFFFFF000000XXXX",
     "slug": "white-cuffed-beanie-with-black-logo/CUFFBEANFFFFFF000000XXXX",
-    "variant": [
-      {
-        "name": "color",
-        "value": "FFFFFF",
-        "label": {
-          "en": "#FFFFFF",
-          "it": "#FFFFFF"
-        }
-      }
-    ],
-    "color": ["FFFFFF"],
-    "size": [],
+    "facetA": ["FFFFFF"],
+    "color": "FFFFFF",
     "name": {
       "en": "White Cuffed Beanie with Black Logo",
       "it": "Berretto con risvolto bianco con logo nero"
