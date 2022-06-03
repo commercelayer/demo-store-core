@@ -1,16 +1,16 @@
 import { Link } from '#i18n/Link'
 import type { NavigationPath } from '@typings/navigation.d'
 
-export type Props = {
+export type Props = JSX.IntrinsicElements['nav'] & {
   subNavigation: NavigationPath
 }
 
-export const SubNavigation: React.FC<Props> = ({ subNavigation }) => {
+export const SubNavigation: React.FC<Props> = ({ className , subNavigation: { parent, children }, ...props }) => {
   return (
-    <nav>
+    <nav className={className} {...props}>
       <div>
         {
-          subNavigation.parent.map(link => (
+          parent.map(link => (
             <Link key={link.key} href={link.href}><a className='bg-gray-100 mx-2 rounded py-1 px-2'>{link.text}</a></Link>
           ))
         }
@@ -18,7 +18,7 @@ export const SubNavigation: React.FC<Props> = ({ subNavigation }) => {
 
       <div>
         {
-          subNavigation.children.map(link => {
+          children.map(link => {
             return (
               <Link key={link.key} href={link.href}><a className='bg-gray-100 mx-2 rounded py-1 px-2'>{link.text}</a></Link>
             )

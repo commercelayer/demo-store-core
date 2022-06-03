@@ -13,11 +13,11 @@ export type Props = HeaderProps & Partial<SubNavigationProps> & {
   products: LocalizedProductWithVariant[]
 }
 
-const ProductList: React.FC = () => {
+const ProductList: React.FC<{ hasSidebar: boolean }> = ({ hasSidebar }) => {
   const { products } = useCatalogContext()
 
   return (
-    <div className='mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-6 lg:gap-y-12'>
+    <div className={`w-full grid space-y-0 gap-6 lg:gap-y-12 sm:grid-cols-2 ${hasSidebar ? 'lg:grid-cols-2 2xl:grid-cols-3' : 'lg:grid-cols-3 xl:grid-cols-4'}`}>
       {
         products.map(product => (
           <ProductCard key={product.code} product={product} />
@@ -28,6 +28,8 @@ const ProductList: React.FC = () => {
 }
 
 export const SearchPageComponent: NextPage<Props> = ({ navigation, products, subNavigation }) => {
+  const isSubNavigationVisible = subNavigation !== undefined && subNavigation.parent.length >= 1 && subNavigation.children.length > 0
+
   return (
     <Page>
       <Container>
@@ -35,16 +37,19 @@ export const SearchPageComponent: NextPage<Props> = ({ navigation, products, sub
 
         <CatalogProvider products={products}>
 
-          <div className='flex my-6 relative'>
+          <div className='flex items-center py-6 relative border-b-gray-200 border-b'>
             <h2 className='text-2xl flex-auto font-semibold text-black'>{subNavigation?.current.text || 'All Products'}</h2>
             <Facet />
           </div>
 
-          {
-            subNavigation && <SubNavigation subNavigation={subNavigation} />
-          }
+          <div className='lg:flex mt-10'>
+            {
+              isSubNavigationVisible && <SubNavigation className='shrink-0 basis-1/3' subNavigation={subNavigation} />
+            }
 
-          <ProductList />
+            <ProductList hasSidebar={isSubNavigationVisible} />
+          </div>
+
         </CatalogProvider>
 
       </Container>

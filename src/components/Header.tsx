@@ -10,14 +10,14 @@ export type HeaderProps = NavigationProps
 
 export const Header: React.FC<HeaderProps> = ({ navigation }) => {
   return (
-    <header className='border-b-gray-200 border-b pb-6 mb-6'>
+    <header className='border-b-gray-200 border-b pb-6'>
       <nav className='flex items-center justify-between flex-wrap mb-4'>
         <div className='flex items-center flex-no-shrink text-white mr-6'>
           <Link href='/'><a><Logo /></a></Link>
         </div>
         <div className='flex items-center w-auto flex-grow justify-end'>
-          <a className='block lg:inline-block mr-4'><User /></a>
-          <a className='block lg:inline-block mr-4'><HeartStraight /></a>
+          <a className='block lg:inline-block mr-4 text-gray-300'><User /></a>
+          <a className='block lg:inline-block mr-4 text-gray-300'><HeartStraight /></a>
           <Link href={getCartUrl()}>
             <a className='block lg:inline-block'>
               <ShoppingBagOpen />
