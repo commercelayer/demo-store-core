@@ -35,7 +35,6 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
         <img width="300" src={product.images[0]} alt={product.name} />
         <p>{product.name}</p>
         <p>{product.description}</p>
-        <pre>{JSON.stringify(product.variant, undefined, 4)}</pre>
 
         <DemoStoreVariantSelector product={product} onChange={setCurrentProduct} />
 

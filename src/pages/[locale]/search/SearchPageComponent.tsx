@@ -34,9 +34,11 @@ export const SearchPageComponent: NextPage<Props> = ({ navigation, products, sub
         <Header navigation={navigation} />
 
         <CatalogProvider products={products}>
-          <Facet />
 
-          <h2 className='mt-16 block text-2xl font-semibold text-black'>{subNavigation?.current.text || 'All Products'}</h2>
+          <div className='flex my-6 relative'>
+            <h2 className='text-2xl flex-auto font-semibold text-black'>{subNavigation?.current.text || 'All Products'}</h2>
+            <Facet />
+          </div>
 
           {
             subNavigation && <SubNavigation subNavigation={subNavigation} />
