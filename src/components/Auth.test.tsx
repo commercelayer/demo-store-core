@@ -89,10 +89,10 @@ test('should fetch accessToken and set it properly when "locale" is set', async 
   expect(getSalesChannelToken).toBeCalledWith({
     clientId: 'client-1234',
     endpoint: 'https://demo-store.commercelayer.co',
-    scope: 'market:400'
+    scope: 'market:10426'
   })
 
-  expect(localStorage.getItem('clayer_token-market:400')).toEqual(JSON.stringify({
+  expect(localStorage.getItem('clayer_token-market:10426')).toEqual(JSON.stringify({
     tokenType: 'bearer',
     accessToken: 'accessToken-1234',
     expires: 0,

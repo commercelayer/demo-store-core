@@ -15,8 +15,8 @@ describe('makeLocaleCode', () => {
 
 describe('makeLocales', () => {
   it('should create locales from a list of countries and languages', () => {
-    const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas', catalog: 'AMER' }
-    const italy: RawDataCountry = { code: 'IT', default_language: 'it', market: 401, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
+    const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const italy: RawDataCountry = { code: 'IT', default_language: 'it', market: 10427, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
     const italian: RawDataLanguage = { code: 'it', name: 'ITA', catalog: 'AMER' }
     const english: RawDataLanguage = { code: 'en', name: 'ENG', catalog: 'AMER' }
 
@@ -46,7 +46,7 @@ describe('parseLocale', () => {
 
 describe('getLocale', () => {
   it('should be able to return a Locale gived a localeCode', () => {
-    const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
     const italian: RawDataLanguage = { code: 'it', name: 'ITA', catalog: 'AMER' }
 
     const locale = getLocale('it-US')

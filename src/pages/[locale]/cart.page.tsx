@@ -8,6 +8,7 @@ import { getCatalog } from '#data/catalogs'
 import { getLocale } from '#i18n/locale'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
+import { getPersistKey } from '#utils/order'
 import { CheckoutLink, Errors, LineItem, LineItemAmount, LineItemImage, LineItemName, LineItemQuantity, LineItemRemoveLink, LineItemsContainer, LineItemsCount, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
@@ -30,7 +31,7 @@ const CartPage: NextPage<Props> = ({ navigation: links }) => {
       <Container>
         <Header navigation={links} />
 
-        <OrderStorage persistKey={`country-${locale?.country?.code}`}>
+        <OrderStorage persistKey={getPersistKey(locale)}>
           <OrderContainer attributes={{
             language_code: locale?.language.code
           }}>

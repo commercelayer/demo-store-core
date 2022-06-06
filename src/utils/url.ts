@@ -1,4 +1,3 @@
-
 export const getSearchUrl = (slug: string): string => {
   return `/search/${slug}`
 }

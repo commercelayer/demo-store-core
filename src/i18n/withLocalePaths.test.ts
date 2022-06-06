@@ -4,8 +4,8 @@ import type { GetStaticPathsResult } from 'next'
 import { Locale, locales } from './locale'
 import { withLocalePaths } from './withLocalePaths'
 
-const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 400, name: 'United States', region: 'Americas', catalog: 'AMER' }
-const italy: RawDataCountry = { code: 'IT', default_language: 'it', market: 401, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
+const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 1234, name: 'United States', region: 'Americas', catalog: 'AMER' }
+const italy: RawDataCountry = { code: 'IT', default_language: 'it', market: 9876, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
 const italian: RawDataLanguage = { code: 'it', name: 'Italiano', catalog: 'AMER' }
 const english: RawDataLanguage = { code: 'en', name: 'English', catalog: 'AMER' }
 

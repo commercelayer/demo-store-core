@@ -4,6 +4,7 @@ import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { VariantSelector as DemoStoreVariantSelector } from '#components/VariantSelector'
 import { getLocale } from '#i18n/locale'
+import { getPersistKey } from '#utils/order'
 import type { LocalizedProduct, LocalizedProductWithVariant } from '#utils/products'
 import { getProductUrl } from '#utils/url'
 import { AddToCartButton, AvailabilityContainer, AvailabilityTemplate, ItemContainer, OrderContainer, OrderStorage, Price, PricesContainer } from '@commercelayer/react-components'
@@ -38,7 +39,7 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
 
         <DemoStoreVariantSelector product={product} onChange={setCurrentProduct} />
 
-        <OrderStorage persistKey={`country-${locale?.country?.code}`} clearWhenPlaced>
+        <OrderStorage persistKey={getPersistKey(locale)} clearWhenPlaced>
           <OrderContainer attributes={{
             language_code: locale?.language.code
           }}>
