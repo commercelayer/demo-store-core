@@ -28,7 +28,9 @@ const ProductList: React.FC<{ hasSidebar: boolean }> = ({ hasSidebar }) => {
 }
 
 export const SearchPageComponent: NextPage<Props> = ({ navigation, products, subNavigation }) => {
-  const isSubNavigationVisible = subNavigation !== undefined && subNavigation.parent.length >= 1 && subNavigation.children.length > 0
+  // TODO: temporarily disabled subNavigation since is implemented as Facet
+  // const isSubNavigationVisible = subNavigation !== undefined && subNavigation.parent.length >= 1 && subNavigation.children.length > 0
+  const isSubNavigationVisible = subNavigation !== undefined && false
 
   return (
     <Page>
