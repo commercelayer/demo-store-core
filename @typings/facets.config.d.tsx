@@ -1,5 +1,8 @@
+import type { SortOrder } from '#utils/sort'
+
 type Config = {
   field: string
+  sortOrder?: SortOrder[]
 }
 
 type TagType = {

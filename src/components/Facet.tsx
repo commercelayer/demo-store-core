@@ -1,6 +1,7 @@
 import { SlidersHorizontal } from '#assets/icons'
 import { useCatalogContext } from '#contexts/CatalogContext'
 import type { Primitives } from '#utils/facets'
+import { sort } from '#utils/sort'
 import facetsConfig from 'config/facets.config'
 import { useI18n } from 'next-localization'
 import { useState } from 'react'
@@ -15,15 +16,15 @@ const FacetAppearance: React.FC<{ facetName: string, facetValues: Primitives[] }
     return null
   }
 
-  // TODO: implement sorting for `facetValues` reading the algorithm name from Config file
+  const sortedFacetValues = config.sortOrder ? sort(facetValues, config.sortOrder) : facetValues
 
   switch (config.type) {
     case 'priceRange':
-      return <FacetPriceRange facetName={facetName} facetValues={facetValues} />
+      return <FacetPriceRange facetName={facetName} facetValues={sortedFacetValues} />
     case 'color':
-      return <FacetColor facetName={facetName} facetValues={facetValues} />
+      return <FacetColor facetName={facetName} facetValues={sortedFacetValues} />
     case 'tag':
-      return <FacetTag facetName={facetName} facetValues={facetValues} />
+      return <FacetTag facetName={facetName} facetValues={sortedFacetValues} />
   }
 }
 
