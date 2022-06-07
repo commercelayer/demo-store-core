@@ -1,13 +1,34 @@
 import type { FacetConfig } from '@typings/facets.config.d'
 
 const facetsConfig: FacetConfig[] = [
-  { type: 'tag', field: 'gender' },
-  { type: 'tag', field: 'category' },
-  { type: 'priceRange', field: 'price.amount_float' },
-  { type: 'tag', field: 'available' },
-  { type: 'color', field: 'color' },
-  { type: 'tag', field: 'size' },
-  { type: 'tag', field: 'facetA' },
+  {
+    field: 'gender',
+    appearance: 'tag',
+  },
+  {
+    field: 'category',
+    appearance: 'tag',
+  },
+  {
+    field: 'price.amount_float',
+    appearance: 'priceRange',
+  },
+  {
+    field: 'available',
+    appearance: 'tag',
+  },
+  {
+    field: 'color',
+    appearance: 'colorSwatch',
+  },
+  {
+    field: 'size',
+    appearance: 'tag',
+  },
+  {
+    field: 'facetA',
+    appearance: 'tag',
+  },
 ]
 
 export default facetsConfig

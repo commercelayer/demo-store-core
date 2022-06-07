@@ -3,7 +3,7 @@ import { useCatalogContext } from '#contexts/CatalogContext'
 import type { Primitives } from '#utils/facets'
 import { useI18n } from 'next-localization'
 
-export const FacetColor = ({ facetName, facetValues }: { facetName: string, facetValues: Primitives[] }) => {
+export const FacetColorSwatch = ({ facetName, facetValues }: { facetName: string, facetValues: Primitives[] }) => {
   const i18n = useI18n();
   const { selectFacet, selectedFacets } = useCatalogContext()
 

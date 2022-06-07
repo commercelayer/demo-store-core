@@ -2,14 +2,14 @@ type Config = {
   field: string
 }
 
-type TagType = {
-  type: 'tag'
+type TagAppearance = {
+  appearance: 'tag'
 }
 
-type ColorType = {
-  type: 'color'
+type ColorAppearance = {
+  appearance: 'colorSwatch'
 }
 
 export type VariantConfig = Config & (
-  TagType | ColorType
+  TagAppearance | ColorAppearance
 )

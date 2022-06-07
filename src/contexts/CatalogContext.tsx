@@ -303,7 +303,7 @@ async function freeTextSearch(products: LocalizedProductWithVariant[], query: st
 async function facetSearch(products: LocalizedProductWithVariant[], facets: SelectedFacets): Promise<LocalizedProductWithVariant[]> {
   const Fuse = (await import('fuse.js')).default
 
-  const facetsWithRangeType = facetsConfig.filter(c => c.type === 'priceRange').map(c => c.field)
+  const facetsWithRangeType = facetsConfig.filter(c => c.appearance === 'priceRange').map(c => c.field)
   const isRangeType = (facetName: string) => facetsWithRangeType.includes(facetName)
 
   const andExpression: Fuse.Expression[] = []

@@ -5,18 +5,18 @@ type Config = {
   sortOrder?: SortOrder[]
 }
 
-type TagType = {
-  type: 'tag'
+type TagAppearance = {
+  appearance: 'tag'
 }
 
-type PriceRangeType = {
-  type: 'priceRange'
+type PriceRangeAppearance = {
+  appearance: 'priceRange'
 }
 
-type ColorType = {
-  type: 'color'
+type ColorSwatchAppearance = {
+  appearance: 'colorSwatch'
 }
 
 export type FacetConfig = Config & (
-  TagType | PriceRangeType | ColorType
+  TagAppearance | PriceRangeAppearance | ColorSwatchAppearance
 )

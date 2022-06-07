@@ -75,8 +75,8 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
               {
                 variants.map(variant => {
                   const selected = currentVariant[index]?.value === variant.value
-                  switch (config.type) {
-                    case 'color':
+                  switch (config.appearance) {
+                    case 'colorSwatch':
                       return (
                         <Swatch
                           key={`${variantName}-${variant.value}`}

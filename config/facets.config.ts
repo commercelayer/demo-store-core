@@ -2,31 +2,31 @@ import type { FacetConfig } from '@typings/facets.config.d'
 
 const facetsConfig: FacetConfig[] = [
   {
-    type: 'tag',
     field: 'gender',
+    appearance: 'tag',
     // sortOrder: [
     //   { pattern: /.*/, sort: values => values.sort()}
     // ]
   },
   {
-    type: 'tag',
-    field: 'category'
+    field: 'category',
+    appearance: 'tag',
   },
   {
-    type: 'priceRange',
-    field: 'price.amount_float'
+    field: 'price.amount_float',
+    appearance: 'priceRange',
   },
   {
-    type: 'tag',
-    field: 'available'
+    field: 'available',
+    appearance: 'tag',
   },
   {
-    type: 'color',
-    field: 'color'
+    field: 'color',
+    appearance: 'colorSwatch',
   },
   {
-    type: 'tag',
     field: 'size',
+    appearance: 'tag',
     sortOrder: [
       {
         pattern: /^[0-9]+ months$/,

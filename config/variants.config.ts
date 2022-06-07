@@ -1,8 +1,14 @@
 import type { VariantConfig } from '@typings/variants.config.d'
 
 const variantsConfig: VariantConfig[] = [
-  { type: 'color', field: 'color' },
-  { type: 'tag', field: 'size' },
+  {
+    field: 'color',
+    appearance: 'colorSwatch'
+  },
+  {
+    field: 'size',
+    appearance: 'tag'
+  },
 ]
 
 export default variantsConfig
