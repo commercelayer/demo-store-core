@@ -1,7 +1,9 @@
 {
   "general": {
     "viewAll": "View all",
-    "search": "search"
+    "search": "search",
+    "addToCart": "Add to cart",
+    "chooseCountry": "Choose country"
   },
   "variants": {
     "color": "Colors",

@@ -3,9 +3,11 @@ import { Container } from '#components/Container'
 import { rawDataLanguages } from '#data/languages'
 import { Link } from '#i18n/Link'
 import { changeLanguage, getLocale, parseLocaleCode } from '#i18n/locale'
+import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
 
 export const Footer: React.FC = () => {
+  const i18n = useI18n()
   const router = useRouter()
   const locale = getLocale(router.query.locale)
 
@@ -18,7 +20,7 @@ export const Footer: React.FC = () => {
             <div className='flex items-center'>
               <Globe className='mr-1.5' /> {locale.country ? locale.country.name : 'International'}
               <Link locale=''>
-                <a className='uppercase text-violet-400 text-xs border-b border-gray-200 ml-3 mt-1'>Choose Country</a>
+                <a className='uppercase text-violet-400 text-xs border-b border-gray-200 ml-3 mt-1'>{i18n.t('general.chooseCountry')}</a>
               </Link>
             </div>
 

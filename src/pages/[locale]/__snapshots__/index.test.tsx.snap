@@ -40,17 +40,7 @@ exports[`home 1`] = `
             class="flex items-center w-auto flex-grow justify-end"
           >
             <a
-              class="block lg:inline-block mr-4 text-gray-300"
-            >
-              <svg />
-            </a>
-            <a
-              class="block lg:inline-block mr-4 text-gray-300"
-            >
-              <svg />
-            </a>
-            <a
-              class="block lg:inline-block"
+              class="block lg:inline-block relative"
               href="/en-US/cart"
             >
               <svg />
@@ -177,9 +167,7 @@ exports[`home 1`] = `
               <a
                 class="uppercase text-violet-400 text-xs border-b border-gray-200 ml-3 mt-1"
                 href="/"
-              >
-                Choose Country
-              </a>
+              />
             </div>
           </div>
           <div>

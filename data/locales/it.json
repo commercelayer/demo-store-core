@@ -1,7 +1,9 @@
 {
   "general": {
     "viewAll": "Mostra tutti",
-    "search": "cerca"
+    "search": "cerca",
+    "addToCart": "Aggiungi al carrello",
+    "chooseCountry": "Cambia paese/regione"
   },
   "variants": {
     "color": "Colori",

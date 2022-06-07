@@ -1,10 +1,11 @@
-import { HeartStraight, ShoppingBagOpen, User } from '#assets/icons'
+import { ShoppingBagOpen } from '#assets/icons'
 import { Logo } from '#components/Logo'
 import type { Props as NavigationProps } from '#components/Navigation'
 import { Navigation } from '#components/Navigation'
 import { Search } from '#components/Search'
 import { Link } from '#i18n/Link'
 import { getCartUrl } from '#utils/url'
+import { LineItemsCount } from '@commercelayer/react-components'
 
 export type HeaderProps = NavigationProps
 
@@ -16,11 +17,25 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
           <Link href='/'><a><Logo /></a></Link>
         </div>
         <div className='flex items-center w-auto flex-grow justify-end'>
-          <a className='block lg:inline-block mr-4 text-gray-300'><User /></a>
-          <a className='block lg:inline-block mr-4 text-gray-300'><HeartStraight /></a>
+          {/* <a className='block lg:inline-block mr-4 text-gray-300'><User /></a> */}
+          {/* <a className='block lg:inline-block mr-4 text-gray-300'><HeartStraight /></a> */}
+
           <Link href={getCartUrl()}>
-            <a className='block lg:inline-block'>
+            <a className='block lg:inline-block relative'>
               <ShoppingBagOpen />
+              <LineItemsCount>
+                {
+                  ({ quantity }) => {
+                    if (quantity <= 0) {
+                      return null
+                    }
+
+                    return (
+                      <div className='absolute bottom-0 translate-x-1/3 right-0 text-white bg-violet-400 rounded-full w-4 h-4 text-xxs flex items-center justify-center'>{quantity}</div>
+                    )
+                  }
+                }
+              </LineItemsCount>
             </a>
           </Link>
         </div>

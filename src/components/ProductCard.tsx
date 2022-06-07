@@ -1,6 +1,7 @@
 import { Link } from '#i18n/Link'
 import type { LocalizedProductWithVariant } from '#utils/products'
 import { getProductUrl } from '#utils/url'
+import { Price } from './Price'
 
 export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = ({ product }) => {
   return (
@@ -13,10 +14,7 @@ export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = (
           <a>
             <span className='absolute inset-0'></span>
             <p className='text-base'>{product.name}</p>
-            <div className='flex items-center gap-3 mt-2'>
-              <div className='line-through text-gray-400 font-light text-sm'>{product.price?.formatted_compare_at_amount}</div>
-              <div className='text-black font-semibold text-base'>{product.price?.formatted_amount}</div>
-            </div>
+            {product.price && <Price price={product.price} className='mt-2' />}
           </a>
         </Link>
       </h3>

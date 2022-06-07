@@ -231,16 +231,7 @@ const mapWithPrice = async (client: CommerceLayerClient, products: LocalizedProd
         prices.map((price) => {
           const productIndex = chunkedSkus[chunkIndex].findIndex(p => p.code === price.sku_code)
 
-          chunkedSkus[chunkIndex][productIndex].price = {
-            id: price.id,
-            amount_cents: price.amount_cents,
-            amount_float: price.amount_float,
-            compare_at_amount_cents: price.compare_at_amount_cents,
-            compare_at_amount_float: price.compare_at_amount_float,
-            currency_code: price.currency_code,
-            formatted_amount: price.formatted_amount,
-            formatted_compare_at_amount: price.formatted_compare_at_amount
-          }
+          chunkedSkus[chunkIndex][productIndex].price = price
         })
       } catch (e) {
         console.error('Cannot fetch prices!')

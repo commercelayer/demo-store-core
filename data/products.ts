@@ -1,4 +1,5 @@
 import type { LocalizedField } from '#i18n/locale'
+import type { Price } from '@commercelayer/sdk'
 import productsJson from './json/products.json'
 
 export type RawDataProduct = {
@@ -12,16 +13,7 @@ export type RawDataProduct = {
 
   available?: boolean
 
-  price?: {
-    id: string
-    amount_cents?: number
-    amount_float?: number
-    compare_at_amount_cents?: number
-    compare_at_amount_float?: number
-    currency_code?: string
-    formatted_amount?: string
-    formatted_compare_at_amount?: string
-  }
+  price?: Price
 }
 
 export const rawDataProducts: RawDataProduct[] = productsJson
