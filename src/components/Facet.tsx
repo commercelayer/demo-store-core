@@ -42,7 +42,7 @@ export const Facet: React.FC<JSX.IntrinsicElements['div']> = ({ className = '', 
   return (
     <div className={`${className}`} {...props}>
       <Icon onSelect={setOpened} Icon={SlidersHorizontal} />
-      <div className={`${opened ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition-opacity absolute right-0 w-full lg:w-2/3 bg-white z-10 pb-10 lg:p-4 lg:shadow-md lg:rounded-md`}>
+      <div className={`${opened ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition-opacity absolute right-0 w-full lg:w-2/3 xl:w-1/3 bg-white z-10 pb-10 lg:p-4 lg:shadow-md lg:rounded-md`}>
         {
           facetList.map(([facetName, facetValues]) => {
             if (facetValues.length > 0) {

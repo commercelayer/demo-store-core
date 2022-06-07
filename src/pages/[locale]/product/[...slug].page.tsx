@@ -5,6 +5,7 @@ import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
 import { flattenProductVariants, getProductWithVariants } from '#utils/products'
+import generalConfig from 'config/general.config'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import { ProductPageComponent, Props } from './ProductPageComponent'
 
@@ -36,13 +37,17 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const locale = getLocale(localeCode)
   const catalog = getCatalog(locale)
 
+  const productSlug = slug.join('/')
+  const productCode = productSlug.match(generalConfig.productSlugRegExp)?.groups?.productCode
+
+  if (!productCode) {
+    throw new Error(`"productSlugRegExp" is not properly configured. Cannot apply RegExp "${generalConfig.productSlugRegExp}" to the given product slug "${productSlug}"`)
+  }
+
   return {
     props: {
       navigation: getRootNavigationLinks(catalog),
-
-      // TODO: slug.pop() look like a requirement. show it in the readme or change the way.
-      product: getProductWithVariants(slug.pop()!, localeCode, rawDataProducts),
-
+      product: getProductWithVariants(productCode, localeCode, rawDataProducts),
       ...(await serverSideTranslations(localeCode))
     }
   }
