@@ -40,7 +40,7 @@ export const SearchPageComponent: NextPage<Props> = ({ navigation, products, sub
         <CatalogProvider products={products}>
 
           <div className='flex items-center py-8 relative border-b-gray-200 border-b'>
-            <h2 className='text-2xl flex-auto font-semibold text-black'>{subNavigation?.current.text || 'All Products'}</h2>
+            <h2 className='text-2xl flex-auto font-semibold text-black py-1'>{subNavigation?.current.text || 'All Products'}</h2>
             <Facet />
           </div>
 

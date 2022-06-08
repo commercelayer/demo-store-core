@@ -1,0 +1,21 @@
+.carousel {
+  --swiper-theme-color: theme('colors.black');
+  --swiper-navigation-size: 20px;
+  --swiper-pagination-bullet-width: 8px;
+  --swiper-pagination-bullet-height: 3px;
+  --swiper-pagination-bullet-inactive-color: theme('colors.gray.300');
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  padding-bottom: theme('padding.6');
+
+  :global(.swiper-pagination-bullet) {
+    border-radius: 3px;
+  }
+
+  :global(.swiper-pagination) {
+    bottom: 0;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    --swiper-pagination-bullet-width: 20px;
+  }
+}

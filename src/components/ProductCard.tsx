@@ -6,18 +6,17 @@ import { Price } from './Price'
 export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = ({ product }) => {
   return (
     <div className='group relative'>
-      <div className='relative w-full h-80 bg-gray-50 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1'>
-        <img src={product.images[0]} alt={product.name} className='w-full h-full object-center object-contain' />
-      </div>
-      <h3 className='mt-6 text-md text-black font-medium'>
-        <Link href={getProductUrl(product.slug)}>
-          <a>
-            <span className='absolute inset-0'></span>
-            <p className='text-base'>{product.name}</p>
-            {product.price && <Price price={product.price} className='mt-2' />}
-          </a>
-        </Link>
-      </h3>
+      <Link href={getProductUrl(product.slug)}>
+        <a>
+          <div className='relative w-full h-80 bg-gray-50 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1'>
+            <img src={product.images[0]} alt={product.name} className='w-full h-full object-center object-contain' />
+          </div>
+          <h3 className='mt-6 text-base text-black font-medium'>{product.name}</h3>
+          <div className='mt-2 min-h-[1.6rem]'>
+            {product.price && <Price price={product.price} />}
+          </div>
+        </a>
+      </Link>
     </div>
   )
 }

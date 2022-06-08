@@ -1,3 +1,4 @@
+import { Carousel } from '#components/Carousel'
 import { Price } from '#components/CommerceLayer/Price'
 import { Container } from '#components/Container'
 import { Footer } from '#components/Footer'
@@ -11,7 +12,7 @@ import type { NextPage } from 'next'
 import { useI18n } from 'next-localization'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 export type Props = HeaderProps & {
   product: LocalizedProductWithVariant
@@ -22,25 +23,30 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
   const [currentProduct, setCurrentProduct] = useState<LocalizedProduct>()
   const router = useRouter()
 
+  const slides = useMemo(() => product.images.map(image => <img key={image} src={image} alt={product.name} className='w-full' />), [product])
+
   return (
     <Page title={product.name}>
       <Head>
-        <link rel="canonical" href={`${router.basePath}/${router.query.locale}${getProductUrl(product.variants[0].slug)}`} />
+        <link rel='canonical' href={`${router.basePath}/${router.query.locale}${getProductUrl(product.variants[0].slug)}`} />
       </Head>
 
       <Container>
         <Header navigation={links} />
 
-        <div className='flex mt-24 gap-48'>
-          <div className='grow-0 shrink-1 basis-1/2'>
-            <img src={product.images[0]} alt={product.name} className='w-full' />
+        <div className='flex flex-col lg:flex-row gap-6 lg:gap-24 xl:gap-48 mt-12 lg:mt-24'>
+
+          <div className=' basis-1/2'>
+            <Carousel slides={slides} />
           </div>
 
           <div className='grow-0 shrink-1 basis-1/2'>
             <ItemContainer>
               <h1 className='text-3xl mb-6'>{product.name}</h1>
 
-              <Price code={currentProduct?.code} className='text-xl' />
+              <div className='min-h-[30px]'>
+                <Price code={currentProduct?.code} className='text-xl' />
+              </div>
 
               <hr className='text-gray-100 my-8' />
 
@@ -53,11 +59,12 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
                 className='block w-full mt-12 h-14 px-6 font-semibold rounded-md text-white bg-violet-400 disabled:bg-gray-300' />
 
               <AvailabilityContainer skuCode={currentProduct?.code}>
-                <AvailabilityTemplate showShippingMethodName={true} showShippingMethodPrice={true} color={'blue'} timeFormat={'days'} />
+                <AvailabilityTemplate className='mt-6'  showShippingMethodName={true} showShippingMethodPrice={true} color={'blue'} timeFormat={'days'} />
               </AvailabilityContainer>
 
             </ItemContainer>
           </div>
+
         </div>
       </Container>
 

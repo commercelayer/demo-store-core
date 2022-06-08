@@ -6,9 +6,10 @@ import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { getCatalog } from '#data/catalogs'
 import { getLocale } from '#i18n/locale'
+import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
-import { CheckoutLink, Errors, LineItem, LineItemAmount, LineItemImage, LineItemName, LineItemQuantity, LineItemRemoveLink, LineItemsCount } from '@commercelayer/react-components'
+import { CheckoutLink, Errors, LineItem, LineItemAmount, LineItemImage, LineItemName, LineItemQuantity, LineItemRemoveLink } from '@commercelayer/react-components'
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 type Query = {
@@ -25,9 +26,6 @@ const CartPage: NextPage<Props> = ({ navigation: links }) => {
       <Container>
         <Header navigation={links} />
 
-        <p className="your-custom-class">
-          Your shopping cart contains <LineItemsCount /> items
-        </p>
         <LineItem>
           <LineItemImage width={50} />
           <LineItemName />
@@ -36,18 +34,10 @@ const CartPage: NextPage<Props> = ({ navigation: links }) => {
           <LineItemAmount />
           <LineItemRemoveLink className='ml-2 p-2 inline-block font-semibold rounded-md bg-red-400 text-white' />
         </LineItem>
+
         <br /><br />
-        <CheckoutLink>
-          {
-            ({ href, label }) => {
-              return (
-                <a className='p-3 inline-block font-semibold rounded-md bg-black text-white' href={href.replace('.checkout.', '.checkout-test.')}>
-                  {label}
-                </a>
-              )
-            }
-          }
-        </CheckoutLink>
+
+        <CheckoutLink className='p-3 inline-block font-semibold rounded-md bg-violet-400 text-white' />
       </Container>
 
       <Footer />
@@ -70,6 +60,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   return {
     props: {
       navigation: getRootNavigationLinks(catalog),
+      ...(await serverSideTranslations(localeCode))
     }
   }
 }
