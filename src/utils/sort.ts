@@ -2,17 +2,17 @@ type Value = string | boolean | number
 
 export type SortOrder = {
   pattern: RegExp
-  sort?: (values: Value[]) => Value[]
+  sort?: <T extends Value>(values: T[]) => T[]
 }
 
-type PatternMapValue = {
+type PatternMapValue<T extends Value> = {
   sort: SortOrder['sort']
-  values: Value[]
+  values: T[]
 }
 
-export function sort(values: Value[], sortOrder: SortOrder[]): Value[] {
+export function sort<T extends Value = Value>(values: T[], sortOrder: SortOrder[]): T[] {
 
-  const patternMap = new Map<SortOrder['pattern'], PatternMapValue>(
+  const patternMap = new Map<SortOrder['pattern'], PatternMapValue<T>>(
     sortOrder.map(({ pattern, sort }) => (
       [
         pattern,
