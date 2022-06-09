@@ -3,7 +3,8 @@
     "viewAll": "Mostra tutti",
     "search": "cerca",
     "addToCart": "Aggiungi al carrello",
-    "chooseCountry": "Cambia paese/regione"
+    "chooseCountry": "Cambia paese/regione",
+    "international": "Internazionale"
   },
   "variants": {
     "color": "Colori",

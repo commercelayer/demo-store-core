@@ -3,7 +3,8 @@
     "viewAll": "View all",
     "search": "search",
     "addToCart": "Add to cart",
-    "chooseCountry": "Choose country"
+    "chooseCountry": "Choose country",
+    "international": "International"
   },
   "variants": {
     "color": "Colors",

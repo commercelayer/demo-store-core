@@ -165,36 +165,45 @@ exports[`home 1`] = `
         class="container mx-auto px-6"
       >
         <div
-          class="flex items-center justify-between flex-wrap"
+          class="lg:flex items-center justify-between flex-wrap"
         >
           <div>
             <div
-              class="flex items-center"
+              class="flex items-center justify-between"
             >
-              <svg
-                class="mr-1.5"
-              />
-               
-              United States
+              <span
+                class="flex items-center"
+              >
+                <svg
+                  class="mr-1.5"
+                />
+                 
+                United States
+              </span>
               <a
                 class="uppercase text-violet-400 text-xs border-b border-gray-200 ml-3 mt-1"
                 href="/"
               />
             </div>
           </div>
-          <div>
-            <a
-              class="p-1 mx-1 text-black"
-              href="/?locale=en-US"
+          <div
+            class="mt-6 lg:mt-0"
+          >
+            <select
+              class=" inputSelect"
             >
-              ENG
-            </a>
-            <a
-              class="p-1 mx-1 text-gray-400"
-              href="/?locale=it-US"
-            >
-              ITA
-            </a>
+              <option
+                selected=""
+                value="en"
+              >
+                ENG
+              </option>
+              <option
+                value="it"
+              >
+                ITA
+              </option>
+            </select>
           </div>
         </div>
       </div>
