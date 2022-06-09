@@ -15,7 +15,7 @@ const facetsConfig: FacetConfig[] = [
   },
   {
     field: 'available',
-    appearance: 'tag',
+    appearance: 'switch',
   },
   {
     field: 'color',

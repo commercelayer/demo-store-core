@@ -5,7 +5,7 @@ import { sort } from '#utils/sort'
 import facetsConfig from 'config/facets.config'
 import { useI18n } from 'next-localization'
 import { useState } from 'react'
-import { FacetColorSwatch, FacetPriceRange, FacetTag } from './FacetsAppearance'
+import { FacetColorSwatch, FacetPriceRange, FacetSwitch, FacetTag } from './FacetsAppearance'
 import { Icon } from './Icon'
 
 const FacetAppearance: React.FC<{ facetName: string, facetValues: Primitives[] }> = ({ facetName, facetValues }) => {
@@ -25,6 +25,8 @@ const FacetAppearance: React.FC<{ facetName: string, facetValues: Primitives[] }
       return <FacetColorSwatch facetName={facetName} facetValues={sortedFacetValues} />
     case 'tag':
       return <FacetTag facetName={facetName} facetValues={sortedFacetValues} />
+    case 'switch':
+      return <FacetSwitch facetName={facetName} facetValues={sortedFacetValues} />
   }
 }
 

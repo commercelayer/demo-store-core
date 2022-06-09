@@ -1,0 +1,14 @@
+$brandColor: theme('colors.violet.400');
+
+.switchInput {
+  margin-top: 0.1rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-4 -4 8 8%22%3E%3Ccircle r=%223%22 fill=%22%23fff%22/%3E%3C/svg%3E");
+  background-position: 0;
+  transition: background-position .15s ease-in-out;
+
+  &:checked {
+    background-color: $brandColor;
+    border-color: $brandColor;
+    background-position: 100%;
+  }
+}
