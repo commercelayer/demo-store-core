@@ -1,6 +1,6 @@
 [
   {
-    "key": "taxon_1",
+    "id": "taxon_1",
     "label": {
       "en": "Accessories",
       "it": "Accessori"
@@ -34,7 +34,7 @@
     ]
   },
   {
-    "key": "taxon_2",
+    "id": "taxon_2",
     "label": {
       "en": "Baby",
       "it": "Baby"
@@ -53,7 +53,7 @@
     ]
   },
   {
-    "key": "taxon_3",
+    "id": "taxon_3",
     "label": {
       "en": "Bags",
       "it": "Borse"
@@ -84,7 +84,7 @@
     ]
   },
   {
-    "key": "taxon_4",
+    "id": "taxon_4",
     "label": {
       "en": "Hats",
       "it": "Cappelli"
@@ -114,7 +114,7 @@
     ]
   },
   {
-    "key": "taxon_5",
+    "id": "taxon_5",
     "label": {
       "en": "Home & Living",
       "it": "Casa"
@@ -145,7 +145,7 @@
     ]
   },
   {
-    "key": "taxon_6",
+    "id": "taxon_6",
     "label": {
       "en": "Men",
       "it": "Uomo"
@@ -181,7 +181,7 @@
     ]
   },
   {
-    "key": "taxon_7",
+    "id": "taxon_7",
     "label": {
       "en": "Shirts",
       "it": "Magliette"
@@ -200,7 +200,7 @@
     "taxons": ["taxon_7A", "taxon_7B"]
   },
   {
-    "key": "taxon_7A",
+    "id": "taxon_7A",
     "label": {
       "en": "Polo",
       "it": "Polo"
@@ -215,7 +215,7 @@
     "taxons": ["taxon_7AA", "taxon_7AB"]
   },
   {
-    "key": "taxon_7AA",
+    "id": "taxon_7AA",
     "label": {
       "en": "Dark Polo",
       "it": "Polo Scure"
@@ -232,7 +232,7 @@
     ]
   },
   {
-    "key": "taxon_7AB",
+    "id": "taxon_7AB",
     "label": {
       "en": "All Others",
       "it": "Tutte le altre"
@@ -250,7 +250,7 @@
     ]
   },
   {
-    "key": "taxon_7B",
+    "id": "taxon_7B",
     "label": {
       "en": "Other Shirts",
       "it": "Tutte le altre magliette"
@@ -293,7 +293,7 @@
     ]
   },
   {
-    "key": "taxon_8",
+    "id": "taxon_8",
     "label": {
       "en": "Sweatshirts",
       "it": "Felpe"
@@ -322,7 +322,7 @@
     ]
   },
   {
-    "key": "taxon_9",
+    "id": "taxon_9",
     "label": {
       "en": "Unisex",
       "it": "Unisex"
@@ -404,7 +404,7 @@
     ]
   },
   {
-    "key": "taxon_10",
+    "id": "taxon_10",
     "label": {
       "en": "Women",
       "it": "Donna"
@@ -437,7 +437,7 @@
     ]
   },
   {
-    "key": "taxon_11",
+    "id": "taxon_11",
     "label": {
       "en": "Shirts",
       "it": "Magliette"

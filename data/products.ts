@@ -5,7 +5,7 @@ import productsJson from './json/products.json'
 export type RawDataProduct = {
   productCode: string
   variantCode: string
-  code: string
+  sku: string
   slug: string
   name: LocalizedField<string>
   description: LocalizedField<string>

@@ -1,16 +1,16 @@
 [
   {
-    "key": "catalog_1",
+    "id": "catalog_1",
     "name": "AMER",
     "taxonomies": ["taxonomy_1", "taxonomy_4"]
   },
   {
-    "key": "catalog_2",
+    "id": "catalog_2",
     "name": "EMEA",
     "taxonomies": ["taxonomy_2", "taxonomy_4"]
   },
   {
-    "key": "catalog_3",
+    "id": "catalog_3",
     "name": "APAC",
     "taxonomies": ["taxonomy_3", "taxonomy_5"]
   }

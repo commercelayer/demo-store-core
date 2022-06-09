@@ -47,7 +47,7 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
   const isFiltering = Object.entries(selectedFacets).length > 0
 
   const productList = useMemo(
-    () => isFiltering ? productsWithPrices : initialProducts.map(p => productsWithPrices.find(cp => cp.code === p.code)!),
+    () => isFiltering ? productsWithPrices : initialProducts.map(p => productsWithPrices.find(cp => cp.sku === p.sku)!),
     [isFiltering, productsWithPrices, initialProducts]
   )
 
@@ -159,7 +159,7 @@ function useCommerceLayerAvailability(initialProducts: LocalizedProductWithVaria
       flattenProductVariants(initialProducts)
     ).then((productsWithAvailabilities) => {
       if (isMounted) {
-        setProducts(productsWithAvailabilities.map(product => getProductWithVariants(product.code, product._locale, productsWithAvailabilities)))
+        setProducts(productsWithAvailabilities.map(product => getProductWithVariants(product.sku, product._locale, productsWithAvailabilities)))
         setLatestInitialProducts(initialProducts)
       }
     })
@@ -200,7 +200,7 @@ function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
       flattenProductVariants(initialProducts)
     ).then((productsWithPrices) => {
       if (isMounted) {
-        setProducts(productsWithPrices.map(product => getProductWithVariants(product.code, product._locale, productsWithPrices)))
+        setProducts(productsWithPrices.map(product => getProductWithVariants(product.sku, product._locale, productsWithPrices)))
         setLatestInitialProducts(initialProducts)
       }
     })
@@ -225,11 +225,11 @@ const mapWithPrice = async (client: CommerceLayerClient, products: LocalizedProd
       try {
         const prices = await client.prices.list({
           pageSize,
-          filters: { sku_code_in: skus.map(p => p.code).join(',') }
+          filters: { sku_code_in: skus.map(p => p.sku).join(',') }
         })
 
         prices.map((price) => {
-          const productIndex = chunkedSkus[chunkIndex].findIndex(p => p.code === price.sku_code)
+          const productIndex = chunkedSkus[chunkIndex].findIndex(p => p.sku === price.sku_code)
 
           chunkedSkus[chunkIndex][productIndex].price = price
         })
@@ -253,12 +253,12 @@ const mapWithAvailability = async (client: CommerceLayerClient, products: Locali
           pageSize,
           filters: {
             stock_items_quantity_gt: 0,
-            code_in: skus.map(p => p.code).join(',')
+            code_in: skus.map(p => p.sku).join(',')
           }
         })
 
         availableProducts.map((product) => {
-          const productIndex = chunkedSkus[chunkIndex].findIndex(p => p.code === product.code)
+          const productIndex = chunkedSkus[chunkIndex].findIndex(p => p.sku === product.code)
           chunkedSkus[chunkIndex][productIndex].available = true
         })
       } catch (e) {

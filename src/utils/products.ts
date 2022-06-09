@@ -34,7 +34,7 @@ function resolveProductLocale(product: RawDataProduct | LocalizedProduct | Local
       const value = get(product, config.field)
 
       if (typeof value !== 'string') {
-        throw new Error(`The variant property "${config.field}" for the product ${product.code} must be a string. Found ${JSON.stringify(value)}.`)
+        throw new Error(`The variant property "${config.field}" for the product ${product.sku} must be a string. Found ${JSON.stringify(value)}.`)
       }
 
       variant.push({
@@ -53,11 +53,11 @@ function resolveProductLocale(product: RawDataProduct | LocalizedProduct | Local
   }
 }
 
-function getProduct(code: string, locale: string, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProduct {
-  const product = productList.find(product => product.code === code)
+function getProduct(sku: string, locale: string, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProduct {
+  const product = productList.find(product => product.sku === sku)
 
   if (!product) {
-    throw new Error(`Cannot find a Product with code equal to ${code}`)
+    throw new Error(`Cannot find a Product with sku equal to ${sku}`)
   }
 
   return resolveProductLocale(product, locale)
@@ -79,8 +79,8 @@ function getProductVariants(product: LocalizedProduct, productList: (RawDataProd
     })
 }
 
-export function getProductWithVariants(code: string, locale: string, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProductWithVariant {
-  const product = getProduct(code, locale, productList)
+export function getProductWithVariants(sku: string, locale: string, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProductWithVariant {
+  const product = getProduct(sku, locale, productList)
   const variants = getProductVariants(product, productList)
 
   return {
@@ -92,13 +92,13 @@ export function getProductWithVariants(code: string, locale: string, productList
 export function flattenProductVariants(products: LocalizedProductWithVariant[]): LocalizedProductWithVariant[] {
   const flattenProducts = uniqBy(
     products.flatMap(product => product.variants).concat(products),
-    'code'
+    'sku'
   )
 
   return uniqBy(
     products.flatMap(product => {
-      return product.variants.map(variant => getProductWithVariants(variant.code, variant._locale, flattenProducts))
+      return product.variants.map(variant => getProductWithVariants(variant.sku, variant._locale, flattenProducts))
     }),
-    'code'
+    'sku'
   )
 }

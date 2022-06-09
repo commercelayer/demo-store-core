@@ -21,7 +21,7 @@ jest.mock('next/router', () => ({
 test('home', () => {
   const taxon: Taxon = {
     _unserializable: Symbol.for('unserializable'),
-    key: 'taxon_1',
+    id: 'taxon_1',
     label: 'Accessories',
     description: 'Accessories',
     slug: 'accessories',
@@ -33,7 +33,7 @@ test('home', () => {
 
   const taxonomy: Taxonomy = {
     _unserializable: Symbol.for('unserializable'),
-    key: 'taxonomy_1',
+    id: 'taxonomy_1',
     facetKey: 'categories',
     name: 'Default Category',
     taxons: [taxon]
@@ -41,7 +41,7 @@ test('home', () => {
 
   const catalog: Catalog = {
     _unserializable: Symbol.for('unserializable'),
-    key: 'catalog_1',
+    id: 'catalog_1',
     name: 'AMER',
     taxonomies: [taxonomy]
   }

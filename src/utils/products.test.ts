@@ -47,10 +47,10 @@ describe('getProductWithVariants', () => {
     expect(product.name).toStrictEqual('Body nero a maniche corte per bebè con logo bianco')
 
     expect(product.variants).toMatchObject([
-      { _locale: 'it', code: 'BODYBSSS000000FFFFFF12MX' },
-      { _locale: 'it', code: 'BODYBSSS000000FFFFFF6MXX' },
-      { _locale: 'it', code: 'BODYBSSSFFFFFF00000012MX' },
-      { _locale: 'it', code: 'BODYBSSSFFFFFF0000006MXX' }
+      { _locale: 'it', sku: 'BODYBSSS000000FFFFFF12MX' },
+      { _locale: 'it', sku: 'BODYBSSS000000FFFFFF6MXX' },
+      { _locale: 'it', sku: 'BODYBSSSFFFFFF00000012MX' },
+      { _locale: 'it', sku: 'BODYBSSSFFFFFF0000006MXX' }
     ])
   })
 

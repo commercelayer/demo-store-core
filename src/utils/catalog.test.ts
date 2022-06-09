@@ -52,23 +52,23 @@ describe('getNavigationLinks', () => {
     expect(navigationLinks).toStrictEqual({
       parent: [
         {
-          key: taxon1.key,
+          key: taxon1.id,
           href: `/search/${taxon1.slug}`,
           text: taxon1.label
         },
         {
-          key: taxon1A.key,
+          key: taxon1A.id,
           href: `/search/${taxon1A.slug}`,
           text: taxon1A.label
         }
       ],
       current: {
-        key: taxon1A.key,
+        key: taxon1A.id,
         href: `/search/${taxon1A.slug}`,
         text: taxon1A.label
       },
       children: [{
-        key: taxon1A1.key,
+        key: taxon1A1.id,
         href: `/search/${taxon1A1.slug}`,
         text: taxon1A1.label
       }],
