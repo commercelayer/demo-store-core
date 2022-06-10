@@ -4,8 +4,7 @@ import type { Props as NavigationProps } from '#components/Navigation'
 import { Navigation } from '#components/Navigation'
 import { Search } from '#components/Search'
 import { Link } from '#i18n/Link'
-import { getCartUrl } from '#utils/url'
-import { LineItemsCount,  } from '@commercelayer/react-components'
+import { CartLink, LineItemsCount } from '@commercelayer/react-components'
 import { useEffect, useState } from 'react'
 
 
@@ -48,14 +47,17 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
           {/* <a className='block lg:inline-block mr-4 text-gray-300'><User /></a> */}
           {/* <a className='block lg:inline-block mr-4 text-gray-300'><HeartStraight /></a> */}
 
-          <Link href={getCartUrl()}>
-            <a className='block lg:inline-block relative'>
-              <ShoppingBagOpen />
-              <LineItemsCount>
-                { CartQuantity }
-              </LineItemsCount>
-            </a>
-          </Link>
+          <CartLink
+            className='block lg:inline-block relative'
+            label={(
+              <>
+                <ShoppingBagOpen />
+                <LineItemsCount>
+                  {CartQuantity}
+                </LineItemsCount>
+              </>
+            )} />
+
         </div>
       </nav>
       <div className='flex items-center justify-between flex-wrap gap-4 relative'>
