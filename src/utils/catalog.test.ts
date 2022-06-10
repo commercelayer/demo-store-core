@@ -21,18 +21,21 @@ describe('getRootNavigationLinks', () => {
       current: {
         key: 'home',
         href: '/',
-        text: 'Home'
+        text: 'Home',
+        description: 'Home'
       },
       children: [
         {
           key: 'taxon-key-1',
           href: '/search/taxon-slug-1',
-          text: 'Label for 1'
+          text: 'Label for 1',
+          description: 'taxon-description-1'
         },
         {
           key: 'taxon-key-2',
           href: '/search/taxon-slug-2',
-          text: 'Label for 2'
+          text: 'Label for 2',
+          description: 'taxon-description-2'
         }
       ]
     })
@@ -54,23 +57,27 @@ describe('getNavigationLinks', () => {
         {
           key: taxon1.id,
           href: `/search/${taxon1.slug}`,
-          text: taxon1.label
+          text: taxon1.label,
+          description: taxon1.description
         },
         {
           key: taxon1A.id,
           href: `/search/${taxon1A.slug}`,
-          text: taxon1A.label
+          text: taxon1A.label,
+          description: taxon1A.description
         }
       ],
       current: {
         key: taxon1A.id,
         href: `/search/${taxon1A.slug}`,
-        text: taxon1A.label
+        text: taxon1A.label,
+        description: taxon1A.description
       },
       children: [{
         key: taxon1A1.id,
         href: `/search/${taxon1A1.slug}`,
-        text: taxon1A1.label
+        text: taxon1A1.label,
+        description: taxon1A1.description
       }],
     })
   })

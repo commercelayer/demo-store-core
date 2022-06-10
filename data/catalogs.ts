@@ -78,7 +78,7 @@ export type Taxon = Omit<RawDataTaxon, 'label' | 'description' | 'references' | 
 }
 
 export const getCatalog = (locale: Locale, rawDataProduct: RawDataProduct[] = []): Catalog => {
-  const name = locale.country?.catalog || locale.language.catalog
+  const name = locale.isShoppable ? locale.country.catalog : locale.language.catalog
   const rawDataCatalog = rawDataCatalogs.find(catalog => catalog.name === name)
 
   if (!rawDataCatalog) {

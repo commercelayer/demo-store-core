@@ -23,12 +23,12 @@ describe('makeLocales', () => {
     const actual = makeLocales([italian, english], [unitedStates, italy])
 
     const expects: Locale[] = [
-      { "code": "it-US", "country": unitedStates, "language": italian },
-      { "code": "en-US", "country": unitedStates, "language": english },
-      { "code": "it-IT", "country": italy, "language": italian },
-      { "code": "en-IT", "country": italy, "language": english },
-      { "code": "it", "language": italian },
-      { "code": "en", "language": english }
+      { code: "it-US", isShoppable: true, country: unitedStates, language: italian },
+      { code: "en-US", isShoppable: true, country: unitedStates, language: english },
+      { code: "it-IT", isShoppable: true, country: italy, language: italian },
+      { code: "en-IT", isShoppable: true, country: italy, language: english },
+      { code: "it", isShoppable: false, language: italian },
+      { code: "en", isShoppable: false, language: english }
     ]
 
     expect(actual).toStrictEqual(expects)
@@ -54,7 +54,8 @@ describe('getLocale', () => {
     expect(locale).toStrictEqual<Locale>({
       code: 'it-US',
       country: unitedStates,
-      language: italian
+      language: italian,
+      isShoppable: true
     })
   })
 

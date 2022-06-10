@@ -14,32 +14,37 @@ export const getRootNavigationLinks = (catalog: Catalog): NavigationPath => {
     current: {
       key: 'home',
       href: '/',
-      text: 'Home'
+      text: 'Home',
+      description: 'Home'
     },
     children: getPrimaryTaxonomy(catalog).taxons.map(taxon => ({
       key: taxon.id,
       href: getSearchUrl(taxon.slug),
-      text: taxon.label
+      text: taxon.label,
+      description: taxon.description
     }))
   }
 }
 
 export const getNavigationLinks = (taxon: DeepFindResult<Taxon>): NavigationPath => {
   return {
-    parent: taxon.memo.map(({ id: key, slug, label }) => ({
+    parent: taxon.memo.map(({ id: key, slug, label, description }) => ({
       key: key,
       href: getSearchUrl(slug),
-      text: label
+      text: label,
+      description
     })),
     current: {
       key: taxon.result.id,
       href: getSearchUrl(taxon.result.slug),
-      text: taxon.result.label
+      text: taxon.result.label,
+      description: taxon.result.description
     },
-    children: taxon.result.taxons.map(({ id: key, slug, label }) => ({
+    children: taxon.result.taxons.map(({ id: key, slug, label, description }) => ({
       key: key,
       href: getSearchUrl(slug),
-      text: label
+      text: label,
+      description
     }))
   }
 }

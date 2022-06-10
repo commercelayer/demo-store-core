@@ -10,8 +10,6 @@ import { getProductUrl } from '#utils/url'
 import { AddToCartButton, AvailabilityContainer, AvailabilityTemplate, ItemContainer } from '@commercelayer/react-components'
 import type { NextPage } from 'next'
 import { useI18n } from 'next-localization'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { useMemo, useState } from 'react'
 
 export type Props = HeaderProps & {
@@ -21,15 +19,15 @@ export type Props = HeaderProps & {
 export const ProductPageComponent: NextPage<Props> = ({ navigation: links, product }) => {
   const i18n = useI18n()
   const [currentProduct, setCurrentProduct] = useState<LocalizedProduct>()
-  const router = useRouter()
 
   const slides = useMemo(() => product.images.map(image => <img key={image} src={image} alt={product.name} className='w-full' />), [product])
 
   return (
-    <Page title={product.name}>
-      <Head>
-        <link rel='canonical' href={`${router.basePath}/${router.query.locale}${getProductUrl(product.variants[0].slug)}`} />
-      </Head>
+    <Page
+      canonical={getProductUrl(product.variants[0].slug)}
+      title={product.name}
+      description={product.description}
+    >
 
       <Container>
         <Header navigation={links} />

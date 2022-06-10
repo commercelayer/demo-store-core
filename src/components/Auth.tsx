@@ -54,7 +54,7 @@ export const Auth: React.FC<{}> = ({ children }) => {
 
   const locale = useMemo(() => getLocale(router.query.locale || defaultLocale), [router])
 
-  const [market, setMarket] = useState<number | undefined>(locale?.country?.market)
+  const [market, setMarket] = useState<number | undefined>(locale.isShoppable ? locale.country.market : undefined)
   const [auth, setAuth] = useState<Auth | null>(null)
 
   const endpoint = process.env.NEXT_PUBLIC_CL_ENDPOINT
@@ -62,8 +62,8 @@ export const Auth: React.FC<{}> = ({ children }) => {
   const [, organization, domain] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
 
   useEffect(function updateMarket() {
-    if (locale?.country?.market !== market) {
-      setMarket(locale?.country?.market)
+    if (locale.isShoppable && locale.country.market !== market) {
+      setMarket(locale.country?.market)
     }
   }, [locale, market])
 

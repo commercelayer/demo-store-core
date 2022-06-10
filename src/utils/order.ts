@@ -1,3 +1,3 @@
-import type { Locale } from '#i18n/locale'
+import type { ShoppableLocale } from '#i18n/locale'
 
-export const getPersistKey = (locale: Locale): string => `country-${locale?.country?.code}`
+export const getPersistKey = (locale: ShoppableLocale): string => `country-${locale.country.code}`

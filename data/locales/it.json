@@ -4,7 +4,12 @@
     "search": "cerca",
     "addToCart": "Aggiungi al carrello",
     "chooseCountry": "Cambia paese/regione",
-    "international": "Internazionale"
+    "international": "Internazionale",
+    "resultsFor": "Risultati per:"
+  },
+  "seo": {
+    "title": "Commerce Layer Store",
+    "description": "Commerce Layer is a transactional commerce API that lets you add multi-market ecommerce to any digital experience, with ease."
   },
   "variants": {
     "color": "Colori",

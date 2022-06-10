@@ -18,6 +18,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   const locale = getLocale(localeCode || defaultLocale)
 
+  if (!locale.isShoppable) {
+    return (
+      <I18nProvider lngDict={lngDict} locale={localeCode || defaultLocale}>
+        <Component {...rest} />
+      </I18nProvider>
+    )
+  }
+
   return (
     <I18nProvider lngDict={lngDict} locale={localeCode || defaultLocale}>
       <Auth>

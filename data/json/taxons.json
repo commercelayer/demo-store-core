@@ -6,8 +6,8 @@
       "it": "Accessori"
     },
     "description": {
-      "en": "Accessories",
-      "it": "Accessori"
+      "en": "All accessories",
+      "it": "Tutti gli accessori"
     },
     "slug": "accessories",
     "name": "All Accessories",
@@ -40,8 +40,8 @@
       "it": "Baby"
     },
     "description": {
-      "en": "Baby",
-      "it": "Baby"
+      "en": "All products for babies",
+      "it": "Tutti i prodotti per neonati"
     },
     "slug": "baby",
     "name": "All Products for Babies",
@@ -59,8 +59,8 @@
       "it": "Borse"
     },
     "description": {
-      "en": "Bags",
-      "it": "Borse"
+      "en": "All bags",
+      "it": "Tutte le borse"
     },
     "slug": "bags",
     "name": "All Bags",
@@ -90,8 +90,8 @@
       "it": "Cappelli"
     },
     "description": {
-      "en": "Hats",
-      "it": "Cappelli"
+      "en": "All hats",
+      "it": "Tutti i cappelli"
     },
     "slug": "hats",
     "name": "All Hats",
@@ -120,8 +120,8 @@
       "it": "Casa"
     },
     "description": {
-      "en": "Home & Living",
-      "it": "Casa"
+      "en": "All products for home & living",
+      "it": "Tutti i prodotti per la tua casa"
     },
     "slug": "home-and-living",
     "name": "All Products for Home & Living",
@@ -151,8 +151,8 @@
       "it": "Uomo"
     },
     "description": {
-      "en": "Men",
-      "it": "Uomo"
+      "en": "All products for men",
+      "it": "Tutti i prodotti da uomo"
     },
     "slug": "men",
     "name": "All Products for Men",
@@ -187,8 +187,8 @@
       "it": "Magliette"
     },
     "description": {
-      "en": "Shirts",
-      "it": "Magliette"
+      "en": "All shirts",
+      "it": "Tutte le magliette"
     },
     "slug": "shirts",
     "name": "All Shirts",
@@ -206,8 +206,8 @@
       "it": "Polo"
     },
     "description": {
-      "en": "Polo",
-      "it": "Polo"
+      "en": "All polo shirts",
+      "it": "Tutte le polo"
     },
     "slug": "shirts/polo",
     "name": "All Polo Shirts",
@@ -221,8 +221,8 @@
       "it": "Polo Scure"
     },
     "description": {
-      "en": "Dark Polo",
-      "it": "Polo Scure"
+      "en": "All dark polo",
+      "it": "Tutte le polo scure"
     },
     "slug": "shirts/polo/dark",
     "name": "All Polo Shirts",
@@ -238,8 +238,8 @@
       "it": "Tutte le altre"
     },
     "description": {
-      "en": "All Others",
-      "it": "Tutte le altre"
+      "en": "All other polo",
+      "it": "Tutte le altre polo"
     },
     "slug": "shirts/polo/others",
     "name": "All Polo Shirts",
@@ -256,7 +256,7 @@
       "it": "Tutte le altre magliette"
     },
     "description": {
-      "en": "Other Shirts",
+      "en": "All other shirts",
       "it": "Tutte le altre magliette"
     },
     "slug": "shirts/others",
@@ -299,8 +299,8 @@
       "it": "Felpe"
     },
     "description": {
-      "en": "Sweatshirts",
-      "it": "Felpe"
+      "en": "All sweatshirts",
+      "it": "Tutte le felpe"
     },
     "slug": "sweatshirts",
     "name": "All Sweatshirts",
@@ -328,8 +328,8 @@
       "it": "Unisex"
     },
     "description": {
-      "en": "Unisex",
-      "it": "Unisex"
+      "en": "All unisex products",
+      "it": "Tutti i prodotti unisex"
     },
     "slug": "unisex",
     "name": "All Unisex Products",
@@ -410,8 +410,8 @@
       "it": "Donna"
     },
     "description": {
-      "en": "Women",
-      "it": "Donna"
+      "en": "All products for women",
+      "it": "Tutti i prodotti da donna"
     },
     "slug": "women",
     "name": "All Products for Women",
@@ -443,8 +443,8 @@
       "it": "Magliette"
     },
     "description": {
-      "en": "Shirts",
-      "it": "Magliette"
+      "en": "All shirts except womens",
+      "it": "Tutte le magliette escudendo le magliette da donna"
     },
     "slug": "shirts",
     "name": "All Shirts Except Womens",

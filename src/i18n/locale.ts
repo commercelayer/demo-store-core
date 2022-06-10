@@ -2,11 +2,21 @@ import { rawDataCountries, RawDataCountry } from '#data/countries'
 import { RawDataLanguage, rawDataLanguages } from '#data/languages'
 import { combine } from '#utils/collection'
 
-export type Locale = {
+type BaseLocale = {
   code: string
-  country?: RawDataCountry
   language: RawDataLanguage
 }
+
+export type NonShoppableLocale = BaseLocale & {
+  isShoppable: false
+}
+
+export type ShoppableLocale = BaseLocale & {
+  isShoppable: true
+  country: RawDataCountry
+}
+
+export type Locale = ShoppableLocale | NonShoppableLocale
 
 const languageCodes = rawDataLanguages.map(language => language.code)
 const countryCodes = rawDataCountries.map(country => country.code)
@@ -34,6 +44,7 @@ export function makeLocales(languages: RawDataLanguage[], countries: RawDataCoun
   return combine(countries, languages, (country, language) => {
     const locale: Locale = {
       code: makeLocaleCode(language.code, country.code),
+      isShoppable: typeof country !== 'undefined',
       country,
       language
     }
@@ -42,6 +53,7 @@ export function makeLocales(languages: RawDataLanguage[], countries: RawDataCoun
   })
     .concat(languages.map(language => ({
       code: language.code,
+      isShoppable: false,
       language
     })))
 }
