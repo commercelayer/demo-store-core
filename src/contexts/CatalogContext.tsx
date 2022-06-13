@@ -323,15 +323,17 @@ async function facetSearch(products: LocalizedProductWithVariant[], facets: Sele
         andExpression.push({
           $or: availableFacets[facetName]
             .filter(v => v >= facetValue[0] && v <= facetValue[1])
-            .map(value => ({ $path: `${facetName}`, $val: `${value}` }))
+            .map(value => ({ $path: `${facetName}`, $val: `="${value}"` }))
         })
       } else {
         andExpression.push({
-          $or: facetValue.map(value => ({ $path: `${facetName}`, $val: `${value}` }))
+          $or: facetValue.map(value => ({ $path: `${facetName}`, $val: `="${value}"` }))
         })
       }
     }
   })
+
+  console.log('andExpression', andExpression)
 
   if (andExpression.length <= 0) {
     return products
