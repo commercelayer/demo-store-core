@@ -2,20 +2,20 @@ import catalogsJson from './json/catalogs.json'
 import taxonomiesJson from './json/taxonomies.json'
 import taxonsJson from './json/taxons.json'
 
-type RawDataCatalog = {
+export type RawDataCatalog = {
   id: string
   name: string
   taxonomies: string[]
 }
 
-type RawDataTaxonomy = {
+export type RawDataTaxonomy = {
   id: string
   name: string
   facetKey: string
   taxons: string[]
 }
 
-type RawDataTaxon = {
+export type RawDataTaxon = {
   id: string
   name: string
   label: LocalizedField<string>
