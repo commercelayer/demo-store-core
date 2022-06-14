@@ -1,4 +1,5 @@
 import type { FacetResult, Primitives } from '#utils/facets'
+import { getFacets } from '#utils/facets'
 import type { LocalizedProductWithVariant } from '#utils/products'
 import { flattenProductVariants, getProductWithVariants } from '#utils/products'
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
@@ -35,16 +36,17 @@ export const useCatalogContext = () => useContext(CatalogContext)
 export const CatalogProvider: React.FC<Props> = ({ children, products: initialProducts }) => {
   const router = useRouter()
 
-  const { products: productsWithAvailabilities } = useCommerceLayerAvailability(initialProducts)
+  const flattenProducts = useMemo(() => flattenProductVariants(initialProducts), [initialProducts])
+  const { products: productsWithAvailabilities } = useCommerceLayerAvailability(flattenProducts)
   const { products: productsWithPrices, currencyCode } = useCommerceLayerPrice(productsWithAvailabilities)
 
-  const [query, setQuery] = useState<string>('')
+  const [query, setQuery] = useState<string | undefined>(undefined)
 
   const [products, setProducts] = useState<Context['products']>(initialProducts)
   const [availableFacets, setAvailableFacets] = useState<Context['availableFacets']>({})
   const [selectedFacets, setSelectedFacets] = useState<Context['selectedFacets']>({})
 
-  const isFiltering = Object.entries(selectedFacets).length > 0
+  const isFiltering = Object.entries(selectedFacets).length > 0 || query !== undefined
 
   const productList = useMemo(
     () => isFiltering ? productsWithPrices : initialProducts.map(p => productsWithPrices.find(cp => cp.sku === p.sku)!),
@@ -104,9 +106,6 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
     let isMounted = true
 
     async function runSearch() {
-      const { flattenProductVariants } = await import('#utils/products')
-      const { getFacets } = await import('#utils/facets')
-
       const resultFromFreeTextSearch = await freeTextSearch(productList, query)
       const result = await facetSearch(resultFromFreeTextSearch, selectedFacets)
 
@@ -115,7 +114,11 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
           getFacets(flattenProductVariants(resultFromFreeTextSearch))
         )
 
-        setProducts(result)
+        setProducts(
+          // TODO: this could be a configuration .. group by variantCode vs productCode
+          uniqBy(result, 'variantCode')
+          // uniqBy(result, 'productCode')
+        )
       }
     }
 
@@ -138,7 +141,7 @@ function useCommerceLayerAvailability(initialProducts: LocalizedProductWithVaria
   const { accessToken, domain, organization } = useAuthContext()
 
   const [latestInitialProducts, setLatestInitialProducts] = useState(initialProducts)
-  const [products, setProducts] = useState(flattenProductVariants(initialProducts))
+  const [products, setProducts] = useState(initialProducts)
 
   const hasChanged = useMemo(
     () => JSON.stringify(latestInitialProducts) !== JSON.stringify(initialProducts),
@@ -156,7 +159,7 @@ function useCommerceLayerAvailability(initialProducts: LocalizedProductWithVaria
 
     mapWithAvailability(
       client,
-      flattenProductVariants(initialProducts)
+      initialProducts
     ).then((productsWithAvailabilities) => {
       if (isMounted) {
         setProducts(productsWithAvailabilities.map(product => getProductWithVariants(product.sku, product._locale, productsWithAvailabilities)))
@@ -179,7 +182,7 @@ function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
   const { accessToken, domain, organization } = useAuthContext()
 
   const [latestInitialProducts, setLatestInitialProducts] = useState(initialProducts)
-  const [products, setProducts] = useState(flattenProductVariants(initialProducts))
+  const [products, setProducts] = useState(initialProducts)
 
   const hasChanged = useMemo(
     () => JSON.stringify(latestInitialProducts) !== JSON.stringify(initialProducts),
@@ -197,7 +200,7 @@ function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
 
     mapWithPrice(
       client,
-      flattenProductVariants(initialProducts)
+      initialProducts
     ).then((productsWithPrices) => {
       if (isMounted) {
         setProducts(productsWithPrices.map(product => getProductWithVariants(product.sku, product._locale, productsWithPrices)))
@@ -270,9 +273,9 @@ const mapWithAvailability = async (client: CommerceLayerClient, products: Locali
   return chunkedSkus.flat()
 }
 
-async function freeTextSearch(products: LocalizedProductWithVariant[], query: string): Promise<LocalizedProductWithVariant[]> {
+async function freeTextSearch(products: LocalizedProductWithVariant[], query: string | undefined): Promise<LocalizedProductWithVariant[]> {
 
-  if (query === '') {
+  if (!query || query === '') {
     return products
   }
 
@@ -333,11 +336,10 @@ async function facetSearch(products: LocalizedProductWithVariant[], facets: Sele
     }
   })
 
-  console.log('andExpression', andExpression)
-
   if (andExpression.length <= 0) {
     return products
   }
 
-  return uniqBy(fuse.search({ $and: andExpression }).map(r => r.item), 'variantCode')
+  return fuse.search({ $and: andExpression })
+    .map(r => r.item)
 }
