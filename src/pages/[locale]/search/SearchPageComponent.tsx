@@ -34,7 +34,10 @@ const Title: React.FC<Partial<SubNavigationProps>> = ({ subNavigation }) => {
   const { products } = useCatalogContext()
   const i18n = useI18n()
 
-  const resultsFor = `${i18n.t('general.resultsFor')} "${typeof router.query.q === 'string' ? router.query.q : ''}" (${products.length})`
+  const resultsFor = i18n.t('general.resultsFor', {
+    count: products.length,
+    query: typeof router.query.q === 'string' ? router.query.q : ''
+  })
 
   return (
     <div className='flex items-center py-8 relative border-b-gray-200 border-b'>
