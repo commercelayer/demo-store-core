@@ -14,7 +14,7 @@ export const FacetColorSwatch = ({ facetName, facetValues }: { facetName: string
           <Swatch
             key={currentValue.toString()}
             swatchLabel={i18n.t(`facetValues.${currentValue.toString()}`) || currentValue.toString() }
-            swatchStyle={{ backgroundColor: currentValue.toString() }}
+            swatchStyle={{ [currentValue.toString().toLowerCase().includes('gradient') ? 'backgroundImage' : 'backgroundColor']: currentValue.toString() }}
             onClick={() => selectFacet(facetName, currentValue)}
             selected={selectedFacets[facetName]?.includes(currentValue) }
           />
