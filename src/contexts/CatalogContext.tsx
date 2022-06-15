@@ -215,7 +215,7 @@ function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
 
   return {
     products: hasChanged ? initialProducts : products,
-    currencyCode: products[0].price?.currency_code
+    currencyCode: products[0]?.price?.currency_code
   }
 }
 
