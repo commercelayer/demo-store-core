@@ -33,6 +33,7 @@ export const Footer: React.FC = () => {
             <InputSelect
               onChange={(event) => {
                 const languageCode = event.currentTarget.value
+                delete router.query.facets
                 router.push({
                   query: {
                     ...router.query,
