@@ -99,6 +99,8 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
 
     if (typeof router.query.q === 'string') {
       setQuery(router.query.q)
+    } else {
+      setQuery(undefined)
     }
   }, [router])
 

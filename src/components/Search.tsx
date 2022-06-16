@@ -2,7 +2,7 @@ import { MagnifyingGlass } from '#assets/icons'
 import { basePath } from '#next.config'
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 type Props = JSX.IntrinsicElements['div'] & {
   
@@ -11,9 +11,16 @@ type Props = JSX.IntrinsicElements['div'] & {
 export const Search: React.FC<Props> = ({ className }) => {
   const i18n = useI18n();
   const router = useRouter()
+
   const [value, setValue] = useState<string>(
     typeof window !== 'undefined' ? (new URLSearchParams(window.location.search).get('q') || '') : ''
   )
+
+  useEffect(function manageOnRouterChange() {
+    if (typeof router.query.q !== 'string') {
+      setValue('')
+    }
+  }, [router])
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = useCallback((event) => {
     event.preventDefault()
