@@ -50,7 +50,6 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
 
               <VariantSelector product={product} onChange={setCurrentProduct} />
 
-              {/* @ts-expect-error */}
               <AddToCartButton
                 skuCode={currentProduct?.sku}
                 label={i18n.t('general.addToCart')}
