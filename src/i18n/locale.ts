@@ -1,6 +1,7 @@
 import { rawDataCountries, RawDataCountry } from '#data/countries'
 import { RawDataLanguage, rawDataLanguages } from '#data/languages'
 import { combine } from '#utils/collection'
+import { z } from 'zod'
 
 type BaseLocale = {
   code: string
@@ -59,6 +60,7 @@ export function makeLocales(languages: RawDataLanguage[], countries: RawDataCoun
 }
 
 export const locales = makeLocales(rawDataLanguages, rawDataCountries)
+export const localeCodes = combine(languageCodes, countryCodes, makeLocaleCode).concat(languageCodes)
 
 export const [ defaultLocale ] = languageCodes
 
@@ -75,13 +77,28 @@ export function getLocale(localeCode: string, throwWhenUndefined = true) {
 }
 
 
+export const localizedFieldSchema = <T extends z.ZodTypeAny>(type: T) => z
+  .object({
+    ...localeCodes.reduce((acc, localeCode) => {
+      acc[localeCode] = type.optional()
+      return acc
+    }, {} as { [localeCode: string]: T | z.ZodOptional<T> }),
+    [defaultLocale]: type,
+  })
+
+
 export type LocalizedField<T> = {
-  [locale: string]: T | undefined
+  [localeCode: string]: T | undefined
 }
 
-export function translateField(field: LocalizedField<string>, locale: string): string {
+export function translateField<T>(field: LocalizedField<T>, locale: string): T {
   const { languageCode = locale } = parseLocaleCode(locale)
-  const missingTranslation = ''
 
-  return field[locale] || field[languageCode] || missingTranslation
+  const translation = field[locale] || field[languageCode] || field[defaultLocale]
+
+  if (!translation) {
+    throw new Error(`Missing translation for locale '${locale}' : ${JSON.stringify(field)}`)
+  }
+
+  return translation
 }

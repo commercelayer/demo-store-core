@@ -27,12 +27,12 @@ describe('getProductWithVariants', () => {
     expect(product.description).toStrictEqual('Translation for it - This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.')
   })
 
-  it('should fallback to empty string when locale and language are not found', () => {
+  it('should fallback to default locale when locale and language are not found', () => {
     const product = getProductWithVariants('BODYBSSS000000FFFFFF12MX', 'xx-CN', productsJson)
 
     expect(product.productCode).toStrictEqual('BODYBSSS')
-    expect(product.name).toStrictEqual('')
-    expect(product.description).toStrictEqual('')
+    expect(product.name).toStrictEqual('Translation for en - Black Baby Short Sleeve Bodysuit with White Logo')
+    expect(product.description).toStrictEqual('Translation for en - This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.')
   })
 
   it('should throws an error when the "code" is not found', () => {

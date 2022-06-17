@@ -1,0 +1,130 @@
+[
+  {
+    "type": "carousel",
+    "slides": [
+      {
+        "image": {
+          "en": {
+            "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655468809/commercelayer-tmp/all-over-print-backpack-white-front-60ef10bc2c98a_2.png",
+            "alt": "Space for everything"
+          }
+        },
+        "title": {
+          "en": "Space for everything"
+        },
+        "description": {
+          "en": "Our backpack collection has been designed to meet the needs of all kinds of people, from urban city-dwellers to outdoor adventurers."
+        },
+        "linkLabel": {
+          "en": "Shop here"
+        },
+        "linkHref": {
+          "en": "/search/bags"
+        }
+      },
+      {
+        "image": {
+          "en": {
+            "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655468809/commercelayer-tmp/all-over-print-backpack-white-front-60ef10bc2c98a_2.png",
+            "alt": "Space for everything"
+          }
+        },
+        "title": {
+          "en": "Space for everything"
+        },
+        "description": {
+          "en": "Our backpack collection has been designed to meet the needs of all kinds of people, from urban city-dwellers to outdoor adventurers."
+        },
+        "linkLabel": {
+          "en": "Shop here"
+        },
+        "linkHref": {
+          "en": "/search/bags"
+        }
+      }
+    ]
+  },
+  {
+    "type": "hero",
+    "image": {
+      "en": {
+        "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655468784/commercelayer-tmp/30-sales-commerce-layer.png",
+        "alt": "30% OFF SALE - CL30"
+      }
+    },
+    "title": {
+      "en": "30% OFF SALE - CL30"
+    },
+    "description": {
+      "en": "Our backpack collection has been designed to meet the needs of all kinds of people, from urban city-dwellers to outdoor adventurers."
+    },
+    "href": {
+      "en": "/search/bags"
+    }
+  },
+  {
+    "type": "grid",
+    "items": [
+      {
+        "image": {
+          "en": {
+            "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655471032/commercelayer-tmp/white-glossy-mug-15oz-woman-60f05f1d26851_1.png",
+            "alt": "Mug collection"
+          }
+        },
+        "title": {
+          "en": "Mug collection"
+        },
+        "description": {
+          "en": "Our mug collection has been designed to meet the needs of all kinds of people."
+        },
+        "linkLabel": {
+          "en": "Discover now"
+        },
+        "linkHref": {
+          "en": "/search/accessories"
+        }
+      },
+      {
+        "image": {
+          "en": {
+            "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655471055/commercelayer-tmp/classic-dad-hat-black-front-60f0529d14fe6_1.png",
+            "alt": "Hats collection"
+          }
+        },
+        "title": {
+          "en": "Hats collection"
+        },
+        "description": {
+          "en": "Our hat collection has been designed to meet the needs of all kinds of people."
+        },
+        "linkLabel": {
+          "en": "Discover now"
+        },
+        "linkHref": {
+          "en": "/search/hats"
+        }
+      },
+      {
+        "image": {
+          "en": {
+            "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655471072/commercelayer-tmp/all-over-print-basic-pillow-18x18-front-lifestyle-1-60f065d602a6d_1.png",
+            "alt": "Home living collection"
+          }
+        },
+        "title": {
+          "en": "Home living collection"
+        },
+        "description": {
+          "en": "Our home living collection has been designed to meet the needs of all kinds of people."
+        },
+        "linkLabel": {
+          "en": "Discover now"
+        },
+        "linkHref": {
+          "en": "/search/home-and-living"
+        }
+      }
+    ]
+  }
+]

@@ -28,7 +28,8 @@
     "react": "^17",
     "react-dom": "^17",
     "swiper": "^8.2.4",
-    "use-immer": "^0.7.0"
+    "use-immer": "^0.7.0",
+    "zod": "^3.17.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",

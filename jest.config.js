@@ -32,7 +32,7 @@ module.exports = async () => {
       // CSS modules are mocked so they don't need to be transformed
       '^.+\\.module\\.(css|sass|scss)$',
       // @commercelayer/react-components is ESM
-      'node_modules/(?!@commercelayer/react-components)'
+      'node_modules/(?!@commercelayer/react-components|swiper|ssr-window|dom7)',
     ],
     moduleNameMapper: {
       '\\.svg$': '<rootDir>/__mocks__/svg.jsx',

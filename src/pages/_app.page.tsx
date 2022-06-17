@@ -7,6 +7,10 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import '../styles/globals.css'
 
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const { lngDict, ...rest } = pageProps

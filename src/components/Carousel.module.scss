@@ -1,3 +1,5 @@
+$mediumBreakpoint: theme('screens.md');
+
 .carousel {
   --swiper-theme-color: theme('colors.black');
   --swiper-navigation-size: 20px;
@@ -18,4 +20,15 @@
   :global(.swiper-pagination-bullet-active) {
     --swiper-pagination-bullet-width: 20px;
   }
+
+  // :global(.swiper-button-disabled) {
+  //   @apply block
+  // }
+
+  :global(.swiper-button-prev), :global(.swiper-button-next) {
+    @media (max-width: $mediumBreakpoint) {
+      @apply hidden;
+    }
+  }
+
 }

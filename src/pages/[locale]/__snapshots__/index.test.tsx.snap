@@ -115,48 +115,9 @@ exports[`home 1`] = `
           </div>
         </div>
       </header>
-      <div>
-        <div
-          class="mt-6 space-y-6 md:space-y-0 grid md:grid-cols-2 lg:grid-cols-3 md:gap-6"
-        >
-          <a
-            class="relative w-full h-80 xl:h-96 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1"
-            href="/en-US/search/accessories"
-          >
-            <img
-              alt="Accessories"
-              class="object-cover w-full h-full"
-              src="/demo-store/assets/images/samsung-case-samsung-galaxy-s21-plus-lifestyle-4-60f836d4aaa9d.png"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-b from-black to-black/0 opacity-50"
-            />
-            <div
-              class="absolute p-4 top-0 inset-x-0 text-white leading-snug"
-            >
-              <h3
-                class="text-lg font-semibold"
-              >
-                Accessories
-              </h3>
-              <div
-                class="text-md font-medium text-gray-300"
-              >
-                Accessories
-              </div>
-            </div>
-            <div
-              class="absolute p-4 bottom-0 inset-x-0 text-white leading-snug text-lg"
-            >
-              <div
-                class="font-semibold"
-              >
-                View all -&gt;
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
+      <div
+        class="mt-10 flex flex-col gap-8"
+      />
     </div>
     <div
       class="py-8 lg:p-16 mt-24 bg-gray-50"

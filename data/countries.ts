@@ -1,12 +1,18 @@
+import { z } from 'zod'
 import countriesJson from './json/countries.json'
 
-export type RawDataCountry = {
-  name: string;
-  code: string;
-  market: number;
-  catalog: string;
-  default_language: string;
-  region: string;
-}
+const countrySchema = z.object({
+  name: z.string(),
+  code: z.string(),
+  market: z.number(),
+  catalog: z.string(),
+  default_language: z.string(),
+  region: z.string()
+})
 
-export const rawDataCountries: RawDataCountry[] = countriesJson
+export type RawDataCountry = z.infer<typeof countrySchema>
+
+export const rawDataCountries = countrySchema.array().parse(countriesJson);
+
+// Type Check
+(_: RawDataCountry[] = countriesJson) => { }

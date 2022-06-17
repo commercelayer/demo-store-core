@@ -97,13 +97,21 @@ describe('translateField', () => {
     expect(value).toStrictEqual('Titolo italiano')
   })
 
-  it('should fallback to empty string when locale and language are not found', () => {
+  it('should fallback to default locale when locale and language are not found', () => {
     const value = translateField({
       fr: 'titre français',
       en: 'English title',
       it: 'Titolo italiano',
       'en-US': 'American title'
     }, 'fr-CN')
-    expect(value).toStrictEqual('')
+    expect(value).toStrictEqual('English title')
+  })
+
+  it('should throw an error when locale and language are not found and also default locale is not available', () => {
+    expect(() => translateField({
+      fr: 'titre français',
+      it: 'Titolo italiano',
+      'en-US': 'American title'
+    }, 'fr-CN')).toThrowError(`Missing translation for locale 'fr-CN' : {"fr":"titre français","it":"Titolo italiano","en-US":"American title"}`)
   })
 })

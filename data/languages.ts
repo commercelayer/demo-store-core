@@ -1,9 +1,15 @@
+import { z } from 'zod'
 import languagesJson from './json/languages.json'
 
-export type RawDataLanguage = {
-  name: string;
-  code: string;
-  catalog: string;
-}
+const languageSchema = z.object({
+  name: z.string(),
+  code: z.string(),
+  catalog: z.string()
+})
 
-export const rawDataLanguages: RawDataLanguage[] = languagesJson
+export type RawDataLanguage = z.infer<typeof languageSchema>
+
+export const rawDataLanguages = languageSchema.array().parse(languagesJson);
+
+// Type Check
+(_: RawDataLanguage[] = languagesJson) => { }
