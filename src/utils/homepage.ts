@@ -21,7 +21,7 @@ type Hero = {
   type: 'hero'
   image: Image
   title: string
-  description: string
+  description: string | null
   href: string
 }
 
@@ -54,7 +54,7 @@ const getCarousel = (rawData: RawDataCarousel, localeCode: string): Carousel => 
 const getHero = (rawData: RawDataHero, localeCode: string): Hero => {
   return {
     type: 'hero',
-    description: translateField(rawData.description, localeCode),
+    description: rawData.description ? translateField(rawData.description, localeCode) : null,
     href: translateField(rawData.href, localeCode),
     image: translateField(rawData.image, localeCode),
     title: translateField(rawData.title, localeCode)

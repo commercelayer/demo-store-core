@@ -25,7 +25,7 @@ const heroSchema = z.object({
   type: z.literal('hero'),
   image: localizedFieldSchema(imageSchema),
   title: localizedFieldSchema(z.string()),
-  description: localizedFieldSchema(z.string()),
+  description: localizedFieldSchema(z.string()).optional(),
   href: localizedFieldSchema(z.string())
 })
 

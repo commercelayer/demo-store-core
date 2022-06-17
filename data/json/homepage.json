@@ -10,13 +10,16 @@
           }
         },
         "title": {
-          "en": "Space for everything"
+          "en": "Space for everything",
+          "it": "Spazio per tutto"
         },
         "description": {
-          "en": "Our backpack collection has been designed to meet the needs of all kinds of people, from urban city-dwellers to outdoor adventurers."
+          "en": "Our backpack collection has been designed to meet the needs of all kinds of people, from urban city-dwellers to outdoor adventurers.",
+          "it": "La nostra collezione di zaini è stata progettata per soddisfare le esigenze di tutti i tipi di persone, dagli abitanti delle città urbane agli avventurieri all'aperto."
         },
         "linkLabel": {
-          "en": "Shop here"
+          "en": "Shop here",
+          "it": "Acquista ora"
         },
         "linkHref": {
           "en": "/search/bags"
@@ -30,13 +33,16 @@
           }
         },
         "title": {
-          "en": "Space for everything"
+          "en": "Space for everything",
+          "it": "Spazio per tutto"
         },
         "description": {
-          "en": "Our backpack collection has been designed to meet the needs of all kinds of people, from urban city-dwellers to outdoor adventurers."
+          "en": "Our backpack collection has been designed to meet the needs of all kinds of people, from urban city-dwellers to outdoor adventurers.",
+          "it": "La nostra collezione di zaini è stata progettata per soddisfare le esigenze di tutti i tipi di persone, dagli abitanti delle città urbane agli avventurieri all'aperto."
         },
         "linkLabel": {
-          "en": "Shop here"
+          "en": "Shop here",
+          "it": "Acquista ora"
         },
         "linkHref": {
           "en": "/search/bags"
@@ -53,10 +59,8 @@
       }
     },
     "title": {
-      "en": "30% OFF SALE - CL30"
-    },
-    "description": {
-      "en": "Our backpack collection has been designed to meet the needs of all kinds of people, from urban city-dwellers to outdoor adventurers."
+      "en": "30% OFF SALE - CL30",
+      "it": "30% SCONTO - CL30"
     },
     "href": {
       "en": "/search/bags"
@@ -73,13 +77,16 @@
           }
         },
         "title": {
-          "en": "Mug collection"
+          "en": "Mug collection",
+          "it": "Tazze"
         },
         "description": {
-          "en": "Our mug collection has been designed to meet the needs of all kinds of people."
+          "en": "Our mug collection has been designed to meet the needs of all kinds of people.",
+          "it": "La nostra collezione di tazze è stata progettata per soddisfare le esigenze di tutti i tipi di persone."
         },
         "linkLabel": {
-          "en": "Discover now"
+          "en": "Discover now",
+          "it": "Scopri adesso"
         },
         "linkHref": {
           "en": "/search/accessories"
@@ -93,13 +100,16 @@
           }
         },
         "title": {
-          "en": "Hats collection"
+          "en": "Hats collection",
+          "it": "Cappelli"
         },
         "description": {
-          "en": "Our hat collection has been designed to meet the needs of all kinds of people."
+          "en": "Our hat collection has been designed to meet the needs of all kinds of people.",
+          "it": "La nostra collezione di cappelli è stata progettata per soddisfare le esigenze di tutti i tipi di persone."
         },
         "linkLabel": {
-          "en": "Discover now"
+          "en": "Discover now",
+          "it": "Scopri adesso"
         },
         "linkHref": {
           "en": "/search/hats"
@@ -113,13 +123,16 @@
           }
         },
         "title": {
-          "en": "Home living collection"
+          "en": "Home living collection",
+          "it": "Casa"
         },
         "description": {
-          "en": "Our home living collection has been designed to meet the needs of all kinds of people."
+          "en": "Our home living collection has been designed to meet the needs of all kinds of people.",
+          "it": "La nostra collezione per la casa è stata progettata per soddisfare le esigenze di tutti i tipi di persone."
         },
         "linkLabel": {
-          "en": "Discover now"
+          "en": "Discover now",
+          "it": "Scopri adesso"
         },
         "linkHref": {
           "en": "/search/home-and-living"
