@@ -9,11 +9,11 @@ const imageSchema = z.object({
 })
 
 const slideSchema = z.object({
-  image: localizedFieldSchema(imageSchema),
-  title: localizedFieldSchema(z.string()),
-  description: localizedFieldSchema(z.string()),
-  linkLabel: localizedFieldSchema(z.string()),
-  linkHref: localizedFieldSchema(z.string())
+  image: imageSchema,
+  title: z.string(),
+  description: z.string(),
+  linkLabel: z.string(),
+  linkHref: z.string()
 })
 
 const carouselSchema = z.object({
@@ -23,10 +23,10 @@ const carouselSchema = z.object({
 
 const heroSchema = z.object({
   type: z.literal('hero'),
-  image: localizedFieldSchema(imageSchema),
-  title: localizedFieldSchema(z.string()),
-  description: localizedFieldSchema(z.string()).optional(),
-  href: localizedFieldSchema(z.string())
+  image: imageSchema,
+  title: z.string(),
+  description: z.string().optional(),
+  href: z.string()
 })
 
 const gridSchema = z.object({
@@ -36,11 +36,13 @@ const gridSchema = z.object({
 
 const homepageSchema = z.object({
   _unserializable: z.unknown().default(Symbol.for('unserializable')),
-  data: z.discriminatedUnion('type', [
-    carouselSchema,
-    heroSchema,
-    gridSchema
-  ]).array()
+  data: localizedFieldSchema(
+    z.discriminatedUnion('type', [
+      carouselSchema,
+      heroSchema,
+      gridSchema
+    ]).array()
+  )
 })
 
 export type RawDataHomepage = z.infer<typeof homepageSchema>

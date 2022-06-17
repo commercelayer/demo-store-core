@@ -38,55 +38,55 @@ type Grid = {
 
 export type Homepage = (Carousel | Hero | Grid)[]
 
-const getCarousel = (rawData: RawDataCarousel, localeCode: string): Carousel => {
+const getCarousel = (rawData: RawDataCarousel): Carousel => {
   return {
     type: 'carousel',
     slides: rawData.slides.map(slide => ({
-      image: translateField(slide.image, localeCode),
-      title: translateField(slide.title, localeCode),
-      description: translateField(slide.description, localeCode),
-      linkLabel: translateField(slide.linkLabel, localeCode),
-      linkHref: translateField(slide.linkHref, localeCode)
+      image: slide.image,
+      title: slide.title,
+      description: slide.description,
+      linkLabel: slide.linkLabel,
+      linkHref: slide.linkHref
     }))
   }
 }
 
-const getHero = (rawData: RawDataHero, localeCode: string): Hero => {
+const getHero = (rawData: RawDataHero): Hero => {
   return {
     type: 'hero',
-    description: rawData.description ? translateField(rawData.description, localeCode) : null,
-    href: translateField(rawData.href, localeCode),
-    image: translateField(rawData.image, localeCode),
-    title: translateField(rawData.title, localeCode)
+    description: rawData.description || null,
+    href: rawData.href,
+    image: rawData.image,
+    title: rawData.title
   }
 }
 
-const getGrid = (rawData: RawDataGrid, localeCode: string): Grid => {
+const getGrid = (rawData: RawDataGrid): Grid => {
   return {
     type: 'grid',
     items: rawData.items.map(item => ({
-      image: translateField(item.image, localeCode),
-      title: translateField(item.title, localeCode),
-      description: translateField(item.description, localeCode),
-      linkLabel: translateField(item.linkLabel, localeCode),
-      linkHref: translateField(item.linkHref, localeCode)
+      image: item.image,
+      title: item.title,
+      description: item.description,
+      linkLabel: item.linkLabel,
+      linkHref: item.linkHref
     }))
   }
 }
 
 export const getHomepage = (localeCode: string): Homepage => {
-  return rawDataHomepage.data.map(homepage => {
+  return translateField(rawDataHomepage.data, localeCode).map(homepage => {
     switch (homepage.type) {
       case 'carousel': {
-        return getCarousel(homepage, localeCode)
+        return getCarousel(homepage)
       }
 
       case 'hero': {
-        return getHero(homepage, localeCode)
+        return getHero(homepage)
       }
 
       case 'grid': {
-        return getGrid(homepage, localeCode)
+        return getGrid(homepage)
       }
     }
   })
