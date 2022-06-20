@@ -1,34 +1,39 @@
+import { z } from 'zod'
 import catalogsJson from './json/catalogs.json'
 import taxonomiesJson from './json/taxonomies.json'
 import taxonsJson from './json/taxons.json'
 
-export type RawDataCatalog = {
-  id: string
-  name: string
-  taxonomies: string[]
-}
+const catalogSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  taxonomies: z.string().array()
+})
 
-export type RawDataTaxonomy = {
-  id: string
-  name: string
-  facetKey: string
-  taxons: string[]
-}
+const taxonomySchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  facetKey: z.string(),
+  taxons: z.string().array()
+})
 
-export type RawDataTaxon = {
-  id: string
-  name: string
-  label: LocalizedField<string>
-  description: LocalizedField<string>
-  slug: string
-  image?: string
-  references: string[]
-  taxons?: string[]
-}
+const taxonSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  label: localizedFieldSchema(z.string()),
+  description: localizedFieldSchema(z.string()),
+  slug: z.string(),
+  image: z.string().optional(),
+  references: z.string().array(),
+  taxons: z.string().array().optional()
+})
 
-const rawDataCatalogs: RawDataCatalog[] = catalogsJson
-const rawDataTaxonomies: RawDataTaxonomy[] = taxonomiesJson
-const rawDataTaxons: RawDataTaxon[] = taxonsJson
+export type RawDataCatalog = z.infer<typeof catalogSchema>
+export type RawDataTaxonomy = z.infer<typeof taxonomySchema>
+export type RawDataTaxon = z.infer<typeof taxonSchema>
+
+const rawDataCatalogs: RawDataCatalog[] = catalogSchema.array().parse(catalogsJson)
+const rawDataTaxonomies: RawDataTaxonomy[] = taxonomySchema.array().parse(taxonomiesJson)
+const rawDataTaxons: RawDataTaxon[] = taxonSchema.array().parse(taxonsJson)
 
 
 
@@ -52,13 +57,13 @@ type ProductDataset = {
 
 
 import type { RawDataProduct } from '#data/products'
-import { Locale, LocalizedField, translateField } from '#i18n/locale'
+import { Locale, localizedFieldSchema, translateField } from '#i18n/locale'
 import { deepFind, DeepFindResult } from '#utils/collection'
 import type { LocalizedProductWithVariant } from '#utils/products'
 import { flattenProductVariants, getProductWithVariants } from '#utils/products'
+import type { Unserializable } from '#utils/unserializable'
 import uniq from 'lodash/uniq'
 import uniqBy from 'lodash/uniqBy'
-import type { Unserializable } from '#utils/unserializable'
 
 export type Catalog = Unserializable<Omit<RawDataCatalog, 'taxonomies'> & {
   taxonomies: Taxonomy[]

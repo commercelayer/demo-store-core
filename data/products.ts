@@ -1,19 +1,21 @@
-import type { LocalizedField } from '#i18n/locale'
+import { localizedFieldSchema } from '#i18n/locale'
 import type { Price } from '@commercelayer/sdk'
+import { z } from 'zod'
 import productsJson from './json/products.json'
 
-export type RawDataProduct = {
-  productCode: string
-  variantCode: string
-  sku: string
-  slug: string
-  name: LocalizedField<string>
-  description: LocalizedField<string>
-  images: string[]
+const languageSchema = z.object({
+  productCode: z.string(),
+  variantCode: z.string(),
+  sku: z.string(),
+  slug: z.string(),
+  name: localizedFieldSchema(z.string()),
+  description: localizedFieldSchema(z.string()),
+  images: z.string().array()
+})
 
+export type RawDataProduct = z.infer<typeof languageSchema> & {
   available?: boolean
-
   price?: Price
 }
 
-export const rawDataProducts: RawDataProduct[] = productsJson
+export const rawDataProducts: RawDataProduct[] = languageSchema.array().parse(productsJson);

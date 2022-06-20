@@ -9,7 +9,4 @@ const languageSchema = z.object({
 
 export type RawDataLanguage = z.infer<typeof languageSchema>
 
-export const rawDataLanguages = languageSchema.array().parse(languagesJson);
-
-// Type Check
-(_: RawDataLanguage[] = languagesJson) => { }
+export const rawDataLanguages: RawDataLanguage[] = languageSchema.array().parse(languagesJson);

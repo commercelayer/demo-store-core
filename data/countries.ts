@@ -12,7 +12,4 @@ const countrySchema = z.object({
 
 export type RawDataCountry = z.infer<typeof countrySchema>
 
-export const rawDataCountries = countrySchema.array().parse(countriesJson);
-
-// Type Check
-(_: RawDataCountry[] = countriesJson) => { }
+export const rawDataCountries: RawDataCountry[] = countrySchema.array().parse(countriesJson);
