@@ -115,7 +115,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode } = params!
   const locale = getLocale(localeCode)
-  const catalog = getCatalog(locale)
+  const catalog = await getCatalog(locale)
 
   return {
     props: {

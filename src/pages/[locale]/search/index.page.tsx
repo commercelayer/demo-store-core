@@ -1,4 +1,4 @@
-import { flattenProductsFromCatalog, getCatalog } from '#data/catalogs'
+import { getCatalog } from '#data/catalogs'
 import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
@@ -21,14 +21,12 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode } = params!
   const locale = getLocale(localeCode)
-  const catalog = getCatalog(locale, rawDataProducts)
-
-  const products = flattenProductsFromCatalog(catalog)
+  const catalog = await getCatalog(locale, rawDataProducts)
 
   return {
     props: {
       navigation: getRootNavigationLinks(catalog),
-      products,
+      products: Object.values(catalog.data.productDataset),
       ...(await serverSideTranslations(localeCode))
     }
   }

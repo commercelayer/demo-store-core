@@ -89,6 +89,15 @@ export function getProductWithVariants(sku: string, locale: string, productList:
   }
 }
 
+export function addProductVariants(product: LocalizedProduct, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProductWithVariant {
+  const variants = getProductVariants(product, productList)
+
+  return {
+    ...product,
+    variants
+  }
+}
+
 export function flattenProductVariants(products: LocalizedProductWithVariant[]): LocalizedProductWithVariant[] {
   const flattenProducts = uniqBy(
     products.flatMap(product => product.variants).concat(products),

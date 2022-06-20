@@ -1,4 +1,4 @@
-import { findTaxonBySlug, flattenProductsFromTaxon, getCatalog } from '#data/catalogs'
+import { findTaxonBySlug, flattenReferencesFromTaxon, getCatalog } from '#data/catalogs'
 import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
@@ -13,9 +13,9 @@ type Query = {
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = () => {
-  return withLocalePaths(localeCode => {
+  return withLocalePaths(async localeCode => {
     const locale = getLocale(localeCode)
-    const catalog = getCatalog(locale)
+    const catalog = await getCatalog(locale)
     const slugs = getSlugs(catalog)
 
     return {
@@ -32,11 +32,12 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode, slug } = params!
   const locale = getLocale(localeCode)
-  const catalog = getCatalog(locale, rawDataProducts)
+  const catalog = await getCatalog(locale, rawDataProducts)
 
   const taxon = findTaxonBySlug(catalog, slug.join('/'))
 
-  const products = flattenProductsFromTaxon(taxon.result)
+  const references = flattenReferencesFromTaxon(taxon.result)
+  const products = references.map(ref => catalog.data.productDataset[ref])
 
   return {
     props: {

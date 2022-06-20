@@ -1,11 +1,11 @@
 import type { Catalog, Taxon, Taxonomy } from '#data/catalogs'
-import type { LocalizedProductWithVariant } from '#utils/products'
 import { makeUnserializable } from '#utils/unserializable'
 
 export const createCatalog = (id: string, taxonomies: Taxonomy[] = []): Catalog => {
   return makeUnserializable({
     id: `catalog-key-${id}`,
-    name: `catalog-name-${id}`,
+    name: `catxalog-name-${id}`,
+    productDataset: {},
     taxonomies
   })
 }
@@ -19,7 +19,7 @@ export const createTaxonomy = (id: string, taxons: Taxon[] = []): Taxonomy => {
   }
 }
 
-export const createTaxon = (id: string, taxons: Taxon[] = [], products: LocalizedProductWithVariant[] = []): Taxon => {
+export const createTaxon = (id: string, taxons: Taxon[] = [], references: string[] = []): Taxon => {
   return {
     id: `taxon-key-${id}`,
     name: `taxon-name-${id}`,
@@ -27,6 +27,6 @@ export const createTaxon = (id: string, taxons: Taxon[] = [], products: Localize
     label: `Label for ${id}`,
     slug: `taxon-slug-${id}`,
     taxons,
-    products,
+    references,
   }
 }

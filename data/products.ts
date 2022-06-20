@@ -18,4 +18,4 @@ export type RawDataProduct = z.infer<typeof productSchema> & {
   price?: Price
 }
 
-export const rawDataProducts: RawDataProduct[] = productSchema.array().parse(productsJson);
+export const rawDataProducts: RawDataProduct[] = productSchema.passthrough().array().parse(productsJson);

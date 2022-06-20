@@ -1,10 +1,9 @@
-import { flattenProductsFromCatalog, getCatalog } from '#data/catalogs'
+import { getCatalog } from '#data/catalogs'
 import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
-import { flattenProductVariants, getProductWithVariants } from '#utils/products'
 import generalConfig from 'config/general.config'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import { ProductPageComponent, Props } from './ProductPageComponent'
@@ -15,15 +14,14 @@ type Query = {
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = () => {
-  return withLocalePaths(localeCode => {
+  return withLocalePaths(async localeCode => {
     const locale = getLocale(localeCode)
-    const catalog = getCatalog(locale, rawDataProducts)
-    const products = flattenProductsFromCatalog(catalog)
-    const flattenProducts = flattenProductVariants(products)
+    const catalog = await getCatalog(locale, rawDataProducts)
+    const products = Object.values(catalog.data.productDataset)
 
     return {
       fallback: false,
-      paths: flattenProducts.map(product => ({
+      paths: products.map(product => ({
         params: {
           slug: product.slug.split('/')
         }
@@ -35,7 +33,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode, slug } = params!
   const locale = getLocale(localeCode)
-  const catalog = getCatalog(locale)
+  const catalog = getCatalog(locale, rawDataProducts)
 
   const productSlug = slug.join('/')
   const productCode = productSlug.match(generalConfig.productSlugRegExp)?.groups?.productCode
@@ -47,7 +45,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   return {
     props: {
       navigation: getRootNavigationLinks(catalog),
-      product: getProductWithVariants(productCode, localeCode, rawDataProducts),
+      product: catalog.data.productDataset[productCode],
       ...(await serverSideTranslations(localeCode))
     }
   }

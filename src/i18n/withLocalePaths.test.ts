@@ -20,16 +20,16 @@ test('should throw an error when not locales are passed', () => {
       { params: { pid: '1' } },
       { params: { pid: '2' } }
     ]
-  }, [])).toThrowError(new Error('At least one Locale is mandatory!'))
+  }, [])).rejects.toThrowError(new Error('At least one Locale is mandatory!'))
 })
 
-test('should add all given locales without any other param when "paths" is empty', () => {
+test('should add all given locales without any other param when "paths" is empty', async () => {
   const getStaticPathsResult: GetStaticPathsResult = {
     fallback: 'blocking',
     paths: []
   }
 
-  const withLocales = withLocalePaths(getStaticPathsResult, [itUS, enIT, en])
+  const withLocales = await withLocalePaths(getStaticPathsResult, [itUS, enIT, en])
 
   expect(withLocales).toStrictEqual<typeof withLocales>({
     fallback: 'blocking',
@@ -41,13 +41,13 @@ test('should add all given locales without any other param when "paths" is empty
   })
 })
 
-test('should add all given locales without any other param when "paths" is empty using a callback method', () => {
+test('should add all given locales without any other param when "paths" is empty using a callback method', async () => {
   const getStaticPathsResult = (): GetStaticPathsResult => ({
     fallback: 'blocking',
     paths: []
   })
 
-  const withLocales = withLocalePaths(getStaticPathsResult, [itUS, enIT, en])
+  const withLocales = await withLocalePaths(getStaticPathsResult, [itUS, enIT, en])
 
   expect(withLocales).toStrictEqual<typeof withLocales>({
     fallback: 'blocking',
@@ -59,8 +59,8 @@ test('should add all given locales without any other param when "paths" is empty
   })
 })
 
-test('should combine all given params with all given locales', () => {
-  const withLocales = withLocalePaths<{ pid: string }>({
+test('should combine all given params with all given locales', async () => {
+  const withLocales = await withLocalePaths<{ pid: string }>({
     fallback: 'blocking',
     paths: [
       { params: { pid: '1' } },
@@ -81,8 +81,8 @@ test('should combine all given params with all given locales', () => {
   })
 })
 
-test('should combine all given params with all given locales using a callback method', () => {
-  const withLocales = withLocalePaths<{ pid: string }>((locale) => ({
+test('should combine all given params with all given locales using a callback method', async () => {
+  const withLocales = await withLocalePaths<{ pid: string }>((locale) => ({
     fallback: 'blocking',
     paths: [
       { params: { pid: `${locale}-1` } },
@@ -103,8 +103,8 @@ test('should combine all given params with all given locales using a callback me
   })
 })
 
-test('should combine all given string paths with all given locales', () => {
-  const withLocales = withLocalePaths<{ name: string }>({
+test('should combine all given string paths with all given locales', async () => {
+  const withLocales = await withLocalePaths<{ name: string }>({
     fallback: 'blocking',
     paths: [
       '/products/1',
@@ -125,8 +125,8 @@ test('should combine all given string paths with all given locales', () => {
   })
 })
 
-test('should combine all given string paths with all given locales using a callback method', () => {
-  const withLocales = withLocalePaths<{ pid: string }>((locale) => ({
+test('should combine all given string paths with all given locales using a callback method', async () => {
+  const withLocales = await withLocalePaths<{ pid: string }>((locale) => ({
     fallback: 'blocking',
     paths: [
       `/products/${locale}-1`,
@@ -147,8 +147,8 @@ test('should combine all given string paths with all given locales using a callb
   })
 })
 
-test('should combine all given string paths with all configured locales', () => {
-  const withLocales = withLocalePaths<{ name: string }>({
+test('should combine all given string paths with all configured locales', async () => {
+  const withLocales = await withLocalePaths<{ name: string }>({
     fallback: 'blocking',
     paths: [
       '/products/1',

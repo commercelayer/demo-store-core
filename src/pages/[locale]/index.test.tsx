@@ -27,7 +27,7 @@ test('home', () => {
     slug: 'accessories',
     name: 'All Accessories',
     image: '/assets/images/samsung-case-samsung-galaxy-s21-plus-lifestyle-4-60f836d4aaa9d.png',
-    products: [],
+    references: [],
     taxons: []
   }
 
@@ -41,6 +41,7 @@ test('home', () => {
   const catalog: Catalog = makeUnserializable({
     id: 'catalog_1',
     name: 'AMER',
+    productDataset: {},
     taxonomies: [taxonomy]
   })
 
