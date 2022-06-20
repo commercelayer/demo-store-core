@@ -11,16 +11,16 @@ export const createCatalog = (id: string, taxonomies: Taxonomy[] = []): Catalog 
 }
 
 export const createTaxonomy = (id: string, taxons: Taxon[] = []): Taxonomy => {
-  return makeUnserializable({
+  return {
     id: `taxonomy-key-${id}`,
     name: `taxonomy-name-${id}`,
     facetKey: `taxonomy-facetKey-${id}`,
     taxons
-  })
+  }
 }
 
 export const createTaxon = (id: string, taxons: Taxon[] = [], products: LocalizedProductWithVariant[] = []): Taxon => {
-  return makeUnserializable({
+  return {
     id: `taxon-key-${id}`,
     name: `taxon-name-${id}`,
     description: `taxon-description-${id}`,
@@ -28,5 +28,5 @@ export const createTaxon = (id: string, taxons: Taxon[] = [], products: Localize
     slug: `taxon-slug-${id}`,
     taxons,
     products,
-  })
+  }
 }

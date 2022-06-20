@@ -1,5 +1,6 @@
 import type { Catalog, Taxon, Taxonomy } from '#data/catalogs'
 import { getRootNavigationLinks } from '#utils/catalog'
+import { makeUnserializable } from '#utils/unserializable'
 import { render } from '@testing-library/react'
 import { I18nProvider } from 'next-localization'
 import HomePage from './index.page'
@@ -20,7 +21,6 @@ jest.mock('next/router', () => ({
 
 test('home', () => {
   const taxon: Taxon = {
-    _unserializable: Symbol.for('unserializable'),
     id: 'taxon_1',
     label: 'Accessories',
     description: 'Accessories',
@@ -32,19 +32,17 @@ test('home', () => {
   }
 
   const taxonomy: Taxonomy = {
-    _unserializable: Symbol.for('unserializable'),
     id: 'taxonomy_1',
     facetKey: 'categories',
     name: 'Default Category',
     taxons: [taxon]
   }
 
-  const catalog: Catalog = {
-    _unserializable: Symbol.for('unserializable'),
+  const catalog: Catalog = makeUnserializable({
     id: 'catalog_1',
     name: 'AMER',
     taxonomies: [taxonomy]
-  }
+  })
 
   const { container } = render(
     <I18nProvider lngDict={{ general: { viewAll: 'View all' } }} locale='en'>

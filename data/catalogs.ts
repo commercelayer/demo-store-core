@@ -31,9 +31,17 @@ export type RawDataCatalog = z.infer<typeof catalogSchema>
 export type RawDataTaxonomy = z.infer<typeof taxonomySchema>
 export type RawDataTaxon = z.infer<typeof taxonSchema>
 
-const rawDataCatalogs: RawDataCatalog[] = catalogSchema.array().parse(catalogsJson)
-const rawDataTaxonomies: RawDataTaxonomy[] = taxonomySchema.array().parse(taxonomiesJson)
-const rawDataTaxons: RawDataTaxon[] = taxonSchema.array().parse(taxonsJson)
+const rawDataCatalogs = unserializableSchema(catalogSchema.array()).parse({
+  data: catalogsJson
+})
+
+const rawDataTaxonomies = unserializableSchema(taxonomySchema.array()).parse({
+  data: taxonomiesJson
+})
+
+const rawDataTaxons = unserializableSchema(taxonSchema.array()).parse({
+  data: taxonsJson
+})
 
 
 
@@ -61,7 +69,7 @@ import { Locale, localizedFieldSchema, translateField } from '#i18n/locale'
 import { deepFind, DeepFindResult } from '#utils/collection'
 import type { LocalizedProductWithVariant } from '#utils/products'
 import { flattenProductVariants, getProductWithVariants } from '#utils/products'
-import type { Unserializable } from '#utils/unserializable'
+import { makeUnserializable, Unserializable, unserializableSchema } from '#utils/unserializable'
 import uniq from 'lodash/uniq'
 import uniqBy from 'lodash/uniqBy'
 
@@ -70,12 +78,10 @@ export type Catalog = Unserializable<Omit<RawDataCatalog, 'taxonomies'> & {
 }>
 
 export type Taxonomy = Omit<RawDataTaxonomy, 'taxons'> & {
-  _unserializable: Symbol
   taxons: Taxon[]
 }
 
 export type Taxon = Omit<RawDataTaxon, 'label' | 'description' | 'references' | 'taxons'> & {
-  _unserializable: Symbol
   label: string
   description: string
   products: LocalizedProductWithVariant[]
@@ -84,7 +90,7 @@ export type Taxon = Omit<RawDataTaxon, 'label' | 'description' | 'references' | 
 
 export const getCatalog = (locale: Locale, rawDataProduct: RawDataProduct[] = []): Catalog => {
   const name = locale.isShoppable ? locale.country.catalog : locale.language.catalog
-  const rawDataCatalog = rawDataCatalogs.find(catalog => catalog.name === name)
+  const rawDataCatalog = rawDataCatalogs.data.find(catalog => catalog.name === name)
 
   if (!rawDataCatalog) {
     throw new Error(`Cannot find the catalog with name "${name}"`)
@@ -138,7 +144,7 @@ function buildProductDataset(catalog: RawDataCatalog, locale: string, rawDataPro
 }
 
 const getTaxonomy = (taxonomyKey: string): RawDataTaxonomy => {
-  const taxonomy = rawDataTaxonomies.find(taxonomy => taxonomy.id === taxonomyKey)
+  const taxonomy = rawDataTaxonomies.data.find(taxonomy => taxonomy.id === taxonomyKey)
 
   if (!taxonomy) {
     throw new Error(`Cannot find taxonomy with key ${taxonomyKey}`)
@@ -148,7 +154,7 @@ const getTaxonomy = (taxonomyKey: string): RawDataTaxonomy => {
 }
 
 const getTaxon = (taxonKey: string): RawDataTaxon => {
-  const taxon = rawDataTaxons.find(taxon => taxon.id === taxonKey)
+  const taxon = rawDataTaxons.data.find(taxon => taxon.id === taxonKey)
 
   if (!taxon) {
     throw new Error(`Cannot find taxon with key ${taxonKey}`)
@@ -158,19 +164,17 @@ const getTaxon = (taxonKey: string): RawDataTaxon => {
 }
 
 const resolveCatalog = (catalog: RawDataCatalog, locale: string, productDataset: ProductDataset): Catalog => {
-  return {
-    _unserializable: Symbol.for('unserializable'),
+  return makeUnserializable({
     id: catalog.id,
     name: catalog.name,
     taxonomies: catalog.taxonomies
       .map(getTaxonomy)
       .map(taxonomy => resolveTaxonomy(taxonomy, locale, Object.values(productDataset)))
-  }
+  })
 }
 
 const resolveTaxonomy = (taxonomy: RawDataTaxonomy, locale: string, productList: LocalizedProductWithVariant[]): Taxonomy => {
   return {
-    _unserializable: Symbol.for('unserializable'),
     id: taxonomy.id,
     facetKey: taxonomy.facetKey,
     name: taxonomy.name,
@@ -182,7 +186,6 @@ const resolveTaxonomy = (taxonomy: RawDataTaxonomy, locale: string, productList:
 
 const resolveTaxon = (taxon: RawDataTaxon, locale: string, productList: LocalizedProductWithVariant[]): Taxon => {
   return {
-    _unserializable: Symbol.for('unserializable'),
     id: taxon.id,
     label: translateField(taxon.label, locale),
     description: translateField(taxon.description, locale),
@@ -206,13 +209,13 @@ export function flattenProductsFromTaxon(taxon: Taxon): LocalizedProductWithVari
 
 export function flattenProductsFromCatalog(catalog: Catalog): LocalizedProductWithVariant[] {
   return uniqBy(
-    catalog.taxonomies.flatMap(({ taxons }) => taxons.flatMap(flattenProductsFromTaxon)),
+    catalog.data.taxonomies.flatMap(({ taxons }) => taxons.flatMap(flattenProductsFromTaxon)),
     'sku'
   )
 }
 
 export function findTaxonBySlug(catalog: Catalog, slug: string): DeepFindResult<Taxon> {
-  const taxon = catalog.taxonomies.reduce((acc, cv) => {
+  const taxon = catalog.data.taxonomies.reduce((acc, cv) => {
     if (acc) {
       return acc
     }

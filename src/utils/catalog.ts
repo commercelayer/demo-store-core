@@ -5,7 +5,7 @@ import type { NavigationPath } from '@typings/navigation.d'
 
 const getPrimaryTaxonomy = (catalog: Catalog): Taxonomy => {
   // TODO: taxonomies[0] is a requirement. First taxonomy is considered the navigation one. Should it be configurable?
-  return catalog.taxonomies[0]
+  return catalog.data.taxonomies[0]
 }
 
 export const getRootNavigationLinks = (catalog: Catalog): NavigationPath => {

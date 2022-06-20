@@ -1,4 +1,5 @@
 import { localizedFieldSchema } from '#i18n/locale'
+import { unserializableSchema } from '#utils/unserializable'
 import { z } from 'zod'
 
 import homepageJson from './json/homepage.json'
@@ -34,16 +35,15 @@ const gridSchema = z.object({
   items: slideSchema.array()
 })
 
-const homepageSchema = z.object({
-  _unserializable: z.unknown().default(Symbol.for('unserializable')),
-  data: localizedFieldSchema(
+const homepageSchema = unserializableSchema(
+  localizedFieldSchema(
     z.discriminatedUnion('type', [
       carouselSchema,
       heroSchema,
       gridSchema
     ]).array()
   )
-})
+)
 
 export type RawDataHomepage = z.infer<typeof homepageSchema>
 

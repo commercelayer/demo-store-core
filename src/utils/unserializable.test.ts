@@ -10,13 +10,16 @@ test('"makeUnserializable" should make an object unserializable', () => {
   const unserializableObj = makeUnserializable(obj)
 
   expect(unserializableObj).toMatchObject({
-    firstname: 'John',
-    lastname: 'Doe'
+    _unserializable: Symbol.for('unserializable'),
+    data: {
+      firstname: 'John',
+      lastname: 'Doe'
+    }
   })
 
   expect(isSerializableProps('page', 'method', obj)).toBe(true)
 
   expect(() => isSerializableProps('page', 'method', unserializableObj)).toThrow()
 
-  expect(JSON.stringify(unserializableObj)).toEqual('{"firstname":"John","lastname":"Doe"}')
+  expect(JSON.stringify(unserializableObj)).toEqual('{"data":{"firstname":"John","lastname":"Doe"}}')
 })
