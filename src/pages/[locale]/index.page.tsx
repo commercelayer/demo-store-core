@@ -32,7 +32,7 @@ const HomePage: NextPage<Props> = ({ navigation, homepage }) => {
               switch (component.type) {
                 case 'carousel':
                   return (
-                    <Carousel slides={component.slides.map((slide, index) => (
+                    <Carousel key={component.id} slides={component.slides.map((slide, index) => (
                       <div key={index} className='relative rounded-lg overflow-hidden w-full max-h-[50vh] min-h-[24rem]'>
                         <img alt={slide.image.alt} src={slide.image.src} className='object-cover w-full rounded-lg' />
                         <div className='hidden md:block absolute inset-0 bg-gradient-to-b from-black to-black/0 opacity-50'></div>
@@ -57,7 +57,7 @@ const HomePage: NextPage<Props> = ({ navigation, homepage }) => {
 
                 case 'hero':
                   return (
-                    <div>
+                    <div key={component.id}>
                       <Link href={component.href}>
                         <a className='relative block bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 lg:aspect-w-1 lg:aspect-h-1'>
                           <div className='absolute inset-0 bg-gradient-to-b from-black to-black/0 opacity-50'></div>
@@ -72,7 +72,7 @@ const HomePage: NextPage<Props> = ({ navigation, homepage }) => {
 
                 case 'grid':
                   return (
-                    <div className='flex flex-wrap gap-4'>
+                    <div key={component.id} className='flex flex-wrap gap-4'>
                       {
                         component.items.map((item, index) => (
                           <div key={index} className='relative rounded-lg overflow-hidden h-80 xl:h-96 grow shrink basis-[350px]'>

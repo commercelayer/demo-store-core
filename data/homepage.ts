@@ -19,11 +19,13 @@ const slideSchema = z.object({
 
 const carouselSchema = z.object({
   type: z.literal('carousel'),
+  id: z.string(),
   slides: slideSchema.array()
 })
 
 const heroSchema = z.object({
   type: z.literal('hero'),
+  id: z.string(),
   image: imageSchema,
   title: z.string(),
   description: z.string().optional(),
@@ -32,6 +34,7 @@ const heroSchema = z.object({
 
 const gridSchema = z.object({
   type: z.literal('grid'),
+  id: z.string(),
   items: slideSchema.array()
 })
 

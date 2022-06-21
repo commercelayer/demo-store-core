@@ -8,6 +8,7 @@ type Image = {
 
 type Carousel = {
   type: 'carousel'
+  id: string
   slides: {
     image: Image
     title: string
@@ -19,6 +20,7 @@ type Carousel = {
 
 type Hero = {
   type: 'hero'
+  id: string
   image: Image
   title: string
   description: string | null
@@ -27,6 +29,7 @@ type Hero = {
 
 type Grid = {
   type: 'grid'
+  id: string
   items: {
     image: Image
     title: string
@@ -41,6 +44,7 @@ export type Homepage = (Carousel | Hero | Grid)[]
 const getCarousel = (rawData: RawDataCarousel): Carousel => {
   return {
     type: 'carousel',
+    id: rawData.id,
     slides: rawData.slides.map(slide => ({
       image: slide.image,
       title: slide.title,
@@ -54,6 +58,7 @@ const getCarousel = (rawData: RawDataCarousel): Carousel => {
 const getHero = (rawData: RawDataHero): Hero => {
   return {
     type: 'hero',
+    id: rawData.id,
     description: rawData.description || null,
     href: rawData.href,
     image: rawData.image,
@@ -64,6 +69,7 @@ const getHero = (rawData: RawDataHero): Hero => {
 const getGrid = (rawData: RawDataGrid): Grid => {
   return {
     type: 'grid',
+    id: rawData.id,
     items: rawData.items.map(item => ({
       image: item.image,
       title: item.title,

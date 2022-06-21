@@ -2,6 +2,7 @@
   "en": [
     {
       "type": "carousel",
+      "id": "carousel-1",
       "slides": [
         {
           "image": {
@@ -27,6 +28,7 @@
     },
     {
       "type": "hero",
+      "id": "hero-1",
       "image": {
         "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655468784/commercelayer-tmp/30-sales-commerce-layer.png",
         "alt": "30% OFF SALE - CL30"
@@ -36,6 +38,7 @@
     },
     {
       "type": "grid",
+      "id": "grid-1",
       "items": [
         {
           "image": {
@@ -73,6 +76,7 @@
   "it": [
     {
       "type": "carousel",
+      "id": "carousel-1",
       "slides": [
         {
           "image": {
@@ -98,6 +102,7 @@
     },
     {
       "type": "hero",
+      "id": "hero-1",
       "image": {
         "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655468784/commercelayer-tmp/30-sales-commerce-layer.png",
         "alt": "30% SCONTO - CL30"
@@ -107,6 +112,7 @@
     },
     {
       "type": "grid",
+      "id": "grid-1",
       "items": [
         {
           "image": {
