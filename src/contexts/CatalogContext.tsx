@@ -1,7 +1,9 @@
+import { buildProductDataset } from '#data/catalogs'
+import { getLocale } from '#i18n/locale'
 import type { FacetResult, Primitives } from '#utils/facets'
 import { getFacets } from '#utils/facets'
-import type { LocalizedProductWithVariant } from '#utils/products'
-import { flattenProductVariants, getProductWithVariants } from '#utils/products'
+import { addProductVariants, LocalizedProductWithVariant } from '#utils/products'
+import { flattenProductVariants } from '#utils/products'
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import facetsConfig from 'config/facets.config'
 import type Fuse from 'fuse.js'
@@ -37,7 +39,9 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
   const router = useRouter()
 
   const flattenProducts = useMemo(() => flattenProductVariants(initialProducts), [initialProducts])
-  const { products: productsWithAvailabilities } = useCommerceLayerAvailability(flattenProducts)
+
+  const { products: productsWithTaxonomies } = useCatalog(flattenProducts)
+  const { products: productsWithAvailabilities } = useCommerceLayerAvailability(productsWithTaxonomies)
   const { products: productsWithPrices, currencyCode } = useCommerceLayerPrice(productsWithAvailabilities)
 
   const [query, setQuery] = useState<string | undefined>(undefined)
@@ -138,6 +142,48 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
   )
 }
 
+function useCatalog(initialProducts: LocalizedProductWithVariant[]) {
+  const router = useRouter()
+
+  const [latestInitialProducts, setLatestInitialProducts] = useState(initialProducts)
+  const [products, setProducts] = useState(initialProducts)
+
+  const hasChanged = useMemo(
+    () => JSON.stringify(latestInitialProducts) !== JSON.stringify(initialProducts),
+    [initialProducts, latestInitialProducts]
+  )
+
+  useEffect(() => {
+    let isMounted = true
+
+    ;(async () => {
+      const { rawDataCatalogs } = await import('#data/catalogs')
+
+      const locale = getLocale(router.query.locale)
+
+      const name = locale.isShoppable ? locale.country.catalog : locale.language.catalog
+      const rawDataCatalog = rawDataCatalogs.data.find(catalog => catalog.name === name)
+
+      if (rawDataCatalog) {
+        const productDataset = buildProductDataset(rawDataCatalog, locale.code, initialProducts)
+
+        if (isMounted) {
+          setProducts(Object.values(productDataset))
+          setLatestInitialProducts(initialProducts)
+        }
+      }
+    })()
+
+
+    return () => {
+      isMounted = false
+    }
+  }, [initialProducts, router.query.locale])
+
+  return {
+    products: hasChanged ? initialProducts : products
+  }
+}
 
 function useCommerceLayerAvailability(initialProducts: LocalizedProductWithVariant[]) {
   const { accessToken, domain, organization } = useAuthContext()
@@ -164,7 +210,7 @@ function useCommerceLayerAvailability(initialProducts: LocalizedProductWithVaria
       initialProducts
     ).then((productsWithAvailabilities) => {
       if (isMounted) {
-        setProducts(productsWithAvailabilities.map(product => getProductWithVariants(product.sku, product._locale, productsWithAvailabilities)))
+        setProducts(productsWithAvailabilities.map(product => addProductVariants(product, productsWithAvailabilities)))
         setLatestInitialProducts(initialProducts)
       }
     })
@@ -205,7 +251,7 @@ function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
       initialProducts
     ).then((productsWithPrices) => {
       if (isMounted) {
-        setProducts(productsWithPrices.map(product => getProductWithVariants(product.sku, product._locale, productsWithPrices)))
+        setProducts(productsWithPrices.map(product => addProductVariants(product, productsWithPrices)))
         setLatestInitialProducts(initialProducts)
       }
     })

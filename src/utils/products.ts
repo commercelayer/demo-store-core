@@ -98,16 +98,14 @@ export function addProductVariants(product: LocalizedProduct, productList: (Loca
   }
 }
 
+/**
+ * Given a list of products, it moves all the variants at top level.
+ */
 export function flattenProductVariants(products: LocalizedProductWithVariant[]): LocalizedProductWithVariant[] {
   const flattenProducts = uniqBy(
-    products.flatMap(product => product.variants).concat(products),
+    products.flatMap(product => product.variants),
     'sku'
   )
 
-  return uniqBy(
-    products.flatMap(product => {
-      return product.variants.map(variant => getProductWithVariants(variant.sku, variant._locale, flattenProducts))
-    }),
-    'sku'
-  )
+  return flattenProducts.map(variant => addProductVariants(variant, flattenProducts))
 }

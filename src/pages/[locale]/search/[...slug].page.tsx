@@ -4,6 +4,7 @@ import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getNavigationLinks, getRootNavigationLinks, getSlugs } from '#utils/catalog'
+import { getProductWithVariants } from '#utils/products'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import { Props, SearchPageComponent } from './SearchPageComponent'
 
@@ -32,12 +33,12 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode, slug } = params!
   const locale = getLocale(localeCode)
-  const catalog = await getCatalog(locale, rawDataProducts)
+  const catalog = await getCatalog(locale)
 
   const taxon = findTaxonBySlug(catalog, slug.join('/'))
 
   const references = flattenReferencesFromTaxon(taxon.result)
-  const products = references.map(ref => catalog.data.productDataset[ref])
+  const products = references.map(ref => getProductWithVariants(ref, locale.code, rawDataProducts))
 
   return {
     props: {
