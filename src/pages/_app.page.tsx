@@ -22,6 +22,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   const locale = getLocale(localeCode || defaultLocale)
 
+  const return_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${router.basePath}/${router.query.locale}` : undefined
+
   if (!locale.isShoppable) {
     return (
       <I18nProvider lngDict={lngDict} locale={localeCode || defaultLocale}>
@@ -35,7 +37,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <Auth>
         <OrderStorage persistKey={getPersistKey(locale)}>
           <OrderContainer attributes={{
-            language_code: locale?.language.code
+            language_code: locale?.language.code,
+            return_url
           }}>
             <LineItemsContainer>
               <Component {...rest} />
