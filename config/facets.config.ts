@@ -4,9 +4,9 @@ const facetsConfig: FacetConfig[] = [
   {
     field: 'gender',
     appearance: 'tag',
-    // sortOrder: [
-    //   { pattern: /.*/, sort: values => values.sort()}
-    // ]
+    sortOrder: [
+      { pattern: /.*/, sort: values => values.sort()}
+    ]
   },
   {
     field: 'category',
@@ -23,6 +23,9 @@ const facetsConfig: FacetConfig[] = [
   {
     field: 'color',
     appearance: 'colorSwatch',
+    sortOrder: [
+      { pattern: /.*/, sort: values => values.sort()}
+    ]
   },
   {
     field: 'size',

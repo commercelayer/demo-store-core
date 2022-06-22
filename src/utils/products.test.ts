@@ -1,4 +1,4 @@
-import { flattenProductVariants, getProductWithVariants } from './products';
+import { spreadProductVariants, getProductWithVariants } from './products';
 
 import productsJson from './__mocks__/products.json'
 
@@ -77,10 +77,10 @@ describe('getProductWithVariants', () => {
   })
 })
 
-test('"flattenProductVariants" should flatten product variants', () => {
+test('"spreadProductVariants" should spread product variants', () => {
   const product = getProductWithVariants('BODYBSSS000000FFFFFF6MXX', 'it', productsJson)
 
-  const products = flattenProductVariants([product, product])
+  const products = spreadProductVariants([product, product])
 
   expect(products).toStrictEqual([
     getProductWithVariants('BODYBSSS000000FFFFFF12MX', 'it', productsJson),

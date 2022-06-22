@@ -4,7 +4,7 @@ import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
-import { flattenProductVariants, getProductWithVariants } from '#utils/products'
+import { spreadProductVariants, getProductWithVariants } from '#utils/products'
 import generalConfig from 'config/general.config'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import { ProductPageComponent, Props } from './ProductPageComponent'
@@ -21,7 +21,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 
     const references = flattenReferencesFromCatalog(catalog)
     const products = references.map(ref => getProductWithVariants(ref, locale.code, rawDataProducts))
-    const flattenProducts = flattenProductVariants(products)
+    const flattenProducts = spreadProductVariants(products)
 
     return {
       fallback: false,

@@ -2,8 +2,7 @@ import { buildProductDataset } from '#data/catalogs'
 import { getLocale } from '#i18n/locale'
 import type { FacetResult, Primitives } from '#utils/facets'
 import { getFacets } from '#utils/facets'
-import { addProductVariants, LocalizedProductWithVariant } from '#utils/products'
-import { flattenProductVariants } from '#utils/products'
+import { addProductVariants, spreadProductVariants, LocalizedProductWithVariant } from '#utils/products'
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
 import facetsConfig from 'config/facets.config'
 import type Fuse from 'fuse.js'
@@ -38,7 +37,7 @@ export const useCatalogContext = () => useContext(CatalogContext)
 export const CatalogProvider: React.FC<Props> = ({ children, products: initialProducts }) => {
   const router = useRouter()
 
-  const flattenProducts = useMemo(() => flattenProductVariants(initialProducts), [initialProducts])
+  const flattenProducts = useMemo(() => spreadProductVariants(initialProducts), [initialProducts])
 
   const { products: productsWithTaxonomies } = useCatalog(flattenProducts)
   const { products: productsWithAvailabilities } = useCommerceLayerAvailability(productsWithTaxonomies)
@@ -117,7 +116,7 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
 
       if (isMounted) {
         setAvailableFacets(
-          getFacets(flattenProductVariants(resultFromFreeTextSearch))
+          getFacets(spreadProductVariants(resultFromFreeTextSearch))
         )
 
         setProducts(
@@ -158,6 +157,7 @@ function useCatalog(initialProducts: LocalizedProductWithVariant[]) {
 
     ;(async () => {
       const { rawDataCatalogs } = await import('#data/catalogs')
+      console.log('rawDataCatalogs.data.length', rawDataCatalogs.data.length)
 
       const locale = getLocale(router.query.locale)
 

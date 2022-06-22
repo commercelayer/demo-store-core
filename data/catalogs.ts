@@ -7,7 +7,7 @@ import taxonsJson from './json/taxons.json'
 
 import { Locale, localizedFieldSchema, translateField } from '#i18n/locale'
 import { deepFind, DeepFindResult } from '#utils/collection'
-import { flattenProductVariants, LocalizedProductWithVariant } from '#utils/products'
+import { spreadProductVariants, LocalizedProductWithVariant } from '#utils/products'
 import { isDefined } from '#utils/types'
 import { makeUnserializable, Unserializable, unserializableSchema } from '#utils/unserializable'
 import uniq from 'lodash/uniq'
@@ -127,7 +127,7 @@ export function buildProductDataset(catalog: RawDataCatalog, locale: string, pro
       .map(ref => productList.find(product => product.sku === ref))
       .filter(isDefined)
 
-    flattenProductVariants(products).forEach(product => {
+    spreadProductVariants(products).forEach(product => {
       productDataset[product.sku] = productDataset[product.sku] || product
       productDataset[product.sku] = {
         ...productDataset[product.sku],
