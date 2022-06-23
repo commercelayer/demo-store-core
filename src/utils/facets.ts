@@ -1,4 +1,4 @@
-import facetsConfig from 'config/facets.config'
+import facetsConfig from '#config/facets.config'
 import get from 'lodash/get'
 import type { LocalizedProductWithVariant } from './products'
 

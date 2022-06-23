@@ -1,6 +1,6 @@
 import type { RawDataProduct } from '#data/products'
 import { translateField } from '#i18n/locale'
-import variantsConfig from 'config/variants.config'
+import variantsConfig from '#config/variants.config'
 import get from 'lodash/get'
 import uniqBy from 'lodash/uniqBy'
 

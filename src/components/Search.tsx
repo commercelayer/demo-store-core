@@ -1,5 +1,5 @@
 import { MagnifyingGlass } from '#assets/icons'
-import { basePath } from '#next.config'
+import { basePath } from '#config/general.config'
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect, useState } from 'react'

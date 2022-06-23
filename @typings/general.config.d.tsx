@@ -11,7 +11,14 @@ export type GeneralConfig = {
   /**
    * Data fetching in Next.js allows you to render your content in different ways, depending on your application's use case.
    * 
-   * @see  [Data Fetching Overview](https://nextjs.org/docs/basic-features/data-fetching/overview)
+   * @see  [Data Fetching](https://nextjs.org/docs/basic-features/data-fetching/overview)
    */
-  dataFetching: 'ssg' | 'ssr'
+  dataFetching: 'ssg' | 'ssr',
+
+  /**
+   * Deploy a Next.js application under a sub-path of a domain
+   *
+   * @see [Base path configuration](https://nextjs.org/docs/api-reference/next.config.js/basepath)
+   */
+  basePath: string
 }

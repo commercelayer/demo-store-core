@@ -1,5 +1,5 @@
 import type { LocalizedProduct, LocalizedProductWithVariant, Variant } from '#utils/products'
-import variantsConfig from 'config/variants.config'
+import variantsConfig from '#config/variants.config'
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo } from 'react'

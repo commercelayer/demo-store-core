@@ -5,7 +5,7 @@ import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
 import { getProductWithVariants, spreadProductVariants } from '#utils/products'
-import generalConfig from 'config/general.config'
+import { productSlugRegExp } from '#config/general.config'
 import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import type { Props } from './ProductPageComponent'
 
@@ -40,10 +40,10 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const catalog = getCatalog(locale)
 
   const productSlug = slug.join('/')
-  const productCode = productSlug.match(generalConfig.productSlugRegExp)?.groups?.productCode
+  const productCode = productSlug.match(productSlugRegExp)?.groups?.productCode
 
   if (!productCode) {
-    throw new Error(`"productSlugRegExp" is not properly configured. Cannot apply RegExp "${generalConfig.productSlugRegExp}" to the given product slug "${productSlug}"`)
+    throw new Error(`"productSlugRegExp" is not properly configured. Cannot apply RegExp "${productSlugRegExp}" to the given product slug "${productSlug}"`)
   }
 
   return {

@@ -1,6 +1,6 @@
 // @ts-check
 
-const { dataFetching } = require('./config/general.config')
+const { dataFetching, basePath } = require('./config/general.config')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,11 +8,10 @@ const nextConfig = {
   reactStrictMode: true,
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-page-extensions#including-non-page-files-in-the-pages-directory
-  // pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
   pageExtensions: ['page.tsx', `page-${dataFetching}.tsx`],
 
   // https://nextjs.org/docs/api-reference/next.config.js/basepath
-  basePath: '/demo-store',
+  basePath,
 
   eslint: {
     // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
@@ -22,7 +21,7 @@ const nextConfig = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"]
+      use: ['@svgr/webpack']
     })
 
     return config;
