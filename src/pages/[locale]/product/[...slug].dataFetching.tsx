@@ -15,9 +15,9 @@ type Query = {
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = () => {
-  return withLocalePaths(async localeCode => {
+  return withLocalePaths(localeCode => {
     const locale = getLocale(localeCode)
-    const catalog = await getCatalog(locale)
+    const catalog = getCatalog(locale)
 
     const references = flattenReferencesFromCatalog(catalog)
     const products = references.map(ref => getProductWithVariants(ref, locale.code, rawDataProducts))

@@ -14,9 +14,9 @@ type Query = {
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = () => {
-  return withLocalePaths(async localeCode => {
+  return withLocalePaths(localeCode => {
     const locale = getLocale(localeCode)
-    const catalog = await getCatalog(locale)
+    const catalog = getCatalog(locale)
     const slugs = getSlugs(catalog)
 
     return {
@@ -33,7 +33,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode, slug } = params!
   const locale = getLocale(localeCode)
-  const catalog = await getCatalog(locale)
+  const catalog = getCatalog(locale)
 
   const taxon = findTaxonBySlug(catalog, slug.join('/'))
 
