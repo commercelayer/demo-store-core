@@ -1,4 +1,4 @@
-import { flattenReferencesFromCatalog, getCatalog } from '#data/catalogs'
+import { flattenReferencesFromCatalog, getCatalog } from '#utils/catalog'
 import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'

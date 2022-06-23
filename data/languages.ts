@@ -1,4 +1,5 @@
 import { z } from 'zod'
+
 import languagesJson from './json/languages.json'
 
 const languageSchema = z.object({

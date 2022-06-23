@@ -1,4 +1,4 @@
-import { buildProductDataset } from '#data/catalogs'
+import { buildProductDataset } from '#utils/catalog'
 import { getLocale } from '#i18n/locale'
 import type { FacetResult, Primitives } from '#utils/facets'
 import { getFacets } from '#utils/facets'

@@ -11,7 +11,6 @@
     },
     "slug": "accessories",
     "name": "All Accessories",
-    "image": "/assets/images/samsung-case-samsung-galaxy-s21-plus-lifestyle-4-60f836d4aaa9d.png",
     "references": [
       "APRONXXX000000FFFFFFXXXX",
       "APRONXXXFFFFFF000000XXXX",
@@ -45,7 +44,6 @@
     },
     "slug": "baby",
     "name": "All Products for Babies",
-    "image": "/assets/images/",
     "references": [
       "BABYBIBXA19D9D000000XXXX",
       "BODYBSSS000000FFFFFF12MX",
@@ -64,7 +62,6 @@
     },
     "slug": "bags",
     "name": "All Bags",
-    "image": "/assets/images/all-over-print-backpack-white-left-60ef0ff63444a.png",
     "references": [
       "BACKPACK000000FFFFFFXXXX",
       "BACKPACK818488000000XXXX",
@@ -95,7 +92,6 @@
     },
     "slug": "hats",
     "name": "All Hats",
-    "image": "/assets/images/5-panel-cap-black-front-60f04fcaa5177.png",
     "references": [
       "5PANECAP000000FFFFFFXXXX",
       "5PANECAP9D9CA1FFFFFFXXXX",
@@ -125,7 +121,6 @@
     },
     "slug": "home-and-living",
     "name": "All Products for Home & Living",
-    "image": "/assets/images/enamel-mug-white-12oz-right-60f0600681cd1.png",
     "references": [
       "BEACHAIR000000FFFFFFXXXX",
       "BEACHAIRFFFFFF000000XXXX",
@@ -156,7 +151,6 @@
     },
     "slug": "men",
     "name": "All Products for Men",
-    "image": "/assets/images/",
     "references": [
       "HOODIEMX000000FFFFFFLXXX",
       "HOODIEMX7F7F7F000000LXXX",
@@ -192,7 +186,6 @@
     },
     "slug": "shirts",
     "name": "All Shirts",
-    "image": "/assets/images/classic-polo-shirt-black-front-60f15d48dd89e.png",
     "references": [
       "BODYBSSS000000FFFFFF12MX",
       "BODYBSSSFFFFFF00000012MX"
@@ -304,7 +297,6 @@
     },
     "slug": "sweatshirts",
     "name": "All Sweatshirts",
-    "image": "/assets/images/unisex-34-sleeve-raglan-shirt-white-black-front-60f160767c5df.png",
     "references": [
       "HDRESSWX000000FFFFFFLXXX",
       "HOODIEMX000000FFFFFFLXXX",
@@ -333,7 +325,6 @@
     },
     "slug": "unisex",
     "name": "All Unisex Products",
-    "image": "/assets/images/",
     "references": [
       "5PANECAP000000FFFFFFXXXX",
       "5PANECAP9D9CA1FFFFFFXXXX",
@@ -415,7 +406,6 @@
     },
     "slug": "women",
     "name": "All Products for Women",
-    "image": "/assets/images/",
     "references": [
       "CROPTOPW000000FFFFFFLXXX",
       "CROPTOPWE8E8E8000000LXXX",
@@ -448,7 +438,6 @@
     },
     "slug": "shirts",
     "name": "All Shirts Except Womens",
-    "image": "/assets/images/classic-polo-shirt-black-front-60f15d48dd89e.png",
     "references": [
       "BODYBSSS000000FFFFFF12MX",
       "BODYBSSSFFFFFF00000012MX",

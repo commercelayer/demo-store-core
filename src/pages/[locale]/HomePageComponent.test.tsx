@@ -1,4 +1,4 @@
-import type { Catalog, Taxon, Taxonomy } from '#data/catalogs'
+import type { Catalog, Taxon, Taxonomy } from '#utils/catalog'
 import { getRootNavigationLinks } from '#utils/catalog'
 import { makeUnserializable } from '#utils/unserializable'
 import { render } from '@testing-library/react'
@@ -25,7 +25,6 @@ test('home', () => {
     description: 'Accessories',
     slug: 'accessories',
     name: 'All Accessories',
-    image: '/assets/images/samsung-case-samsung-galaxy-s21-plus-lifestyle-4-60f836d4aaa9d.png',
     references: [],
     taxons: []
   }

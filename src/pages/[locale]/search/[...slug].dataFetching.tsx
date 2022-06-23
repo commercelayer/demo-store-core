@@ -1,4 +1,4 @@
-import { findTaxonBySlug, flattenReferencesFromTaxon, getCatalog } from '#data/catalogs'
+import { findTaxonBySlug, flattenReferencesFromTaxon, getCatalog } from '#utils/catalog'
 import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'

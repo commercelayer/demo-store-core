@@ -1,4 +1,4 @@
-import type { Catalog, Taxon, Taxonomy } from '#data/catalogs'
+import type { Catalog, Taxon, Taxonomy } from '#utils/catalog'
 import { makeUnserializable } from '#utils/unserializable'
 
 export const createCatalog = (id: string, taxonomies: Taxonomy[] = []): Catalog => {

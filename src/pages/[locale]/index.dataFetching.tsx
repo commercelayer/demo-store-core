@@ -1,5 +1,5 @@
 
-import { getCatalog } from '#data/catalogs'
+import { getCatalog } from '#utils/catalog'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'

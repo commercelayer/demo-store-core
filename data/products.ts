@@ -1,6 +1,7 @@
 import { localizedFieldSchema } from '#i18n/locale'
 import type { Price } from '@commercelayer/sdk'
 import { z } from 'zod'
+
 import productsJson from './json/products.json'
 
 const productSchema = z.object({

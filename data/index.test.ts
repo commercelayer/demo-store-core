@@ -1,10 +1,10 @@
 export {}
 
 describe('JSON Data', () => {
-  // it('"catalog.json" should be properly defined.', async () => {
-  //   const { rawDataCatalog } = await import('./catalogs')
-  //   expect(rawDataCatalog).toBeDefined()
-  // })
+  it('"catalog.json" should be properly defined.', async () => {
+    const { rawDataCatalogs } = await import('./catalogs')
+    expect(rawDataCatalogs).toBeDefined()
+  })
 
   it('"countries.json" should be properly defined.', async () => {
     const { rawDataCountries } = await import('./countries')

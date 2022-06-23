@@ -10,7 +10,7 @@ export type CountriesByRegion = {
   [region: RawDataCountry['region']]: RawDataCountry[]
 }
 
-export function countryIsShoppable(country: RawDataCountry): country is ShoppableCountry {
+export function isCountryShoppable(country: RawDataCountry): country is ShoppableCountry {
   return typeof country.market === 'number'
 }
 
