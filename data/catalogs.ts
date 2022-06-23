@@ -87,7 +87,7 @@ export const getCatalog = (locale: Locale) => {
     return catalogCache[locale.code]
   }
 
-  const name = locale.isShoppable ? locale.country.catalog : locale.language.catalog
+  const name = locale.country?.catalog || locale.language.catalog
   const rawDataCatalog = rawDataCatalogs.data.find(catalog => catalog.name === name)
 
   if (!rawDataCatalog) {

@@ -161,7 +161,7 @@ function useCatalog(initialProducts: LocalizedProductWithVariant[]) {
 
       const locale = getLocale(router.query.locale)
 
-      const name = locale.isShoppable ? locale.country.catalog : locale.language.catalog
+      const name = locale.country?.catalog || locale.language.catalog
       const rawDataCatalog = rawDataCatalogs.data.find(catalog => catalog.name === name)
 
       if (rawDataCatalog) {

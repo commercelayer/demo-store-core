@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
           <div>
             <div className='flex items-center justify-between'>
               <span className='flex items-center'>
-                <Globe className='mr-1.5' /> {locale.isShoppable ? locale.country.name : i18n.t('general.international')}
+                <Globe className='mr-1.5' /> {locale.country?.name || i18n.t('general.international')}
               </span>
               <Link locale=''>
                 <a className='uppercase text-violet-400 text-xs border-b border-gray-200 ml-3 mt-1'>{i18n.t('general.chooseCountry')}</a>

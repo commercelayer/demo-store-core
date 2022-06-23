@@ -1,6 +1,6 @@
-import type { RawDataCountry } from '#data/countries'
 import type { RawDataLanguage } from '#data/languages'
-import { getLocale, Locale, makeLocaleCode, makeLocales, parseLocaleCode, translateField } from './locale'
+import type { NonShoppableCountry, ShoppableCountry } from '#utils/countries'
+import { changeLanguage, getLocale, Locale, makeLocaleCode, makeLocales, parseLocaleCode, translateField } from './locale'
 
 
 describe('makeLocaleCode', () => {
@@ -15,8 +15,8 @@ describe('makeLocaleCode', () => {
 
 describe('makeLocales', () => {
   it('should create locales from a list of countries and languages', () => {
-    const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
-    const italy: RawDataCountry = { code: 'IT', default_language: 'it', market: 10427, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
+    const unitedStates: ShoppableCountry = { code: 'US', default_language: 'en', market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const italy: ShoppableCountry = { code: 'IT', default_language: 'it', market: 10427, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
     const italian: RawDataLanguage = { code: 'it', name: 'ITA', catalog: 'AMER' }
     const english: RawDataLanguage = { code: 'en', name: 'ENG', catalog: 'AMER' }
 
@@ -46,7 +46,7 @@ describe('parseLocale', () => {
 
 describe('getLocale', () => {
   it('should be able to return a Locale gived a localeCode', () => {
-    const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const unitedStates: ShoppableCountry = { code: 'US', default_language: 'en', market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
     const italian: RawDataLanguage = { code: 'it', name: 'ITA', catalog: 'AMER' }
 
     const locale = getLocale('it-US')
@@ -113,5 +113,47 @@ describe('translateField', () => {
       it: 'Titolo italiano',
       'en-US': 'American title'
     }, 'fr-CN')).toThrowError(`Missing translation for locale 'fr-CN' : {"fr":"titre français","it":"Titolo italiano","en-US":"American title"}`)
+  })
+})
+
+describe('changeLanguage', () => {
+  it('should do nothing given the same language', () => {
+    expect(changeLanguage('en', 'en')).toStrictEqual('en')
+    expect(changeLanguage('en-US', 'en')).toStrictEqual('en-US')
+  })
+
+  it('should change language given another language', () => {
+    expect(changeLanguage('en', 'it')).toStrictEqual('it')
+    expect(changeLanguage('en-US', 'it')).toStrictEqual('it-US')
+  })
+})
+
+describe('Locale.isShoppable property', () => {
+  it('should be false when country is not defined', () => {
+    const unitedStates: ShoppableCountry = { code: 'US', default_language: 'en', market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const english: RawDataLanguage = { code: 'en', name: 'ENG', catalog: 'AMER' }
+
+    const actual = makeLocales([english], [unitedStates])
+
+    const expects: Locale[] = [
+      { code: "en-US", isShoppable: true, country: unitedStates, language: english },
+      { code: "en", isShoppable: false, language: english }
+    ]
+
+    expect(actual).toStrictEqual(expects)
+  })
+
+  it('should be false when country doesn\'t have the market property', () => {
+    const unitedStates: NonShoppableCountry = { code: 'US', default_language: 'en', name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const english: RawDataLanguage = { code: 'en', name: 'ENG', catalog: 'AMER' }
+
+    const actual = makeLocales([english], [unitedStates])
+
+    const expects: Locale[] = [
+      { code: "en-US", isShoppable: false, country: unitedStates, language: english },
+      { code: "en", isShoppable: false, language: english }
+    ]
+
+    expect(actual).toStrictEqual(expects)
   })
 })

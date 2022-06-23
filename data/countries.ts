@@ -4,7 +4,7 @@ import countriesJson from './json/countries.json'
 const countrySchema = z.object({
   name: z.string(),
   code: z.string(),
-  market: z.number(),
+  market: z.number().optional(),
   catalog: z.string(),
   default_language: z.string(),
   region: z.string()

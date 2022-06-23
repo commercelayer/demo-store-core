@@ -63,7 +63,7 @@ export const Auth: React.FC<{}> = ({ children }) => {
 
   useEffect(function updateMarket() {
     if (locale.isShoppable && locale.country.market !== market) {
-      setMarket(locale.country?.market)
+      setMarket(locale.country.market)
     }
   }, [locale, market])
 

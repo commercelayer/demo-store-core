@@ -1,6 +1,7 @@
 import { rawDataCountries, RawDataCountry } from '#data/countries'
 import { RawDataLanguage, rawDataLanguages } from '#data/languages'
 import { combine } from '#utils/collection'
+import { countryIsShoppable, NonShoppableCountry, ShoppableCountry } from '#utils/countries'
 import { z } from 'zod'
 
 type BaseLocale = {
@@ -10,11 +11,12 @@ type BaseLocale = {
 
 export type NonShoppableLocale = BaseLocale & {
   isShoppable: false
+  country?: NonShoppableCountry
 }
 
 export type ShoppableLocale = BaseLocale & {
   isShoppable: true
-  country: RawDataCountry
+  country: ShoppableCountry
 }
 
 export type Locale = ShoppableLocale | NonShoppableLocale
@@ -43,19 +45,20 @@ export function changeLanguage(localeCode: string, newLanguageCode: string) {
 
 export function makeLocales(languages: RawDataLanguage[], countries: RawDataCountry[]): Locale[] {
   return combine(countries, languages, (country, language) => {
-    const locale: Locale = {
-      code: makeLocaleCode(language.code, country.code),
-      isShoppable: typeof country !== 'undefined',
+    const code = makeLocaleCode(language.code, country.code)
+    const isShoppable = countryIsShoppable(country)
+
+    return {
+      code,
+      isShoppable,
       country,
       language
-    }
-
-    return locale
+    } as Locale
   })
     .concat(languages.map(language => ({
       code: language.code,
       isShoppable: false,
-      language
+      language,
     })))
 }
 

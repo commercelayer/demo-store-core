@@ -24,7 +24,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   const return_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${router.basePath}/${router.query.locale}` : undefined
 
-  if (!locale.isShoppable) {
+  if (locale.isShoppable === false) {
     return (
       <I18nProvider lngDict={lngDict} locale={localeCode || defaultLocale}>
         <Component {...rest} />

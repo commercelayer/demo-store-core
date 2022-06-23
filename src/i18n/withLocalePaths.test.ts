@@ -1,17 +1,17 @@
-import type { RawDataCountry } from '#data/countries'
 import type { RawDataLanguage } from '#data/languages'
+import type { ShoppableCountry } from '#utils/countries'
 import type { GetStaticPathsResult } from 'next'
 import { locales, NonShoppableLocale, ShoppableLocale } from './locale'
 import { withLocalePaths } from './withLocalePaths'
 
-const unitedStates: RawDataCountry = { code: 'US', default_language: 'en', market: 1234, name: 'United States', region: 'Americas', catalog: 'AMER' }
-const italy: RawDataCountry = { code: 'IT', default_language: 'it', market: 9876, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
+const unitedStates: ShoppableCountry = { code: 'US', default_language: 'en', market: 1234, name: 'United States', region: 'Americas', catalog: 'AMER' }
+const italy: ShoppableCountry = { code: 'IT', default_language: 'it', market: 9876, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
 const italian: RawDataLanguage = { code: 'it', name: 'Italiano', catalog: 'AMER' }
 const english: RawDataLanguage = { code: 'en', name: 'English', catalog: 'AMER' }
 
-const itUS: ShoppableLocale = { code: "it-us", isShoppable: true, country: unitedStates, language: italian }
-const enIT: ShoppableLocale = { code: "en-it", isShoppable: true, country: italy, language: english }
-const en: NonShoppableLocale = { code: "en", isShoppable: false, language: english }
+const itUS: ShoppableLocale = { code: 'it-us', isShoppable: true, country: unitedStates, language: italian }
+const enIT: ShoppableLocale = { code: 'en-it', isShoppable: true, country: italy, language: english }
+const en: NonShoppableLocale = { code: 'en', isShoppable: false, language: english }
 
 test('should throw an error when not locales are passed', () => {
   expect(() => withLocalePaths<{ pid: string }>({
