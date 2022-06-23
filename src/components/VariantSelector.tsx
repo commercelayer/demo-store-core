@@ -81,7 +81,7 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
                         <Swatch
                           key={`${variantName}-${variant.value}`}
                           swatchLabel={variant.value}
-                          swatchStyle={{ backgroundColor: variant.value }}
+                          swatchStyle={{ [variant.value.toString().toLowerCase().includes('gradient') ? 'backgroundImage' : 'backgroundColor']: variant.value.toString() }}
                           selected={selected}
                           onClick={() => {
                             setCurrentVariant((draft) => {
