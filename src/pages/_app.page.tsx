@@ -5,7 +5,8 @@ import { LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer
 import { I18nProvider } from 'next-localization'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
-import '../styles/globals.css'
+
+import './_app.css'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
