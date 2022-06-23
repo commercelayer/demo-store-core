@@ -1,6 +1,7 @@
-import type { FacetConfig } from '@typings/facets.config.d'
+// @ts-check
 
-const facetsConfig: FacetConfig[] = [
+/** @type { import('@typings/facets.config.d').FacetConfig[] } */
+const facetsConfig = [
   {
     field: 'gender',
     appearance: 'tag',
@@ -54,4 +55,4 @@ const facetsConfig: FacetConfig[] = [
   },
 ]
 
-export default facetsConfig
+module.exports = facetsConfig

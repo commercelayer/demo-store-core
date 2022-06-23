@@ -4,10 +4,10 @@ import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
-import { spreadProductVariants, getProductWithVariants } from '#utils/products'
+import { getProductWithVariants, spreadProductVariants } from '#utils/products'
 import generalConfig from 'config/general.config'
-import type { GetStaticPaths, GetStaticProps } from 'next'
-import { ProductPageComponent, Props } from './ProductPageComponent'
+import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
+import type { Props } from './ProductPageComponent'
 
 type Query = {
   locale: string
@@ -55,4 +55,12 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   }
 }
 
-export default ProductPageComponent
+export const getServerSideProps: GetServerSideProps<Props, Query> = async ({ res, params }) => {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  )
+
+  return getStaticProps({ params })
+}
+

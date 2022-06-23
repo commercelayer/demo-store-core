@@ -3,7 +3,7 @@ import { getProductWithVariants } from './products';
 
 import productsJson from './__mocks__/products.json'
 
-jest.mock('../../config/facets.config.ts')
+jest.mock('../../config/facets.config.js')
 
 
 test('"getFacets" should return combined facets for provided product list', () => {

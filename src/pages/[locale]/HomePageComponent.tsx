@@ -3,24 +3,15 @@ import { Container } from '#components/Container'
 import { Footer } from '#components/Footer'
 import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
-import { getCatalog } from '#data/catalogs'
 import { Link } from '#i18n/Link'
-import { getLocale } from '#i18n/locale'
-import { serverSideTranslations } from '#i18n/serverSideTranslations'
-import { withLocalePaths } from '#i18n/withLocalePaths'
-import { getRootNavigationLinks } from '#utils/catalog'
-import { getHomepage, Homepage } from '#utils/homepage'
-import type { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import type { Homepage } from '#utils/homepage'
+import type { NextPage } from 'next'
 
-type Query = {
-  locale: string
-}
-
-type Props = HeaderProps & {
+export type Props = HeaderProps & {
   homepage: Homepage
 }
 
-const HomePage: NextPage<Props> = ({ navigation, homepage }) => {
+export const HomePageComponent: NextPage<Props> = ({ navigation, homepage }) => {
   return (
     <Page>
       <Container>
@@ -104,26 +95,3 @@ const HomePage: NextPage<Props> = ({ navigation, homepage }) => {
     </Page>
   )
 }
-
-export const getStaticPaths: GetStaticPaths<Query> = () => {
-  return withLocalePaths({
-    paths: [],
-    fallback: false
-  })
-}
-
-export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
-  const { locale: localeCode } = params!
-  const locale = getLocale(localeCode)
-  const catalog = await getCatalog(locale)
-
-  return {
-    props: {
-      homepage: getHomepage(localeCode),
-      navigation: getRootNavigationLinks(catalog),
-      ...(await serverSideTranslations(localeCode))
-    }
-  }
-}
-
-export default HomePage

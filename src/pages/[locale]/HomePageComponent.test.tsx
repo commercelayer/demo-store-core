@@ -3,8 +3,7 @@ import { getRootNavigationLinks } from '#utils/catalog'
 import { makeUnserializable } from '#utils/unserializable'
 import { render } from '@testing-library/react'
 import { I18nProvider } from 'next-localization'
-import HomePage from './index.page'
-
+import { HomePageComponent } from './HomePageComponent'
 
 jest.mock('next/router', () => ({
   useRouter() {
@@ -47,7 +46,7 @@ test('home', () => {
 
   const { container } = render(
     <I18nProvider lngDict={{ general: { viewAll: 'View all' } }} locale='en'>
-      <HomePage navigation={getRootNavigationLinks(catalog)} homepage={[]} />
+      <HomePageComponent navigation={getRootNavigationLinks(catalog)} homepage={[]} />
     </I18nProvider>
   )
 
