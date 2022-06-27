@@ -13,7 +13,7 @@ export const FacetColorSwatch = ({ facetName, facetValues }: { facetName: string
         facetValues.map(currentValue => (
           <Swatch
             key={currentValue.toString()}
-            swatchLabel={i18n.t(`facetValues.${currentValue.toString()}`) || currentValue.toString() }
+            swatchLabel={i18n.t(`search.values.${currentValue.toString()}`) || currentValue.toString() }
             swatchStyle={{ [currentValue.toString().toLowerCase().includes('gradient') ? 'backgroundImage' : 'backgroundColor']: currentValue.toString() }}
             onClick={() => selectFacet(facetName, currentValue)}
             selected={selectedFacets[facetName]?.includes(currentValue) }

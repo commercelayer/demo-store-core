@@ -50,7 +50,7 @@ export const Facet: React.FC<JSX.IntrinsicElements['div']> = ({ className = '', 
             if (facetValues.length > 0) {
               return (
                 <div key={facetName}>
-                  <div className='font-bold mt-4'>{i18n.t(`facets.${facetName}`) || `facets.${facetName}`}</div>
+                  <div className='font-bold mt-4'>{i18n.t(`search.facets.${facetName}`) || `search.facets.${facetName}`}</div>
                   <FacetAppearance facetName={facetName} facetValues={facetValues} />
                 </div>
               )

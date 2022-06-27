@@ -71,7 +71,7 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
 
           return (
             <div key={variantName} className='my-6'>
-              <p className='text-gray-800 text-lg font-semibold'>{i18n.t(`variants.${variantName}`) || variantName}</p>
+              <p className='text-gray-800 text-lg font-semibold'>{i18n.t(`search.variants.${variantName}`) || variantName}</p>
               {
                 variants.map(variant => {
                   const selected = currentVariant[index]?.value === variant.value
@@ -80,7 +80,7 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
                       return (
                         <Swatch
                           key={`${variantName}-${variant.value}`}
-                          swatchLabel={variant.value}
+                          swatchLabel={i18n.t(`search.values.${variant.value}`) || variant.value}
                           swatchStyle={{ [variant.value.toString().toLowerCase().includes('gradient') ? 'backgroundImage' : 'backgroundColor']: variant.value.toString() }}
                           selected={selected}
                           onClick={() => {
@@ -101,7 +101,7 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
                             })
                           }}
                         >
-                          {variant.value}
+                          {i18n.t(`search.values.${variant.value}`) || variant.value}
                         </Tag>
                       )
                   }

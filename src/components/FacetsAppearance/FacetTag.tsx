@@ -16,7 +16,7 @@ export const FacetTag = ({ facetName, facetValues }: { facetName: string, facetV
             onClick={() => selectFacet(facetName, currentValue)}
             selected={selectedFacets[facetName]?.includes(currentValue) }
           >
-            {i18n.t(`facetValues.${currentValue.toString()}`) || currentValue.toString()}
+            {i18n.t(`search.values.${currentValue.toString()}`) || currentValue.toString()}
           </Tag>
         ))
       }

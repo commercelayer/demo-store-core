@@ -15,20 +15,22 @@
     "color": "Colori",
     "size": "Seleziona la taglia"
   },
-  "facets": {
-    "gender": "Genere",
-    "category": "Categoria",
-    "price": {
-      "amount_float": "Prezzo"
+  "search": {
+    "facets": {
+      "gender": "Genere",
+      "category": "Categoria",
+      "price": {
+        "amount_float": "Prezzo"
+      },
+      "available": "Mostra solo i disponibi",
+      "color": "Colore",
+      "size": "Taglia"
     },
-    "available": "Mostra solo i disponibi",
-    "color": "Colore",
-    "size": "Taglia"
-  },
-  "facetValues": {
-    "000000": "Nero",
-    "FFFFFF": "Bianco",
-    "C2C2C2": "Grigio",
-    "E7DDC7": "Beige"
+    "values": {
+      "#000000": "Nero",
+      "#FFFFFF": "Bianco",
+      "#C2C2C2": "Grigio",
+      "#E7DDC7": "Beige"
+    }
   }
 }
