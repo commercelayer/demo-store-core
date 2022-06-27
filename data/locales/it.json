@@ -32,5 +32,8 @@
       "#C2C2C2": "Grigio",
       "#E7DDC7": "Beige"
     }
+  },
+  "product": {
+    "description": "Informazioni prodotto"
   }
 }

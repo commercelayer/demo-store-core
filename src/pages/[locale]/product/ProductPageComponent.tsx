@@ -1,3 +1,4 @@
+import { Accordion } from '#components/Accordion'
 import { Carousel } from '#components/Carousel'
 import { Price } from '#components/CommerceLayer/Price'
 import { Container } from '#components/Container'
@@ -58,6 +59,12 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
               <AvailabilityContainer skuCode={currentProduct?.sku}>
                 <AvailabilityTemplate className='mt-6'  showShippingMethodName={true} showShippingMethodPrice={true} color={'blue'} timeFormat={'days'} />
               </AvailabilityContainer>
+
+              <div className='border-b border-b-gray-400 mt-12'>
+                <Accordion title={<div className='font-extrabold'>{i18n.t('product.description')}</div>}>
+                  {product.description}
+                </Accordion>
+              </div>
 
             </ItemContainer>
           </div>
