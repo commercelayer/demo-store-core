@@ -23,6 +23,10 @@ $noAccordionBreakpoint: theme('screens.md');
 
   .countryLink {
     @apply py-6 border-t border-t-gray-100 font-semibold block;
+
+    &:first-child {
+      @apply border-t-0
+    }
   }
 
   @media (min-width: $noAccordionBreakpoint) {
@@ -36,12 +40,16 @@ $noAccordionBreakpoint: theme('screens.md');
       @apply cursor-auto border-t-0 border-b border-gray-100 mb-6;
     }
 
-    :global(.icon) {
+    :global(.accordion-icon) {
       @apply invisible
     }
   
     :global(.accordion-content) {
       @apply max-h-full;
+
+      > div {
+        @apply border-0
+      }
     }
   }
 }

@@ -34,7 +34,7 @@ export const Accordion: React.FC<Props> = ({ 'data-testid': dataTestid, title, c
     <div data-testid={dataTestid} className='flex flex-col'>
       <button
         data-testid='accordion-title'
-        className='accordion-title py-6 box-border border-y border-t-gray-400 border-b-gray-100 appearance-none cursor-pointer focus:outline-none flex items-center justify-between'
+        className='accordion-title py-6 box-border border-t border-t-gray-400 appearance-none cursor-pointer focus:outline-none flex items-center justify-between'
         onClick={toggleAccordion}>
         <div className='inline-block text-footnote light'>{title}</div>
         <div className='accordion-icon'>{active ? '-' : '+'}</div>
@@ -49,7 +49,7 @@ export const Accordion: React.FC<Props> = ({ 'data-testid': dataTestid, title, c
         }}
         className='accordion-content overflow-hidden transition-all max-h-0 duration-400 ease-in-out'
       >
-        <div className='mt-6 mb-8'>{children}</div>
+        <div className='border-t border-t-gray-100'>{children}</div>
       </div>
     </div>
   )

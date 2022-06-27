@@ -62,13 +62,13 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
 
               <div className='border-b border-b-gray-400 mt-12'>
                 <Accordion data-testid='product-detail' title={<div className='font-extrabold'>{i18n.t('product.description')}</div>}>
-                  {product.description}
+                  <div className='mt-6 mb-8'>{product.description}</div>
                 </Accordion>
 
                 {
                   product.details?.map(detail => (
                     <Accordion key={detail.title} data-testid='product-detail' title={<div className='font-extrabold'>{detail.title}</div>}>
-                      {detail.content}
+                      <div className='mt-6 mb-8'>{detail.content}</div>
                     </Accordion>
                   ))
                 }
