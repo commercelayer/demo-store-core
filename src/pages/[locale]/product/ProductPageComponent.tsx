@@ -61,9 +61,17 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
               </AvailabilityContainer>
 
               <div className='border-b border-b-gray-400 mt-12'>
-                <Accordion title={<div className='font-extrabold'>{i18n.t('product.description')}</div>}>
+                <Accordion data-testid='product-detail' title={<div className='font-extrabold'>{i18n.t('product.description')}</div>}>
                   {product.description}
                 </Accordion>
+
+                {
+                  product.details?.map(detail => (
+                    <Accordion key={detail.title} data-testid='product-detail' title={<div className='font-extrabold'>{detail.title}</div>}>
+                      {detail.content}
+                    </Accordion>
+                  ))
+                }
               </div>
 
             </ItemContainer>

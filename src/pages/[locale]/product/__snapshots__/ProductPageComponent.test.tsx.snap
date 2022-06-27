@@ -1,0 +1,344 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`product detail page 1`] = `
+<div>
+  <main>
+    <div
+      class="container mx-auto px-6"
+    >
+      <header
+        class="border-b-gray-200 border-b pb-6 sticky top-0 bg-white z-50"
+      >
+        <nav
+          class="flex items-center justify-between flex-wrap mb-4"
+        >
+          <div
+            class="flex items-center flex-no-shrink text-white mr-6"
+          >
+            <a
+              href="/en-US"
+            >
+              <div
+                class="py-6 pb-6 "
+              >
+                <img
+                  alt="Commerce Layer logomark"
+                  class="inline"
+                  src="https://data.commercelayer.app/assets/logos/glyph/black/commercelayer_glyph_black.svg"
+                  width="32"
+                />
+                <img
+                  alt="Commerce Layer logotype"
+                  class="ml-4 hidden md:inline"
+                  src="https://data.commercelayer.app/assets/logos/logotype/black/commercelayer_logotype_black.svg"
+                  width="192"
+                />
+              </div>
+            </a>
+          </div>
+          <div
+            class="flex items-center w-auto flex-grow justify-end"
+          />
+        </nav>
+        <div
+          class="flex items-center justify-between flex-wrap gap-4 relative"
+        >
+          <div
+            class="order-2 lg:order-1"
+          >
+            <nav
+              class="hidden lg:block lg:relative absolute right-0 top-full w-full z-10 flex-col bg-white py-4 lg:py-0"
+            >
+              <a
+                class="text-back font-bold p-2 m-2"
+                href="/en-US/search/taxon-slug-1"
+              >
+                Label for 1
+              </a>
+            </nav>
+            <button
+              aria-controls="menu"
+              aria-label="Open menu"
+              class="w-11 h-11 flex flex-col items-center justify-center space-y-1 bg-black rounded block lg:hidden"
+              type="button"
+            >
+              <span
+                class="w-4 h-0.5 bg-white"
+              />
+              <span
+                class="w-4 h-0.5 bg-white"
+              />
+              <span
+                class="w-4 h-0.5 bg-white"
+              />
+            </button>
+          </div>
+          <div
+            class="order-1 grow lg:grow-0"
+          >
+            <label
+              class="relative py-2.5 rounded bg-gray-100 text-gray-400 focus-within:text-gray-600 block"
+              for="email"
+            >
+              <svg
+                class="pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3"
+              />
+              <form
+                action="/demo-store/en-US/search"
+              >
+                <input
+                  class="form-input appearance-none bg-transparent w-full pl-14 focus:outline-none focus:shadow-outline"
+                  placeholder="search"
+                  value=""
+                />
+              </form>
+            </label>
+          </div>
+        </div>
+      </header>
+      <div
+        class="flex flex-col lg:flex-row gap-6 lg:gap-24 xl:gap-48 mt-12 lg:mt-24"
+      >
+        <div
+          class=" basis-1/2"
+        >
+          <div
+            class="swiper swiper-initialized swiper-horizontal swiper-pointer-events carousel"
+          >
+            <div
+              class="swiper-wrapper"
+              style="transition-duration: 0ms; transform: translate3d(NaNpx, 0px, 0px);"
+            >
+              <div
+                class="swiper-slide select-none"
+              >
+                <img
+                  alt="Translation for en - Black Baby Short Sleeve Bodysuit with White Logo"
+                  class="w-full"
+                  src="https://data.commercelayer.app/seed/images/skus/BODYBSSS000000FFFFFF12MX_FLAT.png"
+                />
+              </div>
+            </div>
+            <div
+              class="swiper-button-prev"
+            />
+            <div
+              class="swiper-button-next"
+            />
+            <div
+              class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal"
+            />
+          </div>
+        </div>
+        <div
+          class="grow-0 shrink-1 basis-1/2"
+        >
+          <h1
+            class="text-3xl mb-6"
+          >
+            Translation for en - Black Baby Short Sleeve Bodysuit with White Logo
+          </h1>
+          <div
+            class="min-h-[30px]"
+          />
+          <hr
+            class="text-gray-100 my-8"
+          />
+          <div>
+            <div
+              class="my-6"
+            >
+              <p
+                class="text-gray-800 text-lg font-semibold"
+              >
+                Colors
+              </p>
+              <button
+                class="w-12 h-12 rounded-full inline-flex items-center justify-center my-1 mr-2 border border-gray-300 bg-gray-100"
+              >
+                <div
+                  class="w-8 h-8 border border-gray-600 rounded-full"
+                >
+                  <span
+                    class="sr-only"
+                  >
+                    000000
+                  </span>
+                </div>
+              </button>
+              <button
+                class="w-12 h-12 rounded-full inline-flex items-center justify-center my-1 mr-2 "
+              >
+                <div
+                  class="w-8 h-8 border border-gray-600 rounded-full"
+                >
+                  <span
+                    class="sr-only"
+                  >
+                    FFFFFF
+                  </span>
+                </div>
+              </button>
+            </div>
+            <div
+              class="my-6"
+            >
+              <p
+                class="text-gray-800 text-lg font-semibold"
+              >
+                Choose size
+              </p>
+              <button
+                class="my-2 mr-2 rounded py-2 px-4 bg-black text-white"
+              >
+                12 months
+              </button>
+              <button
+                class="my-2 mr-2 rounded py-2 px-4 bg-gray-100 text-gray-500"
+              >
+                6 months
+              </button>
+            </div>
+          </div>
+          <button
+            class="block w-full mt-12 h-14 px-6 font-semibold rounded-md text-white bg-violet-400 disabled:bg-gray-300"
+            disabled=""
+          >
+            Add to cart
+          </button>
+          <p
+            class="mt-6"
+            color="blue"
+          />
+          <div
+            class="border-b border-b-gray-400 mt-12"
+          >
+            <div
+              class="flex flex-col"
+              data-testid="product-detail"
+            >
+              <button
+                class="accordion-title py-6 box-border border-y border-t-gray-400 border-b-gray-100 appearance-none cursor-pointer focus:outline-none flex items-center justify-between"
+                data-testid="accordion-title"
+              >
+                <div
+                  class="inline-block text-footnote light"
+                >
+                  <div
+                    class="font-extrabold"
+                  >
+                    Product info
+                  </div>
+                </div>
+                <div
+                  class="accordion-icon"
+                >
+                  +
+                </div>
+              </button>
+              <div
+                class="accordion-content overflow-hidden transition-all max-h-0 duration-400 ease-in-out"
+                data-testid="accordion-content"
+                style="max-height: 0px;"
+              >
+                <div
+                  class="mt-6 mb-8"
+                >
+                  Translation for en - This comfortable baby one-piece is made of 100% combed ring-spun cotton except for heather grey color, which contains polyester. The lap shoulders ensure that the bodysuit can be easily put on and taken off, making for easy changing.
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex flex-col"
+              data-testid="product-detail"
+            >
+              <button
+                class="accordion-title py-6 box-border border-y border-t-gray-400 border-b-gray-100 appearance-none cursor-pointer focus:outline-none flex items-center justify-between"
+                data-testid="accordion-title"
+              >
+                <div
+                  class="inline-block text-footnote light"
+                >
+                  <div
+                    class="font-extrabold"
+                  >
+                    Details
+                  </div>
+                </div>
+                <div
+                  class="accordion-icon"
+                >
+                  +
+                </div>
+              </button>
+              <div
+                class="accordion-content overflow-hidden transition-all max-h-0 duration-400 ease-in-out"
+                data-testid="accordion-content"
+                style="max-height: 0px;"
+              >
+                <div
+                  class="mt-6 mb-8"
+                >
+                  Text for "details"
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="py-8 lg:p-16 mt-24 bg-gray-50"
+    >
+      <div
+        class="container mx-auto px-6"
+      >
+        <div
+          class="lg:flex items-center justify-between flex-wrap"
+        >
+          <div>
+            <div
+              class="flex items-center justify-between"
+            >
+              <span
+                class="flex items-center"
+              >
+                <svg
+                  class="mr-1.5"
+                />
+                 
+                United States
+              </span>
+              <a
+                class="uppercase text-violet-400 text-xs border-b border-gray-200 ml-3 mt-1"
+                href="/"
+              >
+                Choose country
+              </a>
+            </div>
+          </div>
+          <div
+            class="mt-6 lg:mt-0"
+          >
+            <select
+              class=" inputSelect"
+            >
+              <option
+                selected=""
+                value="en"
+              >
+                ENG
+              </option>
+              <option
+                value="it"
+              >
+                ITA
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+`;

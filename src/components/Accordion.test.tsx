@@ -15,8 +15,8 @@ test('should have a title and some content', () => {
     </Accordion>
   )
 
-  expect(getByTestId('title')).toHaveTextContent('Title')
-  expect(getByTestId('content')).toHaveTextContent('Content!')
+  expect(getByTestId('accordion-title')).toHaveTextContent('Title')
+  expect(getByTestId('accordion-content')).toHaveTextContent('Content!')
 })
 
 test('should have a title and some content', () => {
@@ -28,7 +28,7 @@ test('should have a title and some content', () => {
     </Accordion>
   )
 
-  const content = getByTestId('content')
+  const content = getByTestId('accordion-content')
 
   jest
     .spyOn(HTMLElement.prototype, 'scrollHeight', 'get')
@@ -37,7 +37,7 @@ test('should have a title and some content', () => {
   expect(content).not.toHaveStyle('max-height: 123px;')
 
   act(() => {
-    fireEvent.click(getByTestId('title'))
+    fireEvent.click(getByTestId('accordion-title'))
   })
 
   expect(content).toHaveStyle('max-height: 123px;')

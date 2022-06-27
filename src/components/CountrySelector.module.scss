@@ -32,7 +32,7 @@ $noAccordionBreakpoint: theme('screens.md');
       @apply py-1 border-t-0;
     }
 
-    :global(.title) {
+    :global(.accordion-title) {
       @apply cursor-auto border-t-0 border-b border-gray-100 mb-6;
     }
 
@@ -40,7 +40,7 @@ $noAccordionBreakpoint: theme('screens.md');
       @apply invisible
     }
   
-    :global(.content) {
+    :global(.accordion-content) {
       @apply max-h-full;
     }
   }

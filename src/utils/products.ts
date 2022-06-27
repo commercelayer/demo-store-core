@@ -9,11 +9,17 @@ export type Variant = {
   value: string
 }
 
-export type LocalizedProduct = Omit<RawDataProduct, 'name' | 'description' | 'variant'> & {
+export type LocalizedProduct = Omit<RawDataProduct, 'name' | 'description' | 'variant' | 'details'> & {
   _locale: string
   name: string
   description: string
   variant: Variant[]
+
+  // TODO: this should be removed when PLP
+  details: {
+    title: string
+    content: string
+  }[]
 }
 
 export type LocalizedProductWithVariant = LocalizedProduct & {
@@ -49,7 +55,11 @@ function resolveProductLocale(product: RawDataProduct | LocalizedProduct | Local
     _locale: locale,
     name: translateField(product.name, locale),
     description: translateField(product.description, locale),
-    variant
+    variant,
+    details: product.details?.map(detail => ({
+      title: translateField(detail.title, locale),
+      content: translateField(detail.content, locale)
+    })) || []
   }
 }
 

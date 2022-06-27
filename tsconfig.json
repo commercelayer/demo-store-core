@@ -27,7 +27,8 @@
       "#i18n/*": ["src/i18n/*"],
       "#utils/*": ["src/utils/*"],
       "#contexts/*": ["src/contexts/*"],
-      "#config/*": ["config/*"]
+      "#config/*": ["config/*"],
+      "#__mocks__/*": ["__mocks__/*"]
     }
   },
   "include": [

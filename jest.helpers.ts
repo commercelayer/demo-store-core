@@ -1,5 +1,34 @@
+import { basePath } from '#config/general.config'
 import type { Catalog, Taxon, Taxonomy } from '#utils/catalog'
 import { makeUnserializable } from '#utils/unserializable'
+import type { NextRouter } from 'next/router'
+
+export const createRouter = (href: string, locale: string = 'en-US'): NextRouter => {
+  return {
+    basePath,
+    route: '/[locale]${href}',
+    pathname: '/[locale]${href}',
+    query: {
+      locale
+    },
+    asPath: `/${locale}${href}`,
+    isLocaleDomain: false,
+    push: jest.fn(() => Promise.resolve(true)),
+    replace: jest.fn(() => Promise.resolve(true)),
+    reload: jest.fn(),
+    back: jest.fn(),
+    prefetch: jest.fn(() => Promise.resolve()),
+    beforePopState: jest.fn(),
+    events: {
+      emit: jest.fn(),
+      on: jest.fn(),
+      off: jest.fn()
+    },
+    isFallback: false,
+    isReady: true,
+    isPreview: false
+  }
+}
 
 export const createCatalog = (id: string, taxonomies: Taxonomy[] = []): Catalog => {
   return makeUnserializable({
