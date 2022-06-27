@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`home 1`] = `
+exports[`home page 1`] = `
 <div>
   <main>
     <div
@@ -51,9 +51,9 @@ exports[`home 1`] = `
             >
               <a
                 class="text-back font-bold p-2 m-2"
-                href="/en-US/search/accessories"
+                href="/en-US/search/taxon-slug-1"
               >
-                Accessories
+                Label for 1
               </a>
             </nav>
             <button
@@ -88,7 +88,7 @@ exports[`home 1`] = `
               >
                 <input
                   class="form-input appearance-none bg-transparent w-full pl-14 focus:outline-none focus:shadow-outline"
-                  placeholder=""
+                  placeholder="search"
                   value=""
                 />
               </form>
@@ -98,7 +98,119 @@ exports[`home 1`] = `
       </header>
       <div
         class="mt-10 flex flex-col gap-8"
-      />
+        data-testid="homepage-components"
+      >
+        <div
+          data-testid="carousel-page-component"
+        >
+          <div
+            class="swiper swiper-initialized swiper-horizontal swiper-pointer-events carousel"
+          >
+            <div
+              class="swiper-wrapper"
+              style="transition-duration: 0ms; transform: translate3d(NaNpx, 0px, 0px);"
+            >
+              <div
+                class="swiper-slide select-none"
+              >
+                <div
+                  class="relative rounded-lg overflow-hidden w-full max-h-[50vh] min-h-[24rem]"
+                >
+                  <img
+                    alt="slide-1-image-alt-1"
+                    class="object-cover w-full rounded-lg"
+                    src="slide-1-image-src-1"
+                  />
+                  <div
+                    class="hidden md:block absolute inset-0 bg-gradient-to-b from-black to-black/0 opacity-50"
+                  />
+                  <div
+                    class="flex justify-center relative -top-4 md:text-white md:absolute md:pr-10 md:top-1/2 md:right-0 md:w-1/2 md:-translate-y-1/2"
+                  >
+                    <div
+                      class="bg-white w-11/12 rounded-md flex justify-center py-4 md:bg-transparent"
+                    >
+                      <div
+                        class="w-11/12"
+                      >
+                        <div
+                          class="font-bold text-xl md:text-3xl mb-4"
+                        >
+                          slide-1-title-1
+                        </div>
+                        <div
+                          class="leading-snug mb-4"
+                        >
+                          slide-1-description-1
+                        </div>
+                        <a
+                          class="py-2 px-4 inline-block font-semibold rounded-md bg-violet-400 text-white text-sm w-full text-center md:w-auto"
+                          href="/en-USslide-1-linkHref-1"
+                        >
+                          slide-1-linkLabel-1
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="swiper-slide select-none"
+              >
+                <div
+                  class="relative rounded-lg overflow-hidden w-full max-h-[50vh] min-h-[24rem]"
+                >
+                  <img
+                    alt="slide-2-image-alt-1"
+                    class="object-cover w-full rounded-lg"
+                    src="slide-2-image-src-1"
+                  />
+                  <div
+                    class="hidden md:block absolute inset-0 bg-gradient-to-b from-black to-black/0 opacity-50"
+                  />
+                  <div
+                    class="flex justify-center relative -top-4 md:text-white md:absolute md:pr-10 md:top-1/2 md:right-0 md:w-1/2 md:-translate-y-1/2"
+                  >
+                    <div
+                      class="bg-white w-11/12 rounded-md flex justify-center py-4 md:bg-transparent"
+                    >
+                      <div
+                        class="w-11/12"
+                      >
+                        <div
+                          class="font-bold text-xl md:text-3xl mb-4"
+                        >
+                          slide-2-title-1
+                        </div>
+                        <div
+                          class="leading-snug mb-4"
+                        >
+                          slide-2-description-1
+                        </div>
+                        <a
+                          class="py-2 px-4 inline-block font-semibold rounded-md bg-violet-400 text-white text-sm w-full text-center md:w-auto"
+                          href="/en-USslide-2-linkHref-1"
+                        >
+                          slide-2-linkLabel-1
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="swiper-button-prev"
+            />
+            <div
+              class="swiper-button-next"
+            />
+            <div
+              class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal"
+            />
+          </div>
+        </div>
+      </div>
     </div>
     <div
       class="py-8 lg:p-16 mt-24 bg-gray-50"
@@ -125,7 +237,9 @@ exports[`home 1`] = `
               <a
                 class="uppercase text-violet-400 text-xs border-b border-gray-200 ml-3 mt-1"
                 href="/"
-              />
+              >
+                Choose country
+              </a>
             </div>
           </div>
           <div

@@ -6,7 +6,7 @@ type Image = {
   alt: string
 }
 
-type Carousel = {
+export type CarouselPageComponent = {
   type: 'carousel'
   id: string
   slides: {
@@ -18,7 +18,7 @@ type Carousel = {
   }[]
 }
 
-type Hero = {
+export type HeroPageComponent = {
   type: 'hero'
   id: string
   image: Image
@@ -27,7 +27,7 @@ type Hero = {
   href: string
 }
 
-type Grid = {
+export type GridPageComponent = {
   type: 'grid'
   id: string
   items: {
@@ -39,9 +39,13 @@ type Grid = {
   }[]
 }
 
-export type Homepage = (Carousel | Hero | Grid)[]
+export type StaticPage = (
+  | CarouselPageComponent
+  | HeroPageComponent
+  | GridPageComponent
+)[]
 
-const getCarousel = (rawData: RawDataCarousel): Carousel => {
+const getCarouselPageComponent = (rawData: RawDataCarousel): CarouselPageComponent => {
   return {
     type: 'carousel',
     id: rawData.id,
@@ -55,7 +59,7 @@ const getCarousel = (rawData: RawDataCarousel): Carousel => {
   }
 }
 
-const getHero = (rawData: RawDataHero): Hero => {
+const getHeroPageComponent = (rawData: RawDataHero): HeroPageComponent => {
   return {
     type: 'hero',
     id: rawData.id,
@@ -66,7 +70,7 @@ const getHero = (rawData: RawDataHero): Hero => {
   }
 }
 
-const getGrid = (rawData: RawDataGrid): Grid => {
+const getGridPageComponent = (rawData: RawDataGrid): GridPageComponent => {
   return {
     type: 'grid',
     id: rawData.id,
@@ -80,19 +84,19 @@ const getGrid = (rawData: RawDataGrid): Grid => {
   }
 }
 
-export const getHomepage = (localeCode: string): Homepage => {
+export const getHomepage = (localeCode: string): StaticPage => {
   return translateField(rawDataHomepage.data, localeCode).map(homepage => {
     switch (homepage.type) {
       case 'carousel': {
-        return getCarousel(homepage)
+        return getCarouselPageComponent(homepage)
       }
 
       case 'hero': {
-        return getHero(homepage)
+        return getHeroPageComponent(homepage)
       }
 
       case 'grid': {
-        return getGrid(homepage)
+        return getGridPageComponent(homepage)
       }
     }
   })

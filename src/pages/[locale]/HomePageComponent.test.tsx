@@ -1,59 +1,35 @@
-import type { Catalog, Taxon, Taxonomy } from '#utils/catalog'
 import { getRootNavigationLinks } from '#utils/catalog'
-import { makeUnserializable } from '#utils/unserializable'
-import { render } from '@testing-library/react'
+import lngDict from '#__mocks__/lngDict.json'
+import { render, screen } from '@testing-library/react'
+import { createCarouselPageComponent, createCatalog, createRouter, createTaxon, createTaxonomy } from 'jest.helpers'
 import { I18nProvider } from 'next-localization'
 import { HomePageComponent } from './HomePageComponent'
 
-jest.mock('next/router', () => ({
-  useRouter() {
-    return {
-      route: '/',
-      pathname: '',
-      query: {
-        locale: 'en-US'
-      },
-      asPath: '',
-    };
-  },
-}));
+const useRouter = jest.spyOn(require('next/router'), 'useRouter')
 
-test('home', () => {
-  const taxon: Taxon = {
-    id: 'taxon_1',
-    label: 'Accessories',
-    description: 'Accessories',
-    slug: 'accessories',
-    name: 'All Accessories',
-    references: [],
-    taxons: []
-  }
+beforeEach(() => {
+  useRouter.mockReset()
+})
 
-  const taxonomy: Taxonomy = {
-    id: 'taxonomy_1',
-    facetKey: 'categories',
-    name: 'Default Category',
-    taxons: [taxon]
-  }
+test('home page', async () => {
+  useRouter.mockImplementation(() => createRouter('/'))
 
-  const catalog: Catalog = makeUnserializable({
-    id: 'catalog_1',
-    name: 'AMER',
-    productDataset: {},
-    taxonomies: [taxonomy]
-  })
+  const taxon = createTaxon('1')
+  const taxonomy = createTaxonomy('1', [taxon])
+  const catalog = createCatalog('1', [taxonomy])
+  const navigation = getRootNavigationLinks(catalog)
+
+  const carouselPageComponent = createCarouselPageComponent('1')
 
   const { container } = render(
-    <I18nProvider lngDict={{ general: { viewAll: 'View all' } }} locale='en'>
-      <HomePageComponent navigation={getRootNavigationLinks(catalog)} homepage={[]} />
+    <I18nProvider lngDict={lngDict} locale='en'>
+      <HomePageComponent navigation={navigation} homepage={[carouselPageComponent]} />
     </I18nProvider>
   )
 
-  // const main = within(screen.getByRole('main'))
+  const homepageComponents = await screen.findByTestId('homepage-components')
 
-  // expect(
-  //   main.getByRole('heading', { level: 3, name: /Accessories/i })
-  // ).toBeDefined()
+  expect(homepageComponents.childElementCount).toStrictEqual(1)
 
   expect(container).toMatchSnapshot()
 })

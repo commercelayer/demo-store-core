@@ -1,5 +1,6 @@
 import { basePath } from '#config/general.config'
 import type { Catalog, Taxon, Taxonomy } from '#utils/catalog'
+import type { CarouselPageComponent } from '#utils/homepage'
 import { makeUnserializable } from '#utils/unserializable'
 import type { NextRouter } from 'next/router'
 
@@ -57,5 +58,34 @@ export const createTaxon = (id: string, taxons: Taxon[] = [], references: string
     slug: `taxon-slug-${id}`,
     taxons,
     references,
+  }
+}
+
+export const createCarouselPageComponent = (id: string): CarouselPageComponent => {
+  return {
+    type: 'carousel',
+    id,
+    slides: [
+      {
+        title: `slide-1-title-${id}`,
+        description: `slide-1-description-${id}`,
+        image: {
+          alt: `slide-1-image-alt-${id}`,
+          src: `slide-1-image-src-${id}`
+        },
+        linkHref: `slide-1-linkHref-${id}`,
+        linkLabel: `slide-1-linkLabel-${id}`,
+      },
+      {
+        title: `slide-2-title-${id}`,
+        description: `slide-2-description-${id}`,
+        image: {
+          alt: `slide-2-image-alt-${id}`,
+          src: `slide-2-image-src-${id}`
+        },
+        linkHref: `slide-2-linkHref-${id}`,
+        linkLabel: `slide-2-linkLabel-${id}`,
+      }
+    ]
   }
 }

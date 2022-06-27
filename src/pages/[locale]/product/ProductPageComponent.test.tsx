@@ -1,7 +1,7 @@
 import { getRootNavigationLinks } from '#utils/catalog'
 import { getProductWithVariants } from '#utils/products'
-import productsJson from '#__mocks__/products.json'
 import lngDict from '#__mocks__/lngDict.json'
+import productsJson from '#__mocks__/products.json'
 import { render, screen } from '@testing-library/react'
 import { createCatalog, createRouter, createTaxon, createTaxonomy } from 'jest.helpers'
 import { I18nProvider } from 'next-localization'
@@ -39,7 +39,7 @@ test('product detail page', async () => {
     </I18nProvider>
   )
 
-  const productDetails = await screen.queryAllByTestId('product-detail')
+  const productDetails = screen.queryAllByTestId('product-detail')
 
   expect(productDetails.length).toStrictEqual(2)
 
