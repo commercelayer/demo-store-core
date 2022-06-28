@@ -4,22 +4,22 @@ import { Footer } from '#components/Footer'
 import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { Link } from '#i18n/Link'
-import type { StaticPage } from '#utils/homepage'
+import type { CustomPage } from '#utils/homepage'
 import type { NextPage } from 'next'
 
 export type Props = HeaderProps & {
-  homepage: StaticPage
+  components: CustomPage
 }
 
-export const HomePageComponent: NextPage<Props> = ({ navigation, homepage }) => {
+export const CustomPageComponent: NextPage<Props> = ({ navigation, components }) => {
   return (
     <Page>
       <Container>
         <Header navigation={navigation} />
 
-        <div data-testid='homepage-components' className='mt-10 flex flex-col gap-8'>
+        <div data-testid='page-components' className='mt-10 flex flex-col gap-8'>
           {
-            homepage.map(component => {
+            components.map(component => {
               switch (component.type) {
                 case 'carousel':
                   return (

@@ -3,7 +3,7 @@ import lngDict from '#__mocks__/lngDict.json'
 import { render, screen } from '@testing-library/react'
 import { createCarouselPageComponent, createCatalog, createRouter, createTaxon, createTaxonomy } from 'jest.helpers'
 import { I18nProvider } from 'next-localization'
-import { HomePageComponent } from './HomePageComponent'
+import { CustomPageComponent } from './CustomPageComponent'
 
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
 
@@ -11,7 +11,7 @@ beforeEach(() => {
   useRouter.mockReset()
 })
 
-test('home page', async () => {
+test('CustomPage component', async () => {
   useRouter.mockImplementation(() => createRouter('/'))
 
   const taxon = createTaxon('1')
@@ -23,13 +23,13 @@ test('home page', async () => {
 
   const { container } = render(
     <I18nProvider lngDict={lngDict} locale='en'>
-      <HomePageComponent navigation={navigation} homepage={[carouselPageComponent]} />
+      <CustomPageComponent navigation={navigation} components={[carouselPageComponent]} />
     </I18nProvider>
   )
 
-  const homepageComponents = await screen.findByTestId('homepage-components')
+  const pageComponents = await screen.findByTestId('page-components')
 
-  expect(homepageComponents.childElementCount).toStrictEqual(1)
+  expect(pageComponents.childElementCount).toStrictEqual(1)
 
   expect(container).toMatchSnapshot()
 })

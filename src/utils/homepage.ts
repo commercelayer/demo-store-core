@@ -39,7 +39,7 @@ export type GridPageComponent = {
   }[]
 }
 
-export type StaticPage = (
+export type CustomPage = (
   | CarouselPageComponent
   | HeroPageComponent
   | GridPageComponent
@@ -84,7 +84,7 @@ const getGridPageComponent = (rawData: RawDataGrid): GridPageComponent => {
   }
 }
 
-export const getHomepage = (localeCode: string): StaticPage => {
+export const getHomepageComponents = (localeCode: string): CustomPage => {
   return translateField(rawDataHomepage.data, localeCode).map(homepage => {
     switch (homepage.type) {
       case 'carousel': {
