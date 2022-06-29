@@ -6,7 +6,7 @@ import { Price } from './Price'
 export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = ({ product }) => {
   return (
     <div className='group relative'>
-      <Link href={getProductUrl(product.slug)}>
+      <Link href={getProductUrl(product)}>
         <a>
           <div className='relative w-full h-80 bg-gray-50 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1'>
             <img src={product.images[0]} alt={product.name} className='w-full h-full object-center object-contain' />

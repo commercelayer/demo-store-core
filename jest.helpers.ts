@@ -55,7 +55,7 @@ export const createTaxon = (id: string, taxons: Taxon[] = [], references: string
     name: `taxon-name-${id}`,
     description: `taxon-description-${id}`,
     label: `Label for ${id}`,
-    slug: `taxon-slug-${id}`,
+    slug: `/taxon-slug-${id}`,
     taxons,
     references,
   }

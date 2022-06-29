@@ -25,7 +25,7 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
 
   return (
     <Page
-      canonical={getProductUrl(product.variants[0].slug)}
+      canonical={getProductUrl(product.variants[0])}
       title={product.name}
       description={product.description}
     >

@@ -23,7 +23,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
       fallback: false,
       paths: slugs.map(slug => ({
         params: {
-          slug: slug.split('/')
+          slug: slug.replace(/^\//, '').split('/')
         }
       }))
     }
@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const locale = getLocale(localeCode)
   const catalog = getCatalog(locale)
 
-  const taxon = findTaxonBySlug(catalog, slug.join('/'))
+  const taxon = findTaxonBySlug(catalog, `/${slug.join('/') }`)
 
   const references = flattenReferencesFromTaxon(taxon.result)
   const products = references.map(ref => getProductWithVariants(ref, locale.code, rawDataProducts))

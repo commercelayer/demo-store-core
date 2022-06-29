@@ -9,7 +9,7 @@
       "en": "All accessories",
       "it": "Tutti gli accessori"
     },
-    "slug": "accessories",
+    "slug": "/accessories",
     "name": "All Accessories",
     "references": [
       "APRONXXX000000FFFFFFXXXX",
@@ -42,7 +42,7 @@
       "en": "All products for babies",
       "it": "Tutti i prodotti per neonati"
     },
-    "slug": "baby",
+    "slug": "/baby",
     "name": "All Products for Babies",
     "references": [
       "BABYBIBXA19D9D000000XXXX",
@@ -60,7 +60,7 @@
       "en": "All bags",
       "it": "Tutte le borse"
     },
-    "slug": "bags",
+    "slug": "/bags",
     "name": "All Bags",
     "references": [
       "BACKPACK000000FFFFFFXXXX",
@@ -90,7 +90,7 @@
       "en": "All hats",
       "it": "Tutti i cappelli"
     },
-    "slug": "hats",
+    "slug": "/hats",
     "name": "All Hats",
     "references": [
       "5PANECAP000000FFFFFFXXXX",
@@ -119,7 +119,7 @@
       "en": "All products for home & living",
       "it": "Tutti i prodotti per la tua casa"
     },
-    "slug": "home-and-living",
+    "slug": "/home-and-living",
     "name": "All Products for Home & Living",
     "references": [
       "BEACHAIR000000FFFFFFXXXX",
@@ -149,7 +149,7 @@
       "en": "All products for men",
       "it": "Tutti i prodotti da uomo"
     },
-    "slug": "men",
+    "slug": "/men",
     "name": "All Products for Men",
     "references": [
       "HOODIEMX000000FFFFFFLXXX",
@@ -184,7 +184,7 @@
       "en": "All shirts",
       "it": "Tutte le magliette"
     },
-    "slug": "shirts",
+    "slug": "/shirts",
     "name": "All Shirts",
     "references": [
       "BODYBSSS000000FFFFFF12MX",
@@ -202,7 +202,7 @@
       "en": "All polo shirts",
       "it": "Tutte le polo"
     },
-    "slug": "shirts/polo",
+    "slug": "/shirts/polo",
     "name": "All Polo Shirts",
     "references": [],
     "taxons": ["taxon_7AA", "taxon_7AB"]
@@ -217,7 +217,7 @@
       "en": "All dark polo",
       "it": "Tutte le polo scure"
     },
-    "slug": "shirts/polo/dark",
+    "slug": "/shirts/polo/dark",
     "name": "All Polo Shirts",
     "references": [
       "POLOWXXX000000FFFFFFLXXX",
@@ -234,7 +234,7 @@
       "en": "All other polo",
       "it": "Tutte le altre polo"
     },
-    "slug": "shirts/polo/others",
+    "slug": "/shirts/polo/others",
     "name": "All Polo Shirts",
     "references": [
       "POLOMXXXC2C2C2000000LXXX",
@@ -252,7 +252,7 @@
       "en": "All other shirts",
       "it": "Tutte le altre magliette"
     },
-    "slug": "shirts/others",
+    "slug": "/shirts/others",
     "name": "All Shirts",
     "references": [
       "CROPTOPW000000FFFFFFLXXX",
@@ -295,7 +295,7 @@
       "en": "All sweatshirts",
       "it": "Tutte le felpe"
     },
-    "slug": "sweatshirts",
+    "slug": "/sweatshirts",
     "name": "All Sweatshirts",
     "references": [
       "HDRESSWX000000FFFFFFLXXX",
@@ -323,7 +323,7 @@
       "en": "All unisex products",
       "it": "Tutti i prodotti unisex"
     },
-    "slug": "unisex",
+    "slug": "/unisex",
     "name": "All Unisex Products",
     "references": [
       "5PANECAP000000FFFFFFXXXX",
@@ -404,7 +404,7 @@
       "en": "All products for women",
       "it": "Tutti i prodotti da donna"
     },
-    "slug": "women",
+    "slug": "/women",
     "name": "All Products for Women",
     "references": [
       "CROPTOPW000000FFFFFFLXXX",
@@ -436,7 +436,7 @@
       "en": "All shirts except womens",
       "it": "Tutte le magliette escudendo le magliette da donna"
     },
-    "slug": "shirts",
+    "slug": "/shirts",
     "name": "All Shirts Except Womens",
     "references": [
       "BODYBSSS000000FFFFFF12MX",
