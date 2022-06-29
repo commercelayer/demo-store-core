@@ -1,2 +1,10 @@
-# demo-store
-Commerce Layer demo web store
+# Demo Store
+
+Commerce Layer Demo Store
+
+
+## Lighthouse CI
+
+```sh
+npx -p @lhci/cli lhci autorun
+```
