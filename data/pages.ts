@@ -2,7 +2,7 @@ import { localizedFieldSchema } from '#i18n/locale'
 import { unserializableSchema } from '#utils/unserializable'
 import { z } from 'zod'
 
-import homepageJson from './json/homepage.json'
+import pagesJson from './json/pages.json'
 
 const imageSchema = z.object({
   src: z.string(),
@@ -38,22 +38,26 @@ const gridSchema = z.object({
   items: slideSchema.array()
 })
 
-const homepageSchema = unserializableSchema(
-  localizedFieldSchema(
-    z.discriminatedUnion('type', [
-      carouselSchema,
-      heroSchema,
-      gridSchema
-    ]).array()
-  )
+const pagesSchema = unserializableSchema(
+  z
+    .object({})
+    .catchall(
+      localizedFieldSchema(
+        z.discriminatedUnion('type', [
+          carouselSchema,
+          heroSchema,
+          gridSchema
+        ]).array()
+      )
+    )
 )
 
-export type RawDataHomepage = z.infer<typeof homepageSchema>
+export type RawDataPages = z.infer<typeof pagesSchema>
 
 export type RawDataCarousel = z.infer<typeof carouselSchema>
 export type RawDataHero = z.infer<typeof heroSchema>
 export type RawDataGrid = z.infer<typeof gridSchema>
 
-export const rawDataHomepage = homepageSchema.parse({
-  data: homepageJson
+export const rawDataPages = pagesSchema.parse({
+  data: pagesJson
 });

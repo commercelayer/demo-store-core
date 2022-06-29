@@ -5,16 +5,18 @@ import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
 import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import type { Props } from './CustomPageComponent'
-import { getHomepageComponents } from '#utils/homepage'
+import { getPages } from '#utils/pages'
 
 type Query = {
   locale: string
-  slug: string[]
+  slug?: string[]
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = () => {
-  return withLocalePaths(_localeCode => {
-    const slugs = ['']
+  return withLocalePaths(localeCode => {
+
+    const pages = getPages(localeCode)
+    const slugs = pages.map(page => page.slug.replace(/^\//, ''))
 
     return {
       fallback: false,
@@ -28,14 +30,23 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 }
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
-  const { locale: localeCode, slug: _slug } = params!
+  const { locale: localeCode, slug } = params!
   const locale = getLocale(localeCode)
   const catalog = getCatalog(locale)
+
+  const pages = getPages(localeCode)
+  const page = pages.find(page => page.slug === `/${slug ? slug.join('/') : ''}`)
+
+  if (!page) {
+    return {
+      notFound: true
+    }
+  }
 
   return {
     props: {
       navigation: getRootNavigationLinks(catalog),
-      components: getHomepageComponents(localeCode),
+      components: page.components,
       ...(await serverSideTranslations(localeCode))
     }
   }

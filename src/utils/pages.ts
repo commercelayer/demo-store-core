@@ -1,7 +1,7 @@
-import { RawDataCarousel, RawDataGrid, RawDataHero, rawDataHomepage } from '#data/homepage'
+import { RawDataCarousel, RawDataGrid, RawDataHero, rawDataPages } from '#data/pages'
 import { translateField } from '#i18n/locale'
 
-type Image = {
+export type Image = {
   src: string
   alt: string
 }
@@ -39,11 +39,16 @@ export type GridPageComponent = {
   }[]
 }
 
-export type CustomPage = (
+export type PageComponent = (
   | CarouselPageComponent
   | HeroPageComponent
   | GridPageComponent
-)[]
+)
+
+export type CustomPage = {
+  slug: string
+  components: PageComponent[]
+}
 
 const getCarouselPageComponent = (rawData: RawDataCarousel): CarouselPageComponent => {
   return {
@@ -84,20 +89,23 @@ const getGridPageComponent = (rawData: RawDataGrid): GridPageComponent => {
   }
 }
 
-export const getHomepageComponents = (localeCode: string): CustomPage => {
-  return translateField(rawDataHomepage.data, localeCode).map(homepage => {
-    switch (homepage.type) {
-      case 'carousel': {
-        return getCarouselPageComponent(homepage)
-      }
+export const getPages = (localeCode: string): CustomPage[] => {
+  return Object.entries(rawDataPages.data).map(([slug, page]) => ({
+    slug,
+    components: translateField(page, localeCode).map(component => {
+      switch (component.type) {
+        case 'carousel': {
+          return getCarouselPageComponent(component)
+        }
 
-      case 'hero': {
-        return getHeroPageComponent(homepage)
-      }
+        case 'hero': {
+          return getHeroPageComponent(component)
+        }
 
-      case 'grid': {
-        return getGridPageComponent(homepage)
+        case 'grid': {
+          return getGridPageComponent(component)
+        }
       }
-    }
-  })
+    })
+  }))
 }

@@ -4,11 +4,11 @@ import { Footer } from '#components/Footer'
 import { Header, HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { Link } from '#i18n/Link'
-import type { CustomPage } from '#utils/homepage'
+import type { CustomPage } from '#utils/pages'
 import type { NextPage } from 'next'
 
 export type Props = HeaderProps & {
-  components: CustomPage
+  components: CustomPage['components']
 }
 
 export const CustomPageComponent: NextPage<Props> = ({ navigation, components }) => {

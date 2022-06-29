@@ -1,6 +1,6 @@
 import { basePath } from '#config/general.config'
 import type { Catalog, Taxon, Taxonomy } from '#utils/catalog'
-import type { CarouselPageComponent } from '#utils/homepage'
+import type { CarouselPageComponent } from '#utils/pages'
 import { makeUnserializable } from '#utils/unserializable'
 import type { NextRouter } from 'next/router'
 

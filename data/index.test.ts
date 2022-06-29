@@ -11,14 +11,14 @@ describe('JSON Data', () => {
     expect(rawDataCountries).toBeDefined()
   })
 
-  it('"homepage.json" should be properly defined.', async () => {
-    const { rawDataHomepage } = await import('./homepage')
-    expect(rawDataHomepage).toBeDefined()
-  })
-
   it('"languages.json" should be properly defined.', async () => {
     const { rawDataLanguages } = await import('./languages')
     expect(rawDataLanguages).toBeDefined()
+  })
+
+  it('"pages.json" should be properly defined.', async () => {
+    const { rawDataPages } = await import('./pages')
+    expect(rawDataPages).toBeDefined()
   })
 
   it('"products.json" should be properly defined.', async () => {

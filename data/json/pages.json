@@ -1,0 +1,152 @@
+{
+  "/": {
+    "en": [
+      {
+        "type": "carousel",
+        "id": "carousel-1",
+        "slides": [
+          {
+            "image": {
+              "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655468809/commercelayer-tmp/all-over-print-backpack-white-front-60ef10bc2c98a_2.png",
+              "alt": "Space for everything"
+            },
+            "title": "Space for everything",
+            "description": "Our backpack collection has been designed to meet the needs of all kinds of people, from urban city-dwellers to outdoor adventurers.",
+            "linkLabel": "Shop here",
+            "linkHref": "/search/bags"
+          },
+          {
+            "image": {
+              "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655468809/commercelayer-tmp/all-over-print-backpack-white-front-60ef10bc2c98a_2.png",
+              "alt": "Space for everything"
+            },
+            "title": "Space for everything",
+            "description": "Our backpack collection has been designed to meet the needs of all kinds of people, from urban city-dwellers to outdoor adventurers.",
+            "linkLabel": "Shop here",
+            "linkHref": "/search/bags"
+          }
+        ]
+      },
+      {
+        "type": "hero",
+        "id": "hero-1",
+        "image": {
+          "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655468784/commercelayer-tmp/30-sales-commerce-layer.png",
+          "alt": "30% OFF SALE - CL30"
+        },
+        "title": "30% OFF SALE - CL30",
+        "href": "/search/bags"
+      },
+      {
+        "type": "grid",
+        "id": "grid-1",
+        "items": [
+          {
+            "image": {
+              "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655471032/commercelayer-tmp/white-glossy-mug-15oz-woman-60f05f1d26851_1.png",
+              "alt": "Mug collection"
+            },
+            "title": "Mug collection",
+            "description": "Our mug collection has been designed to meet the needs of all kinds of people.",
+            "linkLabel": "Discover now",
+            "linkHref": "/search/accessories"
+          },
+          {
+            "image": {
+              "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655471055/commercelayer-tmp/classic-dad-hat-black-front-60f0529d14fe6_1.png",
+              "alt": "Hats collection"
+            },
+            "title": "Hats collection",
+            "description": "Our hat collection has been designed to meet the needs of all kinds of people.",
+            "linkLabel": "Discover now",
+            "linkHref": "/search/hats"
+          },
+          {
+            "image": {
+              "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655471072/commercelayer-tmp/all-over-print-basic-pillow-18x18-front-lifestyle-1-60f065d602a6d_1.png",
+              "alt": "Home living collection"
+            },
+            "title": "Home living collection",
+            "description": "Our home living collection has been designed to meet the needs of all kinds of people.",
+            "linkLabel": "Discover now",
+            "linkHref": "/search/home-and-living"
+          }
+        ]
+      }
+    ],
+    "it": [
+      {
+        "type": "carousel",
+        "id": "carousel-1",
+        "slides": [
+          {
+            "image": {
+              "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655468809/commercelayer-tmp/all-over-print-backpack-white-front-60ef10bc2c98a_2.png",
+              "alt": "Spazio per tutto"
+            },
+            "title": "Spazio per tutto",
+            "description": "La nostra collezione di zaini è stata progettata per soddisfare le esigenze di tutti i tipi di persone, dagli abitanti delle città urbane agli avventurieri all'aperto.",
+            "linkLabel": "Acquista ora",
+            "linkHref": "/search/bags"
+          },
+          {
+            "image": {
+              "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655468809/commercelayer-tmp/all-over-print-backpack-white-front-60ef10bc2c98a_2.png",
+              "alt": "Spazio per tutto"
+            },
+            "title": "Spazio per tutto",
+            "description": "La nostra collezione di zaini è stata progettata per soddisfare le esigenze di tutti i tipi di persone, dagli abitanti delle città urbane agli avventurieri all'aperto.",
+            "linkLabel": "Acquista ora",
+            "linkHref": "/search/bags"
+          }
+        ]
+      },
+      {
+        "type": "hero",
+        "id": "hero-1",
+        "image": {
+          "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655468784/commercelayer-tmp/30-sales-commerce-layer.png",
+          "alt": "30% SCONTO - CL30"
+        },
+        "title": "30% SCONTO - CL30",
+        "href": "/search/bags"
+      },
+      {
+        "type": "grid",
+        "id": "grid-1",
+        "items": [
+          {
+            "image": {
+              "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655471055/commercelayer-tmp/classic-dad-hat-black-front-60f0529d14fe6_1.png",
+              "alt": "Cappelli"
+            },
+            "title": "Cappelli",
+            "description": "La nostra collezione di cappelli è stata progettata per soddisfare le esigenze di tutti i tipi di persone.",
+            "linkLabel": "Scopri adesso",
+            "linkHref": "/search/hats"
+          },
+          {
+            "image": {
+              "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655471072/commercelayer-tmp/all-over-print-basic-pillow-18x18-front-lifestyle-1-60f065d602a6d_1.png",
+              "alt": "Casa"
+            },
+            "title": "Casa",
+            "description": "La nostra collezione per la casa è stata progettata per soddisfare le esigenze di tutti i tipi di persone.",
+            "linkLabel": "Scopri adesso",
+            "linkHref": "/search/home-and-living"
+          },
+          {
+            "image": {
+              "src": "https://res.cloudinary.com/marcomontalbano/image/upload/v1655471032/commercelayer-tmp/white-glossy-mug-15oz-woman-60f05f1d26851_1.png",
+              "alt": "Tazze"
+            },
+            "title": "Tazze",
+            "description": "La nostra collezione di tazze è stata progettata per soddisfare le esigenze di tutti i tipi di persone.",
+            "linkLabel": "Scopri adesso",
+            "linkHref": "/search/accessories"
+          }
+        ]
+      }
+    ]
+  }
+}
