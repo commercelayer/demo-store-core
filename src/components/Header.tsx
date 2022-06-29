@@ -8,7 +8,7 @@ import { CartLink, LineItemsCount } from '@commercelayer/react-components'
 import { useEffect, useState } from 'react'
 
 
-export type HeaderProps = NavigationProps
+export type HeaderProps = Partial<NavigationProps>
 
 const CartQuantity: React.FC<{ quantity: number }> =  ({ quantity: propQuantity }) => {
   const [quantity, setQuantity] = useState<number>(-1)
@@ -61,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
         </div>
       </nav>
       <div className='flex items-center justify-between flex-wrap gap-4 relative'>
-        <Navigation navigation={navigation} className='order-2 lg:order-1' />
+        {navigation && <Navigation navigation={navigation} className='order-2 lg:order-1' />}
         <Search className='order-1 grow lg:grow-0' />
       </div>
     </header>

@@ -2,18 +2,41 @@ import { basePath } from '#config/general.config'
 import { useI18n } from 'next-localization'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { Container } from './Container'
+import { Footer } from './Footer'
+import { Header, HeaderProps } from './Header'
 
-type Props = {
+type Props = Partial<HeaderProps> & {
   title?: string
   description?: string
   canonical?: string
+  PageTemplate?: React.FC<PageTemplateProps>
+}
+
+type PageTemplateProps = HeaderProps
+
+const DefaultPageTemplate: React.FC<PageTemplateProps> = ({
+  navigation,
+  children
+}) => {
+  return (
+    <>
+      <Container>
+        <Header navigation={navigation} />
+        {children}
+      </Container>
+      <Footer />
+    </>
+  )
 }
 
 export const Page: React.FC<Props> = ({
+  navigation,
   children,
   title,
   canonical,
-  description
+  description,
+  PageTemplate = DefaultPageTemplate
 }) => {
   const router = useRouter()
   const i18n = useI18n()
@@ -28,7 +51,9 @@ export const Page: React.FC<Props> = ({
       </Head>
 
       <main className='flex flex-col h-screen'>
-        { children }
+        <PageTemplate navigation={navigation}>
+          { children }
+        </PageTemplate>
       </main>
     </>
   )

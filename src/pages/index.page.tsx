@@ -6,7 +6,7 @@ import type { GetStaticProps, NextPage } from 'next'
 
 const CountrySelectorPage: NextPage = () => {
   return (
-    <Page>
+    <Page PageTemplate={({ children }) => <>{children}</>}>
       <CountrySelector />
     </Page>
   )

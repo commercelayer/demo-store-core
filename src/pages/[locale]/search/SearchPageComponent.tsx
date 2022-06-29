@@ -1,7 +1,5 @@
-import { Container } from '#components/Container'
 import { Facet } from '#components/Facet'
-import { Footer } from '#components/Footer'
-import { Header, HeaderProps } from '#components/Header'
+import type { HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
 import { Props as SubNavigationProps, SubNavigation } from '#components/SubNavigation'
@@ -54,29 +52,23 @@ export const SearchPageComponent: NextPage<Props> = ({ navigation, products, sub
 
   return (
     <Page
+      navigation={navigation}
       title={subNavigation?.current.text}
       description={subNavigation?.current.description}
     >
-      <Container>
-        <Header navigation={navigation} />
+      <CatalogProvider products={products}>
 
-        <CatalogProvider products={products}>
+        <Title subNavigation={subNavigation} />
 
-          <Title subNavigation={subNavigation} />
+        <div className='lg:flex mt-10'>
+          {
+            isSubNavigationVisible && <SubNavigation className='shrink-0 basis-1/3' subNavigation={subNavigation} />
+          }
 
-          <div className='lg:flex mt-10'>
-            {
-              isSubNavigationVisible && <SubNavigation className='shrink-0 basis-1/3' subNavigation={subNavigation} />
-            }
+          <ProductList hasSidebar={isSubNavigationVisible} />
+        </div>
 
-            <ProductList hasSidebar={isSubNavigationVisible} />
-          </div>
-
-        </CatalogProvider>
-
-      </Container>
-
-      <Footer />
+      </CatalogProvider>
     </Page>
   )
 }

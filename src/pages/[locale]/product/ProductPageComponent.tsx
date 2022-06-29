@@ -1,9 +1,7 @@
 import { Accordion } from '#components/Accordion'
 import { Carousel } from '#components/Carousel'
 import { Price } from '#components/CommerceLayer/Price'
-import { Container } from '#components/Container'
-import { Footer } from '#components/Footer'
-import { Header, HeaderProps } from '#components/Header'
+import type { HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { VariantSelector } from '#components/VariantSelector'
 import type { LocalizedProduct, LocalizedProductWithVariant } from '#utils/products'
@@ -25,62 +23,56 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
 
   return (
     <Page
+      navigation={links}
       canonical={getProductUrl(product.variants[0])}
       title={product.name}
       description={product.description}
     >
+      <div className='flex flex-col lg:flex-row gap-6 lg:gap-24 xl:gap-48 mt-12 lg:mt-24'>
 
-      <Container>
-        <Header navigation={links} />
-
-        <div className='flex flex-col lg:flex-row gap-6 lg:gap-24 xl:gap-48 mt-12 lg:mt-24'>
-
-          <div className=' basis-1/2'>
-            <Carousel slides={slides} />
-          </div>
-
-          <div className='grow-0 shrink-1 basis-1/2'>
-            <ItemContainer>
-              <h1 className='text-3xl mb-6'>{product.name}</h1>
-
-              <div className='min-h-[30px]'>
-                <Price code={currentProduct?.sku} className='text-xl' />
-              </div>
-
-              <hr className='text-gray-100 my-8' />
-
-              <VariantSelector product={product} onChange={setCurrentProduct} />
-
-              <AddToCartButton
-                skuCode={currentProduct?.sku}
-                label={i18n.t('general.addToCart')}
-                className='block w-full mt-12 h-14 px-6 font-semibold rounded-md text-white bg-violet-400 disabled:bg-gray-300' />
-
-              <AvailabilityContainer skuCode={currentProduct?.sku}>
-                <AvailabilityTemplate className='mt-6'  showShippingMethodName={true} showShippingMethodPrice={true} color={'blue'} timeFormat={'days'} />
-              </AvailabilityContainer>
-
-              <div className='border-b border-b-gray-400 mt-12'>
-                <Accordion data-testid='product-detail' title={<div className='font-extrabold'>{i18n.t('product.description')}</div>}>
-                  <div className='mt-6 mb-8'>{product.description}</div>
-                </Accordion>
-
-                {
-                  product.details?.map(detail => (
-                    <Accordion key={detail.title} data-testid='product-detail' title={<div className='font-extrabold'>{detail.title}</div>}>
-                      <div className='mt-6 mb-8'>{detail.content}</div>
-                    </Accordion>
-                  ))
-                }
-              </div>
-
-            </ItemContainer>
-          </div>
-
+        <div className=' basis-1/2'>
+          <Carousel slides={slides} />
         </div>
-      </Container>
 
-      <Footer />
+        <div className='grow-0 shrink-1 basis-1/2'>
+          <ItemContainer>
+            <h1 className='text-3xl mb-6'>{product.name}</h1>
+
+            <div className='min-h-[30px]'>
+              <Price code={currentProduct?.sku} className='text-xl' />
+            </div>
+
+            <hr className='text-gray-100 my-8' />
+
+            <VariantSelector product={product} onChange={setCurrentProduct} />
+
+            <AddToCartButton
+              skuCode={currentProduct?.sku}
+              label={i18n.t('general.addToCart')}
+              className='block w-full mt-12 h-14 px-6 font-semibold rounded-md text-white bg-violet-400 disabled:bg-gray-300' />
+
+            <AvailabilityContainer skuCode={currentProduct?.sku}>
+              <AvailabilityTemplate className='mt-6'  showShippingMethodName={true} showShippingMethodPrice={true} color={'blue'} timeFormat={'days'} />
+            </AvailabilityContainer>
+
+            <div className='border-b border-b-gray-400 mt-12'>
+              <Accordion data-testid='product-detail' title={<div className='font-extrabold'>{i18n.t('product.description')}</div>}>
+                <div className='mt-6 mb-8'>{product.description}</div>
+              </Accordion>
+
+              {
+                product.details?.map(detail => (
+                  <Accordion key={detail.title} data-testid='product-detail' title={<div className='font-extrabold'>{detail.title}</div>}>
+                    <div className='mt-6 mb-8'>{detail.content}</div>
+                  </Accordion>
+                ))
+              }
+            </div>
+
+          </ItemContainer>
+        </div>
+
+      </div>
     </Page>
   )
 }
