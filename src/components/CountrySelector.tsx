@@ -4,17 +4,22 @@ import { rawDataCountries } from '#data/countries'
 import { Link } from '#i18n/Link'
 import { makeLocaleCode } from '#i18n/locale'
 import { groupByRegion } from '#utils/countries'
+import { useI18n } from 'next-localization'
 import styles from './CountrySelector.module.scss'
 
 
 export const CountrySelector = () => {
+  const i18n = useI18n()
   const groupedCountry = Object.entries(groupByRegion(rawDataCountries))
 
   return (
     <div className='flex flex-col h-screen'>
       <div className={styles.countriesContainer}>
 
-        <Logo className='border-b border-b-gray-100 md:border-b-0 md:text-center' />
+        <h1>
+          <Logo className='border-b border-b-gray-100 md:border-b-0 md:text-center' />
+          <span className='sr-only'>{i18n.t('seo.title')}</span>
+        </h1>
 
         <div className={styles.title}>
           CHOOSE YOUR COUNTRY/REGION
@@ -46,7 +51,7 @@ export const CountrySelector = () => {
         <div className='container mx-auto px-6'>
           Other Countries / Regions:
           <Link locale='en'>
-            <a className='font-semibold block'>International (English)</a>
+            <a className='font-semibold block'>{i18n.t('general.international')} (English)</a>
           </Link>
         </div>
       </div>

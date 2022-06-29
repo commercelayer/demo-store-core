@@ -4,6 +4,7 @@ declare namespace globalThis {
 
 declare namespace NodeJS {
   export interface ProcessEnv {
+    SITE_URL: string
     NEXT_PUBLIC_CL_CLIENT_ID: string
     NEXT_PUBLIC_CL_ENDPOINT: string
   }

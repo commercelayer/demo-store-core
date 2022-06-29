@@ -1,17 +1,18 @@
 // @ts-check
 
-const { dataFetching, basePath } = require('./config/general.config')
+/** @type { import('./@typings/general.config').GeneralConfig } */
+const generalConfig = require('./config/general.config')
 
-/** @type {import('next').NextConfig} */
+/** @type { import('next').NextConfig } */
 const nextConfig = {
   // https://nextjs.org/docs/api-reference/next.config.js/react-strict-mode
   reactStrictMode: true,
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-page-extensions#including-non-page-files-in-the-pages-directory
-  pageExtensions: ['page.tsx', `page-${dataFetching}.tsx`],
+  pageExtensions: ['page.tsx', `page-${generalConfig.dataFetching}.tsx`],
 
   // https://nextjs.org/docs/api-reference/next.config.js/basepath
-  basePath,
+  basePath: generalConfig.basePath,
 
   eslint: {
     // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
