@@ -1,4 +1,4 @@
-import { Globe } from '#assets/icons'
+import { CommerceLayerGlyph, Globe, PaymentKlarna, PaymentStripe, PaymentMastercard, PaymentMastro, PaymentPaypal, PaymentVisa } from '#assets/icons'
 import { Container } from '#components/Container'
 import { rawDataLanguages } from '#data/languages'
 import { Link } from '#i18n/Link'
@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
   const locale = getLocale(router.query.locale)
 
   return (
-    <div className='py-8 lg:p-16 mt-24 bg-gray-50'>
+    <div className='flex-grow py-8 lg:p-16 mt-24 bg-gray-50'>
       <Container>
 
         <div className='lg:flex items-center justify-between flex-wrap'>
@@ -43,6 +43,40 @@ export const Footer: React.FC = () => {
               }}
               defaultValue={parseLocaleCode(router.query.locale).languageCode}
               options={rawDataLanguages.map(language => ({ value: language.code, label: language.name }))} />
+          </div>
+        </div>
+
+        <div className='mt-6 py-6 border-y border-y-gray-100 text-xs divide-x flex'>
+          <div className='pr-4'>
+            <Link href='/shipping-and-payments'><a>Shipping & Payments</a></Link>
+          </div>
+          <div className='px-4'>
+            <Link href='/returns'><a>Returns</a></Link>
+          </div>
+          <div className='px-4'>
+            <Link href='/terms-and-conditions'><a>Terms and conditions</a></Link>
+          </div>
+          <div className='px-4'>
+            <Link href='/cookies-and-privacy'><a>Cookies and privacy</a></Link>
+          </div>
+        </div>
+
+        <div className='mt-12 flex justify-between items-center'>
+          <div className='text-gray-500 flex gap-4 items-start'>
+            <CommerceLayerGlyph aria-label='Commerce Layer logomark' width={32} />
+            <div className='text-xs leading-relaxed'>
+              Copyright © 2022. All Rights Reserved.<br />
+              Registered company in Italy<br />
+              VAT IT12345678<br />
+            </div>
+          </div>
+          <div className='text-gray-500 flex gap-4 items-start'>
+            <PaymentKlarna />
+            <PaymentStripe />
+            <PaymentMastercard />
+            <PaymentMastro />
+            <PaymentPaypal />
+            <PaymentVisa />
           </div>
         </div>
 

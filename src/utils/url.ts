@@ -3,5 +3,5 @@ export const getSearchUrl = (slug: string): string => {
 }
 
 export const getProductUrl = (slug: string): string => {
-  return `/product/${slug}`
+  return `/product${slug}`
 }

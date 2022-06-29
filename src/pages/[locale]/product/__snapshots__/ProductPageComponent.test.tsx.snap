@@ -2,7 +2,9 @@
 
 exports[`product detail page 1`] = `
 <div>
-  <main>
+  <main
+    class="flex flex-col h-screen"
+  >
     <div
       class="container mx-auto px-6"
     >
@@ -19,18 +21,16 @@ exports[`product detail page 1`] = `
               href="/en-US"
             >
               <div
-                class="py-6 pb-6 "
+                class="text-black py-6 pb-6 "
               >
-                <img
-                  alt="Commerce Layer logomark"
+                <svg
+                  aria-label="Commerce Layer logomark"
                   class="inline"
-                  src="https://data.commercelayer.app/assets/logos/glyph/black/commercelayer_glyph_black.svg"
                   width="32"
                 />
-                <img
-                  alt="Commerce Layer logotype"
+                <svg
+                  aria-label="Commerce Layer logotype"
                   class="ml-4 hidden md:inline"
-                  src="https://data.commercelayer.app/assets/logos/logotype/black/commercelayer_logotype_black.svg"
                   width="192"
                 />
               </div>
@@ -296,7 +296,7 @@ exports[`product detail page 1`] = `
       </div>
     </div>
     <div
-      class="py-8 lg:p-16 mt-24 bg-gray-50"
+      class="flex-grow py-8 lg:p-16 mt-24 bg-gray-50"
     >
       <div
         class="container mx-auto px-6"
@@ -343,6 +343,78 @@ exports[`product detail page 1`] = `
                 ITA
               </option>
             </select>
+          </div>
+        </div>
+        <div
+          class="mt-6 py-6 border-y border-y-gray-100 text-xs divide-x flex"
+        >
+          <div
+            class="pr-4"
+          >
+            <a
+              href="/en-US/shipping-and-payments"
+            >
+              Shipping & Payments
+            </a>
+          </div>
+          <div
+            class="px-4"
+          >
+            <a
+              href="/en-US/returns"
+            >
+              Returns
+            </a>
+          </div>
+          <div
+            class="px-4"
+          >
+            <a
+              href="/en-US/terms-and-conditions"
+            >
+              Terms and conditions
+            </a>
+          </div>
+          <div
+            class="px-4"
+          >
+            <a
+              href="/en-US/cookies-and-privacy"
+            >
+              Cookies and privacy
+            </a>
+          </div>
+        </div>
+        <div
+          class="mt-12 flex justify-between items-center"
+        >
+          <div
+            class="text-gray-500 flex gap-4 items-start"
+          >
+            <svg
+              aria-label="Commerce Layer logomark"
+              width="32"
+            />
+            <div
+              class="text-xs leading-relaxed"
+            >
+              Copyright © 2022. All Rights Reserved.
+              <br />
+              Registered company in Italy
+              <br />
+              VAT IT12345678
+              <br />
+            </div>
+          </div>
+          <div
+            class="text-gray-500 flex gap-4 items-start"
+          >
+            <svg />
+            <svg />
+            <svg />
+            <svg />
+            <svg />
+            <svg />
           </div>
         </div>
       </div>

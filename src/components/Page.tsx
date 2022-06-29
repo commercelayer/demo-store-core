@@ -27,7 +27,7 @@ export const Page: React.FC<Props> = ({
         {canonical && <link rel='canonical' href={`${router.basePath}/${router.query.locale}${canonical}`} />}
       </Head>
 
-      <main>
+      <main className='flex flex-col h-screen'>
         { children }
       </main>
     </>

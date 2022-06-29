@@ -148,5 +148,17 @@
         ]
       }
     ]
+  },
+  "/shipping-and-payments": {
+    "en": []
+  },
+  "/returns": {
+    "en": []
+  },
+  "/terms-and-conditions": {
+    "en": []
+  },
+  "/cookies-and-privacy": {
+    "en": []
   }
 }
