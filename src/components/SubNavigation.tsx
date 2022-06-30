@@ -1,17 +1,20 @@
 import { Link } from '#i18n/Link'
 import type { NavigationPath, NavigationLink } from '@typings/navigation.d'
+import { useI18n } from 'next-localization'
 
 export type Props = JSX.IntrinsicElements['nav'] & {
   subNavigation: NavigationPath
 }
 
-const NavLink: React.FC<{ key: string, link: NavigationLink, active: NavigationLink }> = ({ key, link, active }) => {
+const NavLink: React.FC<{ key: string, link: NavigationLink, active: NavigationLink, level: number }> = ({ key, link, active, level }) => {
+  const i18n = useI18n()
+
   return (
     <div key={key}>
-      <Link href={link.href}><a className={`block mx-2 py-2 px-2 border-b border-b-gray-100 transition-colors ${active.key === link.key ? 'bg-black text-white' : 'bg-transparent'}`}>{link.text}</a></Link>
+      <Link href={link.href}><a className={`block mx-2 py-3 px-3 border-b border-b-gray-100 tracking-wide transition-colors ${active.key === link.key ? 'bg-black text-white' : 'bg-transparent text-gray-500'}`}>{level === 1 ? <span className='uppercase'>{i18n.t('general.all') }</span> : link.text}</a></Link>
       {
         link.children?.map(subLink => (
-          <NavLink key={subLink.key} link={subLink} active={active} />
+          <NavLink key={subLink.key} link={subLink} active={active} level={++level} />
         ))
       }
     </div>
@@ -25,7 +28,7 @@ export const SubNavigation: React.FC<Props> = ({ className , subNavigation: { cu
         {
           children.map(link => {
             return (
-              <NavLink key={link.key} link={link} active={current} />
+              <NavLink key={link.key} link={link} active={current} level={1} />
             )
           })
         }

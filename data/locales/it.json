@@ -5,7 +5,8 @@
     "addToCart": "Aggiungi al carrello",
     "chooseCountry": "Cambia paese/regione",
     "international": "Internazionale",
-    "resultsFor": "{{count}} risultati per \"{{query}}\""
+    "resultsFor": "{{count}} risultati per \"{{query}}\"",
+    "all": "tutti"
   },
   "seo": {
     "title": "Commerce Layer Store",
