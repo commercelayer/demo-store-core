@@ -157,7 +157,6 @@ function useCatalog(initialProducts: LocalizedProductWithVariant[]) {
 
     ;(async () => {
       const { rawDataCatalogs } = await import('#data/catalogs')
-      console.log('rawDataCatalogs.data.length', rawDataCatalogs.data.length)
 
       const locale = getLocale(router.query.locale)
 
