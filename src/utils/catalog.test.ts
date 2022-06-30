@@ -1,5 +1,5 @@
 import { createCatalog, createTaxon, createTaxonomy } from 'jest.helpers'
-import { getNavigationLinks, getRootNavigationLinks, getSlugs } from './catalog'
+import { getBreadcrumbs, getRootNavigationLinks, getSlugs } from './catalog'
 import { deepFind } from './collection'
 
 const taxon1A1 = createTaxon('1A1')
@@ -42,7 +42,7 @@ describe('getRootNavigationLinks', () => {
   })
 })
 
-describe('getNavigationLinks', () => {
+describe('getBreadcrumbs', () => {
   it('should be able to get parent, current and children navigation given a taxon deepFind result', () => {
     const taxon = deepFind([taxon1, taxon2, taxon3], 'taxons', 'slug', '/taxon-slug-1A')
 
@@ -50,9 +50,9 @@ describe('getNavigationLinks', () => {
       throw new Error('"taxon1" should contains "taxon1A"')
     }
 
-    const navigationLinks = getNavigationLinks(taxon)
+    const breadcrumbs = getBreadcrumbs(taxon)
 
-    expect(navigationLinks).toStrictEqual({
+    expect(breadcrumbs).toStrictEqual({
       parent: [
         {
           key: taxon1.id,

@@ -1,6 +1,6 @@
 import type { DeepFindResult } from '#utils/collection'
 import { getSearchUrl } from '#utils/url'
-import type { NavigationPath } from '@typings/navigation.d'
+import type { NavigationLink, NavigationPath } from '@typings/navigation.d'
 
 const getPrimaryTaxonomy = (catalog: Catalog): Taxonomy => {
   // TODO: taxonomies[0] is a requirement. First taxonomy is considered the navigation one. Should it be configurable?
@@ -25,7 +25,7 @@ export const getRootNavigationLinks = (catalog: Catalog): NavigationPath => {
   }
 }
 
-export const getNavigationLinks = (taxon: DeepFindResult<Taxon>): NavigationPath => {
+export const getBreadcrumbs = (taxon: DeepFindResult<Taxon>): NavigationPath => {
   return {
     parent: taxon.memo.map(({ id: key, slug, label, description }) => ({
       key: key,
@@ -45,6 +45,35 @@ export const getNavigationLinks = (taxon: DeepFindResult<Taxon>): NavigationPath
       text: label,
       description
     }))
+  }
+}
+
+const getNavigationChildren = (foundTaxon: DeepFindResult<Taxon>, index: number, currentTaxon: Taxon): NavigationLink[] => {
+  return foundTaxon.memo[index]?.id === currentTaxon.id ? currentTaxon.taxons.map((taxon) => ({
+    key: taxon.id,
+    href: getSearchUrl({ slug: taxon.slug }),
+    text: taxon.label,
+    description: taxon.description,
+    children: getNavigationChildren(foundTaxon, ++index, taxon)
+  })) : []
+}
+
+export const getNavigation = (foundTaxon: DeepFindResult<Taxon>): NavigationPath => {
+  return {
+    parent: [],
+    current: {
+      key: foundTaxon.result.id,
+      href: getSearchUrl(foundTaxon.result),
+      text: foundTaxon.result.label,
+      description: foundTaxon.result.description
+    },
+    children: [{
+      key: foundTaxon.memo[0].id,
+      href: getSearchUrl(foundTaxon.memo[0]),
+      text: foundTaxon.memo[0].label,
+      description: foundTaxon.memo[0].description,
+      children: getNavigationChildren(foundTaxon, 0, foundTaxon.memo[0])
+    }]
   }
 }
 

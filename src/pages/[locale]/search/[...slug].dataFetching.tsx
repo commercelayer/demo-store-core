@@ -1,9 +1,9 @@
-import { findTaxonBySlug, flattenReferencesFromTaxon, getCatalog } from '#utils/catalog'
+import { findTaxonBySlug, flattenReferencesFromTaxon, getCatalog, getNavigation } from '#utils/catalog'
 import { rawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
-import { getNavigationLinks, getRootNavigationLinks, getSlugs } from '#utils/catalog'
+import { getRootNavigationLinks, getSlugs } from '#utils/catalog'
 import { getProductWithVariants } from '#utils/products'
 import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import type { Props } from './SearchPageComponent'
@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   return {
     props: {
       navigation: getRootNavigationLinks(catalog),
-      subNavigation: getNavigationLinks(taxon),
+      subNavigation: getNavigation(taxon),
       products,
       ...(await serverSideTranslations(localeCode))
     }

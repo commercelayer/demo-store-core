@@ -3,6 +3,7 @@ export type NavigationLink = {
   href: string
   text: string
   description: string
+  children?: NavigationLink[]
 }
 
 export type NavigationPath = {

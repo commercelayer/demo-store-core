@@ -46,9 +46,7 @@ const Title: React.FC<Partial<SubNavigationProps>> = ({ subNavigation }) => {
 }
 
 export const SearchPageComponent: NextPage<Props> = ({ navigation, products, subNavigation }) => {
-  // TODO: temporarily disabled subNavigation since is implemented as Facet
-  // const isSubNavigationVisible = subNavigation !== undefined && subNavigation.parent.length >= 1 && subNavigation.children.length > 0
-  const isSubNavigationVisible = subNavigation !== undefined && false
+  const isSubNavigationVisible = subNavigation !== undefined && !!subNavigation.children.find(c => c.children?.length && c.children.length >= 1)
 
   return (
     <Page
@@ -62,7 +60,11 @@ export const SearchPageComponent: NextPage<Props> = ({ navigation, products, sub
 
         <div className='lg:flex mt-10'>
           {
-            isSubNavigationVisible && <SubNavigation className='shrink-0 basis-1/3' subNavigation={subNavigation} />
+            isSubNavigationVisible && (
+              <div className='shrink-0 basis-1/3 hidden lg:block'>
+                <SubNavigation className='w-3/4' subNavigation={subNavigation} />
+              </div>
+            )
           }
 
           <ProductList hasSidebar={isSubNavigationVisible} />
