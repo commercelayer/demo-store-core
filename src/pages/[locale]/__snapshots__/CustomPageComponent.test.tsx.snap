@@ -303,7 +303,7 @@ exports[`CustomPage component 1`] = `
           </div>
         </div>
         <div
-          class="mt-12 flex justify-between items-center"
+          class="mt-12 flex justify-between items-center flex-col gap-6 md:flex-row"
         >
           <div
             class="text-gray-500 flex gap-4 items-start"

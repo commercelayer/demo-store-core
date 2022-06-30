@@ -61,7 +61,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className='mt-12 flex justify-between items-center'>
+        <div className='mt-12 flex justify-between items-center flex-col gap-6 md:flex-row'>
           <div className='text-gray-500 flex gap-4 items-start'>
             <CommerceLayerGlyph aria-label='Commerce Layer logomark' width={32} />
             <div className='text-xs leading-relaxed'>
