@@ -1,5 +1,7 @@
-import { RawDataCarousel, RawDataGrid, RawDataHero, rawDataPages } from '#data/pages'
+import { RawDataCarousel, RawDataGrid, RawDataHero, rawDataPages, RawDataProductGrid } from '#data/pages'
+import { rawDataProducts } from '#data/products'
 import { translateField } from '#i18n/locale'
+import { getProductWithVariants, LocalizedProductWithVariant } from './products'
 
 export type Image = {
   src: string
@@ -27,6 +29,13 @@ export type HeroPageComponent = {
   href: string
 }
 
+export type ProductGridPageComponent = {
+  type: 'product-grid'
+  id: string
+  title: string
+  products: LocalizedProductWithVariant[]
+}
+
 export type GridPageComponent = {
   type: 'grid'
   id: string
@@ -42,6 +51,7 @@ export type GridPageComponent = {
 export type PageComponent = (
   | CarouselPageComponent
   | HeroPageComponent
+  | ProductGridPageComponent
   | GridPageComponent
 )
 
@@ -50,7 +60,7 @@ export type CustomPage = {
   components: PageComponent[]
 }
 
-const getCarouselPageComponent = (rawData: RawDataCarousel): CarouselPageComponent => {
+const getCarouselPageComponent = (rawData: RawDataCarousel, _localeCode: string): CarouselPageComponent => {
   return {
     type: 'carousel',
     id: rawData.id,
@@ -64,7 +74,7 @@ const getCarouselPageComponent = (rawData: RawDataCarousel): CarouselPageCompone
   }
 }
 
-const getHeroPageComponent = (rawData: RawDataHero): HeroPageComponent => {
+const getHeroPageComponent = (rawData: RawDataHero, _localeCode: string): HeroPageComponent => {
   return {
     type: 'hero',
     id: rawData.id,
@@ -72,6 +82,15 @@ const getHeroPageComponent = (rawData: RawDataHero): HeroPageComponent => {
     href: rawData.href,
     image: rawData.image,
     title: rawData.title
+  }
+}
+
+const getProductGridPageComponent = (rawData: RawDataProductGrid, localeCode: string): ProductGridPageComponent => {
+  return {
+    type: 'product-grid',
+    id: rawData.id,
+    title: rawData.title,
+    products: rawData.skus.map(sku => getProductWithVariants(sku, localeCode, rawDataProducts))
   }
 }
 
@@ -89,23 +108,17 @@ const getGridPageComponent = (rawData: RawDataGrid): GridPageComponent => {
   }
 }
 
+const componentMapper: Record<PageComponent['type'], (rawData: any, localeCode: string) => any> = {
+  'carousel': getCarouselPageComponent,
+  'grid': getGridPageComponent,
+  'hero': getHeroPageComponent,
+  'product-grid': getProductGridPageComponent,
+}
+
 export const getPages = (localeCode: string): CustomPage[] => {
   return Object.entries(rawDataPages.data).map(([slug, page]) => ({
     slug,
-    components: translateField(page, localeCode).map(component => {
-      switch (component.type) {
-        case 'carousel': {
-          return getCarouselPageComponent(component)
-        }
-
-        case 'hero': {
-          return getHeroPageComponent(component)
-        }
-
-        case 'grid': {
-          return getGridPageComponent(component)
-        }
-      }
-    })
+    components: translateField(page, localeCode)
+      .map(component => componentMapper[component.type](component, localeCode))
   }))
 }

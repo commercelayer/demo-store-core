@@ -20,7 +20,7 @@ const ProductList: React.FC<{ hasSidebar: boolean }> = ({ hasSidebar }) => {
     <div className={`w-full grid space-y-0 gap-6 lg:gap-y-12 sm:grid-cols-2 ${hasSidebar ? 'lg:grid-cols-2 2xl:grid-cols-3' : 'lg:grid-cols-3 xl:grid-cols-4'}`}>
       {
         products.map(product => (
-          <ProductCard key={product.sku} product={product} />
+          <ProductCard key={product.sku} product={product} useCommerceLayer={false} />
         ))
       }
     </div>

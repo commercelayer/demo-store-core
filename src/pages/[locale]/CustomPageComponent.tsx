@@ -1,8 +1,10 @@
 import { Carousel } from '#components/Carousel'
 import type { HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
+import { ProductCard } from '#components/ProductCard'
 import { Link } from '#i18n/Link'
 import type { CustomPage } from '#utils/pages'
+import { PricesContainer } from '@commercelayer/react-components'
 import type { NextPage } from 'next'
 
 export type Props = HeaderProps & {
@@ -16,6 +18,7 @@ export const CustomPageComponent: NextPage<Props> = ({ navigation, components })
         {
           components.map(component => {
             switch (component.type) {
+
               case 'carousel':
                 return (
                   <div key={component.id} data-testid='carousel-page-component'>
@@ -81,6 +84,38 @@ export const CustomPageComponent: NextPage<Props> = ({ navigation, components })
                     }
                   </div>
                 )
+
+              case 'product-grid':
+                return (
+                  <div key={component.id} data-testid='product-grid-page-component'>
+                    <div className='text-2xl font-semibold mt-12 mb-6'>{component.title}</div>
+                    <PricesContainer>
+                      <Carousel
+                        slides={
+                          component.products.map(product => <ProductCard key={product.sku} product={product} />)
+                        }
+                        options={{
+                          slidesPerView: 1,
+                          breakpoints:{
+                            '640': {
+                              slidesPerView: 2
+                            },
+                            '1024': {
+                              slidesPerView: 3
+                            },
+                            '1280': {
+                              slidesPerView: 4
+                            },
+                          }
+                        }}
+                      />
+                    </PricesContainer>
+                  </div>
+                )
+
+              default:
+                ((_: never): void => { })(component)
+                break;
             }
           })
         }

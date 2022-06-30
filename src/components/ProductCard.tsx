@@ -1,9 +1,15 @@
 import { Link } from '#i18n/Link'
 import type { LocalizedProductWithVariant } from '#utils/products'
 import { getProductUrl } from '#utils/url'
+import { Price as CLPrice } from '@commercelayer/react-components'
 import { Price } from './Price'
 
-export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = ({ product }) => {
+type Props = {
+  product: LocalizedProductWithVariant
+  useCommerceLayer?: false
+}
+
+export const ProductCard: React.FC<Props> = ({ product, useCommerceLayer = true }) => {
   return (
     <div className='group relative'>
       <Link href={getProductUrl(product)}>
@@ -13,7 +19,19 @@ export const ProductCard: React.FC<{ product: LocalizedProductWithVariant }> = (
           </div>
           <h3 className='mt-6 text-base text-black font-medium'>{product.name}</h3>
           <div className='mt-2 min-h-[1.6rem]'>
-            {product.price && <Price price={product.price} />}
+            {
+              useCommerceLayer ? (
+                <CLPrice skuCode={product.sku}>
+                  {
+                    ({ prices }) => (
+                      prices[0] ? <Price price={prices[0]} /> : null
+                    )
+                  }
+                </CLPrice>
+              ) : (
+                product.price && <Price price={product.price} />
+              )
+            }
           </div>
         </a>
       </Link>

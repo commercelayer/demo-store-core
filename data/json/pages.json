@@ -38,6 +38,17 @@
         "href": "/search/bags"
       },
       {
+        "type": "product-grid",
+        "id": "product-grid-1",
+        "title": "Best seller",
+        "skus": [
+          "SHIRTMLS9B969C000000LXXX",
+          "BASEBHAT000000FFFFFFXXXX",
+          "TOTEBAGLE7DDC7000000XXXX",
+          "BABYBIBXA19D9D000000XXXX"
+        ]
+      },
+      {
         "type": "grid",
         "id": "grid-1",
         "items": [
@@ -110,6 +121,17 @@
         },
         "title": "30% SCONTO - CL30",
         "href": "/search/bags"
+      },
+      {
+        "type": "product-grid",
+        "id": "product-grid-1",
+        "title": "I più venduti",
+        "skus": [
+          "SHIRTMLS9B969C000000LXXX",
+          "BASEBHAT000000FFFFFFXXXX",
+          "TOTEBAGLE7DDC7000000XXXX",
+          "BABYBIBXA19D9D000000XXXX"
+        ]
       },
       {
         "type": "grid",

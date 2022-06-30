@@ -32,6 +32,13 @@ const heroSchema = z.object({
   href: z.string()
 })
 
+const productGridSchema = z.object({
+  type: z.literal('product-grid'),
+  id: z.string(),
+  title: z.string(),
+  skus: z.string().array()
+})
+
 const gridSchema = z.object({
   type: z.literal('grid'),
   id: z.string(),
@@ -45,8 +52,9 @@ const pagesSchema = unserializableSchema(
       localizedFieldSchema(
         z.discriminatedUnion('type', [
           carouselSchema,
+          gridSchema,
           heroSchema,
-          gridSchema
+          productGridSchema,
         ]).array()
       )
     )
@@ -55,8 +63,9 @@ const pagesSchema = unserializableSchema(
 export type RawDataPages = z.infer<typeof pagesSchema>
 
 export type RawDataCarousel = z.infer<typeof carouselSchema>
-export type RawDataHero = z.infer<typeof heroSchema>
 export type RawDataGrid = z.infer<typeof gridSchema>
+export type RawDataHero = z.infer<typeof heroSchema>
+export type RawDataProductGrid = z.infer<typeof productGridSchema>
 
 export const rawDataPages = pagesSchema.parse({
   data: pagesJson
