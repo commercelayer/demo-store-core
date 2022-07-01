@@ -324,7 +324,7 @@ exports[`CustomPage component 1`] = `
             </div>
           </div>
           <div
-            class="text-gray-500 flex gap-4 items-start"
+            class="text-gray-500 flex gap-4 items-start grayscale"
           >
             <svg />
             <svg />

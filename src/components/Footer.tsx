@@ -46,17 +46,17 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className='mt-6 py-6 border-y border-y-gray-100 text-xs divide-x flex'>
-          <div className='pr-4'>
+        <div className='mt-6 py-6 border-y border-y-gray-100 text-xs flex flex-col md:flex-row md:divide-x'>
+          <div className='py-2 md:py-0 md:pr-4'>
             <Link href='/shipping-and-payments'><a>Shipping & Payments</a></Link>
           </div>
-          <div className='px-4'>
+          <div className='py-2 md:py-0 md:px-4'>
             <Link href='/returns'><a>Returns</a></Link>
           </div>
-          <div className='px-4'>
+          <div className='py-2 md:py-0 md:px-4'>
             <Link href='/terms-and-conditions'><a>Terms and conditions</a></Link>
           </div>
-          <div className='px-4'>
+          <div className='py-2 md:py-0 md:px-4'>
             <Link href='/cookies-and-privacy'><a>Cookies and privacy</a></Link>
           </div>
         </div>
@@ -70,7 +70,7 @@ export const Footer: React.FC = () => {
               VAT IT12345678<br />
             </div>
           </div>
-          <div className='text-gray-500 flex gap-4 items-start'>
+          <div className='text-gray-500 flex gap-4 items-start grayscale'>
             <PaymentKlarna />
             <PaymentStripe />
             <PaymentMastercard />
