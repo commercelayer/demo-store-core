@@ -117,7 +117,7 @@ const componentMapper: Record<PageComponent['type'], (rawData: any, localeCode: 
 
 export const getPages = (localeCode: string): CustomPage[] => {
   return Object.entries(rawDataPages.data).map(([slug, page]) => ({
-    slug,
+    slug: slug.replace(/^\//, ''),
     components: translateField(page, localeCode)
       .map(component => componentMapper[component.type](component, localeCode))
   }))

@@ -16,13 +16,12 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
   return withLocalePaths(localeCode => {
 
     const pages = getPages(localeCode)
-    const slugs = pages.map(page => page.slug.replace(/^\//, ''))
 
     return {
       fallback: false,
-      paths: slugs.map(slug => ({
+      paths: pages.map(page => ({
         params: {
-          slug: slug.split('/')
+          slug: page.slug.split('/')
         }
       }))
     }
@@ -35,7 +34,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const catalog = getCatalog(locale)
 
   const pages = getPages(localeCode)
-  const page = pages.find(page => page.slug === `/${slug ? slug.join('/') : ''}`)
+  const page = pages.find(page => page.slug === (slug ? slug.join('/') : ''))
 
   if (!page) {
     return {

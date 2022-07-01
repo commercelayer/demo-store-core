@@ -1,6 +1,15 @@
 const colors = require("tailwindcss/colors")
 const defaultTheme = require("tailwindcss/defaultTheme")
 
+function withOpacity(variableName) {
+  return ({ opacityValue }) => {
+    if (opacityValue !== undefined) {
+      return `rgba(var(${variableName}), ${opacityValue})`
+    }
+    return `rgb(var(${variableName}))`
+  }
+}
+
 module.exports = {
   content: [
     "./src/components/**/*.{js,ts,jsx,tsx}",
@@ -53,7 +62,7 @@ module.exports = {
         400: "#FFAB2E",
       },
       violet: {
-        400: '#666EFF',
+        400: withOpacity('--color-primary'),
       }
     },
     fontFamily: {

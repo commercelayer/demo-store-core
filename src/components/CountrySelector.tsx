@@ -1,6 +1,7 @@
 import { Accordion } from '#components/Accordion'
 import { Logo } from '#components/Logo'
 import { rawDataCountries } from '#data/countries'
+import { rawDataOrganization } from '#data/organization'
 import { Link } from '#i18n/Link'
 import { makeLocaleCode } from '#i18n/locale'
 import { groupByRegion } from '#utils/countries'
@@ -17,8 +18,8 @@ export const CountrySelector = () => {
       <div className={styles.countriesContainer}>
 
         <h1>
-          <Logo className='border-b border-b-gray-100 md:border-b-0 md:text-center' />
-          <span className='sr-only'>{i18n.t('seo.title')}</span>
+          <Logo className='border-b border-b-gray-100 md:border-b-0 md:flex md:justify-center' />
+          <span className='sr-only'>{rawDataOrganization.name || i18n.t('seo.title')}</span>
         </h1>
 
         <div className={styles.title}>

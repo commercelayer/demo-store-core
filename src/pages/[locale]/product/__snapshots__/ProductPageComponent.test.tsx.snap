@@ -25,12 +25,12 @@ exports[`product detail page 1`] = `
               >
                 <svg
                   aria-label="Commerce Layer logomark"
-                  class="inline"
+                  class="m-1 inline"
                   width="32"
                 />
                 <svg
                   aria-label="Commerce Layer logotype"
-                  class="ml-4 hidden md:inline"
+                  class="ml-2 hidden md:inline"
                   width="192"
                 />
               </div>
@@ -346,10 +346,10 @@ exports[`product detail page 1`] = `
           </div>
         </div>
         <div
-          class="mt-6 py-6 border-y border-y-gray-100 text-xs divide-x flex"
+          class="mt-6 py-6 border-y border-y-gray-100 text-xs flex flex-col md:flex-row md:divide-x"
         >
           <div
-            class="pr-4"
+            class="py-2 md:py-0 md:pr-4"
           >
             <a
               href="/en-US/shipping-and-payments"
@@ -358,7 +358,7 @@ exports[`product detail page 1`] = `
             </a>
           </div>
           <div
-            class="px-4"
+            class="py-2 md:py-0 md:px-4"
           >
             <a
               href="/en-US/returns"
@@ -367,7 +367,7 @@ exports[`product detail page 1`] = `
             </a>
           </div>
           <div
-            class="px-4"
+            class="py-2 md:py-0 md:px-4"
           >
             <a
               href="/en-US/terms-and-conditions"
@@ -376,7 +376,7 @@ exports[`product detail page 1`] = `
             </a>
           </div>
           <div
-            class="px-4"
+            class="py-2 md:py-0 md:px-4"
           >
             <a
               href="/en-US/cookies-and-privacy"

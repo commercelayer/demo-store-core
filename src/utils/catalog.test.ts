@@ -44,7 +44,7 @@ describe('getRootNavigationLinks', () => {
 
 describe('getBreadcrumbs', () => {
   it('should be able to get parent, current and children navigation given a taxon deepFind result', () => {
-    const taxon = deepFind([taxon1, taxon2, taxon3], 'taxons', 'slug', '/taxon-slug-1A')
+    const taxon = deepFind([taxon1, taxon2, taxon3], 'taxons', 'slug', 'taxon-slug-1A')
 
     if (!taxon) {
       throw new Error('"taxon1" should contains "taxon1A"')
@@ -56,26 +56,26 @@ describe('getBreadcrumbs', () => {
       parent: [
         {
           key: taxon1.id,
-          href: `/search${taxon1.slug}`,
+          href: `/search/${taxon1.slug}`,
           text: taxon1.label,
           description: taxon1.description
         },
         {
           key: taxon1A.id,
-          href: `/search${taxon1A.slug}`,
+          href: `/search/${taxon1A.slug}`,
           text: taxon1A.label,
           description: taxon1A.description
         }
       ],
       current: {
         key: taxon1A.id,
-        href: `/search${taxon1A.slug}`,
+        href: `/search/${taxon1A.slug}`,
         text: taxon1A.label,
         description: taxon1A.description
       },
       children: [{
         key: taxon1A1.id,
-        href: `/search${taxon1A1.slug}`,
+        href: `/search/${taxon1A1.slug}`,
         text: taxon1A1.label,
         description: taxon1A1.description
       }],
@@ -88,11 +88,11 @@ describe('getSlugs', () => {
     const slugs = getSlugs(catalog1)
 
     expect(slugs).toStrictEqual([
-      '/taxon-slug-1',
-      '/taxon-slug-1A',
-      '/taxon-slug-1A1',
-      '/taxon-slug-1B',
-      '/taxon-slug-2',
+      'taxon-slug-1',
+      'taxon-slug-1A',
+      'taxon-slug-1A1',
+      'taxon-slug-1B',
+      'taxon-slug-2',
     ])
   })
 })

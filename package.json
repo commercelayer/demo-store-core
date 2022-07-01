@@ -1,12 +1,14 @@
 {
   "private": true,
   "scripts": {
+    "predev": "env $(awk 'NF > 0 && !/^#/ { print $0 }' .env.local | xargs) node npm-prebuild.js",
     "dev": "next dev",
+    "prebuild": "node npm-prebuild.js",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
     "export": "next export",
-    "serve": "npm run build && next export -o out/demo-store/ && npx serve out",
+    "serve": "env $(awk 'NF > 0 && !/^#/ { print $0 }' .env.local | xargs) npm run build && next export -o out/demo-store/ && npx serve out",
     "lint": "next lint",
     "ts:check": "tsc --noEmit && npm run test:data",
     "test:data": "jest ./data",

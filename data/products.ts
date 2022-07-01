@@ -13,7 +13,7 @@ const productSchema = z.object({
   productCode: z.string(),
   variantCode: z.string(),
   sku: z.string(),
-  slug: z.string(),
+  slug: z.string().transform(slug => slug.replace(/^\//, '')),
   name: localizedFieldSchema(z.string()),
   description: localizedFieldSchema(z.string()),
   images: z.string().array(),

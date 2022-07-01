@@ -49,7 +49,7 @@ export const getBreadcrumbs = (taxon: DeepFindResult<Taxon>): NavigationPath => 
 }
 
 const getNavigationChildren = (foundTaxon: DeepFindResult<Taxon>, index: number, currentTaxon: Taxon): NavigationLink[] => {
-  return foundTaxon.memo[index]?.id === currentTaxon.id ? currentTaxon.taxons.map((taxon) => ({
+  return foundTaxon.memo[index]?.id === currentTaxon.id ? currentTaxon.taxons.filter(t => flattenReferencesFromTaxon(t).length > 0).map((taxon) => ({
     key: taxon.id,
     href: getSearchUrl({ slug: taxon.slug }),
     text: taxon.label,

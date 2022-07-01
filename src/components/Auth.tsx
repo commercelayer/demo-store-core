@@ -1,9 +1,9 @@
+import { AuthProvider } from '#contexts/AuthContext'
 import { defaultLocale, getLocale } from '#i18n/locale'
 import { AuthReturnType, ClientCredentials, getSalesChannelToken } from '@commercelayer/js-auth'
 import { CommerceLayer } from '@commercelayer/react-components'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
-import { AuthProvider } from '#contexts/AuthContext'
 
 type Auth = {
   accessToken: string

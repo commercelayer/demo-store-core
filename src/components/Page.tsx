@@ -1,4 +1,6 @@
 import { basePath } from '#config/general.config'
+import { rawDataOrganization } from '#data/organization'
+import { getRGBColor } from '#utils/color'
 import { useI18n } from 'next-localization'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -44,10 +46,15 @@ export const Page: React.FC<Props> = ({
   return (
     <>
       <Head>
-        <title>{`${title ? `${title} - ` : ''}${i18n.t('seo.title')}`}</title>
+        <title>{`${title ? `${title} - ` : ''}${rawDataOrganization.name || i18n.t('seo.title')}`}</title>
         <meta name='description' content={description || i18n.t('seo.description')} />
         <link rel='icon' href={basePath + '/favicon.ico'} />
         {canonical && <link rel='canonical' href={`${router.basePath}/${router.query.locale}${canonical}`} />}
+        <style>{`
+          :root {
+            --color-primary: ${getRGBColor(rawDataOrganization.primary_color || '#666EFF')};
+          }
+        `}</style>
       </Head>
 
       <main className='flex flex-col h-screen'>

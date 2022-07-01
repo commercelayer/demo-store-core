@@ -27,7 +27,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
       fallback: false,
       paths: flattenProducts.map(product => ({
         params: {
-          slug: product.slug.replace(/^\//, '').split('/')
+          slug: product.slug.split('/')
         }
       }))
     }

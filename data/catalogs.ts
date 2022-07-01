@@ -24,7 +24,7 @@ const taxonSchema = z.object({
   name: z.string(),
   label: localizedFieldSchema(z.string()),
   description: localizedFieldSchema(z.string()),
-  slug: z.string(),
+  slug: z.string().transform(slug => slug.replace(/^\//, '')),
   references: z.string().array(),
   taxons: z.string().array().optional()
 })
