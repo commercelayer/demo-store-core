@@ -27,7 +27,8 @@ describe('JSON Data', () => {
   })
 
   it('"products.json" should be properly defined.', async () => {
-    const { rawDataProducts } = await import('./products')
+    const { getRawDataProducts } = await import('./products')
+    const rawDataProducts = await getRawDataProducts()
     expect(rawDataProducts).toBeDefined()
   })
 })

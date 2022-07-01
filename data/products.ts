@@ -2,7 +2,16 @@ import { localizedFieldSchema } from '#i18n/locale'
 import type { Price } from '@commercelayer/sdk'
 import { z } from 'zod'
 
-import productsJson from './json/products.json'
+export const getRawDataProducts = async (): Promise<RawDataProduct[]> => {
+  const dataFolder = './json'
+  const productsJson = (await import(`${dataFolder}/products.json`)).default
+  // const productsJson = await fetch('http://localhost:3001/json/products.json')
+  //   .then(response => response.json())
+
+  // TODO: this should be unserializable
+  return productSchema.passthrough().array().parse(productsJson)
+}
+
 
 const detailSchema = z.object({
   title: localizedFieldSchema(z.string()),
@@ -24,6 +33,3 @@ export type RawDataProduct = z.infer<typeof productSchema> & {
   available?: boolean
   price?: Price
 }
-
-// TODO: this should be unserializable
-export const rawDataProducts: RawDataProduct[] = productSchema.passthrough().array().parse(productsJson);

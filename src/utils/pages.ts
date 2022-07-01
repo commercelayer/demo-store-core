@@ -1,5 +1,5 @@
 import { RawDataCarousel, RawDataGrid, RawDataHero, rawDataPages, RawDataProductGrid } from '#data/pages'
-import { rawDataProducts } from '#data/products'
+import { getRawDataProducts } from '#data/products'
 import { translateField } from '#i18n/locale'
 import { getProductWithVariants, LocalizedProductWithVariant } from './products'
 
@@ -60,7 +60,7 @@ export type CustomPage = {
   components: PageComponent[]
 }
 
-const getCarouselPageComponent = (rawData: RawDataCarousel, _localeCode: string): CarouselPageComponent => {
+const getCarouselPageComponent = async (rawData: RawDataCarousel, _localeCode: string): Promise<CarouselPageComponent> => {
   return {
     type: 'carousel',
     id: rawData.id,
@@ -74,7 +74,7 @@ const getCarouselPageComponent = (rawData: RawDataCarousel, _localeCode: string)
   }
 }
 
-const getHeroPageComponent = (rawData: RawDataHero, _localeCode: string): HeroPageComponent => {
+const getHeroPageComponent = async (rawData: RawDataHero, _localeCode: string): Promise<HeroPageComponent> => {
   return {
     type: 'hero',
     id: rawData.id,
@@ -85,7 +85,8 @@ const getHeroPageComponent = (rawData: RawDataHero, _localeCode: string): HeroPa
   }
 }
 
-const getProductGridPageComponent = (rawData: RawDataProductGrid, localeCode: string): ProductGridPageComponent => {
+const getProductGridPageComponent = async (rawData: RawDataProductGrid, localeCode: string): Promise<ProductGridPageComponent> => {
+  const rawDataProducts = await getRawDataProducts()
   return {
     type: 'product-grid',
     id: rawData.id,
@@ -94,7 +95,7 @@ const getProductGridPageComponent = (rawData: RawDataProductGrid, localeCode: st
   }
 }
 
-const getGridPageComponent = (rawData: RawDataGrid): GridPageComponent => {
+const getGridPageComponent = async (rawData: RawDataGrid): Promise<GridPageComponent> => {
   return {
     type: 'grid',
     id: rawData.id,
@@ -108,17 +109,25 @@ const getGridPageComponent = (rawData: RawDataGrid): GridPageComponent => {
   }
 }
 
-const componentMapper: Record<PageComponent['type'], (rawData: any, localeCode: string) => any> = {
+const componentMapper: Record<PageComponent['type'], (rawData: any, localeCode: string) => Promise<any>> = {
   'carousel': getCarouselPageComponent,
   'grid': getGridPageComponent,
   'hero': getHeroPageComponent,
   'product-grid': getProductGridPageComponent,
 }
 
-export const getPages = (localeCode: string): CustomPage[] => {
-  return Object.entries(rawDataPages.data).map(([slug, page]) => ({
-    slug: slug.replace(/^\//, ''),
-    components: translateField(page, localeCode)
-      .map(component => componentMapper[component.type](component, localeCode))
-  }))
+export const getPages = async (localeCode: string): Promise<CustomPage[]> => {
+  return await Promise.all(
+    Object.entries(rawDataPages.data).map(async ([slug, page]) => {
+      const components = await Promise.all(
+        translateField(page, localeCode)
+          .map(component => componentMapper[component.type](component, localeCode))
+      )
+
+      return {
+        slug: slug.replace(/^\//, ''),
+        components
+      }
+    })
+  )
 }

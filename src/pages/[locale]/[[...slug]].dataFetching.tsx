@@ -13,9 +13,9 @@ type Query = {
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = () => {
-  return withLocalePaths(localeCode => {
+  return withLocalePaths(async localeCode => {
 
-    const pages = getPages(localeCode)
+    const pages = await getPages(localeCode)
 
     return {
       fallback: false,
@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const locale = getLocale(localeCode)
   const catalog = getCatalog(locale)
 
-  const pages = getPages(localeCode)
+  const pages = await getPages(localeCode)
   const page = pages.find(page => page.slug === (slug ? slug.join('/') : ''))
 
   if (!page) {
