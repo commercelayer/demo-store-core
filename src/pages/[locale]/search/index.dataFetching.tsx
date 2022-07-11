@@ -7,6 +7,7 @@ import { getRootNavigationLinks } from '#utils/catalog'
 import { getProductWithVariants } from '#utils/products'
 import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import type { Props } from './SearchPageComponent'
+import { serverSideSettings } from '#contexts/SettingsContext'
 
 type Query = {
   locale: string
@@ -33,6 +34,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
     props: {
       navigation: getRootNavigationLinks(catalog),
       products,
+      ...(await serverSideSettings()),
       ...(await serverSideTranslations(localeCode))
     }
   }

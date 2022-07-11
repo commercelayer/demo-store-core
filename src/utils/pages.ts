@@ -1,4 +1,5 @@
-import { RawDataCarousel, RawDataGrid, RawDataHero, rawDataPages, RawDataProductGrid } from '#data/pages'
+import type { RawDataCarousel, RawDataGrid, RawDataHero, RawDataProductGrid } from '#data/pages'
+import { getRawDataPages } from '#data/pages'
 import { getRawDataProducts } from '#data/products'
 import { translateField } from '#i18n/locale'
 import { getProductWithVariants, LocalizedProductWithVariant } from './products'
@@ -117,6 +118,7 @@ const componentMapper: Record<PageComponent['type'], (rawData: any, localeCode: 
 }
 
 export const getPages = async (localeCode: string): Promise<CustomPage[]> => {
+  const rawDataPages = await getRawDataPages()
   return await Promise.all(
     Object.entries(rawDataPages.data).map(async ([slug, page]) => {
       const components = await Promise.all(

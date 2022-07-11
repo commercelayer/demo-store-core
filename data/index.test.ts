@@ -17,12 +17,14 @@ describe('JSON Data', () => {
   })
 
   it('"organization.json" should be properly defined. Did you run "npm run prebuild"?', async () => {
-    const { rawDataOrganization } = await import('./organization')
+    const { getRawDataOrganization } = await import('./organization')
+    const rawDataOrganization = await getRawDataOrganization()
     expect(rawDataOrganization).toBeDefined()
   })
 
   it('"pages.json" should be properly defined.', async () => {
-    const { rawDataPages } = await import('./pages')
+    const { getRawDataPages } = await import('./pages')
+    const rawDataPages = await getRawDataPages()
     expect(rawDataPages).toBeDefined()
   })
 

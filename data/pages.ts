@@ -2,7 +2,15 @@ import { localizedFieldSchema } from '#i18n/locale'
 import { unserializableSchema } from '#utils/unserializable'
 import { z } from 'zod'
 
-import pagesJson from './json/pages.json'
+export const getRawDataPages = async (): Promise<RawDataPages> => {
+  const dataFolder = './json'
+  const pagesJson = (await import(`${dataFolder}/pages.json`)).default
+
+  return pagesSchema.parse({
+    data: pagesJson
+  })
+}
+
 
 const imageSchema = z.object({
   src: z.string(),
@@ -66,7 +74,3 @@ export type RawDataCarousel = z.infer<typeof carouselSchema>
 export type RawDataGrid = z.infer<typeof gridSchema>
 export type RawDataHero = z.infer<typeof heroSchema>
 export type RawDataProductGrid = z.infer<typeof productGridSchema>
-
-export const rawDataPages = pagesSchema.parse({
-  data: pagesJson
-});

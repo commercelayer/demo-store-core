@@ -1,6 +1,10 @@
 import { z } from 'zod'
 
-import organizationJson from './json/organization.json'
+export const getRawDataOrganization = async (): Promise<RawDataOrganization> => {
+  const dataFolder = './json'
+  const organizationJson = (await import(`${dataFolder}/organization.json`)).default
+  return organizationSchema.parse(organizationJson)
+}
 
 const organizationSchema = z.object({
   // id: z.string(),
@@ -31,5 +35,3 @@ const organizationSchema = z.object({
 })
 
 export type RawDataOrganization = z.infer<typeof organizationSchema>
-
-export const rawDataOrganization: RawDataOrganization = organizationSchema.parse(organizationJson);

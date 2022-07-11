@@ -1,4 +1,5 @@
 import { Auth } from '#components/Auth'
+import { SettingsProvider } from '#contexts/SettingsContext'
 import { defaultLocale, getLocale } from '#i18n/locale'
 import { getPersistKey } from '#utils/order'
 import { LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
@@ -14,7 +15,7 @@ import 'swiper/css/pagination'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
-  const { lngDict, ...rest } = pageProps
+  const { lngDict, settingsContext, ...rest } = pageProps
   const localeCode = router.query.locale as unknown as string | string[] | undefined
 
   if (Array.isArray(localeCode)) {
@@ -27,26 +28,30 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   if (locale.isShoppable === false) {
     return (
-      <I18nProvider lngDict={lngDict} locale={localeCode || defaultLocale}>
-        <Component {...rest} />
-      </I18nProvider>
+      <SettingsProvider {...settingsContext}>
+        <I18nProvider lngDict={lngDict} locale={localeCode || defaultLocale}>
+          <Component {...rest} />
+        </I18nProvider>
+      </SettingsProvider>
     )
   }
 
   return (
-    <I18nProvider lngDict={lngDict} locale={localeCode || defaultLocale}>
-      <Auth>
-        <OrderStorage persistKey={getPersistKey(locale)}>
-          <OrderContainer attributes={{
-            language_code: locale?.language.code,
-            return_url
-          }}>
-            <LineItemsContainer>
-              <Component {...rest} />
-            </LineItemsContainer>
-          </OrderContainer>
-        </OrderStorage>
-      </Auth>
-    </I18nProvider>
+    <SettingsProvider {...settingsContext}>
+      <I18nProvider lngDict={lngDict} locale={localeCode || defaultLocale}>
+        <Auth>
+          <OrderStorage persistKey={getPersistKey(locale)}>
+            <OrderContainer attributes={{
+              language_code: locale?.language.code,
+              return_url
+            }}>
+              <LineItemsContainer>
+                <Component {...rest} />
+              </LineItemsContainer>
+            </OrderContainer>
+          </OrderStorage>
+        </Auth>
+      </I18nProvider>
+    </SettingsProvider>
   )
 }

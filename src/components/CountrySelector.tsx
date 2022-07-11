@@ -1,7 +1,7 @@
 import { Accordion } from '#components/Accordion'
 import { Logo } from '#components/Logo'
+import { useSettingsContext } from '#contexts/SettingsContext'
 import { rawDataCountries } from '#data/countries'
-import { rawDataOrganization } from '#data/organization'
 import { Link } from '#i18n/Link'
 import { makeLocaleCode } from '#i18n/locale'
 import { groupByRegion } from '#utils/countries'
@@ -12,6 +12,7 @@ import styles from './CountrySelector.module.scss'
 export const CountrySelector = () => {
   const i18n = useI18n()
   const groupedCountry = Object.entries(groupByRegion(rawDataCountries))
+  const settings = useSettingsContext()
 
   return (
     <div className='flex flex-col h-screen'>
@@ -19,7 +20,7 @@ export const CountrySelector = () => {
 
         <h1>
           <Logo className='border-b border-b-gray-100 md:border-b-0 md:flex md:justify-center' />
-          <span className='sr-only'>{rawDataOrganization.name || i18n.t('seo.title')}</span>
+          <span className='sr-only'>{settings.organization?.name || i18n.t('seo.title')}</span>
         </h1>
 
         <div className={styles.title}>

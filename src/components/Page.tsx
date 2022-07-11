@@ -1,5 +1,5 @@
 import { basePath } from '#config/general.config'
-import { rawDataOrganization } from '#data/organization'
+import { useSettingsContext } from '#contexts/SettingsContext'
 import { getRGBColor } from '#utils/color'
 import { useI18n } from 'next-localization'
 import Head from 'next/head'
@@ -42,17 +42,18 @@ export const Page: React.FC<Props> = ({
 }) => {
   const router = useRouter()
   const i18n = useI18n()
+  const settings = useSettingsContext()
 
   return (
     <>
       <Head>
-        <title>{`${title ? `${title} - ` : ''}${rawDataOrganization.name || i18n.t('seo.title')}`}</title>
+        <title>{`${title ? `${title} - ` : ''}${settings.organization?.name || i18n.t('seo.title')}`}</title>
         <meta name='description' content={description || i18n.t('seo.description')} />
         <link rel='icon' href={basePath + '/favicon.ico'} />
         {canonical && <link rel='canonical' href={`${router.basePath}/${router.query.locale}${canonical}`} />}
         <style>{`
           :root {
-            --color-primary: ${getRGBColor(rawDataOrganization.primary_color || '#666EFF')};
+            --color-primary: ${getRGBColor(settings.organization?.primary_color || '#666EFF')};
           }
         `}</style>
       </Head>
