@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@keyframes clWink {
+  from {
+    d: path("M 183.8 143 h 64 v 32 h -64 Z");
+  }
+  
+  to {
+    d: path("M 183.8 128 h 64 v 64 h -64 Z");
+  }
+}
+
+#CommerceLayerGlyph_svg__right-eye {
+  animation: clWink .2s 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
