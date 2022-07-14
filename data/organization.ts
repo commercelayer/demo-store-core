@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import organizationJson from './json/organization.json'
+import organizationJson from '#config/json/organization.json'
 
 const organizationSchema = z.object({
   // id: z.string(),

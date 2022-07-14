@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import languagesJson from './json/languages.json'
+import languagesJson from '#config/json/languages.json'
 
 const languageSchema = z.object({
   name: z.string(),

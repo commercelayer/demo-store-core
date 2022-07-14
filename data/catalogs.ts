@@ -2,9 +2,9 @@ import { localizedFieldSchema } from '#i18n/locale'
 import { unserializableSchema } from '#utils/unserializable'
 import { z } from 'zod'
 
-import catalogsJson from './json/catalogs.json'
-import taxonomiesJson from './json/taxonomies.json'
-import taxonsJson from './json/taxons.json'
+import catalogsJson from '#config/json/catalogs.json'
+import taxonomiesJson from '#config/json/taxonomies.json'
+import taxonsJson from '#config/json/taxons.json'
 
 const catalogSchema = z.object({
   id: z.string(),

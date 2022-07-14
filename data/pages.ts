@@ -2,7 +2,7 @@ import { localizedFieldSchema } from '#i18n/locale'
 import { unserializableSchema } from '#utils/unserializable'
 import { z } from 'zod'
 
-import pagesJson from './json/pages.json'
+import pagesJson from '#config/json/pages.json'
 
 
 const imageSchema = z.object({

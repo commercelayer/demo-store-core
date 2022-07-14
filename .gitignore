@@ -44,4 +44,4 @@ tsconfig.tsbuildinfo
 .lighthouseci
 
 # data
-/data/json-*
+/config/json-*
