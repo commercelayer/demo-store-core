@@ -54,9 +54,10 @@ const facetsConfig = [
         sort: values => values.sort((a, b) => {
           return parseFloat(a.toString().replace(',', '.')) - parseFloat(b.toString().replace(',', '.'))
         })
-      }
+      },
+      { pattern: /.*/ },
     ]
-  },
+  }
 ]
 
 module.exports = facetsConfig

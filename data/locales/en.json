@@ -6,7 +6,11 @@
     "chooseCountry": "Choose country",
     "international": "International",
     "resultsFor": "{{count}} results for \"{{query}}\"",
-    "all": "all"
+    "all": "all",
+    "countrySelector": {
+      "chooseCountry": "CHOOSE YOUR COUNTRY/REGION",
+      "otherCountries": "Other Countries / Regions:"
+    }
   },
   "seo": {
     "title": "Commerce Layer Store",
