@@ -41,7 +41,11 @@ const facetsConfig = [
         sort: values => values.sort((a, b) => b.toString().localeCompare(a.toString()))
       },
       { pattern: /^S$/i },
+      { pattern: /^S-M$/i },
+      { pattern: /^S\/M$/i },
       { pattern: /^M$/i },
+      { pattern: /^M-L$/i },
+      { pattern: /^M\/L$/i },
       { pattern: /^L$/i },
       { pattern: /^[X]+L$/i },
       { pattern: /^[4-9]XL$/i },
