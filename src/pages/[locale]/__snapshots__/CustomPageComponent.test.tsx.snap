@@ -84,7 +84,7 @@ exports[`CustomPage component 1`] = `
                 class="pointer-events-none w-6 h-6 absolute top-1/2 transform -translate-y-1/2 left-3"
               />
               <form
-                action="/demo-store/en-US/search"
+                action="/en-US/search"
               >
                 <input
                   class="form-input appearance-none bg-transparent w-full pl-14 focus:outline-none focus:shadow-outline"
