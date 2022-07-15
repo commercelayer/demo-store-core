@@ -71,7 +71,6 @@ jobs:
 
     - name: Build 🔧
       run: |
-        npm run build
         npm run export
       env:
         SITE_URL: https://commercelayer.github.io/demo-store
