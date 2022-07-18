@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import { RouterContext } from 'jest.helpers'
 import { Link } from './Link'
 
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
@@ -8,40 +9,32 @@ beforeEach(() => {
 })
 
 test('should be able to switch "locale" from root', () => {
-  useRouter.mockImplementation(() => ({
-    route: '/',
-    pathname: '/',
-    query: {
-      locale: 'en-US'
-    },
-    asPath: '/'
-  }))
+  const { container } = render(
+    <RouterContext mockedUseRouter={useRouter} href='/'>
+      <Link locale="en-US">Path 1</Link>
+    </RouterContext>
+  )
 
-  const { container } = render(<Link locale="en-US">Path 1</Link>)
   expect(container).toContainHTML('<div><a href="/en-US">Path 1</a></div>')
 })
 
 test('should be able to switch "locale" from a locale path', () => {
-  useRouter.mockImplementation(() => ({
-    route: '/[locale]',
-    pathname: '/[locale]',
-    query: { locale: 'en-BR' },
-    asPath: '/en-BR',
-  }))
+  const { container } = render(
+    <RouterContext mockedUseRouter={useRouter} href='/' locale='en-IT'>
+      <Link locale="en-US">Path 1</Link>
+    </RouterContext>
+  )
 
-  const { container } = render(<Link locale="en-US">Path 1</Link>)
   expect(container).toContainHTML('<div><a href="/en-US">Path 1</a></div>')
 })
 
 test('should be able to switch "locale" from any path', () => {
-  useRouter.mockImplementation(() => ({
-    route: '/[locale]/another',
-    pathname: '/[locale]/another',
-    query: { locale: 'en-BE' },
-    asPath: '/en-BE/another'
-  }))
+  const { container } = render(
+    <RouterContext mockedUseRouter={useRouter} href='/another' locale='en-BE'>
+      <Link locale="en-US">Path 1</Link>
+    </RouterContext>
+  )
 
-  const { container } = render(<Link locale="en-US">Path 1</Link>)
   expect(container).toContainHTML('<div><a href="/en-US/another">Path 1</a></div>')
 })
 

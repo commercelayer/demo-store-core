@@ -3,12 +3,24 @@ import type { Catalog, Taxon, Taxonomy } from '#utils/catalog'
 import type { CarouselPageComponent } from '#utils/pages'
 import { makeUnserializable } from '#utils/unserializable'
 import type { NextRouter } from 'next/router'
+import { RouterContext as NextRouterContext } from 'next/dist/shared/lib/router-context'
+
+export const RouterContext: React.FC<{ href: string; locale?: string; mockedUseRouter: jest.SpyInstance }> = ({ children, href, locale, mockedUseRouter }) => {
+
+  mockedUseRouter.mockImplementation(() => createRouter(href, locale))
+
+  return (
+    <NextRouterContext.Provider value={createRouter(href, locale)}>
+      {children}
+    </NextRouterContext.Provider>
+  )
+}
 
 export const createRouter = (href: string, locale: string = 'en-US'): NextRouter => {
   return {
     basePath,
-    route: '/[locale]${href}',
-    pathname: '/[locale]${href}',
+    route: `/[locale]${href}`,
+    pathname: `/[locale]${href}`,
     query: {
       locale
     },
