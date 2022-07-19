@@ -97,7 +97,7 @@ exports[`CustomPage component 1`] = `
         </div>
       </header>
       <div
-        class="mt-10 flex flex-col gap-8"
+        class="mt-8 flex flex-col gap-8"
         data-testid="page-components"
       >
         <div

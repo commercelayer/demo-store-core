@@ -46,6 +46,12 @@ const gridSchema = z.object({
   items: slideSchema.array()
 })
 
+const markdownSchema = z.object({
+  type: z.literal('markdown'),
+  id: z.string(),
+  content: z.string()
+})
+
 const pagesSchema = unserializableSchema(
   z
     .object({})
@@ -56,6 +62,7 @@ const pagesSchema = unserializableSchema(
           gridSchema,
           heroSchema,
           productGridSchema,
+          markdownSchema,
         ]).array()
       )
     )
@@ -67,6 +74,7 @@ export type RawDataCarousel = z.infer<typeof carouselSchema>
 export type RawDataGrid = z.infer<typeof gridSchema>
 export type RawDataHero = z.infer<typeof heroSchema>
 export type RawDataProductGrid = z.infer<typeof productGridSchema>
+export type RawDataMarkdown = z.infer<typeof markdownSchema>
 
 
 const rawDataPages = pagesSchema.parse({

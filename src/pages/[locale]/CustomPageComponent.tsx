@@ -1,6 +1,7 @@
 import { Carousel } from '#components/Carousel'
 import type { HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
+import { MarkdownPageComponent } from '#components/PageComponents/MarkdownPageComponent'
 import { ProductCard } from '#components/ProductCard'
 import { Link } from '#i18n/Link'
 import type { CustomPage } from '#utils/pages'
@@ -14,7 +15,7 @@ export type Props = HeaderProps & {
 export const CustomPageComponent: NextPage<Props> = ({ navigation, components }) => {
   return (
     <Page navigation={navigation}>
-      <div data-testid='page-components' className='mt-10 flex flex-col gap-8'>
+      <div data-testid='page-components' className='mt-8 flex flex-col gap-8'>
         {
           components.map(component => {
             switch (component.type) {
@@ -112,6 +113,9 @@ export const CustomPageComponent: NextPage<Props> = ({ navigation, components })
                     </PricesContainer>
                   </div>
                 )
+
+              case 'markdown':
+                return <MarkdownPageComponent key={component.id} component={component} />
 
               default:
                 ((_: never): void => { })(component)

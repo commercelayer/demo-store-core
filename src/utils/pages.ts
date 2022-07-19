@@ -1,4 +1,4 @@
-import type { RawDataCarousel, RawDataGrid, RawDataHero, RawDataProductGrid } from '#data/pages'
+import type { RawDataCarousel, RawDataGrid, RawDataHero, RawDataMarkdown, RawDataProductGrid } from '#data/pages'
 import { getRawDataPages } from '#data/pages'
 import { getRawDataProducts } from '#data/products'
 import { translateField } from '#i18n/locale'
@@ -49,11 +49,18 @@ export type GridPageComponent = {
   }[]
 }
 
+export type MarkdownPageComponent = {
+  type: 'markdown'
+  id: string
+  content: string
+}
+
 export type PageComponent = (
   | CarouselPageComponent
   | HeroPageComponent
   | ProductGridPageComponent
   | GridPageComponent
+  | MarkdownPageComponent
 )
 
 export type CustomPage = {
@@ -110,11 +117,20 @@ const getGridPageComponent = async (rawData: RawDataGrid): Promise<GridPageCompo
   }
 }
 
+const getMarkdownPageComponent = async (rawData: RawDataMarkdown): Promise<MarkdownPageComponent> => {
+  return {
+    type: 'markdown',
+    id: rawData.id,
+    content: rawData.content
+  }
+}
+
 const componentMapper: Record<PageComponent['type'], (rawData: any, localeCode: string) => Promise<any>> = {
   'carousel': getCarouselPageComponent,
   'grid': getGridPageComponent,
   'hero': getHeroPageComponent,
   'product-grid': getProductGridPageComponent,
+  'markdown': getMarkdownPageComponent,
 }
 
 export const getPages = async (localeCode: string): Promise<CustomPage[]> => {

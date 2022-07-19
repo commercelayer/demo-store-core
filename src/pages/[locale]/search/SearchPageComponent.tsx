@@ -3,6 +3,7 @@ import type { HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { ProductCard } from '#components/ProductCard'
 import { Props as SubNavigationProps, SubNavigation } from '#components/SubNavigation'
+import { Title } from '#components/Title'
 import { CatalogProvider, useCatalogContext } from '#contexts/CatalogContext'
 import type { LocalizedProductWithVariant } from '#utils/products'
 import type { NextPage } from 'next'
@@ -27,7 +28,7 @@ const ProductList: React.FC<{ hasSidebar: boolean }> = ({ hasSidebar }) => {
   )
 }
 
-const Title: React.FC<Partial<SubNavigationProps>> = ({ subNavigation }) => {
+const Header: React.FC<Partial<SubNavigationProps>> = ({ subNavigation }) => {
   const router = useRouter()
   const { products } = useCatalogContext()
   const i18n = useI18n()
@@ -38,10 +39,9 @@ const Title: React.FC<Partial<SubNavigationProps>> = ({ subNavigation }) => {
   })
 
   return (
-    <div className='flex items-center py-8 relative border-b-gray-200 border-b'>
-      <h2 className='text-2xl flex-auto font-semibold text-black py-1'>{subNavigation?.current.text || resultsFor}</h2>
+    <Title title={<>{subNavigation?.current.text || resultsFor}</>}>
       <Facet />
-    </div>
+    </Title>
   )
 }
 
@@ -56,7 +56,7 @@ export const SearchPageComponent: NextPage<Props> = ({ navigation, products, sub
     >
       <CatalogProvider products={products}>
 
-        <Title subNavigation={subNavigation} />
+        <Header subNavigation={subNavigation} />
 
         <div className='lg:flex mt-10'>
           {
