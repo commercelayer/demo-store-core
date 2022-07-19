@@ -1,6 +1,16 @@
+import { memo } from '#utils/memo'
 import { z } from 'zod'
 
-import organizationJson from '#config/json/organization.json'
+export const getRawDataOrganization = async (): Promise<RawDataOrganization> => {
+  return memo(async () => {
+    const dataFolder = './json'
+    const organizationJson = (await import(`${dataFolder}/organization.json`)).default
+    // const organizationJson = await fetch('http://localhost:3001/json/organization.json').then(response => response.json())
+
+    return organizationSchema.parse(organizationJson)
+  })
+}
+
 
 const organizationSchema = z.object({
   // id: z.string(),
@@ -31,13 +41,3 @@ const organizationSchema = z.object({
 })
 
 export type RawDataOrganization = z.infer<typeof organizationSchema>
-
-const rawDataOrganization = organizationSchema.parse(organizationJson)
-
-export const getRawDataOrganization = async (): Promise<RawDataOrganization> => {
-  // const dataFolder = './json'
-  // const organizationJson = (await import(`${dataFolder}/organization.json`)).default
-
-  return rawDataOrganization
-  return organizationSchema.parse(organizationJson)
-}

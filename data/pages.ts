@@ -1,8 +1,19 @@
 import { localizedFieldSchema } from '#i18n/locale'
+import { memo } from '#utils/memo'
 import { unserializableSchema } from '#utils/unserializable'
 import { z } from 'zod'
 
-import pagesJson from '#config/json/pages.json'
+export const getRawDataPages = async (): Promise<RawDataPages> => {
+  return memo(async () => {
+    const dataFolder = './json'
+    const pagesJson = (await import(`${dataFolder}/pages.json`)).default
+    // const pagesJson = await fetch('http://localhost:3001/json/pages.json').then(response => response.json())
+
+    return pagesSchema.parse({
+      data: pagesJson
+    })
+  })
+}
 
 
 const imageSchema = z.object({
@@ -75,18 +86,3 @@ export type RawDataGrid = z.infer<typeof gridSchema>
 export type RawDataHero = z.infer<typeof heroSchema>
 export type RawDataProductGrid = z.infer<typeof productGridSchema>
 export type RawDataMarkdown = z.infer<typeof markdownSchema>
-
-
-const rawDataPages = pagesSchema.parse({
-  data: pagesJson
-})
-
-export const getRawDataPages = async (): Promise<RawDataPages> => {
-  // const dataFolder = './json'
-  // const pagesJson = (await import(`${dataFolder}/pages.json`)).default
-
-  return rawDataPages
-  return pagesSchema.parse({
-    data: pagesJson
-  })
-}

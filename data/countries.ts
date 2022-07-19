@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import countriesJson from '#config/json/countries.json'
+import countriesJson from '#data/json/countries.json'
 
 const countrySchema = z.object({
   name: z.string(),
