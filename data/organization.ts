@@ -1,15 +1,15 @@
-import { memo } from '#utils/memo'
+import memoize from 'lodash/memoize'
 import { z } from 'zod'
 
-export const getRawDataOrganization = async (): Promise<RawDataOrganization> => {
-  return memo(async () => {
+export const getRawDataOrganization = memoize(
+  async function(): Promise<RawDataOrganization> {
     const dataFolder = './json'
     const organizationJson = (await import(`${dataFolder}/organization.json`)).default
     // const organizationJson = await fetch('http://localhost:3001/json/organization.json').then(response => response.json())
 
     return organizationSchema.parse(organizationJson)
-  })
-}
+  }
+)
 
 
 const organizationSchema = z.object({

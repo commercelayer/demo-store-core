@@ -1,10 +1,10 @@
 import { localizedFieldSchema } from '#i18n/locale'
-import { memo } from '#utils/memo'
 import { unserializableSchema } from '#utils/unserializable'
+import memoize from 'lodash/memoize'
 import { z } from 'zod'
 
-export const getRawDataPages = async (): Promise<RawDataPages> => {
-  return memo(async () => {
+export const getRawDataPages = memoize(
+  async function(): Promise<RawDataPages> {
     const dataFolder = './json'
     const pagesJson = (await import(`${dataFolder}/pages.json`)).default
     // const pagesJson = await fetch('http://localhost:3001/json/pages.json').then(response => response.json())
@@ -12,8 +12,8 @@ export const getRawDataPages = async (): Promise<RawDataPages> => {
     return pagesSchema.parse({
       data: pagesJson
     })
-  })
-}
+  }
+)
 
 
 const imageSchema = z.object({
