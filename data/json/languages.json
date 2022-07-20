@@ -1,11 +1,11 @@
 [
   {
-    "name": "ENG",
+    "name": "English",
     "code": "en",
     "catalog": "AMER"
   },
   {
-    "name": "ITA",
+    "name": "Italiano",
     "code": "it",
     "catalog": "AMER"
   }

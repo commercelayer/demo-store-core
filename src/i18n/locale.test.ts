@@ -47,7 +47,7 @@ describe('parseLocale', () => {
 describe('getLocale', () => {
   it('should be able to return a Locale gived a localeCode', () => {
     const unitedStates: ShoppableCountry = { code: 'US', default_language: 'en', market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
-    const italian: RawDataLanguage = { code: 'it', name: 'ITA', catalog: 'AMER' }
+    const italian: RawDataLanguage = { code: 'it', name: 'Italiano', catalog: 'AMER' }
 
     const locale = getLocale('it-US')
 

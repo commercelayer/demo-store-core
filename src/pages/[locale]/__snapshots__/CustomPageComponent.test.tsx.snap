@@ -252,12 +252,12 @@ exports[`CustomPage component 1`] = `
                 selected=""
                 value="en"
               >
-                ENG
+                English
               </option>
               <option
                 value="it"
               >
-                ITA
+                Italiano
               </option>
             </select>
           </div>
