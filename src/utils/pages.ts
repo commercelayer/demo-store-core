@@ -1,7 +1,7 @@
 import type { RawDataCarousel, RawDataGrid, RawDataHero, RawDataMarkdown, RawDataProductGrid } from '#data/pages'
 import { getRawDataPages } from '#data/pages'
 import { getRawDataProducts } from '#data/products'
-import { translateField } from '#i18n/locale'
+import { translateField } from '#utils/locale'
 import { getProductWithVariants, LocalizedProductWithVariant } from './products'
 
 export type Image = {

@@ -1,6 +1,7 @@
 import { Auth } from '#components/Auth'
+import { defaultLanguage } from '#config/general.config'
 import { SettingsProvider } from '#contexts/SettingsContext'
-import { defaultLocale, getLocale } from '#i18n/locale'
+import { getLocale } from '#i18n/locale'
 import { getPersistKey } from '#utils/order'
 import { LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import { I18nProvider } from 'next-localization'
@@ -22,7 +23,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     throw new Error('The query "locale" cannot be an array!')
   }
 
-  const locale = getLocale(localeCode || defaultLocale)
+  const locale = getLocale(localeCode || defaultLanguage)
 
   const return_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${router.basePath}/${router.query.locale}` : undefined
   const cart_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${router.basePath}/${router.query.locale}/cart` : undefined
@@ -30,7 +31,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   if (locale.isShoppable === false) {
     return (
       <SettingsProvider {...settingsContext}>
-        <I18nProvider lngDict={lngDict} locale={localeCode || defaultLocale}>
+        <I18nProvider lngDict={lngDict} locale={localeCode || defaultLanguage}>
           <Component {...rest} />
         </I18nProvider>
       </SettingsProvider>
@@ -39,7 +40,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <SettingsProvider {...settingsContext}>
-      <I18nProvider lngDict={lngDict} locale={localeCode || defaultLocale}>
+      <I18nProvider lngDict={lngDict} locale={localeCode || defaultLanguage}>
         <Auth>
           <OrderStorage persistKey={getPersistKey(locale)}>
             <OrderContainer attributes={{

@@ -20,5 +20,12 @@ export type GeneralConfig = {
    *
    * @see [Base path configuration](https://nextjs.org/docs/api-reference/next.config.js/basepath)
    */
-  basePath: string
+  basePath: string,
+
+  /**
+   * Default language when translation is not found
+   * 
+   * @default 'en'
+   */
+  defaultLanguage: string
 }

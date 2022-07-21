@@ -93,13 +93,14 @@ export const getSlugs = (catalog: Catalog): string[] => {
 
 // ---------------------------------------------------------------------------------------------------
 
-import { Locale, translateField } from '#i18n/locale'
+import { RawDataCatalog, rawDataCatalogs, RawDataTaxon, rawDataTaxonomies, RawDataTaxonomy, rawDataTaxons } from '#data/catalogs'
+import type { Locale } from '#i18n/locale'
 import { deepFind } from '#utils/collection'
+import { translateField } from '#utils/locale'
 import { LocalizedProductWithVariant, spreadProductVariants } from '#utils/products'
 import { isDefined } from '#utils/types'
 import { makeUnserializable, Unserializable } from '#utils/unserializable'
 import uniq from 'lodash/uniq'
-import { RawDataCatalog, rawDataCatalogs, RawDataTaxon, rawDataTaxonomies, RawDataTaxonomy, rawDataTaxons } from '#data/catalogs'
 
 
 // -------------------------------

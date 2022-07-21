@@ -1,8 +1,7 @@
-import { rawDataCountries, RawDataCountry } from '#data/countries'
+import { rawDataCountries } from '#data/countries'
 import { RawDataLanguage, rawDataLanguages } from '#data/languages'
-import { combine } from '#utils/collection'
-import { isCountryShoppable, NonShoppableCountry, ShoppableCountry } from '#utils/countries'
-import { z } from 'zod'
+import type { NonShoppableCountry, ShoppableCountry } from '#utils/countries'
+import { makeLocales } from '#utils/locale'
 
 type BaseLocale = {
   code: string
@@ -21,55 +20,7 @@ export type ShoppableLocale = BaseLocale & {
 
 export type Locale = ShoppableLocale | NonShoppableLocale
 
-const languageCodes = rawDataLanguages.map(language => language.code)
-const countryCodes = rawDataCountries.map(country => country.code)
-const localesRegExp = new RegExp(`^(${languageCodes.join('|')})(?:-(${countryCodes.join('|')}))?$`)
-
-export function makeLocaleCode(languageCode: string, countryCode?: string): string {
-  if (countryCode) {
-    return `${languageCode}-${countryCode}`
-  }
-
-  return languageCode
-}
-
-export function parseLocaleCode(localeCode: string) {
-  const [_locale, languageCode, countryCode] = localeCode.match(localesRegExp) || [] as (string | undefined)[]
-  return { languageCode, countryCode }
-}
-
-export function changeLanguage(localeCode: string, newLanguageCode: string) {
-  const { countryCode } = parseLocaleCode(localeCode)
-  return makeLocaleCode(newLanguageCode, countryCode)
-}
-
-export function makeLocales(languages: RawDataLanguage[], countries: RawDataCountry[]): Locale[] {
-  return combine(countries, languages, (country, language) => {
-    const code = makeLocaleCode(language.code, country.code)
-
-    if (isCountryShoppable(country)) {
-      const locale: ShoppableLocale = { code, language, isShoppable: true, country }
-      return locale
-    }
-
-    const locale: NonShoppableLocale = { code, language, isShoppable: false, country }
-    return locale
-  })
-    .concat(languages.map(language => {
-      const locale: NonShoppableLocale = {
-        code: language.code,
-        isShoppable: false,
-        language
-      }
-
-      return locale
-    }))
-}
-
 export const locales = makeLocales(rawDataLanguages, rawDataCountries)
-export const localeCodes = combine(languageCodes, countryCodes, makeLocaleCode).concat(languageCodes)
-
-export const [ defaultLocale ] = languageCodes
 
 export function getLocale(localeCode: string): Locale
 export function getLocale(localeCode: string, throwWhenUndefined: false): Locale | undefined
@@ -81,31 +32,4 @@ export function getLocale(localeCode: string, throwWhenUndefined = true) {
   }
 
   return locale
-}
-
-
-export const localizedFieldSchema = <T extends z.ZodTypeAny>(type: T) => z
-  .object({
-    ...localeCodes.reduce((acc, localeCode) => {
-      acc[localeCode] = type.optional()
-      return acc
-    }, {} as { [localeCode: string]: T | z.ZodOptional<T> }),
-    [defaultLocale]: type,
-  })
-
-
-export type LocalizedField<T> = {
-  [localeCode: string]: T | undefined
-}
-
-export function translateField<T>(field: LocalizedField<T>, locale: string): T {
-  const { languageCode = locale } = parseLocaleCode(locale)
-
-  const translation = field[locale] || field[languageCode] || field[defaultLocale]
-
-  if (!translation) {
-    throw new Error(`Missing translation for locale '${locale}' : ${JSON.stringify(field)}`)
-  }
-
-  return translation
 }

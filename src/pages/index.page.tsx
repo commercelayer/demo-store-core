@@ -1,7 +1,7 @@
 import { CountrySelector } from '#components/CountrySelector'
 import { Page } from '#components/Page'
+import { defaultLanguage } from '#config/general.config'
 import { serverSideSettings } from '#contexts/SettingsContext'
-import { defaultLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import type { GetStaticProps, NextPage } from 'next'
 
@@ -17,7 +17,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       ...(await serverSideSettings()),
-      ...(await serverSideTranslations(defaultLocale))
+      ...(await serverSideTranslations(defaultLanguage))
     }
   }
 }

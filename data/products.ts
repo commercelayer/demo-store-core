@@ -1,4 +1,4 @@
-import { localizedFieldSchema } from '#i18n/locale'
+import { localizedFieldSchema } from '#utils/locale'
 import type { Price } from '@commercelayer/sdk'
 import memoize from 'lodash/memoize'
 import { z } from 'zod'

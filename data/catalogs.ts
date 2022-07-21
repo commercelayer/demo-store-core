@@ -1,4 +1,4 @@
-import { localizedFieldSchema } from '#i18n/locale'
+import { localizedFieldSchema } from '#utils/locale'
 import { unserializableSchema } from '#utils/unserializable'
 import { z } from 'zod'
 
