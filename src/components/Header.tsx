@@ -4,7 +4,7 @@ import type { Props as NavigationProps } from '#components/Navigation'
 import { Navigation } from '#components/Navigation'
 import { Search } from '#components/Search'
 import { Link } from '#i18n/Link'
-import { CartLink, LineItemsCount } from '@commercelayer/react-components'
+import { LineItemsCount } from '@commercelayer/react-components'
 import { useEffect, useState } from 'react'
 
 
@@ -47,7 +47,7 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
           {/* <a className='block lg:inline-block mr-4 text-gray-300'><User /></a> */}
           {/* <a className='block lg:inline-block mr-4 text-gray-300'><HeartStraight /></a> */}
 
-          <CartLink
+          {/* <CartLink
             className='block lg:inline-block relative'
             label={(
               <>
@@ -56,7 +56,16 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
                   {CartQuantity}
                 </LineItemsCount>
               </>
-            )} />
+            )} /> */}
+
+          <Link href='/cart'>
+            <a className='block lg:inline-block relative'>
+              <ShoppingBagOpen />
+              <LineItemsCount>
+                {CartQuantity}
+              </LineItemsCount>
+            </a>
+          </Link>
 
         </div>
       </nav>

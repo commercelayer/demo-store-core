@@ -38,7 +38,26 @@ exports[`CustomPage component 1`] = `
           </div>
           <div
             class="flex items-center w-auto flex-grow justify-end"
-          />
+          >
+            <a
+              class="block lg:inline-block relative"
+              href="/en-US/cart"
+            >
+              <svg />
+              <div
+                class="absolute bottom-0 translate-x-1/3 right-0 w-4 h-4 transition-opacity opacity-0"
+              >
+                <span
+                  class=" absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"
+                />
+                <div
+                  class="absolute h-full w-full text-white bg-violet-400 rounded-full text-xxs flex items-center justify-center"
+                >
+                  -1
+                </div>
+              </div>
+            </a>
+          </div>
         </nav>
         <div
           class="flex items-center justify-between flex-wrap gap-4 relative"
