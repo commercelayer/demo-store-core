@@ -25,6 +25,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   const locale = getLocale(localeCode || defaultLocale)
 
   const return_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${router.basePath}/${router.query.locale}` : undefined
+  const cart_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${router.basePath}/${router.query.locale}/cart` : undefined
 
   if (locale.isShoppable === false) {
     return (
@@ -43,7 +44,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <OrderStorage persistKey={getPersistKey(locale)}>
             <OrderContainer attributes={{
               language_code: locale?.language.code,
-              return_url
+              return_url,
+              cart_url
             }}>
               <LineItemsContainer>
                 <Component {...rest} />
