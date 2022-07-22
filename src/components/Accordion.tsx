@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 
 interface Props {
   title: React.ReactNode
@@ -15,17 +15,16 @@ export const Accordion: React.FC<Props> = ({ 'data-testid': dataTestid, title, c
     setActive((prevState) => !prevState)
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (contentRef.current) {
-      if (active) {
-        contentRef.current.style.maxHeight = `${contentRef.current?.scrollHeight}px`
-      } else {
-        contentRef.current.style.maxHeight = `${contentRef.current?.scrollHeight}px`
-        setTimeout(() => {
+      contentRef.current.style.maxHeight = `${contentRef.current.scrollHeight}px`
+
+      if (!active) {
+        requestAnimationFrame(() => {
           if (contentRef.current) {
             contentRef.current.style.maxHeight = ``
           }
-        }, 10)
+        })
       }
     }
   }, [active])

@@ -1,6 +1,16 @@
+import memoize from 'lodash/memoize'
 import { z } from 'zod'
 
-import languagesJson from '#data/json/languages.json'
+export const getRawDataLanguages = memoize(
+  async function (): Promise<RawDataLanguage[]> {
+    const dataFolder = './json'
+    const jsonData = (await import(`${dataFolder}/languages.json`)).default
+    // const jsonData = await fetch('http://localhost:3001/json/languages.json').then(response => response.json())
+
+    return languageSchema.array().parse(jsonData)
+  }
+)
+
 
 const languageSchema = z.object({
   name: z.string(),
@@ -9,5 +19,3 @@ const languageSchema = z.object({
 })
 
 export type RawDataLanguage = z.infer<typeof languageSchema>
-
-export const rawDataLanguages: RawDataLanguage[] = languageSchema.array().parse(languagesJson);

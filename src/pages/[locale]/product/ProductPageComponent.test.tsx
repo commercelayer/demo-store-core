@@ -2,7 +2,7 @@ import { getRootNavigationLinks } from '#utils/catalog'
 import { getProductWithVariants } from '#utils/products'
 import lngDict from '#__mocks__/lngDict.json'
 import productsJson from '#__mocks__/products.json'
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import { createCatalog, createRouter, createTaxon, createTaxonomy } from 'jest.helpers'
 import { I18nProvider } from 'next-localization'
 import { ProductPageComponent } from './ProductPageComponent'
@@ -33,11 +33,14 @@ test('product detail page', async () => {
   const catalog = createCatalog('1', [taxonomy])
   const navigation = getRootNavigationLinks(catalog)
 
-  const { container } = render(
-    <I18nProvider lngDict={lngDict} locale={locale}>
-      <ProductPageComponent navigation={navigation} product={product} />
-    </I18nProvider>
-  )
+  let container
+  await act(async () => {
+    ({ container } = render(
+      <I18nProvider lngDict={lngDict} locale={locale}>
+        <ProductPageComponent navigation={navigation} product={product} />
+      </I18nProvider>
+    ))
+  })
 
   const productDetails = screen.queryAllByTestId('product-detail')
 

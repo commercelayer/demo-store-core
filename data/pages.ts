@@ -6,11 +6,11 @@ import { z } from 'zod'
 export const getRawDataPages = memoize(
   async function(): Promise<RawDataPages> {
     const dataFolder = './json'
-    const pagesJson = (await import(`${dataFolder}/pages.json`)).default
-    // const pagesJson = await fetch('http://localhost:3001/json/pages.json').then(response => response.json())
+    const jsonData = (await import(`${dataFolder}/pages.json`)).default
+    // const jsonData = await fetch('http://localhost:3001/json/pages.json').then(response => response.json())
 
     return pagesSchema.parse({
-      data: pagesJson
+      data: jsonData
     })
   }
 )

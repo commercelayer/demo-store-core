@@ -2,19 +2,23 @@ import { Accordion } from '#components/Accordion'
 import { Logo } from '#components/Logo'
 import { defaultLanguage } from '#config/general.config'
 import { useSettingsContext } from '#contexts/SettingsContext'
-import { rawDataCountries } from '#data/countries'
-import { rawDataLanguages } from '#data/languages'
+import type { RawDataCountry } from '#data/countries'
+import type { RawDataLanguage } from '#data/languages'
 import { Link } from '#i18n/Link'
 import { groupByRegion } from '#utils/countries'
 import { makeLocaleCode } from '#utils/locale'
 import { useI18n } from 'next-localization'
 import styles from './CountrySelector.module.scss'
 
+export type Props = {
+  languages: RawDataLanguage[]
+  countries: RawDataCountry[]
+}
 
-export const CountrySelector = () => {
+export const CountrySelector: React.FC<Props> = ({ languages, countries }) => {
   const i18n = useI18n()
-  const groupedCountry = Object.entries(groupByRegion(rawDataCountries))
-  const internationalLanguage = rawDataLanguages.find(language => language.code === defaultLanguage)
+  const groupedCountry = Object.entries(groupByRegion(countries))
+  const internationalLanguage = languages.find(language => language.code === defaultLanguage)
   const settings = useSettingsContext()
 
   return (

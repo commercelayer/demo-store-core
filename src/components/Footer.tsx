@@ -1,17 +1,36 @@
 import { CommerceLayerGlyph, Globe, PaymentKlarna, PaymentMastercard, PaymentMastro, PaymentPaypal, PaymentStripe, PaymentVisa } from '#assets/icons'
 import { Container } from '#components/Container'
 import { useSettingsContext } from '#contexts/SettingsContext'
-import { rawDataLanguages } from '#data/languages'
+import { getRawDataLanguages, RawDataLanguage } from '#data/languages'
 import { Link } from '#i18n/Link'
 import { changeLanguage, parseLocaleCode } from '#utils/locale'
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import { InputSelect } from './InputSelect'
 
 export const Footer: React.FC = () => {
   const i18n = useI18n()
   const router = useRouter()
   const settings = useSettingsContext()
+
+  const [languages, setLanguages] = useState<RawDataLanguage[]>([])
+
+  useEffect(() => {
+    let isMounted = true
+
+    ;(async () => {
+      const rawDataLanguages = await getRawDataLanguages()
+
+      if (isMounted) {
+        setLanguages(rawDataLanguages)
+      }
+    })()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   return (
     <div className='flex-grow py-8 lg:p-16 mt-24 bg-gray-50'>
@@ -30,21 +49,25 @@ export const Footer: React.FC = () => {
 
           </div>
 
-          <div className='mt-6 lg:mt-0'>
-            <InputSelect
-              onChange={(event) => {
-                const languageCode = event.currentTarget.value
-                delete router.query.facets
-                router.push({
-                  query: {
-                    ...router.query,
-                    locale: changeLanguage(router.query.locale, languageCode)
-                  }
-                }, undefined, { scroll: false })
-              }}
-              defaultValue={parseLocaleCode(router.query.locale).languageCode}
-              options={rawDataLanguages.map(language => ({ value: language.code, label: language.name }))} />
-          </div>
+          {
+            languages.length > 0 && (
+              <div className='mt-6 lg:mt-0'>
+                <InputSelect
+                  onChange={(event) => {
+                    const languageCode = event.currentTarget.value
+                    delete router.query.facets
+                    router.push({
+                      query: {
+                        ...router.query,
+                        locale: changeLanguage(router.query.locale, languageCode)
+                      }
+                    }, undefined, { scroll: false })
+                  }}
+                  defaultValue={parseLocaleCode(router.query.locale).languageCode}
+                  options={languages.map(language => ({ value: language.code, label: language.name }))} />
+              </div>
+            )
+          }
         </div>
 
         <div className='mt-6 py-6 border-y border-y-gray-100 text-xs flex flex-col md:flex-row md:divide-x'>

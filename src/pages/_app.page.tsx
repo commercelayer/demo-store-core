@@ -5,12 +5,16 @@ import { getPersistKey } from '#utils/order'
 import { LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import { I18nProvider } from 'next-localization'
 import type { AppProps } from 'next/app'
+import React from 'react'
 
 import './_app.css'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+
+// suppress useLayoutEffect (and its warnings) when not running in a browser
+if (typeof window === 'undefined') React.useLayoutEffect = () => { };
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { lngDict, settingsContext = {}, ...rest } = pageProps

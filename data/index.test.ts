@@ -7,12 +7,14 @@ describe('JSON Data', () => {
   })
 
   it('"countries.json" should be properly defined.', async () => {
-    const { rawDataCountries } = await import('./countries')
+    const { getRawDataCountries } = await import('./countries')
+    const rawDataCountries = await getRawDataCountries()
     expect(rawDataCountries).toBeDefined()
   })
 
   it('"languages.json" should be properly defined.', async () => {
-    const { rawDataLanguages } = await import('./languages')
+    const { getRawDataLanguages } = await import('./languages')
+    const rawDataLanguages = await getRawDataLanguages()
     expect(rawDataLanguages).toBeDefined()
   })
 

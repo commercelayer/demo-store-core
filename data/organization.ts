@@ -4,10 +4,10 @@ import { z } from 'zod'
 export const getRawDataOrganization = memoize(
   async function(): Promise<RawDataOrganization> {
     const dataFolder = './json'
-    const organizationJson = (await import(`${dataFolder}/organization.json`)).default
-    // const organizationJson = await fetch('http://localhost:3001/json/organization.json').then(response => response.json())
+    const jsonData = (await import(`${dataFolder}/organization.json`)).default
+    // const jsonData = await fetch('http://localhost:3001/json/organization.json').then(response => response.json())
 
-    return organizationSchema.parse(organizationJson)
+    return organizationSchema.parse(jsonData)
   }
 )
 

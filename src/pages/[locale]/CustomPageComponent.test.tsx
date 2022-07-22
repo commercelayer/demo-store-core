@@ -1,6 +1,6 @@
 import { getRootNavigationLinks } from '#utils/catalog'
 import lngDict from '#__mocks__/lngDict.json'
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import { createCarouselPageComponent, createCatalog, createRouter, createTaxon, createTaxonomy } from 'jest.helpers'
 import { I18nProvider } from 'next-localization'
 import { CustomPageComponent } from './CustomPageComponent'
@@ -21,11 +21,14 @@ test('CustomPage component', async () => {
 
   const carouselPageComponent = createCarouselPageComponent('1')
 
-  const { container } = render(
-    <I18nProvider lngDict={lngDict} locale='en'>
-      <CustomPageComponent navigation={navigation} components={[carouselPageComponent]} />
-    </I18nProvider>
-  )
+  let container
+  await act(async () => {
+    ({ container } = render(
+      <I18nProvider lngDict={lngDict} locale='en'>
+        <CustomPageComponent navigation={navigation} components={[carouselPageComponent]} />
+      </I18nProvider>
+    ))
+  })
 
   const pageComponents = await screen.findByTestId('page-components')
 

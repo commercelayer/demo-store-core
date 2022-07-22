@@ -1,6 +1,16 @@
+import memoize from 'lodash/memoize'
 import { z } from 'zod'
 
-import countriesJson from '#data/json/countries.json'
+export const getRawDataCountries = memoize(
+  async function (): Promise<RawDataCountry[]> {
+    const dataFolder = './json'
+    const jsonData = (await import(`${dataFolder}/countries.json`)).default
+    // const jsonData = await fetch('http://localhost:3001/json/countries.json').then(response => response.json())
+
+    return countrySchema.array().parse(jsonData)
+  }
+)
+
 
 const countrySchema = z.object({
   name: z.string(),
@@ -12,5 +22,3 @@ const countrySchema = z.object({
 })
 
 export type RawDataCountry = z.infer<typeof countrySchema>
-
-export const rawDataCountries: RawDataCountry[] = countrySchema.array().parse(countriesJson);

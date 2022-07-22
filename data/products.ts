@@ -6,11 +6,11 @@ import { z } from 'zod'
 export const getRawDataProducts = memoize(
   async function(): Promise<RawDataProduct[]> {
     const dataFolder = './json'
-    const productsJson = (await import(`${dataFolder}/products.json`)).default
-    // const productsJson = await fetch('http://localhost:3001/json/products.json').then(response => response.json())
+    const jsonData = (await import(`${dataFolder}/products.json`)).default
+    // const jsonData = await fetch('http://localhost:3001/json/products.json').then(response => response.json())
 
     // TODO: this should be unserializable
-    return productSchema.passthrough().array().parse(productsJson)
+    return productSchema.passthrough().array().parse(jsonData)
   }
 )
 

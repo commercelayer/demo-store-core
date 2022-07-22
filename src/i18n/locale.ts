@@ -1,5 +1,5 @@
-import { rawDataCountries } from '#data/countries'
-import { RawDataLanguage, rawDataLanguages } from '#data/languages'
+import { getRawDataCountries } from '#data/countries'
+import { getRawDataLanguages, RawDataLanguage } from '#data/languages'
 import type { NonShoppableCountry, ShoppableCountry } from '#utils/countries'
 import { makeLocales } from '#utils/locale'
 import memoize from 'lodash/memoize'
@@ -23,7 +23,7 @@ export type Locale = ShoppableLocale | NonShoppableLocale
 
 export const getLocales = memoize(
   async function () {
-    return makeLocales(rawDataLanguages, rawDataCountries)
+    return makeLocales(await getRawDataLanguages(), await getRawDataCountries())
   }
 )
 
