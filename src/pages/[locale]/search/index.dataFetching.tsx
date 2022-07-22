@@ -22,7 +22,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode } = params!
-  const locale = getLocale(localeCode)
+  const locale = await getLocale(localeCode)
   const catalog = getCatalog(locale)
 
   const references = flattenReferencesFromCatalog(catalog)
@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
     props: {
       navigation: getRootNavigationLinks(catalog),
       products,
-      ...(await serverSideSettings()),
+      ...(await serverSideSettings(localeCode)),
       ...(await serverSideTranslations(localeCode))
     }
   }

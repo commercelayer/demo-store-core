@@ -1,7 +1,7 @@
 import { combine } from '#utils/collection'
 import type { GetStaticPathsResult } from 'next'
 import type { ParsedUrlQuery } from 'querystring'
-import { Locale, locales as allLocales } from './locale'
+import { getLocales, Locale } from './locale'
 
 // @ts-expect-error
 type WithoutLocalePathsResult<P extends Partial<ParsedUrlQuery>> = GetStaticPathsResult<P>
@@ -24,7 +24,10 @@ const appendLocaleToPath = <P extends Partial<ParsedUrlQuery>>(locale: Locale, p
   }
 }
 
-export const withLocalePaths = async <P extends Partial<ParsedUrlQuery>>(getStaticPathsResult: Props<P>, locales: Locale[] = allLocales): Promise<WithLocalePathsResult<P>> => {
+export const withLocalePaths = async <P extends Partial<ParsedUrlQuery>>(getStaticPathsResult: Props<P>, locales?: Locale[]): Promise<WithLocalePathsResult<P>> => {
+  if (!locales) {
+    locales = await getLocales()
+  }
 
   if (locales.length === 0) {
     throw new Error('At least one Locale is mandatory!')

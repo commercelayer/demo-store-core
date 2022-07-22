@@ -21,19 +21,30 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
   const auth = useAuthContext()
 
   const router = useRouter()
-  const locale = getLocale(router.query.locale)
 
   const cartTitle = i18n.t('general.yourCart')
 
   useEffect(() => {
-    if (locale.isShoppable && auth.accessToken) {
-      const persistKey = getPersistKey(locale)
-      const orderId = localStorage.getItem(persistKey)
+    let isMounted = true
 
-      // TODO: orderId is possibly null
-      setCartUrl(`https://demo-store-1.stg.commercelayer.app/cart/${orderId}?embed=true&accessToken=${auth.accessToken}`)
+    ; (async () => {
+      const locale = await getLocale(router.query.locale)
+
+      if (locale.isShoppable && auth.accessToken) {
+        const persistKey = getPersistKey(locale)
+        const orderId = localStorage.getItem(persistKey)
+
+        if (isMounted) {
+          // TODO: orderId is possibly null
+          setCartUrl(`https://demo-store-1.stg.commercelayer.app/cart/${orderId}?embed=true&accessToken=${auth.accessToken}`)
+        }
+      }
+    })()
+
+    return () => {
+      isMounted = false
     }
-  }, [locale, auth])
+  }, [router.query.locale, auth])
 
   return (
     <Page navigation={navigation} title={cartTitle}>
@@ -58,13 +69,13 @@ export const getStaticPaths: GetStaticPaths = () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { locale: localeCode } = params!
-  const locale = getLocale(localeCode)
+  const locale = await getLocale(localeCode)
   const catalog = getCatalog(locale)
 
   return {
     props: {
       navigation: getRootNavigationLinks(catalog),
-      ...(await serverSideSettings()),
+      ...(await serverSideSettings(localeCode)),
       ...(await serverSideTranslations(localeCode))
     }
   }

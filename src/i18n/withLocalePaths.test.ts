@@ -1,7 +1,7 @@
 import type { RawDataLanguage } from '#data/languages'
 import type { ShoppableCountry } from '#utils/countries'
 import type { GetStaticPathsResult } from 'next'
-import { locales, NonShoppableLocale, ShoppableLocale } from './locale'
+import { getLocales, NonShoppableLocale, ShoppableLocale } from './locale'
 import { withLocalePaths } from './withLocalePaths'
 
 const unitedStates: ShoppableCountry = { code: 'US', default_language: 'en', market: 1234, name: 'United States', region: 'Americas', catalog: 'AMER' }
@@ -156,5 +156,7 @@ test('should combine all given string paths with all configured locales', async 
     ]
   })
 
-  expect(withLocales.paths.length).toEqual(locales.length * 2)
+  const allLocales = await getLocales()
+
+  expect(withLocales.paths.length).toEqual(allLocales.length * 2)
 })

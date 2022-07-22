@@ -1,10 +1,9 @@
-import { defaultLanguage } from '#config/general.config'
 import { AuthProvider } from '#contexts/AuthContext'
-import { getLocale } from '#i18n/locale'
+import { useSettingsContext } from '#contexts/SettingsContext'
 import { AuthReturnType, ClientCredentials, getSalesChannelToken } from '@commercelayer/js-auth'
 import { CommerceLayer } from '@commercelayer/react-components'
 import { useRouter } from 'next/router'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type Auth = {
   accessToken: string
@@ -52,10 +51,9 @@ const isValid = (auth: Auth | null): auth is Auth => !hasExpired(auth?.expires)
 export const Auth: React.FC<{}> = ({ children }) => {
 
   const router = useRouter()
+  const settings = useSettingsContext()
 
-  const locale = useMemo(() => getLocale(router.query.locale || defaultLanguage), [router])
-
-  const [market, setMarket] = useState<number | undefined>(locale.isShoppable ? locale.country.market : undefined)
+  const [market, setMarket] = useState<number | undefined>(settings.locale?.isShoppable ? settings.locale?.country.market : undefined)
   const [auth, setAuth] = useState<Auth | null>(null)
 
   const endpoint = process.env.NEXT_PUBLIC_CL_ENDPOINT
@@ -63,10 +61,10 @@ export const Auth: React.FC<{}> = ({ children }) => {
   const [, organization, domain] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
 
   useEffect(function updateMarket() {
-    if (locale.isShoppable && locale.country.market !== market) {
-      setMarket(locale.country.market)
+    if (settings.locale?.isShoppable && settings.locale?.country.market !== market) {
+      setMarket(settings.locale?.country.market)
     }
-  }, [locale, market])
+  }, [settings.locale, market])
 
   useEffect(function updateAccessToken() {
     let isMounted = true

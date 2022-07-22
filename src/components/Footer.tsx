@@ -1,8 +1,8 @@
 import { CommerceLayerGlyph, Globe, PaymentKlarna, PaymentMastercard, PaymentMastro, PaymentPaypal, PaymentStripe, PaymentVisa } from '#assets/icons'
 import { Container } from '#components/Container'
+import { useSettingsContext } from '#contexts/SettingsContext'
 import { rawDataLanguages } from '#data/languages'
 import { Link } from '#i18n/Link'
-import { getLocale } from '#i18n/locale'
 import { changeLanguage, parseLocaleCode } from '#utils/locale'
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
@@ -11,7 +11,7 @@ import { InputSelect } from './InputSelect'
 export const Footer: React.FC = () => {
   const i18n = useI18n()
   const router = useRouter()
-  const locale = getLocale(router.query.locale)
+  const settings = useSettingsContext()
 
   return (
     <div className='flex-grow py-8 lg:p-16 mt-24 bg-gray-50'>
@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
           <div>
             <div className='flex items-center justify-between'>
               <span className='flex items-center'>
-                <Globe className='mr-1.5' /> {locale.country?.name || i18n.t('general.international')}
+                <Globe className='mr-1.5' /> {settings.locale?.country?.name || i18n.t('general.international')}
               </span>
               <Link locale=''>
                 <a className='uppercase text-violet-400 text-xs border-b border-gray-200 ml-3 mt-1'>{i18n.t('general.chooseCountry')}</a>

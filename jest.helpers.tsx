@@ -1,9 +1,11 @@
 import { basePath } from '#config/general.config'
+import type { RawDataOrganization } from '#data/organization'
+import type { Locale } from '#i18n/locale'
 import type { Catalog, Taxon, Taxonomy } from '#utils/catalog'
 import type { CarouselPageComponent } from '#utils/pages'
 import { makeUnserializable } from '#utils/unserializable'
-import type { NextRouter } from 'next/router'
 import { RouterContext as NextRouterContext } from 'next/dist/shared/lib/router-context'
+import type { NextRouter } from 'next/router'
 
 export const RouterContext: React.FC<{ href: string; locale?: string; mockedUseRouter: jest.SpyInstance }> = ({ children, href, locale, mockedUseRouter }) => {
 
@@ -40,6 +42,35 @@ export const createRouter = (href: string, locale: string = 'en-US'): NextRouter
     isFallback: false,
     isReady: true,
     isPreview: false
+  }
+}
+
+export const createOrganization = (): RawDataOrganization => {
+  return {
+    favicon_url: 'https://www.commercelayer.com/favicon.ico',
+    logo_url: 'https://www.commercelayer.com/logo.png',
+    name: 'Commerce Layer',
+    primary_color: '#00a8ff',
+  }
+}
+
+export const createLocale = (): Locale => {
+  return {
+    code: 'en-US',
+    isShoppable: true,
+    country: {
+      catalog: 'AMER',
+      code: 'US',
+      name: 'United States',
+      default_language: 'en',
+      market: 123456789,
+      region: 'Americas'
+    },
+    language: {
+      catalog: 'AMER',
+      code: 'en',
+      name: 'English'
+    }
   }
 }
 

@@ -1,7 +1,9 @@
 import { useAuthContext } from '#contexts/AuthContext'
+import { SettingsProvider } from '#contexts/SettingsContext'
 import type { AuthReturnType as OriginalAuthReturnType } from '@commercelayer/js-auth'
 import CommerceLayerContext from '@commercelayer/react-components/lib/context/CommerceLayerContext'
 import { act, render, screen } from '@testing-library/react'
+import { createLocale, createOrganization, createRouter } from 'jest.helpers'
 import { useContext } from 'react'
 import { Auth } from './Auth'
 
@@ -34,14 +36,7 @@ test('should match the snapshot', async () => {
   process.env.NEXT_PUBLIC_CL_CLIENT_ID = 'client-1234'
   process.env.NEXT_PUBLIC_CL_ENDPOINT = 'https://demo-store.commercelayer.co'
 
-  useRouter.mockImplementation(() => ({
-    route: '/',
-    pathname: '/',
-    query: {
-      locale: 'en-US'
-    },
-    asPath: '/'
-  }))
+  useRouter.mockImplementation(() => createRouter('/'))
 
   const authReturn: AuthReturnType = {
     tokenType: 'bearer',
@@ -64,14 +59,7 @@ test('should fetch accessToken and set it properly when "locale" is set', async 
   process.env.NEXT_PUBLIC_CL_CLIENT_ID = 'client-1234'
   process.env.NEXT_PUBLIC_CL_ENDPOINT = 'https://demo-store.commercelayer.co'
 
-  useRouter.mockImplementation(() => ({
-    route: '/',
-    pathname: '/',
-    query: {
-      locale: 'en-US'
-    },
-    asPath: '/'
-  }))
+  useRouter.mockImplementation(() => createRouter('/'))
 
   const authReturn: AuthReturnType = {
     tokenType: 'bearer',
@@ -83,16 +71,20 @@ test('should fetch accessToken and set it properly when "locale" is set', async 
   getSalesChannelToken.mockResolvedValue(authReturn)
 
   await act(async () => {
-    render(<Auth><ContextTester /></Auth>)
+    render(
+      <SettingsProvider locale={createLocale()} organization={createOrganization()}>
+        <Auth><ContextTester /></Auth>
+      </SettingsProvider>
+    )
   })
 
   expect(getSalesChannelToken).toBeCalledWith({
     clientId: 'client-1234',
     endpoint: 'https://demo-store.commercelayer.co',
-    scope: 'market:10426'
+    scope: 'market:123456789'
   })
 
-  expect(localStorage.getItem('clayer_token-market:10426')).toEqual(JSON.stringify({
+  expect(localStorage.getItem('clayer_token-market:123456789')).toEqual(JSON.stringify({
     tokenType: 'bearer',
     accessToken: 'accessToken-1234',
     expires: 0,

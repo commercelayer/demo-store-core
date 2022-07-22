@@ -17,7 +17,7 @@ type Query = {
 
 export const getStaticPaths: GetStaticPaths<Query> = () => {
   return withLocalePaths(async localeCode => {
-    const locale = getLocale(localeCode)
+    const locale = await getLocale(localeCode)
     const catalog = getCatalog(locale)
 
     const references = flattenReferencesFromCatalog(catalog)
@@ -40,7 +40,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode, slug } = params!
-  const locale = getLocale(localeCode)
+  const locale = await getLocale(localeCode)
   const catalog = getCatalog(locale)
 
   const productSlug = slug.join('/')
@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
     props: {
       navigation: getRootNavigationLinks(catalog),
       product: getProductWithVariants(productCode, locale.code, rawDataProducts),
-      ...(await serverSideSettings()),
+      ...(await serverSideSettings(localeCode)),
       ...(await serverSideTranslations(localeCode))
     }
   }

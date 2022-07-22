@@ -1,8 +1,10 @@
 import { getRawDataOrganization, RawDataOrganization } from '#data/organization'
+import { getLocale, Locale } from '#i18n/locale'
 import { createContext, useContext } from 'react'
 
 type Context = {
   organization: RawDataOrganization
+  locale: Locale
 }
 
 const SettingsContext = createContext<Partial<Context>>({})
@@ -15,10 +17,11 @@ export const SettingsProvider: React.FC<Context> = ({ children, ...props }) => (
 
 export const useSettingsContext = () => useContext(SettingsContext)
 
-export const serverSideSettings = async (): Promise<SettingsContextProps> => {
+export const serverSideSettings = async (localeCode: string): Promise<SettingsContextProps> => {
   return {
     settingsContext: {
-      organization: await getRawDataOrganization()
+      organization: await getRawDataOrganization(),
+      locale: await getLocale(localeCode),
     }
   }
 }

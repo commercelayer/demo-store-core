@@ -6,37 +6,33 @@ exports[`should match the snapshot 1`] = `
     data-testid="clAccessToken"
   >
     clAccessToken: 
-    accessToken-1234
+    
   </div>
   <div
     data-testid="clEndpoint"
   >
     clEndpoint: 
-    https://demo-store.commercelayer.co
+    
   </div>
   <div
     data-testid="accessToken"
   >
     accessToken: 
-    accessToken-1234
   </div>
   <div
     data-testid="endpoint"
   >
     endpoint: 
-    https://demo-store.commercelayer.co
   </div>
   <div
     data-testid="organization"
   >
     organization: 
-    demo-store
   </div>
   <div
     data-testid="domain"
   >
     domain: 
-    commercelayer.co
   </div>
 </div>
 `;

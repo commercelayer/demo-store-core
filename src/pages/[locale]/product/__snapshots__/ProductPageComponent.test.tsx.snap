@@ -334,7 +334,7 @@ exports[`product detail page 1`] = `
                   class="mr-1.5"
                 />
                  
-                United States
+                International
               </span>
               <a
                 class="uppercase text-violet-400 text-xs border-b border-gray-200 ml-3 mt-1"

@@ -16,7 +16,7 @@ const CountrySelectorPage: NextPage = () => {
 export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
-      ...(await serverSideSettings()),
+      ...(await serverSideSettings(defaultLanguage)),
       ...(await serverSideTranslations(defaultLanguage))
     }
   }
