@@ -9,7 +9,7 @@ exports[`CustomPage component 1`] = `
       class="container mx-auto px-6"
     >
       <header
-        class="border-b-gray-200 border-b pb-6 sticky top-0 bg-white z-50"
+        class="border-b-gray-200 border-b pb-6 sticky top-0 bg-pageBackground z-50"
       >
         <nav
           class="flex items-center justify-between flex-wrap mb-4"
@@ -66,7 +66,7 @@ exports[`CustomPage component 1`] = `
             class="order-2 lg:order-1"
           >
             <nav
-              class="hidden lg:block lg:relative absolute right-0 top-full w-full z-10 flex-col bg-white py-4 lg:py-0"
+              class="hidden lg:block lg:relative absolute right-0 top-full w-full z-10 flex-col bg-pageBackground py-4 lg:py-0"
             >
               <a
                 class="text-back font-bold py-2 px-3 my-2 mx-1 transition-colors duration-300 bg-transparent"

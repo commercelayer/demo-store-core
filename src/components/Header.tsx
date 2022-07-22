@@ -38,7 +38,7 @@ const CartQuantity: React.FC<{ quantity: number }> =  ({ quantity: propQuantity 
 
 export const Header: React.FC<HeaderProps> = ({ navigation }) => {
   return (
-    <header className='border-b-gray-200 border-b pb-6 sticky top-0 bg-white z-50'>
+    <header className='border-b-gray-200 border-b pb-6 sticky top-0 bg-pageBackground z-50'>
       <nav className='flex items-center justify-between flex-wrap mb-4'>
         <div className='flex items-center flex-no-shrink text-white mr-6'>
           <Link href='/'><a><Logo /></a></Link>
