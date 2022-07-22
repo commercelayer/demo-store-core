@@ -7,6 +7,7 @@
     "international": "Internazionale",
     "resultsFor": "{{count}} risultati per \"{{query}}\"",
     "all": "tutti",
+    "yourCart": "Il tuo carrello",
     "countrySelector": {
       "chooseCountry": "SCEGLI IL TUO PAESE/REGIONE",
       "otherCountries": "Altri Paesi / Regioni:"

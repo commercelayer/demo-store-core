@@ -1,5 +1,6 @@
 import type { HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
+import { Title } from '#components/Title'
 import { useAuthContext } from '#contexts/AuthContext'
 import { serverSideSettings } from '#contexts/SettingsContext'
 import { getLocale } from '#i18n/locale'
@@ -9,16 +10,20 @@ import { getCatalog, getRootNavigationLinks } from '#utils/catalog'
 import { getPersistKey } from '#utils/order'
 import IframeResizer from 'iframe-resizer-react'
 import type { GetStaticPaths, GetStaticProps } from 'next'
+import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
   const [cartUrl, setCartUrl] = useState<string | null>(null)
 
+  const i18n = useI18n()
   const auth = useAuthContext()
 
   const router = useRouter()
   const locale = getLocale(router.query.locale)
+
+  const cartTitle = i18n.t('general.yourCart')
 
   useEffect(() => {
     if (locale.isShoppable && auth.accessToken) {
@@ -31,7 +36,8 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
   }, [locale, auth])
 
   return (
-    <Page navigation={navigation}>
+    <Page navigation={navigation} title={cartTitle}>
+      <Title title={<>{cartTitle}</>}></Title>
       {
         cartUrl && (
           <IframeResizer
