@@ -30,7 +30,9 @@ export type LocalizedProductWithVariant = LocalizedProduct & {
 
 function resolveProductLocale(product: RawDataProduct | LocalizedProduct | LocalizedProductWithVariant, locale: string): LocalizedProduct | LocalizedProductWithVariant {
   if ('_locale' in product) {
-    return product
+    return {
+      ...product
+    }
   }
 
   const variant: Variant[] = []
