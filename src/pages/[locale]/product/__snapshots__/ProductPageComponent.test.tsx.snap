@@ -258,7 +258,7 @@ exports[`product detail page 1`] = `
               <div
                 class="accordion-content overflow-hidden transition-all max-h-0 duration-400 ease-in-out"
                 data-testid="accordion-content"
-                style="max-height: 0px;"
+                style=""
               >
                 <div
                   class="border-t border-t-gray-100"
@@ -297,7 +297,7 @@ exports[`product detail page 1`] = `
               <div
                 class="accordion-content overflow-hidden transition-all max-h-0 duration-400 ease-in-out"
                 data-testid="accordion-content"
-                style="max-height: 0px;"
+                style=""
               >
                 <div
                   class="border-t border-t-gray-100"

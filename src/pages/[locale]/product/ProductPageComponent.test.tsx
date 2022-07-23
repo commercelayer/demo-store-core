@@ -10,8 +10,14 @@ import { ProductPageComponent } from './ProductPageComponent'
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
 
 beforeEach(() => {
+  jest.useFakeTimers();
+
   useRouter.mockReset()
 })
+
+afterEach(() => {
+  jest.clearAllTimers()
+});
 
 test('product detail page', async () => {
   const locale = 'en'
@@ -40,7 +46,10 @@ test('product detail page', async () => {
         <ProductPageComponent navigation={navigation} product={product} />
       </I18nProvider>
     ))
+
+    jest.runAllTimers();
   })
+
 
   const productDetails = screen.queryAllByTestId('product-detail')
 

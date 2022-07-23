@@ -8,8 +8,14 @@ import { CustomPageComponent } from './CustomPageComponent'
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
 
 beforeEach(() => {
+  jest.useFakeTimers()
+
   useRouter.mockReset()
 })
+
+afterEach(() => {
+  jest.clearAllTimers()
+});
 
 test('CustomPage component', async () => {
   useRouter.mockImplementation(() => createRouter('/'))
@@ -28,7 +34,10 @@ test('CustomPage component', async () => {
         <CustomPageComponent navigation={navigation} components={[carouselPageComponent]} />
       </I18nProvider>
     ))
+
+    jest.runAllTimers();
   })
+
 
   const pageComponents = await screen.findByTestId('page-components')
 

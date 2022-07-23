@@ -14,7 +14,9 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 // suppress useLayoutEffect (and its warnings) when not running in a browser
-if (typeof window === 'undefined') React.useLayoutEffect = () => { };
+if (typeof window === 'undefined') {
+  React.useLayoutEffect = () => { }
+}
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { lngDict, settingsContext = {}, ...rest } = pageProps
