@@ -1,17 +1,17 @@
 import { localizedFieldSchema } from '#utils/locale'
-import { unserializableSchema } from '#utils/unserializable'
+import { makeUnserializable, Unserializable } from '#utils/unserializable'
 import memoize from 'lodash/memoize'
 import { z } from 'zod'
 
 export const getRawDataPages = memoize(
-  async function(): Promise<RawDataPages> {
+  async function (): Promise<Unserializable<RawDataPages>> {
     const dataFolder = './json'
     const jsonData = (await import(`${dataFolder}/pages.json`)).default
     // const jsonData = await fetch('http://localhost:3001/json/pages.json').then(response => response.json())
 
-    return pagesSchema.parse({
-      data: jsonData
-    })
+    return makeUnserializable(
+      pagesSchema.parse(jsonData)
+    )
   }
 )
 
@@ -63,21 +63,18 @@ const markdownSchema = z.object({
   content: z.string()
 })
 
-const pagesSchema = unserializableSchema(
-  z
-    .object({})
-    .catchall(
-      localizedFieldSchema(
-        z.discriminatedUnion('type', [
-          carouselSchema,
-          gridSchema,
-          heroSchema,
-          productGridSchema,
-          markdownSchema,
-        ]).array()
-      )
+const pagesSchema = z.object({})
+  .catchall(
+    localizedFieldSchema(
+      z.discriminatedUnion('type', [
+        carouselSchema,
+        gridSchema,
+        heroSchema,
+        productGridSchema,
+        markdownSchema,
+      ]).array()
     )
-)
+  )
 
 export type RawDataPages = z.infer<typeof pagesSchema>
 

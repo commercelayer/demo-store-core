@@ -2,37 +2,42 @@ export {}
 
 describe('JSON Data', () => {
   it('"catalog.json" should be properly defined.', async () => {
-    const { rawDataCatalogs } = await import('./catalogs')
-    expect(rawDataCatalogs).toBeDefined()
+    const { getRawDataCatalogs } = await import('./catalogs')
+    expect(await getRawDataCatalogs()).toBeDefined()
+  })
+
+  it('"taxonomies.json" should be properly defined.', async () => {
+    const { getRawDataTaxonomies } = await import('./catalogs')
+    expect(await getRawDataTaxonomies()).toBeDefined()
+  })
+
+  it('"taxons.json" should be properly defined.', async () => {
+    const { getRawDataTaxons } = await import('./catalogs')
+    expect(await getRawDataTaxons()).toBeDefined()
   })
 
   it('"countries.json" should be properly defined.', async () => {
     const { getRawDataCountries } = await import('./countries')
-    const rawDataCountries = await getRawDataCountries()
-    expect(rawDataCountries).toBeDefined()
+    expect(await getRawDataCountries()).toBeDefined()
   })
 
   it('"languages.json" should be properly defined.', async () => {
     const { getRawDataLanguages } = await import('./languages')
-    const rawDataLanguages = await getRawDataLanguages()
-    expect(rawDataLanguages).toBeDefined()
+    expect(await getRawDataLanguages()).toBeDefined()
   })
 
   it('"organization.json" should be properly defined. Did you run "npm run prebuild"?', async () => {
     const { getRawDataOrganization } = await import('./organization')
-    const rawDataOrganization = await getRawDataOrganization()
-    expect(rawDataOrganization).toBeDefined()
+    expect(await getRawDataOrganization()).toBeDefined()
   })
 
   it('"pages.json" should be properly defined.', async () => {
     const { getRawDataPages } = await import('./pages')
-    const rawDataPages = await getRawDataPages()
-    expect(rawDataPages).toBeDefined()
+    expect(await getRawDataPages()).toBeDefined()
   })
 
   it('"products.json" should be properly defined.', async () => {
     const { getRawDataProducts } = await import('./products')
-    const rawDataProducts = await getRawDataProducts()
-    expect(rawDataProducts).toBeDefined()
+    expect(await getRawDataProducts()).toBeDefined()
   })
 })
