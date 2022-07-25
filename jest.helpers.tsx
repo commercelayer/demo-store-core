@@ -47,6 +47,7 @@ export const createRouter = (href: string, locale: string = 'en-US'): NextRouter
 
 export const createOrganization = (): RawDataOrganization => {
   return {
+    slug: 'commerce-layer',
     favicon_url: 'https://www.commercelayer.com/favicon.ico',
     logo_url: 'https://www.commercelayer.com/logo.png',
     name: 'Commerce Layer',

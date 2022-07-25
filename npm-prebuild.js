@@ -41,6 +41,7 @@ getSalesChannelToken({
       .then(organization => {
         
         const organizationSettings = {
+          slug: organization.slug,
           name: organization.name,
           favicon_url: organization.favicon_url,
           logo_url: organization.logo_url,

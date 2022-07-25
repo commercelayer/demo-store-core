@@ -133,11 +133,11 @@ exports[`CustomPage component 1`] = `
                 class="swiper-slide select-none"
               >
                 <div
-                  class="relative rounded-lg overflow-hidden w-full max-h-[50vh] min-h-[24rem]"
+                  class="relative rounded-lg overflow-hidden w-full max-h-[70vh] min-h-[24rem]"
                 >
                   <img
                     alt="slide-1-image-alt-1"
-                    class="object-cover w-full rounded-lg"
+                    class="object-cover object-center w-full rounded-lg"
                     src="slide-1-image-src-1"
                   />
                   <div
@@ -177,11 +177,11 @@ exports[`CustomPage component 1`] = `
                 class="swiper-slide select-none"
               >
                 <div
-                  class="relative rounded-lg overflow-hidden w-full max-h-[50vh] min-h-[24rem]"
+                  class="relative rounded-lg overflow-hidden w-full max-h-[70vh] min-h-[24rem]"
                 >
                   <img
                     alt="slide-2-image-alt-1"
-                    class="object-cover w-full rounded-lg"
+                    class="object-cover object-center w-full rounded-lg"
                     src="slide-2-image-src-1"
                   />
                   <div

@@ -2,7 +2,7 @@ import type { HeaderProps } from '#components/Header'
 import { Page } from '#components/Page'
 import { Title } from '#components/Title'
 import { useAuthContext } from '#contexts/AuthContext'
-import { serverSideSettings } from '#contexts/SettingsContext'
+import { serverSideSettings, useSettingsContext } from '#contexts/SettingsContext'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
@@ -19,6 +19,7 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
 
   const i18n = useI18n()
   const auth = useAuthContext()
+  const settings = useSettingsContext()
 
   const router = useRouter()
 
@@ -36,7 +37,7 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
 
         if (isMounted) {
           // TODO: orderId is possibly null
-          setCartUrl(`https://demo-store-1.stg.commercelayer.app/cart/${orderId}?embed=true&accessToken=${auth.accessToken}`)
+          setCartUrl(`https://${settings.organization?.slug}.stg.commercelayer.app/cart/${orderId}?embed=true&accessToken=${auth.accessToken}`)
         }
       }
     })()
@@ -44,7 +45,7 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
     return () => {
       isMounted = false
     }
-  }, [router.query.locale, auth])
+  }, [router.query.locale, auth, settings.organization?.slug])
 
   return (
     <Page navigation={navigation} title={cartTitle}>

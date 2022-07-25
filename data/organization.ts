@@ -23,7 +23,7 @@ const organizationSchema = z.object({
   // metadata: z.object({}).catchall(z.any()),
 
   name: z.string().nullable(),
-  // slug: z.string().nullable(),
+  slug: z.string().nullable(),
   // domain: z.string().nullable(),
   // support_phone: z.string().nullable(),
   // support_email: z.string().nullable(),

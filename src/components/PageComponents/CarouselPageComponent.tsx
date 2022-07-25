@@ -6,8 +6,8 @@ export const CarouselPageComponent: React.FC<{ component: CarouselPageComponentT
   return (
     <div key={component.id} data-testid='carousel-page-component'>
       <Carousel slides={component.slides.map((slide, index) => (
-        <div key={index} className='relative rounded-lg overflow-hidden w-full max-h-[50vh] min-h-[24rem]'>
-          <img alt={slide.image.alt} src={slide.image.src} className='object-cover w-full rounded-lg' />
+        <div key={index} className='relative rounded-lg overflow-hidden w-full max-h-[70vh] min-h-[24rem]'>
+          <img alt={slide.image.alt} src={slide.image.src} className='object-cover object-center w-full rounded-lg' />
           <div className='hidden md:block absolute inset-0 bg-gradient-to-b from-black to-black/0 opacity-50'></div>
 
           <div className='flex justify-center relative -top-4 md:text-white md:absolute md:pr-10 md:top-1/2 md:right-0 md:w-1/2 md:-translate-y-1/2'>
