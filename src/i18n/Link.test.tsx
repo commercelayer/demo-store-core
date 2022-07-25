@@ -85,3 +85,15 @@ test('should be able to switch "href" with a path that contains a valid locale',
   const { container } = render(<Link href="/en-US/path-1">Path 1</Link>)
   expect(container).toContainHTML('<div><a href="/en-BE/en-US/path-1">Path 1</a></div>')
 })
+
+test('should behave like an <a> tag when url is absolute', () => {
+  useRouter.mockImplementation(() => ({
+    route: '/[locale]/another',
+    pathname: '/[locale]/another',
+    query: { locale: 'en-BE' },
+    asPath: '/en-BE/another'
+  }))
+
+  const { container } = render(<Link href="https://example.com">Path 1</Link>)
+  expect(container).toContainHTML('<div><a href="https://example.com">Path 1</a></div>')
+})
