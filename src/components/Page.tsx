@@ -49,7 +49,7 @@ export const Page: React.FC<Props> = ({
       <Head>
         <title>{`${title ? `${title} - ` : ''}${settings.organization?.name || i18n.t('seo.title')}`}</title>
         <meta name='description' content={description || i18n.t('seo.description')} />
-        <link rel='icon' href={basePath + '/favicon.ico'} />
+        <link rel='icon' href={settings.organization?.favicon_url || basePath + '/favicon.ico'} />
         {canonical && <link rel='canonical' href={`${router.basePath}/${router.query.locale}${canonical}`} />}
         <style>{`
           :root {

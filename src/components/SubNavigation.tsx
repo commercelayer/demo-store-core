@@ -1,9 +1,9 @@
 import { Link } from '#i18n/Link'
-import type { NavigationPath, NavigationLink } from '@typings/navigation.d'
+import type { Navigation, NavigationLink } from '@typings/navigation.d'
 import { useI18n } from 'next-localization'
 
 export type Props = JSX.IntrinsicElements['nav'] & {
-  subNavigation: NavigationPath
+  subNavigation: Navigation
 }
 
 const NavLink: React.FC<{ link: NavigationLink, active: NavigationLink, level: number }> = ({ link, active, level }) => {
@@ -25,7 +25,7 @@ const NavLink: React.FC<{ link: NavigationLink, active: NavigationLink, level: n
   )
 }
 
-export const SubNavigation: React.FC<Props> = ({ className , subNavigation: { current, children }, ...props }) => {
+export const SubNavigation: React.FC<Props> = ({ className , subNavigation: { current, path: children }, ...props }) => {
   return (
     <nav className={className} {...props}>
       {

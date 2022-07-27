@@ -46,7 +46,7 @@ const Header: React.FC<Partial<SubNavigationProps>> = ({ subNavigation }) => {
 }
 
 export const SearchPageComponent: NextPage<Props> = ({ navigation, products, subNavigation }) => {
-  const isSubNavigationVisible = subNavigation !== undefined && !!subNavigation.children.find(c => c.children?.length && c.children.length >= 1)
+  const isSubNavigationVisible = subNavigation !== undefined && !!subNavigation.path.find(c => c.children?.length && c.children.length >= 1)
 
   return (
     <Page

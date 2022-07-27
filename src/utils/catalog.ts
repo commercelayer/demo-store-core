@@ -1,7 +1,7 @@
 import type { Catalog, Taxon, Taxonomy } from '#data/models/catalog'
 import { deepFind, DeepFindResult } from '#utils/collection'
 import { getSearchUrl } from '#utils/url'
-import type { NavigationLink, NavigationPath } from '@typings/navigation.d'
+import type { NavigationLink, Breadcrumbs, Navigation } from '@typings/navigation.d'
 import uniq from 'lodash/uniq'
 
 const getPrimaryTaxonomy = (catalog: Catalog): Taxonomy => {
@@ -9,25 +9,16 @@ const getPrimaryTaxonomy = (catalog: Catalog): Taxonomy => {
   return catalog.data.taxonomies[0]
 }
 
-export const getRootNavigationLinks = (catalog: Catalog): NavigationPath => {
-  return {
-    parent: [],
-    current: {
-      key: 'home',
-      href: '/',
-      text: 'Home',
-      description: 'Home'
-    },
-    children: getPrimaryTaxonomy(catalog).taxons.map(taxon => ({
-      key: taxon.id,
-      href: getSearchUrl(taxon),
-      text: taxon.label,
-      description: taxon.description
-    }))
-  }
+export const getRootNavigationLinks = (catalog: Catalog): NavigationLink[] => {
+  return getPrimaryTaxonomy(catalog).taxons.map(taxon => ({
+    key: taxon.id,
+    href: getSearchUrl(taxon),
+    text: taxon.label,
+    description: taxon.description
+  }))
 }
 
-export const getBreadcrumbs = (taxon: DeepFindResult<Taxon>): NavigationPath => {
+export const getBreadcrumbs = (taxon: DeepFindResult<Taxon>): Breadcrumbs => {
   return {
     parent: taxon.memo.map(({ id: key, slug, label, description }) => ({
       key: key,
@@ -60,16 +51,15 @@ const getNavigationChildren = (foundTaxon: DeepFindResult<Taxon>, index: number,
   })) : []
 }
 
-export const getNavigation = (foundTaxon: DeepFindResult<Taxon>): NavigationPath => {
+export const getNavigation = (foundTaxon: DeepFindResult<Taxon>): Navigation => {
   return {
-    parent: [],
     current: {
       key: foundTaxon.result.id,
       href: getSearchUrl(foundTaxon.result),
       text: foundTaxon.result.label,
       description: foundTaxon.result.description
     },
-    children: [{
+    path: [{
       key: foundTaxon.memo[0].id,
       href: getSearchUrl(foundTaxon.memo[0]),
       text: foundTaxon.memo[0].label,

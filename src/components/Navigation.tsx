@@ -1,11 +1,11 @@
 import { Link } from '#i18n/Link'
-import type { NavigationPath } from '@typings/navigation.d'
+import type { NavigationLink } from '@typings/navigation.d'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { Hamburger } from './Hamburger'
 
 export type Props = JSX.IntrinsicElements['div'] & {
-  navigation: NavigationPath
+  navigation: NavigationLink[]
 }
 
 export const Navigation: React.FC<Props> = ({ navigation, className }) => {
@@ -16,7 +16,7 @@ export const Navigation: React.FC<Props> = ({ navigation, className }) => {
     <div className={className}>
       <nav className={`${menuOpen ? 'flex' : 'hidden'} lg:block lg:relative absolute right-0 top-full w-full z-10 flex-col bg-pageBackground py-4 lg:py-0`}>
         {
-          navigation.children.map(link => {
+          navigation.map(link => {
             const isActive = router.asPath.includes(link.href)
 
             return (

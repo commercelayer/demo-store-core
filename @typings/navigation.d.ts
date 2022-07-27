@@ -6,8 +6,13 @@ export type NavigationLink = {
   children?: NavigationLink[]
 }
 
-export type NavigationPath = {
+export type Breadcrumbs = {
   parent: NavigationLink[]
   current: NavigationLink
   children: NavigationLink[]
+}
+
+export type Navigation = {
+  current: NavigationLink
+  path: NavigationLink[]
 }

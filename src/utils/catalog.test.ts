@@ -16,29 +16,20 @@ describe('getRootNavigationLinks', () => {
   it('should be able to generage root navigation links given a catalog with different taxonomies and taxons', () => {
     const rootNavigationLinks = getRootNavigationLinks(catalog1)
 
-    expect(rootNavigationLinks).toStrictEqual({
-      parent: [],
-      current: {
-        key: 'home',
-        href: '/',
-        text: 'Home',
-        description: 'Home'
+    expect(rootNavigationLinks).toStrictEqual([
+      {
+        key: 'taxon-key-1',
+        href: '/search/taxon-slug-1',
+        text: 'Label for 1',
+        description: 'taxon-description-1'
       },
-      children: [
-        {
-          key: 'taxon-key-1',
-          href: '/search/taxon-slug-1',
-          text: 'Label for 1',
-          description: 'taxon-description-1'
-        },
-        {
-          key: 'taxon-key-2',
-          href: '/search/taxon-slug-2',
-          text: 'Label for 2',
-          description: 'taxon-description-2'
-        }
-      ]
-    })
+      {
+        key: 'taxon-key-2',
+        href: '/search/taxon-slug-2',
+        text: 'Label for 2',
+        description: 'taxon-description-2'
+      }
+    ])
   })
 })
 
