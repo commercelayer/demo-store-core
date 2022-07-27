@@ -1,12 +1,12 @@
-import { getCatalog } from '#utils/catalog'
+import { serverSideSettings } from '#contexts/SettingsContext'
+import { getCatalog } from '#data/models/catalog'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
+import { getPages } from '#utils/pages'
 import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import type { Props } from './CustomPageComponent'
-import { getPages } from '#utils/pages'
-import { serverSideSettings } from '#contexts/SettingsContext'
 
 type Query = {
   locale: string
@@ -32,7 +32,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode, slug } = params!
   const locale = await getLocale(localeCode)
-  const catalog = getCatalog(locale)
+  const catalog = await getCatalog(locale)
 
   const pages = await getPages(localeCode)
   const page = pages.find(page => page.slug === (slug ? slug.join('/') : ''))

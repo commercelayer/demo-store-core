@@ -1,13 +1,13 @@
-import { findTaxonBySlug, flattenReferencesFromTaxon, getCatalog, getNavigation } from '#utils/catalog'
+import { serverSideSettings } from '#contexts/SettingsContext'
+import { getCatalog } from '#data/models/catalog'
 import { getRawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
-import { getRootNavigationLinks, getSlugs } from '#utils/catalog'
+import { findTaxonBySlug, flattenReferencesFromTaxon, getNavigation, getRootNavigationLinks, getSlugs } from '#utils/catalog'
 import { getProductWithVariants } from '#utils/products'
 import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import type { Props } from './SearchPageComponent'
-import { serverSideSettings } from '#contexts/SettingsContext'
 
 type Query = {
   locale: string
@@ -17,7 +17,7 @@ type Query = {
 export const getStaticPaths: GetStaticPaths<Query> = () => {
   return withLocalePaths(async localeCode => {
     const locale = await getLocale(localeCode)
-    const catalog = getCatalog(locale)
+    const catalog = await getCatalog(locale)
     const slugs = getSlugs(catalog)
 
     return {
@@ -34,7 +34,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode, slug } = params!
   const locale = await getLocale(localeCode)
-  const catalog = getCatalog(locale)
+  const catalog = await getCatalog(locale)
 
   const taxon = findTaxonBySlug(catalog, slug.join('/'))
 

@@ -1,5 +1,5 @@
 import { localizedFieldSchema } from '#utils/locale'
-import { makeUnserializable, Unserializable, unserializableSchema } from '#utils/unserializable'
+import { makeUnserializable, Unserializable } from '#utils/unserializable'
 import memoize from 'lodash/memoize'
 import { z } from 'zod'
 
@@ -36,11 +36,6 @@ export const getRawDataCatalogs = memoize(
   }
 )
 
-
-import catalogsJson from '#data/json/catalogs.json'
-import taxonomiesJson from '#data/json/taxonomies.json'
-import taxonsJson from '#data/json/taxons.json'
-
 const catalogSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -67,21 +62,3 @@ const taxonSchema = z.object({
 export type RawDataCatalog = z.infer<typeof catalogSchema>
 export type RawDataTaxonomy = z.infer<typeof taxonomySchema>
 export type RawDataTaxon = z.infer<typeof taxonSchema>
-
-// TODO: remove it
-export const rawDataCatalogs = unserializableSchema(catalogSchema.array())
-  .parse({
-    data: catalogsJson
-  })
-
-// TODO: remove it
-export const rawDataTaxonomies = unserializableSchema(taxonomySchema.array())
-  .parse({
-    data: taxonomiesJson
-  })
-
-// TODO: remove it
-export const rawDataTaxons = unserializableSchema(taxonSchema.array())
-  .parse({
-    data: taxonsJson
-  })

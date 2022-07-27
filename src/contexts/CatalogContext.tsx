@@ -1,4 +1,3 @@
-import { buildProductDataset } from '#utils/catalog'
 import { getLocale } from '#i18n/locale'
 import type { FacetResult, Primitives } from '#utils/facets'
 import { getFacets } from '#utils/facets'
@@ -157,6 +156,7 @@ function useCatalog(initialProducts: LocalizedProductWithVariant[]) {
 
     ;(async () => {
       const { getRawDataCatalogs } = await import('#data/catalogs')
+      const { buildProductDataset } = await import('#data/models/catalog')
 
       const locale = await getLocale(router.query.locale)
 
@@ -164,7 +164,7 @@ function useCatalog(initialProducts: LocalizedProductWithVariant[]) {
       const rawDataCatalog = (await getRawDataCatalogs()).data.find(catalog => catalog.name === name)
 
       if (rawDataCatalog) {
-        const productDataset = buildProductDataset(rawDataCatalog, locale.code, initialProducts)
+        const productDataset = await buildProductDataset(rawDataCatalog, locale.code, initialProducts)
 
         if (isMounted) {
           setProducts(Object.values(productDataset))

@@ -1,13 +1,13 @@
-import { flattenReferencesFromCatalog, getCatalog } from '#utils/catalog'
+import { serverSideSettings } from '#contexts/SettingsContext'
+import { getCatalog } from '#data/models/catalog'
 import { getRawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
-import { getRootNavigationLinks } from '#utils/catalog'
+import { flattenReferencesFromCatalog, getRootNavigationLinks } from '#utils/catalog'
 import { getProductWithVariants } from '#utils/products'
 import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import type { Props } from './SearchPageComponent'
-import { serverSideSettings } from '#contexts/SettingsContext'
 
 type Query = {
   locale: string
@@ -23,7 +23,7 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
   const { locale: localeCode } = params!
   const locale = await getLocale(localeCode)
-  const catalog = getCatalog(locale)
+  const catalog = await getCatalog(locale)
 
   const references = flattenReferencesFromCatalog(catalog)
 

@@ -3,10 +3,11 @@ import { Page } from '#components/Page'
 import { Title } from '#components/Title'
 import { useAuthContext } from '#contexts/AuthContext'
 import { serverSideSettings, useSettingsContext } from '#contexts/SettingsContext'
+import { getCatalog } from '#data/models/catalog'
 import { getLocale } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
-import { getCatalog, getRootNavigationLinks } from '#utils/catalog'
+import { getRootNavigationLinks } from '#utils/catalog'
 import { getPersistKey } from '#utils/order'
 import IframeResizer from 'iframe-resizer-react'
 import type { GetStaticPaths, GetStaticProps } from 'next'
@@ -71,7 +72,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { locale: localeCode } = params!
   const locale = await getLocale(localeCode)
-  const catalog = getCatalog(locale)
+  const catalog = await getCatalog(locale)
 
   return {
     props: {

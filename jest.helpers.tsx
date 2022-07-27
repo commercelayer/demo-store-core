@@ -1,7 +1,7 @@
 import { basePath } from '#config/general.config'
 import type { RawDataOrganization } from '#data/organization'
 import type { Locale } from '#i18n/locale'
-import type { Catalog, Taxon, Taxonomy } from '#utils/catalog'
+import type { Catalog, Taxon, Taxonomy } from '#data/models/catalog'
 import type { CarouselPageComponent } from '#utils/pages'
 import { makeUnserializable } from '#utils/unserializable'
 import { RouterContext as NextRouterContext } from 'next/dist/shared/lib/router-context'
