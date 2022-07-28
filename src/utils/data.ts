@@ -2,6 +2,11 @@ function isUrlAbsolute(url: string) {
   return (url.indexOf('://') > 0 || url.indexOf('//') === 0)
 }
 
+/**
+ * Fetch JSON from `data` folder.
+ * @param filename JSON filename that will be fetched.
+ * @param jsonDataFolder Local path starting from `./data/` or a remote URL.
+ */
 export async function fetchData(filename: string, jsonDataFolder: string = process.env.NEXT_PUBLIC_JSON_DATA_FOLDER || 'json'): Promise<unknown> {
   let jsonData: any
 

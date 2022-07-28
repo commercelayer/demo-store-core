@@ -2,6 +2,7 @@ import type { RawDataCarousel, RawDataGrid, RawDataHero, RawDataMarkdown, RawDat
 import { getRawDataPages } from '#data/pages'
 import { getRawDataProducts } from '#data/products'
 import { translateField } from '#utils/locale'
+import memoize from 'lodash/memoize'
 import { getProductWithVariants, LocalizedProductWithVariant } from './products'
 
 export type Image = {
@@ -133,19 +134,21 @@ const componentMapper: Record<PageComponent['type'], (rawData: any, localeCode: 
   'markdown': getMarkdownPageComponent,
 }
 
-export const getPages = async (localeCode: string): Promise<CustomPage[]> => {
-  const rawDataPages = await getRawDataPages()
-  return await Promise.all(
-    Object.entries(rawDataPages.data).map(async ([slug, page]) => {
-      const components = await Promise.all(
-        translateField(page, localeCode)
-          .map(component => componentMapper[component.type](component, localeCode))
-      )
+export const getPages = memoize(
+  async (localeCode: string): Promise<CustomPage[]> => {
+    const rawDataPages = await getRawDataPages()
+    return await Promise.all(
+      Object.entries(rawDataPages.value).map(async ([slug, page]) => {
+        const components = await Promise.all(
+          translateField(page, localeCode)
+            .map(component => componentMapper[component.type](component, localeCode))
+        )
 
-      return {
-        slug: slug.replace(/^\//, ''),
-        components
-      }
-    })
-  )
-}
+        return {
+          slug: slug.replace(/^\//, ''),
+          components
+        }
+      })
+    )
+  }
+)

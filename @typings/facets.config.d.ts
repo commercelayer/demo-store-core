@@ -1,4 +1,4 @@
-import type { SortOrder } from '#utils/sort'
+import type { SortingRule } from '#utils/sort'
 
 type Config = {
   /**
@@ -9,7 +9,7 @@ type Config = {
   /**
    * Define a list of sorting rules.
    */
-  sortOrder?: SortOrder[]
+  sortOrder?: SortingRule[]
 }
 
 type ColorSwatchAppearance = {
@@ -46,6 +46,9 @@ type TagAppearance = {
   appearance: 'tag'
 }
 
+/**
+ * asd
+ */
 export type FacetConfig = Config & (
   | ColorSwatchAppearance
   | PriceRangeAppearance

@@ -1,7 +1,7 @@
 export type GeneralConfig = {
 
   /**
-   * The RegExp needs to extract the Product Code from a Product Slug using the named group `?<productCode>`
+   * The RegExp needs to extract the Product Code from a Product Slug using the named group `?<productCode>`.
    * 
    * @example
    * /^.*\/(?<productCode>[A-Z0-9]+) $/
@@ -16,14 +16,14 @@ export type GeneralConfig = {
   dataFetching: 'ssg' | 'ssr',
 
   /**
-   * Deploy a Next.js application under a sub-path of a domain
+   * Deploy a Next.js application under a sub-path of a domain.
    *
    * @see [Base path configuration](https://nextjs.org/docs/api-reference/next.config.js/basepath)
    */
   basePath: string,
 
   /**
-   * Default language when translation is not found
+   * Default language when translation is not found.
    * 
    * @default 'en'
    */

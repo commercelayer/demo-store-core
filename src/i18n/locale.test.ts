@@ -21,8 +21,8 @@ describe('getLocale', () => {
     expect(getLocale('aa-BB')).rejects.toThrowError(new Error('Cannot find a locale with code "aa-BB"'))
   })
 
-  it('should return undefined when the localeCode is unknown and throw option is set to false', async () => {
-    const locale = await getLocale('aa-BB', false)
-    expect(locale).toBe(undefined)
-  })
+  // it('should return undefined when the localeCode is unknown and throw option is set to false', async () => {
+  //   const locale = await getLocale('aa-BB', false)
+  //   expect(locale).toBe(undefined)
+  // })
 })

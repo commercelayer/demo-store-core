@@ -3,13 +3,14 @@ import { deepFind, DeepFindResult } from '#utils/collection'
 import { getSearchUrl } from '#utils/url'
 import type { NavigationLink, Breadcrumbs, Navigation } from '@typings/navigation.d'
 import uniq from 'lodash/uniq'
+import type { Unserializable } from './unserializable'
 
-const getPrimaryTaxonomy = (catalog: Catalog): Taxonomy => {
+const getPrimaryTaxonomy = (catalog: Unserializable<Catalog>): Taxonomy => {
   // TODO: taxonomies[0] is a requirement. First taxonomy is considered the navigation one. Should it be configurable?
-  return catalog.data.taxonomies[0]
+  return catalog.value.taxonomies[0]
 }
 
-export const getRootNavigationLinks = (catalog: Catalog): NavigationLink[] => {
+export const getRootNavigationLinks = (catalog: Unserializable<Catalog>): NavigationLink[] => {
   return getPrimaryTaxonomy(catalog).taxons.map(taxon => ({
     key: taxon.id,
     href: getSearchUrl(taxon),
@@ -69,7 +70,7 @@ export const getNavigation = (foundTaxon: DeepFindResult<Taxon>): Navigation => 
   }
 }
 
-export const getSlugs = (catalog: Catalog): string[] => {
+export const getSlugs = (catalog: Unserializable<Catalog>): string[] => {
   function getFlatSlug(taxon: Taxon): string[] {
     return [taxon.slug].concat(taxon.taxons.flatMap(getFlatSlug))
   }
@@ -83,14 +84,14 @@ export function flattenReferencesFromTaxon(taxon: Taxon): string[] {
   )
 }
 
-export function flattenReferencesFromCatalog(catalog: Catalog): string[] {
+export function flattenReferencesFromCatalog(catalog: Unserializable<Catalog>): string[] {
   return uniq(
-    catalog.data.taxonomies.flatMap(({ taxons }) => taxons.flatMap(flattenReferencesFromTaxon)),
+    catalog.value.taxonomies.flatMap(({ taxons }) => taxons.flatMap(flattenReferencesFromTaxon)),
   )
 }
 
-export function findTaxonBySlug(catalog: Catalog, slug: string): DeepFindResult<Taxon> {
-  const taxon = catalog.data.taxonomies.reduce((acc, cv) => {
+export function findTaxonBySlug(catalog: Unserializable<Catalog>, slug: string): DeepFindResult<Taxon> {
+  const taxon = catalog.value.taxonomies.reduce((acc, cv) => {
     if (acc) {
       return acc
     }

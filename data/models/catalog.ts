@@ -2,14 +2,14 @@ import { getRawDataCatalogs, getRawDataTaxonomies, getRawDataTaxons, RawDataCata
 import type { Locale } from '#i18n/locale'
 import { translateField } from '#utils/locale'
 import { LocalizedProductWithVariant, spreadProductVariants } from '#utils/products'
-import { isDefined } from '#utils/types'
+import { isNotNullish } from '#utils/utility-types'
 import { makeUnserializable, Unserializable } from '#utils/unserializable'
 import memoize from 'lodash/memoize'
 import uniq from 'lodash/uniq'
 
-export type Catalog = Unserializable<Omit<RawDataCatalog, 'taxonomies'> & {
+export type Catalog = Omit<RawDataCatalog, 'taxonomies'> & {
   taxonomies: Taxonomy[]
-}>
+}
 
 export type Taxonomy = Omit<RawDataTaxonomy, 'taxons'> & {
   taxons: Taxon[]
@@ -22,9 +22,9 @@ export type Taxon = Omit<RawDataTaxon, 'label' | 'description' | 'taxons'> & {
 }
 
 export const getCatalog = memoize(
-  async (locale: Locale) => {
+  async (locale: Locale): Promise<Unserializable<Catalog>> => {
     const name = locale.country?.catalog || locale.language.catalog
-    const rawDataCatalog = (await getRawDataCatalogs()).data.find(catalog => catalog.name === name)
+    const rawDataCatalog = (await getRawDataCatalogs()).value.find(catalog => catalog.name === name)
 
     if (!rawDataCatalog) {
       throw new Error(`Cannot find the catalog with name "${name}"`)
@@ -35,7 +35,7 @@ export const getCatalog = memoize(
   locale => locale.code
 )
 
-const resolveCatalog = async (catalog: RawDataCatalog, locale: string, productDataset: ProductDataset): Promise<Catalog> => {
+const resolveCatalog = async (catalog: RawDataCatalog, locale: string, productDataset: ProductDataset): Promise<Unserializable<Catalog>> => {
   const taxonomies = await Promise.all(
     catalog.taxonomies
       .map(async taxonomy => resolveTaxonomy(await getTaxonomy(taxonomy), locale, Object.values(productDataset)))
@@ -50,7 +50,7 @@ const resolveCatalog = async (catalog: RawDataCatalog, locale: string, productDa
 
 const getTaxonomy = memoize(
   async (id: string): Promise<RawDataTaxonomy> => {
-    const taxonomy = (await getRawDataTaxonomies()).data.find(taxonomy => taxonomy.id === id)
+    const taxonomy = (await getRawDataTaxonomies()).value.find(taxonomy => taxonomy.id === id)
 
     if (!taxonomy) {
       throw new Error(`Cannot find taxonomy with id ${id}`)
@@ -76,7 +76,7 @@ const resolveTaxonomy = async (taxonomy: RawDataTaxonomy, locale: string, produc
 
 const getTaxon = memoize(
   async (id: string): Promise<RawDataTaxon> => {
-    const taxon = (await getRawDataTaxons()).data.find(taxon => taxon.id === id)
+    const taxon = (await getRawDataTaxons()).value.find(taxon => taxon.id === id)
 
     if (!taxon) {
       throw new Error(`Cannot find taxon with id ${id}`)
@@ -127,7 +127,7 @@ export async function buildProductDataset(catalog: RawDataCatalog, locale: strin
 
     const products = (await flattenReferences(taxon))
       .map(ref => productList.find(product => product.sku === ref))
-      .filter(isDefined)
+      .filter(isNotNullish)
 
     spreadProductVariants(products).forEach(product => {
       productDataset[product.sku] = productDataset[product.sku] || product

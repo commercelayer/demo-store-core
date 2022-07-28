@@ -161,7 +161,7 @@ function useCatalog(initialProducts: LocalizedProductWithVariant[]) {
       const locale = await getLocale(router.query.locale)
 
       const name = locale.country?.catalog || locale.language.catalog
-      const rawDataCatalog = (await getRawDataCatalogs()).data.find(catalog => catalog.name === name)
+      const rawDataCatalog = (await getRawDataCatalogs()).value.find(catalog => catalog.name === name)
 
       if (rawDataCatalog) {
         const productDataset = await buildProductDataset(rawDataCatalog, locale.code, initialProducts)

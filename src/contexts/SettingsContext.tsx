@@ -1,5 +1,6 @@
 import { getRawDataOrganization, RawDataOrganization } from '#data/organization'
 import { getLocale, Locale } from '#i18n/locale'
+import memoize from 'lodash/memoize'
 import { createContext, useContext } from 'react'
 
 type Context = {
@@ -17,14 +18,16 @@ export const SettingsProvider: React.FC<Context> = ({ children, ...props }) => (
 
 export const useSettingsContext = () => useContext(SettingsContext)
 
-export const serverSideSettings = async (localeCode: string): Promise<SettingsContextProps> => {
-  return {
-    settingsContext: {
-      organization: await getRawDataOrganization(),
-      locale: await getLocale(localeCode),
+export const serverSideSettings = memoize(
+  async (localeCode: string): Promise<SettingsContextProps> => {
+    return {
+      settingsContext: {
+        organization: await getRawDataOrganization(),
+        locale: await getLocale(localeCode),
+      }
     }
   }
-}
+)
 
 type SettingsContextProps = {
   settingsContext: Context

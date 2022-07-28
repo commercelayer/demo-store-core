@@ -8,7 +8,6 @@ type ItemWithSlug = {
 }
 
 export const getSearchUrl = (item: ItemWithSlug): string => {
-  // TODO: remove slash from here (slug should already have a slash)
   return `/search/${item.slug}`
 }
 

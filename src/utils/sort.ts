@@ -1,19 +1,32 @@
 type Value = string | boolean | number
 
-export type SortOrder = {
+export type SortingRule = {
+  /**
+   * RegExp to match the value.
+   */
   pattern: RegExp
+
+  /**
+   * Sorting algorithm to apply.
+   */
   sort?: <T extends Value>(values: T[]) => T[]
 }
 
 type PatternMapValue<T extends Value> = {
-  sort: SortOrder['sort']
+  sort: SortingRule['sort']
   values: T[]
 }
 
-export function sort<T extends Value = Value>(values: T[], sortOrder: SortOrder[]): T[] {
+/**
+ * Sort a list of values given a set of rules.
+ * @param values List of values to sort
+ * @param sortingRules Sorting rules
+ * @returns Sorted values
+ */
+export function sort<T extends Value = Value>(values: T[], sortingRules: SortingRule[]): T[] {
 
-  const patternMap = new Map<SortOrder['pattern'], PatternMapValue<T>>(
-    sortOrder.map(({ pattern, sort }) => (
+  const patternMap = new Map<SortingRule['pattern'], PatternMapValue<T>>(
+    sortingRules.map(({ pattern, sort }) => (
       [
         pattern,
         {
@@ -25,7 +38,7 @@ export function sort<T extends Value = Value>(values: T[], sortOrder: SortOrder[
   )
 
   values.forEach((value) => {
-    const match = sortOrder.find(({ pattern }) => pattern.test(value.toString()))
+    const match = sortingRules.find(({ pattern }) => pattern.test(value.toString()))
 
     if (match) {
       const patternMatched = patternMap.get(match.pattern)

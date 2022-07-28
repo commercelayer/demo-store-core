@@ -28,13 +28,12 @@ export const getLocales = memoize(
 )
 
 export async function getLocale(localeCode: string): Promise<Locale>
-export async function getLocale(localeCode: string, throwWhenUndefined: false): Promise<Locale | undefined>
-export async function getLocale(localeCode: string, throwWhenUndefined = true) {
+export async function getLocale(localeCode: string) {
   const locales = await getLocales()
 
   const locale = locales.find(locale => locale.code === localeCode)
 
-  if (throwWhenUndefined && !locale) {
+  if (!locale) {
     throw new Error(`Cannot find a locale with code "${localeCode}"`)
   }
 

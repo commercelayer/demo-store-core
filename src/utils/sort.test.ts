@@ -1,6 +1,6 @@
-import { sort, SortOrder } from './sort'
+import { sort, SortingRule } from './sort'
 
-const sortOrder: SortOrder[] = [
+const sortingRules: SortingRule[] = [
   { pattern: /^(One Size|U)$/ },
   {
     pattern: /^[0-9]+ months$/,
@@ -43,7 +43,7 @@ test('"sort" should show a console.error when there are no matching patterns', (
     'NO PATTERN FOR THIS!',
     'L',
     '8,4',
-  ], sortOrder)
+  ], sortingRules)
 
   expect(sorted).toMatchObject([
     'L',
@@ -75,7 +75,7 @@ test('"sort" should sort an array of strings given a complex SortOrder object', 
     'XL',
     'XXXL',
     'XXS',
-  ], sortOrder)
+  ], sortingRules)
 
   expect(console.error).not.toBeCalled()
 

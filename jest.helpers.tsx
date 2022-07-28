@@ -3,7 +3,7 @@ import type { RawDataOrganization } from '#data/organization'
 import type { Locale } from '#i18n/locale'
 import type { Catalog, Taxon, Taxonomy } from '#data/models/catalog'
 import type { CarouselPageComponent } from '#utils/pages'
-import { makeUnserializable } from '#utils/unserializable'
+import { makeUnserializable, Unserializable } from '#utils/unserializable'
 import { RouterContext as NextRouterContext } from 'next/dist/shared/lib/router-context'
 import type { NextRouter } from 'next/router'
 
@@ -75,7 +75,7 @@ export const createLocale = (): Locale => {
   }
 }
 
-export const createCatalog = (id: string, taxonomies: Taxonomy[] = []): Catalog => {
+export const createCatalog = (id: string, taxonomies: Taxonomy[] = []): Unserializable<Catalog> => {
   return makeUnserializable({
     id: `catalog-key-${id}`,
     name: `catxalog-name-${id}`,
