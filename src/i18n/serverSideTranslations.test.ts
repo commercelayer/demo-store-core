@@ -17,7 +17,7 @@ const mockLocaleFiles = (localeFiles: LocaleFile[]) => {
   )
 
   mock({
-    [mockedFolder]: Object.fromEntries(stringifiedLocaleFiles)
+    [`data/${mockedFolder}`]: Object.fromEntries(stringifiedLocaleFiles)
   })
 }
 
