@@ -1,13 +1,12 @@
+import { fetchData } from '#utils/data'
 import memoize from 'lodash/memoize'
 import { z } from 'zod'
 
 export const getRawDataCountries = memoize(
   async function (): Promise<RawDataCountry[]> {
-    const dataFolder = './json'
-    const jsonData = (await import(`${dataFolder}/countries.json`)).default
-    // const jsonData = await fetch('http://localhost:3001/json/countries.json').then(response => response.json())
-
-    return countrySchema.array().parse(jsonData)
+    return countrySchema.array().parse(
+      await fetchData('countries')
+    )
   }
 )
 

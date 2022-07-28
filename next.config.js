@@ -26,6 +26,12 @@ const nextConfig = {
     })
 
     return config;
+  },
+
+  // https://nextjs.org/docs/api-reference/next.config.js/environment-variables
+  env: {
+    // https://stackoverflow.com/a/57368145
+    PROJECT_ROOT: __dirname
   }
 }
 

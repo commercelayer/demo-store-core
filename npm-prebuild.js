@@ -6,7 +6,7 @@ const { writeFileSync } = require('fs')
 const { resolve } = require('path')
 
 
-const organizationJsonPath = resolve(__dirname, 'data', 'json', 'organization.json')
+const organizationJsonPath = resolve(__dirname, 'data', process.env.NEXT_PUBLIC_JSON_DATA_FOLDER || 'json', 'organization.json')
 writeFileSync(organizationJsonPath, '{}', { encoding: 'utf-8' })
 
 const { NEXT_PUBLIC_CL_ENDPOINT, NEXT_PUBLIC_CL_CLIENT_ID } = process.env

@@ -1,3 +1,4 @@
+import { fetchData } from '#utils/data'
 import { localizedFieldSchema } from '#utils/locale'
 import type { Price } from '@commercelayer/sdk'
 import memoize from 'lodash/memoize'
@@ -5,12 +6,10 @@ import { z } from 'zod'
 
 export const getRawDataProducts = memoize(
   async function(): Promise<RawDataProduct[]> {
-    const dataFolder = './json'
-    const jsonData = (await import(`${dataFolder}/products.json`)).default
-    // const jsonData = await fetch('http://localhost:3001/json/products.json').then(response => response.json())
-
     // TODO: this should be unserializable
-    return productSchema.passthrough().array().parse(jsonData)
+    return productSchema.passthrough().array().parse(
+      await fetchData('products')
+    )
   }
 )
 

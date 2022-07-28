@@ -1,3 +1,4 @@
+import { fetchData } from '#utils/data'
 import { localizedFieldSchema } from '#utils/locale'
 import { makeUnserializable, Unserializable } from '#utils/unserializable'
 import memoize from 'lodash/memoize'
@@ -5,33 +6,30 @@ import { z } from 'zod'
 
 export const getRawDataTaxons = memoize(
   async function (): Promise<Unserializable<RawDataTaxon[]>> {
-    const dataFolder = './json'
-    const jsonData = (await import(`${dataFolder}/taxons.json`)).default
-
     return makeUnserializable(
-      taxonSchema.array().parse(jsonData)
+      taxonSchema.array().parse(
+        await fetchData('taxons')
+      )
     )
   }
 )
 
 export const getRawDataTaxonomies = memoize(
   async function (): Promise<Unserializable<RawDataTaxonomy[]>> {
-    const dataFolder = './json'
-    const jsonData = (await import(`${dataFolder}/taxonomies.json`)).default
-
     return makeUnserializable(
-      taxonomySchema.array().parse(jsonData)
+      taxonomySchema.array().parse(
+        await fetchData('taxonomies')
+      )
     )
   }
 )
 
 export const getRawDataCatalogs = memoize(
   async function (): Promise<Unserializable<RawDataCatalog[]>> {
-    const dataFolder = './json'
-    const jsonData = (await import(`${dataFolder}/catalogs.json`)).default
-
     return makeUnserializable(
-      catalogSchema.array().parse(jsonData)
+      catalogSchema.array().parse(
+        await fetchData('catalogs')
+      )
     )
   }
 )

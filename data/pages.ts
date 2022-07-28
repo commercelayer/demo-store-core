@@ -1,3 +1,4 @@
+import { fetchData } from '#utils/data'
 import { localizedFieldSchema } from '#utils/locale'
 import { makeUnserializable, Unserializable } from '#utils/unserializable'
 import memoize from 'lodash/memoize'
@@ -5,12 +6,10 @@ import { z } from 'zod'
 
 export const getRawDataPages = memoize(
   async function (): Promise<Unserializable<RawDataPages>> {
-    const dataFolder = './json'
-    const jsonData = (await import(`${dataFolder}/pages.json`)).default
-    // const jsonData = await fetch('http://localhost:3001/json/pages.json').then(response => response.json())
-
     return makeUnserializable(
-      pagesSchema.parse(jsonData)
+      pagesSchema.parse(
+        await fetchData('pages')
+      )
     )
   }
 )
