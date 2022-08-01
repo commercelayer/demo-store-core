@@ -71,7 +71,7 @@ jobs:
 
     - name: Build 🔧
       run: |
-        npm run export
+        npm run export -w ./packages/website --if-present
       env:
         SITE_URL: https://commercelayer.github.io/demo-store
         NEXT_PUBLIC_BASE_PATH: /demo-store
@@ -83,5 +83,5 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
-        publish_dir: ./out
+        publish_dir: ./packages/website/out
         force_orphan: true

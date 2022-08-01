@@ -8,7 +8,7 @@ function isUrlAbsolute(url: string) {
  * @param jsonDataFolder Local path starting from `./data/` or a remote URL.
  */
 export async function fetchData(filename: string, jsonDataFolder: string = process.env.NEXT_PUBLIC_JSON_DATA_FOLDER || 'json'): Promise<unknown> {
-  let jsonData: any
+  let jsonData: unknown
 
   if (isUrlAbsolute(jsonDataFolder)) {
     jsonData = fetch(`${jsonDataFolder}/${filename}.json`)

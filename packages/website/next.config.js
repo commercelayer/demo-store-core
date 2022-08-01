@@ -12,7 +12,7 @@ const nextConfig = {
   pageExtensions: ['page.tsx', `page-${generalConfig.dataFetching}.tsx`],
 
   // https://nextjs.org/docs/api-reference/next.config.js/basepath
-  basePath: generalConfig.basePath,
+  basePath: generalConfig.basePath.length > 1 ? generalConfig.basePath : undefined,
 
   eslint: {
     // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
