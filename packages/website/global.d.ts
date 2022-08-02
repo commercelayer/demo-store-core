@@ -48,6 +48,13 @@ declare namespace NodeJS {
      */
     NEXT_PUBLIC_JSON_DATA_FOLDER?: string
 
+    /**
+     * Data fetching in Next.js allows you to render your content in different ways, depending on your application's use case.
+     * 
+     * @see  [Data Fetching](https://nextjs.org/docs/basic-features/data-fetching/overview)
+     */
+    NEXT_PUBLIC_DATA_FETCHING?: string
+
   }
 }
 
