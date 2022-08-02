@@ -1,6 +1,6 @@
-import type { RawDataLanguage } from '#data/languages'
 import type { Locale } from '#i18n/locale'
 import type { NonShoppableCountry, ShoppableCountry } from '#utils/countries'
+import type { RawDataLanguage } from '@commercelayer/demo-store-types'
 import { changeLanguage, makeLocaleCode, makeLocales, parseLocaleCode, translateField } from './locale'
 
 

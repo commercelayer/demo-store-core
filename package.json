@@ -1,6 +1,5 @@
 {
   "private": true,
-  "description": "",
   "scripts": {
     "dev": "npm run dev --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",

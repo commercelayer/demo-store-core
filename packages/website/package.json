@@ -1,5 +1,5 @@
 {
-  "name": "demo-store",
+  "name": "@commercelayer/demo-store",
   "private": true,
   "scripts": {
     "predev": "env $(awk 'NF > 0 && !/^#/ { print $0 }' .env.local | xargs) node npm-prebuild.js",
@@ -21,6 +21,7 @@
     "@commercelayer/js-auth": "^2.3.0",
     "@commercelayer/react-components": "^3.14.1",
     "@commercelayer/sdk": "^4.15.1",
+    "@commercelayer/demo-store-types": "^0.0.0",
     "@svgr/webpack": "^6.3.1",
     "@types/lodash": "^4.14.182",
     "fuse.js": "^6.6.2",
@@ -34,8 +35,7 @@
     "react-remark": "^2.1.0",
     "redis": "^4.2.0",
     "swiper": "^8.3.2",
-    "use-immer": "^0.7.0",
-    "zod": "^3.17.10"
+    "use-immer": "^0.7.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",

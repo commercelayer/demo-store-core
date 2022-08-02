@@ -1,0 +1,16 @@
+{
+  "name": "@commercelayer/demo-store-types",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "typescript": "^4.7.4",
+    "zod": "^3.17.10"
+  },
+  "scripts": {
+    "build": "tsc",
+    "postinstall": "npm run build"
+  },
+  "license": "MIT"
+}

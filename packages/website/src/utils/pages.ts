@@ -1,7 +1,7 @@
-import type { RawDataCarousel, RawDataGrid, RawDataHero, RawDataMarkdown, RawDataProductGrid } from '#data/pages'
 import { getRawDataPages } from '#data/pages'
 import { getRawDataProducts } from '#data/products'
 import { translateField } from '#utils/locale'
+import type { RawDataCarousel, RawDataGrid, RawDataHero, RawDataMarkdown, RawDataProductGrid } from '@commercelayer/demo-store-types'
 import memoize from 'lodash/memoize'
 import { getProductWithVariants, LocalizedProductWithVariant } from './products'
 

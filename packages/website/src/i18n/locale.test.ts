@@ -1,5 +1,5 @@
-import type { RawDataLanguage } from '#data/languages'
 import type { ShoppableCountry } from '#utils/countries'
+import type { RawDataLanguage } from '@commercelayer/demo-store-types'
 import { getLocale, Locale } from './locale'
 
 describe('getLocale', () => {

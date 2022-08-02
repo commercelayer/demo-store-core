@@ -1,9 +1,9 @@
 import { basePath } from '#config/general.config'
-import type { RawDataOrganization } from '#data/organization'
-import type { Locale } from '#i18n/locale'
 import type { Catalog, Taxon, Taxonomy } from '#data/models/catalog'
+import type { Locale } from '#i18n/locale'
 import type { CarouselPageComponent } from '#utils/pages'
 import { makeUnserializable, Unserializable } from '#utils/unserializable'
+import type { RawDataOrganization } from '@commercelayer/demo-store-types'
 import { RouterContext as NextRouterContext } from 'next/dist/shared/lib/router-context'
 import type { NextRouter } from 'next/router'
 

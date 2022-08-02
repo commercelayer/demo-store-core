@@ -1,11 +1,8 @@
 import { defaultLanguage } from '#config/general.config'
-import type { RawDataCountry } from '#data/countries'
-import type { RawDataLanguage } from '#data/languages'
 import type { Locale, NonShoppableLocale, ShoppableLocale } from '#i18n/locale'
-import z from 'zod'
+import type { LocalizedField, RawDataCountry, RawDataLanguage } from '@commercelayer/demo-store-types'
 import { combine } from './collection'
 import { isCountryShoppable } from './countries'
-
 
 export function makeLocaleCode(languageCode: string, countryCode?: string): string {
   if (countryCode) {
@@ -60,13 +57,4 @@ export function translateField<T>(field: LocalizedField<T>, locale: string): T {
   }
 
   return translation
-}
-
-export const localizedFieldSchema = <T extends z.ZodTypeAny>(type: T) => z
-  .object({})
-  .catchall(type.optional())
-
-
-export type LocalizedField<T> = {
-  [localeCode: string]: T | undefined
 }

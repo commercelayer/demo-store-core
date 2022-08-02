@@ -1,4 +1,4 @@
-import type { RawDataCountry } from '#data/countries'
+import type { RawDataCountry } from '@commercelayer/demo-store-types'
 import { CountriesByRegion, groupByRegion } from './countries'
 
 test('should be able to group locales by their region', () => {

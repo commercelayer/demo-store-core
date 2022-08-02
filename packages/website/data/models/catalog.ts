@@ -1,9 +1,10 @@
-import { getRawDataCatalogs, getRawDataTaxonomies, getRawDataTaxons, RawDataCatalog, RawDataTaxon, RawDataTaxonomy } from '#data/catalogs'
+import { getRawDataCatalogs, getRawDataTaxonomies, getRawDataTaxons } from '#data/catalogs'
 import type { Locale } from '#i18n/locale'
 import { translateField } from '#utils/locale'
 import { LocalizedProductWithVariant, spreadProductVariants } from '#utils/products'
-import { isNotNullish } from '#utils/utility-types'
 import { makeUnserializable, Unserializable } from '#utils/unserializable'
+import { isNotNullish } from '#utils/utility-types'
+import type { RawDataCatalog, RawDataTaxon, RawDataTaxonomy } from '@commercelayer/demo-store-types'
 import memoize from 'lodash/memoize'
 import uniq from 'lodash/uniq'
 

@@ -1,20 +1,11 @@
 import { fetchData } from '#utils/data'
+import { RawDataLanguage, rawDataLanguages_schema } from '@commercelayer/demo-store-types'
 import memoize from 'lodash/memoize'
-import { z } from 'zod'
 
 export const getRawDataLanguages = memoize(
   async function (): Promise<RawDataLanguage[]> {
-    return languageSchema.array().parse(
+    return rawDataLanguages_schema.parse(
       await fetchData('languages')
     )
   }
 )
-
-
-const languageSchema = z.object({
-  name: z.string(),
-  code: z.string(),
-  catalog: z.string()
-})
-
-export type RawDataLanguage = z.infer<typeof languageSchema>

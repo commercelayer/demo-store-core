@@ -1,4 +1,4 @@
-import type { RawDataCountry } from '#data/countries'
+import type { RawDataCountry } from '@commercelayer/demo-store-types'
 
 export type NonShoppableCountry = Omit<RawDataCountry, 'market'>
 
