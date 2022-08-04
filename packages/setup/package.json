@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "seeder:seed": "npx ts-node ./scripts/seed.ts",
+    "seeder:clean": "commercelayer seeder:clean -b custom -n demo_store_full -u ./",
+    "skus": "npx ts-node ./scripts/skus.ts",
+    "markets": "npx ts-node ./scripts/markets.ts"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@commercelayer/js-auth": "^2.3.0",
+    "@commercelayer/sdk": "^4.15.1"
+  }
+}
