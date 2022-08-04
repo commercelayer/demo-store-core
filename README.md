@@ -58,13 +58,45 @@ commercelayer applications:login \
 
 Fork https://github.com/commercelayer/demo-store into your GitHub account.
 
+##### Clone
+
 ```sh
 git clone git@github.com:<github-username>/demo-store.git my-new-project
 cd my-new-project
 npm install
-cp ./.env.sample .env.local
-# update env variables
-# create/update json data folder (double-check markets)
+```
+
+##### Seed
+
+```sh
+npm run seeder:seed -w ./packages/setup
+```
+
+##### Environment Variables
+
+```sh
+cp packages/website/.env.sample packages/website/.env.local
+
+# edit "packages/website/.env.local" and fill
+#  NEXT_PUBLIC_CL_CLIENT_ID=
+#  NEXT_PUBLIC_CL_ENDPOINT=
+```
+
+##### countries.json
+
+Edit `packages/website/data/json/countries.json` with your preferred editor.
+
+Here you have a list of available countries for your e-commerce.
+
+You have to replace all instances of `"market": xxx` with the related markets of your organization. Here the list from your logged-in application.
+
+```sh
+npm run markets -w ./packages/setup
+```
+
+##### Enjoy :rocket:
+
+```sh
 npm run dev
 ```
 
