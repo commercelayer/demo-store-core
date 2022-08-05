@@ -1,5 +1,8 @@
 // @ts-check
 
+const { resolve } = require('path')
+const { isSupportedUrl } = require('./src/utils/isSupportedUrl')
+
 /** @type { import('./@typings/general.config').GeneralConfig } */
 const generalConfig = require('./config/general.config')
 
@@ -25,13 +28,27 @@ const nextConfig = {
       use: ['@svgr/webpack']
     })
 
-    return config;
-  },
+    if (!process.env.NEXT_PUBLIC_JSON_DATA_FOLDER) {
+      throw new Error('NEXT_PUBLIC_JSON_DATA_FOLDER env variable must be defined!')
+    }
 
-  // https://nextjs.org/docs/api-reference/next.config.js/environment-variables
-  env: {
-    // https://stackoverflow.com/a/57368145
-    PROJECT_ROOT: __dirname
+    if (isSupportedUrl(process.env.NEXT_PUBLIC_JSON_DATA_FOLDER)) {
+      config.resolve.alias.aliasJsonData = resolve(__dirname, 'empty')
+    } else {
+      config.resolve.alias.aliasJsonData = resolve(__dirname, process.env.NEXT_PUBLIC_JSON_DATA_FOLDER)
+    }
+
+    if (!process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER) {
+      throw new Error('NEXT_PUBLIC_LOCALE_DATA_FOLDER env variable must be defined!')
+    }
+
+    if (isSupportedUrl(process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER)) {
+      config.resolve.alias.aliasJsonData = resolve(__dirname, 'empty')
+    } else {
+      config.resolve.alias.aliasLocaleData = resolve(__dirname, process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER)
+    }
+
+    return config
   }
 }
 

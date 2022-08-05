@@ -1,4 +1,4 @@
-import { fetchData } from '#utils/data'
+import { fetchJsonData } from '#utils/data'
 import { RawDataProduct as BaseRawDataProduct, rawDataProducts_schema } from '@commercelayer/demo-store-types'
 import type { Price } from '@commercelayer/sdk'
 import memoize from 'lodash/memoize'
@@ -7,7 +7,7 @@ export const getRawDataProducts = memoize(
   async function(): Promise<RawDataProduct[]> {
     // TODO: this should be unserializable
     return rawDataProducts_schema.parse(
-      await fetchData('products')
+      await fetchJsonData('products')
     )
   }
 )

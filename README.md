@@ -69,7 +69,7 @@ npm install
 ##### Seed
 
 ```sh
-npm run seeder:seed -w ./packages/setup
+npm run seeder:seed -ws --if-present
 ```
 
 ##### Environment Variables
@@ -91,7 +91,7 @@ Here you have a list of available countries for your e-commerce.
 You have to replace all instances of `"market": xxx` with the related markets of your organization. Here the list from your logged-in application.
 
 ```sh
-npm run markets -w ./packages/setup
+npm run markets -ws --if-present
 ```
 
 ##### Enjoy :rocket:

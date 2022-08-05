@@ -1,11 +1,11 @@
 // jest.config.js
 const nextJest = require('next/jest')
 const { pathsToModuleNameMapper } = require('ts-jest')
-const { env } = require('./next.config')
 const { compilerOptions } = require('./tsconfig')
 
 // 
-process.env.PROJECT_ROOT = env.PROJECT_ROOT
+process.env.NEXT_PUBLIC_JSON_DATA_FOLDER = 'data/json/'
+process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER = 'data/locales/'
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
@@ -40,7 +40,9 @@ module.exports = async () => {
     moduleNameMapper: {
       '\\.svg$': '<rootDir>/__mocks__/svg.jsx',
       ...pathsToModuleNameMapper(compilerOptions.paths),
-      ...(nextConfig.moduleNameMapper || {})
+      ...(nextConfig.moduleNameMapper || {}),
+      'aliasJsonData(.*)': `<rootDir>/${process.env.NEXT_PUBLIC_JSON_DATA_FOLDER}$1`,
+      'aliasLocaleData(.*)': `<rootDir>/${process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER}$1`,
     }
   }
 

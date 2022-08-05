@@ -8,7 +8,7 @@ jest.mock('../utils/data', () => {
   }
 })
 
-const mockedFetchData = jest.spyOn(dataUtils, 'fetchData')
+const mockedFetchData = jest.spyOn(dataUtils, 'fetchLocaleData')
 
 type LocaleFile = {
   [filename: string]: unknown

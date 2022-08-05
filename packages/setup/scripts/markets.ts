@@ -5,7 +5,7 @@ import { createCommerceLayerClient, getCurrentApplicationInfo } from './utils/ap
   const commerceLayer = await createCommerceLayerClient(currentApplicationInfo)
 
   const markets = await commerceLayer.markets.list({
-    fields: [ 'number', 'name' ]
+    fields: ['number', 'name']
   })
 
   console.info('Your organization has', markets.length, 'markets:')

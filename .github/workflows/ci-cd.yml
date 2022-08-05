@@ -77,6 +77,10 @@ jobs:
         NEXT_PUBLIC_BASE_PATH: /demo-store
         NEXT_PUBLIC_CL_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_CL_CLIENT_ID }}
         NEXT_PUBLIC_CL_ENDPOINT: ${{ secrets.NEXT_PUBLIC_CL_ENDPOINT }}
+        NEXT_PUBLIC_JSON_DATA_FOLDER: data/json/
+        NEXT_PUBLIC_LOCALE_DATA_FOLDER: data/locales/
+        NEXT_PUBLIC_DEFAULT_LANGUAGE: en
+        NEXT_PUBLIC_DATA_FETCHING: ssg
 
     - name: Deploy 🚀
       uses: peaceiris/actions-gh-pages@v3

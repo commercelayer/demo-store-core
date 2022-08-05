@@ -4,11 +4,6 @@ declare namespace globalThis {
 
 declare namespace NodeJS {
   export interface ProcessEnv {
-    /**
-     * Points to the root of the project.
-     * @default __dirname
-     */
-    PROJECT_ROOT: string
 
     /**
      * Base url of your website. This is used when generating the sitemap.
@@ -30,6 +25,20 @@ declare namespace NodeJS {
     NEXT_PUBLIC_CL_ENDPOINT: string
 
     /**
+     * Folder in which json data files are stored. This could be a local path or a remote URL.
+     * @required
+     * @example 'https://example.com/data/json' or './data/json'
+     */
+    NEXT_PUBLIC_JSON_DATA_FOLDER: string
+
+    /**
+     * Folder in which locale data files are stored. This could be a local path or a remote URL.
+     * @required
+     * @example 'https://example.com/data/locale' or './data/locale'
+     */
+    NEXT_PUBLIC_LOCALE_DATA_FOLDER: string
+
+    /**
      * Deploy a Next.js application under a sub-path of a domain
      * @see [Base path configuration](https://nextjs.org/docs/api-reference/next.config.js/basepath)
      */
@@ -40,13 +49,6 @@ declare namespace NodeJS {
      * @default 'en'
      */
     NEXT_PUBLIC_DEFAULT_LANGUAGE?: string
-
-    /**
-     * Folder in which json data files are stored. This could be a local path or a remote URL.
-     * @default 'json' 
-     * @example 'https://example.com/json'
-     */
-    NEXT_PUBLIC_JSON_DATA_FOLDER?: string
 
     /**
      * Data fetching in Next.js allows you to render your content in different ways, depending on your application's use case.

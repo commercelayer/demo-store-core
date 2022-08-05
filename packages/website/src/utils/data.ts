@@ -1,25 +1,44 @@
-function isUrlAbsolute(url: string) {
-  return (url.indexOf('://') > 0 || url.indexOf('//') === 0)
-}
+import { isSupportedUrl } from '#utils/isSupportedUrl'
 
 /**
  * Fetch JSON from `data` folder.
  * @param filename JSON filename that will be fetched.
- * @param jsonDataFolder Local path starting from `./data/` or a remote URL.
  */
-export async function fetchData(filename: string, jsonDataFolder: string = process.env.NEXT_PUBLIC_JSON_DATA_FOLDER || 'json'): Promise<unknown> {
-  let jsonData: unknown
+export async function fetchJsonData(filename: string): Promise<unknown> {
+  let data: unknown
 
-  if (isUrlAbsolute(jsonDataFolder)) {
-    jsonData = fetch(`${jsonDataFolder}/${filename}.json`)
+  if (isSupportedUrl(process.env.NEXT_PUBLIC_JSON_DATA_FOLDER)) {
+    data = fetch(`${process.env.NEXT_PUBLIC_JSON_DATA_FOLDER}/${filename}.json`)
       .then(response => response.json())
       .catch(error => {
-        console.error(`Cannot fetch "${jsonDataFolder}/${filename}.json"`, error)
+        console.error(`Cannot fetch "${process.env.NEXT_PUBLIC_JSON_DATA_FOLDER}/${filename}.json"`, error)
         return null
       })
   } else {
-    jsonData = (await import(`${process.env.PROJECT_ROOT}/data/${jsonDataFolder}/${filename}.json`)).default
+    data = (await import(`aliasJsonData/${filename}.json`)).default
   }
 
-  return jsonData
+  return data
+}
+
+
+/**
+ * Fetch LOCALE from `data` folder.
+ * @param filename JSON filename that will be fetched.
+ */
+export async function fetchLocaleData(filename: string): Promise<unknown> {
+  let data: unknown
+
+  if (isSupportedUrl(process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER)) {
+    data = fetch(`${process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER}/${filename}.json`)
+      .then(response => response.json())
+      .catch(error => {
+        console.error(`Cannot fetch "${process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER}/${filename}.json"`, error)
+        return null
+      })
+  } else {
+    data = (await import(`aliasLocaleData/${filename}.json`)).default
+  }
+
+  return data
 }
