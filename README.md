@@ -30,12 +30,13 @@ Steps:
 
 Once the Organization is created, you need to create two [API clients](https://docs.commercelayer.io/developers/api-clients): one `Sales channel` and one `Integration`.
 
-If you haven't done yet, install our Commerce Layer CLI and the Seeder plugin:
+If you haven't done yet, install our [Commerce Layer CLI](https://www.npmjs.com/package/@commercelayer/cli), the [seeder plugin](https://www.npmjs.com/package/@commercelayer/cli-plugin-seeder) and the [imports plugin](https://www.npmjs.com/package/@commercelayer/cli-plugin-imports):
 
 ```sh
 npm install -g @commercelayer/cli
 
 commercelayer plugins:install seeder
+commercelayer plugins:install imports
 ```
 
 Now you can login to your `Integration` API client from the CLI:
@@ -45,46 +46,60 @@ commercelayer applications:login \
   --clientId Oy5F2TbPYhOZsxy1tQd9ZVZ... \
   --clientSecret 1ZHNJUgn_1lh1mel06gGDqa... \
   --organization my-awesome-organization \
-  --alias admin
-```
-
-```sh
-# commercelayer seeder:seed -b custom -n multi_market_full
+  --alias cli-admin
 ```
 
 ### Demo Store
 
-#### Option 1 - fork it
+It's time to clone the repository. There are two ways to use Demo Store:
+1. Fork and clone the [`demo-store-lite`](https://github.com/commercelayer/demo-store-lite) repository. This is using Demo Store as a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules), in this way you don't have to care about the whole source code but you can concentrate on you data.
 
-Fork https://github.com/commercelayer/demo-store into your GitHub account.
+    ```sh
+    git clone git@github.com:<github-username>/demo-store-lite.git my-new-project
+    cd my-new-project
+    git submodule update --init
+    npm install
 
-##### Setup
+    cp -r ./demo-store/packages/website/data/json ./data/json
+    cp ./demo-store/packages/website/.env.sample.submodule .env.local
+    ```
 
-```sh
-git clone git@github.com:<github-username>/demo-store.git my-new-project
-cd my-new-project
-npm install
+
+2. Fork and clone the [`demo-store`](https://github.com/commercelayer/demo-store) with all the source code. This is usefull if you want to customize the whole experience.
+
+    ```sh
+    git clone git@github.com:<github-username>/demo-store.git my-new-project
+    cd my-new-project
+    npm install
+
+    cp ./packages/website/.env.sample ./packages/website/.env.local
+    ```
+
+### Environment Variables
+
+Edit `.env.local` and fill all the missing information:
+
+```properties
+# this is the 'sales channel' client id
+NEXT_PUBLIC_CL_CLIENT_ID=er34TWFcd24RFI8KJ52Ws6q...
+
+# this is the 'base endpoint'
+NEXT_PUBLIC_CL_ENDPOINT=https://my-awesome-organization.commercelayer.io
 ```
 
-##### Seed
+### Seed
+
+The following script will populate your organizzation with all resources for a multi-market e-commerce. These are the same we are using for our [Swag Store].
+
+This step is *optional*. If you already have a well configured organization you can skip it.
 
 ```sh
 npm run seeder:seed -ws --if-present
 ```
 
-##### Environment Variables
+### countries.json
 
-```sh
-cp packages/website/.env.sample packages/website/.env.local
-
-# edit "packages/website/.env.local" and fill
-#  NEXT_PUBLIC_CL_CLIENT_ID=
-#  NEXT_PUBLIC_CL_ENDPOINT=
-```
-
-##### countries.json
-
-Edit `packages/website/data/json/countries.json` with your preferred editor.
+Edit `json/countries.json` with your preferred editor.
 
 Here you have a list of available countries for your e-commerce.
 
@@ -94,72 +109,11 @@ You have to replace all instances of `"market": xxx` with the related markets of
 npm run markets -ws --if-present
 ```
 
-##### Enjoy :rocket:
+### Enjoy :rocket:
 
 ```sh
 npm run dev
-# http://localhost:3000/demo-store
-```
 
-#### Option 2 - submodule
-
-##### Setup
-
-```sh
-mkdir my-new-project
-cd my-new-project
-
-git init
-git submodule add git@github.com:commercelayer/demo-store.git
-
-cat <<EOT >> package.json
-{
-  "private": true,
-  "workspaces": [
-    "demo-store/packages/*"
-  ],
-  "scripts": {
-    "dev": "env $(awk 'NF > 0 && !/^#/ { print $0 }' .env.local | xargs) npm run dev -ws --if-present"
-  },
-  "license": "MIT"
-}
-EOT
-
-npm install
-```
-
-##### Seed
-
-```sh
-npm run seeder:seed -ws --if-present
-```
-
-##### Environment Variables
-
-```sh
-cp ./demo-store/packages/website/.env.sample .env.local
-
-# edit "packages/website/.env.local" and fill
-#  NEXT_PUBLIC_CL_CLIENT_ID=
-#  NEXT_PUBLIC_CL_ENDPOINT=
-```
-
-##### countries.json
-
-Edit `packages/website/data/json/countries.json` with your preferred editor.
-
-Here you have a list of available countries for your e-commerce.
-
-You have to replace all instances of `"market": xxx` with the related markets of your organization. Here the list from your logged-in application.
-
-```sh
-npm run markets -ws --if-present
-```
-
-##### Enjoy :rocket:
-
-```sh
-npm run dev
 # http://localhost:3000/demo-store
 ```
 
@@ -176,3 +130,9 @@ To build your own Demo Store you'll have to create and manage these json data fi
 ```sh
 npx -p @lhci/cli lhci autorun
 ```
+
+## Troubleshooting
+
+1. **Q.** Even if I changed `NEXT_PUBLIC_JSON_DATA_FOLDER` or `NEXT_PUBLIC_LOCALE_DATA_FOLDER`, the website is still refering to previous json files.
+
+    **A.** These two env variables reflect as `alias` for Webpack. Starting from Webpack 5, it introduced caching for faster builds. Changing these two env variables will not invalidate the Webpack cache. You should remove `.next` folder manually.
