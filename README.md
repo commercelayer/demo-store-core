@@ -58,7 +58,7 @@ commercelayer applications:login \
 
 Fork https://github.com/commercelayer/demo-store into your GitHub account.
 
-##### Clone
+##### Setup
 
 ```sh
 git clone git@github.com:<github-username>/demo-store.git my-new-project
@@ -98,20 +98,69 @@ npm run markets -ws --if-present
 
 ```sh
 npm run dev
+# http://localhost:3000/demo-store
 ```
 
 #### Option 2 - submodule
 
+##### Setup
+
 ```sh
 mkdir my-new-project
 cd my-new-project
+
 git init
 git submodule add git@github.com:commercelayer/demo-store.git
+
+cat <<EOT >> package.json
+{
+  "private": true,
+  "workspaces": [
+    "demo-store/packages/*"
+  ],
+  "scripts": {
+    "dev": "env $(awk 'NF > 0 && !/^#/ { print $0 }' .env.local | xargs) npm run dev -ws --if-present"
+  },
+  "license": "MIT"
+}
+EOT
+
 npm install
+```
+
+##### Seed
+
+```sh
+npm run seeder:seed -ws --if-present
+```
+
+##### Environment Variables
+
+```sh
 cp ./demo-store/packages/website/.env.sample .env.local
-# update env variables
-# create/update json data folder (double-check markets)
+
+# edit "packages/website/.env.local" and fill
+#  NEXT_PUBLIC_CL_CLIENT_ID=
+#  NEXT_PUBLIC_CL_ENDPOINT=
+```
+
+##### countries.json
+
+Edit `packages/website/data/json/countries.json` with your preferred editor.
+
+Here you have a list of available countries for your e-commerce.
+
+You have to replace all instances of `"market": xxx` with the related markets of your organization. Here the list from your logged-in application.
+
+```sh
+npm run markets -ws --if-present
+```
+
+##### Enjoy :rocket:
+
+```sh
 npm run dev
+# http://localhost:3000/demo-store
 ```
 
 ### JSON Data files
