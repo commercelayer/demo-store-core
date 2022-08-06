@@ -4,8 +4,8 @@ const { pathsToModuleNameMapper } = require('ts-jest')
 const { compilerOptions } = require('./tsconfig')
 
 // 
-process.env.NEXT_PUBLIC_JSON_DATA_FOLDER = 'data/json/'
-process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER = 'data/locales/'
+process.env.NEXT_PUBLIC_JSON_DATA_FOLDER ||= 'data/json/'
+process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER ||= 'data/locales/'
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
