@@ -2,7 +2,7 @@
 
 This package contains a complete set of seed and import files that will setup an Organization from scratch in less than a minute.
 
-These are the same files that bootstrap our own [Swag Store](https://commercelayer.shop).
+These are the same files that bootstrap our own [Demo Store](https://commercelayer.github.io/demo-store-core).
 
 
 ## Getting started

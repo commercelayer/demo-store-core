@@ -1,6 +1,6 @@
 # Demo Store by Commerce Layer
 
-Demo Store is a fully static e-commerce solution (with SSR capability) that uses Commerce Layer. Our [Swag Store] is powered by Demo Store. Keep reading to tailor your own.
+Demo Store is a fully static e-commerce solution (with SSR capability) that uses Commerce Layer. Keep reading to tailor your own.
 
 ## What is Commerce Layer?
 
@@ -52,7 +52,7 @@ commercelayer applications:login \
 ### Demo Store
 
 It's time to clone the repository. There are two ways to use Demo Store:
-1. Fork and clone the [`demo-store-lite`](https://github.com/commercelayer/demo-store-lite) repository. This is using Demo Store as a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules), in this way you don't have to care about the whole source code but you can concentrate on you data.
+1. Fork and clone the [`demo-store`](https://github.com/commercelayer/demo-store) repository. This is using Demo Store core as a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules), in this way you don't have to care about the whole source code but you can concentrate on you data.
 
     ```sh
     git clone git@github.com:<github-username>/demo-store-lite.git my-new-project
@@ -65,7 +65,7 @@ It's time to clone the repository. There are two ways to use Demo Store:
     ```
 
 
-2. Fork and clone the [`demo-store`](https://github.com/commercelayer/demo-store) with all the source code. This is usefull if you want to customize the whole experience.
+2. Fork and clone the [`demo-store-core`](https://github.com/commercelayer/demo-store-core) with all the source code. This is usefull if you want to customize the whole experience.
 
     ```sh
     git clone git@github.com:<github-username>/demo-store.git my-new-project
@@ -89,7 +89,7 @@ NEXT_PUBLIC_CL_ENDPOINT=https://my-awesome-organization.commercelayer.io
 
 ### Seed
 
-The following script will populate your organizzation with all resources for a multi-market e-commerce. These are the same we are using for our [Swag Store].
+The following script will populate your organizzation with all resources for a multi-market e-commerce. These are the same we are using for our [Demo Store](https://commercelayer.github.io/demo-store-core).
 
 This step is *optional*. If you already have a well configured organization you can skip it.
 
@@ -114,7 +114,7 @@ npm run markets -ws --if-present
 ```sh
 npm run dev
 
-# http://localhost:3000/demo-store
+# http://localhost:3000/
 ```
 
 ### JSON Data files

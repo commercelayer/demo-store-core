@@ -73,8 +73,8 @@ jobs:
       run: |
         npm run export -w ./packages/website --if-present
       env:
-        SITE_URL: https://commercelayer.github.io/demo-store
-        NEXT_PUBLIC_BASE_PATH: /demo-store
+        SITE_URL: https://commercelayer.github.io/demo-store-core
+        NEXT_PUBLIC_BASE_PATH: /demo-store-core
         NEXT_PUBLIC_CL_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_CL_CLIENT_ID }}
         NEXT_PUBLIC_CL_ENDPOINT: ${{ secrets.NEXT_PUBLIC_CL_ENDPOINT }}
         NEXT_PUBLIC_JSON_DATA_FOLDER: data/json/
