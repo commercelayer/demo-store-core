@@ -8,23 +8,25 @@ Demo Store is a fully static e-commerce solution (with SSR capability) that uses
 
 ## :battery: Batteries included
 
-Demo Store comes with built-in search engine with facets, product variants and catalog management, integration with Commerce Layer (of course) using react-component and hosted application.
+We decided to build the Demo Store, removing all 3rd party services that are usually used to create a full experience of an e-commerce website (cms, search, pim, etc.).
+
+Everything related to `content` is stored as JSON files and, building you own Demo Store, you will need to create these files, manually or via scripts.
+
+Demo Store comes with:
+
+- [x] built-in search engine with facet search powered by [fuse.js](https://github.com/krisk/Fuse)
+- [x] product catalog management with taxonomies and taxons
+- [x] product variants
+- [x] integration with Commerce Layer (of course) using:
+  - [x] [react-component](https://github.com/commercelayer/commercelayer-react-components)
+  - [x] [hosted cart](https://github.com/commercelayer/commercelayer-cart)
+  - [x] [hosted checkout](https://github.com/commercelayer/commercelayer-react-checkout)
 
 ## Getting started
 
 If you haven't had experience before with Commerce Layer, go [here](https://docs.commercelayer.io/developers/) and start the tutorial. Configuring a Demo Store expects that you already have a configured Organization with at least few products and one market.
 
 If you prefer to start from scratch you can create a new Organization and use the following commands to configure a `Commerce Layer's Demo Store` like project.
-
-Steps:
-
-1. Organization setup on [dashboard.commercelayer.io](https://dashboard.commercelayer.io)
-    1. API Clients (`Sales channel` and `Integration`)
-    2. Local setup (cli + seeder + application login)
-2. Download Demo Store
-    1. `cp .env.sample .env.local`
-    2. Paste Sales channel client id
-    3. Update data json with `market` number
 
 ### Organization
 
@@ -51,29 +53,35 @@ commercelayer applications:login \
 
 ### Demo Store
 
-It's time to clone the repository. There are two ways to use Demo Store:
-1. Fork and clone the [`demo-store`](https://github.com/commercelayer/demo-store) repository. This is using Demo Store core as a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules), in this way you don't have to care about the whole source code but you can concentrate on you data.
+We have two repositories:
+
+* **[`demo-store-core`](https://github.com/commercelayer/demo-store-core)** contains the source code.
+
+  You just have to fork this repository and create your own starting from here. In this way you can fully customize all the aspects (behaviour, ui, ux), but *you will possibly loose all future updates if you start diverging to much.*
+
+* **[`demo-store`](https://github.com/commercelayer/demo-store) GitHub template**.
+
+    This template is using the `demo-store-core` as a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules).  
+    Using this way you don't have to care about the whole source code, *you can focus on you data*. You'll have free updates without any risk just by running
 
     ```sh
-    git clone git@github.com:<github-username>/demo-store-lite.git my-new-project
-    cd my-new-project
-    git submodule update --init
-    npm install
-
-    cp -r ./demo-store/packages/website/data/json ./data/json
-    cp ./demo-store/packages/website/.env.sample.submodule .env.local
+    git submodule update --remote
     ```
 
+Let's get started!
 
-2. Fork and clone the [`demo-store-core`](https://github.com/commercelayer/demo-store-core) with all the source code. This is usefull if you want to customize the whole experience.
+First of all you'll need to create a new repository starting from the `demo-store` template. Click on `Use this template` from the repository homepage on GitHub and the run:
 
-    ```sh
-    git clone git@github.com:<github-username>/demo-store.git my-new-project
-    cd my-new-project
-    npm install
+```sh
+git clone <your-repository> my-new-project
+cd my-new-project
+git submodule update --init
+npm install
 
-    cp ./packages/website/.env.sample ./packages/website/.env.local
-    ```
+cp ./demo-store-core/packages/website/.env.sample.submodule .env.local
+
+cp -r ./demo-store-core/packages/website/data/json ./data/json
+```
 
 ### Environment Variables
 
@@ -103,7 +111,8 @@ Edit `json/countries.json` with your preferred editor.
 
 Here you have a list of available countries for your e-commerce.
 
-You have to replace all instances of `"market": xxx` with the related markets of your organization. Here the list from your logged-in application.
+You have to replace all instances of `"market": xxx` with the related markets of your organization.  
+To get the list of your markets you can connect to the Commerce Layer Dashboard or by running this command:
 
 ```sh
 npm run markets -ws --if-present
