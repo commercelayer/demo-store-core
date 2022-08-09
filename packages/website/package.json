@@ -10,12 +10,14 @@
     "export": "next export",
     "dev": "npm run prebuild && next dev",
     "local:start": "dotenv -c local npm run build && npm start",
-    "local:serve": "dotenv -c local npm run export -- -- -o out/demo-store/ && npx serve out",
+    "local:export": "dotenv -c local npm run export -- -- -o out/demo-store/",
+    "local:serve": "npm run local:export && npx serve out",
     "lint": "next lint",
     "ts:check": "tsc --noEmit && npm run test:data",
     "test:data": "jest ./data",
     "test": "jest --testPathIgnorePatterns ./data",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "lighthouse": "npx -p @lhci/cli lhci autorun"
   },
   "dependencies": {
     "@commercelayer/demo-store-types": "^0.0.0",

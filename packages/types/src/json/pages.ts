@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { localizedFieldSchema } from './locale'
+import { localizedFieldSchema } from '../utils/locale'
 
 const image_schema = z.object({
   src: z.string(),

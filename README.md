@@ -126,19 +126,20 @@ npm run dev
 # http://localhost:3000/
 ```
 
-### JSON Data files
+## JSON Data files
 
-Demo Store is built around a set of data that are stored as json files (locally or remotely). This decision is taken to decouple the Demo Store from 3rd party applications.
+As mentioned earlier, the Demo Store is built around a set of data that are stored as json files. This decision has been taken to decouple the Demo Store from any 3rd party services.
 
 To build your own Demo Store you'll have to create and manage these json data files.
 
+Json files are located at `packages/website/data/json`, but you can choose a different position by changing the environment variable `NEXT_PUBLIC_JSON_DATA_FOLDER`.
 
+We also have type-definition file located at `packages/types/src/json`. We are uring [zod](https://github.com/colinhacks/zod) for the schema validation. Take a look at these files to uderstand which is the structure that you have to strictly follow.
 
-## Lighthouse CI
+Last but not least, we have a script `npm-prebuild.js` that auto-generates the `organization.json` file by reading all the information directly from your Organization, so you don't need to manually write that json file.
 
-```sh
-npx -p @lhci/cli lhci autorun
-```
+When you have done with all the changes you can run `npm run test:data` to check if everything is correct.
+
 
 ## Troubleshooting
 

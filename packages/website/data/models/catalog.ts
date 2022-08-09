@@ -1,4 +1,6 @@
-import { getRawDataCatalogs, getRawDataTaxonomies, getRawDataTaxons } from '#data/catalogs'
+import { getRawDataCatalogs } from '#data/catalogs'
+import { getRawDataTaxonomies } from '#data/taxonomies'
+import { getRawDataTaxons } from '#data/taxons'
 import type { Locale } from '#i18n/locale'
 import { translateField } from '#utils/locale'
 import { LocalizedProductWithVariant, spreadProductVariants } from '#utils/products'
