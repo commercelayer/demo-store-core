@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type { import('@typings/variants.config.d').VariantConfig[] } */
+/** @type { import('../@typings/variants.config.d').VariantConfig[] } */
 const variantsConfig = [
   {
     field: 'color',

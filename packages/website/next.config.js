@@ -28,6 +28,8 @@ const nextConfig = {
       use: ['@svgr/webpack']
     })
 
+    config.resolve.alias['#config'] = resolve(__dirname, process.env.NEXT_PUBLIC_CONFIG_FOLDER || 'config/')
+
     if (!process.env.NEXT_PUBLIC_JSON_DATA_FOLDER) {
       throw new Error('NEXT_PUBLIC_JSON_DATA_FOLDER env variable must be defined!')
     }

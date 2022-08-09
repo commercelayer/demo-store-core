@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type { import('@typings/facets.config.d').FacetConfig[] } */
+/** @type { import('../@typings/facets.config.d').FacetConfig[] } */
 const facetsConfig = [
   {
     field: 'gender',
