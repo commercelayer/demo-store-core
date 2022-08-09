@@ -12,9 +12,9 @@ type Auth = {
   tokenType: string
 }
 
-const getClientCredentials = (market: number): ClientCredentials => ({
-  clientId: process.env.NEXT_PUBLIC_CL_CLIENT_ID,
-  endpoint: process.env.NEXT_PUBLIC_CL_ENDPOINT,
+const getClientCredentials = (clientId: string, endpoint: string, market: number): ClientCredentials => ({
+  clientId,
+  endpoint,
   scope: `market:${market}`
 })
 
@@ -56,9 +56,8 @@ export const Auth: React.FC<{}> = ({ children }) => {
   const [market, setMarket] = useState<number | undefined>(settings.locale?.isShoppable ? settings.locale?.country.market : undefined)
   const [auth, setAuth] = useState<Auth | null>(null)
 
+  const clientId = process.env.NEXT_PUBLIC_CL_CLIENT_ID
   const endpoint = process.env.NEXT_PUBLIC_CL_ENDPOINT
-  const { hostname } = new URL(endpoint)
-  const [, organization, domain] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
 
   useEffect(function updateMarket() {
     if (settings.locale?.isShoppable && settings.locale?.country.market !== market) {
@@ -69,7 +68,7 @@ export const Auth: React.FC<{}> = ({ children }) => {
   useEffect(function updateAccessToken() {
     let isMounted = true
 
-    if (market === undefined) {
+    if (market === undefined || clientId === undefined || endpoint === undefined) {
       setAuth(null)
       return
     }
@@ -80,7 +79,7 @@ export const Auth: React.FC<{}> = ({ children }) => {
     if (authIsValid) {
       setAuth(storedAuth)
     } else {
-      getSalesChannelToken(getClientCredentials(market))
+      getSalesChannelToken(getClientCredentials(clientId, endpoint, market))
         .then(authReturn => {
           if (isMounted) {
             setAuth(storeAuth(market, authReturn))
@@ -91,11 +90,14 @@ export const Auth: React.FC<{}> = ({ children }) => {
     return () => {
       isMounted = false
     }
-  }, [market, router.asPath])
+  }, [market, router.asPath, clientId, endpoint])
 
-  if (!auth) {
+  if (!auth || !endpoint) {
     return <>{children}</>
   }
+
+  const { hostname } = new URL(endpoint)
+  const [, organization, domain] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
 
   return (
     <AuthProvider accessToken={auth.accessToken} endpoint={endpoint} organization={organization} domain={domain}>

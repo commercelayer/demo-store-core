@@ -1,6 +1,6 @@
 import { CountrySelector, Props as CountrySelectorProps } from '#components/CountrySelector'
 import { Page } from '#components/Page'
-import { defaultLanguage } from '#config/general.config'
+import { NEXT_PUBLIC_DEFAULT_LANGUAGE } from '#utils/envs'
 import { serverSideSettings } from '#contexts/SettingsContext'
 import { getRawDataCountries } from '#data/countries'
 import { getRawDataLanguages } from '#data/languages'
@@ -22,8 +22,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     props: {
       languages: await getRawDataLanguages(),
       countries: await getRawDataCountries(),
-      ...(await serverSideSettings(defaultLanguage)),
-      ...(await serverSideTranslations(defaultLanguage))
+      ...(await serverSideSettings(NEXT_PUBLIC_DEFAULT_LANGUAGE)),
+      ...(await serverSideTranslations(NEXT_PUBLIC_DEFAULT_LANGUAGE))
     }
   }
 }

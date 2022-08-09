@@ -1,6 +1,6 @@
 import { Accordion } from '#components/Accordion'
 import { Logo } from '#components/Logo'
-import { defaultLanguage } from '#config/general.config'
+import { NEXT_PUBLIC_DEFAULT_LANGUAGE } from '#utils/envs'
 import { useSettingsContext } from '#contexts/SettingsContext'
 import { Link } from '#i18n/Link'
 import { groupByRegion } from '#utils/countries'
@@ -17,7 +17,7 @@ export type Props = {
 export const CountrySelector: React.FC<Props> = ({ languages, countries }) => {
   const i18n = useI18n()
   const groupedCountry = Object.entries(groupByRegion(countries))
-  const internationalLanguage = languages.find(language => language.code === defaultLanguage)
+  const internationalLanguage = languages.find(language => language.code === NEXT_PUBLIC_DEFAULT_LANGUAGE)
   const settings = useSettingsContext()
 
   return (

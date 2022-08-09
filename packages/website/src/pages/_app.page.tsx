@@ -1,5 +1,5 @@
 import { Auth } from '#components/Auth'
-import { basePath } from '#config/general.config'
+import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { SettingsProvider } from '#contexts/SettingsContext'
 import { getPersistKey } from '#utils/order'
 import { LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
@@ -39,8 +39,8 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     )
   }
 
-  const return_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${basePath}/${locale.code}` : undefined
-  const cart_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${basePath}/${locale.code}/cart` : undefined
+  const return_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${NEXT_PUBLIC_BASE_PATH}/${locale.code}` : undefined
+  const cart_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${NEXT_PUBLIC_BASE_PATH}/${locale.code}/cart` : undefined
 
   return (
     <SettingsProvider {...settingsContext}>

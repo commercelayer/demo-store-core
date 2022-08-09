@@ -6,22 +6,13 @@ const { writeFileSync } = require('fs')
 const { resolve } = require('path')
 const { isSupportedUrl } = require('./src/utils/isSupportedUrl')
 
-const { NEXT_PUBLIC_CL_ENDPOINT, NEXT_PUBLIC_CL_CLIENT_ID, NEXT_PUBLIC_JSON_DATA_FOLDER } = process.env
+/** @type { import('./additional-env').DemoStoreEnvs } */
+const envs = require('./src/utils/envs')
 
-if (!NEXT_PUBLIC_JSON_DATA_FOLDER) {
-  throw new Error('NEXT_PUBLIC_JSON_DATA_FOLDER env variable must be defined!')
-}
+const { NEXT_PUBLIC_CL_ENDPOINT, NEXT_PUBLIC_CL_CLIENT_ID } = process.env
 
-if (!NEXT_PUBLIC_CL_CLIENT_ID) {
-  throw new Error('NEXT_PUBLIC_CL_CLIENT_ID env variable must be defined!')
-}
-
-if (!NEXT_PUBLIC_CL_ENDPOINT) {
-  throw new Error('NEXT_PUBLIC_CL_ENDPOINT env variable must be defined!')
-}
-
-if (!isSupportedUrl(NEXT_PUBLIC_JSON_DATA_FOLDER)) {
-  const organizationJsonPath = resolve(__dirname, NEXT_PUBLIC_JSON_DATA_FOLDER, 'organization.json')
+if (!isSupportedUrl(envs.NEXT_PUBLIC_JSON_DATA_FOLDER) && NEXT_PUBLIC_CL_CLIENT_ID && NEXT_PUBLIC_CL_ENDPOINT) {
+  const organizationJsonPath = resolve(__dirname, envs.NEXT_PUBLIC_JSON_DATA_FOLDER, 'organization.json')
   writeFileSync(organizationJsonPath, '{}', { encoding: 'utf-8' })
 
   const [, organization, domain] = NEXT_PUBLIC_CL_ENDPOINT.match(/^https?:\/\/(.*).(commercelayer.(co|io))$/) || []

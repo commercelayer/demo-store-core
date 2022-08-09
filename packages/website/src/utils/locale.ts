@@ -1,4 +1,4 @@
-import { defaultLanguage } from '#config/general.config'
+import { NEXT_PUBLIC_DEFAULT_LANGUAGE } from '#utils/envs'
 import type { Locale, NonShoppableLocale, ShoppableLocale } from '#i18n/locale'
 import type { LocalizedField, RawDataCountry, RawDataLanguage } from '@commercelayer/demo-store-types'
 import { combine } from './collection'
@@ -50,7 +50,7 @@ export function makeLocales(languages: RawDataLanguage[], countries: RawDataCoun
 export function translateField<T>(field: LocalizedField<T>, locale: string): T {
   const { languageCode = locale } = parseLocaleCode(locale)
 
-  const translation = field[locale] || field[languageCode] || field[defaultLanguage]
+  const translation = field[locale] || field[languageCode] || field[NEXT_PUBLIC_DEFAULT_LANGUAGE]
 
   if (!translation) {
     throw new Error(`Missing translation for locale '${locale}' : ${JSON.stringify(field)}`)

@@ -1,4 +1,4 @@
-import { basePath } from '#config/general.config'
+import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { useSettingsContext } from '#contexts/SettingsContext'
 import { getRGBColor } from '#utils/color'
 import { useI18n } from 'next-localization'
@@ -49,7 +49,7 @@ export const Page: React.FC<Props> = ({
       <Head>
         <title>{`${title ? `${title} - ` : ''}${settings.organization?.name || i18n.t('seo.title')}`}</title>
         <meta name='description' content={description || i18n.t('seo.description')} />
-        <link rel='icon' href={settings.organization?.favicon_url || basePath + '/favicon.ico'} />
+        <link rel='icon' href={settings.organization?.favicon_url || NEXT_PUBLIC_BASE_PATH + '/favicon.ico'} />
         {canonical && <link rel='canonical' href={`${router.basePath}/${router.query.locale}${canonical}`} />}
         <style>{`
           :root {

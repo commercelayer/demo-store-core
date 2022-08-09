@@ -1,4 +1,4 @@
-import { basePath } from '#config/general.config'
+import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import type { Catalog, Taxon, Taxonomy } from '#data/models/catalog'
 import type { Locale } from '#i18n/locale'
 import type { CarouselPageComponent } from '#utils/pages'
@@ -20,7 +20,7 @@ export const RouterContext: React.FC<{ href: string; locale?: string; mockedUseR
 
 export const createRouter = (href: string, locale: string = 'en-US'): NextRouter => {
   return {
-    basePath,
+    basePath: NEXT_PUBLIC_BASE_PATH,
     route: `/[locale]${href}`,
     pathname: `/[locale]${href}`,
     query: {
