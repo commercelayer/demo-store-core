@@ -1,4 +1,3 @@
-import { isSupportedUrl } from '#utils/isSupportedUrl'
 import NextLink, { LinkProps as NextLinkProps } from 'next/link'
 import { useRouter } from 'next/router'
 import type { UrlObject } from 'url'
@@ -10,6 +9,10 @@ type LinkProps = Omit<NextLinkProps, 'locale' | 'href'>
     | { href: Url }
     | { locale: string }
   )
+
+function isUrlAbsolute(url: string) {
+  return (url.indexOf('://') > 0 || url.indexOf('//') === 0)
+}
 
 export const Link: React.FC<LinkProps> = ({ children, ...props }) => {
   const router = useRouter()
@@ -30,7 +33,7 @@ export const Link: React.FC<LinkProps> = ({ children, ...props }) => {
     }}>{children}</NextLink>
   }
 
-  if (isSupportedUrl(props.href.toString())) {
+  if (isUrlAbsolute(props.href.toString())) {
     return <NextLink href={props.href}>{children}</NextLink>
   }
 
