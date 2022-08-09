@@ -40,14 +40,14 @@ const nextConfig = {
       config.resolve.alias.aliasJsonData = resolve(__dirname, process.env.NEXT_PUBLIC_JSON_DATA_FOLDER)
     }
 
-    if (!process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER) {
-      throw new Error('NEXT_PUBLIC_LOCALE_DATA_FOLDER env variable must be defined!')
+    if (!process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER) {
+      throw new Error('NEXT_PUBLIC_LOCALES_DATA_FOLDER env variable must be defined!')
     }
 
-    if (isSupportedUrl(process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER)) {
-      config.resolve.alias.aliasJsonData = resolve(__dirname, 'empty')
+    if (isSupportedUrl(process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER)) {
+      config.resolve.alias.aliasLocalesData = resolve(__dirname, 'empty')
     } else {
-      config.resolve.alias.aliasLocaleData = resolve(__dirname, process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER)
+      config.resolve.alias.aliasLocalesData = resolve(__dirname, process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER)
     }
 
     return config

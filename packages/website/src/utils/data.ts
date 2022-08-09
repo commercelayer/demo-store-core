@@ -29,15 +29,15 @@ export async function fetchJsonData(filename: string): Promise<unknown> {
 export async function fetchLocaleData(filename: string): Promise<unknown> {
   let data: unknown
 
-  if (isSupportedUrl(process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER)) {
-    data = fetch(`${process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER}/${filename}.json`)
+  if (isSupportedUrl(process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER)) {
+    data = fetch(`${process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER}/${filename}.json`)
       .then(response => response.json())
       .catch(error => {
-        console.error(`Cannot fetch "${process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER}/${filename}.json"`, error)
+        console.error(`Cannot fetch "${process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER}/${filename}.json"`, error)
         return null
       })
   } else {
-    data = (await import(`aliasLocaleData/${filename}.json`)).default
+    data = (await import(`aliasLocalesData/${filename}.json`)).default
   }
 
   return data

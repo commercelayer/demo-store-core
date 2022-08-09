@@ -5,7 +5,7 @@ const { compilerOptions } = require('./tsconfig')
 
 // 
 process.env.NEXT_PUBLIC_JSON_DATA_FOLDER ||= 'data/json/'
-process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER ||= 'data/locales/'
+process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER ||= 'data/locales/'
 process.env.NEXT_PUBLIC_CONFIG_FOLDER ||= 'config/'
 
 const createJestConfig = nextJest({
@@ -43,7 +43,7 @@ module.exports = async () => {
       ...pathsToModuleNameMapper(compilerOptions.paths),
       ...(nextConfig.moduleNameMapper || {}),
       'aliasJsonData(.*)': `<rootDir>/${process.env.NEXT_PUBLIC_JSON_DATA_FOLDER}$1`,
-      'aliasLocaleData(.*)': `<rootDir>/${process.env.NEXT_PUBLIC_LOCALE_DATA_FOLDER}$1`,
+      'aliasLocalesData(.*)': `<rootDir>/${process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER}$1`,
       '#config(.*)': `<rootDir>/${process.env.NEXT_PUBLIC_CONFIG_FOLDER}$1`,
     }
   }

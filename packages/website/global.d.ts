@@ -51,7 +51,7 @@ declare namespace NodeJS {
      * @required
      * @example 'https://example.com/data/locale' or './data/locale'
      */
-    NEXT_PUBLIC_LOCALE_DATA_FOLDER: string
+    NEXT_PUBLIC_LOCALES_DATA_FOLDER: string
 
     /**
      * Deploy a Next.js application under a sub-path of a domain
