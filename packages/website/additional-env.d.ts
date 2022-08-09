@@ -1,22 +1,3 @@
-declare namespace globalThis {
-  var IS_REACT_ACT_ENVIRONMENT: boolean
-}
-
-declare module "#config/general.config" {
-  import config from 'config/general.config'
-  export = config
-}
-
-declare module "#config/facets.config" {
-  import config from 'config/facets.config'
-  export = config
-}
-
-declare module "#config/variants.config" {
-  import config from 'config/variants.config'
-  export = config
-}
-
 declare namespace NodeJS {
   export interface ProcessEnv {
 
@@ -40,18 +21,24 @@ declare namespace NodeJS {
     NEXT_PUBLIC_CL_ENDPOINT: string
 
     /**
-     * Folder in which json data files are stored. This could be a local path or a remote URL.
-     * @required
-     * @example 'https://example.com/data/json' or './data/json'
+     * Folder in which configuration files are stored.
+     * @default 'config/'
      */
-    NEXT_PUBLIC_JSON_DATA_FOLDER: string
+    NEXT_PUBLIC_CONFIG_FOLDER?: string
+
+    /**
+     * Folder in which json data files are stored. This could be a local path or a remote URL.
+     * @example 'https://example.com/data/json' or './data/json'
+     * @default 'data/json/'
+     */
+    NEXT_PUBLIC_JSON_DATA_FOLDER?: string
 
     /**
      * Folder in which locale data files are stored. This could be a local path or a remote URL.
-     * @required
      * @example 'https://example.com/data/locale' or './data/locale'
+     * @default 'data/locales/'
      */
-    NEXT_PUBLIC_LOCALES_DATA_FOLDER: string
+    NEXT_PUBLIC_LOCALES_DATA_FOLDER?: string
 
     /**
      * Deploy a Next.js application under a sub-path of a domain
@@ -72,11 +59,5 @@ declare namespace NodeJS {
      */
     NEXT_PUBLIC_DATA_FETCHING?: string
 
-  }
-}
-
-declare module 'querystring' {
-  interface ParsedUrlQuery extends NodeJS.Dict<string | string[]> {
-    locale: string
   }
 }

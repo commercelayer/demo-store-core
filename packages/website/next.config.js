@@ -3,6 +3,11 @@
 const { resolve } = require('path')
 const { isSupportedUrl } = require('./src/utils/isSupportedUrl')
 
+// Handle default value for env variables
+const NEXT_PUBLIC_CONFIG_FOLDER = process.env.NEXT_PUBLIC_CONFIG_FOLDER || 'config/'
+const NEXT_PUBLIC_JSON_DATA_FOLDER = process.env.NEXT_PUBLIC_JSON_DATA_FOLDER || 'data/json/'
+const NEXT_PUBLIC_LOCALES_DATA_FOLDER = process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER || 'data/locales/'
+
 /** @type { import('./@typings/general.config').GeneralConfig } */
 const generalConfig = require('./config/general.config')
 
@@ -22,33 +27,21 @@ const nextConfig = {
     dirs: ['src']
   },
 
+  env: {
+    NEXT_PUBLIC_CONFIG_FOLDER,
+    NEXT_PUBLIC_JSON_DATA_FOLDER,
+    NEXT_PUBLIC_LOCALES_DATA_FOLDER
+  },
+
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack']
     })
 
-    config.resolve.alias['#config'] = resolve(__dirname, process.env.NEXT_PUBLIC_CONFIG_FOLDER || 'config/')
-
-    if (!process.env.NEXT_PUBLIC_JSON_DATA_FOLDER) {
-      throw new Error('NEXT_PUBLIC_JSON_DATA_FOLDER env variable must be defined!')
-    }
-
-    if (isSupportedUrl(process.env.NEXT_PUBLIC_JSON_DATA_FOLDER)) {
-      config.resolve.alias.aliasJsonData = resolve(__dirname, 'empty')
-    } else {
-      config.resolve.alias.aliasJsonData = resolve(__dirname, process.env.NEXT_PUBLIC_JSON_DATA_FOLDER)
-    }
-
-    if (!process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER) {
-      throw new Error('NEXT_PUBLIC_LOCALES_DATA_FOLDER env variable must be defined!')
-    }
-
-    if (isSupportedUrl(process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER)) {
-      config.resolve.alias.aliasLocalesData = resolve(__dirname, 'empty')
-    } else {
-      config.resolve.alias.aliasLocalesData = resolve(__dirname, process.env.NEXT_PUBLIC_LOCALES_DATA_FOLDER)
-    }
+    config.resolve.alias['#config'] = resolve(__dirname, NEXT_PUBLIC_CONFIG_FOLDER)
+    config.resolve.alias['aliasJsonData'] = resolve(__dirname, isSupportedUrl(NEXT_PUBLIC_JSON_DATA_FOLDER) ? 'empty' : NEXT_PUBLIC_JSON_DATA_FOLDER)
+    config.resolve.alias['aliasLocalesData'] = resolve(__dirname, isSupportedUrl(NEXT_PUBLIC_LOCALES_DATA_FOLDER) ? 'empty' : NEXT_PUBLIC_LOCALES_DATA_FOLDER)
 
     return config
   }
