@@ -10,6 +10,8 @@ export const MarkdownPageComponent: React.FC<{ component: MarkdownPageComponentT
         h1: (props) => <Title title={props.children}></Title>,
         // @ts-expect-error
         h2: (props) => <h2 className='text-lg font-semibold text-black mt-8 mb-3' {...props} />,
+        // @ts-expect-error
+        img: ({alt, ...props}) => <img loading='lazy' alt={alt} {...props} />,
       }
     }
   })
