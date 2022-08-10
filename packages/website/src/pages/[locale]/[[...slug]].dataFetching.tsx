@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   return {
     props: {
       navigation: getRootNavigationLinks(catalog),
-      components: page.components,
+      page,
       ...(await serverSideSettings(localeCode)),
       ...(await serverSideTranslations(localeCode))
     }

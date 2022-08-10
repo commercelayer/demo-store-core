@@ -51,13 +51,17 @@ const markdown_schema = z.object({
 const pages_schema = z.object({})
   .catchall(
     localizedFieldSchema(
-      z.discriminatedUnion('type', [
-        carousel_schema,
-        grid_schema,
-        hero_schema,
-        productGrid_schema,
-        markdown_schema,
-      ]).array()
+      z.object({
+        title: z.string().optional(),
+        description: z.string().optional(),
+        components: z.discriminatedUnion('type', [
+          carousel_schema,
+          grid_schema,
+          hero_schema,
+          productGrid_schema,
+          markdown_schema,
+        ]).array()
+      })
     )
   )
 

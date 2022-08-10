@@ -1,4 +1,5 @@
 import { getRootNavigationLinks } from '#utils/catalog'
+import type { CustomPage } from '#utils/pages'
 import lngDict from '#__mocks__/lngDict.json'
 import { act, render, screen } from '@testing-library/react'
 import { createCarouselPageComponent, createCatalog, createRouter, createTaxon, createTaxonomy } from 'jest.helpers'
@@ -27,21 +28,29 @@ test('CustomPage component', async () => {
 
   const carouselPageComponent = createCarouselPageComponent('1')
 
+  const page: CustomPage = {
+    slug: '/',
+    title: 'Page title',
+    description: 'Page description',
+    components: [carouselPageComponent]
+  }
+
   let container
   await act(async () => {
     ({ container } = render(
       <I18nProvider lngDict={lngDict} locale='en'>
-        <CustomPageComponent navigation={navigation} components={[carouselPageComponent]} />
+        <CustomPageComponent navigation={navigation} page={page} />
       </I18nProvider>
     ))
 
     jest.runAllTimers();
   })
 
-
-  const pageComponents = await screen.findByTestId('page-components')
-
-  expect(pageComponents.childElementCount).toStrictEqual(1)
-
   expect(container).toMatchSnapshot()
+
+  const pageComponents = await screen.findAllByTestId('carousel-page-component')
+  expect(pageComponents.length).toStrictEqual(1)
+
+  const title = await screen.findByRole('heading', { level: 1 })
+  expect(title).toHaveTextContent('Page title')
 })

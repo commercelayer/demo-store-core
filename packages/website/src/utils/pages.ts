@@ -66,6 +66,8 @@ export type PageComponent = (
 
 export type CustomPage = {
   slug: string
+  title: string | null
+  description: string | null
   components: PageComponent[]
 }
 
@@ -139,13 +141,17 @@ export const getPages = memoize(
     const rawDataPages = await getRawDataPages()
     return await Promise.all(
       Object.entries(rawDataPages.value).map(async ([slug, page]) => {
+        const localizedPage = translateField(page, localeCode)
+
         const components = await Promise.all(
-          translateField(page, localeCode)
+          localizedPage.components
             .map(component => componentMapper[component.type](component, localeCode))
         )
 
         return {
           slug: slug.replace(/^\//, ''),
+          title: localizedPage.title || null,
+          description: localizedPage.description || null,
           components
         }
       })

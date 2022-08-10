@@ -5,19 +5,22 @@ import { GridPageComponent } from '#components/PageComponents/GridPageComponent'
 import { HeroPageComponent } from '#components/PageComponents/HeroPageComponent'
 import { MarkdownPageComponent } from '#components/PageComponents/MarkdownPageComponent'
 import { ProductGridPageComponent } from '#components/PageComponents/ProductGridPageComponent'
+import { Title } from '#components/Title'
 import type { CustomPage } from '#utils/pages'
 import type { NextPage } from 'next'
 
 export type Props = HeaderProps & {
-  components: CustomPage['components']
+  page: CustomPage
 }
 
-export const CustomPageComponent: NextPage<Props> = ({ navigation, components }) => {
+export const CustomPageComponent: NextPage<Props> = ({ navigation, page }) => {
   return (
-    <Page navigation={navigation}>
+    <Page navigation={navigation} title={page.title || undefined} description={page.description || undefined}>
       <div data-testid='page-components' className='mt-8 flex flex-col gap-8'>
+        {page.title  && <Title title={page.title}></Title>}
+
         {
-          components.map(component => {
+          page.components.map(component => {
             switch (component.type) {
 
               case 'carousel':
