@@ -3,7 +3,36 @@ import { getProductWithVariants } from './products';
 
 import productsJson from '#__mocks__/products.json'
 
-jest.mock('../../config/facets.config.js')
+jest.mock('../../config/facets.config.js', () => [
+  {
+    field: 'gender',
+    appearance: 'tag',
+  },
+  {
+    field: 'category',
+    appearance: 'tag',
+  },
+  {
+    field: 'price.amount_float',
+    appearance: 'priceRange',
+  },
+  {
+    field: 'available',
+    appearance: 'switch',
+  },
+  {
+    field: 'color',
+    appearance: 'colorSwatch',
+  },
+  {
+    field: 'size',
+    appearance: 'tag',
+  },
+  {
+    field: 'facetA',
+    appearance: 'tag',
+  },
+])
 
 
 test('"getFacets" should return combined facets for provided product list', () => {

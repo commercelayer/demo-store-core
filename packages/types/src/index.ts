@@ -1,3 +1,6 @@
+export * from './config/facets.config'
+export * from './config/general.config'
+export * from './config/variants.config'
 export * from './json/catalogs'
 export * from './json/countries'
 export * from './json/languages'
@@ -7,4 +10,5 @@ export * from './json/products'
 export * from './json/taxonomies'
 export * from './json/taxons'
 export * from './utils/locale'
+export * from './utils/sort'
 

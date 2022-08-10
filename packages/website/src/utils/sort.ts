@@ -1,18 +1,6 @@
-type Value = string | boolean | number
+import type { SortingRule, SortValue } from '@commercelayer/demo-store-types'
 
-export type SortingRule = {
-  /**
-   * RegExp to match the value.
-   */
-  pattern: RegExp
-
-  /**
-   * Sorting algorithm to apply.
-   */
-  sort?: <T extends Value>(values: T[]) => T[]
-}
-
-type PatternMapValue<T extends Value> = {
+type PatternMapValue<T extends SortValue> = {
   sort: SortingRule['sort']
   values: T[]
 }
@@ -23,7 +11,7 @@ type PatternMapValue<T extends Value> = {
  * @param sortingRules Sorting rules
  * @returns Sorted values
  */
-export function sort<T extends Value = Value>(values: T[], sortingRules: SortingRule[]): T[] {
+export function sort<T extends SortValue = SortValue>(values: T[], sortingRules: SortingRule[]): T[] {
 
   const patternMap = new Map<SortingRule['pattern'], PatternMapValue<T>>(
     sortingRules.map(({ pattern, sort }) => (

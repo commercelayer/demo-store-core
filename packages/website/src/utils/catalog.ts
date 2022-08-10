@@ -1,9 +1,28 @@
 import type { Catalog, Taxon, Taxonomy } from '#data/models/catalog'
 import { deepFind, DeepFindResult } from '#utils/collection'
 import { getSearchUrl } from '#utils/url'
-import type { NavigationLink, Breadcrumbs, Navigation } from '@typings/navigation.d'
 import uniq from 'lodash/uniq'
 import type { Unserializable } from './unserializable'
+
+export type NavigationLink = {
+  key: string
+  href: string
+  text: string
+  description: string
+  children?: NavigationLink[]
+}
+
+export type Breadcrumbs = {
+  parent: NavigationLink[]
+  current: NavigationLink
+  children: NavigationLink[]
+}
+
+export type Navigation = {
+  current: NavigationLink
+  path: NavigationLink[]
+}
+
 
 const getPrimaryTaxonomy = (catalog: Unserializable<Catalog>): Taxonomy => {
   // TODO: taxonomies[0] is a requirement. First taxonomy is considered the navigation one. Should it be configurable?

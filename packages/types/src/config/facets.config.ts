@@ -1,4 +1,4 @@
-import type { SortingRule } from '#utils/sort'
+import type { SortingRule } from '../utils/sort'
 
 type Config = {
   /**
@@ -46,9 +46,6 @@ type TagAppearance = {
   appearance: 'tag'
 }
 
-/**
- * asd
- */
 export type FacetConfig = Config & (
   | ColorSwatchAppearance
   | PriceRangeAppearance

@@ -9,6 +9,7 @@
     "zod": "^3.17.10"
   },
   "scripts": {
+    "ts:check": "tsc --noEmit",
     "build": "tsc",
     "postinstall": "npm run build"
   },

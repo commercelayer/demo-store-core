@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type { import('../@typings/facets.config.d').FacetConfig[] } */
+/** @type { import('@commercelayer/demo-store-types').FacetConfig[] } */
 const facetsConfig = [
   {
     field: 'gender',

@@ -1,6 +1,6 @@
 // @ts-check
 
-/** @type { import('../@typings/variants.config.d').VariantConfig[] } */
+/** @type { import('@commercelayer/demo-store-types').VariantConfig[] } */
 const variantsConfig = [
   {
     field: 'color',

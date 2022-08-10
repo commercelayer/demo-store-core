@@ -1,4 +1,5 @@
-import { sort, SortingRule } from './sort'
+import type { SortingRule } from '@commercelayer/demo-store-types'
+import { sort } from './sort'
 
 const sortingRules: SortingRule[] = [
   { pattern: /^(One Size|U)$/ },

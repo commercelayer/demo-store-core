@@ -1,5 +1,5 @@
 import { Link } from '#i18n/Link'
-import type { NavigationLink } from '@typings/navigation.d'
+import type { NavigationLink } from '#utils/catalog'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { Hamburger } from './Hamburger'

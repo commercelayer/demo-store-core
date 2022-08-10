@@ -1,5 +1,5 @@
 import { Link } from '#i18n/Link'
-import type { Navigation, NavigationLink } from '@typings/navigation.d'
+import type { Navigation, NavigationLink } from '#utils/catalog'
 import { useI18n } from 'next-localization'
 
 export type Props = JSX.IntrinsicElements['nav'] & {
