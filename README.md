@@ -1,6 +1,6 @@
-# Demo Store `core` by Commerce Layer
+# Commerce Layer's Demo Store `core`
 
-Demo Store is a fully static e-commerce solution (with SSR capability) that uses Commerce Layer.
+Demo Store is a fully static e-commerce solution (with SSR capability) powered by Commerce Layer.
 
 We have two repositories:
 

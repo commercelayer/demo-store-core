@@ -16,7 +16,7 @@ describe('JSON Data', () => {
     expect(await getRawDataLanguages()).toBeDefined()
   })
 
-  it('"organization.json" should be properly defined. Did you run "npm run prebuild"?', async () => {
+  it('"organization.json" should be properly defined.', async () => {
     const { getRawDataOrganization } = await import('./organization')
     expect(await getRawDataOrganization()).toBeDefined()
   })

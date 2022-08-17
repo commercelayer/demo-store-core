@@ -2,7 +2,7 @@
 
 const { getSalesChannelToken } = require('@commercelayer/js-auth')
 const CommerceLayer = require('@commercelayer/sdk').default
-const { writeFileSync } = require('fs')
+const { writeFileSync, existsSync, readFileSync } = require('fs')
 const { resolve } = require('path')
 const { isSupportedUrl } = require('./src/utils/isSupportedUrl')
 
@@ -13,7 +13,13 @@ const { NEXT_PUBLIC_CL_ENDPOINT, NEXT_PUBLIC_CL_CLIENT_ID } = process.env
 
 if (!isSupportedUrl(envs.NEXT_PUBLIC_JSON_DATA_FOLDER) && NEXT_PUBLIC_CL_CLIENT_ID && NEXT_PUBLIC_CL_ENDPOINT) {
   const organizationJsonPath = resolve(__dirname, envs.NEXT_PUBLIC_JSON_DATA_FOLDER, 'organization.json')
-  writeFileSync(organizationJsonPath, '{}', { encoding: 'utf-8' })
+
+  /** @type { import('@commercelayer/demo-store-types').RawDataOrganization } */
+  const currentOrganization = existsSync(organizationJsonPath) ? JSON.parse(readFileSync(organizationJsonPath, { encoding: 'utf-8' }) || '{}') : {}
+
+  if (!existsSync(organizationJsonPath)) {
+    writeFileSync(organizationJsonPath, '{}', { encoding: 'utf-8' })
+  }
 
   const [, organization, domain] = NEXT_PUBLIC_CL_ENDPOINT.match(/^https?:\/\/(.*).(commercelayer.(co|io))$/) || []
 
@@ -36,12 +42,14 @@ if (!isSupportedUrl(envs.NEXT_PUBLIC_JSON_DATA_FOLDER) && NEXT_PUBLIC_CL_CLIENT_
       client.organization.retrieve()
         .then(organization => {
 
+          /** @type { import('@commercelayer/demo-store-types').RawDataOrganization } */
           const organizationSettings = {
-            slug: organization.slug,
-            name: organization.name,
-            favicon_url: organization.favicon_url,
-            logo_url: organization.logo_url,
-            primary_color: organization.primary_color
+            ...currentOrganization,
+            slug: organization.slug || undefined,
+            name: organization.name || undefined,
+            favicon_url: organization.favicon_url || undefined,
+            logo_url: organization.logo_url || undefined,
+            primary_color: organization.primary_color || undefined
           }
 
           writeFileSync(

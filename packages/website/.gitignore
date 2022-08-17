@@ -45,3 +45,7 @@ tsconfig.tsbuildinfo
 
 # data
 /data/json-*
+
+# next-pwa
+/public/sw.js*
+/public/workbox-*.js*
