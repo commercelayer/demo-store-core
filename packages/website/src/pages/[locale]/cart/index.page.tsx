@@ -30,15 +30,12 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
     let isMounted = true
 
     ; (async () => {
-      const locale = await getLocale(router.query.locale)
-
-      if (locale.isShoppable && auth.accessToken) {
-        const persistKey = getPersistKey(locale)
+      if (settings.locale?.isShoppable && auth.accessToken && settings.organization?.slug) {
+        const persistKey = getPersistKey(settings.locale)
         const orderId = localStorage.getItem(persistKey)
 
         if (isMounted) {
-          // TODO: orderId is possibly null
-          setCartUrl(`https://${settings.organization?.slug}.stg.commercelayer.app/cart/${orderId}?embed=true&accessToken=${auth.accessToken}`)
+          setCartUrl(`https://${settings.organization.slug}.commercelayer.app/cart/${orderId}?embed=true&accessToken=${auth.accessToken}`)
         }
       }
     })()

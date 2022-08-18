@@ -72,7 +72,7 @@ test('should fetch accessToken and set it properly when "locale" is set', async 
 
   await act(async () => {
     render(
-      <SettingsProvider locale={createLocale()} organization={createOrganization()}>
+      <SettingsProvider locale={createLocale()} organization={{ ...createOrganization(), slug: 'commerce-layer' }}>
         <Auth><ContextTester /></Auth>
       </SettingsProvider>
     )

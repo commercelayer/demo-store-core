@@ -45,7 +45,6 @@ if (!isSupportedUrl(envs.NEXT_PUBLIC_JSON_DATA_FOLDER) && NEXT_PUBLIC_CL_CLIENT_
           /** @type { import('@commercelayer/demo-store-types').RawDataOrganization } */
           const organizationSettings = {
             ...currentOrganization,
-            slug: organization.slug || undefined,
             name: organization.name || undefined,
             favicon_url: organization.favicon_url || undefined,
             logo_url: organization.logo_url || undefined,

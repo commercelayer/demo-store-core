@@ -3,6 +3,8 @@ import { Logo } from '#components/Logo'
 import type { Props as NavigationProps } from '#components/Navigation'
 import { Navigation } from '#components/Navigation'
 import { Search } from '#components/Search'
+import { useAuthContext } from '#contexts/AuthContext'
+import { useSettingsContext } from '#contexts/SettingsContext'
 import { Link } from '#i18n/Link'
 import { LineItemsCount } from '@commercelayer/react-components'
 import { useEffect, useState } from 'react'
@@ -37,6 +39,9 @@ const CartQuantity: React.FC<{ quantity: number }> =  ({ quantity: propQuantity 
 }
 
 export const Header: React.FC<HeaderProps> = ({ navigation }) => {
+  const auth = useAuthContext()
+  const settings = useSettingsContext()
+
   return (
     <header className='border-b-gray-200 border-b pb-6 sticky top-0 bg-pageBackground z-50'>
       <nav className='flex items-center justify-between flex-wrap mb-4'>
@@ -58,14 +63,18 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
               </>
             )} /> */}
 
-          <Link href='/cart'>
-            <a className='block lg:inline-block relative'>
-              <ShoppingBagOpen />
-              <LineItemsCount>
-                {CartQuantity}
-              </LineItemsCount>
-            </a>
-          </Link>
+          {
+            settings.locale?.isShoppable && auth.accessToken && (
+              <Link href='/cart'>
+                <a className='block lg:inline-block relative'>
+                  <ShoppingBagOpen />
+                  <LineItemsCount>
+                    {CartQuantity}
+                  </LineItemsCount>
+                </a>
+              </Link>
+            )
+          }
 
         </div>
       </nav>

@@ -5,7 +5,9 @@ import memoize from 'lodash/memoize'
 import { createContext, useContext } from 'react'
 
 type Context = {
-  organization: RawDataOrganization
+  organization: RawDataOrganization & {
+    slug: string | null
+  }
   locale: Locale
 }
 
@@ -23,7 +25,10 @@ export const serverSideSettings = memoize(
   async (localeCode: string): Promise<SettingsContextProps> => {
     return {
       settingsContext: {
-        organization: await getRawDataOrganization(),
+        organization: {
+          ...await getRawDataOrganization(),
+          slug: process.env.NEXT_PUBLIC_CL_ENDPOINT?.match(/^https?:\/\/(?<slug>[\w-]+)/)?.groups?.slug || null
+        },
         locale: await getLocale(localeCode),
       }
     }
