@@ -21,14 +21,18 @@ const sitemapConfig = process.env.DISALLOW_ROBOTS === 'true' ? {
 } : {
   siteUrl: process.env.SITE_URL || '',
   sitemapSize: 7000,
-  exclude: ['/*/search'],
+  exclude: [
+    '/*/search',
+    '/*/cart'
+  ],
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
       {
         userAgent: '*',
         disallow: [
-          '/*/search'
+          '/*/search',
+          '/*/cart'
         ]
       }
     ]
