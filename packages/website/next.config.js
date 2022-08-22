@@ -17,6 +17,9 @@ const nextConfig = {
   // https://nextjs.org/docs/api-reference/next.config.js/custom-page-extensions#including-non-page-files-in-the-pages-directory
   pageExtensions: ['page.tsx', `page-${envs.NEXT_PUBLIC_DATA_FETCHING}.tsx`],
 
+  // https://nextjs.org/docs/advanced-features/output-file-tracing
+  output: 'standalone',
+
   // https://nextjs.org/docs/api-reference/next.config.js/basepath
   basePath: envs.NEXT_PUBLIC_BASE_PATH.length > 1 ? envs.NEXT_PUBLIC_BASE_PATH : undefined,
 
