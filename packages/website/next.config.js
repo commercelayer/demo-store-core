@@ -3,7 +3,6 @@
 const { resolve } = require('path')
 const { isSupportedUrl } = require('./src/utils/isSupportedUrl')
 
-const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 
 /** @type { import('./additional-env').DemoStoreEnvs } */
@@ -44,11 +43,10 @@ const nextConfig = {
   }
 }
 
-module.exports = withPWA({
-  ...nextConfig,
-  pwa: {
-    // disable: process.env.NODE_ENV === 'development',
-    dest: 'public',
-    runtimeCaching
-  },
+const withPWA = require('next-pwa')({
+  // disable: process.env.NODE_ENV === 'development',
+  dest: 'public',
+  runtimeCaching
 })
+
+module.exports = withPWA(nextConfig)

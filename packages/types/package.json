@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "devDependencies": {
     "typescript": "^4.7.4",
-    "zod": "^3.17.10"
+    "zod": "^3.18.0"
   },
   "scripts": {
     "ts:check": "tsc --noEmit",

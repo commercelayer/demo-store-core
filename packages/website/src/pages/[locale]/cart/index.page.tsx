@@ -43,7 +43,7 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
     return () => {
       isMounted = false
     }
-  }, [router.query.locale, auth, settings.organization?.slug])
+  }, [router.query.locale, auth, settings.organization, settings.locale])
 
   return (
     <Page navigation={navigation} title={cartTitle}>
