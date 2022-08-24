@@ -1,5 +1,7 @@
 {
-  "name": "@commercelayer/demo-store",
+  "name": "@commercelayer/demo-store-website",
+  "version": "0.0.0",
+  "description": "This Demo Store is a completely static ecommerce solution (with SSR capability) powered by Commerce Layer.",
   "private": true,
   "scripts": {
     "sync:organization": "dotenv -c local node npm-sync-organization.js",

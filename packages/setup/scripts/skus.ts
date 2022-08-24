@@ -1,7 +1,7 @@
 import type { Facet } from '../../website/src/utils/facets'
 import fs from 'fs'
 import path from 'path'
-import type { RawDataProduct } from '../../website/data/products'
+import type { RawDataProduct } from '../../types'
 import skus from '../data/skus.json'
 
 const makeVariants = (code: string, name: string): Facet => {

@@ -1,12 +1,14 @@
 {
   "name": "@commercelayer/demo-store-types",
   "version": "0.0.0",
-  "description": "",
+  "description": "Demo Store types",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "devDependencies": {
-    "typescript": "^4.7.4",
+  "dependencies": {
     "zod": "^3.18.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
   },
   "scripts": {
     "ts:check": "tsc --noEmit",
