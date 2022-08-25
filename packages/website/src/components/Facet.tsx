@@ -37,7 +37,9 @@ export const Facet: React.FC<JSX.IntrinsicElements['div']> = ({ className = '', 
 
   const facetList = Object.entries(availableFacets)
 
-  if (facetList.length === 0) {
+  const hasAvailableFacet = facetList.find(([_facetName, facetValues]) => facetValues.length > 0)
+
+  if (!hasAvailableFacet) {
     return null
   }
 
