@@ -2,7 +2,7 @@
   {
     "name": "United States",
     "code": "US",
-    "market": 10426,
+    "market": 11279,
     "catalog": "AMER",
     "default_language": "en",
     "region": "Americas"
@@ -10,7 +10,7 @@
   {
     "name": "Austria",
     "code": "AT",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -18,7 +18,7 @@
   {
     "name": "Australia",
     "code": "AU",
-    "market": 10426,
+    "market": 11279,
     "catalog": "AMER",
     "default_language": "en",
     "region": "Oceania"
@@ -26,7 +26,7 @@
   {
     "name": "Belgium",
     "code": "BE",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -34,7 +34,7 @@
   {
     "name": "Bolivia",
     "code": "BO",
-    "market": 10426,
+    "market": 11279,
     "catalog": "AMER",
     "default_language": "en",
     "region": "Americas"
@@ -42,7 +42,7 @@
   {
     "name": "Brazil",
     "code": "BR",
-    "market": 10426,
+    "market": 11279,
     "catalog": "AMER",
     "default_language": "en",
     "region": "Americas"
@@ -50,7 +50,7 @@
   {
     "name": "Canada",
     "code": "CA",
-    "market": 10426,
+    "market": 11279,
     "catalog": "AMER",
     "default_language": "en",
     "region": "Americas"
@@ -58,7 +58,7 @@
   {
     "name": "Chile",
     "code": "CL",
-    "market": 10426,
+    "market": 11279,
     "catalog": "AMER",
     "default_language": "en",
     "region": "Americas"
@@ -66,7 +66,7 @@
   {
     "name": "China",
     "code": "CN",
-    "market": 10426,
+    "market": 11279,
     "catalog": "APAC",
     "default_language": "en",
     "region": "Asia"
@@ -74,7 +74,7 @@
   {
     "name": "Denmark",
     "code": "DK",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -82,7 +82,7 @@
   {
     "name": "Finland",
     "code": "FI",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -90,7 +90,7 @@
   {
     "name": "France",
     "code": "FR",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -98,7 +98,7 @@
   {
     "name": "Germany",
     "code": "DE",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -106,7 +106,7 @@
   {
     "name": "Hong Kong",
     "code": "HK",
-    "market": 10426,
+    "market": 11279,
     "catalog": "APAC",
     "default_language": "en",
     "region": "Asia"
@@ -114,7 +114,7 @@
   {
     "name": "India",
     "code": "IN",
-    "market": 10426,
+    "market": 11279,
     "catalog": "APAC",
     "default_language": "en",
     "region": "Asia"
@@ -122,7 +122,7 @@
   {
     "name": "Indonesia",
     "code": "ID",
-    "market": 10426,
+    "market": 11279,
     "catalog": "APAC",
     "default_language": "en",
     "region": "Asia"
@@ -130,7 +130,7 @@
   {
     "name": "Ireland",
     "code": "IE",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -138,7 +138,7 @@
   {
     "name": "Iceland",
     "code": "IS",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -146,7 +146,7 @@
   {
     "name": "Italy",
     "code": "IT",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "it",
     "region": "Europe"
@@ -154,7 +154,7 @@
   {
     "name": "Japan",
     "code": "JP",
-    "market": 10426,
+    "market": 11279,
     "catalog": "APAC",
     "default_language": "en",
     "region": "Asia"
@@ -162,7 +162,7 @@
   {
     "name": "South Korea",
     "code": "KR",
-    "market": 10426,
+    "market": 11279,
     "catalog": "APAC",
     "default_language": "en",
     "region": "Asia"
@@ -170,7 +170,7 @@
   {
     "name": "Mexico",
     "code": "MX",
-    "market": 10426,
+    "market": 11279,
     "catalog": "AMER",
     "default_language": "en",
     "region": "Americas"
@@ -178,7 +178,7 @@
   {
     "name": "Netherlands",
     "code": "NL",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -186,7 +186,7 @@
   {
     "name": "Nigeria",
     "code": "NG",
-    "market": 10426,
+    "market": 11279,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Africa"
@@ -194,7 +194,7 @@
   {
     "name": "Norway",
     "code": "NO",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -202,7 +202,7 @@
   {
     "name": "Poland",
     "code": "PL",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -210,7 +210,7 @@
   {
     "name": "Portugal",
     "code": "PT",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -218,7 +218,7 @@
   {
     "name": "Russia",
     "code": "RU",
-    "market": 10426,
+    "market": 11279,
     "catalog": "APAC",
     "default_language": "en",
     "region": "Asia"
@@ -226,7 +226,7 @@
   {
     "name": "Saudi Arabia",
     "code": "SA",
-    "market": 10426,
+    "market": 11279,
     "catalog": "APAC",
     "default_language": "en",
     "region": "Asia"
@@ -234,7 +234,7 @@
   {
     "name": "Singapore",
     "code": "SG",
-    "market": 10426,
+    "market": 11279,
     "catalog": "APAC",
     "default_language": "en",
     "region": "Asia"
@@ -242,7 +242,7 @@
   {
     "name": "South Africa",
     "code": "ZA",
-    "market": 10426,
+    "market": 11279,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Africa"
@@ -250,7 +250,7 @@
   {
     "name": "Spain",
     "code": "ES",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "it",
     "region": "Europe"
@@ -258,7 +258,7 @@
   {
     "name": "Sweden",
     "code": "SE",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -266,7 +266,7 @@
   {
     "name": "Switzerland",
     "code": "CH",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -274,7 +274,7 @@
   {
     "name": "Turkey",
     "code": "TR",
-    "market": 10425,
+    "market": 11278,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
@@ -282,7 +282,7 @@
   {
     "name": "United Kingdom",
     "code": "GB",
-    "market": 10427,
+    "market": 11280,
     "catalog": "EMEA",
     "default_language": "en",
     "region": "Europe"
