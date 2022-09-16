@@ -41,7 +41,8 @@ import stock_items from '../data/stock_items.json'
       code: item.code,
       name: item.name,
       description: item.description,
-      image_url: item.image_url
+      image_url: item.image_url,
+      shipping_category_id: shipping_category_id
     })
 
     return acc
@@ -53,16 +54,19 @@ import stock_items from '../data/stock_items.json'
       name: string
       description: string
       image_url: string
+      shipping_category_id: string
     }[]
   })
 
-  for (const [parentId, skus] of Object.entries(resolvedSkus)) {
+  for (const [_parentId, skus] of Object.entries(resolvedSkus)) {
     const jsonFile = './tmp/skus.json'
 
     mkdirSync(dirname(jsonFile), { recursive: true })
     writeFileSync(jsonFile, JSON.stringify(skus, undefined, 2))
 
-    execSync(`commercelayer imports:create -t skus -p ${parentId} -i ${jsonFile}`, {
+    const command = `commercelayer imports:create -t skus -i ${jsonFile}`
+    console.log(command)
+    execSync(command, {
       stdio: 'inherit'
     })
 
@@ -99,7 +103,9 @@ import stock_items from '../data/stock_items.json'
     mkdirSync(dirname(jsonFile), { recursive: true })
     writeFileSync(jsonFile, JSON.stringify(stock_items, undefined, 2))
 
-    execSync(`commercelayer imports:create -t stock_items -p ${parentId} -i ${jsonFile}`, {
+    const command = `commercelayer imports:create -t stock_items -p ${parentId} -i ${jsonFile}`
+    console.log(command)
+    execSync(command, {
       stdio: 'inherit'
     })
 
@@ -138,7 +144,9 @@ import stock_items from '../data/stock_items.json'
     mkdirSync(dirname(jsonFile), { recursive: true })
     writeFileSync(jsonFile, JSON.stringify(prices, undefined, 2))
 
-    execSync(`commercelayer imports:create -t prices -p ${parentId} -i ${jsonFile}`, {
+    const command = `commercelayer imports:create -t prices -p ${parentId} -i ${jsonFile}`
+    console.log(command)
+    execSync(command, {
       stdio: 'inherit'
     })
 
