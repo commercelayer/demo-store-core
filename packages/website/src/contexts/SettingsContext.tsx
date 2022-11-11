@@ -4,16 +4,16 @@ import type { RawDataOrganization } from '@commercelayer/demo-store-types'
 import memoize from 'lodash/memoize'
 import { createContext, useContext } from 'react'
 
-type Context = {
+export type SettingsContext = {
   organization: RawDataOrganization & {
     slug: string | null
   }
   locale: Locale
 }
 
-const SettingsContext = createContext<Partial<Context>>({})
+const SettingsContext = createContext<Partial<SettingsContext>>({})
 
-export const SettingsProvider: React.FC<Context> = ({ children, ...props }) => (
+export const SettingsProvider: React.FC<SettingsContext> = ({ children, ...props }) => (
   <SettingsContext.Provider value={{ ...props }}>
     {children}
   </SettingsContext.Provider>
@@ -36,5 +36,5 @@ export const serverSideSettings = memoize(
 )
 
 type SettingsContextProps = {
-  settingsContext: Context
+  settingsContext: SettingsContext
 }
