@@ -18,6 +18,7 @@ commercelayer applications:login \
   -a admin
 
 commercelayer plugins:install seeder
+commercelayer plugins:install imports
 
 npm run seeder:seed # 🚀
 ```
