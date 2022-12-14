@@ -7,6 +7,7 @@ import { useImmer } from 'use-immer'
 import { Swatch } from './Swatch'
 import { Tag } from './Tag'
 import { compareVariants, getOptions } from './VariantSelector.utils'
+import { stringToBackground } from '#utils/css'
 
 type Props = {
   product: LocalizedProductWithVariant
@@ -81,7 +82,7 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
                         <Swatch
                           key={`${variantName}-${variant.value}`}
                           swatchLabel={i18n.t(`search.values.${variant.value}`) || variant.value}
-                          swatchStyle={{ [variant.value.toString().toLowerCase().includes('gradient') ? 'backgroundImage' : 'backgroundColor']: variant.value.toString() }}
+                          swatchStyle={stringToBackground(variant.value)}
                           selected={selected}
                           onClick={() => {
                             setCurrentVariant((draft) => {
@@ -93,7 +94,7 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
                     case 'tag':
                       return (
                         <Tag
-                          key={`${variantName}-${variant.value}`}
+                          key={`${variantName}-${variant.value.toString()}`}
                           selected={selected}
                           onClick={() => {
                             setCurrentVariant((draft) => {
@@ -101,7 +102,7 @@ export const VariantSelector: React.FC<Props> = ({ product, onChange = () => {} 
                             })
                           }}
                         >
-                          {i18n.t(`search.values.${variant.value}`) || variant.value}
+                          {i18n.t(`search.values.${variant.value.toString()}`) || variant.value.toString()}
                         </Tag>
                       )
                   }
