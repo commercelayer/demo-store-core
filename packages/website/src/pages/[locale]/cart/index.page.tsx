@@ -14,9 +14,11 @@ import type { GetStaticPaths, GetStaticProps } from 'next'
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { useOrderContainer } from '@commercelayer/react-components/hooks/useOrderContainer'
 
 const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
   const [cartUrl, setCartUrl] = useState<string | null>(null)
+  const { reloadOrder } = useOrderContainer()
 
   const i18n = useI18n()
   const auth = useAuthContext()
@@ -51,6 +53,14 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
       {
         cartUrl && (
           <IframeResizer
+            checkOrigin={false}
+            onMessage={
+              (event) => {
+                if (event.message.type === 'update') {
+                  reloadOrder()
+                }
+              }
+            }
             style={{ width: '1px', minWidth: '100%' }}
             src={cartUrl} />
         )

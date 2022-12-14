@@ -101,7 +101,17 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
   }, [market, router.asPath, clientId, endpoint])
 
   if (!auth || !endpoint) {
-    return <>{children}</>
+    return (
+      <>
+        <CommerceLayer accessToken='' endpoint=''>
+          <OrderContainer>
+            <LineItemsContainer>
+              {children}
+            </LineItemsContainer>
+          </OrderContainer>
+        </CommerceLayer>
+      </>
+    )
   }
 
   const { hostname } = new URL(endpoint)
@@ -120,7 +130,7 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
             cart_url
           }}>
             <LineItemsContainer>
-              <>{children}</>
+              {children}
             </LineItemsContainer>
           </OrderContainer>
         </OrderStorage>
