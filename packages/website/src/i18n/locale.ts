@@ -24,7 +24,9 @@ export type Locale = ShoppableLocale | NonShoppableLocale
 
 export const getLocales = memoize(
   async function () {
-    return makeLocales(await getRawDataLanguages(), await getRawDataCountries())
+    const languages = await getRawDataLanguages()
+    const countries = await getRawDataCountries()
+    return makeLocales(languages, countries)
   }
 )
 

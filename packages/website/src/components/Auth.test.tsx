@@ -1,7 +1,7 @@
 import { useAuthContext } from '#contexts/AuthContext'
 import { SettingsProvider } from '#contexts/SettingsContext'
 import type { AuthReturnType as OriginalAuthReturnType } from '@commercelayer/js-auth'
-import CommerceLayerContext from '@commercelayer/react-components/lib/context/CommerceLayerContext'
+import CommerceLayerContext from '../../../../node_modules/@commercelayer/react-components/lib/cjs/context/CommerceLayerContext'
 import { act, render, screen } from '@testing-library/react'
 import { createLocale, createOrganization, createRouter } from 'jest.helpers'
 import { useContext } from 'react'
@@ -49,7 +49,7 @@ test('should match the snapshot', async () => {
 
   let container
   await act(async () => {
-    ({ container } = render(<Auth><ContextTester /></Auth>))
+    ({ container } = render(<Auth locale={createLocale()}><ContextTester /></Auth>))
   })
 
   expect(container).toMatchSnapshot()
@@ -73,7 +73,7 @@ test('should fetch accessToken and set it properly when "locale" is set', async 
   await act(async () => {
     render(
       <SettingsProvider locale={createLocale()} organization={{ ...createOrganization(), slug: 'commerce-layer' }}>
-        <Auth><ContextTester /></Auth>
+        <Auth locale={createLocale()}><ContextTester /></Auth>
       </SettingsProvider>
     )
   })
