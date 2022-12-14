@@ -90,9 +90,8 @@ export const Footer: React.FC = () => {
           <div className='text-gray-500 flex gap-4 items-start'>
             <CommerceLayerGlyph aria-label='Commerce Layer logomark' width={32} />
             <div className='text-xs leading-relaxed'>
-              Copyright © 2022. All Rights Reserved.<br />
-              Registered company in Italy<br />
-              VAT IT12345678<br />
+              Copyright © 2022. Commerce Layer, Inc.<br />
+              2965 Woodside Road, Woodside, CA 94062<br />
             </div>
           </div>
           <div className='text-gray-500 flex gap-4 items-start grayscale'>

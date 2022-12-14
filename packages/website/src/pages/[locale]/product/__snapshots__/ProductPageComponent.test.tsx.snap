@@ -388,11 +388,9 @@ exports[`product detail page 1`] = `
             <div
               class="text-xs leading-relaxed"
             >
-              Copyright © 2022. All Rights Reserved.
+              Copyright © 2022. Commerce Layer, Inc.
               <br />
-              Registered company in Italy
-              <br />
-              VAT IT12345678
+              2965 Woodside Road, Woodside, CA 94062
               <br />
             </div>
           </div>
