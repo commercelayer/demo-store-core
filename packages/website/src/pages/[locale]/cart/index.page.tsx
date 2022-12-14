@@ -4,7 +4,7 @@ import { Title } from '#components/Title'
 import { useAuthContext } from '#contexts/AuthContext'
 import { serverSideSettings, useSettingsContext } from '#contexts/SettingsContext'
 import { getCatalog } from '#data/models/catalog'
-import { getLocale } from '#i18n/locale'
+import { getLocale, getShoppableLocales } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
@@ -69,11 +69,11 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   return withLocalePaths({
     paths: [],
     fallback: false
-  })
+  }, await getShoppableLocales())
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

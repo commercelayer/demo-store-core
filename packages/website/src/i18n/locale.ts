@@ -30,6 +30,13 @@ export const getLocales = memoize(
   }
 )
 
+export const getShoppableLocales = memoize(
+  async function () {
+    const locales = await getLocales()
+    return locales.filter(locale => locale.isShoppable)
+  }
+)
+
 export async function getLocale(localeCode: string): Promise<Locale>
 export async function getLocale(localeCode: string) {
   const locales = await getLocales()
