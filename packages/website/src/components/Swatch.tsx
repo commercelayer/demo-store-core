@@ -13,7 +13,7 @@ export const Swatch: React.FC<Props> = ({ selected = false, swatchStyle, swatchL
       { ...props }
       className={`w-12 h-12 rounded-full inline-flex items-center justify-center my-1 mr-2 ${isSelectedClass}`}
     >
-      <div className='w-8 h-8 border border-gray-600 rounded-full' style={swatchStyle}>
+      <div className='w-8 h-8 border border-gray-600 rounded-full bg-contain' style={swatchStyle}>
         <span className='sr-only'>{swatchLabel}</span>
       </div>
     </button>

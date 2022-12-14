@@ -157,7 +157,7 @@ exports[`product detail page 1`] = `
                 class="w-12 h-12 rounded-full inline-flex items-center justify-center my-1 mr-2 border border-gray-300 bg-gray-100"
               >
                 <div
-                  class="w-8 h-8 border border-gray-600 rounded-full"
+                  class="w-8 h-8 border border-gray-600 rounded-full bg-contain"
                 >
                   <span
                     class="sr-only"
@@ -170,7 +170,7 @@ exports[`product detail page 1`] = `
                 class="w-12 h-12 rounded-full inline-flex items-center justify-center my-1 mr-2 "
               >
                 <div
-                  class="w-8 h-8 border border-gray-600 rounded-full"
+                  class="w-8 h-8 border border-gray-600 rounded-full bg-contain"
                 >
                   <span
                     class="sr-only"

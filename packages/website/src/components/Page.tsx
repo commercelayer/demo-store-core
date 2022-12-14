@@ -1,6 +1,6 @@
 import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { useSettingsContext } from '#contexts/SettingsContext'
-import { getRGBColor } from '#utils/color'
+import { getRGBColor } from '#utils/css'
 import { useI18n } from 'next-localization'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
