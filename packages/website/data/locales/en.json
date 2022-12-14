@@ -19,8 +19,8 @@
   },
   "search": {
     "variants": {
-    "color": "Colors",
-    "size": "Choose size"
+      "color": "Colors",
+      "size": "Choose size"
     },
     "facets": {
       "gender": "Gender",

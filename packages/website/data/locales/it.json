@@ -17,11 +17,11 @@
     "title": "Commerce Layer Store",
     "description": "Commerce Layer is a transactional commerce API that lets you add multi-market ecommerce to any digital experience, with ease."
   },
-  "variants": {
-    "color": "Colori",
-    "size": "Seleziona la taglia"
-  },
   "search": {
+    "variants": {
+      "color": "Colori",
+      "size": "Seleziona la taglia"
+    },
     "facets": {
       "gender": "Genere",
       "category": "Categoria",
