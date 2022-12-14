@@ -17,6 +17,10 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "husky": "^8.0.1"
+    "husky": "^8.0.2"
+  },
+  "engines": {
+    "node": "^16.15.0 || ^18.0.0",
+    "npm": ">=8.10"
   }
 }

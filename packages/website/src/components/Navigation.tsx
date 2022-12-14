@@ -20,7 +20,9 @@ export const Navigation: React.FC<Props> = ({ navigation, className }) => {
             const isActive = router.asPath.includes(link.href)
 
             return (
-              <Link key={link.key} href={link.href}><a className={`text-back font-bold py-2 px-3 my-2 mx-1 transition-colors duration-300 ${isActive ? 'bg-gray-50 rounded-md' : 'bg-transparent'}`}>{link.text}</a></Link>
+              <Link key={link.key} href={link.href} className={`text-back font-bold py-2 px-3 my-2 mx-1 transition-colors duration-300 ${isActive ? 'bg-gray-50 rounded-md' : 'bg-transparent'}`}>
+                {link.text}
+              </Link>
             )
           })
         }

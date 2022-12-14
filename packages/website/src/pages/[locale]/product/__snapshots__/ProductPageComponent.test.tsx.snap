@@ -200,16 +200,6 @@ exports[`product detail page 1`] = `
               </button>
             </div>
           </div>
-          <button
-            class="block w-full mt-12 h-14 px-6 font-semibold rounded-md text-white bg-violet-400 disabled:bg-gray-300"
-            disabled=""
-          >
-            Add to cart
-          </button>
-          <p
-            class="mt-6"
-            color="blue"
-          />
           <div
             class="border-b border-b-gray-400 mt-12"
           >
@@ -239,7 +229,7 @@ exports[`product detail page 1`] = `
               <div
                 class="accordion-content overflow-hidden transition-all max-h-0 duration-400 ease-in-out"
                 data-testid="accordion-content"
-                style=""
+                style="max-height: 0px;"
               >
                 <div
                   class="border-t border-t-gray-100"
@@ -278,7 +268,7 @@ exports[`product detail page 1`] = `
               <div
                 class="accordion-content overflow-hidden transition-all max-h-0 duration-400 ease-in-out"
                 data-testid="accordion-content"
-                style=""
+                style="max-height: 0px;"
               >
                 <div
                   class="border-t border-t-gray-100"

@@ -42,9 +42,7 @@ export const CountrySelector: React.FC<Props> = ({ languages, countries }) => {
                     countries.map(country => {
                       const locale = makeLocaleCode(country.default_language, country.code)
                       return (
-                        <Link key={locale} locale={locale}>
-                          <a className={styles.countryLink}>{country.name}</a>
-                        </Link>
+                        <Link key={locale} locale={locale} className={styles.countryLink}>{country.name}</Link>
                       )
                     })
                   }
@@ -60,8 +58,8 @@ export const CountrySelector: React.FC<Props> = ({ languages, countries }) => {
           <div className='bg-gray-50 border-t border-gray-200 mt-12 pt-6 pb-6 flex flex-grow'>
             <div className='container mx-auto px-6'>
               {i18n.t('general.countrySelector.otherCountries')}
-              <Link locale={internationalLanguage.code}>
-                <a className='font-semibold block'>{i18n.t('general.international')} ({internationalLanguage.name})</a>
+              <Link locale={internationalLanguage.code} className='font-semibold block'>
+                {i18n.t('general.international')} ({internationalLanguage.name})
               </Link>
             </div>
           </div>

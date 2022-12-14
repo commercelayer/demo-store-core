@@ -13,7 +13,7 @@ export type SettingsContext = {
 
 const SettingsContext = createContext<Partial<SettingsContext>>({})
 
-export const SettingsProvider: React.FC<SettingsContext> = ({ children, ...props }) => (
+export const SettingsProvider: React.FC<SettingsContext & { children: React.ReactNode }> = ({ children, ...props }) => (
   <SettingsContext.Provider value={{ ...props }}>
     {children}
   </SettingsContext.Provider>

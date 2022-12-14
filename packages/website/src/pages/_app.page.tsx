@@ -1,8 +1,5 @@
 import { Auth } from '#components/Auth'
-import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { SettingsContext, SettingsProvider } from '#contexts/SettingsContext'
-import { getPersistKey } from '#utils/order'
-import { LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import { I18nProvider } from 'next-localization'
 import type { AppProps } from 'next/app'
 import React from 'react'
@@ -46,24 +43,11 @@ export default function MyApp({ Component, pageProps }: AppProps<PageProps>) {
     )
   }
 
-  const return_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${NEXT_PUBLIC_BASE_PATH}/${settingsContext.locale.code}` : undefined
-  const cart_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${NEXT_PUBLIC_BASE_PATH}/${settingsContext.locale.code}/cart` : undefined
-
   return (
     <SettingsProvider {...settingsContext}>
       <I18nProvider lngDict={lngDict} locale={settingsContext.locale.code}>
-        <Auth>
-          <OrderStorage persistKey={getPersistKey(settingsContext.locale)}>
-            <OrderContainer attributes={{
-              language_code: settingsContext.locale.language.code,
-              return_url,
-              cart_url
-            }}>
-              <LineItemsContainer>
-                <Component {...rest} />
-              </LineItemsContainer>
-            </OrderContainer>
-          </OrderStorage>
+        <Auth locale={settingsContext.locale}>
+          <Component {...rest} />
         </Auth>
       </I18nProvider>
     </SettingsProvider>

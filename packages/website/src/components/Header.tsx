@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
     <header className='border-b-gray-200 border-b pb-6 sticky top-0 bg-pageBackground z-50'>
       <nav className='flex items-center justify-between flex-wrap mb-4'>
         <div className='flex items-center flex-no-shrink text-white mr-6'>
-          <Link href='/'><a><Logo /></a></Link>
+          <Link href='/'><Logo /></Link>
         </div>
         <div className='flex items-center w-auto flex-grow justify-end'>
           {/* <a className='block lg:inline-block mr-4 text-gray-300'><User /></a> */}
@@ -65,13 +65,11 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
 
           {
             settings.locale?.isShoppable && auth.accessToken && (
-              <Link href='/cart'>
-                <a className='block lg:inline-block relative'>
-                  <ShoppingBagOpen />
-                  <LineItemsCount>
-                    {CartQuantity}
-                  </LineItemsCount>
-                </a>
+              <Link href='/cart' className='block lg:inline-block relative'>
+                <ShoppingBagOpen />
+                <LineItemsCount>
+                  {CartQuantity}
+                </LineItemsCount>
               </Link>
             )
           }

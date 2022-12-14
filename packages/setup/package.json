@@ -13,6 +13,6 @@
   "license": "MIT",
   "dependencies": {
     "@commercelayer/js-auth": "^2.3.0",
-    "@commercelayer/sdk": "^4.17.0"
+    "@commercelayer/sdk": "^4.20.0"
   }
 }

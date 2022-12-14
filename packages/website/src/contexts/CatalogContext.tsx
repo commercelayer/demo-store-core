@@ -22,7 +22,9 @@ type Context = {
   currencyCode?: string
 }
 
-type Props = Omit<Context, 'availableFacets' | 'selectedFacets' | 'selectFacet'>
+type Props = Omit<Context, 'availableFacets' | 'selectedFacets' | 'selectFacet'> & {
+  children: React.ReactNode
+}
 
 const CatalogContext = createContext<Context>({
   products: [],
