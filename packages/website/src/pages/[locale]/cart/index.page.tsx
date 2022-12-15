@@ -8,7 +8,6 @@ import { getLocale, getShoppableLocales } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
-import { getPersistKey } from '#utils/order'
 import IframeResizer from 'iframe-resizer-react'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import { useI18n } from 'next-localization'
@@ -18,7 +17,7 @@ import { useOrderContainer } from '@commercelayer/react-components/hooks/useOrde
 
 const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
   const [cartUrl, setCartUrl] = useState<string | null>(null)
-  const { reloadOrder } = useOrderContainer()
+  const { reloadOrder, order } = useOrderContainer()
 
   const i18n = useI18n()
   const auth = useAuthContext()
@@ -32,12 +31,9 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
     let isMounted = true
 
     ; (async () => {
-      if (settings.locale?.isShoppable && auth.accessToken && settings.organization?.slug) {
-        const persistKey = getPersistKey(settings.locale)
-        const orderId = localStorage.getItem(persistKey)
-
+      if (settings.locale?.isShoppable && auth.accessToken && settings.organization?.slug && order) {
         if (isMounted) {
-          setCartUrl(`https://${settings.organization.slug}.commercelayer.app/cart/${orderId}?embed=true&accessToken=${auth.accessToken}`)
+          setCartUrl(`https://${settings.organization.slug}.commercelayer.app/cart/${order.id}?embed=true&accessToken=${auth.accessToken}`)
         }
       }
     })()
@@ -45,7 +41,7 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
     return () => {
       isMounted = false
     }
-  }, [router.query.locale, auth, settings.organization, settings.locale])
+  }, [router.query.locale, auth, settings.organization, settings.locale, order])
 
   return (
     <Page navigation={navigation} title={cartTitle}>
