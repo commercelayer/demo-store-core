@@ -10,32 +10,41 @@ Using this package, that operation will be much easier and error-proof.
 
 <img width="869" alt="IntelliSense in Visual Studio Code" src="https://user-images.githubusercontent.com/1681269/186433307-b309ab45-68b7-4a7e-ac10-df2874189e1b.png">
 
-Here below a working example:
+Here below a working example with Node.js 18:
+
+```sh
+mkdir demo
+cd demo
+npm init -y
+npm install -D typescript tsm @commercelayer/demo-store-types
+```
 
 ```ts
-import type { RawDataProduct } from '@commercelayer/demo-store-types'
+//= index.ts
 
-// this represent a list of products taken from an external source
-const remoteProducts: any[] = await fetch('https://run.mocky.io/v3/57f0a452-eae1-4f67-8a33-e4119e73c2db')
-                                            .then(response => response.json())
+(async () => {
+  // this represent a list of products taken from an external source
+  const remoteProducts: any[] = await fetch('https://run.mocky.io/v3/57f0a452-eae1-4f67-8a33-e4119e73c2db')
+    .then(response => response.json())
 
-const demoStoreProducts: RawDataProduct[] = remoteProducts.map(product => ({
-  productCode: product.code.substring(0, 8),
-  variantCode: product.code.substring(0, 8 + 6),
-  sku: product.code,
-  slug: `/${product.name.toLowerCase().replace(/[\W]+/g, '-').replace(/^-|-$/g, '')}/${product.code}`,
-  name: {
-    en: product.name.replace(/\s\(.*\)$/, '')
-  },
-  description: {
-    en: product.description
-  },
-  images: [
-    product.image_url
-  ]
-}))
+  const demoStoreProducts: RawDataProduct[] = remoteProducts.map(product => ({
+    productCode: product.code.substring(0, 8),
+    variantCode: product.code.substring(0, 8 + 6),
+    sku: product.code,
+    slug: `/${product.name.toLowerCase().replace(/[\W]+/g, '-').replace(/^-|-$/g, '')}/${product.code}`,
+    name: {
+      en: product.name.replace(/\s\(.*\)$/, '')
+    },
+    description: {
+      en: product.description
+    },
+    images: [
+      product.image_url
+    ]
+  }))
 
-console.log(demoStoreProducts)
+  console.log(demoStoreProducts)
+})()
 
 // [
 //   {
@@ -84,4 +93,8 @@ console.log(demoStoreProducts)
 //     ]
 //   }
 // ]
+```
+
+```sh
+node -r tsm index.ts
 ```

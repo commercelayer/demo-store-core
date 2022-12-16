@@ -4,6 +4,9 @@
   "description": "Demo Store types",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "zod": "^3.18.0"
   },
@@ -12,8 +15,10 @@
   },
   "scripts": {
     "ts:check": "tsc --noEmit",
-    "build": "tsc",
-    "postinstall": "npm run build"
+    "build": "tsc"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }
