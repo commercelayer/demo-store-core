@@ -4,9 +4,9 @@ This package contains all `types` used by the Demo Store.
 
 You can install it and use them to build your own Demo Store data and configuration files.
 
-To build Demo Store data you'll probably need to create a scripts that converts data from your source to the Demo Store data format.
+To build Demo Store data you'll probably need to write a script that converts data from your source to the Demo Store data format.
 
-Using this package, that operation will be much easier and error-proof.
+By using this package, that operation will be much easier to do and error-proof.
 
 <img width="869" alt="IntelliSense in Visual Studio Code" src="https://user-images.githubusercontent.com/1681269/186433307-b309ab45-68b7-4a7e-ac10-df2874189e1b.png">
 

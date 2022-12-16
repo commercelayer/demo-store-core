@@ -4,7 +4,7 @@ const country_schema = z.object({
   /**
    * Country name
    * 
-   * This is be shown on the country selector page.
+   * This is shown on the country selector page.
    * @example "United States"
    */
   name: z.string(),
@@ -29,7 +29,7 @@ const country_schema = z.object({
   market: z.number().optional(),
 
   /**
-   * Reference to the `catalog` id
+   * Reference to the `catalogs` id
    * 
    * When you select the country from the country selector page, this information is used to choose the catalog to browse.
    */
@@ -38,7 +38,7 @@ const country_schema = z.object({
   /**
    * Default language
    * 
-   * This information is used on the country selector page to define a default language when you select a country.
+   * This attribute is used on the country selector page to define a default language when you select a country.
    * @example "en"
    */
   default_language: z.string(),
@@ -46,7 +46,7 @@ const country_schema = z.object({
   /**
    * Region
    * 
-   * This information is used on the country selector page to visually defines a group of country.
+   * This attribute is used on the country selector page to visually defines a group of countries.
    * @example "AMERICAS"
    */
   region: z.string()
@@ -54,4 +54,7 @@ const country_schema = z.object({
 
 export const rawDataCountries_schema = country_schema.array()
 
+/**
+ * Country
+ */
 export type RawDataCountry = z.infer<typeof country_schema>

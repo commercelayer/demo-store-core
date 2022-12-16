@@ -18,7 +18,7 @@ const language_schema = z.object({
   code: z.string(),
 
   /**
-   * Reference to the `catalog` id
+   * Reference to the `catalogs` id
    * 
    * When you select a language without choosing a country (international website), this information is used to choose the catalog to browse.
    */
@@ -27,4 +27,7 @@ const language_schema = z.object({
 
 export const rawDataLanguages_schema = language_schema.array()
 
+/**
+ * Language
+ */
 export type RawDataLanguage = z.infer<typeof language_schema>

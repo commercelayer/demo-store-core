@@ -1,7 +1,7 @@
 import { getRootNavigationLinks } from '#utils/catalog'
 import { getProductWithVariants } from '#utils/products'
 import lngDict from '#__mocks__/lngDict.json'
-import productsJson from '#__mocks__/products.json'
+import productsJson from '#__mocks__/products'
 import { act, render, screen } from '@testing-library/react'
 import { createCatalog, createRouter, createTaxon, createTaxonomy } from 'jest.helpers'
 import { I18nProvider } from 'next-localization'
