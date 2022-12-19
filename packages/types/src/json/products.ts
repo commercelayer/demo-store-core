@@ -1,7 +1,19 @@
 import { z } from 'zod'
-import { localizedFieldSchema } from '../utils/locale'
+import { localizedFieldSchema, LocalizedFieldSchema } from '../utils/locale'
 
-const detail_schema = z.object({
+type DetailSchema = z.ZodObject<{
+  /**
+   * Accordion title
+   */
+  title: LocalizedFieldSchema<z.ZodString>
+
+  /**
+   * Accordion content
+   */
+  content: LocalizedFieldSchema<z.ZodString>
+}>
+
+const detail_schema: DetailSchema = z.object({
   /**
    * Accordion title
    */
@@ -13,7 +25,7 @@ const detail_schema = z.object({
   content: localizedFieldSchema(z.string())
 })
 
-const product_schema = z.object({
+type RawDataProductSchema = z.ZodObject<{
   /**
    * The **product code** identifies the base product
    * 
@@ -22,7 +34,7 @@ const product_schema = z.object({
    * For example, a clothing retailer may have a master product for each type of clothing item, such as "men's t-shirts" or "women's dresses".
    * Each of these master products would contain multiple variations, such as different sizes, colors, and styles. 
    */
-  productCode: z.string(),
+  productCode: z.ZodString
 
   /**
    * The **variant code** identifies a variation product
@@ -33,7 +45,7 @@ const product_schema = z.object({
    * The `variantCode`, in Demo Store, is used for grouping similar products in the listing page.
    * Usually a different `variantCode` corresponds to a different product image.
    */
-  variantCode: z.string(),
+  variantCode: z.ZodString
 
   /**
    * The **sku** is a **unique identifier**, meaning *Stock Keeping Unit*.
@@ -45,7 +57,7 @@ const product_schema = z.object({
    * SKU refers to an item's details, including variants data (e.g., a T-shirt, Red color, Nike brand, 0.5g, XL size).
    * An SKU identifies each product item's characteristics such as manufacturer name, brand name, style, color, weight, and size.
    */
-  sku: z.string(),
+  sku: z.ZodString
 
   /**
    * The product URL slug
@@ -55,7 +67,7 @@ const product_schema = z.object({
    * It should always start with a forward slash (`/`).
    * @example "/white-apron-with-black-logo/APRONXXXFFFFFF000000XXXX"
    */
-  slug: z.string().transform(slug => slug.replace(/^\//, '')),
+  slug: z.ZodEffects<z.ZodString>
 
   /**
    * The localized product name
@@ -66,7 +78,7 @@ const product_schema = z.object({
    *   "en-US": "Gray T-Shirt"
    * }
    */
-  name: localizedFieldSchema(z.string()),
+  name: LocalizedFieldSchema<z.ZodString>
 
   /**
    * The localized product description
@@ -77,7 +89,7 @@ const product_schema = z.object({
    *   "en-US": "Description",
    * }
    */
-  description: localizedFieldSchema(z.string()),
+  description: LocalizedFieldSchema<z.ZodString>
 
   /**
    * A carousel of image URLs that represent the product
@@ -87,7 +99,7 @@ const product_schema = z.object({
    *   "https://res.cloudinary.com/commercelayer/image/upload/f_auto,b_white/demo-store/skus/TSHIRTMSB0B0B2000000LXXX_FLAT.png"
    * ]
    */
-  images: z.string().array(),
+  images: z.ZodArray<z.ZodString>,
 
   /**
    * Additional product details
@@ -106,10 +118,21 @@ const product_schema = z.object({
    *   }
    * ]
    */
+  details: z.ZodOptional<z.ZodArray<DetailSchema>>
+}>
+
+const rawDataProduct_schema: RawDataProductSchema = z.object({
+  productCode: z.string(),
+  variantCode: z.string(),
+  sku: z.string(),
+  slug: z.string().transform(slug => slug.replace(/^\//, '')),
+  name: localizedFieldSchema(z.string()),
+  description: localizedFieldSchema(z.string()),
+  images: z.string().array(),
   details: detail_schema.array().optional()
 })
 
-export const rawDataProducts_schema = product_schema.passthrough().array()
+export const rawDataProducts_schema = rawDataProduct_schema.passthrough().array()
 
 /**
  * Product
@@ -118,4 +141,4 @@ export const rawDataProducts_schema = product_schema.passthrough().array()
  * 
  * Products need to be assigned to a `taxon` to be visible in the Demo Store.
  */
-export type RawDataProduct = z.infer<typeof product_schema>
+export type RawDataProduct = z.infer<RawDataProductSchema>

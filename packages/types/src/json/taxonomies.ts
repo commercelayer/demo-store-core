@@ -1,19 +1,19 @@
 import { z } from 'zod'
 
-const taxonomy_schema = z.object({
+type RawDataTaxonomySchema = z.ZodObject<{
   /**
    * The taxonomy id
    * 
    * This attribute is used to manage the relationship with `catalogs`.
    */
-  id: z.string(),
+  id: z.ZodString
 
   /**
    * The taxonomy name
    * 
    * This attribute is used to better identify the taxonomy. **Not used on the website**.
    */
-  name: z.string(),
+  name: z.ZodString
 
   /**
    * The facet key is used inside the `facets.config.js` to define a facet.
@@ -22,7 +22,7 @@ const taxonomy_schema = z.object({
    * 
    * ![Taxonomies `gender` and `category` are visible in the filter component](https://user-images.githubusercontent.com/1681269/208090019-96b8b72c-bd2c-4125-a226-372443c87e4c.png|width=400px)
    */
-  facetKey: z.string(),
+  facetKey: z.ZodString
 
   /**
    * Reference to the `taxons` id
@@ -31,10 +31,17 @@ const taxonomy_schema = z.object({
    *
    * ![Taxons - first level](https://user-images.githubusercontent.com/1681269/208094648-d8e8cb24-5a26-47b8-9cef-351a3b44e263.png|width=400px)
    */
+  taxons: z.ZodArray<z.ZodString>
+}>
+
+const rawDataTaxonomy_schema: RawDataTaxonomySchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  facetKey: z.string(),
   taxons: z.string().array()
 })
 
-export const rawDataTaxonomies_schema = taxonomy_schema.array()
+export const rawDataTaxonomies_schema = rawDataTaxonomy_schema.array()
 
 /**
  * Taxonomy
@@ -46,4 +53,4 @@ export const rawDataTaxonomies_schema = taxonomy_schema.array()
  *
  * ![Taxonomies](https://user-images.githubusercontent.com/1681269/208094651-b2942235-4d6d-40fb-8230-da2e79d11231.png|width=400px)
  */
-export type RawDataTaxonomy = z.infer<typeof taxonomy_schema>
+export type RawDataTaxonomy = z.infer<RawDataTaxonomySchema>

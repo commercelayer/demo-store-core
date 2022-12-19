@@ -1,20 +1,20 @@
 import { z } from 'zod'
-import { localizedFieldSchema } from '../utils/locale'
+import { LocalizedFieldSchema, localizedFieldSchema } from '../utils/locale'
 
-const taxon_schema = z.object({
+type RawDataTaxonSchema = z.ZodObject<{
   /**
    * The taxonomy id
    * 
    * This attribute is used to manage the relationship with both `taxonomies` and `taxons`.
    */
-  id: z.string(),
+  id: z.ZodString
 
   /**
    * The taxon name
    * 
    * This attribute is used to better identify the taxon. **Not used on the website**.
    */
-  name: z.string(),
+  name: z.ZodString
 
   /**
    * The localized label used on the website
@@ -25,7 +25,7 @@ const taxon_schema = z.object({
    *   "en-US": "Label"
    * }
    */
-  label: localizedFieldSchema(z.string()),
+  label: LocalizedFieldSchema<z.ZodString>
 
   /**
    * The localized description used on the website
@@ -36,7 +36,7 @@ const taxon_schema = z.object({
    *   "en-US": "Description"
    * }
    */
-  description: localizedFieldSchema(z.string()),
+  description: LocalizedFieldSchema<z.ZodString>
 
   /**
    * The taxon URL slug
@@ -46,7 +46,7 @@ const taxon_schema = z.object({
    * It should always start with a forward slash (`/`).
    * @example "/clothing/shirts"
    */
-  slug: z.string().transform(slug => slug.replace(/^\//, '')),
+  slug: z.ZodEffects<z.ZodString>
 
   /**
    * The list of `products` SKUs
@@ -54,7 +54,7 @@ const taxon_schema = z.object({
    * This is an array of product `SKU`s (from `products.json`).
    * @example ["APRONXXX000000FFFFFFXXXX", "BABYBIBXA19D9D000000XXXX"]
    */
-  references: z.string().array(),
+  references: z.ZodArray<z.ZodString>
 
   /**
    * Reference to the `taxons` id
@@ -63,10 +63,20 @@ const taxon_schema = z.object({
    *
    * ![Taxons](https://user-images.githubusercontent.com/1681269/208094650-85d0c4eb-13f6-4c5a-9737-9e224d597c2b.png|width=400px)
    */
+  taxons: z.ZodOptional<z.ZodArray<z.ZodString>>
+}>
+
+const rawDataTaxon_schema: RawDataTaxonSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  label: localizedFieldSchema(z.string()),
+  description: localizedFieldSchema(z.string()),
+  slug: z.string().transform(slug => slug.replace(/^\//, '')),
+  references: z.string().array(),
   taxons: z.string().array().optional()
 })
 
-export const rawDataTaxons_schema = taxon_schema.array()
+export const rawDataTaxons_schema = rawDataTaxon_schema.array()
 
 /**
  * Taxon
@@ -75,4 +85,4 @@ export const rawDataTaxons_schema = taxon_schema.array()
  *
  * ![Taxons](https://user-images.githubusercontent.com/1681269/208096330-72ed35f9-74ef-4414-9b11-7f97a7b0687f.png|width=400px)
  */
-export type RawDataTaxon = z.infer<typeof taxon_schema>
+export type RawDataTaxon = z.infer<RawDataTaxonSchema>

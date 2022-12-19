@@ -1,173 +1,19 @@
 import { z } from 'zod'
-import { localizedFieldSchema } from '../utils/locale'
+import { LocalizedFieldSchema, localizedFieldSchema } from '../utils/locale'
+import { CarouselSchema, carousel_schema } from './page-components/carousel'
+import { GridSchema, grid_schema } from './page-components/grid'
+import { HeroSchema, hero_schema } from './page-components/hero'
+import { MarkdownSchema, markdown_schema } from './page-components/markdown'
+import { ProductGridSchema, productGrid_schema } from './page-components/product-grid'
 
-const image_schema = z.object({
-  /**
-   * Image source
-   */
-  src: z.string(),
-
-  /**
-   * Alternative text
-   */
-  alt: z.string()
-})
-
-const item_schema = z.object({
-  /**
-   * The title
-   */
-  title: z.string(),
-
-  /**
-   * The description
-   */
-  description: z.string(),
-
-  /**
-   * The image
-   */
-  image: image_schema,
-
-  /**
-   * The button link label
-   * 
-   * @example "Shop here"
-   */
-  linkLabel: z.string(),
-
-  /**
-   * The button link URL
-   * 
-   * URL can be an internal one starting with `/` or an external one starting with `https://`.
-   * 
-   * @example "/search/bags"
-   */
-  linkHref: z.string()
-})
-
-const carousel_schema = z.object({
-  /**
-   * Identifies the component type
-   */
-  type: z.literal('carousel'),
-
-  /**
-   * Unique ID
-   */
-  id: z.string(),
-
-  /**
-   * Array of carousel slides
-   * 
-   * A single slide is composed by a `title`, a `description`, an `image`, and a button link.
-   */
-  slides: item_schema.array()
-})
-
-const hero_schema = z.object({
-  /**
-   * Identifies the component type
-   */
-  type: z.literal('hero'),
-
-  /**
-   * Unique ID
-   */
-  id: z.string(),
-
-  /**
-   * The hero image
-   */
-  image: image_schema,
-
-  /**
-   * The hero title
-   */
-  title: z.string(),
-
-  /**
-   * The hero description
-   */
-  description: z.string().optional(),
-
-  /**
-   * The hero link URL
-   * 
-   * URL can be an internal one starting with `/` or an external one starting with `https://`.
-   * 
-   * @example "/search/bags"
-   */
-  href: z.string()
-})
-
-const productGrid_schema = z.object({
-  /**
-   * Identifies the component type
-   */
-  type: z.literal('product-grid'),
-
-  /**
-   * Unique ID
-   */
-  id: z.string(),
-
-  /**
-   * The product grid title
-   */
-  title: z.string(),
-
-  /**
-   * List of SKUs from `products.json` file
-   */
-  skus: z.string().array()
-})
-
-const grid_schema = z.object({
-  /**
-   * Identifies the component type
-   */
-  type: z.literal('grid'),
-
-  /**
-   * Unique ID
-   */
-  id: z.string(),
-
-  /**
-   * List of items to show in the grid
-   */
-  items: item_schema.array()
-})
-
-const markdown_schema = z.object({
-  /**
-   * Identifies the component type
-   */
-  type: z.literal('markdown'),
-
-  /**
-   * Unique ID
-   */
-  id: z.string(),
-
-  /**
-   * The markdown content
-   * 
-   * When the page already has a `title` attribute, the markdown content should not start with a `#` (markdown title) to avoid a second `<h1>` title on the page.
-   */
-  content: z.string()
-})
-
-
-const page_schema = z.object({
+type RawDataPageSchema = z.ZodObject<{
   /**
    * The page title
    * 
    * This title is also used to display the browser title (`<title>Page title</title>`)
    * @example "Page title"
    */
-  title: z.string().optional(),
+  title: z.ZodOptional<z.ZodString>
 
   /**
    * The page description
@@ -175,9 +21,21 @@ const page_schema = z.object({
    * This description is also used to set the browser description (`<meta name="description" content="This is the page description"/>`)
    * @example "This is the page description"
    */
-  description: z.string().optional(),
+  description: z.ZodOptional<z.ZodString>
 
   /** List of page components */
+  components: z.ZodArray<z.ZodDiscriminatedUnion<'type', [
+    CarouselSchema,
+    GridSchema,
+    HeroSchema,
+    ProductGridSchema,
+    MarkdownSchema
+  ]>>
+}>
+
+export const rawDataPage_schema: RawDataPageSchema = z.object({
+  title: z.string().optional(),
+  description: z.string().optional(),
   components: z.discriminatedUnion('type', [
     carousel_schema,
     grid_schema,
@@ -187,7 +45,9 @@ const page_schema = z.object({
   ]).array()
 })
 
-const localizedPage_schema = localizedFieldSchema(page_schema)
+type RawDataLocalizedPageSchema = LocalizedFieldSchema<RawDataPageSchema>
+
+const rawDataLocalizedPage_schema: RawDataLocalizedPageSchema = localizedFieldSchema(rawDataPage_schema)
 
 type PagesSchema<T extends z.ZodTypeAny> = z.ZodObject<
   {},
@@ -197,18 +57,19 @@ type PagesSchema<T extends z.ZodTypeAny> = z.ZodObject<
   { [urlSlug: string]: z.infer<T> }
 >
 
-const pages_schema: PagesSchema<typeof localizedPage_schema> = z
-  .object({})
-  .catchall(localizedPage_schema)
+type RawDataPagesSchema = PagesSchema<RawDataLocalizedPageSchema>
 
-export const rawDataPages_schema = pages_schema
+export const rawDataPages_schema: RawDataPagesSchema = z
+  .object({})
+  .catchall(rawDataLocalizedPage_schema)
+
 
 /**
  * Demo Store page
  * 
  * This represent an editorial page. A page is composed by a `title`, a `description` and a list of `components`.
  */
-export type RawDataPage = z.infer<typeof page_schema>
+export type RawDataPage = z.infer<RawDataPageSchema>
 
 /**
  * A page with different locales.
@@ -227,7 +88,7 @@ export type RawDataPage = z.infer<typeof page_schema>
  *   }
  * }
  */
-export type RawDataLocalizedPage = z.infer<typeof localizedPage_schema>
+export type RawDataLocalizedPage = z.infer<RawDataLocalizedPageSchema>
 
 /**
  * Demo Store editorial pages
@@ -262,37 +123,37 @@ export type RawDataLocalizedPage = z.infer<typeof localizedPage_schema>
  *   }
  * }
  */
-export type RawDataPages = z.infer<typeof pages_schema>
+export type RawDataPages = z.infer<typeof rawDataPages_schema>
 
 /**
  * Carousel component for editorial pages
  * 
  * ![Carousel component](https://user-images.githubusercontent.com/1681269/208413738-5223703c-2baf-40ad-ba8f-75b32691f992.png|width=400px)
  */
-export type RawDataCarousel = z.infer<typeof carousel_schema>
+export type RawDataCarousel = z.infer<CarouselSchema>
 
 /**
  * Grid component for editorial pages
  * 
  * ![Grid component](https://user-images.githubusercontent.com/1681269/208413948-b49a33fc-5778-4e9f-8d47-d3c546a3403f.png|width=400px)
  */
-export type RawDataGrid = z.infer<typeof grid_schema>
+export type RawDataGrid = z.infer<GridSchema>
 
 /**
  * Hero component for editorial pages
  * 
  * ![Hero component](https://user-images.githubusercontent.com/1681269/208413828-f6e0a5a6-ae9c-40fe-a80a-f1be1e400866.png|width=400px)
  */
-export type RawDataHero = z.infer<typeof hero_schema>
+export type RawDataHero = z.infer<HeroSchema>
 
 /**
  * Product Grid component for editorial pages
  * 
  * ![Product Grid component](https://user-images.githubusercontent.com/1681269/208413888-81d6a60f-3ad2-49ba-91c8-40ff91d1385d.png|width=400px)
  */
-export type RawDataProductGrid = z.infer<typeof productGrid_schema>
+export type RawDataProductGrid = z.infer<ProductGridSchema>
 
 /**
  * Markdown component for editorial pages
  */
-export type RawDataMarkdown = z.infer<typeof markdown_schema>
+export type RawDataMarkdown = z.infer<MarkdownSchema>

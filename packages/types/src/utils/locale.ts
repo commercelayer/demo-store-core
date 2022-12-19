@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-type LocalizedFieldSchema<T extends z.ZodTypeAny> = z.ZodObject<
+export type LocalizedFieldSchema<T extends z.ZodTypeAny> = z.ZodObject<
   {},
   "strip",
   T,

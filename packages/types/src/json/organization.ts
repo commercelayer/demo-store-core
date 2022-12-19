@@ -1,27 +1,27 @@
 import { z } from 'zod'
 
-const organization_schema = z.object({
+type RawDataOrganizationSchema = z.ZodObject<{
   /**
    * The name of your organization
    */
-  name: z.string().optional(),
+  name: z.ZodOptional<z.ZodString>
 
   /**
    * Your brand's logo image URL
    */
-  logo_url: z.string().optional(),
+  logo_url: z.ZodOptional<z.ZodString>
 
   /**
    * Your brand's favicon image URL
    */
-  favicon_url: z.string().optional(),
+  favicon_url: z.ZodOptional<z.ZodString>
 
   /**
    * Your brand's primary color HEX code
    * 
    * @example "#FF0000"
    */
-  primary_color: z.string().optional(),
+  primary_color: z.ZodOptional<z.ZodString>
 
   /**
    * A custom `manifest.json` URL
@@ -48,12 +48,18 @@ const organization_schema = z.object({
    * }
    * ```
    */
+  manifest: z.ZodOptional<z.ZodString>
+}>
+
+export const rawDataOrganization_schema: RawDataOrganizationSchema = z.object({
+  name: z.string().optional(),
+  logo_url: z.string().optional(),
+  favicon_url: z.string().optional(),
+  primary_color: z.string().optional(),
   manifest: z.string().optional(),
 })
-
-export const rawDataOrganization_schema = organization_schema
 
 /**
  * Organization settings
  */
-export type RawDataOrganization = z.infer<typeof organization_schema>
+export type RawDataOrganization = z.infer<RawDataOrganizationSchema>

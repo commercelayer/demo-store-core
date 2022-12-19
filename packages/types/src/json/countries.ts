@@ -1,13 +1,13 @@
 import { z } from 'zod'
 
-const country_schema = z.object({
+type RawDataCountrySchema = z.ZodObject<{
   /**
    * Country name
    * 
    * This is shown on the country selector page.
    * @example "United States"
    */
-  name: z.string(),
+  name: z.ZodString
 
   /**
    * Country code or region code
@@ -15,7 +15,7 @@ const country_schema = z.object({
    * It follows the [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1) standard.
    * @example "US"
    */
-  code: z.string(),
+  code: z.ZodString
 
   /**
    * Market number from your organization
@@ -26,14 +26,14 @@ const country_schema = z.object({
    * @see https://github.com/commercelayer/demo-store#4-choose-the-countries-where-youre-going-to-sell
    * @example 11279
    */
-  market: z.number().optional(),
+  market: z.ZodOptional<z.ZodNumber>
 
   /**
    * Reference to the `catalogs` id
    * 
    * When you select the country from the country selector page, this information is used to choose the catalog to browse.
    */
-  catalog: z.string(),
+  catalog: z.ZodString
 
   /**
    * Default language
@@ -41,7 +41,7 @@ const country_schema = z.object({
    * This attribute is used on the country selector page to define a default language when you select a country.
    * @example "en"
    */
-  default_language: z.string(),
+  default_language: z.ZodString
 
   /**
    * Region
@@ -49,12 +49,21 @@ const country_schema = z.object({
    * This attribute is used on the country selector page to visually defines a group of countries.
    * @example "AMERICAS"
    */
+  region: z.ZodString
+}>
+
+const rawDataCountry_schema: RawDataCountrySchema = z.object({
+  name: z.string(),
+  code: z.string(),
+  market: z.number().optional(),
+  catalog: z.string(),
+  default_language: z.string(),
   region: z.string()
 })
 
-export const rawDataCountries_schema = country_schema.array()
+export const rawDataCountries_schema = rawDataCountry_schema.array()
 
 /**
  * Country
  */
-export type RawDataCountry = z.infer<typeof country_schema>
+export type RawDataCountry = z.infer<RawDataCountrySchema>
