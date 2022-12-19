@@ -1,7 +1,7 @@
 import { getFacets } from './facets'
 import { getProductWithVariants } from './products';
 
-import productsJson from '#__mocks__/products.json'
+import productsJson from '#__mocks__/products'
 
 jest.mock('../../config/facets.config.js', () => [
   {

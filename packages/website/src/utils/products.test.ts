@@ -1,6 +1,6 @@
 import { spreadProductVariants, getProductWithVariants } from './products';
 
-import productsJson from '#__mocks__/products.json'
+import productsJson from '#__mocks__/products'
 
 describe('getProductWithVariants', () => {
   it('should returns the product by provided code', () => {

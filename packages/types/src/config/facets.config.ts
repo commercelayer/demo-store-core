@@ -2,7 +2,7 @@ import type { SortingRule } from '../utils/sort'
 
 type Config = {
   /**
-   * Any product attribute key taken from `products.json`.
+   * Any product attribute key taken from `products.json` or any `facetKey` attribute value taken from `taxonomies.json`.
    */
   field: string
 
@@ -18,7 +18,7 @@ type ColorSwatchAppearance = {
    * 
    * The field value should be a valid css color value.
    * 
-   * @example '#000000'
+   * @example "#000000"
    */
   appearance: 'colorSwatch'
 }
