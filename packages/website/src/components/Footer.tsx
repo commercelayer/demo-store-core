@@ -4,6 +4,7 @@ import { useSettingsContext } from '#contexts/SettingsContext'
 import { getRawDataLanguages } from '#data/languages'
 import { Link } from '#i18n/Link'
 import { changeLanguage, parseLocaleCode } from '#utils/locale'
+import { isNotNullish } from '#utils/utility-types'
 import type { RawDataLanguage } from '@commercelayer/demo-store-types'
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
@@ -24,7 +25,17 @@ export const Footer: React.FC = () => {
       const rawDataLanguages = await getRawDataLanguages()
 
       if (isMounted) {
-        setLanguages(rawDataLanguages)
+        if (settings.locale?.isShoppable) {
+          setLanguages(
+            settings.locale.country.languages.flatMap(cl => {
+              return rawDataLanguages
+                .filter(lang => lang.code === cl)
+                .filter(isNotNullish)
+            })
+          )
+        } else {
+          setLanguages(rawDataLanguages)
+        }
       }
     })()
 

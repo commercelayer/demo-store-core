@@ -36,12 +36,15 @@ type RawDataCountrySchema = z.ZodObject<{
   catalog: z.ZodString
 
   /**
-   * Default language
+   * Supported language codes
    * 
-   * This attribute is used on the country selector page to define a default language when you select a country.
-   * @example "en"
+   * List of supported language codes for the specific country. A countries can support more than one language.
+   * 
+   * First language code in the list will be used as default language.
+   * The default language is used on the country selector page when you select a country.
+   * @example ["it", "en"]
    */
-  default_language: z.ZodString
+  languages: z.ZodArray<z.ZodString>
 
   /**
    * Region
@@ -57,7 +60,7 @@ const rawDataCountry_schema: RawDataCountrySchema = z.object({
   code: z.string(),
   market: z.number().optional(),
   catalog: z.string(),
-  default_language: z.string(),
+  languages: z.string().array().min(1),
   region: z.string()
 })
 

@@ -16,15 +16,14 @@ describe('makeLocaleCode', () => {
 
 describe('makeLocales', () => {
   it('should create locales from a list of countries and languages', () => {
-    const unitedStates: ShoppableCountry = { code: 'US', default_language: 'en', market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
-    const italy: ShoppableCountry = { code: 'IT', default_language: 'it', market: 10427, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
+    const unitedStates: ShoppableCountry = { code: 'US', languages: ['en'], market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const italy: ShoppableCountry = { code: 'IT', languages: ['it', 'en'], market: 10427, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
     const italian: RawDataLanguage = { code: 'it', name: 'ITA', catalog: 'AMER' }
     const english: RawDataLanguage = { code: 'en', name: 'ENG', catalog: 'AMER' }
 
     const actual = makeLocales([italian, english], [unitedStates, italy])
 
     const expects: Locale[] = [
-      { code: "it-US", isShoppable: true, country: unitedStates, language: italian },
       { code: "en-US", isShoppable: true, country: unitedStates, language: english },
       { code: "it-IT", isShoppable: true, country: italy, language: italian },
       { code: "en-IT", isShoppable: true, country: italy, language: english },
@@ -100,7 +99,7 @@ describe('changeLanguage', () => {
 
 describe('Locale.isShoppable property', () => {
   it('should be false when country is not defined', () => {
-    const unitedStates: ShoppableCountry = { code: 'US', default_language: 'en', market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const unitedStates: ShoppableCountry = { code: 'US', languages: ['en'], market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
     const english: RawDataLanguage = { code: 'en', name: 'ENG', catalog: 'AMER' }
 
     const actual = makeLocales([english], [unitedStates])
@@ -114,7 +113,7 @@ describe('Locale.isShoppable property', () => {
   })
 
   it('should be false when country doesn\'t have the market property', () => {
-    const unitedStates: NonShoppableCountry = { code: 'US', default_language: 'en', name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const unitedStates: NonShoppableCountry = { code: 'US', languages: ['en'], name: 'United States', region: 'Americas', catalog: 'AMER' }
     const english: RawDataLanguage = { code: 'en', name: 'ENG', catalog: 'AMER' }
 
     const actual = makeLocales([english], [unitedStates])

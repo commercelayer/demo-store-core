@@ -7,6 +7,21 @@ import { createCatalog, createRouter, createTaxon, createTaxonomy } from 'jest.h
 import { I18nProvider } from 'next-localization'
 import { ProductPageComponent } from './ProductPageComponent'
 
+jest.mock('#data/languages', () => ({
+  getRawDataLanguages: () => ([
+    {
+      "name": "English",
+      "code": "en",
+      "catalog": "AMER"
+    },
+    {
+      "name": "Italiano",
+      "code": "it",
+      "catalog": "AMER"
+    }
+  ])
+}))
+
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
 
 beforeEach(() => {
