@@ -1,8 +1,11 @@
 {
+  "name": "demo-store-core",
   "private": true,
   "scripts": {
+    "postinstall": "npm run build:types",
     "dev": "npm run dev --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
+    "build:types": "npm run -w @commercelayer/demo-store-types build",
     "test": "npm run test --workspaces --if-present",
     "ts:check": "npm run ts:check --workspaces --if-present",
     "test:data": "npm run test:data --workspaces --if-present",
@@ -17,7 +20,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "husky": "^8.0.2"
+    "husky": "^8.0.2",
+    "lerna": "^6.1.0"
   },
   "engines": {
     "node": "^16.15.0 || ^18.0.0",

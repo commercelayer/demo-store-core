@@ -12,7 +12,7 @@ By using this package, that operation will be much easier to do and error-proof.
 
 ## Data
 
-The Demo Store data are composed of a set of 8 JSON files usually located at `/data/json`. 
+The Demo Store data are composed of a set of 8 JSON files usually located at `/data/json`.
 
 * **catalogs.json**
   ```ts
@@ -84,7 +84,7 @@ The Demo Store data are composed of a set of 8 JSON files usually located at `/d
 
 ## Example
 
-Here below is a working example that converts a list of products coming from an external service, to the Demo Store `products.json`:
+Here below you can find a working example with Node.js 18 that converts a list of products coming from an external service, to the Demo Store `products.json`:
 
 ```sh
 mkdir demo
@@ -178,4 +178,8 @@ import { writeFile } from 'fs/promises'
 //     ]
 //   }
 // ]
+```
+
+```sh
+node -r tsm index.ts
 ```
