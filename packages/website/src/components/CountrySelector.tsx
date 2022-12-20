@@ -55,7 +55,7 @@ export const CountrySelector: React.FC<Props> = ({ languages, countries }) => {
 
       {
         internationalLanguage && (
-          <div className='bg-gray-50 border-t border-gray-200 mt-12 pt-6 pb-6 flex flex-grow'>
+          <div className='bg-gray-50 border-t border-gray-200 mt-12 pt-6 pb-6 flex'>
             <div className='container mx-auto px-6'>
               {i18n.t('general.countrySelector.otherCountries')}
               <Link locale={internationalLanguage.code} className='font-semibold block'>

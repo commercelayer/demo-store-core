@@ -9,7 +9,7 @@ $noAccordionBreakpoint: theme('screens.md');
 }
 
 .countriesContainer {
-  @apply container mx-auto px-6;
+  @apply container mx-auto px-6 flex-grow;
 
   @media (min-width: $noAccordionBreakpoint) {
     @apply bg-no-repeat bg-center max-w-screen-2xl bg-contain px-24 pt-24;
