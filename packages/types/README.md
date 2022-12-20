@@ -91,7 +91,6 @@ mkdir demo
 cd demo
 npm init -y
 npm install typescript @types/node tsm @commercelayer/demo-store-types
-node -r tsm index.ts
 ```
 
 ```ts
