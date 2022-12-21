@@ -18,6 +18,7 @@ import { useEffect, useState } from 'react'
 export type Props = HeaderProps & Partial<SubNavigationProps> & {
   products: LocalizedProductWithVariant[]
   searching?: boolean
+  localeCodes: string[]
 }
 
 const ProductList: React.FC<{ hasSidebar: boolean }> = ({ hasSidebar }) => {
@@ -51,7 +52,7 @@ const Header: React.FC<Partial<SubNavigationProps>> = ({ subNavigation }) => {
   )
 }
 
-export const SearchPageComponent: NextPage<Props> = ({ navigation, subNavigation, searching = false, ...props }) => {
+export const SearchPageComponent: NextPage<Props> = ({ navigation, subNavigation, localeCodes, searching = false, ...props }) => {
   const isSubNavigationVisible = subNavigation !== undefined && !!subNavigation.path.find(c => c.children?.length && c.children.length >= 1)
 
   const { locale } = useSettingsContext()
@@ -78,6 +79,7 @@ export const SearchPageComponent: NextPage<Props> = ({ navigation, subNavigation
 
   return (
     <Page
+      localeCodes={localeCodes}
       navigation={navigation}
       title={subNavigation?.current.text}
       description={subNavigation?.current.description}

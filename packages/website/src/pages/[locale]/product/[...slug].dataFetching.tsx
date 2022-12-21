@@ -1,6 +1,6 @@
 import { flattenReferencesFromCatalog } from '#utils/catalog'
 import { getRawDataProducts } from '#data/products'
-import { getLocale } from '#i18n/locale'
+import { getLocale, getLocaleCodes } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
@@ -43,6 +43,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const { locale: localeCode, slug } = params!
   const locale = await getLocale(localeCode)
   const catalog = await getCatalog(locale)
+  const localeCodes = await getLocaleCodes()
 
   const productSlug = slug.join('/')
   const productCode = productSlug.match(productSlugRegExp)?.groups?.productCode
@@ -55,6 +56,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
   return {
     props: {
+      localeCodes,
       navigation: getRootNavigationLinks(catalog),
       product: getProductWithVariants(productCode, locale.code, rawDataProducts),
       ...(await serverSideSettings(localeCode)),

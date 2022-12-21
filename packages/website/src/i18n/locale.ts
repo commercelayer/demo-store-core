@@ -30,6 +30,12 @@ export const getLocales = memoize(
   }
 )
 
+export const getLocaleCodes = memoize(
+  async function () {
+    return await (await getLocales()).map(locale => locale.code)
+  }
+)
+
 export const getShoppableLocales = memoize(
   async function () {
     const locales = await getLocales()

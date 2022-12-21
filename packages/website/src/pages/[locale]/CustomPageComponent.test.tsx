@@ -39,7 +39,7 @@ test('CustomPage component', async () => {
   await act(async () => {
     ({ container } = render(
       <I18nProvider lngDict={lngDict} locale='en'>
-        <CustomPageComponent navigation={navigation} page={page} />
+        <CustomPageComponent localeCodes={['en', 'en-US', 'it-IT']} navigation={navigation} page={page} />
       </I18nProvider>
     ))
 

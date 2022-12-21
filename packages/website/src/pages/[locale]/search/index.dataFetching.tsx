@@ -28,6 +28,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
       navigation: getRootNavigationLinks(catalog),
       products: [],
       searching: true,
+      localeCodes: [],
       ...(await serverSideSettings(localeCode)),
       ...(await serverSideTranslations(localeCode))
     }

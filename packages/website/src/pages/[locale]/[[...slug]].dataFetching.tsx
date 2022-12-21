@@ -1,6 +1,6 @@
 import { serverSideSettings } from '#contexts/SettingsContext'
 import { getCatalog } from '#data/models/catalog'
-import { getLocale } from '#i18n/locale'
+import { getLocale, getLocaleCodes } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
@@ -33,6 +33,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const { locale: localeCode, slug } = params!
   const locale = await getLocale(localeCode)
   const catalog = await getCatalog(locale)
+  const localeCodes = await getLocaleCodes()
 
   const pages = await getPages(localeCode)
   const page = pages.find(page => page.slug === (slug ? slug.join('/') : ''))
@@ -47,6 +48,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
     props: {
       navigation: getRootNavigationLinks(catalog),
       page,
+      localeCodes,
       ...(await serverSideSettings(localeCode)),
       ...(await serverSideTranslations(localeCode))
     }
