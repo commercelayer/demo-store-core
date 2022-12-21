@@ -12,6 +12,7 @@ import type { Props } from './SearchPageComponent'
 type Query = {
   locale: string
   slug: string[]
+  page?: string
 }
 
 export const getStaticPaths: GetStaticPaths<Query> = () => {
@@ -32,35 +33,43 @@ export const getStaticPaths: GetStaticPaths<Query> = () => {
 }
 
 export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) => {
-  const { locale: localeCode, slug } = params!
+  const { locale: localeCode, slug, page } = params!
   const locale = await getLocale(localeCode)
   const catalog = await getCatalog(locale)
   const localeCodes = await getLocaleCodes()
 
+  console.log('params', params)
+
+  const itemsPerPage = 12
+
   const taxon = findTaxonBySlug(catalog, slug.join('/'))
 
   const references = flattenReferencesFromTaxon(taxon.result)
+  const pagedReferences = page ? references.slice(parseInt(page) * itemsPerPage, parseInt(page) * itemsPerPage + itemsPerPage) : references
 
   const rawDataProducts = await getRawDataProducts()
-  const products = references.map(ref => getProductWithVariants(ref, locale.code, rawDataProducts))
+
+  const products = pagedReferences.map(ref => getProductWithVariants(ref, locale.code, rawDataProducts))
 
   return {
     props: {
       navigation: getRootNavigationLinks(catalog),
       subNavigation: getNavigation(taxon),
-      products,
       localeCodes,
+      products,
       ...(await serverSideSettings(localeCode)),
       ...(await serverSideTranslations(localeCode))
     }
   }
 }
 
-export const getServerSideProps: GetServerSideProps<Props, Query> = async ({ res, params }) => {
+export const getServerSideProps: GetServerSideProps<Props, Query> = async ({ res, params, query }) => {
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=10, stale-while-revalidate=59'
   )
 
-  return getStaticProps({ params })
+  const page = typeof query.page === 'string' && !Number.isNaN(parseInt(query.page)) ? query.page : '0'
+
+  return getStaticProps({ params: { ...params!, page } })
 }
