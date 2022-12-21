@@ -15,7 +15,8 @@
   },
   "scripts": {
     "ts:check": "tsc --noEmit",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "license": "MIT",
   "publishConfig": {

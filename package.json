@@ -2,7 +2,6 @@
   "name": "demo-store-core",
   "private": true,
   "scripts": {
-    "postinstall": "npm run build:types",
     "dev": "npm run dev --workspaces --if-present",
     "build": "npm run build --workspaces --if-present",
     "build:types": "npm run -w @commercelayer/demo-store-types build",
