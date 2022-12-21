@@ -6,6 +6,21 @@ import { createCarouselPageComponent, createCatalog, createRouter, createTaxon, 
 import { I18nProvider } from 'next-localization'
 import { CustomPageComponent } from './CustomPageComponent'
 
+jest.mock('#data/languages', () => ({
+  getRawDataLanguages: () => ([
+    {
+      "name": "English",
+      "code": "en",
+      "catalog": "AMER"
+    },
+    {
+      "name": "Italiano",
+      "code": "it",
+      "catalog": "AMER"
+    }
+  ])
+}))
+
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
 
 beforeEach(() => {

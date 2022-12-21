@@ -4,8 +4,23 @@ import type { GetStaticPathsResult } from 'next'
 import { getLocales, NonShoppableLocale, ShoppableLocale } from './locale'
 import { withLocalePaths } from './withLocalePaths'
 
-const unitedStates: ShoppableCountry = { code: 'US', default_language: 'en', market: 1234, name: 'United States', region: 'Americas', catalog: 'AMER' }
-const italy: ShoppableCountry = { code: 'IT', default_language: 'it', market: 9876, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
+jest.mock('#data/languages', () => ({
+  getRawDataLanguages: () => ([
+    {
+      "name": "English",
+      "code": "en",
+      "catalog": "AMER"
+    },
+    {
+      "name": "Italiano",
+      "code": "it",
+      "catalog": "AMER"
+    }
+  ])
+}))
+
+const unitedStates: ShoppableCountry = { code: 'US', languages: ['en'], market: 1234, name: 'United States', region: 'Americas', catalog: 'AMER' }
+const italy: ShoppableCountry = { code: 'IT', languages: ['it'], market: 9876, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
 const italian: RawDataLanguage = { code: 'it', name: 'Italiano', catalog: 'AMER' }
 const english: RawDataLanguage = { code: 'en', name: 'English', catalog: 'AMER' }
 

@@ -2,11 +2,20 @@ import type { ShoppableCountry } from '#utils/countries'
 import type { RawDataLanguage } from '@commercelayer/demo-store-types'
 import { getLocale, Locale } from './locale'
 
+const unitedStates: ShoppableCountry = { code: 'US', languages: ['en', 'it'], market: 11279, name: 'United States', region: 'Americas', catalog: 'AMER' }
+const italian: RawDataLanguage = { code: 'it', name: 'Italiano', catalog: 'AMER' }
+const english: RawDataLanguage = { code: 'en', name: 'English', catalog: 'AMER' }
+
+jest.mock('#data/countries', () => ({
+  getRawDataCountries: () => ([unitedStates])
+}))
+
+jest.mock('#data/languages', () => ({
+  getRawDataLanguages: () => ([italian, english])
+}))
+
 describe('getLocale', () => {
   it('should be able to return a Locale given a localeCode', async () => {
-    const unitedStates: ShoppableCountry = { code: 'US', default_language: 'en', market: 11279, name: 'United States', region: 'Americas', catalog: 'AMER' }
-    const italian: RawDataLanguage = { code: 'it', name: 'Italiano', catalog: 'AMER' }
-
     const locale = await getLocale('it-US')
 
     expect(locale).toStrictEqual<Locale>({
