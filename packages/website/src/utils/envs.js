@@ -12,6 +12,7 @@ const getDataFetching = () => {
 
 /** @type { import('additional-env').DemoStoreEnvs } */
 const envs = {
+  SITE_URL: process.env.SITE_URL,
   NEXT_PUBLIC_BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH || '',
   NEXT_PUBLIC_CONFIG_FOLDER: process.env.NEXT_PUBLIC_CONFIG_FOLDER || 'config/',
   NEXT_PUBLIC_DATA_FETCHING: getDataFetching(),

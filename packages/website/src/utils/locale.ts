@@ -12,7 +12,8 @@ export function makeLocaleCode(languageCode: string, countryCode?: string): stri
   return languageCode
 }
 
-const localesRegExp = /^([A-Za-z]{2,4})(?:-([A-Za-z]{4}))?(?:-([A-Za-z]{2}|[0-9]{3}))?$/
+const localesRegExpAsString = '([A-Za-z]{2,4})(?:-([A-Za-z]{4}))?(?:-([A-Za-z]{2}|[0-9]{3}))?'
+const localesRegExp = new RegExp(`^${localesRegExpAsString}$`)
 
 export function parseLocaleCode(localeCode: string) {
   const [_locale, languageCode, scriptCode, countryCode] = localeCode.match(localesRegExp) || [] as (string | undefined)[]
@@ -22,6 +23,10 @@ export function parseLocaleCode(localeCode: string) {
 export function changeLanguage(localeCode: string, newLanguageCode: string) {
   const { countryCode } = parseLocaleCode(localeCode)
   return makeLocaleCode(newLanguageCode, countryCode)
+}
+
+export function switchLocale(asPath: string, newLocaleCode: string): string {
+  return asPath.replace(new RegExp(`/${localesRegExpAsString}/`), `/${newLocaleCode}/`)
 }
 
 export function makeLocales(languages: RawDataLanguage[], countries: RawDataCountry[]): Locale[] {

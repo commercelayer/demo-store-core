@@ -44,7 +44,7 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
   }, [router.query.locale, auth, settings.organization, settings.locale, order])
 
   return (
-    <Page navigation={navigation} title={cartTitle}>
+    <Page localeCodes={[]} navigation={navigation} title={cartTitle}>
       <Title title={<>{cartTitle}</>}></Title>
       {
         cartUrl && (

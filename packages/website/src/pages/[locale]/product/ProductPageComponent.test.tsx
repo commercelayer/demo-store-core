@@ -43,7 +43,7 @@ test('product detail page', async () => {
   await act(async () => {
     ({ container } = render(
       <I18nProvider lngDict={lngDict} locale={locale}>
-        <ProductPageComponent navigation={navigation} product={product} />
+        <ProductPageComponent localeCodes={['en', 'en-US', 'it-IT']} navigation={navigation} product={product} />
       </I18nProvider>
     ))
 

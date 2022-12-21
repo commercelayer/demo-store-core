@@ -15,9 +15,10 @@ import { useMemo, useState } from 'react'
 
 export type Props = HeaderProps & {
   product: LocalizedProductWithVariant
+  localeCodes: string[]
 }
 
-export const ProductPageComponent: NextPage<Props> = ({ navigation: links, product }) => {
+export const ProductPageComponent: NextPage<Props> = ({ navigation: links, product, localeCodes }) => {
   const i18n = useI18n()
   const [currentProduct, setCurrentProduct] = useState<LocalizedProduct>()
 
@@ -28,6 +29,7 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
 
   return (
     <Page
+      localeCodes={localeCodes}
       navigation={links}
       canonical={getProductUrl(product.variants[0])}
       title={product.name}

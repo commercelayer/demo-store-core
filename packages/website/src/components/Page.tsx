@@ -1,6 +1,7 @@
-import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { useSettingsContext } from '#contexts/SettingsContext'
 import { getRGBColor } from '#utils/css'
+import { NEXT_PUBLIC_BASE_PATH, SITE_URL } from '#utils/envs'
+import { switchLocale } from '#utils/locale'
 import { useI18n } from 'next-localization'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -13,6 +14,7 @@ type Props = Partial<HeaderProps> & {
   description?: string
   canonical?: string
   PageTemplate?: React.FC<PageTemplateProps>
+  localeCodes: string[]
 }
 
 type PageTemplateProps = HeaderProps
@@ -38,6 +40,7 @@ export const Page: React.FC<Props> = ({
   title,
   canonical,
   description,
+  localeCodes,
   PageTemplate = DefaultPageTemplate
 }) => {
   const router = useRouter()
@@ -51,12 +54,17 @@ export const Page: React.FC<Props> = ({
         <meta name='description' content={description || i18n.t('seo.description')} />
         <link rel='icon' href={settings.organization?.favicon_url || NEXT_PUBLIC_BASE_PATH + '/favicon.ico'} />
         <link rel='manifest' href={settings.organization?.manifest || NEXT_PUBLIC_BASE_PATH + '/manifest.json'} />
-        {canonical && <link rel='canonical' href={`${router.basePath}/${router.query.locale}${canonical}`} />}
+        {canonical && <link rel='canonical' href={`${SITE_URL}/${router.query.locale}${canonical}`} />}
         <style>{`
           :root {
             --color-primary: ${getRGBColor(settings.organization?.primary_color || '#666EFF')};
           }
         `}</style>
+
+        {
+          // https://developers.google.com/search/docs/specialty/international/localized-versions?hl=en#html
+          localeCodes.map(code => <link key={code} rel="alternate" hrefLang={code} href={`${SITE_URL}${switchLocale(router.asPath, code)}`} />)
+        }
       </Head>
 
       <main className='flex flex-col h-screen'>
