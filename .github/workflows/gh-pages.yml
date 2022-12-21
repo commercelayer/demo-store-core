@@ -2,10 +2,10 @@ name: Deploy to Pages
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Test"]
-    types:
-      - completed
+  # workflow_run:
+  #   workflows: ["Test"]
+  #   types:
+  #     - completed
 
 permissions:
   contents: read
