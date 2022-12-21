@@ -173,6 +173,93 @@
           ]
         }
       ]
+    },
+    "fr": {
+      "components": [
+        {
+          "type": "carousel",
+          "id": "carousel-1",
+          "slides": [
+            {
+              "image": {
+                "src": "https://res.cloudinary.com/commercelayer/image/upload/f_auto/v1658318039/demo-store/assets/all-over-print-backpack-white-front.jpg",
+                "alt": "Espace pour tout"
+              },
+              "title": "Espace pour tout",
+              "description": "Notre collection de sacs à dos a été conçue pour répondre aux besoins de toutes sortes de personnes, des citadins urbains aux aventuriers en plein air.",
+              "linkLabel": "Achetez ici",
+              "linkHref": "/search/bags"
+            },
+            {
+              "image": {
+                "src": "https://res.cloudinary.com/commercelayer/image/upload/f_auto/v1658318039/demo-store/assets/all-over-print-backpack-white-front.jpg",
+                "alt": "Espace pour tout"
+              },
+              "title": "Espace pour tout",
+              "description": "Notre collection de sacs à dos a été conçue pour répondre aux besoins de toutes sortes de personnes, des citadins urbains aux aventuriers en plein air.",
+              "linkLabel": "Achetez ici",
+              "linkHref": "/search/bags"
+            }
+          ]
+        },
+        {
+          "type": "hero",
+          "id": "hero-1",
+          "image": {
+            "src": "https://res.cloudinary.com/commercelayer/image/upload/f_auto/v1658318039/demo-store/assets/30-sales-commerce-layer.jpg",
+            "alt": "30% DE RÉDUCTION SUR LA VENTE - CL30"
+          },
+          "title": "30% DE RÉDUCTION SUR LA VENTE - CL30",
+          "href": "/search/bags"
+        },
+        {
+          "type": "product-grid",
+          "id": "product-grid-1",
+          "title": "Best seller",
+          "skus": [
+            "SHIRTMLS9B969C000000LXXX",
+            "BASEBHAT000000FFFFFFXXXX",
+            "TOTEBAGLE7DDC7000000XXXX",
+            "BABYBIBXA19D9D000000XXXX"
+          ]
+        },
+        {
+          "type": "grid",
+          "id": "grid-1",
+          "items": [
+            {
+              "image": {
+                "src": "https://res.cloudinary.com/commercelayer/image/upload/f_auto/v1655471032/demo-store/assets/white-glossy-mug-15oz-woman.jpg",
+                "alt": "Collection de tasses"
+              },
+              "title": "Collection de tasses",
+              "description": "Notre collection de mugs a été conçue pour répondre aux besoins de toutes sortes de personnes.",
+              "linkLabel": "Découvrez maintenant",
+              "linkHref": "/search/accessories"
+            },
+            {
+              "image": {
+                "src": "https://res.cloudinary.com/commercelayer/image/upload/f_auto/v1655471055/demo-store/assets/classic-dad-hat-black-front.jpg",
+                "alt": "Collection de chapeaux"
+              },
+              "title": "Collection de chapeaux",
+              "description": "Notre collection de chapeaux a été conçue pour répondre aux besoins de toutes sortes de personnes.",
+              "linkLabel": "Découvrez maintenant",
+              "linkHref": "/search/hats"
+            },
+            {
+              "image": {
+                "src": "https://res.cloudinary.com/commercelayer/image/upload/f_auto/v1655471072/demo-store/assets/all-over-print-basic-pillow-18x18-front-lifestyle-1.jpg",
+                "alt": "Collection de vie à la maison"
+              },
+              "title": "Collection de vie à la maison",
+              "description": "Notre collection Home Living a été conçue pour répondre aux besoins de toutes sortes de personnes.",
+              "linkLabel": "Découvrez maintenant",
+              "linkHref": "/search/home-and-living"
+            }
+          ]
+        }
+      ]
     }
   },
   "/shipping-and-payments": {

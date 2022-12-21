@@ -157,7 +157,7 @@ exports[`product detail page 1`] = `
                 class="w-12 h-12 rounded-full inline-flex items-center justify-center my-1 mr-2 border border-gray-300 bg-gray-100"
               >
                 <div
-                  class="w-8 h-8 border border-gray-600 rounded-full"
+                  class="w-8 h-8 border border-gray-600 rounded-full bg-contain"
                 >
                   <span
                     class="sr-only"
@@ -170,7 +170,7 @@ exports[`product detail page 1`] = `
                 class="w-12 h-12 rounded-full inline-flex items-center justify-center my-1 mr-2 "
               >
                 <div
-                  class="w-8 h-8 border border-gray-600 rounded-full"
+                  class="w-8 h-8 border border-gray-600 rounded-full bg-contain"
                 >
                   <span
                     class="sr-only"
@@ -200,16 +200,6 @@ exports[`product detail page 1`] = `
               </button>
             </div>
           </div>
-          <button
-            class="block w-full mt-12 h-14 px-6 font-semibold rounded-md text-white bg-violet-400 disabled:bg-gray-300"
-            disabled=""
-          >
-            Add to cart
-          </button>
-          <p
-            class="mt-6"
-            color="blue"
-          />
           <div
             class="border-b border-b-gray-400 mt-12"
           >
@@ -239,7 +229,7 @@ exports[`product detail page 1`] = `
               <div
                 class="accordion-content overflow-hidden transition-all max-h-0 duration-400 ease-in-out"
                 data-testid="accordion-content"
-                style=""
+                style="max-height: 0px;"
               >
                 <div
                   class="border-t border-t-gray-100"
@@ -278,7 +268,7 @@ exports[`product detail page 1`] = `
               <div
                 class="accordion-content overflow-hidden transition-all max-h-0 duration-400 ease-in-out"
                 data-testid="accordion-content"
-                style=""
+                style="max-height: 0px;"
               >
                 <div
                   class="border-t border-t-gray-100"
@@ -398,11 +388,9 @@ exports[`product detail page 1`] = `
             <div
               class="text-xs leading-relaxed"
             >
-              Copyright © 2022. All Rights Reserved.
+              Copyright © 2022. Commerce Layer, Inc.
               <br />
-              Registered company in Italy
-              <br />
-              VAT IT12345678
+              2965 Woodside Road, Woodside, CA 94062
               <br />
             </div>
           </div>

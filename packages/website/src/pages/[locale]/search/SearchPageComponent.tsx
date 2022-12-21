@@ -5,13 +5,20 @@ import { ProductCard } from '#components/ProductCard'
 import { Props as SubNavigationProps, SubNavigation } from '#components/SubNavigation'
 import { Title } from '#components/Title'
 import { CatalogProvider, useCatalogContext } from '#contexts/CatalogContext'
-import type { LocalizedProductWithVariant } from '#utils/products'
+import { useSettingsContext } from '#contexts/SettingsContext'
+import { getCatalog } from '#data/models/catalog'
+import { getRawDataProducts } from '#data/products'
+import { flattenReferencesFromCatalog } from '#utils/catalog'
+import { getProductWithVariants, LocalizedProductWithVariant } from '#utils/products'
 import type { NextPage } from 'next'
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 export type Props = HeaderProps & Partial<SubNavigationProps> & {
   products: LocalizedProductWithVariant[]
+  searching?: boolean
+  localeCodes: string[]
 }
 
 const ProductList: React.FC<{ hasSidebar: boolean }> = ({ hasSidebar }) => {
@@ -45,11 +52,34 @@ const Header: React.FC<Partial<SubNavigationProps>> = ({ subNavigation }) => {
   )
 }
 
-export const SearchPageComponent: NextPage<Props> = ({ navigation, products, subNavigation }) => {
+export const SearchPageComponent: NextPage<Props> = ({ navigation, subNavigation, localeCodes, searching = false, ...props }) => {
   const isSubNavigationVisible = subNavigation !== undefined && !!subNavigation.path.find(c => c.children?.length && c.children.length >= 1)
+
+  const { locale } = useSettingsContext()
+  const [products, setProducts] = useState(props.products)
+
+  useEffect(() => {
+    if (searching === false) {
+      setProducts(props.products)
+    }
+  }, [props.products])
+
+  useEffect(() => {
+    (async () => {
+      if (searching === true && locale !== undefined) {
+        const catalog = await getCatalog(locale)
+        const references = flattenReferencesFromCatalog(catalog)
+
+        const rawDataProducts = await getRawDataProducts()
+        const products = references.map(ref => getProductWithVariants(ref, locale.code, rawDataProducts))
+        setProducts(products)
+      }
+    })()
+  }, [searching, locale?.code])
 
   return (
     <Page
+      localeCodes={localeCodes}
       navigation={navigation}
       title={subNavigation?.current.text}
       description={subNavigation?.current.description}

@@ -11,7 +11,7 @@ type Props = CountrySelectorProps
 
 const CountrySelectorPage: NextPage<Props> = ({ languages, countries }) => {
   return (
-    <Page PageTemplate={({ children }) => <>{children}</>}>
+    <Page localeCodes={[]} PageTemplate={({ children }) => <>{children}</>}>
       <CountrySelector languages={languages} countries={countries} />
     </Page>
   )

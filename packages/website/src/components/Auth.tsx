@@ -1,7 +1,10 @@
 import { AuthProvider } from '#contexts/AuthContext'
 import { useSettingsContext } from '#contexts/SettingsContext'
+import type { ShoppableLocale } from '#i18n/locale'
+import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
+import { getPersistKey } from '#utils/order'
 import { AuthReturnType, ClientCredentials, getSalesChannelToken } from '@commercelayer/js-auth'
-import { CommerceLayer } from '@commercelayer/react-components'
+import { CommerceLayer, LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -48,7 +51,12 @@ const hasExpired = (time: number | undefined): boolean => time === undefined || 
 
 const isValid = (auth: Auth | null): auth is Auth => !hasExpired(auth?.expires)
 
-export const Auth: React.FC<{}> = ({ children }) => {
+type Props = {
+  children ?: React.ReactNode
+  locale: ShoppableLocale
+}
+
+export const Auth: React.FC<Props> = ({ children, locale }) => {
 
   const router = useRouter()
   const settings = useSettingsContext()
@@ -93,16 +101,39 @@ export const Auth: React.FC<{}> = ({ children }) => {
   }, [market, router.asPath, clientId, endpoint])
 
   if (!auth || !endpoint) {
-    return <>{children}</>
+    return (
+      <>
+        <CommerceLayer accessToken='' endpoint=''>
+          <OrderContainer>
+            <LineItemsContainer>
+              {children}
+            </LineItemsContainer>
+          </OrderContainer>
+        </CommerceLayer>
+      </>
+    )
   }
 
   const { hostname } = new URL(endpoint)
   const [, organization, domain] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
 
+  const return_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${NEXT_PUBLIC_BASE_PATH}/${locale.code}` : undefined
+  const cart_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${NEXT_PUBLIC_BASE_PATH}/${locale.code}/cart` : undefined
+
   return (
     <AuthProvider accessToken={auth.accessToken} endpoint={endpoint} organization={organization} domain={domain}>
       <CommerceLayer accessToken={auth.accessToken} endpoint={endpoint}>
-        <>{children}</>
+        <OrderStorage persistKey={getPersistKey(locale)}>
+          <OrderContainer attributes={{
+            language_code: locale.language.code,
+            return_url,
+            cart_url
+          }}>
+            <LineItemsContainer>
+              {children}
+            </LineItemsContainer>
+          </OrderContainer>
+        </OrderStorage>
       </CommerceLayer>
     </AuthProvider>
   )

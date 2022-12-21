@@ -11,11 +11,12 @@ import type { NextPage } from 'next'
 
 export type Props = HeaderProps & {
   page: CustomPage
+  localeCodes: string[]
 }
 
-export const CustomPageComponent: NextPage<Props> = ({ navigation, page }) => {
+export const CustomPageComponent: NextPage<Props> = ({ navigation, page, localeCodes }) => {
   return (
-    <Page navigation={navigation} title={page.title || undefined} description={page.description || undefined}>
+    <Page localeCodes={localeCodes} navigation={navigation} title={page.title || undefined} description={page.description || undefined}>
       <div data-testid='page-components' className='mt-8 flex flex-col gap-8'>
         {page.title  && <Title title={page.title}></Title>}
 

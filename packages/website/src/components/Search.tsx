@@ -17,7 +17,9 @@ export const Search: React.FC<Props> = ({ className }) => {
   )
 
   useEffect(function manageOnRouterChange() {
-    if (typeof router.query.q !== 'string') {
+    if (typeof router.query.q === 'string') {
+      setValue(router.query.q)
+    } else {
       setValue('')
     }
   }, [router])

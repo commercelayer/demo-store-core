@@ -11,10 +11,8 @@ const NavLink: React.FC<{ link: NavigationLink, active: NavigationLink, level: n
 
   return (
     <div>
-      <Link href={link.href}>
-        <a className={`block mx-2 py-3 px-3 border-b border-b-gray-100 tracking-wide transition-colors ${active.key === link.key ? 'bg-black text-white' : 'bg-transparent text-gray-500'}`}>
-          {level === 1 ? <span className='uppercase'>{i18n.t('general.all') }</span> : link.text}
-        </a>
+      <Link href={link.href} className={`block mx-2 py-3 px-3 border-b border-b-gray-100 tracking-wide transition-colors ${active.key === link.key ? 'bg-black text-white' : 'bg-transparent text-gray-500'}`}>
+        {level === 1 ? <span className='uppercase'>{i18n.t('general.all') }</span> : link.text}
       </Link>
       {
         link.children?.map(subLink => (

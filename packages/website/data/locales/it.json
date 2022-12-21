@@ -28,7 +28,7 @@
       "price": {
         "amount_float": "Prezzo"
       },
-      "available": "Mostra solo i disponibi",
+      "available": "Mostra solo i disponibili",
       "color": "Colore",
       "size": "Taglia"
     },

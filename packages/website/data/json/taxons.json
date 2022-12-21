@@ -3,11 +3,13 @@
     "id": "taxon_1",
     "label": {
       "en": "Accessories",
-      "it": "Accessori"
+      "it": "Accessori",
+      "fr": "Accessoires"
     },
     "description": {
       "en": "All accessories",
-      "it": "Tutti gli accessori"
+      "it": "Tutti gli accessori",
+      "fr": "Tous les accessoires"
     },
     "slug": "/accessories",
     "name": "All Accessories",
@@ -36,11 +38,13 @@
     "id": "taxon_2",
     "label": {
       "en": "Baby",
-      "it": "Baby"
+      "it": "Baby",
+      "fr": "Bébé"
     },
     "description": {
       "en": "All products for babies",
-      "it": "Tutti i prodotti per neonati"
+      "it": "Tutti i prodotti per neonati",
+      "fr": "Tous les produits pour bébés"
     },
     "slug": "/baby",
     "name": "All Products for Babies",
@@ -54,11 +58,13 @@
     "id": "taxon_3",
     "label": {
       "en": "Bags",
-      "it": "Borse"
+      "it": "Borse",
+      "fr": "Sacs"
     },
     "description": {
       "en": "All bags",
-      "it": "Tutte le borse"
+      "it": "Tutte le borse",
+      "fr": "Tous les sacs"
     },
     "slug": "/bags",
     "name": "All Bags",
@@ -84,11 +90,13 @@
     "id": "taxon_4",
     "label": {
       "en": "Hats",
-      "it": "Cappelli"
+      "it": "Cappelli",
+      "fr": "Chapeaux"
     },
     "description": {
       "en": "All hats",
-      "it": "Tutti i cappelli"
+      "it": "Tutti i cappelli",
+      "fr": "Tous les chapeaux"
     },
     "slug": "/hats",
     "name": "All Hats",
@@ -113,11 +121,13 @@
     "id": "taxon_5",
     "label": {
       "en": "Home & Living",
-      "it": "Casa"
+      "it": "Casa",
+      "fr": "La maison et la vie"
     },
     "description": {
       "en": "All products for home & living",
-      "it": "Tutti i prodotti per la tua casa"
+      "it": "Tutti i prodotti per la tua casa",
+      "fr": "Tous les produits pour la maison et la vie"
     },
     "slug": "/home-and-living",
     "name": "All Products for Home & Living",
@@ -143,11 +153,13 @@
     "id": "taxon_6",
     "label": {
       "en": "Men",
-      "it": "Uomo"
+      "it": "Uomo",
+      "fr": "Homme"
     },
     "description": {
       "en": "All products for men",
-      "it": "Tutti i prodotti da uomo"
+      "it": "Tutti i prodotti da uomo",
+      "fr": "Tous les produits pour homme"
     },
     "slug": "/men",
     "name": "All Products for Men",
@@ -178,7 +190,8 @@
     "id": "taxon_7",
     "label": {
       "en": "Shirts",
-      "it": "Magliette"
+      "it": "Magliette",
+      "fr": "Chemises"
     },
     "description": {
       "en": "All shirts",
@@ -196,11 +209,13 @@
     "id": "taxon_7A",
     "label": {
       "en": "Polo",
-      "it": "Polo"
+      "it": "Polo",
+      "fr": "Polo"
     },
     "description": {
       "en": "All polo shirts",
-      "it": "Tutte le polo"
+      "it": "Tutte le polo",
+      "fr": "Toutes les polos"
     },
     "slug": "/shirts/polo",
     "name": "All Polo Shirts",
@@ -211,11 +226,13 @@
     "id": "taxon_7AA",
     "label": {
       "en": "Dark Polo",
-      "it": "Polo Scure"
+      "it": "Polo Scure",
+      "fr": "Polos foncées"
     },
     "description": {
       "en": "All dark polo",
-      "it": "Tutte le polo scure"
+      "it": "Tutte le polo scure",
+      "fr": "Toutes les polos foncées"
     },
     "slug": "/shirts/polo/dark",
     "name": "All Polo Shirts",
@@ -228,11 +245,13 @@
     "id": "taxon_7AB",
     "label": {
       "en": "All Others",
-      "it": "Tutte le altre"
+      "it": "Tutte le altre",
+      "fr": "Toutes les autres"
     },
     "description": {
       "en": "All other polo",
-      "it": "Tutte le altre polo"
+      "it": "Tutte le altre polo",
+      "fr": "Toutes les autres polos"
     },
     "slug": "/shirts/polo/others",
     "name": "All Polo Shirts",
@@ -246,11 +265,13 @@
     "id": "taxon_7B",
     "label": {
       "en": "Other Shirts",
-      "it": "Tutte le altre magliette"
+      "it": "Tutte le altre magliette",
+      "fr": "Toutes les autres chemises"
     },
     "description": {
       "en": "All other shirts",
-      "it": "Tutte le altre magliette"
+      "it": "Tutte le altre magliette",
+      "fr": "Toutes les autres chemises"
     },
     "slug": "/shirts/others",
     "name": "All Shirts",
@@ -289,11 +310,13 @@
     "id": "taxon_8",
     "label": {
       "en": "Sweatshirts",
-      "it": "Felpe"
+      "it": "Felpe",
+      "fr": "Sweatchemises"
     },
     "description": {
       "en": "All sweatshirts",
-      "it": "Tutte le felpe"
+      "it": "Tutte le felpe",
+      "fr": "Toutes les sweatchemises"
     },
     "slug": "/sweatshirts",
     "name": "All Sweatshirts",
@@ -317,11 +340,13 @@
     "id": "taxon_9",
     "label": {
       "en": "Unisex",
-      "it": "Unisex"
+      "it": "Unisex",
+      "fr": "Unisex"
     },
     "description": {
       "en": "All unisex products",
-      "it": "Tutti i prodotti unisex"
+      "it": "Tutti i prodotti unisex",
+      "fr": "Tous les produits unisex"
     },
     "slug": "/unisex",
     "name": "All Unisex Products",
@@ -398,11 +423,13 @@
     "id": "taxon_10",
     "label": {
       "en": "Women",
-      "it": "Donna"
+      "it": "Donna",
+      "fr": "Femme"
     },
     "description": {
       "en": "All products for women",
-      "it": "Tutti i prodotti da donna"
+      "it": "Tutti i prodotti da donna",
+      "fr": "Tous les produits pour femme"
     },
     "slug": "/women",
     "name": "All Products for Women",
@@ -430,11 +457,13 @@
     "id": "taxon_11",
     "label": {
       "en": "Shirts",
-      "it": "Magliette"
+      "it": "Magliette",
+      "fr": "Chemises"
     },
     "description": {
       "en": "All shirts except womens",
-      "it": "Tutte le magliette escudendo le magliette da donna"
+      "it": "Tutte le magliette escudendo le magliette da donna",
+      "fr": "Toutes les chemises sauf les chemises pour femme"
     },
     "slug": "/shirts",
     "name": "All Shirts Except Womens",

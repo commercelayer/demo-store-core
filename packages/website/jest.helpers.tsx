@@ -1,13 +1,20 @@
 import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import type { Catalog, Taxon, Taxonomy } from '#data/models/catalog'
-import type { Locale } from '#i18n/locale'
+import type { ShoppableLocale } from '#i18n/locale'
 import type { CarouselPageComponent } from '#utils/pages'
 import { makeUnserializable, Unserializable } from '#utils/unserializable'
 import type { RawDataOrganization } from '@commercelayer/demo-store-types'
 import { RouterContext as NextRouterContext } from 'next/dist/shared/lib/router-context'
 import type { NextRouter } from 'next/router'
 
-export const RouterContext: React.FC<{ href: string; locale?: string; mockedUseRouter: jest.SpyInstance }> = ({ children, href, locale, mockedUseRouter }) => {
+type Props = {
+  children: React.ReactNode
+  href: string
+  locale?: string
+  mockedUseRouter: jest.SpyInstance
+}
+
+export const RouterContext: React.FC<Props> = ({ children, href, locale, mockedUseRouter }) => {
 
   mockedUseRouter.mockImplementation(() => createRouter(href, locale))
 
@@ -28,6 +35,7 @@ export const createRouter = (href: string, locale: string = 'en-US'): NextRouter
     },
     asPath: `/${locale}${href}`,
     isLocaleDomain: false,
+    forward: jest.fn(),
     push: jest.fn(() => Promise.resolve(true)),
     replace: jest.fn(() => Promise.resolve(true)),
     reload: jest.fn(),
@@ -54,7 +62,7 @@ export const createOrganization = (): RawDataOrganization => {
   }
 }
 
-export const createLocale = (): Locale => {
+export const createLocale = (): ShoppableLocale => {
   return {
     code: 'en-US',
     isShoppable: true,

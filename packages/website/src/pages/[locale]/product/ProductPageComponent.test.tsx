@@ -1,7 +1,7 @@
 import { getRootNavigationLinks } from '#utils/catalog'
 import { getProductWithVariants } from '#utils/products'
 import lngDict from '#__mocks__/lngDict.json'
-import productsJson from '#__mocks__/products.json'
+import productsJson from '#__mocks__/products'
 import { act, render, screen } from '@testing-library/react'
 import { createCatalog, createRouter, createTaxon, createTaxonomy } from 'jest.helpers'
 import { I18nProvider } from 'next-localization'
@@ -43,7 +43,7 @@ test('product detail page', async () => {
   await act(async () => {
     ({ container } = render(
       <I18nProvider lngDict={lngDict} locale={locale}>
-        <ProductPageComponent navigation={navigation} product={product} />
+        <ProductPageComponent localeCodes={['en', 'en-US', 'it-IT']} navigation={navigation} product={product} />
       </I18nProvider>
     ))
 

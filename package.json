@@ -20,7 +20,11 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "husky": "^8.0.1",
+    "husky": "^8.0.2",
     "lerna": "^6.1.0"
+  },
+  "engines": {
+    "node": "^16.15.0 || ^18.0.0",
+    "npm": ">=8.10"
   }
 }

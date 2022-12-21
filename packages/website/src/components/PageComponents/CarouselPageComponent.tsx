@@ -15,10 +15,8 @@ export const CarouselPageComponent: React.FC<{ component: CarouselPageComponentT
               <div className='w-11/12'>
                 <div className='font-bold text-xl md:text-3xl mb-4'>{slide.title}</div>
                 <div className='leading-snug mb-4'>{slide.description}</div>
-                <Link href={slide.linkHref}>
-                  <a className='py-2 px-4 inline-block font-semibold rounded-md bg-violet-400 text-white text-sm w-full text-center md:w-auto'>
-                    {slide.linkLabel}
-                  </a>
+                <Link href={slide.linkHref} className='py-2 px-4 inline-block font-semibold rounded-md bg-violet-400 text-white text-sm w-full text-center md:w-auto'>
+                  {slide.linkLabel}
                 </Link>
               </div>
             </div>
