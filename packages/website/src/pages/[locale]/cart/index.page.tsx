@@ -8,12 +8,13 @@ import { getLocale, getShoppableLocales } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { getRootNavigationLinks } from '#utils/catalog'
+import { getPersistKey } from '#utils/order'
+import { useOrderContainer } from '@commercelayer/react-components/hooks/useOrderContainer'
 import IframeResizer from 'iframe-resizer-react'
 import type { GetStaticPaths, GetStaticProps } from 'next'
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { useOrderContainer } from '@commercelayer/react-components/hooks/useOrderContainer'
 
 const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
   const [cartUrl, setCartUrl] = useState<string | null>(null)
@@ -31,9 +32,18 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
     let isMounted = true
 
     ; (async () => {
-      if (settings.locale?.isShoppable && auth.accessToken && settings.organization?.slug && order) {
-        if (isMounted) {
-          setCartUrl(`https://${settings.organization.slug}.commercelayer.app/cart/${order.id}?embed=true&accessToken=${auth.accessToken}`)
+      if (isMounted) {
+        if (settings.locale?.isShoppable && auth.accessToken && settings.organization?.slug) {
+          const persistKey = getPersistKey(settings.locale)
+          const orderFromStorage = localStorage.getItem(persistKey)
+
+          if (orderFromStorage === null) {
+            setCartUrl(`https://${settings.organization.slug}.commercelayer.app/cart/null?embed=true&accessToken=${auth.accessToken}`)
+          } else {
+            if (order !== undefined) {
+              setCartUrl(`https://${settings.organization.slug}.commercelayer.app/cart/${order.id}?embed=true&accessToken=${auth.accessToken}`)
+            }
+          }
         }
       }
     })()
@@ -50,6 +60,7 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
         cartUrl && (
           <IframeResizer
             checkOrigin={false}
+            onInit={() => console.log('init with cartUrl', cartUrl)}
             onMessage={
               (event) => {
                 if (event.message.type === 'update') {
@@ -62,7 +73,7 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
         )
       }
     </Page>
-  );
+  )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
