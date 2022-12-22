@@ -1,7 +1,7 @@
 // @ts-check
 
 const getDataFetching = () => {
-  const { NEXT_PUBLIC_DATA_FETCHING } = process.env
+  const NEXT_PUBLIC_DATA_FETCHING = process.env.NEXT_PUBLIC_DATA_FETCHING
 
   if (NEXT_PUBLIC_DATA_FETCHING === 'ssr' || NEXT_PUBLIC_DATA_FETCHING === 'ssg') {
     return NEXT_PUBLIC_DATA_FETCHING
@@ -11,7 +11,7 @@ const getDataFetching = () => {
 }
 
 const getSiteUrl = () => {
-  const { SITE_URL } = process.env
+  const SITE_URL = process.env.SITE_URL
   if (SITE_URL === undefined) {
     return
   }
