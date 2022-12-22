@@ -60,7 +60,6 @@ const CartPage: React.FC<HeaderProps> = ({ navigation }) => {
         cartUrl && (
           <IframeResizer
             checkOrigin={false}
-            onInit={() => console.log('init with cartUrl', cartUrl)}
             onMessage={
               (event) => {
                 if (event.message.type === 'update') {
