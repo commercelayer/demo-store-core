@@ -19,8 +19,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "husky": "^8.0.2",
-    "lerna": "^6.1.0"
+    "husky": "^8.0.3",
+    "lerna": "^6.4.1"
   },
   "engines": {
     "node": "^16.15.0 || ^18.0.0",
