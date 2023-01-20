@@ -1,6 +1,6 @@
 import { fetchJsonData } from '#utils/data'
+import { memoize } from '#utils/memoize'
 import { RawDataOrganization, rawDataOrganization_schema } from '@commercelayer/demo-store-types'
-import memoize from 'lodash/memoize'
 
 export const getRawDataOrganization = memoize(
   async function(): Promise<RawDataOrganization> {

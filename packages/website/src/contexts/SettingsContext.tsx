@@ -1,7 +1,7 @@
 import { getRawDataOrganization } from '#data/organization'
 import { getLocale, Locale } from '#i18n/locale'
+import { memoize } from '#utils/memoize'
 import type { RawDataOrganization } from '@commercelayer/demo-store-types'
-import memoize from 'lodash/memoize'
 import { createContext, useContext } from 'react'
 
 export type SettingsContext = {

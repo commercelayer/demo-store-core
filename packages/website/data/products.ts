@@ -1,7 +1,7 @@
 import { fetchJsonData } from '#utils/data'
+import { memoize } from '#utils/memoize'
 import { RawDataProduct as BaseRawDataProduct, rawDataProducts_schema } from '@commercelayer/demo-store-types'
 import type { Price } from '@commercelayer/sdk'
-import memoize from 'lodash/memoize'
 
 export const getRawDataProducts = memoize(
   async function(): Promise<RawDataProduct[]> {

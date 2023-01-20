@@ -7,7 +7,7 @@ import { LocalizedProductWithVariant, spreadProductVariants } from '#utils/produ
 import { makeUnserializable, Unserializable } from '#utils/unserializable'
 import { isNotNullish } from '#utils/utility-types'
 import type { RawDataCatalog, RawDataTaxon, RawDataTaxonomy } from '@commercelayer/demo-store-types'
-import memoize from 'lodash/memoize'
+import { memoize } from '#utils/memoize'
 import uniq from 'lodash/uniq'
 
 export type Catalog = Omit<RawDataCatalog, 'taxonomies'> & {

@@ -1,5 +1,5 @@
 import { fetchLocaleData } from '#utils/data'
-import memoize from 'lodash/memoize'
+import { memoize } from '#utils/memoize'
 import lMerge from 'lodash/merge'
 
 export const serverSideTranslations = memoize(

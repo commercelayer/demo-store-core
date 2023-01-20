@@ -1,6 +1,6 @@
 import { fetchJsonData } from '#utils/data'
+import { memoize } from '#utils/memoize'
 import { rawDataCountries_schema, RawDataCountry } from '@commercelayer/demo-store-types'
-import memoize from 'lodash/memoize'
 
 export const getRawDataCountries = memoize(
   async function (): Promise<RawDataCountry[]> {
