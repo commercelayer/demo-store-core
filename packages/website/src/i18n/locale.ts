@@ -2,8 +2,8 @@ import { getRawDataCountries } from '#data/countries'
 import { getRawDataLanguages } from '#data/languages'
 import type { NonShoppableCountry, ShoppableCountry } from '#utils/countries'
 import { makeLocales } from '#utils/locale'
+import { memoize } from '#utils/memoize'
 import type { RawDataLanguage } from '@commercelayer/demo-store-types'
-import memoize from 'lodash/memoize'
 
 type BaseLocale = {
   code: string
