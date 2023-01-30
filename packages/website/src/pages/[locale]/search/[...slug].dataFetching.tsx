@@ -6,6 +6,7 @@ import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { findTaxonBySlug, flattenReferencesFromTaxon, getNavigation, getRootNavigationLinks, getSlugs } from '#utils/catalog'
 import { getProductWithVariants } from '#utils/products'
+import uniqBy from 'lodash/uniqBy'
 import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import type { Props } from './SearchPageComponent'
 
@@ -44,11 +45,13 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const rawDataProducts = await getRawDataProducts()
   const products = references.map(ref => getProductWithVariants(ref, locale.code, rawDataProducts))
 
+  const uniqByVariantCode = uniqBy(products, 'variantCode')
+
   return {
     props: {
       navigation: getRootNavigationLinks(catalog),
       subNavigation: getNavigation(taxon),
-      products,
+      products: uniqByVariantCode,
       localeCodes,
       ...(await serverSideSettings(localeCode)),
       ...(await serverSideTranslations(localeCode))
