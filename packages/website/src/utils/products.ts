@@ -65,7 +65,7 @@ function resolveProductLocale(product: RawDataProduct | LocalizedProduct | Local
   }
 }
 
-function getProduct(sku: string, locale: string, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProduct {
+export function getProduct(sku: string, locale: string, productList: (LocalizedProduct | RawDataProduct)[]): LocalizedProduct {
   const product = productList.find(product => product.sku === sku)
 
   if (!product) {
