@@ -141,7 +141,7 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
     return () => {
       isMounted = false
     }
-  }, [query, selectedFacets, productList])
+  }, [query, selectedFacets, productList, isFiltering])
 
   return (
     <CatalogContext.Provider value={{ products, availableFacets, selectedFacets, selectFacet, currencyCode }}>
