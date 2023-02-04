@@ -129,11 +129,10 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
           getFacets(spreadProductVariants(resultFromFreeTextSearch))
         )
 
-        setProducts(
-          // TODO: this could be a configuration .. group by variantCode vs productCode
-          uniqBy(result, 'variantCode')
-          // uniqBy(result, 'productCode')
-        )
+        // TODO: this could be a configuration
+        const uniqByKey = 'variantCode' // 'productCode'
+
+        setProducts(isFiltering ? uniqBy(result, uniqByKey) : result)
       }
     }
 
