@@ -5,7 +5,7 @@ import { getLocale, getLocaleCodes } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { findTaxonBySlug, flattenReferencesFromTaxon, getNavigation, getRootNavigationLinks, getSlugs } from '#utils/catalog'
-import { getProductWithVariants } from '#utils/products'
+import { getProduct, LocalizedProductWithVariant } from '#utils/products'
 import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import type { Props } from './SearchPageComponent'
 
@@ -42,9 +42,20 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const references = flattenReferencesFromTaxon(taxon.result)
 
   const rawDataProducts = await getRawDataProducts()
-  const products = references.map(ref => getProductWithVariants(ref, locale.code, rawDataProducts))
 
-  return {
+  const products: LocalizedProductWithVariant[] = references.map(ref => {
+    const product = getProduct(ref, locale.code, rawDataProducts)
+
+    return {
+      ...product,
+      images: product.images.slice(0, 1),
+      variants: [],
+      details: [],
+      variant: []
+    }
+  })
+
+  const result = {
     props: {
       navigation: getRootNavigationLinks(catalog),
       subNavigation: getNavigation(taxon),
@@ -54,6 +65,8 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
       ...(await serverSideTranslations(localeCode))
     }
   }
+
+  return result
 }
 
 export const getServerSideProps: GetServerSideProps<Props, Query> = async ({ res, params }) => {

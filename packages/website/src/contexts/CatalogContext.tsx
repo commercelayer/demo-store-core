@@ -1,12 +1,13 @@
+import facetsConfig from '#config/facets.config'
+import { getRawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import type { FacetResult, Primitives } from '#utils/facets'
 import { getFacets } from '#utils/facets'
-import { addProductVariants, spreadProductVariants, LocalizedProductWithVariant } from '#utils/products'
+import { addProductVariants, getProductWithVariants, LocalizedProductWithVariant, spreadProductVariants } from '#utils/products'
 import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
-import facetsConfig from '#config/facets.config'
 import type Fuse from 'fuse.js'
-import { uniq } from 'lodash'
 import chunk from 'lodash/chunk'
+import uniq from 'lodash/uniq'
 import uniqBy from 'lodash/uniqBy'
 import { useRouter } from 'next/router'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
@@ -38,7 +39,7 @@ export const useCatalogContext = () => useContext(CatalogContext)
 export const CatalogProvider: React.FC<Props> = ({ children, products: initialProducts }) => {
   const router = useRouter()
 
-  const flattenProducts = useMemo(() => spreadProductVariants(initialProducts), [initialProducts])
+  const [flattenProducts, setFlattenProducts] = useState(initialProducts)
 
   const { products: productsWithTaxonomies } = useCatalog(flattenProducts)
   const { products: productsWithAvailabilities } = useCommerceLayerAvailability(productsWithTaxonomies)
@@ -87,6 +88,14 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
     [selectedFacets, router]
   )
 
+  useEffect(function enrichProductsWithVariants() {
+    (async () => {
+      const rawDataProducts = await getRawDataProducts()
+      const products = initialProducts.map(ref => getProductWithVariants(ref.sku, ref._locale, rawDataProducts))
+      setFlattenProducts(products)
+    })()
+  }, [initialProducts])
+
   useEffect(function manageOnRouterChange() {
     if (typeof router.query.facets === 'string') {
       try {
@@ -120,11 +129,10 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
           getFacets(spreadProductVariants(resultFromFreeTextSearch))
         )
 
-        setProducts(
-          // TODO: this could be a configuration .. group by variantCode vs productCode
-          uniqBy(result, 'variantCode')
-          // uniqBy(result, 'productCode')
-        )
+        // TODO: this could be a configuration
+        const uniqByKey = 'variantCode' // 'productCode'
+
+        setProducts(isFiltering ? uniqBy(result, uniqByKey) : result)
       }
     }
 
@@ -133,7 +141,7 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
     return () => {
       isMounted = false
     }
-  }, [query, selectedFacets, productList])
+  }, [query, selectedFacets, productList, isFiltering])
 
   return (
     <CatalogContext.Provider value={{ products, availableFacets, selectedFacets, selectFacet, currencyCode }}>
@@ -169,7 +177,8 @@ function useCatalog(initialProducts: LocalizedProductWithVariant[]) {
         const productDataset = await buildProductDataset(rawDataCatalog, locale.code, initialProducts)
 
         if (isMounted) {
-          setProducts(Object.values(productDataset))
+          const productsWithTaxonomies = Object.values(productDataset)
+          setProducts(productsWithTaxonomies.map(product => addProductVariants(product, productsWithTaxonomies)))
           setLatestInitialProducts(initialProducts)
         }
       }

@@ -103,7 +103,7 @@ exports[`product detail page 1`] = `
           class=" basis-1/2"
         >
           <div
-            class="swiper swiper-initialized swiper-horizontal swiper-pointer-events carousel"
+            class="swiper swiper-initialized swiper-horizontal carousel"
           >
             <div
               class="swiper-wrapper"
