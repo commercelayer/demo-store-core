@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
 
     return {
       ...product,
-      images: [product.images[0]],
+      images: product.images.slice(0, 1),
       variants: [],
       details: [],
       variant: []
