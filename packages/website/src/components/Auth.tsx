@@ -5,6 +5,7 @@ import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { getPersistKey } from '#utils/order'
 import { AuthReturnType, ClientCredentials, getSalesChannelToken } from '@commercelayer/js-auth'
 import { CommerceLayer, LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
+import type { DefaultChildrenType } from '@commercelayer/react-components/lib/esm/typings/globals'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -52,7 +53,7 @@ const hasExpired = (time: number | undefined): boolean => time === undefined || 
 const isValid = (auth: Auth | null): auth is Auth => !hasExpired(auth?.expires)
 
 type Props = {
-  children ?: React.ReactNode
+  children: DefaultChildrenType
   locale: ShoppableLocale
 }
 

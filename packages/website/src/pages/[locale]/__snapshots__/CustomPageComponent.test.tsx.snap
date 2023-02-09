@@ -113,7 +113,7 @@ exports[`CustomPage component 1`] = `
           data-testid="carousel-page-component"
         >
           <div
-            class="swiper swiper-initialized swiper-horizontal swiper-pointer-events carousel"
+            class="swiper swiper-initialized swiper-horizontal carousel"
           >
             <div
               class="swiper-wrapper"
