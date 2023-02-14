@@ -2,7 +2,7 @@ import { NEXT_PUBLIC_DEFAULT_LANGUAGE } from '#utils/envs'
 import type { Locale, NonShoppableLocale, ShoppableLocale } from '#i18n/locale'
 import type { LocalizedField, RawDataCountry, RawDataLanguage } from '@commercelayer/demo-store-types'
 import { isCountryShoppable } from './countries'
-import { isNotNullish } from './utility-types'
+import { isNotNullish, PickByValueExact } from './utility-types'
 
 export function makeLocaleCode(languageCode: string, countryCode?: string): string {
   if (countryCode) {
@@ -61,13 +61,31 @@ export function makeLocales(languages: RawDataLanguage[], countries: RawDataCoun
     }) satisfies NonShoppableLocale))
 }
 
-export function translateField<T>(field: LocalizedField<T>, locale: string): T {
+export function translateField<
+  Item extends { [key in Attribute]: LocalizedField<Translation> },
+  Attribute extends keyof PickByValueExact<Item, LocalizedField<any>>,
+  Translation = Item[Attribute][string]
+>(
+  item: Item,
+  attribute: Attribute,
+  locale: string
+): Translation {
   const { languageCode = locale } = parseLocaleCode(locale)
 
+  const field = item[attribute]
   const translation = field[locale] || field[languageCode] || field[NEXT_PUBLIC_DEFAULT_LANGUAGE]
 
   if (!translation) {
-    throw new Error(`Missing translation for locale '${locale}' : ${JSON.stringify(field)}`)
+    throw new Error(
+      [
+        `Missing translation for attribute "${attribute.toString()}".`,
+        `Locale: "${locale}"`,
+        `Language: "${languageCode}"`,
+        `Default: "${NEXT_PUBLIC_DEFAULT_LANGUAGE}"`,
+        '',
+        JSON.stringify(item, undefined, 2)
+      ].join('\n')
+    )
   }
 
   return translation

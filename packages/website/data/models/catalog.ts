@@ -92,8 +92,8 @@ const getTaxon = memoize(
 const resolveTaxon = async (taxon: RawDataTaxon, locale: string, productList: LocalizedProductWithVariant[]): Promise<Taxon> => {
   return {
     id: taxon.id,
-    label: translateField(taxon.label, locale),
-    description: translateField(taxon.description, locale),
+    label: translateField(taxon, 'label', locale),
+    description: translateField(taxon, 'description', locale),
     name: taxon.name,
     slug: taxon.slug,
     taxons: await Promise.all(
@@ -139,7 +139,7 @@ export async function buildProductDataset(catalog: RawDataCatalog, locale: strin
         [taxonomy.facetKey]: uniq([
           // @ts-expect-error
           ...(productDataset[product.sku][taxonomy.facetKey] || []),
-          `${prevTaxons.length > 0 ? prevTaxons.map(t => `${translateField(t.label, locale)} > `).join('') : ''}${translateField(taxon.label, locale)}`
+          `${prevTaxons.length > 0 ? prevTaxons.map(t => `${translateField(t, 'label', locale)} > `).join('') : ''}${translateField(taxon, 'label', locale)}`
         ])
       }
     })
