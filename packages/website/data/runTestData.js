@@ -1,7 +1,11 @@
 // @ts-check
 
+const { resolve, sep } = require('path')
 const { testJsonData } = require('@commercelayer/demo-store-types/dist/test')
 
-process.env.NEXT_PUBLIC_JSON_DATA_FOLDER ||= 'data/json/'
+const { NEXT_PUBLIC_JSON_DATA_FOLDER = resolve('data', 'json') } = process.env
 
-testJsonData(process.env.NEXT_PUBLIC_JSON_DATA_FOLDER)
+console.log('Running jsonData tests on:')
+console.log(`  ${NEXT_PUBLIC_JSON_DATA_FOLDER}${sep}\n`)
+
+testJsonData(NEXT_PUBLIC_JSON_DATA_FOLDER)
