@@ -10,7 +10,7 @@ By using this package, that operation will be much easier to do and error-proof.
 
 <img width="1158" alt="IntelliSense in Visual Studio Code" src="https://user-images.githubusercontent.com/1681269/208510718-23cd21e1-e602-41f7-8748-440bbb07d5ea.png">
 
-## Data
+## Create data
 
 The Demo Store data are composed of a set of 8 JSON files usually located at `/data/json`.
 
@@ -82,9 +82,29 @@ The Demo Store data are composed of a set of 8 JSON files usually located at `/d
   )
   ```
 
+## Test data
+
+This package is shipped with built-in tests.
+
+You can use it inside a JavaScript file like so:
+
+```js
+//= runTestData.js
+
+const { testJsonData } = require('@commercelayer/demo-store-types/dist/test')
+
+testJsonData('./data/json/')
+```
+
+```sh
+node runTestData.js
+```
+
 ## Example
 
-Here below you can find a working example with Node.js 18 that converts a list of products coming from an external service, to the Demo Store `products.json`:
+Here below you can find a working example with Node.js 18 that converts a list of products coming from an external service, to the Demo Store `products.json`.
+
+Setup a new project from scratch:
 
 ```sh
 mkdir demo
@@ -92,6 +112,8 @@ cd demo
 npm init -y
 npm install typescript @types/node tsm @commercelayer/demo-store-types
 ```
+
+Create a new file `index.ts`:
 
 ```ts
 //= index.ts
@@ -128,7 +150,16 @@ import { writeFile } from 'fs/promises'
   console.log(demoStoreProducts)
 
 })()
+```
 
+Just run:
+
+```sh
+node -r tsm index.ts
+```
+
+```ts
+//= output
 
 // [
 //   {
@@ -177,8 +208,4 @@ import { writeFile } from 'fs/promises'
 //     ]
 //   }
 // ]
-```
-
-```sh
-node -r tsm index.ts
 ```
