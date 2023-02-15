@@ -140,8 +140,8 @@ export const getPages = memoize(
   async (localeCode: string): Promise<CustomPage[]> => {
     const rawDataPages = await getRawDataPages()
     return await Promise.all(
-      Object.entries(rawDataPages.value).map(async ([slug, page]) => {
-        const localizedPage = translateField(page, localeCode)
+      Object.keys(rawDataPages.value).map(async (slug) => {
+        const localizedPage = translateField(rawDataPages.value, slug, localeCode)
 
         const components = await Promise.all(
           localizedPage.components
