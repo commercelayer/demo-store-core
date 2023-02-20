@@ -1,6 +1,6 @@
 import type { Locale } from '#i18n/locale'
 import type { NonShoppableCountry, ShoppableCountry } from '#utils/countries'
-import type { RawDataLanguage } from '@commercelayer/demo-store-types'
+import type { LocalizedField, RawDataLanguage } from '@commercelayer/demo-store-types'
 import { changeLanguage, makeLocaleCode, makeLocales, parseLocaleCode, translateField } from './locale'
 
 
@@ -51,37 +51,66 @@ describe('parseLocale', () => {
 
 describe('translateField', () => {
   it('should returns the localized field by provided locale (language)', () => {
-    const value = translateField({
-      en: 'English title',
-      it: 'Titolo italiano',
-      'en-US': 'American title'
-    }, 'en')
+    const item: { text: string; localizedField: LocalizedField<string> } = {
+      text: 'string',
+      localizedField: {
+        en: 'English title',
+        it: 'Titolo italiano',
+        'en-US': 'American title'
+      }
+    }
+
+    const value = translateField(item, 'localizedField', 'en')
     expect(value).toStrictEqual('English title')
   })
 
   it('should returns the localized field by provided locale (language + country)', () => {
-    const value = translateField({
-      en: 'English title',
-      it: 'Titolo italiano',
-      'en-US': 'American title'
-    }, 'en-US')
+    const item: { text: string; localizedField: LocalizedField<string> } = {
+      text: 'string',
+      localizedField: {
+        en: 'English title',
+        it: 'Titolo italiano',
+        'en-US': 'American title'
+      }
+    }
+
+    const value = translateField(item, 'localizedField', 'en-US')
     expect(value).toStrictEqual('American title')
   })
 
   it('should fallback to language when provided language-COUNTRY is not found', () => {
-    const value = translateField({
-      en: 'English title',
-      it: 'Titolo italiano',
-      'en-US': 'American title'
-    }, 'it-CN')
+    const item: { text: string; localizedField: LocalizedField<string> } = {
+      text: 'string',
+      localizedField: {
+        en: 'English title',
+        it: 'Titolo italiano',
+        'en-US': 'American title'
+      }
+    }
+
+    const value = translateField(item, 'localizedField', 'it-CN')
     expect(value).toStrictEqual('Titolo italiano')
   })
 
   it('should throw an error when locale and language are not found and also default locale is not available', () => {
-    expect(() => translateField({
-      it: 'Titolo italiano',
-      'en-US': 'American title'
-    }, 'fr-CN')).toThrowError(`Missing translation for locale 'fr-CN' : {"it":"Titolo italiano","en-US":"American title"}`)
+    const item: { text: string; localizedField: LocalizedField<string> } = {
+      text: 'string',
+      localizedField: {
+        it: 'Titolo italiano',
+        'en-US': 'American title'
+      }
+    }
+
+    expect(() => translateField(item, 'localizedField', 'fr-CN')).toThrowError(
+      [
+        `Missing translation for attribute "localizedField".`,
+        `Locale: "fr-CN"`,
+        `Language: "fr"`,
+        `Default: "en"`,
+        '',
+        JSON.stringify(item, undefined, 2)
+      ].join('\n')
+    )
   })
 })
 

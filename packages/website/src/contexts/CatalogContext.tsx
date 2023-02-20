@@ -51,12 +51,16 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
   const [availableFacets, setAvailableFacets] = useState<Context['availableFacets']>({})
   const [selectedFacets, setSelectedFacets] = useState<Context['selectedFacets']>({})
 
-  const isFiltering = Object.entries(selectedFacets).length > 0 || query !== undefined
+  const isFiltering = useMemo(() => Object.entries(selectedFacets).length > 0 || query !== undefined, [selectedFacets, query])
 
   const productList = useMemo(
     () => isFiltering ? productsWithPrices : initialProducts.map(p => productsWithPrices.find(cp => cp.sku === p.sku)!),
     [isFiltering, productsWithPrices, initialProducts]
   )
+
+  useEffect(function fastRender() {
+    setProducts(initialProducts)
+  }, [initialProducts])
 
   const selectFacet = useMemo<Context['selectFacet']>(
     () => (name, value) => {

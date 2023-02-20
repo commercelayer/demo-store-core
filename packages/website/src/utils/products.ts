@@ -55,12 +55,12 @@ function resolveProductLocale(product: RawDataProduct | LocalizedProduct | Local
   return {
     ...product,
     _locale: locale,
-    name: translateField(product.name, locale),
-    description: translateField(product.description, locale),
+    name: translateField(product, 'name', locale),
+    description: translateField(product, 'description', locale),
     variant,
     details: product.details?.map(detail => ({
-      title: translateField(detail.title, locale),
-      content: translateField(detail.content, locale)
+      title: translateField(detail, 'title', locale),
+      content: translateField(detail, 'content', locale)
     })) || []
   }
 }

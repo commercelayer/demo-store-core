@@ -16,7 +16,7 @@
     "local:serve": "npm run local:export && npx serve out",
     "lint": "next lint",
     "ts:check": "tsc --noEmit && npm run test:data",
-    "test:data": "jest ./data",
+    "test:data": "node data/runTestData.js",
     "test": "jest --testPathIgnorePatterns ./data",
     "coverage": "jest --coverage",
     "lighthouse": "npx -p @lhci/cli lhci autorun"
