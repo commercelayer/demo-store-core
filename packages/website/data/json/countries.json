@@ -216,14 +216,6 @@
     "region": "Europe"
   },
   {
-    "name": "Russia",
-    "code": "RU",
-    "market": 11279,
-    "catalog": "APAC",
-    "languages": ["en"],
-    "region": "Asia"
-  },
-  {
     "name": "Saudi Arabia",
     "code": "SA",
     "market": 11279,
