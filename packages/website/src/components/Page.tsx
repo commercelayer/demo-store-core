@@ -7,7 +7,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Container } from './Container'
 import { Footer } from './Footer'
-import { Header, HeaderProps } from './Header'
+import { Header, type HeaderProps } from './Header'
 
 type Props = Partial<HeaderProps> & {
   title?: string

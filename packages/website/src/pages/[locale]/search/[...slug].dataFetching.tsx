@@ -5,7 +5,7 @@ import { getLocale, getLocaleCodes } from '#i18n/locale'
 import { serverSideTranslations } from '#i18n/serverSideTranslations'
 import { withLocalePaths } from '#i18n/withLocalePaths'
 import { findTaxonBySlug, flattenReferencesFromTaxon, getNavigation, getRootNavigationLinks, getSlugs } from '#utils/catalog'
-import { getProduct, LocalizedProductWithVariant } from '#utils/products'
+import { getProduct, type LocalizedProductWithVariant } from '#utils/products'
 import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import type { Props } from './SearchPageComponent'
 

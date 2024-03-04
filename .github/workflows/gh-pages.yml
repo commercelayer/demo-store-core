@@ -23,10 +23,10 @@ jobs:
 
     steps:
     - name: Checkout 🛎️
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Cache 💾 # https://nextjs.org/docs/messages/no-cache#github-actions
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.npm
@@ -38,9 +38,9 @@ jobs:
           ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
     - name: Node 🧰
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: 16.x
+        node-version: 20.x
         cache: 'npm'
 
     - name: Install 📦
@@ -48,7 +48,7 @@ jobs:
 
     - name: Build 🔧
       run: |
-        npm run export -w ./packages/website --if-present
+        npm run build -w ./packages/website --if-present
       env:
         SITE_URL: https://commercelayer.github.io/demo-store-core
         NEXT_PUBLIC_BASE_PATH: /demo-store-core
@@ -60,10 +60,10 @@ jobs:
         NEXT_PUBLIC_DATA_FETCHING: ssg
 
     - name: Setup Pages 📄
-      uses: actions/configure-pages@v2
+      uses: actions/configure-pages@v4
 
     - name: Upload artifact 🚀
-      uses: actions/upload-pages-artifact@v1
+      uses: actions/upload-pages-artifact@v3
       with:
         path: ./packages/website/out/
 

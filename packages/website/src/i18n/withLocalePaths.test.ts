@@ -1,7 +1,7 @@
 import type { ShoppableCountry } from '#utils/countries'
 import type { RawDataLanguage } from '@commercelayer/demo-store-types'
 import type { GetStaticPathsResult } from 'next'
-import { getLocales, NonShoppableLocale, ShoppableLocale } from './locale'
+import { getLocales, type NonShoppableLocale, type ShoppableLocale } from './locale'
 import { withLocalePaths } from './withLocalePaths'
 
 jest.mock('#data/languages', () => ({

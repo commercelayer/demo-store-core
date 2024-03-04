@@ -58,7 +58,7 @@ export type DemoStoreEnvs = {
    * @default 'ssg'
    * 
    */
-  NEXT_PUBLIC_DATA_FETCHING: string
+  NEXT_PUBLIC_DATA_FETCHING: 'ssg' | 'ssr'
 
 }
 

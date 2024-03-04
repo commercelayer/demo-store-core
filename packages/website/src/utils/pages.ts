@@ -3,7 +3,7 @@ import { getRawDataProducts } from '#data/products'
 import { translateField } from '#utils/locale'
 import { memoize } from '#utils/memoize'
 import type { RawDataCarousel, RawDataGrid, RawDataHero, RawDataMarkdown, RawDataProductGrid } from '@commercelayer/demo-store-types'
-import { getProductWithVariants, LocalizedProductWithVariant } from './products'
+import { getProductWithVariants, type LocalizedProductWithVariant } from './products'
 
 export type Image = {
   src: string

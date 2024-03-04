@@ -1,5 +1,5 @@
 import { getRawDataOrganization } from '#data/organization'
-import { getLocale, Locale } from '#i18n/locale'
+import { getLocale, type Locale } from '#i18n/locale'
 import { memoize } from '#utils/memoize'
 import type { RawDataOrganization } from '@commercelayer/demo-store-types'
 import { createContext, useContext } from 'react'

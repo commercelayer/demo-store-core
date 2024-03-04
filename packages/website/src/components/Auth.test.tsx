@@ -1,16 +1,16 @@
 import { useAuthContext } from '#contexts/AuthContext'
 import { SettingsProvider } from '#contexts/SettingsContext'
-import type { AuthReturnType as OriginalAuthReturnType } from '@commercelayer/js-auth'
 import CommerceLayerContext from '../../../../node_modules/@commercelayer/react-components/lib/cjs/context/CommerceLayerContext'
 import { act, render, screen } from '@testing-library/react'
 import { createLocale, createOrganization, createRouter } from 'jest.helpers'
 import { useContext } from 'react'
 import { Auth } from './Auth'
+import type { TReturn } from '@commercelayer/js-auth/lib/esm/types'
 
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
-const getSalesChannelToken = jest.spyOn(require('@commercelayer/js-auth'), 'getSalesChannelToken')
+const authentication = jest.spyOn(require('@commercelayer/js-auth').core, 'authentication')
 
-type AuthReturnType = Pick<NonNullable<Awaited<OriginalAuthReturnType>>, 'tokenType' | 'accessToken' | 'expires' | 'refreshToken'>
+type AuthReturnType = Pick<NonNullable<Awaited<TReturn<'password'>>>, 'tokenType' | 'accessToken' | 'expires' | 'refreshToken'>
 
 beforeEach(() => {
   useRouter.mockReset()
@@ -45,7 +45,7 @@ test('should match the snapshot', async () => {
     refreshToken: 'refreshToken-1234'
   }
 
-  getSalesChannelToken.mockResolvedValue(authReturn)
+  authentication.mockResolvedValue(authReturn)
 
   let container
   await act(async () => {
@@ -68,7 +68,7 @@ test('should fetch accessToken and set it properly when "locale" is set', async 
     refreshToken: 'refreshToken-1234'
   }
 
-  getSalesChannelToken.mockResolvedValue(authReturn)
+  authentication.mockResolvedValue(authReturn)
 
   await act(async () => {
     render(
@@ -78,9 +78,9 @@ test('should fetch accessToken and set it properly when "locale" is set', async 
     )
   })
 
-  expect(getSalesChannelToken).toBeCalledWith({
+  expect(authentication).toHaveBeenCalledWith('client_credentials', {
     clientId: 'client-1234',
-    endpoint: 'https://demo-store.commercelayer.co',
+    slug: 'demo-store',
     scope: 'market:123456789'
   })
 

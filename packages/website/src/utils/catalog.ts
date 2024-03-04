@@ -1,5 +1,5 @@
 import type { Catalog, Taxon, Taxonomy } from '#data/models/catalog'
-import { deepFind, DeepFindResult } from '#utils/collection'
+import { deepFind, type DeepFindResult } from '#utils/collection'
 import { getSearchUrl } from '#utils/url'
 import uniq from 'lodash/uniq'
 import type { Unserializable } from './unserializable'

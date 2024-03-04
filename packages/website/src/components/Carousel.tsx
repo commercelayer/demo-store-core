@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
-import { Keyboard, Mousewheel, Navigation, Pagination } from 'swiper'
+import { Keyboard, Mousewheel, Navigation, Pagination } from 'swiper/modules'
 // import 'swiper/css'
 // import 'swiper/css/navigation'
 // import 'swiper/css/pagination'
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
+import { Swiper, type SwiperProps, SwiperSlide } from 'swiper/react'
 
 import styles from './Carousel.module.scss'
 

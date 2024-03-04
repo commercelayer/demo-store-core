@@ -1,4 +1,4 @@
-import { CountrySelector, Props as CountrySelectorProps } from '#components/CountrySelector'
+import { CountrySelector, type Props as CountrySelectorProps } from '#components/CountrySelector'
 import { Page } from '#components/Page'
 import { NEXT_PUBLIC_DEFAULT_LANGUAGE } from '#utils/envs'
 import { serverSideSettings } from '#contexts/SettingsContext'

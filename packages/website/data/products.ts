@@ -1,6 +1,6 @@
 import { fetchJsonData } from '#utils/data'
 import { memoize } from '#utils/memoize'
-import { RawDataProduct as BaseRawDataProduct, rawDataProducts_schema } from '@commercelayer/demo-store-types'
+import { type RawDataProduct as BaseRawDataProduct, rawDataProducts_schema } from '@commercelayer/demo-store-types'
 import type { Price } from '@commercelayer/sdk'
 
 export const getRawDataProducts = memoize(
