@@ -1,0 +1,14 @@
+[build]
+  command="npm run build"
+  publish="packages/website/out"
+
+[build.processing]
+  skip_processing = true
+
+[build.environment]
+  NEXT_PUBLIC_DATA_FETCHING="ssg"
+
+[template.environment]
+  SITE_URL="Base url of your website."
+  NEXT_PUBLIC_CL_CLIENT_ID="Commerce Layer Sales Channel Client ID."
+  NEXT_PUBLIC_CL_ENDPOINT="Commerce Layer Sales Channel Endpoint."
