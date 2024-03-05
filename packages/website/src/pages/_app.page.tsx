@@ -1,5 +1,5 @@
 import { Auth } from '#components/Auth'
-import { SettingsContext, SettingsProvider } from '#contexts/SettingsContext'
+import { type SettingsContext, SettingsProvider } from '#contexts/SettingsContext'
 import { I18nProvider } from 'next-localization'
 import type { AppProps } from 'next/app'
 import React from 'react'

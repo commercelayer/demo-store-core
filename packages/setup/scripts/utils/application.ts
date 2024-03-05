@@ -1,4 +1,4 @@
-import { getIntegrationToken } from '@commercelayer/js-auth'
+import { core } from '@commercelayer/js-auth'
 import CommerceLayer from '@commercelayer/sdk'
 import { execSync } from 'child_process'
 
@@ -34,8 +34,8 @@ export const createCommerceLayerClient = async (application: Application) => {
     throw new Error('You should switch to an Integration type')
   }
 
-  const integrationToken = await getIntegrationToken({
-    endpoint: application.endpoint,
+  const integrationToken = await core.authentication('client_credentials', {
+    slug: application.slug,
     scope: 'market:all',
     clientId: application.clientId,
     clientSecret: application.clientSecret,

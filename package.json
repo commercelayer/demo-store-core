@@ -12,6 +12,7 @@
     "coverage": "npm run coverage --workspaces --if-present",
     "dep:upgrade:major": "npx --workspaces npm-check-updates -u",
     "dep:upgrade:minor": "npm run dep:upgrade:major -- --target minor",
+    "ls-engines": "npx ls-engines",
     "prepare": "husky install"
   },
   "workspaces": [
@@ -19,11 +20,11 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "husky": "^8.0.3",
-    "lerna": "^6.5.1"
+    "husky": "^9.0.11",
+    "lerna": "^8.1.2"
   },
   "engines": {
-    "node": "^16.15.0 || ^18.0.0",
-    "npm": ">=8.10"
+    "node": ">= 18.17",
+    "npm": ">= 9.6"
   }
 }

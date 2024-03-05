@@ -15,7 +15,7 @@ const nextConfig = {
   pageExtensions: ['page.tsx', `page-${envs.NEXT_PUBLIC_DATA_FETCHING}.tsx`],
 
   // https://nextjs.org/docs/advanced-features/output-file-tracing
-  output: 'standalone',
+  output: envs.NEXT_PUBLIC_DATA_FETCHING === 'ssg' ? 'export' : 'standalone',
 
   // https://nextjs.org/docs/api-reference/next.config.js/basepath
   basePath: envs.NEXT_PUBLIC_BASE_PATH.length > 1 ? envs.NEXT_PUBLIC_BASE_PATH : undefined,

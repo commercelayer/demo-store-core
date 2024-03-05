@@ -18,8 +18,11 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": true,
     "noUncheckedIndexedAccess": false,
+    "types": [
+      "@testing-library/jest-dom"
+    ],
     "paths": {
       "#assets/*": ["src/assets/*"],
       "#components/*": ["src/components/*"],

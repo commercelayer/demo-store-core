@@ -1,5 +1,5 @@
 import type { RawDataCountry } from '@commercelayer/demo-store-types'
-import { CountriesByRegion, groupByRegion } from './countries'
+import { type CountriesByRegion, groupByRegion } from './countries'
 
 test('should be able to group locales by their region', () => {
   const italy: RawDataCountry = { code: 'IT', languages: ['it'], market: 1234, name: 'Italy', region: 'Europe', catalog: 'AMER' }

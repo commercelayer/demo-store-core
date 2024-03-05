@@ -3,9 +3,9 @@ import { getRawDataProducts } from '#data/products'
 import { getLocale } from '#i18n/locale'
 import type { FacetResult, Primitives } from '#utils/facets'
 import { getFacets } from '#utils/facets'
-import { addProductVariants, getProductWithVariants, LocalizedProductWithVariant, spreadProductVariants } from '#utils/products'
-import CommerceLayer, { CommerceLayerClient } from '@commercelayer/sdk'
-import type Fuse from 'fuse.js'
+import { addProductVariants, getProductWithVariants, type LocalizedProductWithVariant, spreadProductVariants } from '#utils/products'
+import CommerceLayer, { type CommerceLayerClient } from '@commercelayer/sdk'
+import type * as Fuse from 'fuse.js'
 import chunk from 'lodash/chunk'
 import uniq from 'lodash/uniq'
 import uniqBy from 'lodash/uniqBy'
@@ -20,7 +20,7 @@ type Context = {
   availableFacets: FacetResult
   selectedFacets: SelectedFacets
   selectFacet: (name: string, value: Primitives | Primitives[]) => void
-  currencyCode?: string
+  currencyCode?: string | null | undefined
 }
 
 type Props = Omit<Context, 'availableFacets' | 'selectedFacets' | 'selectFacet'> & {

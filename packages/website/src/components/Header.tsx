@@ -6,13 +6,14 @@ import { Search } from '#components/Search'
 import { useAuthContext } from '#contexts/AuthContext'
 import { useSettingsContext } from '#contexts/SettingsContext'
 import { Link } from '#i18n/Link'
-import { LineItemsCount } from '@commercelayer/react-components'
+import { CartLink, LineItemsCount } from '@commercelayer/react-components'
+import type { ChildrenFunction } from '@commercelayer/react-components/lib/esm/typings'
 import { useEffect, useState } from 'react'
 
 
 export type HeaderProps = Partial<NavigationProps>
 
-const CartQuantity: React.FC<{ quantity: number }> =  ({ quantity: propQuantity }) => {
+const CartQuantity: ChildrenFunction<{ quantity: number }> =  ({ quantity: propQuantity }) => {
   const [quantity, setQuantity] = useState<number>(-1)
   const [isAnimating, setIsAnimating] = useState<boolean>(false)
 
@@ -52,18 +53,22 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
           {/* <a className='block lg:inline-block mr-4 text-gray-300'><User /></a> */}
           {/* <a className='block lg:inline-block mr-4 text-gray-300'><HeartStraight /></a> */}
 
-          {/* <CartLink
-            className='block lg:inline-block relative'
-            label={(
-              <>
-                <ShoppingBagOpen />
-                <LineItemsCount>
-                  {CartQuantity}
-                </LineItemsCount>
-              </>
-            )} /> */}
-
           {
+            settings.locale?.isShoppable && auth.accessToken && (
+              <CartLink
+                className='block lg:inline-block relative'
+                label={(
+                  <>
+                    <ShoppingBagOpen />
+                    <LineItemsCount>
+                      {CartQuantity}
+                    </LineItemsCount>
+                  </>
+                )} />
+            )
+          }
+
+          {/* {
             settings.locale?.isShoppable && auth.accessToken && (
               <Link href='/cart' className='block lg:inline-block relative'>
                 <ShoppingBagOpen />
@@ -72,7 +77,7 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
                 </LineItemsCount>
               </Link>
             )
-          }
+          } */}
 
         </div>
       </nav>

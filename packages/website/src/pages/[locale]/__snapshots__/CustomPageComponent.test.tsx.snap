@@ -117,7 +117,7 @@ exports[`CustomPage component 1`] = `
           >
             <div
               class="swiper-wrapper"
-              style="transition-duration: 0ms; transform: translate3d(NaNpx, 0px, 0px);"
+              style="transition-duration: 0ms; transition-delay: 0ms; transform: translate3d(NaNpx, 0px, 0px);"
             >
               <div
                 class="swiper-slide select-none"

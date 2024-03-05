@@ -2,7 +2,7 @@ import { NEXT_PUBLIC_DEFAULT_LANGUAGE } from '#utils/envs'
 import type { Locale, NonShoppableLocale, ShoppableLocale } from '#i18n/locale'
 import type { LocalizedField, RawDataCountry, RawDataLanguage } from '@commercelayer/demo-store-types'
 import { isCountryShoppable } from './countries'
-import { isNotNullish, PickByValueExact } from './utility-types'
+import { isNotNullish, type PickByValueExact } from './utility-types'
 
 export function makeLocaleCode(languageCode: string, countryCode?: string): string {
   if (countryCode) {

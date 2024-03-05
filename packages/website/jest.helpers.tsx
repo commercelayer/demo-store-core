@@ -2,9 +2,9 @@ import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import type { Catalog, Taxon, Taxonomy } from '#data/models/catalog'
 import type { ShoppableLocale } from '#i18n/locale'
 import type { CarouselPageComponent } from '#utils/pages'
-import { makeUnserializable, Unserializable } from '#utils/unserializable'
+import { makeUnserializable, type Unserializable } from '#utils/unserializable'
 import type { RawDataOrganization } from '@commercelayer/demo-store-types'
-import { RouterContext as NextRouterContext } from 'next/dist/shared/lib/router-context'
+import { RouterContext as NextRouterContext } from 'next/dist/shared/lib/router-context.shared-runtime'
 import type { NextRouter } from 'next/router'
 
 type Props = {
