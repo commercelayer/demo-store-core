@@ -3,8 +3,8 @@ import { useSettingsContext } from '#contexts/SettingsContext'
 import type { ShoppableLocale } from '#i18n/locale'
 import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { getPersistKey } from '#utils/order'
-import { core } from '@commercelayer/js-auth'
-import type { TOptions, TReturn } from '@commercelayer/js-auth/lib/esm/types'
+import { authenticate } from '@commercelayer/js-auth'
+import type { AuthenticateOptions, AuthenticateReturn } from '@commercelayer/js-auth'
 import { CommerceLayer, LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import type { DefaultChildrenType } from '@commercelayer/react-components/lib/esm/typings/globals'
 import { useRouter } from 'next/router'
@@ -17,9 +17,8 @@ type Auth = {
   tokenType: string
 }
 
-const getClientCredentials = (clientId: string, slug: string, market: number): TOptions<'client_credentials'> => ({
+const getClientCredentials = (clientId: string, market: number): AuthenticateOptions<'client_credentials'> => ({
   clientId,
-  slug,
   scope: `market:${market}`
 })
 
@@ -28,7 +27,7 @@ const getAuth = (market: number): Auth | null => {
   return JSON.parse(localStorage.getItem(storeKey) || 'null')
 }
 
-const storeAuth = (market: number, authReturn: Awaited<TReturn<'client_credentials' | 'password'>>): Auth | null => {
+const storeAuth = (market: number, authReturn: Awaited<AuthenticateReturn<'client_credentials' | 'password'>>): Auth | null => {
   if (!authReturn) {
     return null
   }
@@ -89,10 +88,7 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
     if (authIsValid) {
       setAuth(storedAuth)
     } else {
-      const { hostname } = new URL(endpoint)
-      const [, organization] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
-
-      core.authentication('client_credentials', getClientCredentials(clientId, organization, market))
+      authenticate('client_credentials', getClientCredentials(clientId, market))
         .then(authReturn => {
           if (isMounted) {
             setAuth(storeAuth(market, authReturn))

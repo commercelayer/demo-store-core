@@ -5,12 +5,18 @@ import { act, render, screen } from '@testing-library/react'
 import { createLocale, createOrganization, createRouter } from 'jest.helpers'
 import { useContext } from 'react'
 import { Auth } from './Auth'
-import type { TReturn } from '@commercelayer/js-auth/lib/esm/types'
+
+import * as JsAuth from '@commercelayer/js-auth'
+
+jest.mock('@commercelayer/js-auth', () => {
+  return {
+    __esModule: true,
+    ...jest.requireActual('@commercelayer/js-auth')
+  };
+});
 
 const useRouter = jest.spyOn(require('next/router'), 'useRouter')
-const authentication = jest.spyOn(require('@commercelayer/js-auth').core, 'authentication')
-
-type AuthReturnType = Pick<NonNullable<Awaited<TReturn<'password'>>>, 'tokenType' | 'accessToken' | 'expires' | 'refreshToken'>
+const authentication = jest.spyOn(JsAuth, 'authenticate')
 
 beforeEach(() => {
   useRouter.mockReset()
@@ -38,14 +44,17 @@ test('should match the snapshot', async () => {
 
   useRouter.mockImplementation(() => createRouter('/'))
 
-  const authReturn: AuthReturnType = {
+  authentication.mockResolvedValue({
     tokenType: 'bearer',
     accessToken: 'accessToken-1234',
     expires: new Date(0),
-    refreshToken: 'refreshToken-1234'
-  }
-
-  authentication.mockResolvedValue(authReturn)
+    refreshToken: 'refreshToken-1234',
+    createdAt: 0,
+    expiresIn: 0,
+    ownerId: '',
+    ownerType: 'customer',
+    scope: '',
+  })
 
   let container
   await act(async () => {
@@ -61,14 +70,17 @@ test('should fetch accessToken and set it properly when "locale" is set', async 
 
   useRouter.mockImplementation(() => createRouter('/'))
 
-  const authReturn: AuthReturnType = {
+  authentication.mockResolvedValue({
     tokenType: 'bearer',
     accessToken: 'accessToken-1234',
     expires: new Date(0),
-    refreshToken: 'refreshToken-1234'
-  }
-
-  authentication.mockResolvedValue(authReturn)
+    refreshToken: 'refreshToken-1234',
+    createdAt: 0,
+    expiresIn: 0,
+    ownerId: '',
+    ownerType: 'customer',
+    scope: '',
+  })
 
   await act(async () => {
     render(
@@ -80,7 +92,6 @@ test('should fetch accessToken and set it properly when "locale" is set', async 
 
   expect(authentication).toHaveBeenCalledWith('client_credentials', {
     clientId: 'client-1234',
-    slug: 'demo-store',
     scope: 'market:123456789'
   })
 

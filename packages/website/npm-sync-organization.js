@@ -1,6 +1,6 @@
 // @ts-check
 
-const { core } = require('@commercelayer/js-auth')
+const { authenticate } = require('@commercelayer/js-auth')
 const CommerceLayer = require('@commercelayer/sdk').default
 const { writeFileSync, existsSync, readFileSync } = require('fs')
 const { resolve } = require('path')
@@ -23,9 +23,8 @@ if (!isSupportedUrl(envs.NEXT_PUBLIC_JSON_DATA_FOLDER) && NEXT_PUBLIC_CL_CLIENT_
 
   const [, organization, domain] = NEXT_PUBLIC_CL_ENDPOINT.match(/^https?:\/\/(.*).(commercelayer.(co|io))$/) || []
 
-  core.authentication('client_credentials', {
+  authenticate('client_credentials', {
     clientId: NEXT_PUBLIC_CL_CLIENT_ID,
-    slug: organization,
     scope: `market:all`
   })
     .then(auth => {

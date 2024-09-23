@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps<Props, Query> = async ({ params }) =
   const localeCodes = await getLocaleCodes()
 
   const productSlug = slug.join('/')
-  const productCode = productSlug.match(productSlugRegExp)?.groups?.productCode
+  const productCode = productSlug.match(productSlugRegExp)?.[1]
 
   if (!productCode) {
     throw new Error(`"productSlugRegExp" is not properly configured. Cannot apply RegExp "${productSlugRegExp}" to the given product slug "${productSlug}"`)

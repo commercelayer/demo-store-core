@@ -27,7 +27,7 @@ export const serverSideSettings = memoize(
       settingsContext: {
         organization: {
           ...await getRawDataOrganization(),
-          slug: process.env.NEXT_PUBLIC_CL_ENDPOINT?.match(/^https?:\/\/(?<slug>[\w-]+)/)?.groups?.slug || null
+          slug: process.env.NEXT_PUBLIC_CL_ENDPOINT?.match(/^https?:\/\/([\w-]+)/)?.[1] || null
         },
         locale: await getLocale(localeCode),
       }
