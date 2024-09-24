@@ -53,7 +53,6 @@ jobs:
         SITE_URL: https://commercelayer.github.io/demo-store-core
         NEXT_PUBLIC_BASE_PATH: /demo-store-core
         NEXT_PUBLIC_CL_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_CL_CLIENT_ID }}
-        NEXT_PUBLIC_CL_ENDPOINT: ${{ secrets.NEXT_PUBLIC_CL_ENDPOINT }}
         NEXT_PUBLIC_JSON_DATA_FOLDER: data/json/
         NEXT_PUBLIC_LOCALES_DATA_FOLDER: data/locales/
         NEXT_PUBLIC_DEFAULT_LANGUAGE: en

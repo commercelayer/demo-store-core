@@ -3,7 +3,7 @@ import { useSettingsContext } from '#contexts/SettingsContext'
 import type { ShoppableLocale } from '#i18n/locale'
 import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { getPersistKey } from '#utils/order'
-import { authenticate } from '@commercelayer/js-auth'
+import { authenticate, getCoreApiBaseEndpoint } from '@commercelayer/js-auth'
 import type { AuthenticateOptions, AuthenticateReturn } from '@commercelayer/js-auth'
 import { CommerceLayer, LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import type { DefaultChildrenType } from '@commercelayer/react-components/lib/esm/typings/globals'
@@ -66,7 +66,6 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
   const [auth, setAuth] = useState<Auth | null>(null)
 
   const clientId = process.env.NEXT_PUBLIC_CL_CLIENT_ID
-  const endpoint = process.env.NEXT_PUBLIC_CL_ENDPOINT
 
   useEffect(function updateMarket() {
     if (settings.locale?.isShoppable && settings.locale?.country.market !== market) {
@@ -77,7 +76,7 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
   useEffect(function updateAccessToken() {
     let isMounted = true
 
-    if (market === undefined || clientId === undefined || endpoint === undefined) {
+    if (market === undefined || clientId === undefined) {
       setAuth(null)
       return
     }
@@ -99,9 +98,9 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
     return () => {
       isMounted = false
     }
-  }, [market, router.asPath, clientId, endpoint])
+  }, [market, router.asPath, clientId])
 
-  if (!auth || !endpoint) {
+  if (!auth) {
     return children
     return (
       <>
@@ -116,6 +115,7 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
     )
   }
 
+  const endpoint = getCoreApiBaseEndpoint(auth.accessToken)
   const { hostname } = new URL(endpoint)
   const [, organization, domain] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
 
