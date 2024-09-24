@@ -13,7 +13,7 @@
     "local:start": "npm start",
     "local:serve": "npx serve out",
     "lint": "next lint",
-    "ts:check": "next lint && npm run test:data",
+    "ts:check": "tsc --noEmit && npm run test:data",
     "test:data": "node data/runTestData.js",
     "test": "jest --testPathIgnorePatterns ./data",
     "coverage": "jest --coverage",

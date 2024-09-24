@@ -17,17 +17,17 @@ type Auth = {
   tokenType: string
 }
 
-const getClientCredentials = (clientId: string, market: number): AuthenticateOptions<'client_credentials'> => ({
+const getClientCredentials = (clientId: string, market: Market): AuthenticateOptions<'client_credentials'> => ({
   clientId,
   scope: `market:${market}`
 })
 
-const getAuth = (market: number): Auth | null => {
+const getAuth = (market: Market): Auth | null => {
   const storeKey = getStoreKey(market)
   return JSON.parse(localStorage.getItem(storeKey) || 'null')
 }
 
-const storeAuth = (market: number, authReturn: Awaited<AuthenticateReturn<'client_credentials' | 'password'>>): Auth | null => {
+const storeAuth = (market: Market, authReturn: Awaited<AuthenticateReturn<'client_credentials' | 'password'>>): Auth | null => {
   if (!authReturn) {
     return null
   }
@@ -46,7 +46,7 @@ const storeAuth = (market: number, authReturn: Awaited<AuthenticateReturn<'clien
   return auth
 }
 
-const getStoreKey = <M extends number>(market: M): `clayer_token-market:${M}` => `clayer_token-market:${market}`
+const getStoreKey = <M extends Market>(market: M): `clayer_token-market:${M}` => `clayer_token-market:${market}`
 
 const hasExpired = (time: number | undefined): boolean => time === undefined || time < Date.now()
 
@@ -57,12 +57,14 @@ type Props = {
   locale: ShoppableLocale
 }
 
+type Market = number | `id:${string}` | `code:${string}`
+
 export const Auth: React.FC<Props> = ({ children, locale }) => {
 
   const router = useRouter()
   const settings = useSettingsContext()
 
-  const [market, setMarket] = useState<number | undefined>(settings.locale?.isShoppable ? settings.locale?.country.market : undefined)
+  const [market, setMarket] = useState<Market | undefined>(settings.locale?.isShoppable ? settings.locale?.country.market : undefined)
   const [auth, setAuth] = useState<Auth | null>(null)
 
   const clientId = process.env.NEXT_PUBLIC_CL_CLIENT_ID

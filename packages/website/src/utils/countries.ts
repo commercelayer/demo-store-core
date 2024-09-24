@@ -11,7 +11,7 @@ export type CountriesByRegion = {
 }
 
 export function isCountryShoppable(country: RawDataCountry): country is ShoppableCountry {
-  return typeof country.market === 'number'
+  return typeof country.market === 'number' || (country.market != null && (country.market.startsWith('id:') || country.market.startsWith('code:')))
 }
 
 export const groupByRegion = (countries: RawDataCountry[]): CountriesByRegion => {
