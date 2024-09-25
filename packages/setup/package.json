@@ -12,7 +12,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@commercelayer/js-auth": "^4.2.1",
-    "@commercelayer/sdk": "^5.33.1"
+    "@commercelayer/js-auth": "^6.5.0",
+    "@commercelayer/sdk": "6.13.0"
   }
 }

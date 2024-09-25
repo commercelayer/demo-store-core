@@ -5,9 +5,7 @@ import type { RawDataOrganization } from '@commercelayer/demo-store-types'
 import { createContext, useContext } from 'react'
 
 export type SettingsContext = {
-  organization: RawDataOrganization & {
-    slug: string | null
-  }
+  organization: RawDataOrganization
   locale: Locale
 }
 
@@ -26,8 +24,7 @@ export const serverSideSettings = memoize(
     return {
       settingsContext: {
         organization: {
-          ...await getRawDataOrganization(),
-          slug: process.env.NEXT_PUBLIC_CL_ENDPOINT?.match(/^https?:\/\/(?<slug>[\w-]+)/)?.groups?.slug || null
+          ...await getRawDataOrganization()
         },
         locale: await getLocale(localeCode),
       }

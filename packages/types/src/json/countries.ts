@@ -24,9 +24,10 @@ type RawDataCountrySchema = z.ZodObject<{
    * 
    * Market is an **optional** attribute. If you don't specify any market, then the country will be presented with a non-shoppable experience (no price, no availability, no cart).
    * @see https://github.com/commercelayer/demo-store#4-choose-the-countries-where-youre-going-to-sell
-   * @example 11279
+   * @example "id:vlGRmhpEeg"
+   * @example "code:europe"
    */
-  market: z.ZodOptional<z.ZodNumber>
+  market: z.ZodOptional<z.ZodUnion<[z.ZodType<`id:${string}` | `code:${string}`, z.ZodTypeDef, `id:${string}` | `code:${string}`>, z.ZodNumber]>>
 
   /**
    * Reference to the `catalogs` id
@@ -58,7 +59,12 @@ type RawDataCountrySchema = z.ZodObject<{
 const rawDataCountry_schema: RawDataCountrySchema = z.object({
   name: z.string(),
   code: z.string(),
-  market: z.number().optional(),
+  market: z
+    .custom<`id:${string}` | `code:${string}`>((val) => {
+      return typeof val === 'string' ? /^id:|code:/.test(val) : false;
+    })
+    .or(z.number())
+    .optional(),
   catalog: z.string(),
   languages: z.string().array().min(1),
   region: z.string()

@@ -39,7 +39,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "data/index.test.js"  ],
+  ],
   "exclude": [
     "node_modules"
   ]

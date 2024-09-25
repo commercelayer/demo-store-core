@@ -1,6 +1,6 @@
 // @ts-check
 
-const { core } = require('@commercelayer/js-auth')
+const { authenticate, getCoreApiBaseEndpoint } = require('@commercelayer/js-auth')
 const CommerceLayer = require('@commercelayer/sdk').default
 const { writeFileSync, existsSync, readFileSync } = require('fs')
 const { resolve } = require('path')
@@ -9,9 +9,9 @@ const { isSupportedUrl } = require('./src/utils/isSupportedUrl')
 /** @type { import('./additional-env').DemoStoreEnvs } */
 const envs = require('./src/utils/envs')
 
-const { NEXT_PUBLIC_CL_ENDPOINT, NEXT_PUBLIC_CL_CLIENT_ID } = process.env
+const { NEXT_PUBLIC_CL_CLIENT_ID } = process.env
 
-if (!isSupportedUrl(envs.NEXT_PUBLIC_JSON_DATA_FOLDER) && NEXT_PUBLIC_CL_CLIENT_ID && NEXT_PUBLIC_CL_ENDPOINT) {
+if (!isSupportedUrl(envs.NEXT_PUBLIC_JSON_DATA_FOLDER) && NEXT_PUBLIC_CL_CLIENT_ID) {
   const organizationJsonPath = resolve(__dirname, envs.NEXT_PUBLIC_JSON_DATA_FOLDER, 'organization.json')
 
   /** @type { import('@commercelayer/demo-store-types').RawDataOrganization } */
@@ -21,14 +21,14 @@ if (!isSupportedUrl(envs.NEXT_PUBLIC_JSON_DATA_FOLDER) && NEXT_PUBLIC_CL_CLIENT_
     writeFileSync(organizationJsonPath, '{}', { encoding: 'utf-8' })
   }
 
-  const [, organization, domain] = NEXT_PUBLIC_CL_ENDPOINT.match(/^https?:\/\/(.*).(commercelayer.(co|io))$/) || []
-
-  core.authentication('client_credentials', {
+  authenticate('client_credentials', {
     clientId: NEXT_PUBLIC_CL_CLIENT_ID,
-    slug: organization,
     scope: `market:all`
   })
     .then(auth => {
+      const endpoint = getCoreApiBaseEndpoint(auth.accessToken)
+      const [, organization, domain] = endpoint.match(/^https?:\/\/(.*).(commercelayer.(co|io))$/) || []
+
       if (!auth) {
         return
       }

@@ -14,12 +14,6 @@ export type DemoStoreEnvs = {
   NEXT_PUBLIC_CL_CLIENT_ID?: string
 
   /**
-   * Commerce Layer Sales Channel Endpoint. Copy it from your organization dashboard.
-   * @url [API Clients - Sales channel](https://docs.commercelayer.io/developers/api-clients#sales-channel)
-   */
-  NEXT_PUBLIC_CL_ENDPOINT?: string
-
-  /**
    * Folder in which configuration files are stored.
    * @default 'config/'
    */

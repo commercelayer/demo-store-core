@@ -1,3 +1,4 @@
+import util from 'util'
 import { createCommerceLayerClient, getCurrentApplicationInfo } from './utils/application'
 
 (async () => {
@@ -5,12 +6,26 @@ import { createCommerceLayerClient, getCurrentApplicationInfo } from './utils/ap
   const commerceLayer = await createCommerceLayerClient(currentApplicationInfo)
 
   const markets = await commerceLayer.markets.list({
-    fields: ['number', 'name']
+    fields: ['name', 'id', 'code', 'number']
   })
 
   console.info('Your organization has', markets.length, 'markets:')
+
   for (const market of markets) {
-    console.info(' - ', market.name, 'with number', market.number)
+    console.info(`\n - ${market.name}`)
+    console.info(
+      util.inspect(
+        {
+          id: market.id,
+          code: market.code,
+          number: market.number
+        },
+        {
+          colors: true,
+          compact: false
+        }
+      )
+    )
   }
 
 })()

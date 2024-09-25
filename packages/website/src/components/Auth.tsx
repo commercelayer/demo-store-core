@@ -3,8 +3,8 @@ import { useSettingsContext } from '#contexts/SettingsContext'
 import type { ShoppableLocale } from '#i18n/locale'
 import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { getPersistKey } from '#utils/order'
-import { core } from '@commercelayer/js-auth'
-import type { TOptions, TReturn } from '@commercelayer/js-auth/lib/esm/types'
+import { authenticate, getCoreApiBaseEndpoint } from '@commercelayer/js-auth'
+import type { AuthenticateOptions, AuthenticateReturn } from '@commercelayer/js-auth'
 import { CommerceLayer, LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import type { DefaultChildrenType } from '@commercelayer/react-components/lib/esm/typings/globals'
 import { useRouter } from 'next/router'
@@ -17,18 +17,17 @@ type Auth = {
   tokenType: string
 }
 
-const getClientCredentials = (clientId: string, slug: string, market: number): TOptions<'client_credentials'> => ({
+const getClientCredentials = (clientId: string, market: Market): AuthenticateOptions<'client_credentials'> => ({
   clientId,
-  slug,
   scope: `market:${market}`
 })
 
-const getAuth = (market: number): Auth | null => {
+const getAuth = (market: Market): Auth | null => {
   const storeKey = getStoreKey(market)
   return JSON.parse(localStorage.getItem(storeKey) || 'null')
 }
 
-const storeAuth = (market: number, authReturn: Awaited<TReturn<'client_credentials' | 'password'>>): Auth | null => {
+const storeAuth = (market: Market, authReturn: Awaited<AuthenticateReturn<'client_credentials' | 'password'>>): Auth | null => {
   if (!authReturn) {
     return null
   }
@@ -47,7 +46,7 @@ const storeAuth = (market: number, authReturn: Awaited<TReturn<'client_credentia
   return auth
 }
 
-const getStoreKey = <M extends number>(market: M): `clayer_token-market:${M}` => `clayer_token-market:${market}`
+const getStoreKey = <M extends Market>(market: M): `clayer_token-market:${M}` => `clayer_token-market:${market}`
 
 const hasExpired = (time: number | undefined): boolean => time === undefined || time < Date.now()
 
@@ -58,16 +57,17 @@ type Props = {
   locale: ShoppableLocale
 }
 
+type Market = number | `id:${string}` | `code:${string}`
+
 export const Auth: React.FC<Props> = ({ children, locale }) => {
 
   const router = useRouter()
   const settings = useSettingsContext()
 
-  const [market, setMarket] = useState<number | undefined>(settings.locale?.isShoppable ? settings.locale?.country.market : undefined)
+  const [market, setMarket] = useState<Market | undefined>(settings.locale?.isShoppable ? settings.locale?.country.market : undefined)
   const [auth, setAuth] = useState<Auth | null>(null)
 
   const clientId = process.env.NEXT_PUBLIC_CL_CLIENT_ID
-  const endpoint = process.env.NEXT_PUBLIC_CL_ENDPOINT
 
   useEffect(function updateMarket() {
     if (settings.locale?.isShoppable && settings.locale?.country.market !== market) {
@@ -78,7 +78,7 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
   useEffect(function updateAccessToken() {
     let isMounted = true
 
-    if (market === undefined || clientId === undefined || endpoint === undefined) {
+    if (market === undefined || clientId === undefined) {
       setAuth(null)
       return
     }
@@ -89,10 +89,7 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
     if (authIsValid) {
       setAuth(storedAuth)
     } else {
-      const { hostname } = new URL(endpoint)
-      const [, organization] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
-
-      core.authentication('client_credentials', getClientCredentials(clientId, organization, market))
+      authenticate('client_credentials', getClientCredentials(clientId, market))
         .then(authReturn => {
           if (isMounted) {
             setAuth(storeAuth(market, authReturn))
@@ -103,9 +100,9 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
     return () => {
       isMounted = false
     }
-  }, [market, router.asPath, clientId, endpoint])
+  }, [market, router.asPath, clientId])
 
-  if (!auth || !endpoint) {
+  if (!auth) {
     return children
     return (
       <>
@@ -120,6 +117,7 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
     )
   }
 
+  const endpoint = getCoreApiBaseEndpoint(auth.accessToken)
   const { hostname } = new URL(endpoint)
   const [, organization, domain] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
 
