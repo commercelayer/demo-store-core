@@ -8,13 +8,13 @@
     "dist"
   ],
   "dependencies": {
-    "@types/lodash": "^4.17.9",
+    "@types/lodash": "^4.17.13",
     "lodash": "^4.17.21",
     "uvu": "^0.5.6",
-    "zod": "^3.23.8"
+    "zod": "^3.24.1"
   },
   "devDependencies": {
-    "typescript": "^5.6.2"
+    "typescript": "^5.7.2"
   },
   "scripts": {
     "ts:check": "tsc --noEmit",
