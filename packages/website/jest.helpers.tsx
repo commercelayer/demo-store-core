@@ -71,7 +71,7 @@ export const createLocale = (): ShoppableLocale => {
       code: 'US',
       name: 'United States',
       languages: ['en'],
-      market: 123456789,
+      market: 'code:us',
       region: 'Americas'
     },
     language: {

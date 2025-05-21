@@ -1,8 +1,9 @@
 import { Link } from '#i18n/Link'
 import type { Navigation, NavigationLink } from '#utils/catalog'
 import { useI18n } from 'next-localization'
+import type React from 'react'
 
-export type Props = JSX.IntrinsicElements['nav'] & {
+export type Props = React.JSX.IntrinsicElements['nav'] & {
   subNavigation: Navigation
 }
 

@@ -1,8 +1,6 @@
 module.exports = {
   reject: [
-    'pnpm',
-    'iframe-resizer',
-    'iframe-resizer-react'
+    'pnpm'
   ],
   filterResults: (name, { upgradedVersionSemver }) => {
     if (

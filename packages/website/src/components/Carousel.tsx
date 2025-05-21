@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { Keyboard, Mousewheel, Navigation, Pagination } from 'swiper/modules'
 // import 'swiper/css'
 // import 'swiper/css/navigation'
@@ -8,7 +8,7 @@ import { Swiper, type SwiperProps, SwiperSlide } from 'swiper/react'
 import styles from './Carousel.module.scss'
 
 type Props = {
-  slides: JSX.Element[]
+  slides: React.JSX.Element[]
   options?: SwiperProps
 }
 

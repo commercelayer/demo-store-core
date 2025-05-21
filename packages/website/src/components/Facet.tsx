@@ -30,7 +30,7 @@ const FacetAppearance: React.FC<{ facetName: string, facetValues: Primitives[] }
   }
 }
 
-export const Facet: React.FC<JSX.IntrinsicElements['div']> = ({ className = '', ...props }) => {
+export const Facet: React.FC<React.JSX.IntrinsicElements['div']> = ({ className = '', ...props }) => {
   const i18n = useI18n()
   const { availableFacets } = useCatalogContext()
   const [opened, setOpened] = useState<boolean>(false)

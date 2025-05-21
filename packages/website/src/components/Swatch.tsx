@@ -1,5 +1,6 @@
+import type React from 'react'
 
-type Props = JSX.IntrinsicElements['button'] & {
+type Props = React.JSX.IntrinsicElements['button'] & {
   selected?: boolean
   swatchStyle: React.CSSProperties
   swatchLabel: string

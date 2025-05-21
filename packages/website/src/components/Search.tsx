@@ -2,9 +2,9 @@ import { MagnifyingGlass } from '#assets/icons'
 import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { useI18n } from 'next-localization'
 import { useRouter } from 'next/router'
-import { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
-type Props = JSX.IntrinsicElements['div'] & {
+type Props = React.JSX.IntrinsicElements['div'] & {
   
 }
 

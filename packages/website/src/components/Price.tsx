@@ -1,6 +1,7 @@
 import type { Price as PriceType } from '@commercelayer/sdk'
+import type React from 'react'
 
-type Props = JSX.IntrinsicElements['div'] & {
+type Props = React.JSX.IntrinsicElements['div'] & {
   price: PriceType
 }
 
