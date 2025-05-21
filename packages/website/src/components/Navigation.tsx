@@ -1,10 +1,10 @@
 import { Link } from '#i18n/Link'
 import type { NavigationLink } from '#utils/catalog'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Hamburger } from './Hamburger'
 
-export type Props = JSX.IntrinsicElements['div'] & {
+export type Props = React.JSX.IntrinsicElements['div'] & {
   navigation: NavigationLink[]
 }
 

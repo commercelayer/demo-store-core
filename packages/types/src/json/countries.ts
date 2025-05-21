@@ -27,7 +27,7 @@ type RawDataCountrySchema = z.ZodObject<{
    * @example "id:vlGRmhpEeg"
    * @example "code:europe"
    */
-  market: z.ZodOptional<z.ZodUnion<[z.ZodType<`id:${string}` | `code:${string}`, z.ZodTypeDef, `id:${string}` | `code:${string}`>, z.ZodNumber]>>
+  market: z.ZodOptional<z.ZodType<`id:${string}` | `code:${string}`, z.ZodTypeDef, `id:${string}` | `code:${string}`>>
 
   /**
    * Reference to the `catalogs` id
@@ -63,7 +63,6 @@ const rawDataCountry_schema: RawDataCountrySchema = z.object({
     .custom<`id:${string}` | `code:${string}`>((val) => {
       return typeof val === 'string' ? /^id:|code:/.test(val) : false;
     })
-    .or(z.number())
     .optional(),
   catalog: z.string(),
   languages: z.string().array().min(1),

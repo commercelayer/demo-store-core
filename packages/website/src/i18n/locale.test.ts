@@ -2,7 +2,7 @@ import type { ShoppableCountry } from '#utils/countries'
 import type { RawDataLanguage } from '@commercelayer/demo-store-types'
 import { getLocale, type Locale } from './locale'
 
-const unitedStates: ShoppableCountry = { code: 'US', languages: ['en', 'it'], market: 11279, name: 'United States', region: 'Americas', catalog: 'AMER' }
+const unitedStates: ShoppableCountry = { code: 'US', languages: ['en', 'it'], market: 'code:us', name: 'United States', region: 'Americas', catalog: 'AMER' }
 const italian: RawDataLanguage = { code: 'it', name: 'Italiano', catalog: 'AMER' }
 const english: RawDataLanguage = { code: 'en', name: 'English', catalog: 'AMER' }
 

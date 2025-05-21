@@ -95,10 +95,10 @@ test('should fetch accessToken and set it properly when "locale" is set', async 
 
   expect(authentication).toHaveBeenCalledWith('client_credentials', {
     clientId: 'client-1234',
-    scope: 'market:123456789'
+    scope: 'market:code:us'
   })
 
-  expect(localStorage.getItem('clayer_token-market:123456789')).toEqual(JSON.stringify({
+  expect(localStorage.getItem('clayer_token-market:code:us')).toEqual(JSON.stringify({
     tokenType: 'bearer',
     accessToken: accessToken,
     expires: 0,

@@ -19,8 +19,8 @@ jest.mock('#data/languages', () => ({
   ])
 }))
 
-const unitedStates: ShoppableCountry = { code: 'US', languages: ['en'], market: 1234, name: 'United States', region: 'Americas', catalog: 'AMER' }
-const italy: ShoppableCountry = { code: 'IT', languages: ['it'], market: 9876, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
+const unitedStates: ShoppableCountry = { code: 'US', languages: ['en'], market: 'code:us', name: 'United States', region: 'Americas', catalog: 'AMER' }
+const italy: ShoppableCountry = { code: 'IT', languages: ['it'], market: 'code:eu', name: 'Italy', region: 'Europe', catalog: 'EMEA' }
 const italian: RawDataLanguage = { code: 'it', name: 'Italiano', catalog: 'AMER' }
 const english: RawDataLanguage = { code: 'en', name: 'English', catalog: 'AMER' }
 

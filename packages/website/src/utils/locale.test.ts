@@ -16,8 +16,8 @@ describe('makeLocaleCode', () => {
 
 describe('makeLocales', () => {
   it('should create locales from a list of countries and languages', () => {
-    const unitedStates: ShoppableCountry = { code: 'US', languages: ['en'], market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
-    const italy: ShoppableCountry = { code: 'IT', languages: ['it', 'en'], market: 10427, name: 'Italy', region: 'Europe', catalog: 'EMEA' }
+    const unitedStates: ShoppableCountry = { code: 'US', languages: ['en'], market: 'code:us', name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const italy: ShoppableCountry = { code: 'IT', languages: ['it', 'en'], market: 'code:eu', name: 'Italy', region: 'Europe', catalog: 'EMEA' }
     const italian: RawDataLanguage = { code: 'it', name: 'ITA', catalog: 'AMER' }
     const english: RawDataLanguage = { code: 'en', name: 'ENG', catalog: 'AMER' }
 
@@ -128,7 +128,7 @@ describe('changeLanguage', () => {
 
 describe('Locale.isShoppable property', () => {
   it('should be false when country is not defined', () => {
-    const unitedStates: ShoppableCountry = { code: 'US', languages: ['en'], market: 10426, name: 'United States', region: 'Americas', catalog: 'AMER' }
+    const unitedStates: ShoppableCountry = { code: 'US', languages: ['en'], market: 'code:us', name: 'United States', region: 'Americas', catalog: 'AMER' }
     const english: RawDataLanguage = { code: 'en', name: 'ENG', catalog: 'AMER' }
 
     const actual = makeLocales([english], [unitedStates])

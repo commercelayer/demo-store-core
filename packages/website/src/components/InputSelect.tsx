@@ -1,3 +1,4 @@
+import type React from 'react'
 import styles from './InputSelect.module.scss'
 
 type Option = {
@@ -5,7 +6,7 @@ type Option = {
   label: string
 }
 
-type Props = JSX.IntrinsicElements['select'] & {
+type Props = React.JSX.IntrinsicElements['select'] & {
   options: Option[]
 }
 

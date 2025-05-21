@@ -1,7 +1,7 @@
 import { CommerceLayerGlyph, CommerceLayerLogotype } from '#assets/icons'
 import { useSettingsContext } from '#contexts/SettingsContext'
 
-export const Logo: React.FC<JSX.IntrinsicElements['div']> = ({ className = '', ...props }) => {
+export const Logo: React.FC<React.JSX.IntrinsicElements['div']> = ({ className = '', ...props }) => {
   const settings = useSettingsContext()
 
   return (

@@ -1,7 +1,7 @@
 import { PricesContainer as CLPricesContainer, Price as CLPrice } from '@commercelayer/react-components'
 import { Price as PriceComponent } from '#components/Price'
 
-type Props = JSX.IntrinsicElements['div'] & {
+type Props = React.JSX.IntrinsicElements['div'] & {
   code: string | undefined
 }
 

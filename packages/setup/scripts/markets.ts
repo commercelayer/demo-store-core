@@ -17,8 +17,7 @@ import { createCommerceLayerClient, getCurrentApplicationInfo } from './utils/ap
       util.inspect(
         {
           id: market.id,
-          code: market.code,
-          number: market.number
+          code: market.code
         },
         {
           colors: true,
