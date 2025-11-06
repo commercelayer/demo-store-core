@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/demo-store-website",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "This Demo Store is a completely static ecommerce solution (with SSR capability) powered by Commerce Layer.",
   "private": true,
   "scripts": {
@@ -20,7 +20,7 @@
     "lighthouse": "npx -p @lhci/cli lhci autorun"
   },
   "dependencies": {
-    "@commercelayer/demo-store-types": "^5.0.0",
+    "@commercelayer/demo-store-types": "^5.1.0",
     "@commercelayer/js-auth": "^6.7.2",
     "@commercelayer/react-components": "4.23.2",
     "@commercelayer/sdk": "6.42.0",
