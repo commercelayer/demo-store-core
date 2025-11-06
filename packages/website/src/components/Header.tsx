@@ -7,6 +7,7 @@ import { useAuthContext } from '#contexts/AuthContext'
 import { useSettingsContext } from '#contexts/SettingsContext'
 import { Link } from '#i18n/Link'
 import { CartLink, LineItemsCount } from '@commercelayer/react-components'
+import { HostedCart } from '@commercelayer/react-components/orders/HostedCart'
 import type { ChildrenFunction } from '@commercelayer/react-components/lib/esm/typings'
 import { useEffect, useState } from 'react'
 
@@ -52,19 +53,34 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
         <div className='flex items-center w-auto flex-grow justify-end'>
           {/* <a className='block lg:inline-block mr-4 text-gray-300'><User /></a> */}
           {/* <a className='block lg:inline-block mr-4 text-gray-300'><HeartStraight /></a> */}
-
           {
             settings.locale?.isShoppable && auth.accessToken && (
-              <CartLink
-                className='block lg:inline-block relative'
-                label={(
-                  <>
-                    <ShoppingBagOpen />
-                    <LineItemsCount>
-                      {CartQuantity}
-                    </LineItemsCount>
-                  </>
-                )} />
+              <>
+                <HostedCart
+                  openAdd
+                  style={{
+                    background: {
+                      zIndex: 51,
+                    },
+                    container: {
+                      zIndex: 51,
+                      backgroundColor: 'white'
+                    }
+                  }}
+                  type="mini"
+                />
+                <CartLink
+                  type='mini'
+                  className='block lg:inline-block relative'
+                  label={(
+                    <>
+                      <ShoppingBagOpen />
+                      <LineItemsCount>
+                        {CartQuantity}
+                      </LineItemsCount>
+                    </>
+                  )} />
+              </>
             )
           }
 
