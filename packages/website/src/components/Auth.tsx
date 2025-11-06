@@ -3,54 +3,11 @@ import { useSettingsContext } from '#contexts/SettingsContext'
 import type { ShoppableLocale } from '#i18n/locale'
 import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { getPersistKey } from '#utils/order'
-import { authenticate, getCoreApiBaseEndpoint } from '@commercelayer/js-auth'
-import type { AuthenticateOptions, AuthenticateReturn } from '@commercelayer/js-auth'
+import { makeSalesChannel, getCoreApiBaseEndpoint, type ApiCredentialsAuthorization } from '@commercelayer/js-auth'
 import { CommerceLayer, LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
 import type { DefaultChildrenType } from '@commercelayer/react-components/lib/esm/typings/globals'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-
-type Auth = {
-  accessToken: string
-  refreshToken?: string
-  expires?: number
-  tokenType: string
-}
-
-const getClientCredentials = (clientId: string, market: Market): AuthenticateOptions<'client_credentials'> => ({
-  clientId,
-  scope: `market:${market}`
-})
-
-const getAuth = (market: Market): Auth | null => {
-  const storeKey = getStoreKey(market)
-  return JSON.parse(localStorage.getItem(storeKey) || 'null')
-}
-
-const storeAuth = (market: Market, authReturn: Awaited<AuthenticateReturn<'client_credentials' | 'password'>>): Auth | null => {
-  if (!authReturn) {
-    return null
-  }
-
-  const storeKey = getStoreKey(market)
-
-  const auth: Auth = {
-    tokenType: authReturn.tokenType,
-    accessToken: authReturn.accessToken,
-    expires: authReturn.expires?.getTime(),
-    refreshToken: 'refreshToken' in authReturn ? authReturn.refreshToken : undefined
-  }
-
-  localStorage.setItem(storeKey, JSON.stringify(auth))
-
-  return auth
-}
-
-const getStoreKey = <M extends Market>(market: M): `clayer_token-market:${M}` => `clayer_token-market:${market}`
-
-const hasExpired = (time: number | undefined): boolean => time === undefined || time < Date.now()
-
-const isValid = (auth: Auth | null): auth is Auth => !hasExpired(auth?.expires)
+import { useRouter, type NextRouter } from 'next/router'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 type Props = {
   children: DefaultChildrenType
@@ -59,13 +16,28 @@ type Props = {
 
 type Market = number | `id:${string}` | `code:${string}`
 
-export const Auth: React.FC<Props> = ({ children, locale }) => {
+function removeAuthParamsAndReload(pathname: string, searchParams: URLSearchParams, router: NextRouter): void {
+  const authSearchParams = ['accessToken', 'scope', 'expires', 'refreshToken']
+  const hasAuthParams = authSearchParams.some(param => searchParams.has(param))
 
+  if (!hasAuthParams) {
+    return
+  }
+
+  const newSearchParams = new URLSearchParams(searchParams.toString())
+  authSearchParams.forEach(param => newSearchParams.delete(param))
+
+  const newParams = newSearchParams.toString()
+
+  router.push(`${pathname}${newParams !== '' ? `?${newParams}` : ''}`, undefined, { shallow: true })
+}
+
+export const Auth: React.FC<Props> = ({ children, locale }) => {
   const router = useRouter()
   const settings = useSettingsContext()
 
   const [market, setMarket] = useState<Market | undefined>(settings.locale?.isShoppable ? settings.locale?.country.market : undefined)
-  const [auth, setAuth] = useState<Auth | null>(null)
+  const [authorization, setAuthorization] = useState<ApiCredentialsAuthorization | null>(null)
 
   const clientId = process.env.NEXT_PUBLIC_CL_CLIENT_ID
 
@@ -75,59 +47,103 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
     }
   }, [settings.locale, market])
 
-  useEffect(function updateAccessToken() {
-    let isMounted = true
-
+  const salesChannel = useMemo(() => {
     if (market === undefined || clientId === undefined) {
-      setAuth(null)
-      return
+      return null
     }
 
-    const storedAuth: Auth | null = getAuth(market)
-    const authIsValid = isValid(storedAuth)
-
-    if (authIsValid) {
-      setAuth(storedAuth)
-    } else {
-      authenticate('client_credentials', getClientCredentials(clientId, market))
-        .then(authReturn => {
-          if (isMounted) {
-            setAuth(storeAuth(market, authReturn))
+    return makeSalesChannel(
+      {
+        clientId,
+        scope: `market:${market}`
+      },
+      {
+        storage: {
+          async getItem(key) {
+            return JSON.parse(localStorage.getItem(key) || 'null')
+          },
+          async setItem(key, value) {
+            localStorage.setItem(key, JSON.stringify(value))
+          },
+          async removeItem(key) {
+            localStorage.removeItem(key)
           }
+        }
+      }
+    )
+  }, [market, clientId])
+
+  useEffect(function updateAccessToken() {
+    let isMounted = true;
+
+    (async () => {
+      if (salesChannel == null) {
+        setAuthorization(null)
+        return
+      }
+
+      const [pathname, queryString] = router.asPath.split('?')
+      const searchParams = new URLSearchParams(queryString)
+
+      const paramAccessToken = searchParams.get('accessToken')
+      const paramScope = searchParams.get('scope')
+
+      if (paramAccessToken != null && paramScope != null) {
+        const refreshToken = searchParams.get('refreshToken')
+        await salesChannel.setCustomer({
+          accessToken: paramAccessToken,
+          scope: paramScope,
+          refreshToken: refreshToken ?? undefined
         })
-    }
+      }
+
+      const authorization = await salesChannel.getAuthorization()
+
+      if (isMounted) {
+        setAuthorization(authorization)
+      }
+
+      removeAuthParamsAndReload(pathname, searchParams, router)
+    })()
 
     return () => {
       isMounted = false
     }
-  }, [market, router.asPath, clientId])
+  }, [salesChannel, router.asPath])
 
-  if (!auth) {
-    return children
-    return (
-      <>
-        <CommerceLayer accessToken='' endpoint=''>
-          <OrderContainer>
-            <LineItemsContainer>
-              {children}
-            </LineItemsContainer>
-          </OrderContainer>
-        </CommerceLayer>
-      </>
-    )
+  const logoutCustomer = useCallback(async () => {
+    if (salesChannel) {
+      await salesChannel.logoutCustomer()
+      setAuthorization(await salesChannel.getAuthorization())
+    }
+  }, [salesChannel])
+
+  if (!authorization) {
+    return null
+    // return (
+    //   <>
+    //     <CommerceLayer accessToken='' endpoint=''>
+    //       <OrderContainer>
+    //         <LineItemsContainer>
+    //           {children}
+    //         </LineItemsContainer>
+    //       </OrderContainer>
+    //     </CommerceLayer>
+    //   </>
+    // )
   }
 
-  const endpoint = getCoreApiBaseEndpoint(auth.accessToken)
+  const endpoint = getCoreApiBaseEndpoint(authorization.accessToken)
   const { hostname } = new URL(endpoint)
   const [, organization, domain] = hostname.match(/^(.*).(commercelayer.(co|io))$/) || []
 
   const return_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${NEXT_PUBLIC_BASE_PATH}/${locale.code}` : undefined
-  const cart_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${NEXT_PUBLIC_BASE_PATH}/${locale.code}/cart` : undefined
+  const cart_url = typeof window !== 'undefined' ? `${window.location.protocol}//${window.location.host}${NEXT_PUBLIC_BASE_PATH}/${locale.code}?cl-cart--open` : undefined
 
   return (
-    <AuthProvider accessToken={auth.accessToken} endpoint={endpoint} organization={organization} domain={domain}>
-      <CommerceLayer accessToken={auth.accessToken} endpoint={endpoint}>
-        <OrderStorage persistKey={getPersistKey(locale)}>
+    <AuthProvider key={authorization.accessToken} logoutCustomer={logoutCustomer} authorization={authorization} endpoint={endpoint} organization={organization} domain={domain}>
+      <CommerceLayer accessToken={authorization.accessToken} endpoint={endpoint}>
+        <OrderStorage clearWhenPlaced persistKey={getPersistKey(authorization.accessToken, locale)}>
           <OrderContainer attributes={{
             language_code: locale.language.code,
             return_url,

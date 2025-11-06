@@ -34,8 +34,8 @@ export const Carousel: React.FC<Props> = ({ slides, options = {} }) => {
       {...options}
     >
       {
-        slides.map(Item => (
-          <SwiperSlide key={Item.key} className='select-none'>
+        slides.map((Item, index) => (
+          <SwiperSlide key={`${Item.key}-${index}`} className='select-none'>
             { Item }
           </SwiperSlide>
         ))
