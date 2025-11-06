@@ -1,7 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+@theme {
+  --font-sans: "Manrope", "ui-sans-serif", "sans-serif";
+  --color-brand: var(--color-primary)
+}
 
 @keyframes clWink {
   from {

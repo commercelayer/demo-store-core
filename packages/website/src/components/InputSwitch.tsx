@@ -1,5 +1,5 @@
 import type React from 'react'
-import styles from './InputSwitch.module.scss'
+import styles from './InputSwitch.module.css'
 
 type Props = React.JSX.IntrinsicElements['input'] & {
   

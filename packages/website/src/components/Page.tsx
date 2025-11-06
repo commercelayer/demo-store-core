@@ -1,5 +1,4 @@
 import { useSettingsContext } from '#contexts/SettingsContext'
-import { getRGBColor } from '#utils/css'
 import { NEXT_PUBLIC_BASE_PATH, SITE_URL } from '#utils/envs'
 import { switchLocale } from '#utils/locale'
 import { useI18n } from 'next-localization'
@@ -57,7 +56,7 @@ export const Page: React.FC<Props> = ({
         {canonical && <link rel='canonical' href={`${SITE_URL}/${router.query.locale}${canonical}`} />}
         <style>{`
           :root {
-            --color-primary: ${getRGBColor(settings.organization?.primary_color || '#666EFF')};
+            --color-primary: ${settings.organization?.primary_color || '#666EFF'};
           }
         `}</style>
 

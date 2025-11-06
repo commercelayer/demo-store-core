@@ -34,8 +34,8 @@ const CartQuantity: ChildrenFunction<{ quantity: number }> =  ({ quantity: propQ
 
   return (
     <div className={`absolute bottom-0 translate-x-1/3 right-0 w-4 h-4 transition-opacity ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-      <span className={`${isAnimating ? animation : ''} absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75`} onAnimationEnd={() => setIsAnimating(false)}></span>
-      <div className='absolute h-full w-full text-white bg-violet-400 rounded-full text-xxs flex items-center justify-center'>{quantity}</div>
+      <span className={`${isAnimating ? animation : ''} absolute inline-flex h-full w-full rounded-full bg-brand opacity-75`} onAnimationEnd={() => setIsAnimating(false)}></span>
+      <div className='absolute h-full w-full text-white bg-brand rounded-full text-[.5rem] flex items-center justify-center'>{quantity}</div>
     </div>
   )
 }
@@ -45,12 +45,12 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
   const settings = useSettingsContext()
 
   return (
-    <header className='border-b-gray-200 border-b pb-6 sticky top-0 bg-pageBackground z-50'>
+    <header className='border-b-gray-200  border-b pb-6 sticky top-0 bg-white z-50'>
       <nav className='flex items-center justify-between flex-wrap mb-4'>
         <div className='flex items-center flex-no-shrink text-white mr-6'>
           <Link href='/'><Logo /></Link>
         </div>
-        <div className='flex items-center w-auto flex-grow justify-end'>
+        <div className='flex items-center w-auto grow justify-end'>
           {/* <a className='block lg:inline-block mr-4 text-gray-300'><User /></a> */}
           {/* <a className='block lg:inline-block mr-4 text-gray-300'><HeartStraight /></a> */}
           {

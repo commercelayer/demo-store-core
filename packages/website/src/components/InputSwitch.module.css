@@ -1,4 +1,4 @@
-$brandColor: theme('colors.violet.400');
+@reference "tailwindcss";
 
 .switchInput {
   margin-top: 0.1rem;
@@ -7,8 +7,8 @@ $brandColor: theme('colors.violet.400');
   transition: background-position .15s ease-in-out;
 
   &:checked {
-    background-color: $brandColor;
-    border-color: $brandColor;
+    background-color: var(--color-brand);
+    border-color: var(--color-brand);
     background-position: 100%;
   }
 }

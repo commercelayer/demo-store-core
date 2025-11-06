@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react'
+import React, { useId, useMemo } from 'react'
 import { Keyboard, Mousewheel, Navigation, Pagination } from 'swiper/modules'
 // import 'swiper/css'
 // import 'swiper/css/navigation'
 // import 'swiper/css/pagination'
 import { Swiper, type SwiperProps, SwiperSlide } from 'swiper/react'
 
-import styles from './Carousel.module.scss'
+import styles from './Carousel.module.css'
 
 type Props = {
   slides: React.JSX.Element[]
@@ -13,7 +13,8 @@ type Props = {
 }
 
 export const Carousel: React.FC<Props> = ({ slides, options = {} }) => {
-  const keyToForceReRender = useMemo(() => Math.random() * slides.length, [slides])
+  const id = useId()
+  const keyToForceReRender = useMemo(() => `${id}${slides.length}`, [id, slides])
 
   return (
     <Swiper

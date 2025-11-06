@@ -29,7 +29,6 @@ module.exports = {
         DEFAULT: "var(--primary)",
         dark: "var(--primary-dark)",
       },
-      pageBackground: "#fff",
       contrast: "var(--contrast)",
       transparent: 'transparent',
       black: '#101111',

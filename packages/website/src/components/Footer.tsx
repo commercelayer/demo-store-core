@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
   }, [])
 
   return (
-    <div className='flex-grow py-8 lg:p-16 mt-24 bg-gray-50'>
+    <div className='grow py-8 lg:p-16 mt-24 bg-gray-50'>
       <Container>
 
         <div className='lg:flex items-center justify-between flex-wrap'>
@@ -54,7 +54,7 @@ export const Footer: React.FC = () => {
               <span className='flex items-center'>
                 <Globe className='mr-1.5' /> {settings.locale?.country?.name || i18n.t('general.international')}
               </span>
-              <Link locale='' className='uppercase text-violet-400 text-xs border-b border-gray-200 ml-3 mt-1'>
+              <Link locale='' className='uppercase text-brand text-xs border-b border-gray-200 ml-3 mt-1'>
                 {i18n.t('general.chooseCountry')}
               </Link>
             </div>
@@ -67,10 +67,12 @@ export const Footer: React.FC = () => {
                 <InputSelect
                   onChange={(event) => {
                     const languageCode = event.currentTarget.value
-                    delete router.query.facets
                     router.push({
                       query: {
-                        ...router.query,
+                        ...{
+                          ...router.query,
+                          facets: null
+                        },
                         locale: changeLanguage(router.query.locale, languageCode)
                       }
                     }, undefined, { scroll: false })
@@ -82,7 +84,7 @@ export const Footer: React.FC = () => {
           }
         </div>
 
-        <div className='mt-6 py-6 border-y border-y-gray-100 text-xs flex flex-col md:flex-row md:divide-x'>
+        <div className='mt-6 py-6 border-y border-y-gray-100 text-xs flex flex-col md:flex-row md:divide-x md:divide-gray-100'>
           <div className='py-2 md:py-0 md:pr-4'>
             <Link href='/shipping-and-payments'>Shipping & Payments</Link>
           </div>

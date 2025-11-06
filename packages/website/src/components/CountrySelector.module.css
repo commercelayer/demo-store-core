@@ -1,17 +1,17 @@
-$noAccordionBreakpoint: theme('screens.md');
+@reference "tailwindcss";
 
 .title {
   @apply py-12 pb-12 font-extrabold;
 
-  @media (min-width: $noAccordionBreakpoint) {
+  @media (min-width: theme('screens.md')) {
     @apply text-center;
   }
 }
 
 .countriesContainer {
-  @apply container mx-auto px-6 flex-grow;
+  @apply container mx-auto px-6 grow;
 
-  @media (min-width: $noAccordionBreakpoint) {
+  @media (min-width: theme('screens.md')) {
     @apply bg-no-repeat bg-center max-w-screen-2xl bg-contain px-24 pt-24;
 
     background-image: url('https://res.cloudinary.com/commercelayer/image/upload/f_auto,b_white/v1655471032/demo-store/assets/country-selector-background.jpg')
@@ -29,7 +29,7 @@ $noAccordionBreakpoint: theme('screens.md');
     }
   }
 
-  @media (min-width: $noAccordionBreakpoint) {
+  @media (min-width: theme('screens.md')) {
     @apply grid gap-12 border-b-0;
 
     .countryLink {

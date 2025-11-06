@@ -1,5 +1,5 @@
 import type React from 'react'
-import styles from './InputSelect.module.scss'
+import styles from './InputSelect.module.css'
 
 type Option = {
   value: string
