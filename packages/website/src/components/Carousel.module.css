@@ -1,4 +1,4 @@
-$mediumBreakpoint: theme('screens.md');
+@reference "tailwindcss";
 
 .carousel {
   --swiper-theme-color: theme('colors.black');
@@ -21,12 +21,12 @@ $mediumBreakpoint: theme('screens.md');
     --swiper-pagination-bullet-width: 20px;
   }
 
-  // :global(.swiper-button-disabled) {
-  //   @apply block
-  // }
+  /* :global(.swiper-button-disabled) {
+    @apply block
+  } */
 
   :global(.swiper-button-prev), :global(.swiper-button-next) {
-    @media (max-width: $mediumBreakpoint) {
+    @media (max-width: theme('screens.md')) {
       @apply hidden;
     }
   }

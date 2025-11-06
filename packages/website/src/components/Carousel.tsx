@@ -5,7 +5,7 @@ import { Keyboard, Mousewheel, Navigation, Pagination } from 'swiper/modules'
 // import 'swiper/css/pagination'
 import { Swiper, type SwiperProps, SwiperSlide } from 'swiper/react'
 
-import styles from './Carousel.module.scss'
+import styles from './Carousel.module.css'
 
 type Props = {
   slides: React.JSX.Element[]

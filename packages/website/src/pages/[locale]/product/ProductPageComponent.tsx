@@ -41,7 +41,7 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
           <Carousel slides={slides} />
         </div>
 
-        <div className='grow-0 shrink-1 basis-1/2'>
+        <div className='grow-0 shrink basis-1/2'>
           <h1 className='text-3xl mb-6'>{product.name}</h1>
 
           <div className='min-h-[30px]'>
@@ -58,7 +58,7 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
                 <AddToCartButton
                   skuCode={currentProduct?.sku}
                   label={i18n.t('general.addToCart')}
-                  className='block w-full mt-12 h-14 px-6 font-semibold rounded-md text-white bg-violet-400 disabled:bg-gray-300' />
+                  className='block w-full mt-12 h-14 px-6 font-semibold rounded-md text-white bg-brand disabled:bg-gray-300' />
 
                 <AvailabilityContainer skuCode={currentProduct?.sku}>
                   <AvailabilityTemplate className='mt-6' showShippingMethodName={true} showShippingMethodPrice={true} color={'blue'} timeFormat={'days'} />

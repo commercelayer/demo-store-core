@@ -7,7 +7,7 @@ import { groupByRegion } from '#utils/countries'
 import { makeLocaleCode } from '#utils/locale'
 import type { RawDataCountry, RawDataLanguage } from '@commercelayer/demo-store-types'
 import { useI18n } from 'next-localization'
-import styles from './CountrySelector.module.scss'
+import styles from './CountrySelector.module.css'
 
 export type Props = {
   languages: RawDataLanguage[]

@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import styles from './InputRange.module.scss'
+import styles from './InputRange.module.css'
 
 type Props = {
   defaultValue?: readonly [number, number]
