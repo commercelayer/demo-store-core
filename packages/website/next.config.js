@@ -20,12 +20,15 @@ const nextConfig = {
   // https://nextjs.org/docs/api-reference/next.config.js/basepath
   basePath: envs.NEXT_PUBLIC_BASE_PATH.length > 1 ? envs.NEXT_PUBLIC_BASE_PATH : undefined,
 
-  eslint: {
-    // https://nextjs.org/docs/basic-features/eslint#linting-custom-directories-and-files
-    dirs: ['src']
-  },
-
   env: envs,
+
+  // turbopack: {
+  //   resolveAlias: {
+  //     '#config': resolve(__dirname, envs.NEXT_PUBLIC_CONFIG_FOLDER),
+  //     aliasJsonData: resolve(__dirname, isSupportedUrl(envs.NEXT_PUBLIC_JSON_DATA_FOLDER) ? 'empty' : envs.NEXT_PUBLIC_JSON_DATA_FOLDER),
+  //     aliasLocalesData: resolve(__dirname, isSupportedUrl(envs.NEXT_PUBLIC_LOCALES_DATA_FOLDER) ? 'empty' : envs.NEXT_PUBLIC_LOCALES_DATA_FOLDER),
+  //   },
+  // },
 
   webpack(config) {
     config.module.rules.push({

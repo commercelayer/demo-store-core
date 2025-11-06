@@ -101,9 +101,9 @@ export const CatalogProvider: React.FC<Props> = ({ children, products: initialPr
   }, [initialProducts])
 
   useEffect(function manageOnRouterChange() {
-    if (typeof router.query.facets === 'string') {
+    if (typeof router.query.facets === 'string' && router.query.facets !== '') {
       try {
-        setSelectedFacets(JSON.parse(router.query.facets))
+        setSelectedFacets(JSON.parse(router.query.facets ?? '{}'))
       } catch (e) {
         setSelectedFacets({})
 

@@ -101,7 +101,7 @@ describe('translateField', () => {
       }
     }
 
-    expect(() => translateField(item, 'localizedField', 'fr-CN')).toThrowError(
+    expect(() => translateField(item, 'localizedField', 'fr-CN')).toThrow(
       [
         `Missing translation for attribute "localizedField".`,
         `Locale: "fr-CN"`,

@@ -35,7 +35,7 @@ test('should throw an error when not locales are passed', () => {
       { params: { pid: '1' } },
       { params: { pid: '2' } }
     ]
-  }, [])).rejects.toThrowError(new Error('At least one Locale is mandatory!'))
+  }, [])).rejects.toThrow(new Error('At least one Locale is mandatory!'))
 })
 
 test('should add all given locales without any other param when "paths" is empty', async () => {

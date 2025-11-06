@@ -199,7 +199,7 @@ test('should trigger onRelease when range changes and mouseUp event is triggered
     fireEvent.change(rangeInput1, { target: { value: '50' } })
   })
 
-  expect(onRelease).not.toBeCalled()
+  expect(onRelease).not.toHaveBeenCalled()
 
   act(() => {
     fireEvent.mouseUp(rangeInput1)
@@ -214,7 +214,7 @@ test('should trigger onRelease when range changes and mouseUp event is triggered
     fireEvent.mouseUp(rangeInput2)
   })
 
-  expect(onRelease).toBeCalledTimes(2)
+  expect(onRelease).toHaveBeenCalledTimes(2)
   expect(onRelease.mock.calls[0][0]).toStrictEqual([50, 90])
   expect(onRelease.mock.calls[1][0]).toStrictEqual([50, 80])
 })
@@ -231,7 +231,7 @@ test('should trigger onRelease when range changes and keyUp event is triggered',
     fireEvent.change(rangeInput1, { target: { value: '20' } })
   })
 
-  expect(onRelease).not.toBeCalled()
+  expect(onRelease).not.toHaveBeenCalled()
 
   act(() => {
     fireEvent.keyUp(rangeInput1)
@@ -246,7 +246,7 @@ test('should trigger onRelease when range changes and keyUp event is triggered',
     fireEvent.keyUp(rangeInput2)
   })
 
-  expect(onRelease).toBeCalledTimes(2)
+  expect(onRelease).toHaveBeenCalledTimes(2)
   expect(onRelease.mock.calls[0][0]).toStrictEqual([20, 90])
   expect(onRelease.mock.calls[1][0]).toStrictEqual([20, 76])
 })
@@ -263,7 +263,7 @@ test('should trigger onRelease when range changes and touchEnd event is triggere
     fireEvent.change(rangeInput1, { target: { value: '34' } })
   })
 
-  expect(onRelease).not.toBeCalled()
+  expect(onRelease).not.toHaveBeenCalled()
 
   act(() => {
     fireEvent.touchEnd(rangeInput1)
@@ -278,7 +278,7 @@ test('should trigger onRelease when range changes and touchEnd event is triggere
     fireEvent.touchEnd(rangeInput2)
   })
 
-  expect(onRelease).toBeCalledTimes(2)
+  expect(onRelease).toHaveBeenCalledTimes(2)
   expect(onRelease.mock.calls[0][0]).toStrictEqual([34, 90])
   expect(onRelease.mock.calls[1][0]).toStrictEqual([34, 71])
 })

@@ -54,7 +54,7 @@ test('"sort" should show a console.error when there are no matching patterns', (
     '8.5',
   ])
 
-  expect(console.error).toBeCalledWith('No matching pattern for "NO PATTERN FOR THIS!"')
+  expect(console.error).toHaveBeenCalledWith('No matching pattern for "NO PATTERN FOR THIS!"')
 })
 
 test('"sort" should sort an array of strings given a complex SortOrder object', () => {
@@ -78,7 +78,7 @@ test('"sort" should sort an array of strings given a complex SortOrder object', 
     'XXS',
   ], sortingRules)
 
-  expect(console.error).not.toBeCalled()
+  expect(console.error).not.toHaveBeenCalled()
 
   expect(sorted).toMatchObject([
     'One Size',

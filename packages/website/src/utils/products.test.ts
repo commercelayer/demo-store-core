@@ -36,7 +36,7 @@ describe('getProductWithVariants', () => {
   })
 
   it('should throws an error when the "code" is not found', () => {
-    expect(() => getProductWithVariants('ABCD', 'en', productsJson)).toThrowError()
+    expect(() => getProductWithVariants('ABCD', 'en', productsJson)).toThrow()
   })
 
   it('should returns the variants for the provived Product', () => {
@@ -73,7 +73,7 @@ describe('getProductWithVariants', () => {
 
   it('should throw an error when generating variant object of a product that have an invalid field (not a string)', () => {
     expect(() => getProductWithVariants('ABCD-INVALID-VARIANT-TYPE', 'it', productsJson))
-      .toThrowError('The variant property "color" for the product ABCD-INVALID-VARIANT-TYPE must be a string. Found ["000000"].')
+      .toThrow('The variant property "color" for the product ABCD-INVALID-VARIANT-TYPE must be a string. Found ["000000"].')
   })
 })
 
