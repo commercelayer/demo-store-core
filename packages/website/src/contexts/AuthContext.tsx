@@ -1,7 +1,9 @@
+import type { ApiCredentialsAuthorization } from '@commercelayer/js-auth'
 import { createContext, useContext } from 'react'
 
 type Context = {
-  accessToken: string
+  authorization: ApiCredentialsAuthorization
+  logoutCustomer: () => Promise<void>
   domain: string
   endpoint: string
   organization: string

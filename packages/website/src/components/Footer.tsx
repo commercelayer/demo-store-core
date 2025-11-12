@@ -97,6 +97,9 @@ export const Footer: React.FC = () => {
           <div className='py-2 md:py-0 md:px-4'>
             <Link href='/cookies-and-privacy'>Cookies and privacy</Link>
           </div>
+          <div className='py-2 md:py-0 md:px-4'>
+            <a target='_blank' href='https://github.com/commercelayer/demo-store'>Create your own</a>
+          </div>
         </div>
 
         <div className='mt-12 flex justify-between items-center flex-col gap-6 md:flex-row'>

@@ -200,7 +200,7 @@ function useCatalog(initialProducts: LocalizedProductWithVariant[]) {
 }
 
 function useCommerceLayerAvailability(initialProducts: LocalizedProductWithVariant[]) {
-  const { accessToken, domain, organization } = useAuthContext()
+  const { authorization, domain, organization } = useAuthContext()
 
   const [latestInitialProducts, setLatestInitialProducts] = useState(initialProducts)
   const [products, setProducts] = useState(initialProducts)
@@ -213,11 +213,11 @@ function useCommerceLayerAvailability(initialProducts: LocalizedProductWithVaria
   useEffect(() => {
     let isMounted = true
 
-    if (!accessToken || !domain || !organization) {
+    if (!authorization?.accessToken || !domain || !organization) {
       return
     }
 
-    const client = CommerceLayer({ accessToken, organization, domain })
+    const client = CommerceLayer({ accessToken: authorization.accessToken, organization, domain })
 
     mapWithAvailability(
       client,
@@ -232,7 +232,7 @@ function useCommerceLayerAvailability(initialProducts: LocalizedProductWithVaria
     return () => {
       isMounted = false
     }
-  }, [accessToken, domain, organization, initialProducts])
+  }, [authorization?.accessToken, domain, organization, initialProducts])
 
   return {
     products: hasChanged ? initialProducts : products
@@ -241,7 +241,7 @@ function useCommerceLayerAvailability(initialProducts: LocalizedProductWithVaria
 
 
 function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
-  const { accessToken, domain, organization } = useAuthContext()
+  const { authorization, domain, organization } = useAuthContext()
 
   const [latestInitialProducts, setLatestInitialProducts] = useState(initialProducts)
   const [products, setProducts] = useState(initialProducts)
@@ -254,11 +254,11 @@ function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
   useEffect(() => {
     let isMounted = true
 
-    if (!accessToken || !domain || !organization) {
+    if (!authorization?.accessToken || !domain || !organization) {
       return
     }
 
-    const client = CommerceLayer({ accessToken, organization, domain })
+    const client = CommerceLayer({ accessToken: authorization.accessToken, organization, domain })
 
     mapWithPrice(
       client,
@@ -273,7 +273,7 @@ function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
     return () => {
       isMounted = false
     }
-  }, [accessToken, domain, organization, initialProducts])
+  }, [authorization?.accessToken, domain, organization, initialProducts])
 
   return {
     products: hasChanged ? initialProducts : products,

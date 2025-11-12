@@ -22,7 +22,7 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
   const i18n = useI18n()
   const [currentProduct, setCurrentProduct] = useState<LocalizedProduct>()
 
-  const auth = useAuthContext()
+  const { authorization } = useAuthContext()
   const settings = useSettingsContext()
 
   const slides = useMemo(() => product.images.map(image => <img key={image} src={image} alt={product.name} className='w-full' />), [product])
@@ -53,16 +53,18 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
           <VariantSelector product={product} onChange={setCurrentProduct} />
 
           {
-            settings.locale?.isShoppable && auth.accessToken && (
+            settings.locale?.isShoppable && authorization?.accessToken && (
               <>
                 <AddToCartButton
                   skuCode={currentProduct?.sku}
                   label={i18n.t('general.addToCart')}
-                  className='block w-full mt-12 h-14 px-6 font-semibold rounded-md text-white bg-brand disabled:bg-gray-300' />
+                  className='block w-full mt-12 h-14 px-6 font-semibold rounded-md text-white bg-brand disabled:bg-gray-300 cursor-pointer' />
 
-                <AvailabilityContainer skuCode={currentProduct?.sku}>
-                  <AvailabilityTemplate className='mt-6' showShippingMethodName={true} showShippingMethodPrice={true} color={'blue'} timeFormat={'days'} />
-                </AvailabilityContainer>
+                <div className='mt-4'>
+                  <AvailabilityContainer skuCode={currentProduct?.sku}>
+                    <AvailabilityTemplate showShippingMethodName={true} showShippingMethodPrice={true} color={'blue'} timeFormat={'days'} />
+                  </AvailabilityContainer>
+                </div>
               </>
             )
           }

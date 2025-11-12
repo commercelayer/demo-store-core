@@ -37,7 +37,7 @@ exports[`CustomPage component 1`] = `
             </a>
           </div>
           <div
-            class="flex items-center w-auto grow justify-end"
+            class="flex gap-4 items-center w-auto grow justify-end"
           />
         </nav>
         <div
@@ -341,6 +341,16 @@ exports[`CustomPage component 1`] = `
               href="/en-US/cookies-and-privacy"
             >
               Cookies and privacy
+            </a>
+          </div>
+          <div
+            class="py-2 md:py-0 md:px-4"
+          >
+            <a
+              href="https://github.com/commercelayer/demo-store"
+              target="_blank"
+            >
+              Create your own
             </a>
           </div>
         </div>
