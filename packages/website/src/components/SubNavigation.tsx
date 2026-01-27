@@ -12,19 +12,19 @@ const NavLink: React.FC<{ link: NavigationLink, active: NavigationLink, level: n
 
   return (
     <div>
-      <Link href={link.href} className={`block mx-2 py-3 px-3 border-b border-b-gray-100 tracking-wide transition-colors ${active.key === link.key ? 'bg-black text-white' : 'bg-transparent text-gray-500'}`}>
-        {level === 1 ? <span className='uppercase'>{i18n.t('general.all') }</span> : link.text}
+      <Link href={link.href} style={{ paddingLeft: `${(level > 2 ? level * 8 : 12)}px` }} className={`block mx-2 py-3 px-3 border-b border-b-gray-100 tracking-wide transition-colors ${active.key === link.key ? 'bg-black text-white' : 'bg-transparent text-gray-500'}`}>
+        {level === 1 ? <span className='uppercase'>{i18n.t('general.all')}</span> : link.text}
       </Link>
       {
         link.children?.map(subLink => (
-          <NavLink key={subLink.key} link={subLink} active={active} level={++level} />
+          <NavLink key={subLink.key} link={subLink} active={active} level={level + 1} />
         ))
       }
     </div>
   )
 }
 
-export const SubNavigation: React.FC<Props> = ({ className , subNavigation: { current, path: children }, ...props }) => {
+export const SubNavigation: React.FC<Props> = ({ className, subNavigation: { current, path: children }, ...props }) => {
   return (
     <nav className={className} {...props}>
       {
