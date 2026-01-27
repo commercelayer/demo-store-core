@@ -67,7 +67,7 @@ const getNavigationChildren = (foundTaxon: DeepFindResult<Taxon>, index: number,
     href: getSearchUrl({ slug: taxon.slug }),
     text: taxon.label,
     description: taxon.description,
-    children: getNavigationChildren(foundTaxon, ++index, taxon)
+    children: getNavigationChildren(foundTaxon, index + 1, taxon)
   })) : []
 }
 
