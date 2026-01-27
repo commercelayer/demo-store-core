@@ -8,6 +8,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v5
@@ -16,7 +20,11 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 22.x
+          registry-url: https://registry.npmjs.org
           cache: 'npm'
+
+      - name: Update npm 📦
+        run: npm install -g npm@latest
 
       - name: Install 📦
         run: npm ci
@@ -26,19 +34,11 @@ jobs:
 
       - name: Publish 🚀 PRERELEASE
         if: 'github.event.release.prerelease'
-        run: |
-          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-          ./node_modules/.bin/lerna publish from-git --dist-tag next --require-scripts --yes
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: ./node_modules/.bin/lerna publish from-git --dist-tag next --require-scripts --yes
 
       - name: Publish 🚀 PRODUCTION
         if: '!github.event.release.prerelease'
-        run: |
-          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-          ./node_modules/.bin/lerna publish from-git --require-scripts --yes
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: ./node_modules/.bin/lerna publish from-git --require-scripts --yes
 
       - name: Post to a Slack channel
         id: slack

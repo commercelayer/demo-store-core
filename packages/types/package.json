@@ -2,6 +2,10 @@
   "name": "@commercelayer/demo-store-types",
   "version": "5.2.0",
   "description": "Demo Store types",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commercelayer/demo-store-core"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -23,6 +27,7 @@
   },
   "license": "MIT",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }
