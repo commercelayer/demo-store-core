@@ -10,6 +10,7 @@ type Application = {
   endpoint: string;
   organization: string;
   slug: string;
+  domain: string;
 }
 
 export const getCurrentApplicationInfo = (): Application => {
@@ -26,6 +27,7 @@ export const getCurrentApplicationInfo = (): Application => {
     endpoint: (applicationInfo.match(/"baseUrl": "(.*)"/) || [])[1],
     organization: (applicationInfo.match(/"organization": "(.*)"/) || [])[1],
     slug: (applicationInfo.match(/"slug": "(.*)"/) || [])[1],
+    domain: (applicationInfo.match(/"domain": "(.*)"/) || [])[1],
   }
 }
 
@@ -38,6 +40,7 @@ export const createCommerceLayerClient = async (application: Application) => {
     scope: 'market:all',
     clientId: application.clientId,
     clientSecret: application.clientSecret,
+    domain: application.domain
   })
 
   if (!integrationToken) {
