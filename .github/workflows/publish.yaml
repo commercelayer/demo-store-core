@@ -34,11 +34,11 @@ jobs:
 
       - name: Publish 🚀 PRERELEASE
         if: 'github.event.release.prerelease'
-        run: ./node_modules/.bin/lerna publish from-git --dist-tag next --require-scripts --yes
+        run: npm run lerna -- publish from-git --dist-tag next --require-scripts --yes
 
       - name: Publish 🚀 PRODUCTION
         if: '!github.event.release.prerelease'
-        run: ./node_modules/.bin/lerna publish from-git --require-scripts --yes
+        run: npm run lerna -- publish from-git --require-scripts --yes
 
       - name: Post to a Slack channel
         id: slack

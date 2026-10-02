@@ -5,9 +5,10 @@ import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { getPersistKey } from '#utils/order'
 import { makeSalesChannel, getCoreApiBaseEndpoint, type ApiCredentialsAuthorization } from '@commercelayer/js-auth'
 import { CommerceLayer, LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
-import type { DefaultChildrenType } from '@commercelayer/react-components/lib/esm/typings/globals'
 import { useRouter, type NextRouter } from 'next/router'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState, type JSX } from 'react'
+
+type DefaultChildrenType = JSX.Element[] | JSX.Element | null
 
 type Props = {
   children: DefaultChildrenType

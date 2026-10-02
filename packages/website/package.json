@@ -12,7 +12,7 @@
     "local:build": "dotenv -c local npm run build",
     "local:start": "npm start",
     "local:serve": "npx serve out",
-    "lint": "npm exec eslint ./src/",
+    "lint": "eslint ./src/ --fix",
     "ts:check": "tsc --noEmit && npm run test:data",
     "test:data": "node data/runTestData.js",
     "test": "jest --testPathIgnorePatterns ./data",

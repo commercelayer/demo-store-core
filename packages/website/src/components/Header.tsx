@@ -10,11 +10,12 @@ import { CartLink, CustomerContainer, LineItemsCount } from '@commercelayer/reac
 import { HostedCart } from '@commercelayer/react-components/orders/HostedCart'
 import { MyAccountLink } from '@commercelayer/react-components/customers/MyAccountLink'
 import { MyIdentityLink } from '@commercelayer/react-components/customers/MyIdentityLink'
-import type { ChildrenFunction } from '@commercelayer/react-components/lib/esm/typings'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type JSX } from 'react'
 import { jwtDecode, jwtIsSalesChannel } from '@commercelayer/js-auth'
 import { useRouter } from 'next/router'
 
+
+type ChildrenFunction<P> = (props: P) => JSX.Element | null
 
 export type HeaderProps = Partial<NavigationProps>
 
