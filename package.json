@@ -14,18 +14,18 @@
     "dep:upgrade:major": "npx --workspaces npm-check-updates -u",
     "dep:upgrade:minor": "npm run dep:upgrade:major -- --target minor",
     "ls-engines": "npx ls-engines",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lerna": "npx --yes lerna@10.0.1"
   },
   "workspaces": [
     "packages/*"
   ],
   "license": "MIT",
   "devDependencies": {
-    "husky": "^9.0.11",
-    "lerna": "^9.0.3"
+    "husky": "^9.0.11"
   },
   "engines": {
-    "node": ">= 20.9",
+    "node": ">= 22.13",
     "npm": ">= 9.6"
   }
 }
