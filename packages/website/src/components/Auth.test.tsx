@@ -1,6 +1,6 @@
 import { useAuthContext } from '#contexts/AuthContext'
 import { SettingsProvider } from '#contexts/SettingsContext'
-import CommerceLayerContext from '../../../../node_modules/@commercelayer/react-components/lib/cjs/context/CommerceLayerContext'
+import CommerceLayerContext from '@commercelayer/react-components/context/CommerceLayerContext'
 import { act, render } from '@testing-library/react'
 import { createLocale, createOrganization, createRouter } from 'jest.helpers'
 import { useContext } from 'react'
