@@ -1,6 +1,6 @@
 {
   "name": "@commercelayer/demo-store-website",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "This Demo Store is a completely static ecommerce solution (with SSR capability) powered by Commerce Layer.",
   "private": true,
   "scripts": {
