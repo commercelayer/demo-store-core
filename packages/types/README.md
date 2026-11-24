@@ -102,7 +102,7 @@ node runTestData.js
 
 ## Example
 
-Here below you can find a working example with Node.js 18 that converts a list of products coming from an external service, to the Demo Store `products.json`.
+Here below you can find a working example with Node.js 22 or later that converts a list of products coming from an external service, to the Demo Store `products.json`.
 
 Setup a new project from scratch:
 

@@ -24,13 +24,13 @@ type RawDataPageSchema = z.ZodObject<{
   description: z.ZodOptional<z.ZodString>
 
   /** List of page components */
-  components: z.ZodArray<z.ZodDiscriminatedUnion<'type', [
+  components: z.ZodArray<z.ZodDiscriminatedUnion<[
     CarouselSchema,
     GridSchema,
     HeroSchema,
     ProductGridSchema,
     MarkdownSchema
-  ]>>
+  ], 'type'>>
 }>
 
 export const rawDataPage_schema: RawDataPageSchema = z.object({
@@ -49,13 +49,7 @@ type RawDataLocalizedPageSchema = LocalizedFieldSchema<RawDataPageSchema>
 
 const rawDataLocalizedPage_schema: RawDataLocalizedPageSchema = localizedFieldSchema(rawDataPage_schema)
 
-type PagesSchema<T extends z.ZodTypeAny> = z.ZodObject<
-  {},
-  "strip",
-  T,
-  { [urlSlug: string]: z.infer<T> },
-  { [urlSlug: string]: z.infer<T> }
->
+type PagesSchema<T extends z.ZodType> = z.ZodObject<{}, z.core.$catchall<T>>
 
 type RawDataPagesSchema = PagesSchema<RawDataLocalizedPageSchema>
 

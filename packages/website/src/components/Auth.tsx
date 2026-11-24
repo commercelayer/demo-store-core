@@ -4,7 +4,7 @@ import type { ShoppableLocale } from '#i18n/locale'
 import { NEXT_PUBLIC_BASE_PATH } from '#utils/envs'
 import { getPersistKey } from '#utils/order'
 import { makeSalesChannel, getCoreApiBaseEndpoint, type ApiCredentialsAuthorization } from '@commercelayer/js-auth'
-import { CommerceLayer, LineItemsContainer, OrderContainer, OrderStorage } from '@commercelayer/react-components'
+import { CommerceLayer, LineItems, Order, OrderStorage } from '@commercelayer/react-components'
 import { useRouter, type NextRouter } from 'next/router'
 import { useCallback, useEffect, useMemo, useState, type JSX } from 'react'
 
@@ -143,17 +143,17 @@ export const Auth: React.FC<Props> = ({ children, locale }) => {
 
   return (
     <AuthProvider key={authorization.accessToken} logoutCustomer={logoutCustomer} authorization={authorization} endpoint={endpoint} organization={organization} domain={domain}>
-      <CommerceLayer accessToken={authorization.accessToken} endpoint={endpoint}>
+      <CommerceLayer accessToken={authorization.accessToken}>
         <OrderStorage clearWhenPlaced persistKey={getPersistKey(authorization.accessToken, locale)}>
-          <OrderContainer attributes={{
+          <Order attributes={{
             language_code: locale.language.code,
             return_url,
             cart_url
           }}>
-            <LineItemsContainer>
+            <LineItems>
               {children}
-            </LineItemsContainer>
-          </OrderContainer>
+            </LineItems>
+          </Order>
         </OrderStorage>
       </CommerceLayer>
     </AuthProvider>

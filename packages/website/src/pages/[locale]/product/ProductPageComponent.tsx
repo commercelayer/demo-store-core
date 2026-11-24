@@ -8,7 +8,7 @@ import { useAuthContext } from '#contexts/AuthContext'
 import { useSettingsContext } from '#contexts/SettingsContext'
 import type { LocalizedProduct, LocalizedProductWithVariant } from '#utils/products'
 import { getProductUrl } from '#utils/url'
-import { AddToCartButton, AvailabilityContainer, AvailabilityTemplate } from '@commercelayer/react-components'
+import { AddToCartButton, Availability, AvailabilityTemplate } from '@commercelayer/react-components'
 import type { NextPage } from 'next'
 import { useI18n } from 'next-localization'
 import { useMemo, useState } from 'react'
@@ -61,9 +61,9 @@ export const ProductPageComponent: NextPage<Props> = ({ navigation: links, produ
                   className='block w-full mt-12 h-14 px-6 font-semibold rounded-md text-white bg-brand disabled:bg-gray-300 cursor-pointer' />
 
                 <div className='mt-4'>
-                  <AvailabilityContainer skuCode={currentProduct?.sku}>
+                  <Availability skuCode={currentProduct?.sku}>
                     <AvailabilityTemplate showShippingMethodName={true} showShippingMethodPrice={true} color={'blue'} timeFormat={'days'} />
-                  </AvailabilityContainer>
+                  </Availability>
                 </div>
               </>
             )

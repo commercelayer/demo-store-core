@@ -1,5 +1,5 @@
 import { authenticate } from '@commercelayer/js-auth'
-import CommerceLayer from '@commercelayer/sdk'
+import { CommerceLayer } from '@commercelayer/sdk'
 import { execSync } from 'child_process'
 
 type Application = {
@@ -49,6 +49,7 @@ export const createCommerceLayerClient = async (application: Application) => {
 
   return CommerceLayer({
     organization: application.slug,
-    accessToken: integrationToken.accessToken
+    accessToken: integrationToken.accessToken,
+    apiVersion: '2026-05'
   })
 }

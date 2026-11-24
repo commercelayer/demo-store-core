@@ -6,10 +6,7 @@ import { Search } from '#components/Search'
 import { useAuthContext } from '#contexts/AuthContext'
 import { useSettingsContext } from '#contexts/SettingsContext'
 import { Link } from '#i18n/Link'
-import { CartLink, CustomerContainer, LineItemsCount } from '@commercelayer/react-components'
-import { HostedCart } from '@commercelayer/react-components/orders/HostedCart'
-import { MyAccountLink } from '@commercelayer/react-components/customers/MyAccountLink'
-import { MyIdentityLink } from '@commercelayer/react-components/customers/MyIdentityLink'
+import { CartLink, Customer, HostedCart, LineItemsCount, MyAccountLink, MyIdentityLink } from '@commercelayer/react-components'
 import { useEffect, useState, type JSX } from 'react'
 import { jwtDecode, jwtIsSalesChannel } from '@commercelayer/js-auth'
 import { useRouter } from 'next/router'
@@ -59,15 +56,9 @@ const CustomerLink: React.FC = () => {
   }
 
   if (decodedToken.payload.owner?.type === 'Customer') {
-    const returnUrlLink = typeof window !== 'undefined' ? window.location.href : undefined
-    let returnUrl = returnUrlLink ? `&returnUrl=${returnUrlLink}` : ''
-    returnUrl = ''
-
     return (
       <>
-        <MyAccountLink className='text-brand hover:underline' target={returnUrl === '' ? '_blank' : undefined}>
-          {({ href, label, ...props }) => <a {...props} href={`${href}${returnUrl}`}>My Account</a>}
-        </MyAccountLink>
+        <MyAccountLink className='text-brand hover:underline' target='_blank' label='My Account' />
         <button className='text-brand hover:underline cursor-pointer' onClick={() => { logoutCustomer?.() }}>Logout</button>
       </>
     )
@@ -107,9 +98,13 @@ export const Header: React.FC<HeaderProps> = ({ navigation }) => {
           <Link href='/'><Logo /></Link>
         </div>
         <div className='flex gap-4 items-center w-auto grow justify-end'>
-          <CustomerContainer isGuest={authorization?.ownerType == null || authorization.ownerType === 'guest'}>
-            <CustomerLink />
-          </CustomerContainer>
+          {
+            authorization?.accessToken && (
+              <Customer isGuest={authorization.ownerType == null || authorization.ownerType === 'guest'}>
+                <CustomerLink />
+              </Customer>
+            )
+          }
           {
             settings.locale?.isShoppable && authorization?.accessToken && (
               <>

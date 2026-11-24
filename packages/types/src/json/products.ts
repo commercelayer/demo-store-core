@@ -67,7 +67,7 @@ type RawDataProductSchema = z.ZodObject<{
    * It should always start with a forward slash (`/`).
    * @example "/white-apron-with-black-logo/APRONXXXFFFFFF000000XXXX"
    */
-  slug: z.ZodEffects<z.ZodString>
+  slug: z.ZodPipe<z.ZodString, z.ZodTransform<string, string>>
 
   /**
    * The localized product name
@@ -132,7 +132,7 @@ const rawDataProduct_schema: RawDataProductSchema = z.object({
   details: detail_schema.array().optional()
 })
 
-export const rawDataProducts_schema = rawDataProduct_schema.passthrough().array()
+export const rawDataProducts_schema = rawDataProduct_schema.loose().array()
 
 /**
  * Product
