@@ -1,7 +1,7 @@
 import { Link } from '#i18n/Link'
 import type { LocalizedProductWithVariant } from '#utils/products'
 import { getProductUrl } from '#utils/url'
-import { Price as CLPrice, PricesContainer as CLPricesContainer } from '@commercelayer/react-components'
+import { Price as CLPrice } from '@commercelayer/react-components'
 import { Price } from './Price'
 
 type Props = {
@@ -20,15 +20,13 @@ export const ProductCard: React.FC<Props> = ({ product, useCommerceLayer = true 
         <div className='mt-2 min-h-[1.6rem]'>
           {
             useCommerceLayer ? (
-              <CLPricesContainer skuCode={product.sku}>
-                <CLPrice>
-                  {
-                    ({ prices }) => (
-                      prices[0] ? <Price price={prices[0]} /> : null
-                    )
-                  }
-                </CLPrice>
-              </CLPricesContainer>
+              <CLPrice skuCode={product.sku}>
+                {
+                  ({ prices }) => (
+                    prices[0] ? <Price price={prices[0]} /> : null
+                  )
+                }
+              </CLPrice>
             ) : (
               product.price && <Price price={product.price} />
             )

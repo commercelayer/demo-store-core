@@ -1,9 +1,8 @@
 import { useAuthContext } from '#contexts/AuthContext'
 import { SettingsProvider } from '#contexts/SettingsContext'
-import CommerceLayerContext from '@commercelayer/react-components/context/CommerceLayerContext'
+import { useCommerceLayer } from '@commercelayer/react-components'
 import { act, render } from '@testing-library/react'
 import { createLocale, createOrganization, createRouter } from 'jest.helpers'
-import { useContext } from 'react'
 import { Auth } from './Auth'
 
 global.fetch = jest.fn(() =>
@@ -25,13 +24,12 @@ beforeEach(() => {
 })
 
 const ContextTester = () => {
-  const { accessToken: clAccessToken, endpoint: clEndpoint } = useContext(CommerceLayerContext)
+  const { accessToken: clAccessToken } = useCommerceLayer()
   const { endpoint, organization, domain } = useAuthContext()
 
   return (
     <>
       <div data-testid="clAccessToken">clAccessToken: {clAccessToken}</div>
-      <div data-testid="clEndpoint">clEndpoint: {clEndpoint}</div>
       <div data-testid="accessToken">accessToken: {accessToken}</div>
       <div data-testid="endpoint">endpoint: {endpoint}</div>
       <div data-testid="organization">organization: {organization}</div>

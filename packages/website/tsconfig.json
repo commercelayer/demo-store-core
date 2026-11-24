@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES2017",
     "lib": [
       "dom",
       "dom.iterable",
@@ -21,33 +21,35 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "baseUrl": ".",
     "verbatimModuleSyntax": true,
     "noUncheckedIndexedAccess": false,
     "types": [
       "@testing-library/jest-dom"
     ],
     "paths": {
+      "*": [
+        "./*"
+      ],
       "#assets/*": [
-        "src/assets/*"
+        "./src/assets/*"
       ],
       "#components/*": [
-        "src/components/*"
+        "./src/components/*"
       ],
       "#data/*": [
-        "data/*"
+        "./data/*"
       ],
       "#i18n/*": [
-        "src/i18n/*"
+        "./src/i18n/*"
       ],
       "#utils/*": [
-        "src/utils/*"
+        "./src/utils/*"
       ],
       "#contexts/*": [
-        "src/contexts/*"
+        "./src/contexts/*"
       ],
       "#__mocks__/*": [
-        "__mocks__/*"
+        "./__mocks__/*"
       ]
     }
   },

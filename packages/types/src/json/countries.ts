@@ -27,7 +27,7 @@ type RawDataCountrySchema = z.ZodObject<{
    * @example "id:vlGRmhpEeg"
    * @example "code:europe"
    */
-  market: z.ZodOptional<z.ZodType<`id:${string}` | `code:${string}`, z.ZodTypeDef, `id:${string}` | `code:${string}`>>
+  market: z.ZodOptional<z.ZodCustom<`id:${string}` | `code:${string}`>>
 
   /**
    * Reference to the `catalogs` id

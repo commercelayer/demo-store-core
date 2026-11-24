@@ -46,7 +46,7 @@ type RawDataTaxonSchema = z.ZodObject<{
    * It should always start with a forward slash (`/`).
    * @example "/clothing/shirts"
    */
-  slug: z.ZodEffects<z.ZodString>
+  slug: z.ZodPipe<z.ZodString, z.ZodTransform<string, string>>
 
   /**
    * The list of `products` SKUs

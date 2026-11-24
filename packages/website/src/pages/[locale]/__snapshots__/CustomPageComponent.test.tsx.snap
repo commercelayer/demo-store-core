@@ -216,7 +216,7 @@ exports[`CustomPage component 1`] = `
                 class="swiper-navigation-icon"
                 fill="none"
                 height="20"
-                viewBox="0 0 11 20"
+                viewBox="0 0.28 11 20"
                 width="11"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -233,7 +233,7 @@ exports[`CustomPage component 1`] = `
                 class="swiper-navigation-icon"
                 fill="none"
                 height="20"
-                viewBox="0 0 11 20"
+                viewBox="0 0.28 11 20"
                 width="11"
                 xmlns="http://www.w3.org/2000/svg"
               >

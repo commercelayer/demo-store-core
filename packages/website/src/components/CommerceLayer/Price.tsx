@@ -1,4 +1,4 @@
-import { PricesContainer as CLPricesContainer, Price as CLPrice } from '@commercelayer/react-components'
+import { Price as CLPrice } from '@commercelayer/react-components'
 import { Price as PriceComponent } from '#components/Price'
 
 type Props = React.JSX.IntrinsicElements['div'] & {
@@ -7,20 +7,18 @@ type Props = React.JSX.IntrinsicElements['div'] & {
 
 export const Price: React.FC<Props> = ({ code, className = '', ...props }) => {
   return (
-    <CLPricesContainer skuCode={code}>
-      <CLPrice>
-        {
-          ({ prices }) => {
-            const [price] = prices
+    <CLPrice skuCode={code}>
+      {
+        ({ prices }) => {
+          const [price] = prices
 
-            if (!price) {
-              return null
-            }
-
-            return <PriceComponent price={price} className={className} { ...props } />
+          if (!price) {
+            return null
           }
+
+          return <PriceComponent price={price} className={className} { ...props } />
         }
-      </CLPrice>
-    </CLPricesContainer>
+      }
+    </CLPrice>
   )
 }

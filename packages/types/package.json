@@ -12,14 +12,14 @@
     "dist"
   ],
   "dependencies": {
-    "@types/lodash": "^4.17.25",
+    "@types/lodash": "^4.17.27",
     "lodash": "^4.18.1",
     "uvu": "^0.5.6",
-    "zod": "^3.25.76"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/node": "^22",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   },
   "scripts": {
     "ts:check": "tsc --noEmit",

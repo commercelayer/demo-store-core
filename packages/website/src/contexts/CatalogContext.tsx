@@ -217,7 +217,7 @@ function useCommerceLayerAvailability(initialProducts: LocalizedProductWithVaria
       return
     }
 
-    const client = CommerceLayer({ accessToken: authorization.accessToken, organization, domain })
+    const client = CommerceLayer({ accessToken: authorization.accessToken, organization, domain, apiVersion: '2026-05' })
 
     mapWithAvailability(
       client,
@@ -258,7 +258,7 @@ function useCommerceLayerPrice(initialProducts: LocalizedProductWithVariant[]) {
       return
     }
 
-    const client = CommerceLayer({ accessToken: authorization.accessToken, organization, domain })
+    const client = CommerceLayer({ accessToken: authorization.accessToken, organization, domain, apiVersion: '2026-05' })
 
     mapWithPrice(
       client,
